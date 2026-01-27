@@ -1,0 +1,835 @@
+{
+  "city_settings": {
+    "default_city": "Scranton",
+    "user_selected_city": null,
+    "localizable": true,
+    "city_specific_content": {
+      "office_name": "{company_name} {city}",
+      "default_company_name": "Dunder Mifflin",
+      "office_type": "Paper Company",
+      "office_type_es": "Compañía de Papel"
+    }
+  },
+  "episode_metadata": {
+    "episode_number": 8,
+    "episode_id": "ep_008",
+    "title": "The Office Tries to Be Quiet (It Fails)",
+    "title_es": "La oficina intenta estar en silencio (falla)",
+    "description": "The boss wants silence for a very important reason. Jim counts the seconds, Pam tries to help, and the office learns that five seconds is very long.",
+    "description_es": "El jefe quiere silencio por una razón muy importante. Jim cuenta los segundos, Pam intenta ayudar y la oficina aprende que cinco segundos son muy largos.",
+    "internal_level": "A1",
+    "estimated_time_minutes": 12,
+    "unlock_requirements": null,
+    "tags": [
+      "office_life",
+      "meetings",
+      "silence",
+      "humor"
+    ],
+    "previous_episode": "ep_007",
+    "next_episode": "ep_009"
+  },
+  "characters": {
+    "appearing_in_episode": [
+      {
+        "character_id": "char_boss",
+        "default_name": "MICHAEL",
+        "role": "boss",
+        "role_es": "jefe",
+        "personality": "Very enthusiastic and wants to be loved. He tries too hard, makes awkward jokes, and thinks every small idea is a big success.",
+        "personality_es": "Muy entusiasta y quiere que todos lo quieran. Se esfuerza demasiado, hace chistes incómodos y cree que cada idea pequeña es un gran éxito.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/michael.png",
+        "intro_text": "Hello. I am the boss. Today we have a very important rule: silence. I am a silence expert. I invented silence. You are welcome.",
+        "intro_text_es": "Hola. Yo soy el jefe. Hoy tenemos una regla muy importante: silencio. Yo soy un experto en silencio. Yo inventé el silencio. De nada."
+      },
+      {
+        "character_id": "char_jim",
+        "default_name": "JIM",
+        "role": "salesman",
+        "role_es": "vendedor",
+        "personality": "Calm and sarcastic. He makes jokes with a serious face and often turns office chaos into a small experiment or a prank.",
+        "personality_es": "Tranquilo y sarcástico. Hace bromas con cara seria y a menudo convierte el caos de la oficina en un experimento pequeño o una broma.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/jim.png",
+        "intro_text": "Yes. Silence is very easy. We are a very serious office. I will count the seconds. This is my new hobby now.",
+        "intro_text_es": "Sí. El silencio es muy fácil. Somos una oficina muy seria. Yo voy a contar los segundos. Este es mi nuevo pasatiempo ahora."
+      },
+      {
+        "character_id": "char_pam",
+        "default_name": "PAM",
+        "role": "receptionist",
+        "role_es": "recepcionista",
+        "personality": "Kind and helpful, but quietly funny. She tries to keep things calm and gently points out how strange the office is.",
+        "personality_es": "Amable y servicial, pero divertida en silencio. Intenta mantener la calma y señala con suavidad lo extraña que es la oficina.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/pam.png",
+        "intro_text": "Welcome. Please try to be quiet. I will help. I have a sign that says SILENCE. The sign is not magic, sadly.",
+        "intro_text_es": "Bienvenido. Por favor, intenta estar en silencio. Yo voy a ayudar. Tengo un letrero que dice SILENCIO. El letrero no es mágico, tristemente."
+      },
+      {
+        "character_id": "char_dwight",
+        "default_name": "DWIGHT",
+        "role": "salesman",
+        "role_es": "vendedor",
+        "personality": "Intense and rule-focused. He takes silence like a mission, watches everyone, and acts like the office is under high-level security.",
+        "personality_es": "Intenso y enfocado en reglas. Toma el silencio como una misión, vigila a todos y actúa como si la oficina estuviera bajo seguridad de alto nivel.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/dwight.png",
+        "intro_text": "Silence is discipline. I will enforce silence. I am the assistant regional manager. I can hear a whisper from three desks away.",
+        "intro_text_es": "El silencio es disciplina. Yo voy a hacer cumplir el silencio. Yo soy el asistente del gerente regional. Yo puedo escuchar un susurro a tres escritorios de distancia."
+      },
+      {
+        "character_id": "char_kevin",
+        "default_name": "KEVIN",
+        "role": "accountant",
+        "role_es": "contador",
+        "personality": "Sweet and simple. He loves snacks and gets confused easily, especially when a rule stops him from eating or talking about food.",
+        "personality_es": "Dulce y simple. Ama los snacks y se confunde fácil, especialmente cuando una regla le impide comer o hablar de comida.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/kevin.png",
+        "intro_text": "I can be quiet. But I have a snack. The snack is loud in my mouth. This is a problem for me.",
+        "intro_text_es": "Yo puedo estar en silencio. Pero tengo un snack. El snack es ruidoso en mi boca. Esto es un problema para mí."
+      }
+    ],
+    "mentioned_but_not_appearing": []
+  },
+  "vocabulary_focus": {
+    "target_words": [
+      {
+        "word": "silence",
+        "translation_es": "silencio",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 1,
+        "context_sentence": "The boss asks for silence during the meeting.",
+        "context_sentence_es": "El jefe pide silencio durante la reunión.",
+        "image_url": "/vocab/silence.jpg"
+      },
+      {
+        "word": "quiet",
+        "translation_es": "callado",
+        "word_type": "adjective",
+        "word_type_es": "adjetivo",
+        "difficulty": 1,
+        "context_sentence": "The office is quiet for three seconds.",
+        "context_sentence_es": "La oficina está callada por tres segundos.",
+        "image_url": "/vocab/quiet.jpg"
+      },
+      {
+        "word": "count",
+        "translation_es": "contar",
+        "word_type": "verb",
+        "word_type_es": "verbo",
+        "difficulty": 2,
+        "context_sentence": "Jim counts the seconds very slowly.",
+        "context_sentence_es": "Jim cuenta los segundos muy despacio.",
+        "image_url": "/vocab/count.jpg"
+      },
+      {
+        "word": "second",
+        "translation_es": "segundo",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 1,
+        "context_sentence": "One second feels very long in this office.",
+        "context_sentence_es": "Un segundo se siente muy largo en esta oficina.",
+        "image_url": "/vocab/second.jpg"
+      },
+      {
+        "word": "noise",
+        "translation_es": "ruido",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 2,
+        "context_sentence": "Kevin makes noise with his snack.",
+        "context_sentence_es": "Kevin hace ruido con su snack.",
+        "image_url": "/vocab/noise.jpg"
+      }
+    ],
+    "phrases": [
+      {
+        "phrase": "Please be quiet.",
+        "translation_es": "Por favor, estén en silencio.",
+        "usage_context": "Used when the boss wants everyone to stop talking.",
+        "usage_context_es": "Se usa cuando el jefe quiere que todos dejen de hablar."
+      },
+      {
+        "phrase": "For five seconds.",
+        "translation_es": "Por cinco segundos.",
+        "usage_context": "Used to set a short and simple time limit.",
+        "usage_context_es": "Se usa para establecer un límite de tiempo corto y simple."
+      },
+      {
+        "phrase": "I can hear that.",
+        "translation_es": "Yo puedo escuchar eso.",
+        "usage_context": "Used when someone makes noise during silence.",
+        "usage_context_es": "Se usa cuando alguien hace ruido durante el silencio."
+      }
+    ]
+  },
+  "vocabulary_story": {
+    "title": "Learning Basic Words",
+    "title_es": "Aprendiendo Palabras Básicas",
+    "description": "A simple story to learn today's vocabulary before the meeting starts",
+    "description_es": "Una historia simple para aprender el vocabulario de hoy antes de que empiece la reunión",
+    "segments": [
+      {
+        "segment_id": "vocab_001",
+        "image_url": "/vocab/silence.jpg",
+        "word_focus": "silence",
+        "text": {
+          "en": "The boss asks for SILENCE. Everyone listens. Nobody moves. Someone breathes too loud.",
+          "es": "El jefe pide SILENCIO. Todos escuchan. Nadie se mueve. Alguien respira muy fuerte."
+        },
+        "visual_aid": "🤫🏢",
+        "emphasis_style": "bold_uppercase"
+      },
+      {
+        "segment_id": "vocab_002",
+        "image_url": "/vocab/quiet.jpg",
+        "word_focus": "quiet",
+        "text": {
+          "en": "The office is QUIET. Very quiet. Too quiet for an office.",
+          "es": "La oficina está CALLADA. Muy callada. Demasiado callada para una oficina."
+        },
+        "visual_aid": "🔇😐",
+        "interactive": {
+          "type": "simple_input",
+          "question": "What is your name?",
+          "question_es": "¿Cuál es tu nombre?",
+          "input_type": "text",
+          "save_as": "player_name_vocab",
+          "example": "Alex"
+        }
+      },
+      {
+        "segment_id": "vocab_003",
+        "image_url": "/vocab/count.jpg",
+        "word_focus": "count",
+        "text": {
+          "en": "Jim starts to COUNT the seconds. He is very serious. This is important work.",
+          "es": "Jim empieza a CONTAR los segundos. Está muy serio. Este es trabajo importante."
+        },
+        "visual_aid": "🔢⏱️"
+      },
+      {
+        "segment_id": "vocab_004",
+        "image_url": "/vocab/second.jpg",
+        "word_focus": "second",
+        "text": {
+          "en": "One SECOND feels very long in a meeting. This second feels longer.",
+          "es": "Un SEGUNDO se siente muy largo en una reunión. Este segundo se siente más largo."
+        },
+        "visual_aid": "⏰😵"
+      },
+      {
+        "segment_id": "vocab_005",
+        "image_url": "/vocab/noise.jpg",
+        "word_focus": "noise",
+        "text": {
+          "en": "Someone makes NOISE. It is small noise. But everyone hears it.",
+          "es": "Alguien hace RUIDO. Es un ruido pequeño. Pero todos lo escuchan."
+        },
+        "visual_aid": "🍪👂"
+      },
+      {
+        "segment_id": "vocab_summary",
+        "word_focus": null,
+        "text": {
+          "en": "Great job. Now you know: SILENCE, QUIET, COUNT, SECOND, and NOISE. These words are very useful. Especially in meetings.",
+          "es": "Buen trabajo. Ahora conoces: SILENCIO, CALLADO, CONTAR, SEGUNDO y RUIDO. Estas palabras son muy útiles. Especialmente en reuniones."
+        },
+        "visual_aid": "✅📚➡️"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "scene_id": "scene_008_001",
+      "scene_number": 1,
+      "location": "Conference room",
+      "location_es": "Sala de reuniones",
+      "time": "Morning",
+      "time_es": "Mañana",
+      "description": "The boss starts a very important meeting and asks for silence.",
+      "description_es": "El jefe inicia una reunión muy importante y pide silencio.",
+      "dialogue": [
+        {
+          "line_id": 1,
+          "character_id": "char_boss",
+          "character_display_name": "MICHAEL",
+          "text": "Welcome everyone. I am the best boss. Today we have a very important meeting. First rule: SILENCE.",
+          "translation_es": "Bienvenidos a todos. Yo soy el mejor jefe. Hoy tenemos una reunión muy importante. Primera regla: SILENCIO.",
+          "emotion": "proud_but_lying",
+          "notes": "Michael brags and makes the meeting about himself.",
+          "notes_es": "Michael presume y hace que la reunión sea sobre él.",
+          "highlighted_vocab": [
+            "silence"
+          ],
+          "template_vars": [
+            "boss_name"
+          ]
+        },
+        {
+          "line_id": 2,
+          "character_id": "char_pam",
+          "character_display_name": "PAM",
+          "text": "Please be quiet. This meeting is very important. I think.",
+          "translation_es": "Por favor, estén en silencio. Esta reunión es muy importante. Creo.",
+          "emotion": "calm",
+          "notes": "Pam tries to help but sounds unsure.",
+          "notes_es": "Pam intenta ayudar pero suena insegura.",
+          "highlighted_vocab": [
+            "quiet"
+          ],
+          "template_vars": [
+            "pam_name"
+          ]
+        },
+        {
+          "line_id": 3,
+          "character_id": "player",
+          "character_display_name": "YOU",
+          "text": null,
+          "is_interactive": true,
+          "interaction_type": "choice",
+          "choices": [
+            {
+              "choice_id": "a",
+              "text": "I am quiet. I respect the SILENCE.",
+              "translation_es": "Estoy callado. Yo respeto el SILENCIO.",
+              "points": 10,
+              "personality_impact": "friendly",
+              "vocab_used": [
+                "silence"
+              ]
+            },
+            {
+              "choice_id": "b",
+              "text": "I try to be quiet.",
+              "translation_es": "Intento estar callado.",
+              "points": 5,
+              "personality_impact": "neutral"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_008_002",
+      "scene_number": 2,
+      "location": "Conference room",
+      "location_es": "Sala de reuniones",
+      "time": "Moments later",
+      "time_es": "Momentos después",
+      "description": "Jim has an idea to count the seconds of silence.",
+      "description_es": "Jim tiene una idea para contar los segundos de silencio.",
+      "dialogue": [
+        {
+          "line_id": 1,
+          "character_id": "char_jim",
+          "character_display_name": "JIM",
+          "text": "Yes. This is serious. I will COUNT the seconds. This is very professional.",
+          "translation_es": "Sí. Esto es serio. Yo voy a CONTAR los segundos. Esto es muy profesional.",
+          "emotion": "sarcastic",
+          "notes": "Jim sounds serious but is joking.",
+          "notes_es": "Jim suena serio pero está bromeando.",
+          "highlighted_vocab": [
+            "count",
+            "second"
+          ],
+          "template_vars": [
+            "jim_name"
+          ]
+        },
+        {
+          "line_id": 2,
+          "character_id": "char_dwight",
+          "character_display_name": "DWIGHT",
+          "text": "I approve. I will watch. One SECOND of noise is a failure.",
+          "translation_es": "Yo apruebo. Yo voy a vigilar. Un SEGUNDO de ruido es un fracaso.",
+          "emotion": "intense",
+          "notes": "Dwight takes counting very seriously.",
+          "notes_es": "Dwight se toma el conteo muy en serio.",
+          "highlighted_vocab": [
+            "second",
+            "noise"
+          ],
+          "template_vars": []
+        },
+        {
+          "line_id": 3,
+          "character_id": "player",
+          "character_display_name": "YOU",
+          "text": null,
+          "is_interactive": true,
+          "interaction_type": "choice",
+          "choices": [
+            {
+              "choice_id": "a",
+              "text": "I COUNT with Jim.",
+              "translation_es": "Yo CUENTO con Jim.",
+              "points": 10,
+              "personality_impact": "team_player",
+              "vocab_used": [
+                "count"
+              ]
+            },
+            {
+              "choice_id": "b",
+              "text": "I stay QUIET.",
+              "translation_es": "Me quedo CALLADO.",
+              "points": 5,
+              "personality_impact": "neutral",
+              "vocab_used": [
+                "quiet"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_008_003",
+      "scene_number": 3,
+      "location": "Conference room",
+      "location_es": "Sala de reuniones",
+      "time": "Five seconds later",
+      "time_es": "Cinco segundos después",
+      "description": "Kevin makes a small noise and ruins the silence.",
+      "description_es": "Kevin hace un pequeño ruido y arruina el silencio.",
+      "dialogue": [
+        {
+          "line_id": 1,
+          "character_id": "char_kevin",
+          "character_display_name": "KEVIN",
+          "text": "Sorry. My snack makes NOISE. The snack is stronger than me.",
+          "translation_es": "Lo siento. Mi snack hace RUIDO. El snack es más fuerte que yo.",
+          "emotion": "embarrassed",
+          "notes": "Kevin blames food for the noise.",
+          "notes_es": "Kevin culpa a la comida por el ruido.",
+          "highlighted_vocab": [
+            "noise"
+          ],
+          "template_vars": []
+        },
+        {
+          "line_id": 2,
+          "character_id": "char_boss",
+          "character_display_name": "MICHAEL",
+          "text": "This is fine. I planned this test. I invented silence tests.",
+          "translation_es": "Esto está bien. Yo planeé esta prueba. Yo inventé las pruebas de silencio.",
+          "emotion": "defensive",
+          "notes": "Michael pretends the failure is part of his plan.",
+          "notes_es": "Michael finge que el fallo es parte de su plan.",
+          "highlighted_vocab": [
+            "silence"
+          ],
+          "template_vars": [
+            "boss_name"
+          ]
+        },
+        {
+          "line_id": 3,
+          "character_id": "player",
+          "character_display_name": "YOU",
+          "text": null,
+          "is_interactive": true,
+          "interaction_type": "choice",
+          "choices": [
+            {
+              "choice_id": "a",
+              "text": "It is only one SECOND.",
+              "translation_es": "Es solo un SEGUNDO.",
+              "points": 10,
+              "personality_impact": "kind",
+              "vocab_used": [
+                "second"
+              ]
+            },
+            {
+              "choice_id": "b",
+              "text": "We try again in SILENCE.",
+              "translation_es": "Intentamos de nuevo en SILENCIO.",
+              "points": 5,
+              "personality_impact": "neutral",
+              "vocab_used": [
+                "silence"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_008_004",
+      "scene_number": 4,
+      "location": "Office floor",
+      "location_es": "Área de la oficina",
+      "time": "End of the meeting",
+      "time_es": "Final de la reunión",
+      "description": "The meeting ends and everyone pretends it was successful.",
+      "description_es": "La reunión termina y todos fingen que fue un éxito.",
+      "dialogue": [
+        {
+          "line_id": 1,
+          "character_id": "char_jim",
+          "character_display_name": "JIM",
+          "text": "Great meeting. We learned a lot about SILENCE.",
+          "translation_es": "Gran reunión. Aprendimos mucho sobre el SILENCIO.",
+          "emotion": "sarcastic",
+          "notes": "Jim delivers fake praise.",
+          "notes_es": "Jim da elogios falsos.",
+          "highlighted_vocab": [
+            "silence"
+          ],
+          "template_vars": [
+            "jim_name"
+          ]
+        },
+        {
+          "line_id": 2,
+          "character_id": "char_pam",
+          "character_display_name": "PAM",
+          "text": "Yes. Five seconds is very long.",
+          "translation_es": "Sí. Cinco segundos son muy largos.",
+          "emotion": "amused",
+          "notes": "Pam understates the chaos.",
+          "notes_es": "Pam minimiza el caos.",
+          "highlighted_vocab": [
+            "second"
+          ],
+          "template_vars": [
+            "pam_name"
+          ]
+        },
+        {
+          "line_id": 3,
+          "character_id": "player",
+          "character_display_name": "YOU",
+          "text": null,
+          "is_interactive": true,
+          "interaction_type": "choice",
+          "choices": [
+            {
+              "choice_id": "a",
+              "text": "This meeting is very QUIET.",
+              "translation_es": "Esta reunión es muy CALLADA.",
+              "points": 10,
+              "personality_impact": "humorous",
+              "vocab_used": [
+                "quiet"
+              ]
+            },
+            {
+              "choice_id": "b",
+              "text": "I like the NOISE better.",
+              "translation_es": "Me gusta más el RUIDO.",
+              "points": 5,
+              "personality_impact": "bold",
+              "vocab_used": [
+                "noise"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "games": [
+    {
+      "game_id": "ep008_game_01",
+      "game_type": "matching",
+      "title": "Match the Words!",
+      "title_es": "¡Empareja las Palabras!",
+      "instructions": "Match each English word with its Spanish meaning",
+      "instructions_es": "Empareja cada palabra en inglés con su significado en español",
+      "optional": true,
+      "unlocked_after_episode": true,
+      "time_limit_seconds": 60,
+      "xp_reward": 20,
+      "content": {
+        "items": [
+          {
+            "id": 1,
+            "left": "silence",
+            "right": "silencio",
+            "image_url": "/vocab/silence.jpg"
+          },
+          {
+            "id": 2,
+            "left": "quiet",
+            "right": "callado",
+            "image_url": "/vocab/quiet.jpg"
+          },
+          {
+            "id": 3,
+            "left": "count",
+            "right": "contar",
+            "image_url": "/vocab/count.jpg"
+          },
+          {
+            "id": 4,
+            "left": "second",
+            "right": "segundo",
+            "image_url": "/vocab/second.jpg"
+          },
+          {
+            "id": 5,
+            "left": "noise",
+            "right": "ruido",
+            "image_url": "/vocab/noise.jpg"
+          }
+        ]
+      },
+      "settings": {
+        "shuffle": true,
+        "show_images": true
+      }
+    },
+    {
+      "game_id": "ep008_game_02",
+      "game_type": "fill_blank",
+      "title": "Complete the Sentences",
+      "title_es": "Completa las Oraciones",
+      "instructions": "Fill in the missing words from the episode",
+      "instructions_es": "Completa las palabras que faltan del episodio",
+      "optional": true,
+      "unlocked_after_episode": true,
+      "time_limit_seconds": 90,
+      "xp_reward": 25,
+      "content": {
+        "items": [
+          {
+            "id": 1,
+            "sentence": "{boss_name} asks for ____ during the meeting.",
+            "sentence_es": "{boss_name} pide ____ durante la reunión.",
+            "answer": "silence",
+            "options": [
+              "silence",
+              "noise",
+              "second"
+            ],
+            "hint": "The boss wants no sound.",
+            "hint_es": "El jefe quiere que no haya sonido.",
+            "character": "{boss_name}"
+          },
+          {
+            "id": 2,
+            "sentence": "{pam_name} says, Please be ____.",
+            "sentence_es": "{pam_name} dice, Por favor, estén ____.",
+            "answer": "quiet",
+            "options": [
+              "quiet",
+              "count",
+              "noise"
+            ],
+            "hint": "This word means no talking.",
+            "hint_es": "Esta palabra significa no hablar.",
+            "character": "{pam_name}"
+          },
+          {
+            "id": 3,
+            "sentence": "{jim_name} starts to ____ the seconds.",
+            "sentence_es": "{jim_name} empieza a ____ los segundos.",
+            "answer": "count",
+            "options": [
+              "count",
+              "quiet",
+              "noise"
+            ],
+            "hint": "This word means to say numbers in order.",
+            "hint_es": "Esta palabra significa decir números en orden.",
+            "character": "{jim_name}"
+          },
+          {
+            "id": 4,
+            "sentence": "One ____ feels very long in this meeting.",
+            "sentence_es": "Un ____ se siente muy largo en esta reunión.",
+            "answer": "second",
+            "options": [
+              "second",
+              "silence",
+              "count"
+            ],
+            "hint": "This word is a short unit of time.",
+            "hint_es": "Esta palabra es una unidad corta de tiempo.",
+            "character": "{player_name}"
+          }
+        ]
+      }
+    },
+    {
+      "game_id": "ep008_game_03",
+      "game_type": "multiple_choice",
+      "title": "Episode Quiz",
+      "title_es": "Quiz del Episodio",
+      "instructions": "Answer questions about the episode",
+      "instructions_es": "Responde preguntas sobre el episodio",
+      "optional": true,
+      "unlocked_after_episode": true,
+      "time_limit_seconds": 120,
+      "xp_reward": 30,
+      "content": {
+        "items": [
+          {
+            "id": 1,
+            "question": "What does the boss want at the start of the meeting?",
+            "question_es": "¿Qué quiere el jefe al inicio de la reunión?",
+            "options": [
+              "Silence",
+              "Food",
+              "Music",
+              "A game"
+            ],
+            "options_es": [
+              "Silencio",
+              "Comida",
+              "Música",
+              "Un juego"
+            ],
+            "correct_answer": 0,
+            "explanation": "The boss asks for silence to start the meeting.",
+            "explanation_es": "El jefe pide silencio para iniciar la reunión."
+          },
+          {
+            "id": 2,
+            "question": "What does {jim_name} do during the silence?",
+            "question_es": "¿Qué hace {jim_name} durante el silencio?",
+            "options": [
+              "He counts seconds",
+              "He eats a snack",
+              "He sleeps",
+              "He leaves"
+            ],
+            "options_es": [
+              "Cuenta segundos",
+              "Come un snack",
+              "Duerme",
+              "Se va"
+            ],
+            "correct_answer": 0,
+            "explanation": "{jim_name} counts the seconds as a serious joke.",
+            "explanation_es": "{jim_name} cuenta los segundos como una broma seria."
+          },
+          {
+            "id": 3,
+            "question": "Who makes noise and breaks the silence?",
+            "question_es": "¿Quién hace ruido y rompe el silencio?",
+            "options": [
+              "Kevin",
+              "Pam",
+              "Jim",
+              "The boss"
+            ],
+            "options_es": [
+              "Kevin",
+              "Pam",
+              "Jim",
+              "El jefe"
+            ],
+            "correct_answer": 0,
+            "explanation": "Kevin makes noise with his snack.",
+            "explanation_es": "Kevin hace ruido con su snack."
+          }
+        ]
+      }
+    }
+  ],
+  "content_wrappers": {
+    "intro_text": {
+      "en": "Welcome to the office. This is a quiet place. Very quiet. Too quiet. The boss loves silence. The office does not.",
+      "es": "Bienvenido a la oficina. Este es un lugar silencioso. Muy silencioso. Demasiado silencioso. Al jefe le encanta el silencio. A la oficina no."
+    },
+    "transition": {
+      "en": "Great job. You know the words now. Silence, quiet, count, second, and noise. Now let us go to the meeting. Please do not make noise. Someone always makes noise.",
+      "es": "Buen trabajo. Ahora conoces las palabras. Silencio, callado, contar, segundo y ruido. Ahora vamos a la reunión. Por favor, no hagas ruido. Alguien siempre hace ruido."
+    },
+    "conclusion": {
+      "en": "Good job. You finished the meeting. You learned new words. You survived five seconds of silence. This is a big success. The boss is proud. Very proud.",
+      "es": "Buen trabajo. Terminaste la reunión. Aprendiste nuevas palabras. Sobreviviste cinco segundos de silencio. Esto es un gran éxito. El jefe está orgulloso. Muy orgulloso."
+    },
+    "reflection_prompt": {
+      "question_en": "Write one sentence using the word 'silence' or 'noise'.",
+      "question_es": "Escribe una oración usando la palabra 'silencio' o 'ruido'.",
+      "type": "free_text",
+      "optional": true,
+      "max_length": 100,
+      "vocab_practice": [
+        "silence",
+        "noise"
+      ]
+    }
+  },
+  "next_episode_preview": {
+    "preview_text_en": "Next time, the boss has a new rule, Jim tests it, and the office learns that rules are easy to say and hard to follow.",
+    "preview_text_es": "La próxima vez, el jefe tiene una nueva regla, Jim la pone a prueba y la oficina aprende que las reglas son fáciles de decir y difíciles de seguir.",
+    "teaser_image": "/previews/ep_009.jpg"
+  },
+  "progression": {
+    "xp_earned_base": 50,
+    "xp_bonus_conditions": [
+      {
+        "condition": "complete_all_games",
+        "bonus_xp": 25
+      },
+      {
+        "condition": "perfect_choices",
+        "bonus_xp": 15
+      },
+      {
+        "condition": "write_reflection",
+        "bonus_xp": 10
+      }
+    ],
+    "unlocks": [
+      {
+        "type": "character",
+        "character_ids": [
+          "char_boss",
+          "char_jim",
+          "char_pam",
+          "char_dwight",
+          "char_kevin"
+        ]
+      },
+      {
+        "type": "location",
+        "location_ids": [
+          "Conference room",
+          "Office floor"
+        ]
+      }
+    ],
+    "achievements": [
+      {
+        "achievement_id": "silent_meeting_01",
+        "name": "Five Seconds of Silence",
+        "name_es": "Cinco Segundos de Silencio",
+        "description": "You survive a very important meeting and keep silence for almost five seconds. This is a big office success.",
+        "description_es": "Sobrevives a una reunión muy importante y mantienes silencio por casi cinco segundos. Este es un gran éxito de oficina.",
+        "icon": "/achievements/silent_meeting_01.png"
+      }
+    ]
+  },
+  "metadata": {
+    "created_date": "2026-01-27",
+    "version": "1.0",
+    "author": "Course Team",
+    "content_level": "beginner",
+    "estimated_words": 380,
+    "estimated_unique_vocabulary": 55,
+    "structure_type": "vocab_story_then_main_story"
+  }
+}

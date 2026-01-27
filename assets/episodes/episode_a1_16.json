@@ -1,0 +1,832 @@
+{
+  "city_settings": {
+    "default_city": "Scranton",
+    "user_selected_city": null,
+    "localizable": true,
+    "city_specific_content": {
+      "office_name": "{company_name} {city}",
+      "default_company_name": "Dunder Mifflin",
+      "office_type": "Paper Company",
+      "office_type_es": "Compañía de Papel"
+    }
+  },
+  "episode_metadata": {
+    "episode_number": 16,
+    "episode_id": "ep_016",
+    "title": "The Very Important Meeting (Again)",
+    "title_es": "La Reunión Muy Importante (Otra Vez)",
+    "description": "{boss_name} starts a very important meeting. {jim_name} listens and smiles. {pam_name} brings coffee. The meeting is long, confusing, and not very useful.",
+    "description_es": "{boss_name} empieza una reunión muy importante. {jim_name} escucha y sonríe. {pam_name} trae café. La reunión es larga, confusa y no muy útil.",
+    "internal_level": "A1",
+    "estimated_time_minutes": 12,
+    "unlock_requirements": null,
+    "tags": [
+      "office_life",
+      "meetings",
+      "coffee",
+      "humor"
+    ],
+    "previous_episode": "ep_015",
+    "next_episode": "ep_017"
+  },
+  "characters": {
+    "appearing_in_episode": [
+      {
+        "character_id": "char_boss",
+        "default_name": "MICHAEL",
+        "role": "Boss",
+        "role_es": "Jefe",
+        "personality": "Enthusiastic boss who wants everyone to love him and believes every meeting is very important.",
+        "personality_es": "Jefe entusiasta que quiere que todos lo amen y cree que todas las reuniones son muy importantes.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/michael.png",
+        "intro_text": "Welcome. I am the boss. The best boss. Today we have a very important meeting. It is important because I say it is important.",
+        "intro_text_es": "Bienvenidos. Yo soy el jefe. El mejor jefe. Hoy tenemos una reunión muy importante. Es importante porque yo digo que es importante."
+      },
+      {
+        "character_id": "char_jim",
+        "default_name": "JIM",
+        "role": "Salesman",
+        "role_es": "Vendedor",
+        "personality": "Calm and sarcastic salesman who understands the chaos but enjoys it.",
+        "personality_es": "Vendedor tranquilo y sarcástico que entiende el caos pero lo disfruta.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/jim.png",
+        "intro_text": "Yes, this is a very serious meeting. Very important ideas happen here. I listen carefully and smile.",
+        "intro_text_es": "Sí, esta es una reunión muy seria. Aquí pasan ideas muy importantes. Yo escucho con atención y sonrío."
+      },
+      {
+        "character_id": "char_pam",
+        "default_name": "PAM",
+        "role": "Receptionist",
+        "role_es": "Recepcionista",
+        "personality": "Kind and patient receptionist who helps everyone and brings calm to the office.",
+        "personality_es": "Recepcionista amable y paciente que ayuda a todos y trae calma a la oficina.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/pam.png",
+        "intro_text": "Hello. I bring coffee to the meeting. Coffee helps people stay awake during very long meetings.",
+        "intro_text_es": "Hola. Yo traigo café a la reunión. El café ayuda a las personas a mantenerse despiertas durante reuniones muy largas."
+      },
+      {
+        "character_id": "char_dwight",
+        "default_name": "DWIGHT",
+        "role": "Salesman",
+        "role_es": "Vendedor",
+        "personality": "Intense and serious salesman who follows rules and prepares for all emergencies.",
+        "personality_es": "Vendedor intenso y serio que sigue las reglas y se prepara para todas las emergencias.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/dwight.png",
+        "intro_text": "I am ready for this meeting. I have rules, notes, and emergency plans. Meetings need discipline.",
+        "intro_text_es": "Yo estoy listo para esta reunión. Tengo reglas, notas y planes de emergencia. Las reuniones necesitan disciplina."
+      }
+    ],
+    "mentioned_but_not_appearing": []
+  },
+  "vocabulary_focus": {
+    "target_words": [
+      {
+        "word": "meeting",
+        "translation_es": "reunión",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 1,
+        "context_sentence": "The meeting is very long and very important for the boss.",
+        "context_sentence_es": "La reunión es muy larga y muy importante para el jefe.",
+        "image_url": "/vocab/meeting.jpg"
+      },
+      {
+        "word": "coffee",
+        "translation_es": "café",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 1,
+        "context_sentence": "Pam brings coffee to help people stay awake.",
+        "context_sentence_es": "Pam trae café para ayudar a las personas a mantenerse despiertas.",
+        "image_url": "/vocab/coffee.jpg"
+      },
+      {
+        "word": "plan",
+        "translation_es": "plan",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 2,
+        "context_sentence": "The boss has a plan, but the plan is not clear.",
+        "context_sentence_es": "El jefe tiene un plan, pero el plan no es claro.",
+        "image_url": "/vocab/plan.jpg"
+      },
+      {
+        "word": "long",
+        "translation_es": "largo",
+        "word_type": "adjective",
+        "word_type_es": "adjetivo",
+        "difficulty": 1,
+        "context_sentence": "This is a long meeting with many words.",
+        "context_sentence_es": "Esta es una reunión larga con muchas palabras.",
+        "image_url": "/vocab/long.jpg"
+      },
+      {
+        "word": "important",
+        "translation_es": "importante",
+        "word_type": "adjective",
+        "word_type_es": "adjetivo",
+        "difficulty": 1,
+        "context_sentence": "The boss says the meeting is important.",
+        "context_sentence_es": "El jefe dice que la reunión es importante.",
+        "image_url": "/vocab/important.jpg"
+      }
+    ],
+    "phrases": [
+      {
+        "phrase": "This meeting is very important.",
+        "translation_es": "Esta reunión es muy importante.",
+        "usage_context": "Used when the boss wants attention from everyone.",
+        "usage_context_es": "Se usa cuando el jefe quiere la atención de todos."
+      },
+      {
+        "phrase": "Please bring coffee.",
+        "translation_es": "Por favor trae café.",
+        "usage_context": "Used when people feel tired in a long meeting.",
+        "usage_context_es": "Se usa cuando las personas se sienten cansadas en una reunión larga."
+      },
+      {
+        "phrase": "I have a plan.",
+        "translation_es": "Yo tengo un plan.",
+        "usage_context": "Used when someone wants to sound confident, even without details.",
+        "usage_context_es": "Se usa cuando alguien quiere sonar confiado, incluso sin detalles."
+      }
+    ]
+  },
+  "vocabulary_story": {
+    "title": "Learning Basic Words",
+    "title_es": "Aprendiendo Palabras Básicas",
+    "description": "A simple story to learn today's vocabulary",
+    "description_es": "Una historia simple para aprender el vocabulario de hoy",
+    "segments": [
+      {
+        "segment_id": "vocab_001",
+        "image_url": "/vocab/meeting.jpg",
+        "word_focus": "meeting",
+        "text": {
+          "en": "The MEETING starts now. The MEETING is very long. Very long.",
+          "es": "La REUNIÓN empieza ahora. La REUNIÓN es muy larga. Muy larga."
+        },
+        "visual_aid": "🪑🕒😐",
+        "emphasis_style": "bold_uppercase"
+      },
+      {
+        "segment_id": "vocab_002",
+        "image_url": "/vocab/coffee.jpg",
+        "word_focus": "coffee",
+        "text": {
+          "en": "Pam brings COFFEE to the meeting. COFFEE helps people stay awake.",
+          "es": "Pam trae CAFÉ a la reunión. El CAFÉ ayuda a las personas a mantenerse despiertas."
+        },
+        "visual_aid": "☕😴➡️🙂",
+        "interactive": {
+          "type": "simple_input",
+          "question": "What is your name?",
+          "question_es": "¿Cuál es tu nombre?",
+          "input_type": "text",
+          "save_as": "player_name_vocab",
+          "example": "Alex"
+        }
+      },
+      {
+        "segment_id": "vocab_003",
+        "image_url": "/vocab/plan.jpg",
+        "word_focus": "plan",
+        "text": {
+          "en": "The boss has a PLAN. The PLAN sounds big, but it is not clear.",
+          "es": "El jefe tiene un PLAN. El PLAN suena grande, pero no es claro."
+        },
+        "visual_aid": "📋🤔"
+      },
+      {
+        "segment_id": "vocab_004",
+        "image_url": "/vocab/long.jpg",
+        "word_focus": "long",
+        "text": {
+          "en": "The meeting is LONG. The boss talks and talks.",
+          "es": "La reunión es LARGA. El jefe habla y habla."
+        },
+        "visual_aid": "🕒🗣️😑"
+      },
+      {
+        "segment_id": "vocab_005",
+        "image_url": "/vocab/important.jpg",
+        "word_focus": "important",
+        "text": {
+          "en": "The boss says the meeting is IMPORTANT. Everyone listens. Or pretends.",
+          "es": "El jefe dice que la reunión es IMPORTANTE. Todos escuchan. O fingen."
+        },
+        "visual_aid": "⭐👂😏"
+      },
+      {
+        "segment_id": "vocab_summary",
+        "word_focus": null,
+        "text": {
+          "en": "Great! Now you know: MEETING, COFFEE, PLAN, LONG, IMPORTANT. Now we will use these words in a story!",
+          "es": "¡Genial! Ahora conoces: REUNIÓN, CAFÉ, PLAN, LARGA, IMPORTANTE. ¡Usemos estas palabras en una historia!"
+        },
+        "visual_aid": "✅ 📚 ➡️"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "scene_id": "scene_016_001",
+      "scene_number": 1,
+      "location": "Conference Room",
+      "location_es": "Sala de Conferencias",
+      "time": "Morning",
+      "time_es": "Mañana",
+      "description": "{boss_name} calls everyone to a very important meeting. The room is quiet. Too quiet.",
+      "description_es": "{boss_name} llama a todos a una reunión muy importante. La sala está en silencio. Demasiado silencio.",
+      "dialogue": [
+        {
+          "line_id": 1,
+          "character_id": "char_boss",
+          "character_display_name": "MICHAEL",
+          "text": "Welcome everyone. This MEETING is very IMPORTANT. I planned it myself.",
+          "translation_es": "Bienvenidos a todos. Esta REUNIÓN es muy IMPORTANTE. Yo la planeé personalmente.",
+          "emotion": "proud_but_lying",
+          "notes": "Michael wants credit for everything, even simple meetings.",
+          "notes_es": "Michael quiere crédito por todo, incluso por reuniones simples.",
+          "highlighted_vocab": [
+            "meeting",
+            "important"
+          ],
+          "template_vars": [
+            "boss_name"
+          ]
+        },
+        {
+          "line_id": 2,
+          "character_id": "char_jim",
+          "character_display_name": "JIM",
+          "text": "Yes. This MEETING feels very IMPORTANT already.",
+          "translation_es": "Sí. Esta REUNIÓN ya se siente muy IMPORTANTE.",
+          "emotion": "sarcastic",
+          "notes": "Jim sounds serious but is joking.",
+          "notes_es": "Jim suena serio pero está bromeando.",
+          "highlighted_vocab": [
+            "meeting",
+            "important"
+          ],
+          "template_vars": [
+            "jim_name"
+          ]
+        },
+        {
+          "line_id": 3,
+          "character_id": "player",
+          "character_display_name": "YOU",
+          "text": null,
+          "is_interactive": true,
+          "interaction_type": "choice",
+          "choices": [
+            {
+              "choice_id": "a",
+              "text": "Yes, this meeting is important.",
+              "translation_es": "Sí, esta reunión es importante.",
+              "points": 10,
+              "personality_impact": "friendly",
+              "vocab_used": [
+                "meeting",
+                "important"
+              ]
+            },
+            {
+              "choice_id": "b",
+              "text": "I am ready for the meeting.",
+              "translation_es": "Estoy listo para la reunión.",
+              "points": 5,
+              "personality_impact": "neutral",
+              "vocab_used": [
+                "meeting"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_016_002",
+      "scene_number": 2,
+      "location": "Conference Room",
+      "location_es": "Sala de Conferencias",
+      "time": "Late Morning",
+      "time_es": "Final de la mañana",
+      "description": "The meeting continues. Pam enters with coffee. People look hopeful.",
+      "description_es": "La reunión continúa. Pam entra con café. La gente se ve esperanzada.",
+      "dialogue": [
+        {
+          "line_id": 1,
+          "character_id": "char_pam",
+          "character_display_name": "PAM",
+          "text": "I bring COFFEE for everyone. This is a LONG meeting.",
+          "translation_es": "Traigo CAFÉ para todos. Esta es una reunión LARGA.",
+          "emotion": "kind",
+          "notes": "Coffee is the hero of long meetings.",
+          "notes_es": "El café es el héroe de las reuniones largas.",
+          "highlighted_vocab": [
+            "coffee",
+            "long"
+          ],
+          "template_vars": [
+            "pam_name"
+          ]
+        },
+        {
+          "line_id": 2,
+          "character_id": "char_boss",
+          "character_display_name": "MICHAEL",
+          "text": "Thank you. COFFEE helps people listen to my PLAN.",
+          "translation_es": "Gracias. El CAFÉ ayuda a las personas a escuchar mi PLAN.",
+          "emotion": "excited",
+          "notes": "Michael thinks coffee exists for his speeches.",
+          "notes_es": "Michael cree que el café existe para sus discursos.",
+          "highlighted_vocab": [
+            "coffee",
+            "plan"
+          ],
+          "template_vars": [
+            "boss_name"
+          ]
+        },
+        {
+          "line_id": 3,
+          "character_id": "player",
+          "character_display_name": "YOU",
+          "text": null,
+          "is_interactive": true,
+          "interaction_type": "choice",
+          "choices": [
+            {
+              "choice_id": "a",
+              "text": "Thank you for the coffee.",
+              "translation_es": "Gracias por el café.",
+              "points": 10,
+              "personality_impact": "friendly",
+              "vocab_used": [
+                "coffee"
+              ]
+            },
+            {
+              "choice_id": "b",
+              "text": "This meeting is long.",
+              "translation_es": "Esta reunión es larga.",
+              "points": 5,
+              "personality_impact": "honest",
+              "vocab_used": [
+                "meeting",
+                "long"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_016_003",
+      "scene_number": 3,
+      "location": "Conference Room",
+      "location_es": "Sala de Conferencias",
+      "time": "Noon",
+      "time_es": "Mediodía",
+      "description": "{boss_name} explains the plan. Dwight listens very closely.",
+      "description_es": "{boss_name} explica el plan. Dwight escucha con mucha atención.",
+      "dialogue": [
+        {
+          "line_id": 1,
+          "character_id": "char_boss",
+          "character_display_name": "MICHAEL",
+          "text": "My PLAN is simple. It is big. It is IMPORTANT.",
+          "translation_es": "Mi PLAN es simple. Es grande. Es IMPORTANTE.",
+          "emotion": "confident",
+          "notes": "Michael says little but repeats big words.",
+          "notes_es": "Michael dice poco pero repite palabras grandes.",
+          "highlighted_vocab": [
+            "plan",
+            "important"
+          ],
+          "template_vars": [
+            "boss_name"
+          ]
+        },
+        {
+          "line_id": 2,
+          "character_id": "char_dwight",
+          "character_display_name": "DWIGHT",
+          "text": "I understand the PLAN. I will protect the PLAN.",
+          "translation_es": "Yo entiendo el PLAN. Yo protegeré el PLAN.",
+          "emotion": "intense",
+          "notes": "Dwight takes plans very seriously.",
+          "notes_es": "Dwight se toma los planes muy en serio.",
+          "highlighted_vocab": [
+            "plan"
+          ],
+          "template_vars": []
+        },
+        {
+          "line_id": 3,
+          "character_id": "player",
+          "character_display_name": "YOU",
+          "text": null,
+          "is_interactive": true,
+          "interaction_type": "choice",
+          "choices": [
+            {
+              "choice_id": "a",
+              "text": "The plan sounds important.",
+              "translation_es": "El plan suena importante.",
+              "points": 10,
+              "personality_impact": "supportive",
+              "vocab_used": [
+                "plan",
+                "important"
+              ]
+            },
+            {
+              "choice_id": "b",
+              "text": "Please explain the plan.",
+              "translation_es": "Por favor explica el plan.",
+              "points": 5,
+              "personality_impact": "curious",
+              "vocab_used": [
+                "plan"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_016_004",
+      "scene_number": 4,
+      "location": "Conference Room",
+      "location_es": "Sala de Conferencias",
+      "time": "Afternoon",
+      "time_es": "Tarde",
+      "description": "The meeting ends. Everyone looks tired but polite.",
+      "description_es": "La reunión termina. Todos se ven cansados pero educados.",
+      "dialogue": [
+        {
+          "line_id": 1,
+          "character_id": "char_jim",
+          "character_display_name": "JIM",
+          "text": "This was a LONG and IMPORTANT meeting. I learned many things.",
+          "translation_es": "Esta fue una reunión LARGA e IMPORTANTE. Aprendí muchas cosas.",
+          "emotion": "sarcastic",
+          "notes": "Jim says he learned a lot, but he did not.",
+          "notes_es": "Jim dice que aprendió mucho, pero no es verdad.",
+          "highlighted_vocab": [
+            "long",
+            "important",
+            "meeting"
+          ],
+          "template_vars": [
+            "jim_name"
+          ]
+        },
+        {
+          "line_id": 2,
+          "character_id": "char_boss",
+          "character_display_name": "MICHAEL",
+          "text": "Thank you everyone. This MEETING was a success.",
+          "translation_es": "Gracias a todos. Esta REUNIÓN fue un éxito.",
+          "emotion": "proud",
+          "notes": "Michael always thinks meetings are successful.",
+          "notes_es": "Michael siempre cree que las reuniones son exitosas.",
+          "highlighted_vocab": [
+            "meeting"
+          ],
+          "template_vars": [
+            "boss_name"
+          ]
+        },
+        {
+          "line_id": 3,
+          "character_id": "player",
+          "character_display_name": "YOU",
+          "text": null,
+          "is_interactive": true,
+          "interaction_type": "choice",
+          "choices": [
+            {
+              "choice_id": "a",
+              "text": "Thank you for the meeting.",
+              "translation_es": "Gracias por la reunión.",
+              "points": 10,
+              "personality_impact": "polite",
+              "vocab_used": [
+                "meeting"
+              ]
+            },
+            {
+              "choice_id": "b",
+              "text": "I need more coffee.",
+              "translation_es": "Necesito más café.",
+              "points": 5,
+              "personality_impact": "honest",
+              "vocab_used": [
+                "coffee"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "games": [
+    {
+      "game_id": "ep16_game_01",
+      "game_type": "matching",
+      "title": "Match the Words!",
+      "title_es": "¡Empareja las Palabras!",
+      "instructions": "Match each English word with its Spanish meaning",
+      "instructions_es": "Empareja cada palabra en inglés con su significado en español",
+      "optional": true,
+      "unlocked_after_episode": true,
+      "time_limit_seconds": 60,
+      "xp_reward": 20,
+      "content": {
+        "items": [
+          {
+            "id": 1,
+            "left": "meeting",
+            "right": "reunión",
+            "image_url": "/vocab/meeting.jpg"
+          },
+          {
+            "id": 2,
+            "left": "coffee",
+            "right": "café",
+            "image_url": "/vocab/coffee.jpg"
+          },
+          {
+            "id": 3,
+            "left": "plan",
+            "right": "plan",
+            "image_url": "/vocab/plan.jpg"
+          },
+          {
+            "id": 4,
+            "left": "long",
+            "right": "largo",
+            "image_url": "/vocab/long.jpg"
+          },
+          {
+            "id": 5,
+            "left": "important",
+            "right": "importante",
+            "image_url": "/vocab/important.jpg"
+          }
+        ]
+      },
+      "settings": {
+        "shuffle": true,
+        "show_images": true
+      }
+    },
+    {
+      "game_id": "ep16_game_02",
+      "game_type": "fill_blank",
+      "title": "Complete the Sentences",
+      "title_es": "Completa las Oraciones",
+      "instructions": "Fill in the missing words from the episode",
+      "instructions_es": "Completa las palabras que faltan del episodio",
+      "optional": true,
+      "unlocked_after_episode": true,
+      "time_limit_seconds": 90,
+      "xp_reward": 25,
+      "content": {
+        "items": [
+          {
+            "id": 1,
+            "sentence": "This _____ is very important for {boss_name}.",
+            "sentence_es": "Esta _____ es muy importante para {boss_name}.",
+            "answer": "meeting",
+            "options": [
+              "meeting",
+              "coffee",
+              "plan"
+            ],
+            "hint": "People sit together and listen.",
+            "hint_es": "Las personas se sientan juntas y escuchan.",
+            "character": "{boss_name}"
+          },
+          {
+            "id": 2,
+            "sentence": "{pam_name} brings _____ to help people stay awake.",
+            "sentence_es": "{pam_name} trae _____ para ayudar a las personas a mantenerse despiertas.",
+            "answer": "coffee",
+            "options": [
+              "coffee",
+              "plan",
+              "long"
+            ],
+            "hint": "You drink it in the morning.",
+            "hint_es": "Lo bebes en la mañana.",
+            "character": "{pam_name}"
+          },
+          {
+            "id": 3,
+            "sentence": "{boss_name} has a _____.",
+            "sentence_es": "{boss_name} tiene un _____.",
+            "answer": "plan",
+            "options": [
+              "plan",
+              "meeting",
+              "important"
+            ],
+            "hint": "It is an idea for the future.",
+            "hint_es": "Es una idea para el futuro.",
+            "character": "{boss_name}"
+          },
+          {
+            "id": 4,
+            "sentence": "The meeting is very _____.",
+            "sentence_es": "La reunión es muy _____.",
+            "answer": "long",
+            "options": [
+              "long",
+              "coffee",
+              "plan"
+            ],
+            "hint": "It takes a lot of time.",
+            "hint_es": "Toma mucho tiempo.",
+            "character": "{jim_name}"
+          }
+        ]
+      }
+    },
+    {
+      "game_id": "ep16_game_03",
+      "game_type": "multiple_choice",
+      "title": "Episode Quiz",
+      "title_es": "Quiz del Episodio",
+      "instructions": "Answer questions about the episode",
+      "instructions_es": "Responde preguntas sobre el episodio",
+      "optional": true,
+      "unlocked_after_episode": true,
+      "time_limit_seconds": 120,
+      "xp_reward": 30,
+      "content": {
+        "items": [
+          {
+            "id": 1,
+            "question": "Why does {boss_name} call the meeting important?",
+            "question_es": "¿Por qué {boss_name} llama importante a la reunión?",
+            "options": [
+              "Because he planned it",
+              "Because it is very short",
+              "Because it has no coffee",
+              "Because nobody is there"
+            ],
+            "options_es": [
+              "Porque él la planeó",
+              "Porque es muy corta",
+              "Porque no tiene café",
+              "Porque no hay nadie"
+            ],
+            "correct_answer": 0,
+            "explanation": "{boss_name} thinks his plans are always important.",
+            "explanation_es": "{boss_name} piensa que sus planes siempre son importantes."
+          },
+          {
+            "id": 2,
+            "question": "What does {pam_name} bring to the meeting?",
+            "question_es": "¿Qué trae {pam_name} a la reunión?",
+            "options": [
+              "Coffee",
+              "A plan",
+              "A chair",
+              "A rule"
+            ],
+            "options_es": [
+              "Café",
+              "Un plan",
+              "Una silla",
+              "Una regla"
+            ],
+            "correct_answer": 0,
+            "explanation": "Coffee helps people stay awake.",
+            "explanation_es": "El café ayuda a las personas a mantenerse despiertas."
+          },
+          {
+            "id": 3,
+            "question": "How does {jim_name} feel about the meeting?",
+            "question_es": "¿Cómo se siente {jim_name} sobre la reunión?",
+            "options": [
+              "Very serious and excited",
+              "Sarcastic but calm",
+              "Angry and loud",
+              "Very confused"
+            ],
+            "options_es": [
+              "Muy serio y emocionado",
+              "Sarcástico pero tranquilo",
+              "Enojado y ruidoso",
+              "Muy confundido"
+            ],
+            "correct_answer": 1,
+            "explanation": "{jim_name} sounds serious, but he is joking.",
+            "explanation_es": "{jim_name} suena serio, pero está bromeando."
+          }
+        ]
+      }
+    }
+  ],
+  "content_wrappers": {
+    "intro_text": {
+      "en": "Welcome to the office. This is a place of work, focus, and very IMPORTANT MEETINGS. Everyone is calm. Everyone is professional. This is a lie.",
+      "es": "Bienvenido a la oficina. Este es un lugar de trabajo, enfoque y REUNIONES muy IMPORTANTES. Todos están tranquilos. Todos son profesionales. Esto es una mentira."
+    },
+    "transition": {
+      "en": "Great job. Now you know the words. Now we go to the office. The office has a MEETING, a PLAN, and a lot of COFFEE. The meeting is LONG. Very long.",
+      "es": "Buen trabajo. Ahora conoces las palabras. Ahora vamos a la oficina. La oficina tiene una REUNIÓN, un PLAN y mucho CAFÉ. La reunión es LARGA. Muy larga."
+    },
+    "conclusion": {
+      "en": "You did it. You survived the MEETING. You heard the PLAN. You drank the COFFEE. The meeting was LONG and IMPORTANT. Tomorrow there is another meeting. Good luck.",
+      "es": "Lo lograste. Sobreviviste a la REUNIÓN. Escuchaste el PLAN. Bebiste el CAFÉ. La reunión fue LARGA e IMPORTANTE. Mañana hay otra reunión. Buena suerte."
+    },
+    "reflection_prompt": {
+      "question_en": "Write one sentence using the word 'meeting' or 'coffee'.",
+      "question_es": "Escribe una oración usando la palabra 'reunión' o 'café'.",
+      "type": "free_text",
+      "optional": true,
+      "max_length": 100,
+      "vocab_practice": [
+        "meeting",
+        "coffee"
+      ]
+    }
+  },
+  "next_episode_preview": {
+    "preview_text_en": "Next time, {boss_name} has a new plan for teamwork. {jim_name} smiles. {pam_name} hides the coffee. The plan goes very wrong.",
+    "preview_text_es": "La próxima vez, {boss_name} tiene un nuevo plan para el trabajo en equipo. {jim_name} sonríe. {pam_name} esconde el café. El plan sale muy mal.",
+    "teaser_image": "/previews/ep_017.jpg"
+  },
+  "progression": {
+    "xp_earned_base": 50,
+    "xp_bonus_conditions": [
+      {
+        "condition": "complete_all_games",
+        "bonus_xp": 25
+      },
+      {
+        "condition": "perfect_choices",
+        "bonus_xp": 15
+      },
+      {
+        "condition": "write_reflection",
+        "bonus_xp": 10
+      }
+    ],
+    "unlocks": [
+      {
+        "type": "character",
+        "character_ids": [
+          "char_boss",
+          "char_jim",
+          "char_pam",
+          "char_dwight"
+        ]
+      },
+      {
+        "type": "location",
+        "location_ids": [
+          "Conference Room"
+        ]
+      }
+    ],
+    "achievements": [
+      {
+        "achievement_id": "meeting_survivor_01",
+        "name": "Meeting Survivor",
+        "name_es": "Sobreviviente de la Reunión",
+        "description": "You stayed awake in a long and important meeting and listened to the plan.",
+        "description_es": "Te mantuviste despierto en una reunión larga e importante y escuchaste el plan.",
+        "icon": "/achievements/meeting_survivor_01.png"
+      }
+    ]
+  },
+  "metadata": {
+    "created_date": "2026-01-27",
+    "version": "1.0",
+    "author": "Course Team",
+    "content_level": "beginner",
+    "estimated_words": 380,
+    "estimated_unique_vocabulary": 55,
+    "structure_type": "vocab_story_then_main_story"
+  }
+}

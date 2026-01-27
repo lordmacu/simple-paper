@@ -1,0 +1,818 @@
+{
+  "city_settings": {
+    "default_city": "Scranton",
+    "user_selected_city": null,
+    "localizable": true,
+    "city_specific_content": {
+      "office_name": "{company_name} {city}",
+      "default_company_name": "Dunder Mifflin",
+      "office_type": "Paper Company",
+      "office_type_es": "Compañía de Papel"
+    }
+  },
+  "episode_metadata": {
+    "episode_number": 17,
+    "episode_id": "ep_017",
+    "title": "The Teamwork Plan (It Goes Very Wrong)",
+    "title_es": "El Plan de Trabajo en Equipo (Sale Muy Mal)",
+    "description": "{boss_name} presents a teamwork plan with a big smile. {jim_name} tries to help. {pam_name} protects the coffee. The plan is simple, slow, and very confusing. Everyone works together, but nothing works.",
+    "description_es": "{boss_name} presenta un plan de trabajo en equipo con una gran sonrisa. {jim_name} intenta ayudar. {pam_name} protege el café. El plan es simple, lento y muy confuso. Todos trabajan juntos, pero nada funciona.",
+    "internal_level": "A1",
+    "estimated_time_minutes": 12,
+    "unlock_requirements": null,
+    "tags": [
+      "office_life",
+      "teamwork",
+      "meetings",
+      "humor"
+    ],
+    "previous_episode": "ep_016",
+    "next_episode": "ep_018"
+  },
+  "characters": {
+    "appearing_in_episode": [
+      {
+        "character_id": "char_boss",
+        "default_name": "MICHAEL",
+        "role": "Boss",
+        "role_es": "Jefe",
+        "personality": "Very enthusiastic boss who wants everyone to love him. He believes every idea is great, especially his own ideas. He talks a lot and explains simple things for a long time.",
+        "personality_es": "Jefe muy entusiasta que quiere que todos lo amen. Cree que todas sus ideas son geniales, especialmente las suyas. Habla mucho y explica cosas simples por mucho tiempo.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/michael.png",
+        "intro_text": "Hello everyone. I am the boss. Today I have a teamwork plan. It is the best plan. I am very good at plans. Call me the great boss.",
+        "intro_text_es": "Hola a todos. Yo soy el jefe. Hoy tengo un plan de trabajo en equipo. Es el mejor plan. Yo soy muy bueno con los planes. Llámenme el gran jefe."
+      },
+      {
+        "character_id": "char_jim",
+        "default_name": "JIM",
+        "role": "Salesman",
+        "role_es": "Vendedor",
+        "personality": "Calm and sarcastic salesman. He sounds serious, but he is often joking. He watches the chaos and reacts with quiet humor.",
+        "personality_es": "Vendedor tranquilo y sarcástico. Suena serio, pero muchas veces está bromeando. Observa el caos y reacciona con humor silencioso.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/jim.png",
+        "intro_text": "Yes. This teamwork plan sounds very important. I am ready to work together. Very ready. Extremely ready.",
+        "intro_text_es": "Sí. Este plan de trabajo en equipo suena muy importante. Estoy listo para trabajar en equipo. Muy listo. Extremadamente listo."
+      },
+      {
+        "character_id": "char_pam",
+        "default_name": "PAM",
+        "role": "Receptionist",
+        "role_es": "Recepcionista",
+        "personality": "Kind and helpful receptionist. She tries to keep the office calm. She protects the coffee and observes the situation with quiet comments.",
+        "personality_es": "Recepcionista amable y servicial. Intenta mantener la calma en la oficina. Protege el café y observa la situación con comentarios tranquilos.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/pam.png",
+        "intro_text": "Welcome. Please stay calm. The teamwork plan is starting. I will keep the coffee safe. This is important.",
+        "intro_text_es": "Bienvenidos. Por favor mantengan la calma. El plan de trabajo en equipo está empezando. Yo voy a mantener el café a salvo. Esto es importante."
+      },
+      {
+        "character_id": "char_dwight",
+        "default_name": "DWIGHT",
+        "role": "Salesman",
+        "role_es": "Vendedor",
+        "personality": "Very intense and serious salesman. He follows rules and believes he is in charge. He takes the teamwork plan very seriously.",
+        "personality_es": "Vendedor muy intenso y serio. Sigue las reglas y cree que está a cargo. Toma el plan de trabajo en equipo muy en serio.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/dwight.png",
+        "intro_text": "I am ready for teamwork. I have rules. I have a system. This plan will work if everyone listens to me.",
+        "intro_text_es": "Estoy listo para el trabajo en equipo. Tengo reglas. Tengo un sistema. Este plan va a funcionar si todos me escuchan."
+      }
+    ],
+    "mentioned_but_not_appearing": []
+  },
+  "vocabulary_focus": {
+    "target_words": [
+      {
+        "word": "teamwork",
+        "translation_es": "trabajo en equipo",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 2,
+        "context_sentence": "The boss talks about teamwork for a long time.",
+        "context_sentence_es": "El jefe habla sobre el trabajo en equipo por mucho tiempo.",
+        "image_url": "/vocab/teamwork.jpg"
+      },
+      {
+        "word": "together",
+        "translation_es": "juntos",
+        "word_type": "adverb",
+        "word_type_es": "adverbio",
+        "difficulty": 1,
+        "context_sentence": "Everyone works together in the office.",
+        "context_sentence_es": "Todos trabajan juntos en la oficina.",
+        "image_url": "/vocab/together.jpg"
+      },
+      {
+        "word": "rule",
+        "translation_es": "regla",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 1,
+        "context_sentence": "Dwight has a rule for everything.",
+        "context_sentence_es": "Dwight tiene una regla para todo.",
+        "image_url": "/vocab/rule.jpg"
+      },
+      {
+        "word": "slow",
+        "translation_es": "lento",
+        "word_type": "adjective",
+        "word_type_es": "adjetivo",
+        "difficulty": 1,
+        "context_sentence": "The teamwork plan is slow and confusing.",
+        "context_sentence_es": "El plan de trabajo en equipo es lento y confuso.",
+        "image_url": "/vocab/slow.jpg"
+      },
+      {
+        "word": "confused",
+        "translation_es": "confundido",
+        "word_type": "adjective",
+        "word_type_es": "adjetivo",
+        "difficulty": 2,
+        "context_sentence": "Jim looks confused during the meeting.",
+        "context_sentence_es": "Jim se ve confundido durante la reunión.",
+        "image_url": "/vocab/confused.jpg"
+      }
+    ],
+    "phrases": [
+      {
+        "phrase": "Let us work together.",
+        "translation_es": "Trabajemos juntos.",
+        "usage_context": "The boss says this to start the teamwork plan.",
+        "usage_context_es": "El jefe dice esto para empezar el plan de trabajo en equipo."
+      },
+      {
+        "phrase": "This rule is important.",
+        "translation_es": "Esta regla es importante.",
+        "usage_context": "Dwight says this when he explains his rules.",
+        "usage_context_es": "Dwight dice esto cuando explica sus reglas."
+      },
+      {
+        "phrase": "I am very confused.",
+        "translation_es": "Estoy muy confundido.",
+        "usage_context": "A character says this when the plan does not make sense.",
+        "usage_context_es": "Un personaje dice esto cuando el plan no tiene sentido."
+      }
+    ]
+  },
+  "vocabulary_story": {
+    "title": "Learning Basic Words",
+    "title_es": "Aprendiendo Palabras Básicas",
+    "description": "A simple story to learn today's vocabulary before the meeting starts",
+    "description_es": "Una historia simple para aprender el vocabulario de hoy antes de que empiece la reunión",
+    "segments": [
+      {
+        "segment_id": "vocab_001",
+        "image_url": "/vocab/teamwork.jpg",
+        "word_focus": "teamwork",
+        "text": {
+          "en": "The boss loves TEAMWORK. He talks about TEAMWORK every day.",
+          "es": "Al jefe le encanta el TRABAJO EN EQUIPO. Él habla del TRABAJO EN EQUIPO todos los días."
+        },
+        "visual_aid": "🤝 🏢",
+        "emphasis_style": "bold_uppercase"
+      },
+      {
+        "segment_id": "vocab_002",
+        "image_url": "/vocab/together.jpg",
+        "word_focus": "together",
+        "text": {
+          "en": "The team works TOGETHER. Sometimes they look very tired.",
+          "es": "El equipo trabaja JUNTOS. A veces se ven muy cansados."
+        },
+        "visual_aid": "👥 😅",
+        "interactive": {
+          "type": "simple_input",
+          "question": "What is your name?",
+          "question_es": "¿Cuál es tu nombre?",
+          "input_type": "text",
+          "save_as": "player_name_vocab",
+          "example": "Alex"
+        }
+      },
+      {
+        "segment_id": "vocab_003",
+        "image_url": "/vocab/rule.jpg",
+        "word_focus": "rule",
+        "text": {
+          "en": "Dwight has a RULE for everything. He loves every RULE.",
+          "es": "Dwight tiene una REGLA para todo. Él ama cada REGLA."
+        },
+        "visual_aid": "📋 ⚠️"
+      },
+      {
+        "segment_id": "vocab_004",
+        "image_url": "/vocab/slow.jpg",
+        "word_focus": "slow",
+        "text": {
+          "en": "The plan is SLOW. Very slow. Everyone waits.",
+          "es": "El plan es LENTO. Muy lento. Todos esperan."
+        },
+        "visual_aid": "🐢 ⏰"
+      },
+      {
+        "segment_id": "vocab_005",
+        "image_url": "/vocab/confused.jpg",
+        "word_focus": "confused",
+        "text": {
+          "en": "Jim looks CONFUSED. The plan does not make sense.",
+          "es": "Jim se ve CONFUNDIDO. El plan no tiene sentido."
+        },
+        "visual_aid": "😕 ❓"
+      },
+      {
+        "segment_id": "vocab_summary",
+        "word_focus": null,
+        "text": {
+          "en": "Great! Now you know: TEAMWORK, TOGETHER, RULE, SLOW, CONFUSED. The boss is proud. The team is not ready.",
+          "es": "¡Genial! Ahora conoces: TRABAJO EN EQUIPO, JUNTOS, REGLA, LENTO, CONFUNDIDO. El jefe está orgulloso. El equipo no está listo."
+        },
+        "visual_aid": "✅ 📚 ➡️"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "scene_id": "scene_017_001",
+      "scene_number": 1,
+      "location": "Conference Room",
+      "location_es": "Sala de Conferencias",
+      "time": "Morning",
+      "time_es": "Mañana",
+      "description": "The team sits in a meeting room. The boss stands and smiles. The coffee is missing.",
+      "description_es": "El equipo está sentado en una sala de reuniones. El jefe está de pie y sonríe. El café no está.",
+      "dialogue": [
+        {
+          "line_id": 1,
+          "character_id": "char_boss",
+          "character_display_name": "MICHAEL",
+          "text": "Good morning team. Today we learn about TEAMWORK. I invented teamwork.",
+          "translation_es": "Buenos días equipo. Hoy aprendemos sobre el TRABAJO EN EQUIPO. Yo inventé el trabajo en equipo.",
+          "emotion": "proud_but_lying",
+          "notes": "Michael claims he invented something common.",
+          "notes_es": "Michael dice que inventó algo muy común.",
+          "highlighted_vocab": [
+            "teamwork"
+          ],
+          "template_vars": [
+            "boss_name"
+          ]
+        },
+        {
+          "line_id": 2,
+          "character_id": "char_jim",
+          "character_display_name": "JIM",
+          "text": "Yes. This meeting is very important. Very professional.",
+          "translation_es": "Sí. Esta reunión es muy importante. Muy profesional.",
+          "emotion": "sarcastic",
+          "notes": "Jim sounds serious but he is joking.",
+          "notes_es": "Jim suena serio pero está bromeando.",
+          "highlighted_vocab": [],
+          "template_vars": [
+            "jim_name"
+          ]
+        },
+        {
+          "line_id": 3,
+          "character_id": "player",
+          "character_display_name": "YOU",
+          "text": null,
+          "is_interactive": true,
+          "interaction_type": "choice",
+          "choices": [
+            {
+              "choice_id": "a",
+              "text": "I like TEAMWORK.",
+              "translation_es": "Me gusta el TRABAJO EN EQUIPO.",
+              "points": 10,
+              "personality_impact": "friendly",
+              "vocab_used": [
+                "teamwork"
+              ]
+            },
+            {
+              "choice_id": "b",
+              "text": "This meeting is long.",
+              "translation_es": "Esta reunión es larga.",
+              "points": 5,
+              "personality_impact": "neutral"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_017_002",
+      "scene_number": 2,
+      "location": "Conference Room",
+      "location_es": "Sala de Conferencias",
+      "time": "Later",
+      "time_es": "Más tarde",
+      "description": "The boss explains a simple chart. Dwight raises his hand many times.",
+      "description_es": "El jefe explica un gráfico simple. Dwight levanta la mano muchas veces.",
+      "dialogue": [
+        {
+          "line_id": 1,
+          "character_id": "char_dwight",
+          "character_display_name": "DWIGHT",
+          "text": "We must work TOGETHER. I have a RULE for this.",
+          "translation_es": "Debemos trabajar JUNTOS. Yo tengo una REGLA para esto.",
+          "emotion": "intense",
+          "notes": "Dwight takes teamwork very seriously.",
+          "notes_es": "Dwight toma el trabajo en equipo muy en serio.",
+          "highlighted_vocab": [
+            "together",
+            "rule"
+          ],
+          "template_vars": []
+        },
+        {
+          "line_id": 2,
+          "character_id": "char_pam",
+          "character_display_name": "PAM",
+          "text": "Yes Dwight. The coffee is safe. Please sit.",
+          "translation_es": "Sí Dwight. El café está a salvo. Por favor siéntate.",
+          "emotion": "calm",
+          "notes": "Pam stays calm in chaos.",
+          "notes_es": "Pam mantiene la calma en el caos.",
+          "highlighted_vocab": [],
+          "template_vars": [
+            "pam_name"
+          ]
+        },
+        {
+          "line_id": 3,
+          "character_id": "player",
+          "character_display_name": "YOU",
+          "text": null,
+          "is_interactive": true,
+          "interaction_type": "choice",
+          "choices": [
+            {
+              "choice_id": "a",
+              "text": "Let us work TOGETHER.",
+              "translation_es": "Trabajemos JUNTOS.",
+              "points": 10,
+              "personality_impact": "friendly",
+              "vocab_used": [
+                "together"
+              ]
+            },
+            {
+              "choice_id": "b",
+              "text": "What is the RULE?",
+              "translation_es": "¿Cuál es la REGLA?",
+              "points": 8,
+              "personality_impact": "curious",
+              "vocab_used": [
+                "rule"
+              ]
+            },
+            {
+              "choice_id": "c",
+              "text": "I wait.",
+              "translation_es": "Yo espero.",
+              "points": 3,
+              "personality_impact": "neutral"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_017_003",
+      "scene_number": 3,
+      "location": "Conference Room",
+      "location_es": "Sala de Conferencias",
+      "time": "Ten Minutes Later",
+      "time_es": "Diez minutos después",
+      "description": "The plan moves very slowly. Everyone looks tired.",
+      "description_es": "El plan avanza muy lentamente. Todos se ven cansados.",
+      "dialogue": [
+        {
+          "line_id": 1,
+          "character_id": "char_boss",
+          "character_display_name": "MICHAEL",
+          "text": "The plan is SLOW because it is deep. Very deep.",
+          "translation_es": "El plan es LENTO porque es profundo. Muy profundo.",
+          "emotion": "defensive",
+          "notes": "Michael pretends slow means smart.",
+          "notes_es": "Michael finge que lento significa inteligente.",
+          "highlighted_vocab": [
+            "slow"
+          ],
+          "template_vars": [
+            "boss_name"
+          ]
+        },
+        {
+          "line_id": 2,
+          "character_id": "char_jim",
+          "character_display_name": "JIM",
+          "text": "Yes. Very deep. I am learning a lot.",
+          "translation_es": "Sí. Muy profundo. Estoy aprendiendo mucho.",
+          "emotion": "dry_sarcasm",
+          "notes": "Jim keeps fake praise.",
+          "notes_es": "Jim mantiene elogios falsos.",
+          "highlighted_vocab": [],
+          "template_vars": [
+            "jim_name"
+          ]
+        },
+        {
+          "line_id": 3,
+          "character_id": "player",
+          "character_display_name": "YOU",
+          "text": null,
+          "is_interactive": true,
+          "interaction_type": "choice",
+          "choices": [
+            {
+              "choice_id": "a",
+              "text": "The plan is SLOW.",
+              "translation_es": "El plan es LENTO.",
+              "points": 8,
+              "personality_impact": "honest",
+              "vocab_used": [
+                "slow"
+              ]
+            },
+            {
+              "choice_id": "b",
+              "text": "This is important.",
+              "translation_es": "Esto es importante.",
+              "points": 5,
+              "personality_impact": "supportive"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_017_004",
+      "scene_number": 4,
+      "location": "Conference Room",
+      "location_es": "Sala de Conferencias",
+      "time": "End of Meeting",
+      "time_es": "Final de la reunión",
+      "description": "The plan ends. No one understands it.",
+      "description_es": "El plan termina. Nadie lo entiende.",
+      "dialogue": [
+        {
+          "line_id": 1,
+          "character_id": "char_jim",
+          "character_display_name": "JIM",
+          "text": "I am CONFUSED. This is normal.",
+          "translation_es": "Estoy CONFUNDIDO. Esto es normal.",
+          "emotion": "deadpan",
+          "notes": "Jim states confusion like a fact.",
+          "notes_es": "Jim dice la confusión como un hecho.",
+          "highlighted_vocab": [
+            "confused"
+          ],
+          "template_vars": [
+            "jim_name"
+          ]
+        },
+        {
+          "line_id": 2,
+          "character_id": "char_boss",
+          "character_display_name": "MICHAEL",
+          "text": "Great teamwork everyone. I am very proud.",
+          "translation_es": "Gran trabajo en equipo todos. Estoy muy orgulloso.",
+          "emotion": "proud_but_wrong",
+          "notes": "Michael celebrates failure.",
+          "notes_es": "Michael celebra el fracaso.",
+          "highlighted_vocab": [
+            "teamwork"
+          ],
+          "template_vars": [
+            "boss_name"
+          ]
+        },
+        {
+          "line_id": 3,
+          "character_id": "player",
+          "character_display_name": "YOU",
+          "text": null,
+          "is_interactive": true,
+          "interaction_type": "choice",
+          "choices": [
+            {
+              "choice_id": "a",
+              "text": "I am CONFUSED too.",
+              "translation_es": "Yo también estoy CONFUNDIDO.",
+              "points": 10,
+              "personality_impact": "honest",
+              "vocab_used": [
+                "confused"
+              ]
+            },
+            {
+              "choice_id": "b",
+              "text": "Good TEAMWORK.",
+              "translation_es": "Buen TRABAJO EN EQUIPO.",
+              "points": 6,
+              "personality_impact": "supportive",
+              "vocab_used": [
+                "teamwork"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "games": [
+    {
+      "game_id": "ep17_game_01",
+      "game_type": "matching",
+      "title": "Match the Words!",
+      "title_es": "¡Empareja las Palabras!",
+      "instructions": "Match each English word with its Spanish meaning",
+      "instructions_es": "Empareja cada palabra en inglés con su significado en español",
+      "optional": true,
+      "unlocked_after_episode": true,
+      "time_limit_seconds": 60,
+      "xp_reward": 20,
+      "content": {
+        "items": [
+          {
+            "id": 1,
+            "left": "teamwork",
+            "right": "trabajo en equipo",
+            "image_url": "/vocab/teamwork.jpg"
+          },
+          {
+            "id": 2,
+            "left": "together",
+            "right": "juntos",
+            "image_url": "/vocab/together.jpg"
+          },
+          {
+            "id": 3,
+            "left": "rule",
+            "right": "regla",
+            "image_url": "/vocab/rule.jpg"
+          },
+          {
+            "id": 4,
+            "left": "slow",
+            "right": "lento",
+            "image_url": "/vocab/slow.jpg"
+          },
+          {
+            "id": 5,
+            "left": "confused",
+            "right": "confundido",
+            "image_url": "/vocab/confused.jpg"
+          }
+        ]
+      },
+      "settings": {
+        "shuffle": true,
+        "show_images": true
+      }
+    },
+    {
+      "game_id": "ep17_game_02",
+      "game_type": "fill_blank",
+      "title": "Complete the Sentences",
+      "title_es": "Completa las Oraciones",
+      "instructions": "Fill in the missing words from the episode",
+      "instructions_es": "Completa las palabras que faltan del episodio",
+      "optional": true,
+      "unlocked_after_episode": true,
+      "time_limit_seconds": 90,
+      "xp_reward": 25,
+      "content": {
+        "items": [
+          {
+            "id": 1,
+            "sentence": "{boss_name} talks about ____ all the time.",
+            "sentence_es": "{boss_name} habla sobre ____ todo el tiempo.",
+            "answer": "teamwork",
+            "options": [
+              "teamwork",
+              "coffee",
+              "meeting"
+            ],
+            "hint": "The boss loves this word.",
+            "hint_es": "Al jefe le encanta esta palabra.",
+            "character": "{boss_name}"
+          },
+          {
+            "id": 2,
+            "sentence": "The team works ____ in the office.",
+            "sentence_es": "El equipo trabaja ____ en la oficina.",
+            "answer": "together",
+            "options": [
+              "together",
+              "slow",
+              "confused"
+            ],
+            "hint": "People do this as a group.",
+            "hint_es": "Las personas hacen esto en grupo.",
+            "character": "{pam_name}"
+          },
+          {
+            "id": 3,
+            "sentence": "Dwight has a ____ for everything.",
+            "sentence_es": "Dwight tiene una ____ para todo.",
+            "answer": "rule",
+            "options": [
+              "rule",
+              "plan",
+              "coffee"
+            ],
+            "hint": "Dwight loves order.",
+            "hint_es": "A Dwight le encanta el orden.",
+            "character": "DWIGHT"
+          },
+          {
+            "id": 4,
+            "sentence": "The plan is very ____ today.",
+            "sentence_es": "El plan es muy ____ hoy.",
+            "answer": "slow",
+            "options": [
+              "slow",
+              "important",
+              "together"
+            ],
+            "hint": "It moves like a turtle.",
+            "hint_es": "Se mueve como una tortuga.",
+            "character": "{jim_name}"
+          }
+        ]
+      }
+    },
+    {
+      "game_id": "ep17_game_03",
+      "game_type": "multiple_choice",
+      "title": "Episode Quiz",
+      "title_es": "Quiz del Episodio",
+      "instructions": "Answer questions about the episode",
+      "instructions_es": "Responde preguntas sobre el episodio",
+      "optional": true,
+      "unlocked_after_episode": true,
+      "time_limit_seconds": 120,
+      "xp_reward": 30,
+      "content": {
+        "items": [
+          {
+            "id": 1,
+            "question": "What does {boss_name} say he invented?",
+            "question_es": "¿Qué dice {boss_name} que él inventó?",
+            "options": [
+              "Teamwork",
+              "Coffee",
+              "The office",
+              "Rules"
+            ],
+            "options_es": [
+              "El trabajo en equipo",
+              "El café",
+              "La oficina",
+              "Las reglas"
+            ],
+            "correct_answer": 0,
+            "explanation": "{boss_name} says he invented teamwork.",
+            "explanation_es": "{boss_name} dice que inventó el trabajo en equipo."
+          },
+          {
+            "id": 2,
+            "question": "How does Jim feel at the end of the meeting?",
+            "question_es": "¿Cómo se siente Jim al final de la reunión?",
+            "options": [
+              "Confused",
+              "Angry",
+              "Very happy",
+              "Sleepy"
+            ],
+            "options_es": [
+              "Confundido",
+              "Enojado",
+              "Muy feliz",
+              "Con sueño"
+            ],
+            "correct_answer": 0,
+            "explanation": "Jim says he is confused.",
+            "explanation_es": "Jim dice que está confundido."
+          },
+          {
+            "id": 3,
+            "question": "Who talks about rules the most?",
+            "question_es": "¿Quién habla más sobre las reglas?",
+            "options": [
+              "Dwight",
+              "Pam",
+              "Jim",
+              "{boss_name}"
+            ],
+            "options_es": [
+              "Dwight",
+              "Pam",
+              "Jim",
+              "{boss_name}"
+            ],
+            "correct_answer": 0,
+            "explanation": "Dwight loves rules and explains them.",
+            "explanation_es": "A Dwight le encantan las reglas y las explica."
+          }
+        ]
+      }
+    }
+  ],
+  "content_wrappers": {
+    "intro_text": {
+      "en": "Welcome to the office. This is a place of TEAMWORK. At least that is what {boss_name} says. People smile. Coffee disappears. Everything is normal. Very normal.",
+      "es": "Bienvenido a la oficina. Este es un lugar de TRABAJO EN EQUIPO. Al menos eso dice {boss_name}. La gente sonríe. El café desaparece. Todo es normal. Muy normal."
+    },
+    "transition": {
+      "en": "Great job. You know the words now. This is perfect timing. {boss_name} has a new plan. The plan is simple. The plan is slow. The plan is very confusing. Let us go.",
+      "es": "Buen trabajo. Ahora conoces las palabras. Este es el momento perfecto. {boss_name} tiene un nuevo plan. El plan es simple. El plan es lento. El plan es muy confuso. Vamos."
+    },
+    "conclusion": {
+      "en": "Good job. You finished the meeting. You practiced TEAMWORK. You worked TOGETHER. You heard many RULES. The plan was SLOW. Everyone was CONFUSED. This is a good day in the office.",
+      "es": "Buen trabajo. Terminaste la reunión. Practicaste el TRABAJO EN EQUIPO. Trabajaste JUNTOS. Escuchaste muchas REGLAS. El plan fue LENTO. Todos estaban CONFUNDIDOS. Este es un buen día en la oficina."
+    },
+    "reflection_prompt": {
+      "question_en": "Write one sentence using the word 'teamwork' or 'confused'.",
+      "question_es": "Escribe una oración usando la palabra 'trabajo en equipo' o 'confundido'.",
+      "type": "free_text",
+      "optional": true,
+      "max_length": 100,
+      "vocab_practice": [
+        "teamwork",
+        "confused"
+      ]
+    }
+  },
+  "next_episode_preview": {
+    "preview_text_en": "Next time, {boss_name} brings a new office rule. {jim_name} smiles. {pam_name} hides the sign. The rule does not make sense.",
+    "preview_text_es": "La próxima vez, {boss_name} trae una nueva regla de oficina. {jim_name} sonríe. {pam_name} esconde el aviso. La regla no tiene sentido.",
+    "teaser_image": "/previews/ep_018.jpg"
+  },
+  "progression": {
+    "xp_earned_base": 50,
+    "xp_bonus_conditions": [
+      {
+        "condition": "complete_all_games",
+        "bonus_xp": 25
+      },
+      {
+        "condition": "perfect_choices",
+        "bonus_xp": 15
+      },
+      {
+        "condition": "write_reflection",
+        "bonus_xp": 10
+      }
+    ],
+    "unlocks": [
+      {
+        "type": "character",
+        "character_ids": [
+          "char_boss",
+          "char_jim",
+          "char_pam",
+          "char_dwight"
+        ]
+      },
+      {
+        "type": "location",
+        "location_ids": [
+          "Conference Room"
+        ]
+      }
+    ],
+    "achievements": [
+      {
+        "achievement_id": "first_teamwork_meeting",
+        "name": "First Teamwork Meeting",
+        "name_es": "Primera Reunión de Trabajo en Equipo",
+        "description": "You finish your first teamwork meeting. The plan is slow. Everyone is confused. You survive.",
+        "description_es": "Terminas tu primera reunión de trabajo en equipo. El plan es lento. Todos están confundidos. Sobrevives.",
+        "icon": "/achievements/first_teamwork_meeting.png"
+      }
+    ]
+  },
+  "metadata": {
+    "created_date": "2026-01-27",
+    "version": "1.0",
+    "author": "Course Team",
+    "content_level": "beginner",
+    "estimated_words": 380,
+    "estimated_unique_vocabulary": 55,
+    "structure_type": "vocab_story_then_main_story"
+  }
+}

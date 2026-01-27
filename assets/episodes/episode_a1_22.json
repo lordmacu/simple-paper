@@ -1,0 +1,824 @@
+{
+  "city_settings": {
+    "default_city": "Scranton",
+    "user_selected_city": null,
+    "localizable": true,
+    "city_specific_content": {
+      "office_name": "{company_name} {city}",
+      "default_company_name": "Dunder Mifflin",
+      "office_type": "Paper Company",
+      "office_type_es": "Compañía de Papel"
+    }
+  },
+  "episode_metadata": {
+    "episode_number": 22,
+    "episode_id": "ep_022",
+    "title": "The New Rule (Nobody Understands)",
+    "title_es": "La Nueva Regla (Nadie la Entiende)",
+    "description": "The boss introduces a very important new rule to the office. The rule sounds serious, but it is confusing and strange. Everyone listens. Nobody understands. Jim smiles again.",
+    "description_es": "El jefe presenta una nueva regla muy importante en la oficina. La regla suena seria, pero es confusa y extraña. Todos escuchan. Nadie entiende. Jim sonríe otra vez.",
+    "internal_level": "A1",
+    "estimated_time_minutes": 12,
+    "unlock_requirements": null,
+    "tags": [
+      "office_life",
+      "rules",
+      "meetings",
+      "humor"
+    ],
+    "previous_episode": "ep_021",
+    "next_episode": "ep_023"
+  },
+  "characters": {
+    "appearing_in_episode": [
+      {
+        "character_id": "char_boss",
+        "default_name": "MICHAEL",
+        "role": "Boss",
+        "role_es": "Jefe",
+        "personality": "Enthusiastic and inappropriate boss who wants everyone to like him and believes he is the best boss in the world.",
+        "personality_es": "Jefe entusiasta e inapropiado que quiere que todos lo quieran y cree que es el mejor jefe del mundo.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/michael.png",
+        "intro_text": "Welcome everyone. I am the boss. The great boss. The super boss. Today I bring a new rule. It is a perfect rule. I made it myself.",
+        "intro_text_es": "Bienvenidos a todos. Yo soy el jefe. El gran jefe. El súper jefe. Hoy traigo una nueva regla. Es una regla perfecta. Yo la hice."
+      },
+      {
+        "character_id": "char_jim",
+        "default_name": "JIM",
+        "role": "Salesman",
+        "role_es": "Vendedor",
+        "personality": "Calm and sarcastic salesman who reacts to chaos with quiet jokes and looks at the camera.",
+        "personality_es": "Vendedor tranquilo y sarcástico que reacciona al caos con bromas silenciosas y mira a la cámara.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/jim.png",
+        "intro_text": "Yes. This rule is very clear. Very simple. I understand everything. This office is very normal.",
+        "intro_text_es": "Sí. Esta regla es muy clara. Muy simple. Yo entiendo todo. Esta oficina es muy normal."
+      },
+      {
+        "character_id": "char_pam",
+        "default_name": "PAM",
+        "role": "Receptionist",
+        "role_es": "Recepcionista",
+        "personality": "Kind and patient receptionist who helps everyone and comments on the strange office life.",
+        "personality_es": "Recepcionista amable y paciente que ayuda a todos y comenta la vida extraña de la oficina.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/pam.png",
+        "intro_text": "Hello. Please listen to the boss. The rule is important. I think. Maybe.",
+        "intro_text_es": "Hola. Por favor escuchen al jefe. La regla es importante. Creo. Tal vez."
+      },
+      {
+        "character_id": "char_dwight",
+        "default_name": "DWIGHT",
+        "role": "Salesman",
+        "role_es": "Vendedor",
+        "personality": "Intense rule follower who takes everything seriously and wants control and authority.",
+        "personality_es": "Seguidor intenso de las reglas que toma todo en serio y quiere control y autoridad.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/dwight.png",
+        "intro_text": "A new rule is good. Rules are power. I will enforce the rule. I am ready.",
+        "intro_text_es": "Una nueva regla es buena. Las reglas son poder. Yo haré cumplir la regla. Estoy listo."
+      }
+    ],
+    "mentioned_but_not_appearing": []
+  },
+  "vocabulary_focus": {
+    "target_words": [
+      {
+        "word": "rule",
+        "translation_es": "regla",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 1,
+        "context_sentence": "The boss explains a new rule to the office.",
+        "context_sentence_es": "El jefe explica una nueva regla a la oficina.",
+        "image_url": "/vocab/rule.jpg"
+      },
+      {
+        "word": "follow",
+        "translation_es": "seguir",
+        "word_type": "verb",
+        "word_type_es": "verbo",
+        "difficulty": 2,
+        "context_sentence": "Dwight wants to follow the rule all day.",
+        "context_sentence_es": "Dwight quiere seguir la regla todo el día.",
+        "image_url": "/vocab/follow.jpg"
+      },
+      {
+        "word": "important",
+        "translation_es": "importante",
+        "word_type": "adjective",
+        "word_type_es": "adjetivo",
+        "difficulty": 1,
+        "context_sentence": "The boss says the rule is very important.",
+        "context_sentence_es": "El jefe dice que la regla es muy importante.",
+        "image_url": "/vocab/important.jpg"
+      },
+      {
+        "word": "strange",
+        "translation_es": "extraño",
+        "word_type": "adjective",
+        "word_type_es": "adjetivo",
+        "difficulty": 2,
+        "context_sentence": "The rule sounds strange to everyone.",
+        "context_sentence_es": "La regla suena extraña para todos.",
+        "image_url": "/vocab/strange.jpg"
+      },
+      {
+        "word": "understand",
+        "translation_es": "entender",
+        "word_type": "verb",
+        "word_type_es": "verbo",
+        "difficulty": 2,
+        "context_sentence": "Jim does not understand the rule, but he smiles.",
+        "context_sentence_es": "Jim no entiende la regla, pero sonríe.",
+        "image_url": "/vocab/understand.jpg"
+      }
+    ],
+    "phrases": [
+      {
+        "phrase": "This rule is important.",
+        "translation_es": "Esta regla es importante.",
+        "usage_context": "Used when the boss wants everyone to listen and take the rule seriously.",
+        "usage_context_es": "Se usa cuando el jefe quiere que todos escuchen y tomen la regla en serio."
+      },
+      {
+        "phrase": "Please follow the rule.",
+        "translation_es": "Por favor sigue la regla.",
+        "usage_context": "Used when someone reminds others to obey the new rule.",
+        "usage_context_es": "Se usa cuando alguien recuerda a otros que deben obedecer la nueva regla."
+      },
+      {
+        "phrase": "I do not understand.",
+        "translation_es": "No entiendo.",
+        "usage_context": "Used when the rule is confusing or unclear in the office.",
+        "usage_context_es": "Se usa cuando la regla es confusa o poco clara en la oficina."
+      }
+    ]
+  },
+  "vocabulary_story": {
+    "title": "Learning Basic Words",
+    "title_es": "Aprendiendo Palabras Básicas",
+    "description": "A simple story to learn today's vocabulary",
+    "description_es": "Una historia simple para aprender el vocabulario de hoy",
+    "segments": [
+      {
+        "segment_id": "vocab_001",
+        "image_url": "/vocab/rule.jpg",
+        "word_focus": "rule",
+        "text": {
+          "en": "The boss writes a new RULE on the board. Everyone looks. No one smiles.",
+          "es": "El jefe escribe una nueva REGLA en el tablero. Todos miran. Nadie sonríe."
+        },
+        "visual_aid": "📋👀😐",
+        "emphasis_style": "bold_uppercase"
+      },
+      {
+        "segment_id": "vocab_002",
+        "image_url": "/vocab/follow.jpg",
+        "word_focus": "follow",
+        "text": {
+          "en": "{player_name} tries to FOLLOW the rule. Dwight is very happy.",
+          "es": "{player_name} intenta SEGUIR la regla. Dwight está muy feliz."
+        },
+        "visual_aid": "➡️📏😁",
+        "interactive": {
+          "type": "simple_input",
+          "question": "What is your name?",
+          "question_es": "¿Cuál es tu nombre?",
+          "input_type": "text",
+          "save_as": "player_name_vocab",
+          "example": "Alex"
+        }
+      },
+      {
+        "segment_id": "vocab_003",
+        "image_url": "/vocab/important.jpg",
+        "word_focus": "important",
+        "text": {
+          "en": "The boss says the rule is IMPORTANT. He says it three times.",
+          "es": "El jefe dice que la regla es IMPORTANTE. Lo dice tres veces."
+        },
+        "visual_aid": "❗🗣️❗"
+      },
+      {
+        "segment_id": "vocab_004",
+        "image_url": "/vocab/strange.jpg",
+        "word_focus": "strange",
+        "text": {
+          "en": "The rule sounds STRANGE to the office. Very strange.",
+          "es": "La regla suena EXTRAÑA para la oficina. Muy extraña."
+        },
+        "visual_aid": "🤨❓🌀"
+      },
+      {
+        "segment_id": "vocab_005",
+        "image_url": "/vocab/understand.jpg",
+        "word_focus": "understand",
+        "text": {
+          "en": "Jim does not UNDERSTAND the rule, but he smiles.",
+          "es": "Jim no logra ENTENDER la regla, pero sonríe."
+        },
+        "visual_aid": "😐➡️🙂"
+      },
+      {
+        "segment_id": "vocab_summary",
+        "word_focus": null,
+        "text": {
+          "en": "Great. Now you know: RULE, FOLLOW, IMPORTANT, STRANGE, UNDERSTAND. Perfect. Let us use these words in a story.",
+          "es": "Genial. Ahora conoces: REGLA, SEGUIR, IMPORTANTE, EXTRAÑA, ENTENDER. Perfecto. Usemos estas palabras en una historia."
+        },
+        "visual_aid": "✅📚➡️"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "scene_id": "scene_022_001",
+      "scene_number": 1,
+      "location": "Office conference area",
+      "location_es": "Área de conferencias de la oficina",
+      "time": "Morning",
+      "time_es": "Mañana",
+      "description": "The boss calls everyone together to talk about a new rule.",
+      "description_es": "El jefe llama a todos para hablar de una nueva regla.",
+      "dialogue": [
+        {
+          "line_id": 1,
+          "character_id": "char_boss",
+          "character_display_name": "MICHAEL",
+          "text": "Good morning team. I am the boss. The best boss. Today I bring a new RULE.",
+          "translation_es": "Buenos días equipo. Yo soy el jefe. El mejor jefe. Hoy traigo una nueva REGLA.",
+          "emotion": "proud_but_lying",
+          "notes": "He repeats how great he is before explaining anything.",
+          "notes_es": "Repite lo grandioso que es antes de explicar algo.",
+          "highlighted_vocab": [
+            "rule"
+          ],
+          "template_vars": [
+            "boss_name"
+          ]
+        },
+        {
+          "line_id": 2,
+          "character_id": "char_pam",
+          "character_display_name": "PAM",
+          "text": "Hello everyone. Please listen. The rule sounds important.",
+          "translation_es": "Hola a todos. Por favor escuchen. La regla suena importante.",
+          "emotion": "polite",
+          "notes": "Pam tries to keep things calm.",
+          "notes_es": "Pam intenta mantener la calma.",
+          "highlighted_vocab": [
+            "important"
+          ],
+          "template_vars": [
+            "pam_name"
+          ]
+        },
+        {
+          "line_id": 3,
+          "character_id": "player",
+          "character_display_name": "YOU",
+          "text": null,
+          "is_interactive": true,
+          "interaction_type": "choice",
+          "choices": [
+            {
+              "choice_id": "a",
+              "text": "I am ready to listen to the rule.",
+              "translation_es": "Estoy listo para escuchar la regla.",
+              "points": 10,
+              "personality_impact": "friendly",
+              "vocab_used": [
+                "rule"
+              ]
+            },
+            {
+              "choice_id": "b",
+              "text": "Is this rule very important?",
+              "translation_es": "¿Esta regla es muy importante?",
+              "points": 5,
+              "personality_impact": "neutral",
+              "vocab_used": [
+                "important"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_022_002",
+      "scene_number": 2,
+      "location": "Same office area",
+      "location_es": "La misma área de la oficina",
+      "time": "A few minutes later",
+      "time_es": "Unos minutos después",
+      "description": "The boss explains the rule in a confusing way.",
+      "description_es": "El jefe explica la regla de una forma confusa.",
+      "dialogue": [
+        {
+          "line_id": 1,
+          "character_id": "char_boss",
+          "character_display_name": "MICHAEL",
+          "text": "This rule is IMPORTANT. Very important. I invented it. Like paper.",
+          "translation_es": "Esta regla es IMPORTANTE. Muy importante. Yo la inventé. Como el papel.",
+          "emotion": "excited",
+          "notes": "He claims to invent things that already exist.",
+          "notes_es": "Afirma haber inventado cosas que ya existen.",
+          "highlighted_vocab": [
+            "important"
+          ],
+          "template_vars": [
+            "boss_name"
+          ]
+        },
+        {
+          "line_id": 2,
+          "character_id": "char_jim",
+          "character_display_name": "JIM",
+          "text": "Yes. This rule is very clear. Very simple. Very normal.",
+          "translation_es": "Sí. Esta regla es muy clara. Muy simple. Muy normal.",
+          "emotion": "sarcastic",
+          "notes": "Jim sounds serious but he is joking.",
+          "notes_es": "Jim suena serio pero está bromeando.",
+          "highlighted_vocab": [
+            "rule"
+          ],
+          "template_vars": [
+            "jim_name"
+          ]
+        },
+        {
+          "line_id": 3,
+          "character_id": "player",
+          "character_display_name": "YOU",
+          "text": null,
+          "is_interactive": true,
+          "interaction_type": "choice",
+          "choices": [
+            {
+              "choice_id": "a",
+              "text": "I understand the rule.",
+              "translation_es": "Entiendo la regla.",
+              "points": 10,
+              "personality_impact": "confident",
+              "vocab_used": [
+                "understand"
+              ]
+            },
+            {
+              "choice_id": "b",
+              "text": "I do not understand the rule.",
+              "translation_es": "No entiendo la regla.",
+              "points": 5,
+              "personality_impact": "honest",
+              "vocab_used": [
+                "understand"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_022_003",
+      "scene_number": 3,
+      "location": "Sales desks",
+      "location_es": "Escritorios de ventas",
+      "time": "Later",
+      "time_es": "Más tarde",
+      "description": "Dwight reacts strongly to the new rule.",
+      "description_es": "Dwight reacciona con intensidad a la nueva regla.",
+      "dialogue": [
+        {
+          "line_id": 1,
+          "character_id": "char_dwight",
+          "character_display_name": "DWIGHT",
+          "text": "This rule is STRANGE. That is good. Strange rules need strong people. Like me.",
+          "translation_es": "Esta regla es EXTRAÑA. Eso es bueno. Las reglas extrañas necesitan personas fuertes. Como yo.",
+          "emotion": "intense",
+          "notes": "Dwight loves rules and drama.",
+          "notes_es": "Dwight ama las reglas y el drama.",
+          "highlighted_vocab": [
+            "strange",
+            "rule"
+          ],
+          "template_vars": []
+        },
+        {
+          "line_id": 2,
+          "character_id": "char_dwight",
+          "character_display_name": "DWIGHT",
+          "text": "Everyone must FOLLOW the rule. All day. All night.",
+          "translation_es": "Todos deben SEGUIR la regla. Todo el día. Toda la noche.",
+          "emotion": "serious",
+          "notes": "He takes the rule too far.",
+          "notes_es": "Lleva la regla demasiado lejos.",
+          "highlighted_vocab": [
+            "follow",
+            "rule"
+          ],
+          "template_vars": []
+        },
+        {
+          "line_id": 3,
+          "character_id": "player",
+          "character_display_name": "YOU",
+          "text": null,
+          "is_interactive": true,
+          "interaction_type": "choice",
+          "choices": [
+            {
+              "choice_id": "a",
+              "text": "I will follow the rule.",
+              "translation_es": "Seguiré la regla.",
+              "points": 10,
+              "personality_impact": "obedient",
+              "vocab_used": [
+                "follow"
+              ]
+            },
+            {
+              "choice_id": "b",
+              "text": "The rule feels strange.",
+              "translation_es": "La regla se siente extraña.",
+              "points": 5,
+              "personality_impact": "thoughtful",
+              "vocab_used": [
+                "strange"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_022_004",
+      "scene_number": 4,
+      "location": "Reception desk",
+      "location_es": "Recepción",
+      "time": "End of the meeting",
+      "time_es": "Final de la reunión",
+      "description": "The office accepts the rule, even if nobody understands it.",
+      "description_es": "La oficina acepta la regla, incluso si nadie la entiende.",
+      "dialogue": [
+        {
+          "line_id": 1,
+          "character_id": "char_pam",
+          "character_display_name": "PAM",
+          "text": "So this is the rule. We try our best. That is the plan.",
+          "translation_es": "Así que esta es la regla. Hacemos lo mejor posible. Ese es el plan.",
+          "emotion": "calm",
+          "notes": "Pam tries to move on.",
+          "notes_es": "Pam intenta seguir adelante.",
+          "highlighted_vocab": [
+            "rule"
+          ],
+          "template_vars": [
+            "pam_name"
+          ]
+        },
+        {
+          "line_id": 2,
+          "character_id": "char_jim",
+          "character_display_name": "JIM",
+          "text": "Yes. Everything is clear now. I understand everything.",
+          "translation_es": "Sí. Todo está claro ahora. Entiendo todo.",
+          "emotion": "sarcastic",
+          "notes": "He clearly does not understand.",
+          "notes_es": "Claramente no entiende.",
+          "highlighted_vocab": [
+            "understand"
+          ],
+          "template_vars": [
+            "jim_name"
+          ]
+        },
+        {
+          "line_id": 3,
+          "character_id": "player",
+          "character_display_name": "YOU",
+          "text": null,
+          "is_interactive": true,
+          "interaction_type": "choice",
+          "choices": [
+            {
+              "choice_id": "a",
+              "text": "I will try to follow the rule.",
+              "translation_es": "Intentaré seguir la regla.",
+              "points": 10,
+              "personality_impact": "positive",
+              "vocab_used": [
+                "follow"
+              ]
+            },
+            {
+              "choice_id": "b",
+              "text": "I still do not understand.",
+              "translation_es": "Todavía no entiendo.",
+              "points": 5,
+              "personality_impact": "honest",
+              "vocab_used": [
+                "understand"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "games": [
+    {
+      "game_id": "ep22_game_01",
+      "game_type": "matching",
+      "title": "Match the Words!",
+      "title_es": "¡Empareja las Palabras!",
+      "instructions": "Match each English word with its Spanish meaning",
+      "instructions_es": "Empareja cada palabra en inglés con su significado en español",
+      "optional": true,
+      "unlocked_after_episode": true,
+      "time_limit_seconds": 60,
+      "xp_reward": 20,
+      "content": {
+        "items": [
+          {
+            "id": 1,
+            "left": "rule",
+            "right": "regla",
+            "image_url": "/vocab/rule.jpg"
+          },
+          {
+            "id": 2,
+            "left": "follow",
+            "right": "seguir",
+            "image_url": "/vocab/follow.jpg"
+          },
+          {
+            "id": 3,
+            "left": "important",
+            "right": "importante",
+            "image_url": "/vocab/important.jpg"
+          },
+          {
+            "id": 4,
+            "left": "strange",
+            "right": "extraño",
+            "image_url": "/vocab/strange.jpg"
+          },
+          {
+            "id": 5,
+            "left": "understand",
+            "right": "entender",
+            "image_url": "/vocab/understand.jpg"
+          }
+        ]
+      },
+      "settings": {
+        "shuffle": true,
+        "show_images": true
+      }
+    },
+    {
+      "game_id": "ep22_game_02",
+      "game_type": "fill_blank",
+      "title": "Complete the Sentences",
+      "title_es": "Completa las Oraciones",
+      "instructions": "Fill in the missing words from the episode",
+      "instructions_es": "Completa las palabras que faltan del episodio",
+      "optional": true,
+      "unlocked_after_episode": true,
+      "time_limit_seconds": 90,
+      "xp_reward": 25,
+      "content": {
+        "items": [
+          {
+            "id": 1,
+            "sentence": "{boss_name} says the _____ is very important.",
+            "sentence_es": "{boss_name} dice que la _____ es muy importante.",
+            "answer": "rule",
+            "options": [
+              "rule",
+              "plan",
+              "idea"
+            ],
+            "hint": "The boss talks about it all the time.",
+            "hint_es": "El jefe habla de esto todo el tiempo.",
+            "character": "{boss_name}"
+          },
+          {
+            "id": 2,
+            "sentence": "Dwight wants to _____ the rule all day.",
+            "sentence_es": "Dwight quiere _____ la regla todo el día.",
+            "answer": "follow",
+            "options": [
+              "follow",
+              "understand",
+              "forget"
+            ],
+            "hint": "Dwight loves rules.",
+            "hint_es": "Dwight ama las reglas.",
+            "character": "DWIGHT"
+          },
+          {
+            "id": 3,
+            "sentence": "The boss says the rule is _____ again.",
+            "sentence_es": "El jefe dice que la regla es _____ otra vez.",
+            "answer": "important",
+            "options": [
+              "important",
+              "simple",
+              "small"
+            ],
+            "hint": "The boss repeats this word.",
+            "hint_es": "El jefe repite esta palabra.",
+            "character": "{boss_name}"
+          },
+          {
+            "id": 4,
+            "sentence": "Jim thinks the rule sounds _____.",
+            "sentence_es": "Jim piensa que la regla suena _____.",
+            "answer": "strange",
+            "options": [
+              "strange",
+              "normal",
+              "clear"
+            ],
+            "hint": "Jim smiles when things are weird.",
+            "hint_es": "Jim sonríe cuando las cosas son raras.",
+            "character": "{jim_name}"
+          }
+        ]
+      }
+    },
+    {
+      "game_id": "ep22_game_03",
+      "game_type": "multiple_choice",
+      "title": "Episode Quiz",
+      "title_es": "Quiz del Episodio",
+      "instructions": "Answer questions about the episode",
+      "instructions_es": "Responde preguntas sobre el episodio",
+      "optional": true,
+      "unlocked_after_episode": true,
+      "time_limit_seconds": 120,
+      "xp_reward": 30,
+      "content": {
+        "items": [
+          {
+            "id": 1,
+            "question": "What does {boss_name} bring to the office?",
+            "question_es": "¿Qué trae {boss_name} a la oficina?",
+            "options": [
+              "A new rule",
+              "Free food",
+              "A vacation",
+              "A new desk"
+            ],
+            "options_es": [
+              "Una nueva regla",
+              "Comida gratis",
+              "Vacaciones",
+              "Un escritorio nuevo"
+            ],
+            "correct_answer": 0,
+            "explanation": "The boss brings a new rule and talks about it.",
+            "explanation_es": "El jefe trae una nueva regla y habla de ella."
+          },
+          {
+            "id": 2,
+            "question": "Who wants everyone to follow the rule?",
+            "question_es": "¿Quién quiere que todos sigan la regla?",
+            "options": [
+              "Jim",
+              "Pam",
+              "Dwight",
+              "{player_name}"
+            ],
+            "options_es": [
+              "Jim",
+              "Pam",
+              "Dwight",
+              "{player_name}"
+            ],
+            "correct_answer": 2,
+            "explanation": "Dwight takes rules very seriously.",
+            "explanation_es": "Dwight toma las reglas muy en serio."
+          },
+          {
+            "id": 3,
+            "question": "Does everyone understand the rule?",
+            "question_es": "¿Todos entienden la regla?",
+            "options": [
+              "Yes, everyone understands",
+              "No, nobody understands",
+              "Only {boss_name} understands",
+              "Only Dwight understands"
+            ],
+            "options_es": [
+              "Sí, todos entienden",
+              "No, nadie entiende",
+              "Solo {boss_name} entiende",
+              "Solo Dwight entiende"
+            ],
+            "correct_answer": 1,
+            "explanation": "The rule is strange and confusing for the office.",
+            "explanation_es": "La regla es extraña y confusa para la oficina."
+          }
+        ]
+      }
+    }
+  ],
+  "content_wrappers": {
+    "intro_text": {
+      "en": "Welcome to the office. This is a very normal place with very normal people. The boss is calm. The rules are clear. Everything makes sense. This is a joke.",
+      "es": "Bienvenido a la oficina. Este es un lugar muy normal con personas muy normales. El jefe está calmado. Las reglas son claras. Todo tiene sentido. Esto es una broma."
+    },
+    "transition": {
+      "en": "Great. Now you know the words. You know what a rule is. You know what important means. Now let us go to the office and see how nobody understands anything.",
+      "es": "Genial. Ahora conoces las palabras. Sabes qué es una regla. Sabes qué significa importante. Ahora vayamos a la oficina y veamos cómo nadie entiende nada."
+    },
+    "conclusion": {
+      "en": "Good job. You learned new words. You followed a strange rule. You did not understand much, and that is perfect. This office is like that every day.",
+      "es": "Buen trabajo. Aprendiste nuevas palabras. Seguiste una regla extraña. No entendiste mucho, y eso es perfecto. Esta oficina es así todos los días."
+    },
+    "reflection_prompt": {
+      "question_en": "Write one sentence using the word 'rule' or 'important'.",
+      "question_es": "Escribe una oración usando la palabra 'regla' o 'importante'.",
+      "type": "free_text",
+      "optional": true,
+      "max_length": 100,
+      "vocab_practice": [
+        "rule",
+        "important"
+      ]
+    }
+  },
+  "next_episode_preview": {
+    "preview_text_en": "Next time, {boss_name} plans a very important meeting about the rule, and {jim_name} has a new smile ready.",
+    "preview_text_es": "La próxima vez, {boss_name} planea una reunión muy importante sobre la regla, y {jim_name} tiene una nueva sonrisa lista.",
+    "teaser_image": "/previews/ep_023.jpg"
+  },
+  "progression": {
+    "xp_earned_base": 50,
+    "xp_bonus_conditions": [
+      {
+        "condition": "complete_all_games",
+        "bonus_xp": 25
+      },
+      {
+        "condition": "perfect_choices",
+        "bonus_xp": 15
+      },
+      {
+        "condition": "write_reflection",
+        "bonus_xp": 10
+      }
+    ],
+    "unlocks": [
+      {
+        "type": "character",
+        "character_ids": [
+          "char_boss",
+          "char_jim",
+          "char_pam",
+          "char_dwight"
+        ]
+      },
+      {
+        "type": "location",
+        "location_ids": [
+          "Office conference area",
+          "Sales desks",
+          "Reception desk"
+        ]
+      }
+    ],
+    "achievements": [
+      {
+        "achievement_id": "rule_survivor",
+        "name": "Rule Survivor",
+        "name_es": "Sobreviviente de la Regla",
+        "description": "You listen to the rule. You try to follow the rule. You do not understand the rule. You survive.",
+        "description_es": "Escuchas la regla. Intentas seguir la regla. No entiendes la regla. Sobrevives.",
+        "icon": "/achievements/rule_survivor.png"
+      }
+    ]
+  },
+  "metadata": {
+    "created_date": "2026-01-27",
+    "version": "1.0",
+    "author": "Course Team",
+    "content_level": "beginner",
+    "estimated_words": 420,
+    "estimated_unique_vocabulary": 45,
+    "structure_type": "vocab_story_then_main_story"
+  }
+}

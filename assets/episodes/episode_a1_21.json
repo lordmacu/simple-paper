@@ -1,0 +1,794 @@
+{
+  "city_settings": {
+    "default_city": "Scranton",
+    "user_selected_city": null,
+    "localizable": true,
+    "city_specific_content": {
+      "office_name": "{company_name} {city}",
+      "default_company_name": "Dunder Mifflin",
+      "office_type": "Paper Company",
+      "office_type_es": "Compañía de Papel"
+    }
+  },
+  "episode_metadata": {
+    "episode_number": 21,
+    "episode_id": "ep_021",
+    "title": "The Big Idea (Very Simple, Very Confusing)",
+    "title_es": "La Gran Idea (Muy Simple, Muy Confusa)",
+    "description": "The boss shares a big idea. The idea sounds easy. The idea is not clear. Jim smiles. The office feels ready and not ready at the same time.",
+    "description_es": "El jefe comparte una gran idea. La idea parece fácil. La idea no es clara. Jim sonríe. La oficina se siente lista y no lista al mismo tiempo.",
+    "internal_level": "A1",
+    "estimated_time_minutes": 12,
+    "unlock_requirements": null,
+    "tags": [
+      "office_life",
+      "ideas",
+      "meetings",
+      "humor"
+    ],
+    "previous_episode": "ep_020",
+    "next_episode": "ep_022"
+  },
+  "characters": {
+    "appearing_in_episode": [
+      {
+        "character_id": "char_boss",
+        "default_name": "MICHAEL",
+        "role": "boss",
+        "role_es": "jefe",
+        "personality": "Enthusiastic boss who wants to be loved and admired. He shares big ideas with great confidence, even when the ideas are confusing.",
+        "personality_es": "Jefe entusiasta que quiere ser querido y admirado. Comparte grandes ideas con mucha confianza, incluso cuando las ideas son confusas.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/michael.png",
+        "intro_text": "Welcome. I am the boss. The best boss. Today I have a big idea. It is a very good idea. Everyone is excited. I think.",
+        "intro_text_es": "Bienvenidos. Yo soy el jefe. El mejor jefe. Hoy tengo una gran idea. Es una idea muy buena. Todos están emocionados. Creo."
+      },
+      {
+        "character_id": "char_jim",
+        "default_name": "JIM",
+        "role": "salesman",
+        "role_es": "vendedor",
+        "personality": "Calm and sarcastic salesman. He listens to the big idea and smiles because he knows problems are coming.",
+        "personality_es": "Vendedor tranquilo y sarcástico. Escucha la gran idea y sonríe porque sabe que vienen problemas.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/jim.png",
+        "intro_text": "Yes. This is a very big idea. A very clear idea. I smile because smiling is free.",
+        "intro_text_es": "Sí. Esta es una idea muy grande. Una idea muy clara. Yo sonrío porque sonreír es gratis."
+      },
+      {
+        "character_id": "char_pam",
+        "default_name": "PAM",
+        "role": "receptionist",
+        "role_es": "recepcionista",
+        "personality": "Kind and helpful receptionist. She tries to understand the idea and helps keep the office calm.",
+        "personality_es": "Recepcionista amable y servicial. Trata de entender la idea y ayuda a mantener la calma en la oficina.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/pam.png",
+        "intro_text": "Hello. I listen to the idea. I write notes. The notes do not help, but I try.",
+        "intro_text_es": "Hola. Yo escucho la idea. Escribo notas. Las notas no ayudan, pero lo intento."
+      },
+      {
+        "character_id": "char_dwight",
+        "default_name": "DWIGHT",
+        "role": "assistant to the regional manager",
+        "role_es": "asistente del gerente regional",
+        "personality": "Very serious and intense worker. He loves rules and thinks the big idea needs control and discipline.",
+        "personality_es": "Trabajador muy serio e intenso. Ama las reglas y piensa que la gran idea necesita control y disciplina.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/dwight.png",
+        "intro_text": "I am ready. The big idea needs rules. I make rules. Many rules.",
+        "intro_text_es": "Estoy listo. La gran idea necesita reglas. Yo hago reglas. Muchas reglas."
+      }
+    ],
+    "mentioned_but_not_appearing": []
+  },
+  "vocabulary_focus": {
+    "target_words": [
+      {
+        "word": "idea",
+        "translation_es": "idea",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 1,
+        "context_sentence": "The boss has a big idea for the office.",
+        "context_sentence_es": "El jefe tiene una gran idea para la oficina.",
+        "image_url": "/vocab/idea.jpg"
+      },
+      {
+        "word": "simple",
+        "translation_es": "simple",
+        "word_type": "adjective",
+        "word_type_es": "adjetivo",
+        "difficulty": 1,
+        "context_sentence": "The idea sounds simple to the boss.",
+        "context_sentence_es": "La idea suena simple para el jefe.",
+        "image_url": "/vocab/simple.jpg"
+      },
+      {
+        "word": "confusing",
+        "translation_es": "confuso",
+        "word_type": "adjective",
+        "word_type_es": "adjetivo",
+        "difficulty": 2,
+        "context_sentence": "The idea is confusing for the team.",
+        "context_sentence_es": "La idea es confusa para el equipo.",
+        "image_url": "/vocab/confusing.jpg"
+      },
+      {
+        "word": "meeting",
+        "translation_es": "reunión",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 1,
+        "context_sentence": "The office has a meeting about the idea.",
+        "context_sentence_es": "La oficina tiene una reunión sobre la idea.",
+        "image_url": "/vocab/meeting.jpg"
+      },
+      {
+        "word": "plan",
+        "translation_es": "plan",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 1,
+        "context_sentence": "The plan is not clear after the meeting.",
+        "context_sentence_es": "El plan no es claro después de la reunión.",
+        "image_url": "/vocab/plan.jpg"
+      }
+    ],
+    "phrases": [
+      {
+        "phrase": "This is a big idea.",
+        "translation_es": "Esta es una gran idea.",
+        "usage_context": "Used when the boss introduces something important.",
+        "usage_context_es": "Se usa cuando el jefe presenta algo importante."
+      },
+      {
+        "phrase": "The idea is not clear.",
+        "translation_es": "La idea no es clara.",
+        "usage_context": "Used when people do not understand the plan.",
+        "usage_context_es": "Se usa cuando las personas no entienden el plan."
+      },
+      {
+        "phrase": "We have a meeting.",
+        "translation_es": "Tenemos una reunión.",
+        "usage_context": "Used to announce an office meeting.",
+        "usage_context_es": "Se usa para anunciar una reunión en la oficina."
+      }
+    ]
+  },
+  "vocabulary_story": {
+    "title": "Learning Basic Words",
+    "title_es": "Aprendiendo Palabras Básicas",
+    "description": "A simple story to learn today's vocabulary",
+    "description_es": "Una historia simple para aprender el vocabulario de hoy",
+    "segments": [
+      {
+        "segment_id": "vocab_001",
+        "image_url": "/vocab/idea.jpg",
+        "word_focus": "idea",
+        "text": {
+          "en": "The boss has an IDEA. The IDEA is big. Everyone looks at the boss.",
+          "es": "El jefe tiene una IDEA. La IDEA es grande. Todos miran al jefe."
+        },
+        "visual_aid": "💡 👀",
+        "emphasis_style": "bold_uppercase"
+      },
+      {
+        "segment_id": "vocab_002",
+        "image_url": "/vocab/simple.jpg",
+        "word_focus": "simple",
+        "text": {
+          "en": "The boss says the idea is SIMPLE. Everyone says yes. Everyone is not sure.",
+          "es": "El jefe dice que la idea es SIMPLE. Todos dicen sí. Todos no están seguros."
+        },
+        "visual_aid": "🙂 ❓",
+        "interactive": {
+          "type": "simple_input",
+          "question": "What is your name?",
+          "question_es": "¿Cuál es tu nombre?",
+          "input_type": "text",
+          "save_as": "player_name_vocab",
+          "example": "Alex"
+        }
+      },
+      {
+        "segment_id": "vocab_003",
+        "image_url": "/vocab/confusing.jpg",
+        "word_focus": "confusing",
+        "text": {
+          "en": "The IDEA is CONFUSING. People listen. People blink. People smile.",
+          "es": "La IDEA es CONFUSA. Las personas escuchan. Las personas parpadean. Las personas sonríen."
+        },
+        "visual_aid": "😵‍💫 👂"
+      },
+      {
+        "segment_id": "vocab_004",
+        "image_url": "/vocab/meeting.jpg",
+        "word_focus": "meeting",
+        "text": {
+          "en": "The office has a MEETING. The MEETING is long. Very long.",
+          "es": "La oficina tiene una REUNIÓN. La REUNIÓN es larga. Muy larga."
+        },
+        "visual_aid": "🪑 ⏰"
+      },
+      {
+        "segment_id": "vocab_005",
+        "image_url": "/vocab/plan.jpg",
+        "word_focus": "plan",
+        "text": {
+          "en": "After the meeting, the PLAN is not clear. The PLAN needs help.",
+          "es": "Después de la reunión, el PLAN no es claro. El PLAN necesita ayuda."
+        },
+        "visual_aid": "📋 ❗"
+      },
+      {
+        "segment_id": "vocab_summary",
+        "word_focus": null,
+        "text": {
+          "en": "Great! Now you know: IDEA, SIMPLE, CONFUSING, MEETING, PLAN. The boss is happy. The office is ready. Maybe.",
+          "es": "¡Genial! Ahora conoces: IDEA, SIMPLE, CONFUSA, REUNIÓN, PLAN. El jefe está feliz. La oficina está lista. Tal vez."
+        },
+        "visual_aid": "✅ 📚 ➡️"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "scene_id": "scene_021_001",
+      "scene_number": 1,
+      "location": "Office floor",
+      "location_es": "Piso de la oficina",
+      "time": "Morning",
+      "time_es": "Mañana",
+      "description": "The boss calls everyone together to share a big idea.",
+      "description_es": "El jefe llama a todos para compartir una gran idea.",
+      "dialogue": [
+        {
+          "line_id": 1,
+          "character_id": "char_boss",
+          "character_display_name": "MICHAEL",
+          "text": "Attention everyone. I have an IDEA. It is a big IDEA. I am very proud.",
+          "translation_es": "Atención a todos. Tengo una IDEA. Es una IDEA grande. Estoy muy orgulloso.",
+          "emotion": "proud_but_lying",
+          "notes": "Michael loves announcing ideas and praising himself.",
+          "notes_es": "A Michael le encanta anunciar ideas y alabarse a sí mismo.",
+          "highlighted_vocab": [
+            "idea"
+          ],
+          "template_vars": [
+            "boss_name"
+          ]
+        },
+        {
+          "line_id": 2,
+          "character_id": "char_jim",
+          "character_display_name": "JIM",
+          "text": "Yes. This sounds very important. Very professional.",
+          "translation_es": "Sí. Esto suena muy importante. Muy profesional.",
+          "emotion": "sarcastic",
+          "notes": "Jim sounds serious but is joking.",
+          "notes_es": "Jim suena serio pero está bromeando.",
+          "highlighted_vocab": [],
+          "template_vars": [
+            "jim_name"
+          ]
+        },
+        {
+          "line_id": 3,
+          "character_id": "player",
+          "character_display_name": "YOU",
+          "text": null,
+          "is_interactive": true,
+          "interaction_type": "choice",
+          "choices": [
+            {
+              "choice_id": "a",
+              "text": "That is a great IDEA.",
+              "translation_es": "Esa es una gran IDEA.",
+              "points": 10,
+              "personality_impact": "friendly",
+              "vocab_used": [
+                "idea"
+              ]
+            },
+            {
+              "choice_id": "b",
+              "text": "I listen to the IDEA.",
+              "translation_es": "Yo escucho la IDEA.",
+              "points": 5,
+              "personality_impact": "neutral",
+              "vocab_used": [
+                "idea"
+              ]
+            },
+            {
+              "choice_id": "c",
+              "text": "I wait and smile.",
+              "translation_es": "Yo espero y sonrío.",
+              "points": 3,
+              "personality_impact": "quiet"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_021_002",
+      "scene_number": 2,
+      "location": "Conference room",
+      "location_es": "Sala de reuniones",
+      "time": "Later",
+      "time_es": "Más tarde",
+      "description": "The team sits in a long meeting about the idea.",
+      "description_es": "El equipo se sienta en una reunión larga sobre la idea.",
+      "dialogue": [
+        {
+          "line_id": 1,
+          "character_id": "char_boss",
+          "character_display_name": "MICHAEL",
+          "text": "This MEETING is simple. The IDEA is SIMPLE. Very simple.",
+          "translation_es": "Esta REUNIÓN es simple. La IDEA es SIMPLE. Muy simple.",
+          "emotion": "excited",
+          "notes": "Michael repeats words to sound confident.",
+          "notes_es": "Michael repite palabras para sonar confiado.",
+          "highlighted_vocab": [
+            "meeting",
+            "simple",
+            "idea"
+          ],
+          "template_vars": [
+            "boss_name"
+          ]
+        },
+        {
+          "line_id": 2,
+          "character_id": "char_dwight",
+          "character_display_name": "DWIGHT",
+          "text": "I take notes. The MEETING needs rules. Many rules.",
+          "translation_es": "Yo tomo notas. La REUNIÓN necesita reglas. Muchas reglas.",
+          "emotion": "intense",
+          "notes": "Dwight takes everything very seriously.",
+          "notes_es": "Dwight toma todo muy en serio.",
+          "highlighted_vocab": [
+            "meeting"
+          ],
+          "template_vars": []
+        },
+        {
+          "line_id": 3,
+          "character_id": "char_pam",
+          "character_display_name": "PAM",
+          "text": "The IDEA sounds SIMPLE, but it feels CONFUSING.",
+          "translation_es": "La IDEA suena SIMPLE, pero se siente CONFUSA.",
+          "emotion": "calm",
+          "notes": "Pam politely points out the problem.",
+          "notes_es": "Pam señala el problema de forma amable.",
+          "highlighted_vocab": [
+            "idea",
+            "simple",
+            "confusing"
+          ],
+          "template_vars": [
+            "pam_name"
+          ]
+        },
+        {
+          "line_id": 4,
+          "character_id": "player",
+          "character_display_name": "YOU",
+          "text": null,
+          "is_interactive": true,
+          "interaction_type": "choice",
+          "choices": [
+            {
+              "choice_id": "a",
+              "text": "The MEETING is clear for me.",
+              "translation_es": "La REUNIÓN es clara para mí.",
+              "points": 5,
+              "personality_impact": "supportive",
+              "vocab_used": [
+                "meeting"
+              ]
+            },
+            {
+              "choice_id": "b",
+              "text": "The IDEA is CONFUSING.",
+              "translation_es": "La IDEA es CONFUSA.",
+              "points": 10,
+              "personality_impact": "honest",
+              "vocab_used": [
+                "idea",
+                "confusing"
+              ]
+            },
+            {
+              "choice_id": "c",
+              "text": "I need a break.",
+              "translation_es": "Necesito un descanso.",
+              "points": 3,
+              "personality_impact": "tired"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_021_003",
+      "scene_number": 3,
+      "location": "Office floor",
+      "location_es": "Piso de la oficina",
+      "time": "After the meeting",
+      "time_es": "Después de la reunión",
+      "description": "The meeting ends, but the plan is still unclear.",
+      "description_es": "La reunión termina, pero el plan todavía no es claro.",
+      "dialogue": [
+        {
+          "line_id": 1,
+          "character_id": "char_jim",
+          "character_display_name": "JIM",
+          "text": "The PLAN is ready. I think. Maybe.",
+          "translation_es": "El PLAN está listo. Creo. Tal vez.",
+          "emotion": "dry",
+          "notes": "Jim jokes by pretending everything is fine.",
+          "notes_es": "Jim bromea fingiendo que todo está bien.",
+          "highlighted_vocab": [
+            "plan"
+          ],
+          "template_vars": [
+            "jim_name"
+          ]
+        },
+        {
+          "line_id": 2,
+          "character_id": "char_boss",
+          "character_display_name": "MICHAEL",
+          "text": "Yes. The PLAN is perfect. I made the PLAN. I am great at plans.",
+          "translation_es": "Sí. El PLAN es perfecto. Yo hice el PLAN. Soy muy bueno con los planes.",
+          "emotion": "confident",
+          "notes": "Michael claims credit and greatness.",
+          "notes_es": "Michael se atribuye el crédito y la grandeza.",
+          "highlighted_vocab": [
+            "plan"
+          ],
+          "template_vars": [
+            "boss_name"
+          ]
+        },
+        {
+          "line_id": 3,
+          "character_id": "player",
+          "character_display_name": "YOU",
+          "text": null,
+          "is_interactive": true,
+          "interaction_type": "choice",
+          "choices": [
+            {
+              "choice_id": "a",
+              "text": "The PLAN is SIMPLE.",
+              "translation_es": "El PLAN es SIMPLE.",
+              "points": 5,
+              "personality_impact": "agreeable",
+              "vocab_used": [
+                "plan",
+                "simple"
+              ]
+            },
+            {
+              "choice_id": "b",
+              "text": "The PLAN is CONFUSING.",
+              "translation_es": "El PLAN es CONFUSO.",
+              "points": 10,
+              "personality_impact": "honest",
+              "vocab_used": [
+                "plan",
+                "confusing"
+              ]
+            },
+            {
+              "choice_id": "c",
+              "text": "We need another MEETING.",
+              "translation_es": "Necesitamos otra REUNIÓN.",
+              "points": 7,
+              "personality_impact": "realistic",
+              "vocab_used": [
+                "meeting"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "games": [
+    {
+      "game_id": "ep21_game_01",
+      "game_type": "matching",
+      "title": "Match the Words!",
+      "title_es": "¡Empareja las Palabras!",
+      "instructions": "Match each English word with its Spanish meaning",
+      "instructions_es": "Empareja cada palabra en inglés con su significado en español",
+      "optional": true,
+      "unlocked_after_episode": true,
+      "time_limit_seconds": 60,
+      "xp_reward": 20,
+      "content": {
+        "items": [
+          {
+            "id": 1,
+            "left": "idea",
+            "right": "idea",
+            "image_url": "/vocab/idea.jpg"
+          },
+          {
+            "id": 2,
+            "left": "simple",
+            "right": "simple",
+            "image_url": "/vocab/simple.jpg"
+          },
+          {
+            "id": 3,
+            "left": "confusing",
+            "right": "confuso",
+            "image_url": "/vocab/confusing.jpg"
+          },
+          {
+            "id": 4,
+            "left": "meeting",
+            "right": "reunión",
+            "image_url": "/vocab/meeting.jpg"
+          },
+          {
+            "id": 5,
+            "left": "plan",
+            "right": "plan",
+            "image_url": "/vocab/plan.jpg"
+          }
+        ]
+      },
+      "settings": {
+        "shuffle": true,
+        "show_images": true
+      }
+    },
+    {
+      "game_id": "ep21_game_02",
+      "game_type": "fill_blank",
+      "title": "Complete the Sentences",
+      "title_es": "Completa las Oraciones",
+      "instructions": "Fill in the missing words from the episode",
+      "instructions_es": "Completa las palabras que faltan del episodio",
+      "optional": true,
+      "unlocked_after_episode": true,
+      "time_limit_seconds": 90,
+      "xp_reward": 25,
+      "content": {
+        "items": [
+          {
+            "id": 1,
+            "sentence": "{boss_name} has a big _____.",
+            "sentence_es": "{boss_name} tiene una gran _____.",
+            "answer": "idea",
+            "options": [
+              "idea",
+              "plan",
+              "meeting"
+            ],
+            "hint": "The boss talks about this at the start.",
+            "hint_es": "El jefe habla de esto al inicio.",
+            "character": "{boss_name}"
+          },
+          {
+            "id": 2,
+            "sentence": "The idea sounds _____.",
+            "sentence_es": "La idea suena _____.",
+            "answer": "simple",
+            "options": [
+              "simple",
+              "confusing",
+              "plan"
+            ],
+            "hint": "The boss says it is easy.",
+            "hint_es": "El jefe dice que es fácil.",
+            "character": "{boss_name}"
+          },
+          {
+            "id": 3,
+            "sentence": "Pam says the idea is _____.",
+            "sentence_es": "Pam dice que la idea es _____.",
+            "answer": "confusing",
+            "options": [
+              "confusing",
+              "simple",
+              "meeting"
+            ],
+            "hint": "She is polite but honest.",
+            "hint_es": "Ella es amable pero honesta.",
+            "character": "{pam_name}"
+          },
+          {
+            "id": 4,
+            "sentence": "The office has a _____.",
+            "sentence_es": "La oficina tiene una _____.",
+            "answer": "meeting",
+            "options": [
+              "meeting",
+              "idea",
+              "plan"
+            ],
+            "hint": "Everyone sits and listens.",
+            "hint_es": "Todos se sientan y escuchan.",
+            "character": "{jim_name}"
+          }
+        ]
+      }
+    },
+    {
+      "game_id": "ep21_game_03",
+      "game_type": "multiple_choice",
+      "title": "Episode Quiz",
+      "title_es": "Quiz del Episodio",
+      "instructions": "Answer questions about the episode",
+      "instructions_es": "Responde preguntas sobre el episodio",
+      "optional": true,
+      "unlocked_after_episode": true,
+      "time_limit_seconds": 120,
+      "xp_reward": 30,
+      "content": {
+        "items": [
+          {
+            "id": 1,
+            "question": "What does {boss_name} share with the office?",
+            "question_es": "¿Qué comparte {boss_name} con la oficina?",
+            "options": [
+              "A big idea",
+              "A snack",
+              "A break",
+              "A rule"
+            ],
+            "options_es": [
+              "Una gran idea",
+              "Un bocadillo",
+              "Un descanso",
+              "Una regla"
+            ],
+            "correct_answer": 0,
+            "explanation": "The boss talks about a big idea.",
+            "explanation_es": "El jefe habla de una gran idea."
+          },
+          {
+            "id": 2,
+            "question": "How does Jim act during the meeting?",
+            "question_es": "¿Cómo actúa Jim durante la reunión?",
+            "options": [
+              "Very serious and joking",
+              "Angry and loud",
+              "Quiet and asleep",
+              "Confused and scared"
+            ],
+            "options_es": [
+              "Muy serio y en broma",
+              "Enojado y ruidoso",
+              "Callado y dormido",
+              "Confundido y asustado"
+            ],
+            "correct_answer": 0,
+            "explanation": "Jim sounds serious but he is joking.",
+            "explanation_es": "Jim suena serio pero está bromeando."
+          },
+          {
+            "id": 3,
+            "question": "What is the plan like after the meeting?",
+            "question_es": "¿Cómo es el plan después de la reunión?",
+            "options": [
+              "Clear and ready",
+              "Not clear",
+              "Finished and perfect",
+              "Canceled"
+            ],
+            "options_es": [
+              "Claro y listo",
+              "No es claro",
+              "Terminado y perfecto",
+              "Cancelado"
+            ],
+            "correct_answer": 1,
+            "explanation": "The plan is not clear after the meeting.",
+            "explanation_es": "El plan no es claro después de la reunión."
+          }
+        ]
+      }
+    }
+  ],
+  "content_wrappers": {
+    "intro_text": {
+      "en": "Welcome to the office. This is a normal place with normal people. Very normal. Today, {boss_name} has a big idea. The idea is simple. The idea is confusing. This is a good start.",
+      "es": "Bienvenido a la oficina. Este es un lugar normal con personas normales. Muy normal. Hoy, {boss_name} tiene una gran idea. La idea es simple. La idea es confusa. Este es un buen comienzo."
+    },
+    "transition": {
+      "en": "Great. Now you know the words. Now we use the words in the office. The office has meetings. The meetings are long. Very long.",
+      "es": "Genial. Ahora conoces las palabras. Ahora usamos las palabras en la oficina. La oficina tiene reuniones. Las reuniones son largas. Muy largas."
+    },
+    "conclusion": {
+      "en": "Good job. You finish the meeting. You learn new words. The plan is not clear. The boss is happy. This is a normal day. Completely normal.",
+      "es": "Buen trabajo. Terminas la reunión. Aprendes palabras nuevas. El plan no es claro. El jefe está feliz. Este es un día normal. Completamente normal."
+    },
+    "reflection_prompt": {
+      "question_en": "Write one sentence using the word 'idea' or 'meeting'.",
+      "question_es": "Escribe una oración usando la palabra 'idea' o 'reunión'.",
+      "type": "free_text",
+      "optional": true,
+      "max_length": 100,
+      "vocab_practice": [
+        "idea",
+        "meeting"
+      ]
+    }
+  },
+  "next_episode_preview": {
+    "preview_text_en": "Next time, {boss_name} brings a new rule to the office. The rule is important. The rule is strange. {jim_name} smiles again.",
+    "preview_text_es": "La próxima vez, {boss_name} trae una nueva regla a la oficina. La regla es importante. La regla es extraña. {jim_name} sonríe otra vez.",
+    "teaser_image": "/previews/ep_022.jpg"
+  },
+  "progression": {
+    "xp_earned_base": 50,
+    "xp_bonus_conditions": [
+      {
+        "condition": "complete_all_games",
+        "bonus_xp": 25
+      },
+      {
+        "condition": "perfect_choices",
+        "bonus_xp": 15
+      },
+      {
+        "condition": "write_reflection",
+        "bonus_xp": 10
+      }
+    ],
+    "unlocks": [
+      {
+        "type": "character",
+        "character_ids": [
+          "char_boss",
+          "char_jim",
+          "char_pam",
+          "char_dwight"
+        ]
+      },
+      {
+        "type": "location",
+        "location_ids": [
+          "Office floor",
+          "Conference room"
+        ]
+      }
+    ],
+    "achievements": [
+      {
+        "achievement_id": "meeting_survivor",
+        "name": "Meeting Survivor",
+        "name_es": "Sobreviviente de la Reunión",
+        "description": "You finish a long meeting and understand the idea, even when the plan is not clear.",
+        "description_es": "Terminas una reunión larga y entiendes la idea, incluso cuando el plan no es claro.",
+        "icon": "/achievements/meeting_survivor.png"
+      }
+    ]
+  },
+  "metadata": {
+    "created_date": "2026-01-27",
+    "version": "1.0",
+    "author": "Course Team",
+    "content_level": "beginner",
+    "estimated_words": 380,
+    "estimated_unique_vocabulary": 65,
+    "structure_type": "vocab_story_then_main_story"
+  }
+}

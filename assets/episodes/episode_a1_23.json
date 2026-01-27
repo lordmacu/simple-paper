@@ -1,0 +1,782 @@
+{
+  "city_settings": {
+    "default_city": "Scranton",
+    "user_selected_city": null,
+    "localizable": true,
+    "city_specific_content": {
+      "office_name": "{company_name} {city}",
+      "default_company_name": "Dunder Mifflin",
+      "office_type": "Paper Company",
+      "office_type_es": "Compañía de Papel"
+    }
+  },
+  "episode_metadata": {
+    "episode_number": 23,
+    "episode_id": "ep_023",
+    "title": "The Very Important Meeting (Still About the Rule)",
+    "title_es": "La reunión muy importante (todavía sobre la regla)",
+    "description": "In this episode, {boss_name} finally holds the very important meeting about the rule. The meeting is long, confusing, and very serious. {jim_name} smiles a lot, {pam_name} takes notes that make no sense, and everyone learns that the rule is still strange.",
+    "description_es": "En este episodio, {boss_name} finalmente hace la reunión muy importante sobre la regla. La reunión es larga, confusa y muy seria. {jim_name} sonríe mucho, {pam_name} toma notas que no tienen sentido, y todos aprenden que la regla sigue siendo extraña.",
+    "internal_level": "A1",
+    "estimated_time_minutes": 12,
+    "unlock_requirements": null,
+    "tags": [
+      "office_life",
+      "meetings",
+      "rules",
+      "humor"
+    ],
+    "previous_episode": "ep_022",
+    "next_episode": "ep_024"
+  },
+  "characters": {
+    "appearing_in_episode": [
+      {
+        "character_id": "char_boss",
+        "default_name": "MICHAEL",
+        "role": "Boss / manager of {company_name}",
+        "role_es": "Jefe / gerente de {company_name}",
+        "personality": "Loud, excited, and desperate to be loved. He treats every small office problem like a global emergency, and he is always proud of himself.",
+        "personality_es": "Ruidoso, emocionado y desesperado por ser querido. Trata cada problema pequeño de la oficina como una emergencia mundial, y siempre está orgulloso de sí mismo.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/michael.png",
+        "intro_text": "Hello. I am {boss_name}. I am the best boss in {city}. Today we have a very important meeting. It is serious. It is also very long.",
+        "intro_text_es": "Hola. Yo soy {boss_name}. Yo soy el mejor jefe de {city}. Hoy tenemos una reunión muy importante. Es seria. También es muy larga."
+      },
+      {
+        "character_id": "char_jim",
+        "default_name": "JIM",
+        "role": "Salesman",
+        "role_es": "Vendedor",
+        "personality": "Calm and sarcastic. He looks serious, but he is usually joking. He enjoys office chaos a little too much.",
+        "personality_es": "Tranquilo y sarcástico. Parece serio, pero normalmente está bromeando. Disfruta el caos de la oficina un poco demasiado.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/jim.png",
+        "intro_text": "Hello. I am {jim_name}. Yes, this meeting is very important. You can tell because everyone looks tired already.",
+        "intro_text_es": "Hola. Yo soy {jim_name}. Sí, esta reunión es muy importante. Puedes notarlo porque todos ya se ven cansados."
+      },
+      {
+        "character_id": "char_pam",
+        "default_name": "PAM",
+        "role": "Receptionist",
+        "role_es": "Recepcionista",
+        "personality": "Kind and helpful, with quiet humor. She tries to keep things normal, but the office never helps her.",
+        "personality_es": "Amable y servicial, con humor tranquilo. Intenta mantener todo normal, pero la oficina nunca la ayuda.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/pam.png",
+        "intro_text": "Hi. I am {pam_name}. I take notes in meetings. Sometimes the notes are useful. Today, maybe not.",
+        "intro_text_es": "Hola. Yo soy {pam_name}. Yo tomo notas en las reuniones. A veces las notas son útiles. Hoy, tal vez no."
+      },
+      {
+        "character_id": "char_dwight",
+        "default_name": "DWIGHT",
+        "role": "Salesman / self-proclaimed security expert",
+        "role_es": "Vendedor / experto en seguridad según él",
+        "personality": "Intense and very serious. He loves rules and order. He believes he is always right, and he is always ready for a crisis.",
+        "personality_es": "Intenso y muy serio. Ama las reglas y el orden. Cree que siempre tiene la razón, y siempre está listo para una crisis.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/dwight.png",
+        "intro_text": "I am {player_name}'s guide. I am also the rule expert. This meeting is important. I bring a checklist. I bring two checklists.",
+        "intro_text_es": "Yo soy el guía de {player_name}. También soy el experto en reglas. Esta reunión es importante. Traigo una lista. Traigo dos listas."
+      },
+      {
+        "character_id": "char_toby",
+        "default_name": "TOBY",
+        "role": "Human Resources (HR)",
+        "role_es": "Recursos Humanos (RR. HH.)",
+        "personality": "Quiet and polite. He tries to keep things calm and correct. People ignore him, especially the boss.",
+        "personality_es": "Callado y educado. Intenta mantener todo tranquilo y correcto. La gente lo ignora, especialmente el jefe.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/toby.png",
+        "intro_text": "Hello. I am Toby from HR. I am here for the rule meeting. I have a short document. The boss has a very long speech.",
+        "intro_text_es": "Hola. Yo soy Toby de RR. HH. Yo estoy aquí para la reunión de la regla. Yo tengo un documento corto. El jefe tiene un discurso muy largo."
+      },
+      {
+        "character_id": "char_player",
+        "default_name": "YOU",
+        "role": "New employee / learner",
+        "role_es": "Empleado nuevo / estudiante",
+        "personality": "Curious and friendly. You want to do a good job, but the office is confusing. You ask simple questions and survive the meeting.",
+        "personality_es": "Curioso y amable. Quieres hacer un buen trabajo, pero la oficina es confusa. Haces preguntas simples y sobrevives la reunión.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/you.png",
+        "intro_text": "Hi. You are {player_name}. You sit in the meeting. You listen. You try to understand the rule. The rule does not help you.",
+        "intro_text_es": "Hola. Tú eres {player_name}. Te sientas en la reunión. Escuchas. Intentas entender la regla. La regla no te ayuda."
+      }
+    ],
+    "mentioned_but_not_appearing": []
+  },
+  "vocabulary_focus": {
+    "target_words": [
+      {
+        "word": "meeting",
+        "translation_es": "reunión",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 1,
+        "context_sentence": "The meeting is very important and very long.",
+        "context_sentence_es": "La reunión es muy importante y muy larga.",
+        "image_url": "/vocab/meeting.jpg"
+      },
+      {
+        "word": "agenda",
+        "translation_es": "agenda",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 2,
+        "context_sentence": "{boss_name} talks about the agenda for a long time.",
+        "context_sentence_es": "{boss_name} habla sobre la agenda por mucho tiempo.",
+        "image_url": "/vocab/agenda.jpg"
+      },
+      {
+        "word": "notes",
+        "translation_es": "notas",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 1,
+        "context_sentence": "{pam_name} writes notes during the meeting.",
+        "context_sentence_es": "{pam_name} escribe notas durante la reunión.",
+        "image_url": "/vocab/notes.jpg"
+      },
+      {
+        "word": "long",
+        "translation_es": "largo",
+        "word_type": "adjective",
+        "word_type_es": "adjetivo",
+        "difficulty": 1,
+        "context_sentence": "This is a long meeting with many words.",
+        "context_sentence_es": "Esta es una reunión larga con muchas palabras.",
+        "image_url": "/vocab/long.jpg"
+      },
+      {
+        "word": "tired",
+        "translation_es": "cansado",
+        "word_type": "adjective",
+        "word_type_es": "adjetivo",
+        "difficulty": 1,
+        "context_sentence": "Everyone feels tired after the meeting.",
+        "context_sentence_es": "Todos se sienten cansados después de la reunión.",
+        "image_url": "/vocab/tired.jpg"
+      }
+    ],
+    "phrases": [
+      {
+        "phrase": "This meeting is very long.",
+        "translation_es": "Esta reunión es muy larga.",
+        "usage_context": "Used to complain politely during an office meeting.",
+        "usage_context_es": "Se usa para quejarse de forma educada durante una reunión de oficina."
+      },
+      {
+        "phrase": "Please look at the agenda.",
+        "translation_es": "Por favor mira la agenda.",
+        "usage_context": "Used when the boss wants everyone to focus.",
+        "usage_context_es": "Se usa cuando el jefe quiere que todos se concentren."
+      },
+      {
+        "phrase": "I write notes in meetings.",
+        "translation_es": "Yo escribo notas en las reuniones.",
+        "usage_context": "Used to explain your role during a meeting.",
+        "usage_context_es": "Se usa para explicar tu rol durante una reunión."
+      }
+    ]
+  },
+  "vocabulary_story": {
+    "title": "Learning Basic Words",
+    "title_es": "Aprendiendo Palabras Básicas",
+    "description": "A simple story to learn today's vocabulary",
+    "description_es": "Una historia simple para aprender el vocabulario de hoy",
+    "segments": [
+      {
+        "segment_id": "vocab_001",
+        "image_url": "/vocab/meeting.jpg",
+        "word_focus": "meeting",
+        "text": {
+          "en": "The MEETING starts now. The MEETING is important. The MEETING is also very long.",
+          "es": "La REUNIÓN empieza ahora. La REUNIÓN es importante. La REUNIÓN también es muy larga."
+        },
+        "visual_aid": "🏢🪑⏰",
+        "emphasis_style": "bold_uppercase"
+      },
+      {
+        "segment_id": "vocab_002",
+        "image_url": "/vocab/agenda.jpg",
+        "word_focus": "agenda",
+        "text": {
+          "en": "{boss_name} talks about the AGENDA. The AGENDA has many points. Too many points.",
+          "es": "{boss_name} habla sobre la AGENDA. La AGENDA tiene muchos puntos. Demasiados puntos."
+        },
+        "visual_aid": "📋🗣️😐",
+        "interactive": {
+          "type": "simple_input",
+          "question": "What is your name?",
+          "question_es": "¿Cuál es tu nombre?",
+          "input_type": "text",
+          "save_as": "player_name_vocab",
+          "example": "Alex"
+        }
+      },
+      {
+        "segment_id": "vocab_003",
+        "image_url": "/vocab/notes.jpg",
+        "word_focus": "notes",
+        "text": {
+          "en": "{pam_name} writes NOTES in the meeting. The NOTES are neat. The NOTES are also confusing.",
+          "es": "{pam_name} escribe NOTAS en la reunión. Las NOTAS son ordenadas. Las NOTAS también son confusas."
+        },
+        "visual_aid": "📝🤔"
+      },
+      {
+        "segment_id": "vocab_004",
+        "image_url": "/vocab/long.jpg",
+        "word_focus": "long",
+        "text": {
+          "en": "The meeting is LONG. Very LONG. Everyone looks at the clock.",
+          "es": "La reunión es LARGA. Muy LARGA. Todos miran el reloj."
+        },
+        "visual_aid": "⏳⌚😮‍💨"
+      },
+      {
+        "segment_id": "vocab_005",
+        "image_url": "/vocab/tired.jpg",
+        "word_focus": "tired",
+        "text": {
+          "en": "After the meeting, everyone feels TIRED. {jim_name} still smiles.",
+          "es": "Después de la reunión, todos se sienten CANSADOS. {jim_name} todavía sonríe."
+        },
+        "visual_aid": "😴😵‍💫"
+      },
+      {
+        "segment_id": "vocab_summary",
+        "word_focus": null,
+        "text": {
+          "en": "Great. Now you know: MEETING, AGENDA, NOTES, LONG, TIRED. These words are perfect for this office.",
+          "es": "Genial. Ahora conoces: REUNIÓN, AGENDA, NOTAS, LARGO, CANSADO. Estas palabras son perfectas para esta oficina."
+        },
+        "visual_aid": "✅ 📚 ➡️"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "scene_id": "scene_023_001",
+      "scene_number": 1,
+      "location": "Conference room",
+      "location_es": "Sala de conferencias",
+      "time": "Morning",
+      "time_es": "Mañana",
+      "description": "{boss_name} calls everyone to a very important meeting about the rule. Everyone sits and waits.",
+      "description_es": "{boss_name} llama a todos a una reunión muy importante sobre la regla. Todos se sientan y esperan.",
+      "dialogue": [
+        {
+          "line_id": 1,
+          "character_id": "char_boss",
+          "character_display_name": "MICHAEL",
+          "text": "Welcome everyone. This MEETING is very important. I plan meetings very well. I am the best at meetings.",
+          "translation_es": "Bienvenidos a todos. Esta REUNIÓN es muy importante. Yo planeo reuniones muy bien. Yo soy el mejor en reuniones.",
+          "emotion": "proud_but_lying",
+          "notes": "Michael brags about meetings like they are his invention.",
+          "notes_es": "Michael presume de las reuniones como si él las hubiera inventado.",
+          "highlighted_vocab": [
+            "meeting"
+          ],
+          "template_vars": [
+            "boss_name"
+          ]
+        },
+        {
+          "line_id": 2,
+          "character_id": "char_jim",
+          "character_display_name": "JIM",
+          "text": "Yes. This MEETING feels very professional already.",
+          "translation_es": "Sí. Esta REUNIÓN se siente muy profesional desde ahora.",
+          "emotion": "sarcastic",
+          "notes": "Jim sounds serious but is joking.",
+          "notes_es": "Jim suena serio pero está bromeando.",
+          "highlighted_vocab": [
+            "meeting"
+          ],
+          "template_vars": [
+            "jim_name"
+          ]
+        },
+        {
+          "line_id": 3,
+          "character_id": "player",
+          "character_display_name": "YOU",
+          "text": null,
+          "is_interactive": true,
+          "interaction_type": "choice",
+          "choices": [
+            {
+              "choice_id": "a",
+              "text": "This meeting is very important.",
+              "translation_es": "Esta reunión es muy importante.",
+              "points": 10,
+              "personality_impact": "friendly",
+              "vocab_used": [
+                "meeting"
+              ]
+            },
+            {
+              "choice_id": "b",
+              "text": "I am ready for the meeting.",
+              "translation_es": "Estoy listo para la reunión.",
+              "points": 5,
+              "personality_impact": "neutral",
+              "vocab_used": [
+                "meeting"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_023_002",
+      "scene_number": 2,
+      "location": "Conference room",
+      "location_es": "Sala de conferencias",
+      "time": "Later",
+      "time_es": "Después",
+      "description": "{boss_name} explains the agenda. It takes a long time.",
+      "description_es": "{boss_name} explica la agenda. Toma mucho tiempo.",
+      "dialogue": [
+        {
+          "line_id": 1,
+          "character_id": "char_boss",
+          "character_display_name": "MICHAEL",
+          "text": "Now we talk about the AGENDA. The AGENDA has many parts. I made the agenda myself.",
+          "translation_es": "Ahora hablamos de la AGENDA. La AGENDA tiene muchas partes. Yo hice la agenda yo mismo.",
+          "emotion": "excited",
+          "notes": "Michael is proud of a very simple agenda.",
+          "notes_es": "Michael está orgulloso de una agenda muy simple.",
+          "highlighted_vocab": [
+            "agenda"
+          ],
+          "template_vars": [
+            "boss_name"
+          ]
+        },
+        {
+          "line_id": 2,
+          "character_id": "char_pam",
+          "character_display_name": "PAM",
+          "text": "I write NOTES. The NOTES are many.",
+          "translation_es": "Yo escribo NOTAS. Las NOTAS son muchas.",
+          "emotion": "calm",
+          "notes": "Pam stays calm while everything is slow.",
+          "notes_es": "Pam se mantiene tranquila mientras todo es lento.",
+          "highlighted_vocab": [
+            "notes"
+          ],
+          "template_vars": [
+            "pam_name"
+          ]
+        },
+        {
+          "line_id": 3,
+          "character_id": "player",
+          "character_display_name": "YOU",
+          "text": null,
+          "is_interactive": true,
+          "interaction_type": "choice",
+          "choices": [
+            {
+              "choice_id": "a",
+              "text": "Please look at the agenda.",
+              "translation_es": "Por favor mira la agenda.",
+              "points": 10,
+              "personality_impact": "helpful",
+              "vocab_used": [
+                "agenda"
+              ]
+            },
+            {
+              "choice_id": "b",
+              "text": "I write notes too.",
+              "translation_es": "Yo también escribo notas.",
+              "points": 5,
+              "personality_impact": "neutral",
+              "vocab_used": [
+                "notes"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_023_003",
+      "scene_number": 3,
+      "location": "Conference room",
+      "location_es": "Sala de conferencias",
+      "time": "End of meeting",
+      "time_es": "Final de la reunión",
+      "description": "The meeting feels very long. Everyone is tired.",
+      "description_es": "La reunión se siente muy larga. Todos están cansados.",
+      "dialogue": [
+        {
+          "line_id": 1,
+          "character_id": "char_jim",
+          "character_display_name": "JIM",
+          "text": "This meeting is LONG. I learn many things about patience.",
+          "translation_es": "Esta reunión es LARGA. Yo aprendo muchas cosas sobre la paciencia.",
+          "emotion": "sarcastic",
+          "notes": "Jim jokes about learning nothing useful.",
+          "notes_es": "Jim bromea sobre no aprender nada útil.",
+          "highlighted_vocab": [
+            "long"
+          ],
+          "template_vars": [
+            "jim_name"
+          ]
+        },
+        {
+          "line_id": 2,
+          "character_id": "char_boss",
+          "character_display_name": "MICHAEL",
+          "text": "I see tired faces. That means this meeting works.",
+          "translation_es": "Veo caras cansadas. Eso significa que esta reunión funciona.",
+          "emotion": "confident",
+          "notes": "Michael believes tired people mean success.",
+          "notes_es": "Michael cree que la gente cansada significa éxito.",
+          "highlighted_vocab": [
+            "tired"
+          ],
+          "template_vars": [
+            "boss_name"
+          ]
+        },
+        {
+          "line_id": 3,
+          "character_id": "player",
+          "character_display_name": "YOU",
+          "text": null,
+          "is_interactive": true,
+          "interaction_type": "choice",
+          "choices": [
+            {
+              "choice_id": "a",
+              "text": "I feel tired after the meeting.",
+              "translation_es": "Me siento cansado después de la reunión.",
+              "points": 10,
+              "personality_impact": "honest",
+              "vocab_used": [
+                "tired",
+                "meeting"
+              ]
+            },
+            {
+              "choice_id": "b",
+              "text": "The meeting is long but important.",
+              "translation_es": "La reunión es larga pero importante.",
+              "points": 5,
+              "personality_impact": "polite",
+              "vocab_used": [
+                "long",
+                "meeting"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "games": [
+    {
+      "game_id": "ep023_game_01",
+      "game_type": "matching",
+      "title": "Match the Words!",
+      "title_es": "¡Empareja las Palabras!",
+      "instructions": "Match each English word with its Spanish meaning",
+      "instructions_es": "Empareja cada palabra en inglés con su significado en español",
+      "optional": true,
+      "unlocked_after_episode": true,
+      "time_limit_seconds": 60,
+      "xp_reward": 20,
+      "content": {
+        "items": [
+          {
+            "id": 1,
+            "left": "meeting",
+            "right": "reunión",
+            "image_url": "/vocab/meeting.jpg"
+          },
+          {
+            "id": 2,
+            "left": "agenda",
+            "right": "agenda",
+            "image_url": "/vocab/agenda.jpg"
+          },
+          {
+            "id": 3,
+            "left": "notes",
+            "right": "notas",
+            "image_url": "/vocab/notes.jpg"
+          },
+          {
+            "id": 4,
+            "left": "long",
+            "right": "largo",
+            "image_url": "/vocab/long.jpg"
+          },
+          {
+            "id": 5,
+            "left": "tired",
+            "right": "cansado",
+            "image_url": "/vocab/tired.jpg"
+          }
+        ]
+      },
+      "settings": {
+        "shuffle": true,
+        "show_images": true
+      }
+    },
+    {
+      "game_id": "ep023_game_02",
+      "game_type": "fill_blank",
+      "title": "Complete the Sentences",
+      "title_es": "Completa las Oraciones",
+      "instructions": "Fill in the missing words from the episode",
+      "instructions_es": "Completa las palabras que faltan del episodio",
+      "optional": true,
+      "unlocked_after_episode": true,
+      "time_limit_seconds": 90,
+      "xp_reward": 25,
+      "content": {
+        "items": [
+          {
+            "id": 1,
+            "sentence": "The _____ is very important today.",
+            "sentence_es": "La _____ es muy importante hoy.",
+            "answer": "meeting",
+            "options": [
+              "meeting",
+              "notes",
+              "tired"
+            ],
+            "hint": "People sit together and talk.",
+            "hint_es": "Las personas se sientan juntas y hablan.",
+            "character": "{boss_name}"
+          },
+          {
+            "id": 2,
+            "sentence": "{boss_name} talks about the _____.",
+            "sentence_es": "{boss_name} habla sobre la _____.",
+            "answer": "agenda",
+            "options": [
+              "agenda",
+              "meeting",
+              "long"
+            ],
+            "hint": "It has many points to discuss.",
+            "hint_es": "Tiene muchos puntos para discutir.",
+            "character": "{boss_name}"
+          },
+          {
+            "id": 3,
+            "sentence": "{pam_name} writes _____.",
+            "sentence_es": "{pam_name} escribe _____.",
+            "answer": "notes",
+            "options": [
+              "notes",
+              "agenda",
+              "meeting"
+            ],
+            "hint": "She writes on paper during the meeting.",
+            "hint_es": "Ella escribe en papel durante la reunión.",
+            "character": "{pam_name}"
+          },
+          {
+            "id": 4,
+            "sentence": "The meeting is very _____.",
+            "sentence_es": "La reunión es muy _____.",
+            "answer": "long",
+            "options": [
+              "long",
+              "tired",
+              "agenda"
+            ],
+            "hint": "It takes a lot of time.",
+            "hint_es": "Toma mucho tiempo.",
+            "character": "{jim_name}"
+          }
+        ]
+      }
+    },
+    {
+      "game_id": "ep023_game_03",
+      "game_type": "multiple_choice",
+      "title": "Episode Quiz",
+      "title_es": "Quiz del Episodio",
+      "instructions": "Answer questions about the episode",
+      "instructions_es": "Responde preguntas sobre el episodio",
+      "optional": true,
+      "unlocked_after_episode": true,
+      "time_limit_seconds": 120,
+      "xp_reward": 30,
+      "content": {
+        "items": [
+          {
+            "id": 1,
+            "question": "Why does {boss_name} call the meeting?",
+            "question_es": "¿Por qué {boss_name} llama a la reunión?",
+            "options": [
+              "To talk about the rule",
+              "To eat lunch",
+              "To go home early",
+              "To sleep"
+            ],
+            "options_es": [
+              "Para hablar sobre la regla",
+              "Para comer almuerzo",
+              "Para irse temprano",
+              "Para dormir"
+            ],
+            "correct_answer": 0,
+            "explanation": "The boss plans a meeting about the rule.",
+            "explanation_es": "El jefe planea una reunión sobre la regla."
+          },
+          {
+            "id": 2,
+            "question": "Who writes notes during the meeting?",
+            "question_es": "¿Quién escribe notas durante la reunión?",
+            "options": [
+              "{pam_name}",
+              "{jim_name}",
+              "{boss_name}",
+              "{player_name}"
+            ],
+            "options_es": [
+              "{pam_name}",
+              "{jim_name}",
+              "{boss_name}",
+              "{player_name}"
+            ],
+            "correct_answer": 0,
+            "explanation": "{pam_name} writes notes in meetings.",
+            "explanation_es": "{pam_name} escribe notas en las reuniones."
+          },
+          {
+            "id": 3,
+            "question": "How do people feel after the meeting?",
+            "question_es": "¿Cómo se sienten las personas después de la reunión?",
+            "options": [
+              "Tired",
+              "Excited",
+              "Hungry only",
+              "Very fast"
+            ],
+            "options_es": [
+              "Cansadas",
+              "Emocionadas",
+              "Solo hambrientas",
+              "Muy rápidas"
+            ],
+            "correct_answer": 0,
+            "explanation": "The meeting is long, so everyone feels tired.",
+            "explanation_es": "La reunión es larga, por eso todos se sienten cansados."
+          }
+        ]
+      }
+    }
+  ],
+  "content_wrappers": {
+    "intro_text": {
+      "en": "Welcome to the office. This is a normal place with normal people. Very normal. Today, {boss_name} has a very important meeting. Everyone is excited. Everyone is also confused.",
+      "es": "Bienvenido a la oficina. Este es un lugar normal con personas normales. Muy normal. Hoy, {boss_name} tiene una reunión muy importante. Todos están emocionados. Todos también están confundidos."
+    },
+    "transition": {
+      "en": "Great. Now you know the words. Now we use these words in a real office meeting. The meeting is long. The people are tired. This is office life.",
+      "es": "Genial. Ahora conoces las palabras. Ahora usamos estas palabras en una reunión real de oficina. La reunión es larga. Las personas están cansadas. Esta es la vida de oficina."
+    },
+    "conclusion": {
+      "en": "Good job. You survived the meeting. You learned new words. You listened to {boss_name}. You stayed awake. This is a big success in this office.",
+      "es": "Buen trabajo. Sobreviviste a la reunión. Aprendiste nuevas palabras. Escuchaste a {boss_name}. Te mantuviste despierto. Esto es un gran éxito en esta oficina."
+    },
+    "reflection_prompt": {
+      "question_en": "Write one sentence using the word 'meeting' or 'tired'.",
+      "question_es": "Escribe una oración usando la palabra 'reunión' o 'cansado'.",
+      "type": "free_text",
+      "optional": true,
+      "max_length": 100,
+      "vocab_practice": [
+        "meeting",
+        "tired"
+      ]
+    }
+  },
+  "next_episode_preview": {
+    "preview_text_en": "Next time, {boss_name} brings a surprise to the office, {jim_name} smiles again, and the office is not ready.",
+    "preview_text_es": "La próxima vez, {boss_name} trae una sorpresa a la oficina, {jim_name} vuelve a sonreír, y la oficina no está lista.",
+    "teaser_image": "/previews/ep_024.jpg"
+  },
+  "progression": {
+    "xp_earned_base": 50,
+    "xp_bonus_conditions": [
+      {
+        "condition": "complete_all_games",
+        "bonus_xp": 25
+      },
+      {
+        "condition": "perfect_choices",
+        "bonus_xp": 15
+      },
+      {
+        "condition": "write_reflection",
+        "bonus_xp": 10
+      }
+    ],
+    "unlocks": [
+      {
+        "type": "character",
+        "character_ids": [
+          "char_boss",
+          "char_jim",
+          "char_pam",
+          "char_dwight",
+          "char_toby",
+          "char_player"
+        ]
+      },
+      {
+        "type": "location",
+        "location_ids": [
+          "conference_room"
+        ]
+      }
+    ],
+    "achievements": [
+      {
+        "achievement_id": "first_long_meeting",
+        "name": "Survive the Long Meeting",
+        "name_es": "Sobrevive a la Reunión Larga",
+        "description": "You stay in the meeting. You listen. You learn new words. You do not fall asleep.",
+        "description_es": "Te quedas en la reunión. Escuchas. Aprendes nuevas palabras. No te duermes.",
+        "icon": "/achievements/first_long_meeting.png"
+      }
+    ]
+  },
+  "metadata": {
+    "created_date": "2026-01-27",
+    "version": "1.0",
+    "author": "Course Team",
+    "content_level": "beginner",
+    "estimated_words": 380,
+    "estimated_unique_vocabulary": 45,
+    "structure_type": "vocab_story_then_main_story"
+  }
+}

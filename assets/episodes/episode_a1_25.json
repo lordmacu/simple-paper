@@ -1,0 +1,756 @@
+{
+  "city_settings": {
+    "default_city": "Scranton",
+    "user_selected_city": null,
+    "localizable": true,
+    "city_specific_content": {
+      "office_name": "{company_name} {city}",
+      "default_company_name": "Dunder Mifflin",
+      "office_type": "Paper Company",
+      "office_type_es": "Compañía de Papel"
+    }
+  },
+  "episode_metadata": {
+    "episode_number": 25,
+    "episode_id": "ep_025",
+    "title": "The Very Important Activity (Nobody Understands)",
+    "title_es": "La Actividad Muy Importante (Nadie Entiende)",
+    "description": "The boss announces a very important office activity, but nobody knows what it is. {jim_name} smiles, people ask questions, and the activity becomes confusing and funny very fast.",
+    "description_es": "El jefe anuncia una actividad de oficina muy importante, pero nadie sabe qué es. {jim_name} sonríe, la gente hace preguntas, y la actividad se vuelve confusa y divertida muy rápido.",
+    "internal_level": "A1",
+    "estimated_time_minutes": 12,
+    "unlock_requirements": null,
+    "tags": [
+      "office_life",
+      "activities",
+      "confusion",
+      "meetings"
+    ],
+    "previous_episode": "ep_024",
+    "next_episode": "ep_026"
+  },
+  "characters": {
+    "appearing_in_episode": [
+      {
+        "character_id": "char_boss",
+        "default_name": "MICHAEL",
+        "role": "Boss",
+        "role_es": "Jefe",
+        "personality": "Very excited and a little inappropriate. He wants everyone to like him. He announces big plans and expects applause.",
+        "personality_es": "Muy emocionado y un poco inapropiado. Quiere que todos lo quieran. Anuncia planes grandes y espera aplausos.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/michael.png",
+        "intro_text": "Welcome. I am the boss. The best boss. Today we have a very important activity. It is important because I say it is important.",
+        "intro_text_es": "Bienvenidos. Yo soy el jefe. El mejor jefe. Hoy tenemos una actividad muy importante. Es importante porque yo digo que es importante."
+      },
+      {
+        "character_id": "char_jim",
+        "default_name": "JIM",
+        "role": "Salesman",
+        "role_es": "Vendedor",
+        "personality": "Calm and sarcastic. He smiles at the chaos and makes jokes that sound serious.",
+        "personality_es": "Tranquilo y sarcástico. Sonríe con el caos y hace bromas que suenan serias.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/jim.png",
+        "intro_text": "Yes. This office is very professional. This activity is very normal. I smile because everything is fine. Everything.",
+        "intro_text_es": "Sí. Esta oficina es muy profesional. Esta actividad es muy normal. Yo sonrío porque todo está bien. Todo."
+      },
+      {
+        "character_id": "char_pam",
+        "default_name": "PAM",
+        "role": "Receptionist",
+        "role_es": "Recepcionista",
+        "personality": "Kind and helpful, but she notices the nonsense. She tries to keep things calm.",
+        "personality_es": "Amable y servicial, pero nota el absurdo. Intenta mantener la calma.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/pam.png",
+        "intro_text": "Hello. I am Pam. I can help you. I can also explain the activity, but I do not understand the activity.",
+        "intro_text_es": "Hola. Yo soy Pam. Puedo ayudarte. También puedo explicar la actividad, pero no entiendo la actividad."
+      },
+      {
+        "character_id": "char_player",
+        "default_name": "YOU",
+        "role": "New employee",
+        "role_es": "Empleado nuevo",
+        "personality": "Curious and polite. You ask simple questions and try to follow the strange office rules.",
+        "personality_es": "Curioso y educado. Haces preguntas simples e intentas seguir las reglas extrañas de la oficina.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/player.png",
+        "intro_text": "Hello. I am new. I want to do the activity. I have one small question. What is the activity?",
+        "intro_text_es": "Hola. Yo soy nuevo. Quiero hacer la actividad. Tengo una pregunta pequeña. ¿Qué es la actividad?"
+      },
+      {
+        "character_id": "char_dwight",
+        "default_name": "DWIGHT",
+        "role": "Salesman and rule enforcer",
+        "role_es": "Vendedor y guardián de reglas",
+        "personality": "Very intense and serious. He loves rules and thinks he is in charge of emergencies.",
+        "personality_es": "Muy intenso y serio. Ama las reglas y cree que está a cargo de las emergencias.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/dwight.png",
+        "intro_text": "I am Dwight. I am the assistant regional manager. This activity needs rules. I bring rules. I also bring a whistle.",
+        "intro_text_es": "Yo soy Dwight. Soy el asistente del gerente regional. Esta actividad necesita reglas. Yo traigo reglas. También traigo un silbato."
+      }
+    ],
+    "mentioned_but_not_appearing": []
+  },
+  "vocabulary_focus": {
+    "target_words": [
+      {
+        "word": "activity",
+        "translation_es": "actividad",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 2,
+        "context_sentence": "The boss plans a very important activity for the office.",
+        "context_sentence_es": "El jefe planea una actividad muy importante para la oficina.",
+        "image_url": "/vocab/activity.jpg"
+      },
+      {
+        "word": "important",
+        "translation_es": "importante",
+        "word_type": "adjective",
+        "word_type_es": "adjetivo",
+        "difficulty": 1,
+        "context_sentence": "The boss says the activity is important, but nobody understands why.",
+        "context_sentence_es": "El jefe dice que la actividad es importante, pero nadie entiende por qué.",
+        "image_url": "/vocab/important.jpg"
+      },
+      {
+        "word": "plan",
+        "translation_es": "plan",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 2,
+        "context_sentence": "The plan sounds serious, but it is not very clear.",
+        "context_sentence_es": "El plan suena serio, pero no es muy claro.",
+        "image_url": "/vocab/plan.jpg"
+      },
+      {
+        "word": "question",
+        "translation_es": "pregunta",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 1,
+        "context_sentence": "The new employee has a question about the activity.",
+        "context_sentence_es": "El empleado nuevo tiene una pregunta sobre la actividad.",
+        "image_url": "/vocab/question.jpg"
+      },
+      {
+        "word": "confused",
+        "translation_es": "confundido",
+        "word_type": "adjective",
+        "word_type_es": "adjetivo",
+        "difficulty": 3,
+        "context_sentence": "Everyone looks confused after the explanation.",
+        "context_sentence_es": "Todos se ven confundidos después de la explicación.",
+        "image_url": "/vocab/confused.jpg"
+      }
+    ],
+    "phrases": [
+      {
+        "phrase": "What is the activity?",
+        "translation_es": "¿Cuál es la actividad?",
+        "usage_context": "Used when someone does not understand the office plan.",
+        "usage_context_es": "Se usa cuando alguien no entiende el plan de la oficina."
+      },
+      {
+        "phrase": "This is very important.",
+        "translation_es": "Esto es muy importante.",
+        "usage_context": "The boss says this to make normal things sound special.",
+        "usage_context_es": "El jefe dice esto para hacer que cosas normales suenen especiales."
+      },
+      {
+        "phrase": "I have a question.",
+        "translation_es": "Tengo una pregunta.",
+        "usage_context": "Used by the new employee before asking something simple.",
+        "usage_context_es": "Lo usa el empleado nuevo antes de preguntar algo simple."
+      }
+    ]
+  },
+  "vocabulary_story": {
+    "title": "Learning Basic Words",
+    "title_es": "Aprendiendo Palabras Básicas",
+    "description": "A simple story to learn today's vocabulary",
+    "description_es": "Una historia simple para aprender el vocabulario de hoy",
+    "segments": [
+      {
+        "segment_id": "vocab_001",
+        "image_url": "/vocab/activity.jpg",
+        "word_focus": "activity",
+        "text": {
+          "en": "The office has an ACTIVITY today. Everyone looks at the boss.",
+          "es": "La oficina tiene una ACTIVIDAD hoy. Todos miran al jefe."
+        },
+        "visual_aid": "🏢📋",
+        "emphasis_style": "bold_uppercase"
+      },
+      {
+        "segment_id": "vocab_002",
+        "image_url": "/vocab/important.jpg",
+        "word_focus": "important",
+        "text": {
+          "en": "The boss says the activity is IMPORTANT. He smiles a lot.",
+          "es": "El jefe dice que la actividad es IMPORTANTE. Él sonríe mucho."
+        },
+        "visual_aid": "⭐😄",
+        "interactive": {
+          "type": "simple_input",
+          "question": "What is your name?",
+          "question_es": "¿Cuál es tu nombre?",
+          "input_type": "text",
+          "save_as": "player_name_vocab",
+          "example": "Alex"
+        }
+      },
+      {
+        "segment_id": "vocab_003",
+        "image_url": "/vocab/plan.jpg",
+        "word_focus": "plan",
+        "text": {
+          "en": "The boss has a PLAN. The plan is very big. Very big.",
+          "es": "El jefe tiene un PLAN. El plan es muy grande. Muy grande."
+        },
+        "visual_aid": "🗂️🧠"
+      },
+      {
+        "segment_id": "vocab_004",
+        "image_url": "/vocab/question.jpg",
+        "word_focus": "question",
+        "text": {
+          "en": "The new employee has a QUESTION about the plan.",
+          "es": "El empleado nuevo tiene una PREGUNTA sobre el plan."
+        },
+        "visual_aid": "❓🙋"
+      },
+      {
+        "segment_id": "vocab_005",
+        "image_url": "/vocab/confused.jpg",
+        "word_focus": "confused",
+        "text": {
+          "en": "Everyone looks CONFUSED after the explanation.",
+          "es": "Todos se ven CONFUNDIDOS después de la explicación."
+        },
+        "visual_aid": "😕💭"
+      },
+      {
+        "segment_id": "vocab_summary",
+        "word_focus": null,
+        "text": {
+          "en": "Great! Now you know: ACTIVITY, IMPORTANT, PLAN, QUESTION, CONFUSED. Now we will use these words in a story!",
+          "es": "¡Genial! Ahora conoces: ACTIVIDAD, IMPORTANTE, PLAN, PREGUNTA, CONFUNDIDO. ¡Usemos estas palabras en una historia!"
+        },
+        "visual_aid": "✅📚➡️"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "scene_id": "scene_025_001",
+      "scene_number": 1,
+      "location": "Office meeting room",
+      "location_es": "Sala de reuniones de la oficina",
+      "time": "Morning",
+      "time_es": "Mañana",
+      "description": "The boss gathers everyone to announce a very important office activity.",
+      "description_es": "El jefe reúne a todos para anunciar una actividad de oficina muy importante.",
+      "dialogue": [
+        {
+          "line_id": 1,
+          "character_id": "char_boss",
+          "character_display_name": "MICHAEL",
+          "text": "Good morning. I am {boss_name}. I am the best boss. Today we have an IMPORTANT activity. Very important. Possibly the most important activity in history.",
+          "translation_es": "Buenos días. Yo soy {boss_name}. Yo soy el mejor jefe. Hoy tenemos una actividad IMPORTANTE. Muy importante. Posiblemente la actividad más importante de la historia.",
+          "emotion": "proud_but_lying",
+          "notes": "Michael exaggerates everything and makes the activity sound legendary.",
+          "notes_es": "Michael exagera todo y hace que la actividad suene legendaria.",
+          "highlighted_vocab": [
+            "important",
+            "activity"
+          ],
+          "template_vars": [
+            "boss_name"
+          ]
+        },
+        {
+          "line_id": 2,
+          "character_id": "char_jim",
+          "character_display_name": "JIM",
+          "text": "Yes. This is serious work. Serious activity. I feel smarter already.",
+          "translation_es": "Sí. Este es trabajo serio. Actividad seria. Ya me siento más inteligente.",
+          "emotion": "sarcastic",
+          "notes": "Jim sounds serious but is clearly joking.",
+          "notes_es": "Jim suena serio pero claramente está bromeando.",
+          "highlighted_vocab": [
+            "activity"
+          ],
+          "template_vars": []
+        },
+        {
+          "line_id": 3,
+          "character_id": "player",
+          "character_display_name": "YOU",
+          "is_interactive": true,
+          "interaction_type": "choice",
+          "choices": [
+            {
+              "choice_id": "a",
+              "text": "What is the activity?",
+              "translation_es": "¿Cuál es la actividad?",
+              "points": 10,
+              "personality_impact": "curious",
+              "vocab_used": [
+                "activity"
+              ]
+            },
+            {
+              "choice_id": "b",
+              "text": "This sounds important.",
+              "translation_es": "Esto suena importante.",
+              "points": 5,
+              "personality_impact": "polite",
+              "vocab_used": [
+                "important"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_025_002",
+      "scene_number": 2,
+      "location": "Office floor",
+      "location_es": "Área de trabajo de la oficina",
+      "time": "Later in the morning",
+      "time_es": "Más tarde en la mañana",
+      "description": "The boss explains his plan, but nobody understands it.",
+      "description_es": "El jefe explica su plan, pero nadie lo entiende.",
+      "dialogue": [
+        {
+          "line_id": 1,
+          "character_id": "char_boss",
+          "character_display_name": "MICHAEL",
+          "text": "This is the PLAN. First, we stand. Then, we wait. Then, we feel motivated. This plan is genius.",
+          "translation_es": "Este es el PLAN. Primero, nos paramos. Luego, esperamos. Luego, nos sentimos motivados. Este plan es genial.",
+          "emotion": "excited",
+          "notes": "The plan sounds meaningless, but Michael is proud.",
+          "notes_es": "El plan no tiene sentido, pero Michael está orgulloso.",
+          "highlighted_vocab": [
+            "plan"
+          ],
+          "template_vars": []
+        },
+        {
+          "line_id": 2,
+          "character_id": "char_pam",
+          "character_display_name": "PAM",
+          "text": "Yes. The plan is very clear. Clear like fog.",
+          "translation_es": "Sí. El plan es muy claro. Claro como la niebla.",
+          "emotion": "polite_sarcastic",
+          "notes": "Pam is calm but sarcastic about the confusion.",
+          "notes_es": "Pam es tranquila pero sarcástica sobre la confusión.",
+          "highlighted_vocab": [
+            "plan"
+          ],
+          "template_vars": []
+        },
+        {
+          "line_id": 3,
+          "character_id": "player",
+          "character_display_name": "YOU",
+          "is_interactive": true,
+          "interaction_type": "choice",
+          "choices": [
+            {
+              "choice_id": "a",
+              "text": "I have a question about the plan.",
+              "translation_es": "Tengo una pregunta sobre el plan.",
+              "points": 10,
+              "personality_impact": "honest",
+              "vocab_used": [
+                "question",
+                "plan"
+              ]
+            },
+            {
+              "choice_id": "b",
+              "text": "I understand the plan.",
+              "translation_es": "Entiendo el plan.",
+              "points": 3,
+              "personality_impact": "lying",
+              "vocab_used": [
+                "plan"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_025_003",
+      "scene_number": 3,
+      "location": "Office meeting room",
+      "location_es": "Sala de reuniones de la oficina",
+      "time": "After the explanation",
+      "time_es": "Después de la explicación",
+      "description": "Everyone reacts to the activity and the plan.",
+      "description_es": "Todos reaccionan a la actividad y al plan.",
+      "dialogue": [
+        {
+          "line_id": 1,
+          "character_id": "char_dwight",
+          "character_display_name": "DWIGHT",
+          "text": "I understand the activity. It needs rules. I make rules now.",
+          "translation_es": "Yo entiendo la actividad. Necesita reglas. Yo hago reglas ahora.",
+          "emotion": "intense",
+          "notes": "Dwight takes control even when nobody asks.",
+          "notes_es": "Dwight toma el control aunque nadie lo pide.",
+          "highlighted_vocab": [
+            "activity"
+          ],
+          "template_vars": []
+        },
+        {
+          "line_id": 2,
+          "character_id": "char_jim",
+          "character_display_name": "JIM",
+          "text": "Everyone looks confused. This means the activity works.",
+          "translation_es": "Todos se ven confundidos. Esto significa que la actividad funciona.",
+          "emotion": "dry_sarcastic",
+          "notes": "Jim jokes that confusion is success.",
+          "notes_es": "Jim bromea diciendo que la confusión es éxito.",
+          "highlighted_vocab": [
+            "confused",
+            "activity"
+          ],
+          "template_vars": []
+        },
+        {
+          "line_id": 3,
+          "character_id": "player",
+          "character_display_name": "YOU",
+          "is_interactive": true,
+          "interaction_type": "choice",
+          "choices": [
+            {
+              "choice_id": "a",
+              "text": "I am confused, but ready.",
+              "translation_es": "Estoy confundido, pero listo.",
+              "points": 10,
+              "personality_impact": "team_player",
+              "vocab_used": [
+                "confused"
+              ]
+            },
+            {
+              "choice_id": "b",
+              "text": "This activity is strange.",
+              "translation_es": "Esta actividad es extraña.",
+              "points": 5,
+              "personality_impact": "honest",
+              "vocab_used": [
+                "activity"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "games": [
+    {
+      "game_id": "ep25_game_01",
+      "game_type": "matching",
+      "title": "Match the Words!",
+      "title_es": "¡Empareja las Palabras!",
+      "instructions": "Match each English word with its Spanish meaning",
+      "instructions_es": "Empareja cada palabra en inglés con su significado en español",
+      "optional": true,
+      "unlocked_after_episode": true,
+      "time_limit_seconds": 60,
+      "xp_reward": 20,
+      "content": {
+        "items": [
+          {
+            "id": 1,
+            "left": "activity",
+            "right": "actividad",
+            "image_url": "/vocab/activity.jpg"
+          },
+          {
+            "id": 2,
+            "left": "important",
+            "right": "importante",
+            "image_url": "/vocab/important.jpg"
+          },
+          {
+            "id": 3,
+            "left": "plan",
+            "right": "plan",
+            "image_url": "/vocab/plan.jpg"
+          },
+          {
+            "id": 4,
+            "left": "question",
+            "right": "pregunta",
+            "image_url": "/vocab/question.jpg"
+          },
+          {
+            "id": 5,
+            "left": "confused",
+            "right": "confundido",
+            "image_url": "/vocab/confused.jpg"
+          }
+        ]
+      },
+      "settings": {
+        "shuffle": true,
+        "show_images": true
+      }
+    },
+    {
+      "game_id": "ep25_game_02",
+      "game_type": "fill_blank",
+      "title": "Complete the Sentences",
+      "title_es": "Completa las Oraciones",
+      "instructions": "Fill in the missing words from the episode",
+      "instructions_es": "Completa las palabras que faltan del episodio",
+      "optional": true,
+      "unlocked_after_episode": true,
+      "time_limit_seconds": 90,
+      "xp_reward": 25,
+      "content": {
+        "items": [
+          {
+            "id": 1,
+            "sentence": "{boss_name} says the _____ activity is very serious.",
+            "sentence_es": "{boss_name} dice que la actividad _____ es muy seria.",
+            "answer": "important",
+            "options": [
+              "important",
+              "confused",
+              "question"
+            ],
+            "hint": "The boss loves this word.",
+            "hint_es": "Al jefe le encanta esta palabra.",
+            "character": "{boss_name}"
+          },
+          {
+            "id": 2,
+            "sentence": "The boss explains the _____ to everyone.",
+            "sentence_es": "El jefe explica el _____ a todos.",
+            "answer": "plan",
+            "options": [
+              "plan",
+              "activity",
+              "question"
+            ],
+            "hint": "It has steps.",
+            "hint_es": "Tiene pasos.",
+            "character": "{boss_name}"
+          },
+          {
+            "id": 3,
+            "sentence": "{player_name} has a _____ about the activity.",
+            "sentence_es": "{player_name} tiene una _____ sobre la actividad.",
+            "answer": "question",
+            "options": [
+              "question",
+              "plan",
+              "important"
+            ],
+            "hint": "You ask this when you do not understand.",
+            "hint_es": "Haces esto cuando no entiendes.",
+            "character": "{player_name}"
+          },
+          {
+            "id": 4,
+            "sentence": "Everyone looks _____ after the explanation.",
+            "sentence_es": "Todos se ven _____ después de la explicación.",
+            "answer": "confused",
+            "options": [
+              "confused",
+              "important",
+              "plan"
+            ],
+            "hint": "Nobody understands.",
+            "hint_es": "Nadie entiende.",
+            "character": "{jim_name}"
+          }
+        ]
+      }
+    },
+    {
+      "game_id": "ep25_game_03",
+      "game_type": "multiple_choice",
+      "title": "Episode Quiz",
+      "title_es": "Quiz del Episodio",
+      "instructions": "Answer questions about the episode",
+      "instructions_es": "Responde preguntas sobre el episodio",
+      "optional": true,
+      "unlocked_after_episode": true,
+      "time_limit_seconds": 120,
+      "xp_reward": 30,
+      "content": {
+        "items": [
+          {
+            "id": 1,
+            "question": "What does {boss_name} announce in the office?",
+            "question_es": "¿Qué anuncia {boss_name} en la oficina?",
+            "options": [
+              "A very important activity",
+              "A vacation day",
+              "A new printer",
+              "A quiet meeting"
+            ],
+            "options_es": [
+              "Una actividad muy importante",
+              "Un día de vacaciones",
+              "Una impresora nueva",
+              "Una reunión tranquila"
+            ],
+            "correct_answer": 0,
+            "explanation": "The boss announces a very important activity.",
+            "explanation_es": "El jefe anuncia una actividad muy importante."
+          },
+          {
+            "id": 2,
+            "question": "How does {jim_name} react to the plan?",
+            "question_es": "¿Cómo reacciona {jim_name} al plan?",
+            "options": [
+              "He is angry",
+              "He is confused and serious",
+              "He sounds serious but jokes",
+              "He leaves the office"
+            ],
+            "options_es": [
+              "Está enojado",
+              "Está confundido y serio",
+              "Suena serio pero bromea",
+              "Sale de la oficina"
+            ],
+            "correct_answer": 2,
+            "explanation": "{jim_name} sounds serious, but he is joking.",
+            "explanation_es": "{jim_name} suena serio, pero está bromeando."
+          },
+          {
+            "id": 3,
+            "question": "Why does the office feel confused?",
+            "question_es": "¿Por qué la oficina se siente confundida?",
+            "options": [
+              "The plan is very clear",
+              "The activity is cancelled",
+              "The explanation is not clear",
+              "Everyone is ready"
+            ],
+            "options_es": [
+              "El plan es muy claro",
+              "La actividad se cancela",
+              "La explicación no es clara",
+              "Todos están listos"
+            ],
+            "correct_answer": 2,
+            "explanation": "The explanation of the plan is not clear.",
+            "explanation_es": "La explicación del plan no es clara."
+          }
+        ]
+      }
+    }
+  ],
+  "content_wrappers": {
+    "intro_text": {
+      "en": "Welcome to the office. This is a normal place with normal people. Very normal. Completely normal. The boss has an important activity today. Everyone is excited. Some people are confused. This is a good sign.",
+      "es": "Bienvenido a la oficina. Este es un lugar normal con personas normales. Muy normal. Completamente normal. El jefe tiene una actividad importante hoy. Todos están emocionados. Algunas personas están confundidas. Esta es una buena señal."
+    },
+    "transition": {
+      "en": "Great. Now you know the words. Now we use these words in the office. This is the office where plans are big, explanations are long, and questions are dangerous.",
+      "es": "Genial. Ahora conoces las palabras. Ahora usamos estas palabras en la oficina. Esta es la oficina donde los planes son grandes, las explicaciones son largas y las preguntas son peligrosas."
+    },
+    "conclusion": {
+      "en": "Good job. You finish the activity. You learn new words. You hear a plan. You ask a question. You feel confused. This means you are doing very well in this office.",
+      "es": "Buen trabajo. Terminas la actividad. Aprendes palabras nuevas. Escuchas un plan. Haces una pregunta. Te sientes confundido. Esto significa que lo estás haciendo muy bien en esta oficina."
+    },
+    "reflection_prompt": {
+      "question_en": "Write one sentence using the word 'activity' or 'plan'.",
+      "question_es": "Escribe una oración usando la palabra 'actividad' o 'plan'.",
+      "type": "free_text",
+      "optional": true,
+      "max_length": 100,
+      "vocab_practice": [
+        "activity",
+        "plan"
+      ]
+    }
+  },
+  "next_episode_preview": {
+    "preview_text_en": "Next time, {boss_name} brings a new rule to the office, {jim_name} smiles again, and everyone pretends this rule makes sense.",
+    "preview_text_es": "La próxima vez, {boss_name} trae una nueva regla a la oficina, {jim_name} vuelve a sonreír y todos fingen que esta regla tiene sentido.",
+    "teaser_image": "/previews/ep_026.jpg"
+  },
+  "progression": {
+    "xp_earned_base": 50,
+    "xp_bonus_conditions": [
+      {
+        "condition": "complete_all_games",
+        "bonus_xp": 25
+      },
+      {
+        "condition": "perfect_choices",
+        "bonus_xp": 15
+      },
+      {
+        "condition": "write_reflection",
+        "bonus_xp": 10
+      }
+    ],
+    "unlocks": [
+      {
+        "type": "character",
+        "character_ids": [
+          "char_boss",
+          "char_jim",
+          "char_pam",
+          "char_dwight",
+          "char_player"
+        ]
+      },
+      {
+        "type": "location",
+        "location_ids": [
+          "Office meeting room",
+          "Office floor"
+        ]
+      }
+    ],
+    "achievements": [
+      {
+        "achievement_id": "mid_a1_survivor",
+        "name": "Mid A1 Office Survivor",
+        "name_es": "Sobreviviente de Media A1 en la Oficina",
+        "description": "You reach the middle of level A1. You understand activities, plans, and questions. You are confused, but you continue.",
+        "description_es": "Llegas a la mitad del nivel A1. Entiendes actividades, planes y preguntas. Estás confundido, pero continúas.",
+        "icon": "/achievements/mid_a1_survivor.png"
+      }
+    ]
+  },
+  "metadata": {
+    "created_date": "2026-01-27",
+    "version": "1.0",
+    "author": "Course Team",
+    "content_level": "beginner",
+    "estimated_words": 380,
+    "estimated_unique_vocabulary": 55,
+    "structure_type": "vocab_story_then_main_story"
+  }
+}

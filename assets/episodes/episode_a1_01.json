@@ -1,0 +1,857 @@
+{
+  "episode_metadata": {
+    "episode_number": 1,
+    "episode_id": "ep_001",
+    "title": "The First Day (Everyone Is Watching)",
+    "title_es": "El Primer Día (Todos Están Mirando)",
+    "description": "It is the first day at the office. {player_name} meets the team, says hello many times, and learns that the boss talks a lot and listens very little.",
+    "description_es": "Es el primer día en la oficina. {player_name} conoce al equipo, dice hola muchas veces y aprende que el jefe habla mucho y escucha muy poco.",
+    "internal_level": "A1",
+    "estimated_time_minutes": 12,
+    "unlock_requirements": null,
+    "tags": [
+      "greetings",
+      "office_life",
+      "first_day",
+      "introductions"
+    ],
+    "previous_episode": null,
+    "next_episode": "ep_002"
+  },
+  "city_settings": {
+    "default_city": "Scranton",
+    "user_selected_city": null,
+    "localizable": true,
+    "city_specific_content": {
+      "office_name": "{company_name} {city}",
+      "default_company_name": "Dunder Mifflin",
+      "office_type": "Paper Company",
+      "office_type_es": "Compañía de Papel"
+    }
+  },
+  "characters": {
+    "appearing_in_episode": [
+      {
+        "character_id": "char_player",
+        "default_name": "PLAYER",
+        "role": "New employee",
+        "role_es": "Nuevo empleado",
+        "personality": "Curious and polite, trying to look confident while learning the office rules.",
+        "personality_es": "Curioso y educado, intenta verse seguro mientras aprende las reglas de la oficina.",
+        "first_appearance": true,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/player.png",
+        "intro_text": "Hello. I am {player_name}. It is my first day. I smile a lot. I do not know why.",
+        "intro_text_es": "Hola. Yo soy {player_name}. Es mi primer día. Yo sonrío mucho. Yo no sé por qué."
+      },
+      {
+        "character_id": "char_boss",
+        "default_name": "MICHAEL",
+        "role": "Branch manager (the boss)",
+        "role_es": "Gerente de sucursal (el jefe)",
+        "personality": "Very excited, wants to be loved, makes awkward jokes, and thinks he is a world-class boss.",
+        "personality_es": "Muy entusiasmado, quiere que todos lo amen, hace chistes incómodos y cree que es un jefe de clase mundial.",
+        "first_appearance": true,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/michael.png",
+        "intro_text": "Welcome. I am {boss_name}. I am the boss. The best boss. Please clap with your eyes.",
+        "intro_text_es": "Bienvenido. Yo soy {boss_name}. Yo soy el jefe. El mejor jefe. Por favor aplaude con los ojos."
+      },
+      {
+        "character_id": "char_jim",
+        "default_name": "JIM",
+        "role": "Salesman",
+        "role_es": "Vendedor",
+        "personality": "Calm and funny, makes dry jokes with a straight face, and watches the chaos like it is a show.",
+        "personality_es": "Tranquilo y gracioso, hace bromas secas con cara seria y mira el caos como si fuera un programa.",
+        "first_appearance": true,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/jim.png",
+        "intro_text": "Hello. I am {jim_name}. This office is very normal. Very serious. Nothing weird happens here.",
+        "intro_text_es": "Hola. Yo soy {jim_name}. Esta oficina es muy normal. Muy seria. Aquí no pasa nada raro."
+      },
+      {
+        "character_id": "char_pam",
+        "default_name": "PAM",
+        "role": "Receptionist",
+        "role_es": "Recepcionista",
+        "personality": "Kind and helpful, tries to keep things calm, but the office makes that difficult.",
+        "personality_es": "Amable y servicial, intenta mantener la calma, pero la oficina lo hace difícil.",
+        "first_appearance": true,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/pam.png",
+        "intro_text": "Hi. I am {pam_name}. Welcome to the front desk. Yes, this is the front desk. No, it is not a joke.",
+        "intro_text_es": "Hola. Yo soy {pam_name}. Bienvenido a la recepción. Sí, esta es la recepción. No, no es una broma."
+      },
+      {
+        "character_id": "char_dwight",
+        "default_name": "DWIGHT",
+        "role": "Salesman and self-declared assistant manager",
+        "role_es": "Vendedor y auto-declarado asistente del gerente",
+        "personality": "Intense and strict, takes rules seriously, believes he is in charge of safety and paper emergencies.",
+        "personality_es": "Intenso y estricto, toma las reglas muy en serio y cree que está a cargo de la seguridad y emergencias de papel.",
+        "first_appearance": true,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/dwight.png",
+        "intro_text": "I am DWIGHT. I am the assistant manager. I watch everything. Please stand in a safe way.",
+        "intro_text_es": "Yo soy DWIGHT. Yo soy el asistente del gerente. Yo veo todo. Por favor ponte de pie de forma segura."
+      }
+    ],
+    "mentioned_but_not_appearing": []
+  },
+  "vocabulary_focus": {
+    "target_words": [
+      {
+        "word": "office",
+        "translation_es": "oficina",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 1,
+        "context_sentence": "This office is quiet for five seconds and then the boss starts talking.",
+        "context_sentence_es": "Esta oficina es silenciosa por cinco segundos y luego el jefe empieza a hablar.",
+        "image_url": "/vocab/office.jpg"
+      },
+      {
+        "word": "boss",
+        "translation_es": "jefe",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 1,
+        "context_sentence": "The boss smiles a lot and thinks he is very funny.",
+        "context_sentence_es": "El jefe sonríe mucho y piensa que es muy gracioso.",
+        "image_url": "/vocab/boss.jpg"
+      },
+      {
+        "word": "desk",
+        "translation_es": "escritorio",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 1,
+        "context_sentence": "This is my desk and it has one computer and many papers.",
+        "context_sentence_es": "Este es mi escritorio y tiene una computadora y muchos papeles.",
+        "image_url": "/vocab/desk.jpg"
+      },
+      {
+        "word": "hello",
+        "translation_es": "hola",
+        "word_type": "interjection",
+        "word_type_es": "interjección",
+        "difficulty": 1,
+        "context_sentence": "I say hello many times on my first day.",
+        "context_sentence_es": "Yo digo hola muchas veces en mi primer día.",
+        "image_url": "/vocab/hello.jpg"
+      },
+      {
+        "word": "meeting",
+        "translation_es": "reunión",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 2,
+        "context_sentence": "The meeting is long and nobody knows why.",
+        "context_sentence_es": "La reunión es larga y nadie sabe por qué.",
+        "image_url": "/vocab/meeting.jpg"
+      }
+    ],
+    "phrases": [
+      {
+        "phrase": "Nice to meet you",
+        "translation_es": "Mucho gusto",
+        "usage_context": "You say this when you meet a coworker for the first time.",
+        "usage_context_es": "Dices esto cuando conoces a un compañero de trabajo por primera vez."
+      },
+      {
+        "phrase": "This is my first day",
+        "translation_es": "Este es mi primer día",
+        "usage_context": "You say this to explain why you look confused.",
+        "usage_context_es": "Dices esto para explicar por qué te ves confundido."
+      },
+      {
+        "phrase": "Welcome to the office",
+        "translation_es": "Bienvenido a la oficina",
+        "usage_context": "The boss says this with a big smile and no pause.",
+        "usage_context_es": "El jefe dice esto con una gran sonrisa y sin pausa."
+      }
+    ]
+  },
+  "vocabulary_story": {
+    "title": "Learning Basic Words",
+    "title_es": "Aprendiendo Palabras Básicas",
+    "description": "A simple story to learn today's vocabulary before the office chaos begins.",
+    "description_es": "Una historia simple para aprender el vocabulario de hoy antes de que empiece el caos de la oficina.",
+    "segments": [
+      {
+        "segment_id": "vocab_001",
+        "image_url": "/vocab/office.jpg",
+        "word_focus": "office",
+        "text": {
+          "en": "This OFFICE has desks, people, and one boss who talks a lot.",
+          "es": "Esta OFFICE tiene escritorios, personas y un jefe que habla mucho."
+        },
+        "visual_aid": "🏢 👀",
+        "emphasis_style": "bold_uppercase"
+      },
+      {
+        "segment_id": "vocab_002",
+        "image_url": "/vocab/boss.jpg",
+        "word_focus": "boss",
+        "text": {
+          "en": "The BOSS smiles all the time and thinks every idea is amazing.",
+          "es": "El BOSS sonríe todo el tiempo y piensa que todas sus ideas son increíbles."
+        },
+        "visual_aid": "😄 ⭐",
+        "interactive": {
+          "type": "simple_input",
+          "question": "What is your name?",
+          "question_es": "¿Cuál es tu nombre?",
+          "input_type": "text",
+          "save_as": "player_name_vocab",
+          "example": "Alex"
+        }
+      },
+      {
+        "segment_id": "vocab_003",
+        "image_url": "/vocab/desk.jpg",
+        "word_focus": "desk",
+        "text": {
+          "en": "This is my DESK. It is small. The papers are not small.",
+          "es": "Este es mi DESK. Es pequeño. Los papeles no son pequeños."
+        },
+        "visual_aid": "🪑 📄"
+      },
+      {
+        "segment_id": "vocab_004",
+        "image_url": "/vocab/hello.jpg",
+        "word_focus": "hello",
+        "text": {
+          "en": "I say HELLO again and again on my first day.",
+          "es": "Yo digo HELLO una y otra vez en mi primer día."
+        },
+        "visual_aid": "👋 🙂"
+      },
+      {
+        "segment_id": "vocab_005",
+        "image_url": "/vocab/meeting.jpg",
+        "word_focus": "meeting",
+        "text": {
+          "en": "The MEETING is long. Very long. So very long.",
+          "es": "La MEETING es larga. Muy larga. Demasiado larga."
+        },
+        "visual_aid": "⏰ 😐"
+      },
+      {
+        "segment_id": "vocab_summary",
+        "word_focus": null,
+        "text": {
+          "en": "Great job. Now you know: OFFICE, BOSS, DESK, HELLO, MEETING. These words will follow you all day.",
+          "es": "Buen trabajo. Ahora conoces: OFFICE, BOSS, DESK, HELLO, MEETING. Estas palabras te seguirán todo el día."
+        },
+        "visual_aid": "✅ 📚 ➡️"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "scene_id": "scene_001_001",
+      "scene_number": 1,
+      "location": "Office entrance",
+      "location_es": "Entrada de la oficina",
+      "time": "Morning",
+      "time_es": "Mañana",
+      "description": "It is the first morning at the office. Everyone looks busy. Nobody is busy.",
+      "description_es": "Es la primera mañana en la oficina. Todos parecen ocupados. Nadie está ocupado.",
+      "dialogue": [
+        {
+          "line_id": 1,
+          "character_id": "char_pam",
+          "character_display_name": "PAM",
+          "text": "Hello. Welcome to the OFFICE. This is a normal place.",
+          "translation_es": "Hola. Bienvenido a la OFFICE. Este es un lugar normal.",
+          "emotion": "calm",
+          "notes": "Pam says everything is normal, but it clearly is not.",
+          "notes_es": "Pam dice que todo es normal, pero claramente no lo es.",
+          "highlighted_vocab": [
+            "office",
+            "hello"
+          ],
+          "template_vars": [
+            "pam_name"
+          ]
+        },
+        {
+          "line_id": 2,
+          "character_id": "char_jim",
+          "character_display_name": "JIM",
+          "text": "Yes. This OFFICE is very serious. Very professional.",
+          "translation_es": "Sí. Esta OFFICE es muy seria. Muy profesional.",
+          "emotion": "sarcastic",
+          "notes": "Jim sounds serious, but he is joking.",
+          "notes_es": "Jim suena serio, pero está bromeando.",
+          "highlighted_vocab": [
+            "office"
+          ],
+          "template_vars": [
+            "jim_name"
+          ]
+        },
+        {
+          "line_id": 3,
+          "character_id": "player",
+          "character_display_name": "YOU",
+          "text": null,
+          "is_interactive": true,
+          "interaction_type": "choice",
+          "choices": [
+            {
+              "choice_id": "a",
+              "text": "Hello. This OFFICE is nice.",
+              "translation_es": "Hola. Esta OFFICE es agradable.",
+              "points": 10,
+              "personality_impact": "friendly",
+              "vocab_used": [
+                "office",
+                "hello"
+              ]
+            },
+            {
+              "choice_id": "b",
+              "text": "Hello. I am nervous.",
+              "translation_es": "Hola. Estoy nervioso.",
+              "points": 5,
+              "personality_impact": "honest"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_001_002",
+      "scene_number": 2,
+      "location": "Manager office",
+      "location_es": "Oficina del gerente",
+      "time": "Morning",
+      "time_es": "Mañana",
+      "description": "The boss appears. He smiles a lot.",
+      "description_es": "El jefe aparece. Sonríe mucho.",
+      "dialogue": [
+        {
+          "line_id": 1,
+          "character_id": "char_boss",
+          "character_display_name": "MICHAEL",
+          "text": "Welcome. I am the BOSS. The best boss. In this OFFICE.",
+          "translation_es": "Bienvenido. Yo soy el BOSS. El mejor jefe. En esta OFFICE.",
+          "emotion": "proud_but_lying",
+          "notes": "Michael introduces himself with extreme confidence.",
+          "notes_es": "Michael se presenta con confianza extrema.",
+          "highlighted_vocab": [
+            "boss",
+            "office"
+          ],
+          "template_vars": [
+            "boss_name"
+          ]
+        },
+        {
+          "line_id": 2,
+          "character_id": "char_dwight",
+          "character_display_name": "DWIGHT",
+          "text": "Yes. The BOSS is great. I check this every day.",
+          "translation_es": "Sí. El BOSS es grandioso. Yo reviso esto todos los días.",
+          "emotion": "intense",
+          "notes": "Dwight supports the boss very seriously.",
+          "notes_es": "Dwight apoya al jefe de forma muy seria.",
+          "highlighted_vocab": [
+            "boss"
+          ],
+          "template_vars": []
+        },
+        {
+          "line_id": 3,
+          "character_id": "player",
+          "character_display_name": "YOU",
+          "text": null,
+          "is_interactive": true,
+          "interaction_type": "choice",
+          "choices": [
+            {
+              "choice_id": "a",
+              "text": "Nice to meet you, BOSS.",
+              "translation_es": "Mucho gusto, BOSS.",
+              "points": 10,
+              "personality_impact": "respectful",
+              "vocab_used": [
+                "boss"
+              ]
+            },
+            {
+              "choice_id": "b",
+              "text": "Hello.",
+              "translation_es": "Hola.",
+              "points": 5,
+              "personality_impact": "neutral",
+              "vocab_used": [
+                "hello"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_001_003",
+      "scene_number": 3,
+      "location": "Open office area",
+      "location_es": "Área abierta de la oficina",
+      "time": "Late morning",
+      "time_es": "Media mañana",
+      "description": "You see your desk for the first time.",
+      "description_es": "Ves tu escritorio por primera vez.",
+      "dialogue": [
+        {
+          "line_id": 1,
+          "character_id": "char_dwight",
+          "character_display_name": "DWIGHT",
+          "text": "This is your DESK. It has four legs. It is safe.",
+          "translation_es": "Este es tu DESK. Tiene cuatro patas. Es seguro.",
+          "emotion": "serious",
+          "notes": "Dwight explains a desk like it is complex machinery.",
+          "notes_es": "Dwight explica un escritorio como si fuera una máquina compleja.",
+          "highlighted_vocab": [
+            "desk"
+          ],
+          "template_vars": []
+        },
+        {
+          "line_id": 2,
+          "character_id": "char_jim",
+          "character_display_name": "JIM",
+          "text": "Yes. This DESK is excellent. A top desk.",
+          "translation_es": "Sí. Este DESK es excelente. Un escritorio de primera.",
+          "emotion": "sarcastic",
+          "notes": "Jim pretends the desk is very special.",
+          "notes_es": "Jim finge que el escritorio es muy especial.",
+          "highlighted_vocab": [
+            "desk"
+          ],
+          "template_vars": []
+        },
+        {
+          "line_id": 3,
+          "character_id": "player",
+          "character_display_name": "YOU",
+          "text": null,
+          "is_interactive": true,
+          "interaction_type": "choice",
+          "choices": [
+            {
+              "choice_id": "a",
+              "text": "I like my DESK.",
+              "translation_es": "Me gusta mi DESK.",
+              "points": 10,
+              "personality_impact": "positive",
+              "vocab_used": [
+                "desk"
+              ]
+            },
+            {
+              "choice_id": "b",
+              "text": "My DESK is small.",
+              "translation_es": "Mi DESK es pequeño.",
+              "points": 5,
+              "personality_impact": "observant",
+              "vocab_used": [
+                "desk"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_001_004",
+      "scene_number": 4,
+      "location": "Conference room",
+      "location_es": "Sala de reuniones",
+      "time": "Afternoon",
+      "time_es": "Tarde",
+      "description": "Everyone goes to a meeting. Nobody knows why.",
+      "description_es": "Todos van a una reunión. Nadie sabe por qué.",
+      "dialogue": [
+        {
+          "line_id": 1,
+          "character_id": "char_boss",
+          "character_display_name": "MICHAEL",
+          "text": "This MEETING is important. I talk first. Then I talk more.",
+          "translation_es": "Esta MEETING es importante. Yo hablo primero. Luego hablo más.",
+          "emotion": "excited",
+          "notes": "Michael loves meetings because he can talk.",
+          "notes_es": "Michael ama las reuniones porque puede hablar.",
+          "highlighted_vocab": [
+            "meeting"
+          ],
+          "template_vars": [
+            "boss_name"
+          ]
+        },
+        {
+          "line_id": 2,
+          "character_id": "char_jim",
+          "character_display_name": "JIM",
+          "text": "Yes. This MEETING is very short. Very short.",
+          "translation_es": "Sí. Esta MEETING es muy corta. Muy corta.",
+          "emotion": "sarcastic",
+          "notes": "Jim jokes because meetings are always long.",
+          "notes_es": "Jim bromea porque las reuniones siempre son largas.",
+          "highlighted_vocab": [
+            "meeting"
+          ],
+          "template_vars": []
+        },
+        {
+          "line_id": 3,
+          "character_id": "player",
+          "character_display_name": "YOU",
+          "text": null,
+          "is_interactive": true,
+          "interaction_type": "choice",
+          "choices": [
+            {
+              "choice_id": "a",
+              "text": "I am ready for the MEETING.",
+              "translation_es": "Estoy listo para la MEETING.",
+              "points": 10,
+              "personality_impact": "team_player",
+              "vocab_used": [
+                "meeting"
+              ]
+            },
+            {
+              "choice_id": "b",
+              "text": "This MEETING is long.",
+              "translation_es": "Esta MEETING es larga.",
+              "points": 5,
+              "personality_impact": "honest",
+              "vocab_used": [
+                "meeting"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "games": [
+    {
+      "game_id": "ep001_game_01",
+      "game_type": "matching",
+      "title": "Match the Words!",
+      "title_es": "¡Empareja las Palabras!",
+      "instructions": "Match each English word with its Spanish meaning",
+      "instructions_es": "Empareja cada palabra en inglés con su significado en español",
+      "optional": true,
+      "unlocked_after_episode": true,
+      "time_limit_seconds": 60,
+      "xp_reward": 20,
+      "content": {
+        "items": [
+          {
+            "id": 1,
+            "left": "office",
+            "right": "oficina",
+            "image_url": "/vocab/office.jpg"
+          },
+          {
+            "id": 2,
+            "left": "boss",
+            "right": "jefe",
+            "image_url": "/vocab/boss.jpg"
+          },
+          {
+            "id": 3,
+            "left": "desk",
+            "right": "escritorio",
+            "image_url": "/vocab/desk.jpg"
+          },
+          {
+            "id": 4,
+            "left": "hello",
+            "right": "hola",
+            "image_url": "/vocab/hello.jpg"
+          },
+          {
+            "id": 5,
+            "left": "meeting",
+            "right": "reunión",
+            "image_url": "/vocab/meeting.jpg"
+          }
+        ]
+      },
+      "settings": {
+        "shuffle": true,
+        "show_images": true
+      }
+    },
+    {
+      "game_id": "ep001_game_02",
+      "game_type": "fill_blank",
+      "title": "Complete the Sentences",
+      "title_es": "Completa las Oraciones",
+      "instructions": "Fill in the missing words from the episode",
+      "instructions_es": "Completa las palabras que faltan del episodio",
+      "optional": true,
+      "unlocked_after_episode": true,
+      "time_limit_seconds": 90,
+      "xp_reward": 25,
+      "content": {
+        "items": [
+          {
+            "id": 1,
+            "sentence": "Welcome to the _____.",
+            "sentence_es": "Bienvenido a la _____.",
+            "answer": "office",
+            "options": [
+              "office",
+              "desk",
+              "meeting"
+            ],
+            "hint": "This is the place where everyone works.",
+            "hint_es": "Este es el lugar donde todos trabajan.",
+            "character": "{pam_name}"
+          },
+          {
+            "id": 2,
+            "sentence": "The _____ talks a lot.",
+            "sentence_es": "El _____ habla mucho.",
+            "answer": "boss",
+            "options": [
+              "boss",
+              "desk",
+              "hello"
+            ],
+            "hint": "This person is in charge.",
+            "hint_es": "Esta persona está a cargo.",
+            "character": "{boss_name}"
+          },
+          {
+            "id": 3,
+            "sentence": "This is my _____.",
+            "sentence_es": "Este es mi _____.",
+            "answer": "desk",
+            "options": [
+              "desk",
+              "office",
+              "meeting"
+            ],
+            "hint": "You sit here and work.",
+            "hint_es": "Te sientas aquí y trabajas.",
+            "character": "{jim_name}"
+          },
+          {
+            "id": 4,
+            "sentence": "I say _____ on my first day.",
+            "sentence_es": "Yo digo _____ en mi primer día.",
+            "answer": "hello",
+            "options": [
+              "hello",
+              "boss",
+              "desk"
+            ],
+            "hint": "This is a greeting.",
+            "hint_es": "Esto es un saludo.",
+            "character": "{player_name}"
+          }
+        ]
+      }
+    },
+    {
+      "game_id": "ep001_game_03",
+      "game_type": "multiple_choice",
+      "title": "Episode Quiz",
+      "title_es": "Quiz del Episodio",
+      "instructions": "Answer questions about the episode",
+      "instructions_es": "Responde preguntas sobre el episodio",
+      "optional": true,
+      "unlocked_after_episode": true,
+      "time_limit_seconds": 120,
+      "xp_reward": 30,
+      "content": {
+        "items": [
+          {
+            "id": 1,
+            "question": "Who says he is the best boss?",
+            "question_es": "¿Quién dice que es el mejor jefe?",
+            "options": [
+              "{boss_name}",
+              "{jim_name}",
+              "{pam_name}",
+              "{player_name}"
+            ],
+            "options_es": [
+              "{boss_name}",
+              "{jim_name}",
+              "{pam_name}",
+              "{player_name}"
+            ],
+            "correct_answer": 0,
+            "explanation": "The boss talks about himself all the time.",
+            "explanation_es": "El jefe habla de sí mismo todo el tiempo."
+          },
+          {
+            "id": 2,
+            "question": "What is very long in the episode?",
+            "question_es": "¿Qué es muy largo en el episodio?",
+            "options": [
+              "The desk",
+              "The meeting",
+              "The hello",
+              "The office"
+            ],
+            "options_es": [
+              "El escritorio",
+              "La reunión",
+              "El hola",
+              "La oficina"
+            ],
+            "correct_answer": 1,
+            "explanation": "The meeting is long and nobody knows why.",
+            "explanation_es": "La reunión es larga y nadie sabe por qué."
+          },
+          {
+            "id": 3,
+            "question": "Where does {player_name} work?",
+            "question_es": "¿Dónde trabaja {player_name}?",
+            "options": [
+              "At home",
+              "In a store",
+              "In an office",
+              "In a school"
+            ],
+            "options_es": [
+              "En casa",
+              "En una tienda",
+              "En una oficina",
+              "En una escuela"
+            ],
+            "correct_answer": 2,
+            "explanation": "{player_name} starts work in the office.",
+            "explanation_es": "{player_name} empieza a trabajar en la oficina."
+          }
+        ]
+      }
+    }
+  ],
+  "intro_text": {
+    "en": "Welcome to your first English lesson. Today you will start WORK in a very special OFFICE. The people are funny, the BOSS is loud, and learning is simple and fun.",
+    "es": "Bienvenido a tu primera lección de inglés. Hoy empezarás a TRABAJAR en una OFICINA muy especial. Las personas son divertidas, el JEFE es ruidoso y aprender es simple y divertido."
+  },
+  "transition": {
+    "en": "Great job learning the new words. Now you are ready to see how these words live together in a real OFFICE story with meetings, desks, and funny people.",
+    "es": "Buen trabajo aprendiendo las nuevas palabras. Ahora estás listo para ver cómo estas palabras viven juntas en una historia real de OFICINA con reuniones, escritorios y personas divertidas."
+  },
+  "conclusion": {
+    "en": "You did very well today. You learned how to talk about an OFFICE, a BOSS, a DESK, WORK, and a MEETING. These words help you speak about daily life at work.",
+    "es": "Lo hiciste muy bien hoy. Aprendiste cómo hablar de una OFICINA, un JEFE, un ESCRITORIO, TRABAJAR y una REUNIÓN. Estas palabras te ayudan a hablar de la vida diaria en el trabajo."
+  },
+  "reflection_prompt": {
+    "question_en": "Write one sentence using the word 'office' or 'work'.",
+    "question_es": "Escribe una oración usando la palabra 'office' o 'work'.",
+    "type": "free_text",
+    "optional": true,
+    "max_length": 100,
+    "vocab_practice": [
+      "office",
+      "work"
+    ]
+  },
+  "next_episode_preview": {
+    "preview_text_en": "Next time, the boss plans a very important meeting, Jim smiles too much, and nobody understands the schedule.",
+    "preview_text_es": "La próxima vez, el jefe planea una reunión muy importante, Jim sonríe demasiado y nadie entiende el horario.",
+    "teaser_image": "/previews/ep_002.jpg"
+  },
+  "progression": {
+    "xp_earned_base": 50,
+    "xp_bonus_conditions": [
+      {
+        "condition": "complete_all_games",
+        "bonus_xp": 25
+      },
+      {
+        "condition": "perfect_choices",
+        "bonus_xp": 15
+      },
+      {
+        "condition": "write_reflection",
+        "bonus_xp": 10
+      }
+    ],
+    "unlocks": [
+      {
+        "type": "character",
+        "character_ids": [
+          "char_player",
+          "char_boss",
+          "char_jim",
+          "char_pam",
+          "char_dwight"
+        ]
+      },
+      {
+        "type": "location",
+        "location_ids": [
+          "Office entrance",
+          "Manager office",
+          "Open office area",
+          "Conference room"
+        ]
+      }
+    ],
+    "achievements": [
+      {
+        "achievement_id": "first_day_survivor",
+        "name": "First Day Survivor",
+        "name_es": "Superviviente del Primer Día",
+        "description": "You finish your first day at the office and nobody fires you. This is a success.",
+        "description_es": "Terminas tu primer día en la oficina y nadie te despide. Esto es un éxito.",
+        "icon": "/achievements/first_day_survivor.png"
+      }
+    ]
+  },
+  "metadata": {
+    "created_date": "2026-01-26",
+    "version": "1.0",
+    "author": "Course Team",
+    "content_level": "beginner",
+    "estimated_words": 350,
+    "estimated_unique_vocabulary": 45,
+    "structure_type": "vocab_story_then_main_story"
+  },
+  "content_wrappers": {
+    "intro_text": {
+      "en": "Welcome to the office. This is a normal place with normal people. Very normal. Completely normal. Please relax. Nothing strange happens here. That is a lie.",
+      "es": "Bienvenido a la oficina. Este es un lugar normal con personas normales. Muy normal. Completamente normal. Por favor relájate. Aquí no pasa nada extraño. Eso es mentira."
+    },
+    "transition": {
+      "en": "Great job. You know the words now. OFFICE. BOSS. DESK. HELLO. MEETING. Now we use them in the office. The office where meetings are long and the boss is proud.",
+      "es": "Buen trabajo. Ahora conoces las palabras. OFFICE. BOSS. DESK. HELLO. MEETING. Ahora las usamos en la oficina. La oficina donde las reuniones son largas y el jefe está orgulloso."
+    },
+    "conclusion": {
+      "en": "Good job. You survived your first day. You said hello many times. You met the boss. You sat at a desk. You went to a meeting. This is only the beginning.",
+      "es": "Buen trabajo. Sobreviviste a tu primer día. Dijiste hola muchas veces. Conociste al jefe. Te sentaste en un escritorio. Fuiste a una reunión. Esto es solo el comienzo."
+    },
+    "reflection_prompt": {
+      "question_en": "Write one sentence using the word 'office' or 'boss'.",
+      "question_es": "Escribe una oración usando la palabra 'office' o 'boss'.",
+      "type": "free_text",
+      "optional": true,
+      "max_length": 100,
+      "vocab_practice": [
+        "office",
+        "boss"
+      ]
+    }
+  }
+}

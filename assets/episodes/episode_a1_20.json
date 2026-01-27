@@ -1,0 +1,759 @@
+{
+  "city_settings": {
+    "default_city": "Scranton",
+    "user_selected_city": null,
+    "localizable": true,
+    "city_specific_content": {
+      "office_name": "{company_name} {city}",
+      "default_company_name": "Dunder Mifflin",
+      "office_type": "Paper Company",
+      "office_type_es": "Compañía de Papel"
+    }
+  },
+  "episode_metadata": {
+    "episode_number": 20,
+    "episode_id": "ep_020",
+    "title": "The Short Break (Not Short)",
+    "title_es": "El Descanso Corto (No Tan Corto)",
+    "description": "The boss announces a short break. The break is very long. People sit, wait, and look at the clock. Jim smiles. Pam shares snacks. The office does nothing, very seriously.",
+    "description_es": "El jefe anuncia un descanso corto. El descanso es muy largo. Las personas se sientan, esperan y miran el reloj. Jim sonríe. Pam comparte snacks. La oficina no hace nada, muy seriamente.",
+    "internal_level": "A1",
+    "estimated_time_minutes": 12,
+    "unlock_requirements": null,
+    "tags": [
+      "office_life",
+      "break_time",
+      "waiting",
+      "humor"
+    ],
+    "previous_episode": "ep_019",
+    "next_episode": "ep_021"
+  },
+  "characters": {
+    "appearing_in_episode": [
+      {
+        "character_id": "char_boss",
+        "default_name": "MICHAEL",
+        "role": "Boss",
+        "role_es": "Jefe",
+        "personality": "Enthusiastic boss who wants everyone to like him and believes he is the best boss in the world.",
+        "personality_es": "Jefe entusiasta que quiere que todos lo quieran y cree que es el mejor jefe del mundo.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/michael.png",
+        "intro_text": "Hello everyone. I am the boss. The great boss. The super boss. Today we have a short break. It is a very important break.",
+        "intro_text_es": "Hola a todos. Yo soy el jefe. El gran jefe. El súper jefe. Hoy tenemos un descanso corto. Es un descanso muy importante."
+      },
+      {
+        "character_id": "char_jim",
+        "default_name": "JIM",
+        "role": "Salesman",
+        "role_es": "Vendedor",
+        "personality": "Calm and sarcastic salesman who makes jokes with a serious face.",
+        "personality_es": "Vendedor tranquilo y sarcástico que hace bromas con cara seria.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/jim.png",
+        "intro_text": "Yes. This is a short break. Very short. Very fast. We wait. We smile. We wait more.",
+        "intro_text_es": "Sí. Este es un descanso corto. Muy corto. Muy rápido. Esperamos. Sonreímos. Esperamos más."
+      },
+      {
+        "character_id": "char_pam",
+        "default_name": "PAM",
+        "role": "Receptionist",
+        "role_es": "Recepcionista",
+        "personality": "Kind and friendly receptionist who helps everyone and observes the office chaos.",
+        "personality_es": "Recepcionista amable y amigable que ayuda a todos y observa el caos de la oficina.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/pam.png",
+        "intro_text": "Hi. Please sit. The break is short. I bring snacks. Snacks help with waiting.",
+        "intro_text_es": "Hola. Por favor siéntense. El descanso es corto. Yo traigo snacks. Los snacks ayudan a esperar."
+      },
+      {
+        "character_id": "char_dwight",
+        "default_name": "DWIGHT",
+        "role": "Salesman",
+        "role_es": "Vendedor",
+        "personality": "Very serious salesman who follows rules and prepares for every possible emergency.",
+        "personality_es": "Vendedor muy serio que sigue las reglas y se prepara para cualquier emergencia posible.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/dwight.png",
+        "intro_text": "I watch the break. I control the break. A long break is dangerous.",
+        "intro_text_es": "Yo vigilo el descanso. Yo controlo el descanso. Un descanso largo es peligroso."
+      }
+    ],
+    "mentioned_but_not_appearing": []
+  },
+  "vocabulary_focus": {
+    "target_words": [
+      {
+        "word": "break",
+        "translation_es": "descanso",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 1,
+        "context_sentence": "The boss plans a short break for the office.",
+        "context_sentence_es": "El jefe planea un descanso corto para la oficina.",
+        "image_url": "/vocab/break.jpg"
+      },
+      {
+        "word": "short",
+        "translation_es": "corto",
+        "word_type": "adjective",
+        "word_type_es": "adjetivo",
+        "difficulty": 1,
+        "context_sentence": "The break is short on the paper.",
+        "context_sentence_es": "El descanso es corto en el papel.",
+        "image_url": "/vocab/short.jpg"
+      },
+      {
+        "word": "snack",
+        "translation_es": "snack",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 1,
+        "context_sentence": "Pam brings a snack to help people wait.",
+        "context_sentence_es": "Pam trae un snack para ayudar a las personas a esperar.",
+        "image_url": "/vocab/snack.jpg"
+      },
+      {
+        "word": "smile",
+        "translation_es": "sonreír",
+        "word_type": "verb",
+        "word_type_es": "verbo",
+        "difficulty": 1,
+        "context_sentence": "Jim smiles during the long break.",
+        "context_sentence_es": "Jim sonríe durante el descanso largo.",
+        "image_url": "/vocab/smile.jpg"
+      },
+      {
+        "word": "serious",
+        "translation_es": "serio",
+        "word_type": "adjective",
+        "word_type_es": "adjetivo",
+        "difficulty": 2,
+        "context_sentence": "The office looks very serious during the break.",
+        "context_sentence_es": "La oficina se ve muy seria durante el descanso.",
+        "image_url": "/vocab/serious.jpg"
+      }
+    ],
+    "phrases": [
+      {
+        "phrase": "The break is short.",
+        "translation_es": "El descanso es corto.",
+        "usage_context": "Used when the boss explains the plan for the office break.",
+        "usage_context_es": "Se usa cuando el jefe explica el plan para el descanso de la oficina."
+      },
+      {
+        "phrase": "Please take a break.",
+        "translation_es": "Por favor toma un descanso.",
+        "usage_context": "Used when someone invites others to stop working for a moment.",
+        "usage_context_es": "Se usa cuando alguien invita a otros a dejar de trabajar por un momento."
+      },
+      {
+        "phrase": "We wait and smile.",
+        "translation_es": "Esperamos y sonreímos.",
+        "usage_context": "Used humorously when nothing happens but people stay calm.",
+        "usage_context_es": "Se usa de forma humorística cuando no pasa nada pero las personas se mantienen tranquilas."
+      }
+    ]
+  },
+  "vocabulary_story": {
+    "title": "Learning Basic Words",
+    "title_es": "Aprendiendo Palabras Básicas",
+    "description": "A simple story to learn today's vocabulary",
+    "description_es": "Una historia simple para aprender el vocabulario de hoy",
+    "segments": [
+      {
+        "segment_id": "vocab_001",
+        "image_url": "/vocab/break.jpg",
+        "word_focus": "break",
+        "text": {
+          "en": "The boss says it is time for a BREAK. Everyone stops working. Nobody moves.",
+          "es": "El jefe dice que es tiempo de un DESCANSO. Todos dejan de trabajar. Nadie se mueve."
+        },
+        "visual_aid": "⏸️ 🪑",
+        "emphasis_style": "bold_uppercase"
+      },
+      {
+        "segment_id": "vocab_002",
+        "image_url": "/vocab/short.jpg",
+        "word_focus": "short",
+        "text": {
+          "en": "The boss says the break is SHORT. Very short. Maybe.",
+          "es": "El jefe dice que el descanso es CORTO. Muy corto. Tal vez."
+        },
+        "visual_aid": "⏱️ 🤔",
+        "interactive": {
+          "type": "simple_input",
+          "question": "What is your name?",
+          "question_es": "¿Cuál es tu nombre?",
+          "input_type": "text",
+          "save_as": "player_name_vocab",
+          "example": "Alex"
+        }
+      },
+      {
+        "segment_id": "vocab_003",
+        "image_url": "/vocab/snack.jpg",
+        "word_focus": "snack",
+        "text": {
+          "en": "Pam brings a SNACK. The snack is small. The happiness is big.",
+          "es": "Pam trae un SNACK. El snack es pequeño. La felicidad es grande."
+        },
+        "visual_aid": "🍪 😄"
+      },
+      {
+        "segment_id": "vocab_004",
+        "image_url": "/vocab/smile.jpg",
+        "word_focus": "smile",
+        "text": {
+          "en": "Jim gives a SMILE during the break. The smile says everything.",
+          "es": "Jim da una SONREÍR durante el descanso. La sonrisa dice todo."
+        },
+        "visual_aid": "🙂 👀"
+      },
+      {
+        "segment_id": "vocab_005",
+        "image_url": "/vocab/serious.jpg",
+        "word_focus": "serious",
+        "text": {
+          "en": "The office looks very SERIOUS. It is a very serious break.",
+          "es": "La oficina se ve muy SERIO. Es un descanso muy serio."
+        },
+        "visual_aid": "😐 🏢"
+      },
+      {
+        "segment_id": "vocab_summary",
+        "word_focus": null,
+        "text": {
+          "en": "Great! Now you know: BREAK, SHORT, SNACK, SMILE, SERIOUS. These words are simple. The break is not.",
+          "es": "¡Genial! Ahora conoces: DESCANSO, CORTO, SNACK, SONREÍR, SERIO. Estas palabras son simples. El descanso no."
+        },
+        "visual_aid": "✅ 📚 ➡️"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "scene_id": "scene_020_001",
+      "scene_number": 1,
+      "location": "Office floor",
+      "location_es": "Piso de la oficina",
+      "time": "Morning",
+      "time_es": "Mañana",
+      "description": "The boss stands in the office and smiles. Everyone looks at him and waits.",
+      "description_es": "El jefe está de pie en la oficina y sonríe. Todos lo miran y esperan.",
+      "dialogue": [
+        {
+          "line_id": 1,
+          "character_id": "char_boss",
+          "character_display_name": "MICHAEL",
+          "text": "Hello team. I have great news. I plan a BREAK. A short break. A very professional break.",
+          "translation_es": "Hola equipo. Tengo grandes noticias. Planeo un DESCANSO. Un descanso corto. Un descanso muy profesional.",
+          "emotion": "proud_but_lying",
+          "notes": "Michael believes every idea is professional and important.",
+          "notes_es": "Michael cree que cada idea es profesional e importante.",
+          "highlighted_vocab": [
+            "break",
+            "short"
+          ],
+          "template_vars": [
+            "boss_name"
+          ]
+        },
+        {
+          "line_id": 2,
+          "character_id": "char_jim",
+          "character_display_name": "JIM",
+          "text": "Yes. This is excellent news. I love a SHORT break.",
+          "translation_es": "Sí. Esta es una noticia excelente. Amo un descanso CORTO.",
+          "emotion": "sarcastic",
+          "notes": "Jim sounds serious but he is joking.",
+          "notes_es": "Jim suena serio pero está bromeando.",
+          "highlighted_vocab": [
+            "short"
+          ],
+          "template_vars": [
+            "jim_name"
+          ]
+        },
+        {
+          "line_id": 3,
+          "character_id": "player",
+          "character_display_name": "YOU",
+          "text": null,
+          "is_interactive": true,
+          "interaction_type": "choice",
+          "choices": [
+            {
+              "choice_id": "a",
+              "text": "Great. I like a short BREAK.",
+              "translation_es": "Genial. Me gusta un DESCANSO corto.",
+              "points": 10,
+              "personality_impact": "friendly",
+              "vocab_used": [
+                "break",
+                "short"
+              ]
+            },
+            {
+              "choice_id": "b",
+              "text": "Okay. I wait for the break.",
+              "translation_es": "Está bien. Espero el descanso.",
+              "points": 5,
+              "personality_impact": "neutral"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_020_002",
+      "scene_number": 2,
+      "location": "Reception area",
+      "location_es": "Área de recepción",
+      "time": "A little later",
+      "time_es": "Un poco después",
+      "description": "People sit. Nobody moves. Pam arrives with food.",
+      "description_es": "Las personas se sientan. Nadie se mueve. Pam llega con comida.",
+      "dialogue": [
+        {
+          "line_id": 1,
+          "character_id": "char_pam",
+          "character_display_name": "PAM",
+          "text": "Hi everyone. I bring a SNACK. A snack makes waiting better.",
+          "translation_es": "Hola a todos. Traigo un SNACK. Un snack hace la espera mejor.",
+          "emotion": "kind",
+          "notes": "Pam tries to help during awkward moments.",
+          "notes_es": "Pam intenta ayudar durante momentos incómodos.",
+          "highlighted_vocab": [
+            "snack"
+          ],
+          "template_vars": [
+            "pam_name"
+          ]
+        },
+        {
+          "line_id": 2,
+          "character_id": "char_dwight",
+          "character_display_name": "DWIGHT",
+          "text": "A snack is good. But control is better. This BREAK is dangerous.",
+          "translation_es": "Un snack es bueno. Pero el control es mejor. Este DESCANSO es peligroso.",
+          "emotion": "intense",
+          "notes": "Dwight treats a simple break like a serious risk.",
+          "notes_es": "Dwight trata un descanso simple como un riesgo serio.",
+          "highlighted_vocab": [
+            "snack",
+            "break"
+          ],
+          "template_vars": []
+        },
+        {
+          "line_id": 3,
+          "character_id": "player",
+          "character_display_name": "YOU",
+          "text": null,
+          "is_interactive": true,
+          "interaction_type": "choice",
+          "choices": [
+            {
+              "choice_id": "a",
+              "text": "Thank you for the SNACK.",
+              "translation_es": "Gracias por el SNACK.",
+              "points": 10,
+              "personality_impact": "friendly",
+              "vocab_used": [
+                "snack"
+              ]
+            },
+            {
+              "choice_id": "b",
+              "text": "I wait without a snack.",
+              "translation_es": "Espero sin un snack.",
+              "points": 5,
+              "personality_impact": "neutral"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "scene_020_003",
+      "scene_number": 3,
+      "location": "Office floor",
+      "location_es": "Piso de la oficina",
+      "time": "Later",
+      "time_es": "Más tarde",
+      "description": "The break continues. Faces are calm and very serious.",
+      "description_es": "El descanso continúa. Las caras están tranquilas y muy serias.",
+      "dialogue": [
+        {
+          "line_id": 1,
+          "character_id": "char_jim",
+          "character_display_name": "JIM",
+          "text": "I give a SMILE. This is a very SERIOUS break.",
+          "translation_es": "Doy una SONRISA. Este es un descanso muy SERIO.",
+          "emotion": "sarcastic",
+          "notes": "Jim jokes by calling a silly moment serious.",
+          "notes_es": "Jim bromea al llamar serio a un momento tonto.",
+          "highlighted_vocab": [
+            "smile",
+            "serious"
+          ],
+          "template_vars": [
+            "jim_name"
+          ]
+        },
+        {
+          "line_id": 2,
+          "character_id": "char_boss",
+          "character_display_name": "MICHAEL",
+          "text": "Yes. I plan the best breaks. I am the best boss of breaks.",
+          "translation_es": "Sí. Yo planeo los mejores descansos. Yo soy el mejor jefe de descansos.",
+          "emotion": "excited",
+          "notes": "Michael praises himself again.",
+          "notes_es": "Michael se elogia a sí mismo otra vez.",
+          "highlighted_vocab": [
+            "break"
+          ],
+          "template_vars": [
+            "boss_name"
+          ]
+        },
+        {
+          "line_id": 3,
+          "character_id": "player",
+          "character_display_name": "YOU",
+          "text": null,
+          "is_interactive": true,
+          "interaction_type": "choice",
+          "choices": [
+            {
+              "choice_id": "a",
+              "text": "I SMILE and stay serious.",
+              "translation_es": "Yo SONRÍO y me mantengo serio.",
+              "points": 10,
+              "personality_impact": "humorous",
+              "vocab_used": [
+                "smile",
+                "serious"
+              ]
+            },
+            {
+              "choice_id": "b",
+              "text": "I ask when the break ends.",
+              "translation_es": "Pregunto cuándo termina el descanso.",
+              "points": 5,
+              "personality_impact": "curious"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "games": [
+    {
+      "game_id": "ep20_game_01",
+      "game_type": "matching",
+      "title": "Match the Words!",
+      "title_es": "¡Empareja las Palabras!",
+      "instructions": "Match each English word with its Spanish meaning",
+      "instructions_es": "Empareja cada palabra en inglés con su significado en español",
+      "optional": true,
+      "unlocked_after_episode": true,
+      "time_limit_seconds": 60,
+      "xp_reward": 20,
+      "content": {
+        "items": [
+          {
+            "id": 1,
+            "left": "break",
+            "right": "descanso",
+            "image_url": "/vocab/break.jpg"
+          },
+          {
+            "id": 2,
+            "left": "short",
+            "right": "corto",
+            "image_url": "/vocab/short.jpg"
+          },
+          {
+            "id": 3,
+            "left": "snack",
+            "right": "snack",
+            "image_url": "/vocab/snack.jpg"
+          },
+          {
+            "id": 4,
+            "left": "smile",
+            "right": "sonreír",
+            "image_url": "/vocab/smile.jpg"
+          },
+          {
+            "id": 5,
+            "left": "serious",
+            "right": "serio",
+            "image_url": "/vocab/serious.jpg"
+          }
+        ]
+      },
+      "settings": {
+        "shuffle": true,
+        "show_images": true
+      }
+    },
+    {
+      "game_id": "ep20_game_02",
+      "game_type": "fill_blank",
+      "title": "Complete the Sentences",
+      "title_es": "Completa las Oraciones",
+      "instructions": "Fill in the missing words from the episode",
+      "instructions_es": "Completa las palabras que faltan del episodio",
+      "optional": true,
+      "unlocked_after_episode": true,
+      "time_limit_seconds": 90,
+      "xp_reward": 25,
+      "content": {
+        "items": [
+          {
+            "id": 1,
+            "sentence": "{boss_name} plans a _____ for the office.",
+            "sentence_es": "{boss_name} planea un _____ para la oficina.",
+            "answer": "break",
+            "options": [
+              "break",
+              "snack",
+              "smile"
+            ],
+            "hint": "It is time to stop working for a moment.",
+            "hint_es": "Es tiempo de dejar de trabajar por un momento.",
+            "character": "{boss_name}"
+          },
+          {
+            "id": 2,
+            "sentence": "The break is very _____.",
+            "sentence_es": "El descanso es muy _____.",
+            "answer": "short",
+            "options": [
+              "short",
+              "serious",
+              "long"
+            ],
+            "hint": "It does not take much time.",
+            "hint_es": "No toma mucho tiempo.",
+            "character": "{jim_name}"
+          },
+          {
+            "id": 3,
+            "sentence": "{pam_name} brings a _____.",
+            "sentence_es": "{pam_name} trae un _____.",
+            "answer": "snack",
+            "options": [
+              "snack",
+              "break",
+              "smile"
+            ],
+            "hint": "It is small food.",
+            "hint_es": "Es comida pequeña.",
+            "character": "{pam_name}"
+          },
+          {
+            "id": 4,
+            "sentence": "{jim_name} gives a _____.",
+            "sentence_es": "{jim_name} da una _____.",
+            "answer": "smile",
+            "options": [
+              "smile",
+              "snack",
+              "break"
+            ],
+            "hint": "It is on the face.",
+            "hint_es": "Está en la cara.",
+            "character": "{jim_name}"
+          },
+          {
+            "id": 5,
+            "sentence": "The office looks very _____.",
+            "sentence_es": "La oficina se ve muy _____.",
+            "answer": "serious",
+            "options": [
+              "serious",
+              "short",
+              "snack"
+            ],
+            "hint": "People do not laugh.",
+            "hint_es": "Las personas no se ríen.",
+            "character": "{player_name}"
+          }
+        ]
+      }
+    },
+    {
+      "game_id": "ep20_game_03",
+      "game_type": "multiple_choice",
+      "title": "Episode Quiz",
+      "title_es": "Quiz del Episodio",
+      "instructions": "Answer questions about the episode",
+      "instructions_es": "Responde preguntas sobre el episodio",
+      "optional": true,
+      "unlocked_after_episode": true,
+      "time_limit_seconds": 120,
+      "xp_reward": 30,
+      "content": {
+        "items": [
+          {
+            "id": 1,
+            "question": "What does {boss_name} plan?",
+            "question_es": "¿Qué planea {boss_name}?",
+            "options": [
+              "A break",
+              "A meeting",
+              "A trip",
+              "A call"
+            ],
+            "options_es": [
+              "Un descanso",
+              "Una reunión",
+              "Un viaje",
+              "Una llamada"
+            ],
+            "correct_answer": 0,
+            "explanation": "{boss_name} plans a break for the office.",
+            "explanation_es": "{boss_name} planea un descanso para la oficina."
+          },
+          {
+            "id": 2,
+            "question": "Who brings food to the office?",
+            "question_es": "¿Quién trae comida a la oficina?",
+            "options": [
+              "{pam_name}",
+              "{jim_name}",
+              "{boss_name}",
+              "{player_name}"
+            ],
+            "options_es": [
+              "{pam_name}",
+              "{jim_name}",
+              "{boss_name}",
+              "{player_name}"
+            ],
+            "correct_answer": 0,
+            "explanation": "{pam_name} brings a snack.",
+            "explanation_es": "{pam_name} trae un snack."
+          },
+          {
+            "id": 3,
+            "question": "How does the office look during the break?",
+            "question_es": "¿Cómo se ve la oficina durante el descanso?",
+            "options": [
+              "Very serious",
+              "Very loud",
+              "Very empty",
+              "Very dark"
+            ],
+            "options_es": [
+              "Muy seria",
+              "Muy ruidosa",
+              "Muy vacía",
+              "Muy oscura"
+            ],
+            "correct_answer": 0,
+            "explanation": "The office looks very serious during the break.",
+            "explanation_es": "La oficina se ve muy seria durante el descanso."
+          }
+        ]
+      }
+    }
+  ],
+  "content_wrappers": {
+    "intro_text": {
+      "en": "Welcome to the office. This is a calm place with calm people. Very calm. Very serious. The boss says so, and the boss is always right.",
+      "es": "Bienvenido a la oficina. Este es un lugar tranquilo con personas tranquilas. Muy tranquilo. Muy serio. El jefe lo dice, y el jefe siempre tiene la razón."
+    },
+    "transition": {
+      "en": "Great job. Now you know the words. Now we use the words in the office. The office where a short break is never short.",
+      "es": "Buen trabajo. Ahora conoces las palabras. Ahora usamos las palabras en la oficina. La oficina donde un descanso corto nunca es corto."
+    },
+    "conclusion": {
+      "en": "Well done. You learned new words. You survived a short break. You smiled. You stayed serious. This is a normal day at the office.",
+      "es": "Bien hecho. Aprendiste nuevas palabras. Sobreviviste a un descanso corto. Sonreíste. Te mantuviste serio. Este es un día normal en la oficina."
+    },
+    "reflection_prompt": {
+      "question_en": "Write one sentence using the word 'break' or 'short'.",
+      "question_es": "Escribe una oración usando la palabra 'descanso' o 'corto'.",
+      "type": "free_text",
+      "optional": true,
+      "max_length": 100,
+      "vocab_practice": [
+        "break",
+        "short"
+      ]
+    }
+  },
+  "next_episode_preview": {
+    "preview_text_en": "Next time, {boss_name} has a big idea. The idea is simple. The idea is confusing. {jim_name} smiles. The office prepares for problems.",
+    "preview_text_es": "La próxima vez, {boss_name} tiene una gran idea. La idea es simple. La idea es confusa. {jim_name} sonríe. La oficina se prepara para problemas.",
+    "teaser_image": "/previews/ep_021.jpg"
+  },
+  "progression": {
+    "xp_earned_base": 50,
+    "xp_bonus_conditions": [
+      {
+        "condition": "complete_all_games",
+        "bonus_xp": 25
+      },
+      {
+        "condition": "perfect_choices",
+        "bonus_xp": 15
+      },
+      {
+        "condition": "write_reflection",
+        "bonus_xp": 10
+      }
+    ],
+    "unlocks": [
+      {
+        "type": "character",
+        "character_ids": [
+          "char_boss",
+          "char_jim",
+          "char_pam",
+          "char_dwight"
+        ]
+      },
+      {
+        "type": "location",
+        "location_ids": [
+          "Office floor",
+          "Reception area"
+        ]
+      }
+    ],
+    "achievements": [
+      {
+        "achievement_id": "short_break_survivor",
+        "name": "Short Break Survivor",
+        "name_es": "Sobreviviente del Descanso Corto",
+        "description": "You stay calm during a short break that is not short. You smile and you wait like a true office professional.",
+        "description_es": "Te mantienes calmado durante un descanso corto que no es corto. Sonríes y esperas como un verdadero profesional de oficina.",
+        "icon": "/achievements/short_break_survivor.png"
+      }
+    ]
+  },
+  "metadata": {
+    "created_date": "2026-01-27",
+    "version": "1.0",
+    "author": "Course Team",
+    "content_level": "beginner",
+    "estimated_words": 380,
+    "estimated_unique_vocabulary": 55,
+    "structure_type": "vocab_story_then_main_story"
+  }
+}

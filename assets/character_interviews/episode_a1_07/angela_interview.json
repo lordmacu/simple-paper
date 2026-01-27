@@ -1,0 +1,323 @@
+{
+  "character_interview": {
+    "character_name": "ANGELA",
+    "episode_number": 7,
+    "introduction": {
+      "text_en": "Hello. I am Angela. I like order and rules. I ask simple questions.",
+      "text_es": "Hola. Yo soy Angela. Me gusta el orden y las reglas. Hago preguntas simples."
+    },
+    "questions": [
+      {
+        "question_id": 1,
+        "question": {
+          "text_en": "How many?",
+          "text_es": "¿Cuántos?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "Five.",
+            "text_es": "Cinco.",
+            "is_correct": true,
+            "feedback_en": "Excellent! You answered with a correct number.",
+            "feedback_es": "¡Excelente! Respondiste con un número correcto.",
+            "grammar_explanation": "A single number correctly answers 'How many?'.",
+            "cultural_note": "A short, direct answer fits Angela’s style."
+          },
+          {
+            "option_id": "B",
+            "text_en": "How five.",
+            "text_es": "Cómo cinco.",
+            "is_correct": false,
+            "feedback_en": "Not quite. You used a question word in an answer. Say only the number.",
+            "feedback_es": "No del todo. Usaste una palabra de pregunta en la respuesta. Di solo el número.",
+            "grammar_explanation": "Answers do not use question words.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "Fifteen five.",
+            "text_es": "Quince cinco.",
+            "is_correct": false,
+            "feedback_en": "Not quite. You used two numbers. Use only one number.",
+            "feedback_es": "No del todo. Usaste dos números. Usa solo uno.",
+            "grammar_explanation": "Only one number is needed.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "One twenty ten.",
+            "text_es": "Uno veinte diez.",
+            "is_correct": false,
+            "feedback_en": "This does not make sense here. Use one clear number.",
+            "feedback_es": "Esto no tiene sentido aquí. Usa un solo número claro.",
+            "grammar_explanation": "Multiple numbers together are inappropriate.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      },
+      {
+        "question_id": 2,
+        "question": {
+          "text_en": "How many?",
+          "text_es": "¿Cuántos?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "One.",
+            "text_es": "Uno.",
+            "is_correct": true,
+            "feedback_en": "Good job! One number is a clear answer.",
+            "feedback_es": "¡Buen trabajo! Un número es una respuesta clara.",
+            "grammar_explanation": "Single numbers answer quantity questions.",
+            "cultural_note": "Clear and precise answers are appropriate."
+          },
+          {
+            "option_id": "B",
+            "text_en": "It one.",
+            "text_es": "Eso uno.",
+            "is_correct": false,
+            "feedback_en": "Not quite. Do not add extra words. Say the number only.",
+            "feedback_es": "No del todo. No agregues palabras extra. Di solo el número.",
+            "grammar_explanation": "Extra words are not needed.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "Ten five.",
+            "text_es": "Diez cinco.",
+            "is_correct": false,
+            "feedback_en": "Not quite. Two numbers together are incorrect.",
+            "feedback_es": "No del todo. Dos números juntos son incorrectos.",
+            "grammar_explanation": "Choose one number.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "Twenty fifteen four.",
+            "text_es": "Veinte quince cuatro.",
+            "is_correct": false,
+            "feedback_en": "This response is confusing and inappropriate.",
+            "feedback_es": "Esta respuesta es confusa e inapropiada.",
+            "grammar_explanation": "Too many numbers make no sense.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      },
+      {
+        "question_id": 3,
+        "question": {
+          "text_en": "How many?",
+          "text_es": "¿Cuántos?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "Ten.",
+            "text_es": "Diez.",
+            "is_correct": true,
+            "feedback_en": "Correct! Ten is a valid number.",
+            "feedback_es": "¡Correcto! Diez es un número válido.",
+            "grammar_explanation": "Numbers answer quantity questions.",
+            "cultural_note": "Short answers are polite here."
+          },
+          {
+            "option_id": "B",
+            "text_en": "How ten.",
+            "text_es": "Cómo diez.",
+            "is_correct": false,
+            "feedback_en": "Not quite. Remove the question word.",
+            "feedback_es": "No del todo. Quita la palabra de pregunta.",
+            "grammar_explanation": "Do not mix question and answer forms.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "Ten fifteen.",
+            "text_es": "Diez quince.",
+            "is_correct": false,
+            "feedback_en": "Not quite. Use only one number.",
+            "feedback_es": "No del todo. Usa solo un número.",
+            "grammar_explanation": "Only one quantity is needed.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "One one one.",
+            "text_es": "Uno uno uno.",
+            "is_correct": false,
+            "feedback_en": "This does not fit the question.",
+            "feedback_es": "Esto no encaja con la pregunta.",
+            "grammar_explanation": "Repeating numbers is inappropriate.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      },
+      {
+        "question_id": 4,
+        "question": {
+          "text_en": "It takes?",
+          "text_es": "¿Toma tiempo?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "It takes five.",
+            "text_es": "Toma cinco.",
+            "is_correct": true,
+            "feedback_en": "Excellent! You used 'It takes + number' correctly.",
+            "feedback_es": "¡Excelente! Usaste 'It takes + número' correctamente.",
+            "grammar_explanation": "Correct use of 'It takes' with a number.",
+            "cultural_note": "Clear and efficient, like Angela."
+          },
+          {
+            "option_id": "B",
+            "text_en": "It take five.",
+            "text_es": "Toma cinco.",
+            "is_correct": false,
+            "feedback_en": "Not quite. You missed the 's' in 'takes'.",
+            "feedback_es": "No del todo. Falta la 's' en 'takes'.",
+            "grammar_explanation": "Third person singular needs 'takes'.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "It takes five ten.",
+            "text_es": "Toma cinco diez.",
+            "is_correct": false,
+            "feedback_en": "Not quite. Use only one number.",
+            "feedback_es": "No del todo. Usa solo un número.",
+            "grammar_explanation": "Only one time value is correct.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "Five takes it.",
+            "text_es": "Cinco lo toma.",
+            "is_correct": false,
+            "feedback_en": "This word order does not make sense.",
+            "feedback_es": "Este orden de palabras no tiene sentido.",
+            "grammar_explanation": "Incorrect structure for time expressions.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      },
+      {
+        "question_id": 5,
+        "question": {
+          "text_en": "It takes?",
+          "text_es": "¿Toma tiempo?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "It takes ten.",
+            "text_es": "Toma diez.",
+            "is_correct": true,
+            "feedback_en": "Good! The structure is correct.",
+            "feedback_es": "¡Bien! La estructura es correcta.",
+            "grammar_explanation": "It takes + number shows time.",
+            "cultural_note": "A calm, direct answer fits."
+          },
+          {
+            "option_id": "B",
+            "text_en": "It takes.",
+            "text_es": "Toma.",
+            "is_correct": false,
+            "feedback_en": "Not quite. You need a number.",
+            "feedback_es": "No del todo. Necesitas un número.",
+            "grammar_explanation": "The structure is incomplete.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "It takes one five.",
+            "text_es": "Toma uno cinco.",
+            "is_correct": false,
+            "feedback_en": "Not quite. Use only one number.",
+            "feedback_es": "No del todo. Usa solo un número.",
+            "grammar_explanation": "Two numbers together are incorrect.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "Ten it takes five.",
+            "text_es": "Diez toma cinco.",
+            "is_correct": false,
+            "feedback_en": "This response is confusing.",
+            "feedback_es": "Esta respuesta es confusa.",
+            "grammar_explanation": "Word order is inappropriate.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      },
+      {
+        "question_id": 6,
+        "question": {
+          "text_en": "How many?",
+          "text_es": "¿Cuántos?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "Twenty.",
+            "text_es": "Veinte.",
+            "is_correct": true,
+            "feedback_en": "Excellent! Twenty is correct.",
+            "feedback_es": "¡Excelente! Veinte es correcto.",
+            "grammar_explanation": "A single number answers the question.",
+            "cultural_note": "Clear answers are appropriate."
+          },
+          {
+            "option_id": "B",
+            "text_en": "How many twenty.",
+            "text_es": "Cuántos veinte.",
+            "is_correct": false,
+            "feedback_en": "Not quite. This repeats the question form.",
+            "feedback_es": "No del todo. Repite la forma de pregunta.",
+            "grammar_explanation": "Do not answer with a question.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "Twenty five.",
+            "text_es": "Veinte cinco.",
+            "is_correct": false,
+            "feedback_en": "Not quite. Use only one number.",
+            "feedback_es": "No del todo. Usa solo un número.",
+            "grammar_explanation": "Two numbers together are incorrect.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "One ten fifteen.",
+            "text_es": "Uno diez quince.",
+            "is_correct": false,
+            "feedback_en": "This does not make sense.",
+            "feedback_es": "Esto no tiene sentido.",
+            "grammar_explanation": "Multiple numbers are inappropriate.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      }
+    ],
+    "pedagogical_focus": {
+      "grammar_points": [
+        "How many...?",
+        "It takes + number"
+      ],
+      "vocabulary_used": [
+        "one",
+        "two",
+        "three",
+        "four",
+        "five",
+        "ten",
+        "fifteen",
+        "twenty"
+      ],
+      "difficulty_level": "A1.1"
+    }
+  }
+}
