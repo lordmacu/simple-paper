@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../domain/models/progress/user_progress.dart';
+import '../../domain/models/progress/review_word_entry.dart';
 import '../../data/repositories/progress_repository_impl.dart';
 import '../../domain/repositories/i_progress_repository.dart';
 
@@ -56,6 +57,56 @@ final completeEpisodeProvider = Provider<Future<void> Function({
       xpEarned: xpEarned,
     );
     // Invalidar providers para refrescar UI
+    ref.invalidate(userProgressProvider);
+  };
+});
+
+/// Provider para agregar palabras a repasar
+final addReviewWordsProvider = Provider<Future<void> Function({
+  required List<String> words,
+  required String level,
+  required int episodeNumber,
+})>((ref) {
+  return ({
+    required List<String> words,
+    required String level,
+    required int episodeNumber,
+  }) async {
+    final repository = ref.read(progressRepositoryProvider);
+    await repository.addReviewWords(
+      words: words,
+      level: level,
+      episodeNumber: episodeNumber,
+    );
+    // Invalidar providers para refrescar UI
+    ref.invalidate(userProgressProvider);
+  };
+});
+
+/// Provider para obtener palabras a repasar
+final reviewWordsProvider = FutureProvider<List<ReviewWordEntry>>((ref) async {
+  final repository = ref.watch(progressRepositoryProvider);
+  return await repository.getReviewWords();
+});
+
+/// Provider para eliminar una palabra a repasar
+final removeReviewWordProvider = Provider<Future<void> Function({
+  required String word,
+  required String level,
+  required int episodeNumber,
+})>((ref) {
+  return ({
+    required String word,
+    required String level,
+    required int episodeNumber,
+  }) async {
+    final repository = ref.read(progressRepositoryProvider);
+    await repository.removeReviewWord(
+      word: word,
+      level: level,
+      episodeNumber: episodeNumber,
+    );
+    ref.invalidate(reviewWordsProvider);
     ref.invalidate(userProgressProvider);
   };
 });

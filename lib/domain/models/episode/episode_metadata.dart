@@ -8,6 +8,15 @@ part 'episode_metadata.g.dart';
 class EpisodeMetadata with _$EpisodeMetadata {
   /// Factory constructor
   const factory EpisodeMetadata({
+    /// Nombre corto de la sección (máximo 3 palabras)
+    @JsonKey(name: 'section_name') String? sectionName,
+
+    /// Nombre corto en español
+    @JsonKey(name: 'section_name_es') String? sectionNameEs,
+
+    /// Imagen representativa de la sección
+    String? image,
+
     /// Episode number (1-30)
     @JsonKey(name: 'episode_number') required int episodeNumber,
     

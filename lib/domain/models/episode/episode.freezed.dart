@@ -42,11 +42,12 @@ mixin _$Episode {
   VocabularyStory? get vocabularyStory => throw _privateConstructorUsedError;
 
   /// Escenas de la historia principal
-  List<Scene> get scenes => throw _privateConstructorUsedError;
+  @JsonKey(name: 'scenes')
+  ScenesSection get scenes => throw _privateConstructorUsedError;
 
   /// Juegos del episodio (mezclados: matching, fill_blank, multiple_choice)
-  @JsonKey(fromJson: _gamesFromJson)
-  List<dynamic> get games => throw _privateConstructorUsedError;
+  @JsonKey(name: 'games')
+  GamesSection get games => throw _privateConstructorUsedError;
 
   /// Preview del siguiente episodio (opcional)
   @JsonKey(name: 'next_episode_preview')
@@ -80,8 +81,8 @@ abstract class $EpisodeCopyWith<$Res> {
     @JsonKey(name: 'characters') CharactersInEpisode characters,
     @JsonKey(name: 'vocabulary_focus') VocabularyFocus vocabularyFocus,
     @JsonKey(name: 'vocabulary_story') VocabularyStory? vocabularyStory,
-    List<Scene> scenes,
-    @JsonKey(fromJson: _gamesFromJson) List<dynamic> games,
+    @JsonKey(name: 'scenes') ScenesSection scenes,
+    @JsonKey(name: 'games') GamesSection games,
     @JsonKey(name: 'next_episode_preview')
     NextEpisodePreview? nextEpisodePreview,
     Progression progression,
@@ -93,6 +94,8 @@ abstract class $EpisodeCopyWith<$Res> {
   $CharactersInEpisodeCopyWith<$Res> get characters;
   $VocabularyFocusCopyWith<$Res> get vocabularyFocus;
   $VocabularyStoryCopyWith<$Res>? get vocabularyStory;
+  $ScenesSectionCopyWith<$Res> get scenes;
+  $GamesSectionCopyWith<$Res> get games;
   $NextEpisodePreviewCopyWith<$Res>? get nextEpisodePreview;
   $ProgressionCopyWith<$Res> get progression;
   $ContentWrappersCopyWith<$Res> get contentWrappers;
@@ -149,11 +152,11 @@ class _$EpisodeCopyWithImpl<$Res, $Val extends Episode>
             scenes: null == scenes
                 ? _value.scenes
                 : scenes // ignore: cast_nullable_to_non_nullable
-                      as List<Scene>,
+                      as ScenesSection,
             games: null == games
                 ? _value.games
                 : games // ignore: cast_nullable_to_non_nullable
-                      as List<dynamic>,
+                      as GamesSection,
             nextEpisodePreview: freezed == nextEpisodePreview
                 ? _value.nextEpisodePreview
                 : nextEpisodePreview // ignore: cast_nullable_to_non_nullable
@@ -229,6 +232,26 @@ class _$EpisodeCopyWithImpl<$Res, $Val extends Episode>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
+  $ScenesSectionCopyWith<$Res> get scenes {
+    return $ScenesSectionCopyWith<$Res>(_value.scenes, (value) {
+      return _then(_value.copyWith(scenes: value) as $Val);
+    });
+  }
+
+  /// Create a copy of Episode
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $GamesSectionCopyWith<$Res> get games {
+    return $GamesSectionCopyWith<$Res>(_value.games, (value) {
+      return _then(_value.copyWith(games: value) as $Val);
+    });
+  }
+
+  /// Create a copy of Episode
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
   $NextEpisodePreviewCopyWith<$Res>? get nextEpisodePreview {
     if (_value.nextEpisodePreview == null) {
       return null;
@@ -276,8 +299,8 @@ abstract class _$$EpisodeImplCopyWith<$Res> implements $EpisodeCopyWith<$Res> {
     @JsonKey(name: 'characters') CharactersInEpisode characters,
     @JsonKey(name: 'vocabulary_focus') VocabularyFocus vocabularyFocus,
     @JsonKey(name: 'vocabulary_story') VocabularyStory? vocabularyStory,
-    List<Scene> scenes,
-    @JsonKey(fromJson: _gamesFromJson) List<dynamic> games,
+    @JsonKey(name: 'scenes') ScenesSection scenes,
+    @JsonKey(name: 'games') GamesSection games,
     @JsonKey(name: 'next_episode_preview')
     NextEpisodePreview? nextEpisodePreview,
     Progression progression,
@@ -294,6 +317,10 @@ abstract class _$$EpisodeImplCopyWith<$Res> implements $EpisodeCopyWith<$Res> {
   $VocabularyFocusCopyWith<$Res> get vocabularyFocus;
   @override
   $VocabularyStoryCopyWith<$Res>? get vocabularyStory;
+  @override
+  $ScenesSectionCopyWith<$Res> get scenes;
+  @override
+  $GamesSectionCopyWith<$Res> get games;
   @override
   $NextEpisodePreviewCopyWith<$Res>? get nextEpisodePreview;
   @override
@@ -350,13 +377,13 @@ class __$$EpisodeImplCopyWithImpl<$Res>
             : vocabularyStory // ignore: cast_nullable_to_non_nullable
                   as VocabularyStory?,
         scenes: null == scenes
-            ? _value._scenes
+            ? _value.scenes
             : scenes // ignore: cast_nullable_to_non_nullable
-                  as List<Scene>,
+                  as ScenesSection,
         games: null == games
-            ? _value._games
+            ? _value.games
             : games // ignore: cast_nullable_to_non_nullable
-                  as List<dynamic>,
+                  as GamesSection,
         nextEpisodePreview: freezed == nextEpisodePreview
             ? _value.nextEpisodePreview
             : nextEpisodePreview // ignore: cast_nullable_to_non_nullable
@@ -383,13 +410,12 @@ class _$EpisodeImpl implements _Episode {
     @JsonKey(name: 'characters') required this.characters,
     @JsonKey(name: 'vocabulary_focus') required this.vocabularyFocus,
     @JsonKey(name: 'vocabulary_story') this.vocabularyStory,
-    final List<Scene> scenes = const [],
-    @JsonKey(fromJson: _gamesFromJson) final List<dynamic> games = const [],
+    @JsonKey(name: 'scenes') required this.scenes,
+    @JsonKey(name: 'games') required this.games,
     @JsonKey(name: 'next_episode_preview') this.nextEpisodePreview,
     required this.progression,
     @JsonKey(name: 'content_wrappers') required this.contentWrappers,
-  }) : _scenes = scenes,
-       _games = games;
+  });
 
   factory _$EpisodeImpl.fromJson(Map<String, dynamic> json) =>
       _$$EpisodeImplFromJson(json);
@@ -420,28 +446,14 @@ class _$EpisodeImpl implements _Episode {
   final VocabularyStory? vocabularyStory;
 
   /// Escenas de la historia principal
-  final List<Scene> _scenes;
-
-  /// Escenas de la historia principal
   @override
-  @JsonKey()
-  List<Scene> get scenes {
-    if (_scenes is EqualUnmodifiableListView) return _scenes;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_scenes);
-  }
-
-  /// Juegos del episodio (mezclados: matching, fill_blank, multiple_choice)
-  final List<dynamic> _games;
+  @JsonKey(name: 'scenes')
+  final ScenesSection scenes;
 
   /// Juegos del episodio (mezclados: matching, fill_blank, multiple_choice)
   @override
-  @JsonKey(fromJson: _gamesFromJson)
-  List<dynamic> get games {
-    if (_games is EqualUnmodifiableListView) return _games;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_games);
-  }
+  @JsonKey(name: 'games')
+  final GamesSection games;
 
   /// Preview del siguiente episodio (opcional)
   @override
@@ -477,8 +489,8 @@ class _$EpisodeImpl implements _Episode {
                 other.vocabularyFocus == vocabularyFocus) &&
             (identical(other.vocabularyStory, vocabularyStory) ||
                 other.vocabularyStory == vocabularyStory) &&
-            const DeepCollectionEquality().equals(other._scenes, _scenes) &&
-            const DeepCollectionEquality().equals(other._games, _games) &&
+            (identical(other.scenes, scenes) || other.scenes == scenes) &&
+            (identical(other.games, games) || other.games == games) &&
             (identical(other.nextEpisodePreview, nextEpisodePreview) ||
                 other.nextEpisodePreview == nextEpisodePreview) &&
             (identical(other.progression, progression) ||
@@ -496,8 +508,8 @@ class _$EpisodeImpl implements _Episode {
     characters,
     vocabularyFocus,
     vocabularyStory,
-    const DeepCollectionEquality().hash(_scenes),
-    const DeepCollectionEquality().hash(_games),
+    scenes,
+    games,
     nextEpisodePreview,
     progression,
     contentWrappers,
@@ -526,8 +538,8 @@ abstract class _Episode implements Episode {
     @JsonKey(name: 'vocabulary_focus')
     required final VocabularyFocus vocabularyFocus,
     @JsonKey(name: 'vocabulary_story') final VocabularyStory? vocabularyStory,
-    final List<Scene> scenes,
-    @JsonKey(fromJson: _gamesFromJson) final List<dynamic> games,
+    @JsonKey(name: 'scenes') required final ScenesSection scenes,
+    @JsonKey(name: 'games') required final GamesSection games,
     @JsonKey(name: 'next_episode_preview')
     final NextEpisodePreview? nextEpisodePreview,
     required final Progression progression,
@@ -564,12 +576,13 @@ abstract class _Episode implements Episode {
 
   /// Escenas de la historia principal
   @override
-  List<Scene> get scenes;
+  @JsonKey(name: 'scenes')
+  ScenesSection get scenes;
 
   /// Juegos del episodio (mezclados: matching, fill_blank, multiple_choice)
   @override
-  @JsonKey(fromJson: _gamesFromJson)
-  List<dynamic> get games;
+  @JsonKey(name: 'games')
+  GamesSection get games;
 
   /// Preview del siguiente episodio (opcional)
   @override
@@ -590,6 +603,543 @@ abstract class _Episode implements Episode {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EpisodeImplCopyWith<_$EpisodeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+ScenesSection _$ScenesSectionFromJson(Map<String, dynamic> json) {
+  return _ScenesSection.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ScenesSection {
+  /// Nombre corto de la sección (máximo 3 palabras)
+  @JsonKey(name: 'section_name')
+  String? get sectionName => throw _privateConstructorUsedError;
+
+  /// Nombre corto en español
+  @JsonKey(name: 'section_name_es')
+  String? get sectionNameEs => throw _privateConstructorUsedError;
+
+  /// Imagen representativa de la sección
+  String? get image => throw _privateConstructorUsedError;
+
+  /// Lista de escenas
+  @JsonKey(name: 'data')
+  List<Scene> get data => throw _privateConstructorUsedError;
+
+  /// Serializes this ScenesSection to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of ScenesSection
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $ScenesSectionCopyWith<ScenesSection> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ScenesSectionCopyWith<$Res> {
+  factory $ScenesSectionCopyWith(
+    ScenesSection value,
+    $Res Function(ScenesSection) then,
+  ) = _$ScenesSectionCopyWithImpl<$Res, ScenesSection>;
+  @useResult
+  $Res call({
+    @JsonKey(name: 'section_name') String? sectionName,
+    @JsonKey(name: 'section_name_es') String? sectionNameEs,
+    String? image,
+    @JsonKey(name: 'data') List<Scene> data,
+  });
+}
+
+/// @nodoc
+class _$ScenesSectionCopyWithImpl<$Res, $Val extends ScenesSection>
+    implements $ScenesSectionCopyWith<$Res> {
+  _$ScenesSectionCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of ScenesSection
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? sectionName = freezed,
+    Object? sectionNameEs = freezed,
+    Object? image = freezed,
+    Object? data = null,
+  }) {
+    return _then(
+      _value.copyWith(
+            sectionName: freezed == sectionName
+                ? _value.sectionName
+                : sectionName // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            sectionNameEs: freezed == sectionNameEs
+                ? _value.sectionNameEs
+                : sectionNameEs // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            image: freezed == image
+                ? _value.image
+                : image // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            data: null == data
+                ? _value.data
+                : data // ignore: cast_nullable_to_non_nullable
+                      as List<Scene>,
+          )
+          as $Val,
+    );
+  }
+}
+
+/// @nodoc
+abstract class _$$ScenesSectionImplCopyWith<$Res>
+    implements $ScenesSectionCopyWith<$Res> {
+  factory _$$ScenesSectionImplCopyWith(
+    _$ScenesSectionImpl value,
+    $Res Function(_$ScenesSectionImpl) then,
+  ) = __$$ScenesSectionImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({
+    @JsonKey(name: 'section_name') String? sectionName,
+    @JsonKey(name: 'section_name_es') String? sectionNameEs,
+    String? image,
+    @JsonKey(name: 'data') List<Scene> data,
+  });
+}
+
+/// @nodoc
+class __$$ScenesSectionImplCopyWithImpl<$Res>
+    extends _$ScenesSectionCopyWithImpl<$Res, _$ScenesSectionImpl>
+    implements _$$ScenesSectionImplCopyWith<$Res> {
+  __$$ScenesSectionImplCopyWithImpl(
+    _$ScenesSectionImpl _value,
+    $Res Function(_$ScenesSectionImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of ScenesSection
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? sectionName = freezed,
+    Object? sectionNameEs = freezed,
+    Object? image = freezed,
+    Object? data = null,
+  }) {
+    return _then(
+      _$ScenesSectionImpl(
+        sectionName: freezed == sectionName
+            ? _value.sectionName
+            : sectionName // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        sectionNameEs: freezed == sectionNameEs
+            ? _value.sectionNameEs
+            : sectionNameEs // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        image: freezed == image
+            ? _value.image
+            : image // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        data: null == data
+            ? _value._data
+            : data // ignore: cast_nullable_to_non_nullable
+                  as List<Scene>,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ScenesSectionImpl implements _ScenesSection {
+  const _$ScenesSectionImpl({
+    @JsonKey(name: 'section_name') this.sectionName,
+    @JsonKey(name: 'section_name_es') this.sectionNameEs,
+    this.image,
+    @JsonKey(name: 'data') final List<Scene> data = const [],
+  }) : _data = data;
+
+  factory _$ScenesSectionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ScenesSectionImplFromJson(json);
+
+  /// Nombre corto de la sección (máximo 3 palabras)
+  @override
+  @JsonKey(name: 'section_name')
+  final String? sectionName;
+
+  /// Nombre corto en español
+  @override
+  @JsonKey(name: 'section_name_es')
+  final String? sectionNameEs;
+
+  /// Imagen representativa de la sección
+  @override
+  final String? image;
+
+  /// Lista de escenas
+  final List<Scene> _data;
+
+  /// Lista de escenas
+  @override
+  @JsonKey(name: 'data')
+  List<Scene> get data {
+    if (_data is EqualUnmodifiableListView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_data);
+  }
+
+  @override
+  String toString() {
+    return 'ScenesSection(sectionName: $sectionName, sectionNameEs: $sectionNameEs, image: $image, data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ScenesSectionImpl &&
+            (identical(other.sectionName, sectionName) ||
+                other.sectionName == sectionName) &&
+            (identical(other.sectionNameEs, sectionNameEs) ||
+                other.sectionNameEs == sectionNameEs) &&
+            (identical(other.image, image) || other.image == image) &&
+            const DeepCollectionEquality().equals(other._data, _data));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+    runtimeType,
+    sectionName,
+    sectionNameEs,
+    image,
+    const DeepCollectionEquality().hash(_data),
+  );
+
+  /// Create a copy of ScenesSection
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ScenesSectionImplCopyWith<_$ScenesSectionImpl> get copyWith =>
+      __$$ScenesSectionImplCopyWithImpl<_$ScenesSectionImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ScenesSectionImplToJson(this);
+  }
+}
+
+abstract class _ScenesSection implements ScenesSection {
+  const factory _ScenesSection({
+    @JsonKey(name: 'section_name') final String? sectionName,
+    @JsonKey(name: 'section_name_es') final String? sectionNameEs,
+    final String? image,
+    @JsonKey(name: 'data') final List<Scene> data,
+  }) = _$ScenesSectionImpl;
+
+  factory _ScenesSection.fromJson(Map<String, dynamic> json) =
+      _$ScenesSectionImpl.fromJson;
+
+  /// Nombre corto de la sección (máximo 3 palabras)
+  @override
+  @JsonKey(name: 'section_name')
+  String? get sectionName;
+
+  /// Nombre corto en español
+  @override
+  @JsonKey(name: 'section_name_es')
+  String? get sectionNameEs;
+
+  /// Imagen representativa de la sección
+  @override
+  String? get image;
+
+  /// Lista de escenas
+  @override
+  @JsonKey(name: 'data')
+  List<Scene> get data;
+
+  /// Create a copy of ScenesSection
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ScenesSectionImplCopyWith<_$ScenesSectionImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+GamesSection _$GamesSectionFromJson(Map<String, dynamic> json) {
+  return _GamesSection.fromJson(json);
+}
+
+/// @nodoc
+mixin _$GamesSection {
+  /// Nombre corto de la sección (máximo 3 palabras)
+  @JsonKey(name: 'section_name')
+  String? get sectionName => throw _privateConstructorUsedError;
+
+  /// Nombre corto en español
+  @JsonKey(name: 'section_name_es')
+  String? get sectionNameEs => throw _privateConstructorUsedError;
+
+  /// Imagen representativa de la sección
+  String? get image => throw _privateConstructorUsedError;
+
+  /// Lista de juegos
+  @JsonKey(name: 'data', fromJson: _gamesFromJson)
+  List<dynamic> get data => throw _privateConstructorUsedError;
+
+  /// Serializes this GamesSection to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of GamesSection
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $GamesSectionCopyWith<GamesSection> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GamesSectionCopyWith<$Res> {
+  factory $GamesSectionCopyWith(
+    GamesSection value,
+    $Res Function(GamesSection) then,
+  ) = _$GamesSectionCopyWithImpl<$Res, GamesSection>;
+  @useResult
+  $Res call({
+    @JsonKey(name: 'section_name') String? sectionName,
+    @JsonKey(name: 'section_name_es') String? sectionNameEs,
+    String? image,
+    @JsonKey(name: 'data', fromJson: _gamesFromJson) List<dynamic> data,
+  });
+}
+
+/// @nodoc
+class _$GamesSectionCopyWithImpl<$Res, $Val extends GamesSection>
+    implements $GamesSectionCopyWith<$Res> {
+  _$GamesSectionCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of GamesSection
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? sectionName = freezed,
+    Object? sectionNameEs = freezed,
+    Object? image = freezed,
+    Object? data = null,
+  }) {
+    return _then(
+      _value.copyWith(
+            sectionName: freezed == sectionName
+                ? _value.sectionName
+                : sectionName // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            sectionNameEs: freezed == sectionNameEs
+                ? _value.sectionNameEs
+                : sectionNameEs // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            image: freezed == image
+                ? _value.image
+                : image // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            data: null == data
+                ? _value.data
+                : data // ignore: cast_nullable_to_non_nullable
+                      as List<dynamic>,
+          )
+          as $Val,
+    );
+  }
+}
+
+/// @nodoc
+abstract class _$$GamesSectionImplCopyWith<$Res>
+    implements $GamesSectionCopyWith<$Res> {
+  factory _$$GamesSectionImplCopyWith(
+    _$GamesSectionImpl value,
+    $Res Function(_$GamesSectionImpl) then,
+  ) = __$$GamesSectionImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({
+    @JsonKey(name: 'section_name') String? sectionName,
+    @JsonKey(name: 'section_name_es') String? sectionNameEs,
+    String? image,
+    @JsonKey(name: 'data', fromJson: _gamesFromJson) List<dynamic> data,
+  });
+}
+
+/// @nodoc
+class __$$GamesSectionImplCopyWithImpl<$Res>
+    extends _$GamesSectionCopyWithImpl<$Res, _$GamesSectionImpl>
+    implements _$$GamesSectionImplCopyWith<$Res> {
+  __$$GamesSectionImplCopyWithImpl(
+    _$GamesSectionImpl _value,
+    $Res Function(_$GamesSectionImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of GamesSection
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? sectionName = freezed,
+    Object? sectionNameEs = freezed,
+    Object? image = freezed,
+    Object? data = null,
+  }) {
+    return _then(
+      _$GamesSectionImpl(
+        sectionName: freezed == sectionName
+            ? _value.sectionName
+            : sectionName // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        sectionNameEs: freezed == sectionNameEs
+            ? _value.sectionNameEs
+            : sectionNameEs // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        image: freezed == image
+            ? _value.image
+            : image // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        data: null == data
+            ? _value._data
+            : data // ignore: cast_nullable_to_non_nullable
+                  as List<dynamic>,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$GamesSectionImpl implements _GamesSection {
+  const _$GamesSectionImpl({
+    @JsonKey(name: 'section_name') this.sectionName,
+    @JsonKey(name: 'section_name_es') this.sectionNameEs,
+    this.image,
+    @JsonKey(name: 'data', fromJson: _gamesFromJson)
+    final List<dynamic> data = const [],
+  }) : _data = data;
+
+  factory _$GamesSectionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GamesSectionImplFromJson(json);
+
+  /// Nombre corto de la sección (máximo 3 palabras)
+  @override
+  @JsonKey(name: 'section_name')
+  final String? sectionName;
+
+  /// Nombre corto en español
+  @override
+  @JsonKey(name: 'section_name_es')
+  final String? sectionNameEs;
+
+  /// Imagen representativa de la sección
+  @override
+  final String? image;
+
+  /// Lista de juegos
+  final List<dynamic> _data;
+
+  /// Lista de juegos
+  @override
+  @JsonKey(name: 'data', fromJson: _gamesFromJson)
+  List<dynamic> get data {
+    if (_data is EqualUnmodifiableListView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_data);
+  }
+
+  @override
+  String toString() {
+    return 'GamesSection(sectionName: $sectionName, sectionNameEs: $sectionNameEs, image: $image, data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GamesSectionImpl &&
+            (identical(other.sectionName, sectionName) ||
+                other.sectionName == sectionName) &&
+            (identical(other.sectionNameEs, sectionNameEs) ||
+                other.sectionNameEs == sectionNameEs) &&
+            (identical(other.image, image) || other.image == image) &&
+            const DeepCollectionEquality().equals(other._data, _data));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+    runtimeType,
+    sectionName,
+    sectionNameEs,
+    image,
+    const DeepCollectionEquality().hash(_data),
+  );
+
+  /// Create a copy of GamesSection
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GamesSectionImplCopyWith<_$GamesSectionImpl> get copyWith =>
+      __$$GamesSectionImplCopyWithImpl<_$GamesSectionImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$GamesSectionImplToJson(this);
+  }
+}
+
+abstract class _GamesSection implements GamesSection {
+  const factory _GamesSection({
+    @JsonKey(name: 'section_name') final String? sectionName,
+    @JsonKey(name: 'section_name_es') final String? sectionNameEs,
+    final String? image,
+    @JsonKey(name: 'data', fromJson: _gamesFromJson) final List<dynamic> data,
+  }) = _$GamesSectionImpl;
+
+  factory _GamesSection.fromJson(Map<String, dynamic> json) =
+      _$GamesSectionImpl.fromJson;
+
+  /// Nombre corto de la sección (máximo 3 palabras)
+  @override
+  @JsonKey(name: 'section_name')
+  String? get sectionName;
+
+  /// Nombre corto en español
+  @override
+  @JsonKey(name: 'section_name_es')
+  String? get sectionNameEs;
+
+  /// Imagen representativa de la sección
+  @override
+  String? get image;
+
+  /// Lista de juegos
+  @override
+  @JsonKey(name: 'data', fromJson: _gamesFromJson)
+  List<dynamic> get data;
+
+  /// Create a copy of GamesSection
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$GamesSectionImplCopyWith<_$GamesSectionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

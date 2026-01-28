@@ -1,25 +1,39 @@
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:math';
 import '../../domain/models/progress/user_progress.dart';
+import '../../domain/models/progression/achievement.dart';
+import '../../domain/models/progress/review_word_entry.dart';
 import '../../domain/repositories/i_progress_repository.dart';
+import '../sources/review_words_db.dart';
+import '../services/achievement_service.dart';
 
 /// Implementación del repositorio de progreso usando SharedPreferences
 class ProgressRepositoryImpl implements IProgressRepository {
   static const String _progressKey = 'user_progress';
   final SharedPreferences _prefs;
+  final ReviewWordsDb _reviewWordsDb;
+  final AchievementService _achievementService;
 
-  ProgressRepositoryImpl(this._prefs);
+  ProgressRepositoryImpl(
+    this._prefs, {
+    ReviewWordsDb? reviewWordsDb,
+    AchievementService? achievementService,
+  })  : _reviewWordsDb = reviewWordsDb ?? ReviewWordsDb.instance,
+        _achievementService = achievementService ?? AchievementService();
 
   // Nuevos métodos para UserProgress
   Future<UserProgress> getUserProgress() async {
     final jsonString = _prefs.getString(_progressKey);
+    final reviewWords = await _reviewWordsDb.getAllWords();
     if (jsonString == null) {
       // Retornar progreso inicial (episodio 1 desbloqueado)
-      return const UserProgress(lastUnlockedEpisode: 1);
+      return UserProgress(lastUnlockedEpisode: 1, reviewWords: reviewWords);
     }
     
     final json = jsonDecode(jsonString) as Map<String, dynamic>;
-    return UserProgress.fromJson(json);
+    final progress = UserProgress.fromJson(json);
+    return progress.copyWith(reviewWords: reviewWords);
   }
 
   Future<void> saveUserProgress(UserProgress progress) async {
@@ -32,7 +46,7 @@ class ProgressRepositoryImpl implements IProgressRepository {
     required int starsEarned,
     required int xpEarned,
   }) async {
-    final currentProgress = await getUserProgress();
+    var currentProgress = await getUserProgress();
     
     final episodeProgress = EpisodeProgress(
       episodeNumber: episodeNumber,
@@ -47,15 +61,36 @@ class ProgressRepositoryImpl implements IProgressRepository {
     );
     updatedCompletedEpisodes[episodeNumber] = episodeProgress;
     
+    currentProgress = _updateStreak(currentProgress);
+
     // Desbloquear siguiente episodio si no está desbloqueado
     final nextEpisode = episodeNumber + 1;
     final lastUnlocked = currentProgress.lastUnlockedEpisode;
     
+    final totalXp = currentProgress.totalXp + xpEarned;
+    final newLevel = _calculateLevel(totalXp);
+
+    final newAchievements = _achievementService.evaluate(
+      totalXp: totalXp,
+      completedEpisodes: updatedCompletedEpisodes.length,
+      streak: currentProgress.currentStreak,
+      unlockedIds: currentProgress.achievements
+          .map((a) => a.id)
+          .whereType<String>()
+          .toList(),
+    );
+    final updatedAchievements = [
+      ...currentProgress.achievements,
+      ...newAchievements,
+    ];
+
     final newProgress = currentProgress.copyWith(
       completedEpisodes: updatedCompletedEpisodes,
       lastUnlockedEpisode: nextEpisode > lastUnlocked ? nextEpisode : lastUnlocked,
-      totalXp: currentProgress.totalXp + xpEarned,
+      totalXp: totalXp,
+      userLevel: newLevel,
       lastAccessDate: DateTime.now(),
+      achievements: updatedAchievements,
     );
     
     await saveUserProgress(newProgress);
@@ -91,8 +126,29 @@ class ProgressRepositoryImpl implements IProgressRepository {
 
   @override
   Future<void> addXP(int xp) async {
-    final progress = await getUserProgress();
-    final updated = progress.copyWith(totalXp: progress.totalXp + xp);
+    var progress = await getUserProgress();
+    progress = _updateStreak(progress);
+    final totalXp = progress.totalXp + xp;
+    final newLevel = _calculateLevel(totalXp);
+
+    final newAchievements = _achievementService.evaluate(
+      totalXp: totalXp,
+      completedEpisodes: progress.completedEpisodes.length,
+      streak: progress.currentStreak,
+      unlockedIds:
+          progress.achievements.map((a) => a.id).whereType<String>().toList(),
+    );
+    final updatedAchievements = [
+      ...progress.achievements,
+      ...newAchievements,
+    ];
+
+    final updated = progress.copyWith(
+      totalXp: totalXp,
+      userLevel: newLevel,
+      achievements: updatedAchievements,
+      lastAccessDate: DateTime.now(),
+    );
     await saveUserProgress(updated);
   }
 
@@ -104,8 +160,72 @@ class ProgressRepositoryImpl implements IProgressRepository {
 
   @override
   Future<List<String>> getUnlockedAchievements() async {
-    // TODO: Implementar cuando tengamos el sistema de achievements
-    return [];
+    final progress = await getUserProgress();
+    return progress.achievements.map((a) => a.id).whereType<String>().toList();
+  }
+
+  @override
+  Future<void> addReviewWords({
+    required List<String> words,
+    required String level,
+    required int episodeNumber,
+  }) async {
+    if (words.isEmpty) return;
+
+    final normalized = words
+        .map((word) => word.trim().toLowerCase())
+        .where((word) => word.isNotEmpty)
+        .toList();
+
+    if (normalized.isEmpty) return;
+
+    await _reviewWordsDb.addWords(
+      words: normalized,
+      level: level,
+      episodeNumber: episodeNumber,
+      increment: 1,
+    );
+
+    final progress = await getUserProgress();
+    final updatedSet = {
+      ...progress.reviewWords.map((word) => word.trim().toLowerCase()),
+      ...normalized,
+    };
+
+    final updated = progress.copyWith(
+      reviewWords: updatedSet.toList(),
+      lastAccessDate: DateTime.now(),
+    );
+
+    await saveUserProgress(updated);
+  }
+
+  @override
+  Future<List<ReviewWordEntry>> getReviewWords() async {
+    return _reviewWordsDb.getAllEntries();
+  }
+
+  @override
+  Future<void> removeReviewWord({
+    required String word,
+    required String level,
+    required int episodeNumber,
+  }) async {
+    await _reviewWordsDb.deleteEntry(
+      word: word,
+      level: level,
+      episodeNumber: episodeNumber,
+    );
+
+    final progress = await getUserProgress();
+    final updated = progress.copyWith(
+      reviewWords: progress.reviewWords
+          .where((w) => w.toLowerCase() != word.toLowerCase())
+          .toList(),
+      lastAccessDate: DateTime.now(),
+    );
+
+    await saveUserProgress(updated);
   }
 
   @override
@@ -138,5 +258,43 @@ class ProgressRepositoryImpl implements IProgressRepository {
   @override
   Future<void> resetProgress() async {
     await _prefs.remove(_progressKey);
+  }
+
+  int _calculateLevel(int totalXp) {
+    // Curva: nivel 1 inicia en 0 XP, cada nivel requiere 80 + 25*(n-1)
+    int level = 1;
+    int xpRemaining = totalXp;
+    while (true) {
+      final required = 80 + 25 * (level - 1);
+      if (xpRemaining < required) break;
+      xpRemaining -= required;
+      level++;
+    }
+    return level;
+  }
+
+  UserProgress _updateStreak(UserProgress progress) {
+    final now = DateTime.now();
+    final last = progress.lastAccessDate;
+    if (last == null) {
+      return progress.copyWith(currentStreak: 1, lastAccessDate: now);
+    }
+    final lastDate = DateTime(last.year, last.month, last.day);
+    final today = DateTime(now.year, now.month, now.day);
+    final diff = today.difference(lastDate).inDays;
+
+    int newStreak;
+    if (diff == 0) {
+      newStreak = progress.currentStreak; // mismo día, no cambia
+    } else if (diff == 1) {
+      newStreak = progress.currentStreak + 1;
+    } else {
+      newStreak = 1; // streak roto
+    }
+
+    return progress.copyWith(
+      currentStreak: newStreak,
+      lastAccessDate: now,
+    );
   }
 }

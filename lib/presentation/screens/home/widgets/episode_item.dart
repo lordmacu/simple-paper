@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../../../domain/models/episode/episode.dart';
 import '../../../../core/constants/app_colors.dart';
-
+import '../../lesson/main_story_screen.dart';
+import '../../vocabulary/vocabulary_story_screen.dart';
+import '../../games/games_screen.dart';
 /// Estado del episodio
 enum EpisodeStatus {
   locked,    // Bloqueado (no se puede acceder)
@@ -118,132 +120,331 @@ class _EpisodeItemState extends State<EpisodeItem>
     widget.onTap?.call();
   }
 
+  void _openStory({int? initialScene}) {
+    if (widget.status == EpisodeStatus.locked) return;
+    Navigator.of(context, rootNavigator: true).push(
+      MaterialPageRoute(
+        builder: (_) => MainStoryScreen(
+          episode: widget.episode,
+          initialSceneIndex: initialScene ?? 0,
+          onComplete: () => Navigator.pop(context),
+        ),
+      ),
+    );
+  }
+
+  void _openVocab() {
+    if (widget.status == EpisodeStatus.locked) return;
+    Navigator.of(context, rootNavigator: true).push(
+      MaterialPageRoute(
+        builder: (_) => VocabularyStoryScreen(episode: widget.episode),
+      ),
+    );
+  }
+
+  void _openGames({int initialIndex = 0}) {
+    if (widget.status == EpisodeStatus.locked) return;
+    Navigator.of(context, rootNavigator: true).push(
+      MaterialPageRoute(
+        builder: (_) => GamesScreen(
+          episode: widget.episode,
+          pointsFromStory: 0,
+          initialIndex: initialIndex,
+          onComplete: (_, __) => Navigator.pop(context),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return ScaleTransition(
-      scale: _scaleAnimation,
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        decoration: BoxDecoration(
-          color: _getCardColor(),
-          borderRadius: BorderRadius.circular(16),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.05),
-              offset: const Offset(0, 4),
-              blurRadius: 0,
+    return Column(
+      children: [
+        ScaleTransition(
+          scale: _scaleAnimation,
+          child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            decoration: BoxDecoration(
+              color: _getCardColor(),
+              borderRadius: BorderRadius.circular(16),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.05),
+                  offset: const Offset(0, 4),
+                  blurRadius: 0,
+                ),
+                BoxShadow(
+                  color: _getShadowColor(),
+                  offset: const Offset(0, 4),
+                  blurRadius: 0,
+                ),
+              ],
+              border: Border.all(color: AppColors.divider, width: 2),
             ),
-            BoxShadow(
-              color: _getShadowColor(),
-              offset: const Offset(0, 4),
-              blurRadius: 0,
-            ),
-          ],
-          border: Border.all(color: AppColors.divider, width: 2),
-        ),
-        child: Material(
-          color: Colors.transparent,
-          child: InkWell(
-            onTap: _handleTap,
-            borderRadius: BorderRadius.circular(16),
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Row(
-                children: [
-                  // Episode Number Circle
-                  Container(
-                    width: 50,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: _getCircleColor(),
-                      shape: BoxShape.circle,
-                      border: Border.all(color: Colors.white, width: 2),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
-                          offset: const Offset(0, 2),
-                          blurRadius: 4,
+            child: Material(
+              color: Colors.transparent,
+              child: InkWell(
+                onTap: _handleTap,
+                borderRadius: BorderRadius.circular(16),
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Row(
+                    children: [
+                      // Episode Number Circle
+                      Container(
+                        width: 50,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: _getCircleColor(),
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Colors.white, width: 2),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.1),
+                              offset: const Offset(0, 2),
+                              blurRadius: 4,
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                    child: Center(
-                      child: Text(
-                        '${widget.episode.episodeMetadata.episodeNumber}',
-                        style: TextStyle(
-                          color: widget.status == EpisodeStatus.locked
-                              ? Colors.grey.shade700
-                              : Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 16),
-
-                  // Title and Progress
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Episode ${widget.episode.episodeMetadata.episodeNumber}',
-                          style: TextStyle(
-                            color: widget.status == EpisodeStatus.locked
-                                ? Colors.grey.shade600
-                                : AppColors.textSecondary,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 12,
-                          ),
-                        ),
-                        const SizedBox(height: 4),
-                        Text(
-                          widget.episode.episodeMetadata.title,
-                          style: TextStyle(
-                            color: widget.status == EpisodeStatus.locked
-                                ? Colors.grey.shade700
-                                : AppColors.textPrimary,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          ),
-                        ),
-                        // Progress indicator (stars)
-                        if (widget.status == EpisodeStatus.completed ||
-                            widget.starsEarned > 0) ...[
-                          const SizedBox(height: 6),
-                          Row(
-                            children: List.generate(
-                              3,
-                              (index) => Padding(
-                                padding: const EdgeInsets.only(right: 4),
-                                child: Icon(
-                                  index < widget.starsEarned
-                                      ? Icons.star_rounded
-                                      : Icons.star_outline_rounded,
-                                  color: index < widget.starsEarned
-                                      ? AppColors.warningOrange
-                                      : Colors.grey.shade400,
-                                  size: 18,
-                                ),
-                              ),
+                        child: Center(
+                          child: Text(
+                            '${widget.episode.episodeMetadata.episodeNumber}',
+                            style: TextStyle(
+                              color: widget.status == EpisodeStatus.locked
+                                  ? Colors.grey.shade700
+                                  : Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
                             ),
                           ),
-                        ],
-                      ],
-                    ),
-                  ),
+                        ),
+                      ),
+                      const SizedBox(width: 16),
 
-                  // Status Icon (Locked/Unlocked/Completed)
-                  Icon(
-                    _getStatusIcon(),
-                    color: _getStatusIconColor(),
-                    size: 28,
+                      // Title and Progress
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Episode ${widget.episode.episodeMetadata.episodeNumber}',
+                              style: TextStyle(
+                                color: widget.status == EpisodeStatus.locked
+                                    ? Colors.grey.shade600
+                                    : AppColors.textSecondary,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              widget.episode.episodeMetadata.title,
+                              style: TextStyle(
+                                color: widget.status == EpisodeStatus.locked
+                                    ? Colors.grey.shade700
+                                    : AppColors.textPrimary,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            ),
+                            // Progress indicator (stars)
+                            if (widget.status == EpisodeStatus.completed ||
+                                widget.starsEarned > 0) ...[
+                              const SizedBox(height: 6),
+                              Row(
+                                children: List.generate(
+                                  3,
+                                  (index) => Padding(
+                                    padding: const EdgeInsets.only(right: 4),
+                                    child: Icon(
+                                      index < widget.starsEarned
+                                          ? Icons.star_rounded
+                                          : Icons.star_outline_rounded,
+                                      color: index < widget.starsEarned
+                                          ? AppColors.warningOrange
+                                          : Colors.grey.shade400,
+                                      size: 18,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ],
+                        ),
+                      ),
+
+                      // Status Icon (Locked/Unlocked/Completed)
+                      Icon(
+                        _getStatusIcon(),
+                        color: _getStatusIconColor(),
+                        size: 28,
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
           ),
         ),
+        if (widget.status != EpisodeStatus.locked)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: SectionPath(entries: _buildSections()),
+          ),
+      ],
+    );
+  }
+
+  List<SectionEntry> _buildSections() {
+    final sections = <Map<String, dynamic>>[];
+
+    sections.add({
+      'label': widget.episode.scenes.sectionNameEs ??
+          widget.episode.scenes.sectionName ??
+          'Historia',
+      'onTap': () => _openStory(),
+    });
+
+    for (final scene in widget.episode.scenes.data) {
+      final sceneName = (scene.sceneName?.isNotEmpty ?? false)
+          ? scene.sceneName!
+          : 'Scene ${scene.sceneNumber}';
+      sections.add({
+        'label': sceneName,
+        'onTap': () => _openStory(initialScene: scene.sceneNumber - 1),
+      });
+    }
+
+    sections.add({
+      'label': 'Vocabulario',
+      'onTap': _openVocab,
+    });
+
+    sections.add({
+      'label': widget.episode.games.sectionNameEs ??
+          widget.episode.games.sectionName ??
+          'Juegos',
+      'onTap': _openGames,
+    });
+
+    for (final entry in widget.episode.games.data.asMap().entries) {
+      final idx = entry.key;
+      final dynamic game = entry.value;
+      final gameTitle = (game.titleEs ?? game.title ?? 'Juego ${idx + 1}');
+      sections.add({
+        'label': gameTitle,
+        'onTap': () => _openGames(initialIndex: idx),
+      });
+    }
+
+    return sections.asMap().entries.map((entry) {
+      final idx = entry.key;
+      final data = entry.value;
+      return SectionEntry(
+        label: data['label'] as String,
+        onTap: data['onTap'] as VoidCallback,
+        index: idx,
+        total: sections.length,
+      );
+    }).toList();
+  }
+}
+
+class SectionPath extends StatelessWidget {
+  final List<SectionEntry> entries;
+
+  const SectionPath({required this.entries});
+
+  @override
+  Widget build(BuildContext context) {
+    const offsets = [-90.0, 0.0, 90.0, 0.0];
+    return Column(
+      children: entries.asMap().entries.map((entry) {
+        final i = entry.key;
+        final data = entry.value;
+        final isLast = i == entries.length - 1;
+        final offsetX = offsets[i % offsets.length];
+        return SizedBox(
+          width: double.infinity,
+          height: isLast ? 90 : 110,
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              Transform.translate(
+                offset: Offset(offsetX, 0),
+                child: _SectionButton(
+                  label: data.label,
+                  onTap: data.onTap,
+                ),
+              ),
+            ],
+          ),
+        );
+      }).toList(),
+    );
+  }
+}
+
+class SectionEntry {
+  final String label;
+  final VoidCallback onTap;
+  final int index;
+  final int total;
+
+  const SectionEntry({
+    required this.label,
+    required this.onTap,
+    required this.index,
+    required this.total,
+  });
+}
+
+class _SectionButton extends StatelessWidget {
+  final String label;
+  final VoidCallback onTap;
+
+  const _SectionButton({
+    required this.label,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(40),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            width: 56,
+            height: 56,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: AppColors.cardBackground,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.07),
+                  blurRadius: 8,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+              border: Border.all(color: AppColors.divider, width: 1),
+            ),
+          ),
+          const SizedBox(height: 8),
+          SizedBox(
+            width: 140,
+            child: Text(
+              label,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontWeight: FontWeight.w700,
+                color: AppColors.textPrimary,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -54,8 +54,7 @@ class EpisodeListScreen extends ConsumerWidget {
                   onTap: () {
                     // Navigate to Vocabulary Story screen
                     if (status != EpisodeStatus.locked) {
-                      Navigator.push(
-                        context,
+                      Navigator.of(context, rootNavigator: true).push(
                         MaterialPageRoute(
                           builder: (context) => VocabularyStoryScreen(
                             episode: episode,

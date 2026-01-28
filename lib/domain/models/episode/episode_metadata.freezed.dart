@@ -21,6 +21,17 @@ EpisodeMetadata _$EpisodeMetadataFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$EpisodeMetadata {
+  /// Nombre corto de la sección (máximo 3 palabras)
+  @JsonKey(name: 'section_name')
+  String? get sectionName => throw _privateConstructorUsedError;
+
+  /// Nombre corto en español
+  @JsonKey(name: 'section_name_es')
+  String? get sectionNameEs => throw _privateConstructorUsedError;
+
+  /// Imagen representativa de la sección
+  String? get image => throw _privateConstructorUsedError;
+
   /// Episode number (1-30)
   @JsonKey(name: 'episode_number')
   int get episodeNumber => throw _privateConstructorUsedError;
@@ -84,6 +95,9 @@ abstract class $EpisodeMetadataCopyWith<$Res> {
   ) = _$EpisodeMetadataCopyWithImpl<$Res, EpisodeMetadata>;
   @useResult
   $Res call({
+    @JsonKey(name: 'section_name') String? sectionName,
+    @JsonKey(name: 'section_name_es') String? sectionNameEs,
+    String? image,
     @JsonKey(name: 'episode_number') int episodeNumber,
     @JsonKey(name: 'episode_id') String episodeId,
     String title,
@@ -114,6 +128,9 @@ class _$EpisodeMetadataCopyWithImpl<$Res, $Val extends EpisodeMetadata>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? sectionName = freezed,
+    Object? sectionNameEs = freezed,
+    Object? image = freezed,
     Object? episodeNumber = null,
     Object? episodeId = null,
     Object? title = null,
@@ -129,6 +146,18 @@ class _$EpisodeMetadataCopyWithImpl<$Res, $Val extends EpisodeMetadata>
   }) {
     return _then(
       _value.copyWith(
+            sectionName: freezed == sectionName
+                ? _value.sectionName
+                : sectionName // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            sectionNameEs: freezed == sectionNameEs
+                ? _value.sectionNameEs
+                : sectionNameEs // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            image: freezed == image
+                ? _value.image
+                : image // ignore: cast_nullable_to_non_nullable
+                      as String?,
             episodeNumber: null == episodeNumber
                 ? _value.episodeNumber
                 : episodeNumber // ignore: cast_nullable_to_non_nullable
@@ -193,6 +222,9 @@ abstract class _$$EpisodeMetadataImplCopyWith<$Res>
   @override
   @useResult
   $Res call({
+    @JsonKey(name: 'section_name') String? sectionName,
+    @JsonKey(name: 'section_name_es') String? sectionNameEs,
+    String? image,
     @JsonKey(name: 'episode_number') int episodeNumber,
     @JsonKey(name: 'episode_id') String episodeId,
     String title,
@@ -222,6 +254,9 @@ class __$$EpisodeMetadataImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? sectionName = freezed,
+    Object? sectionNameEs = freezed,
+    Object? image = freezed,
     Object? episodeNumber = null,
     Object? episodeId = null,
     Object? title = null,
@@ -237,6 +272,18 @@ class __$$EpisodeMetadataImplCopyWithImpl<$Res>
   }) {
     return _then(
       _$EpisodeMetadataImpl(
+        sectionName: freezed == sectionName
+            ? _value.sectionName
+            : sectionName // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        sectionNameEs: freezed == sectionNameEs
+            ? _value.sectionNameEs
+            : sectionNameEs // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        image: freezed == image
+            ? _value.image
+            : image // ignore: cast_nullable_to_non_nullable
+                  as String?,
         episodeNumber: null == episodeNumber
             ? _value.episodeNumber
             : episodeNumber // ignore: cast_nullable_to_non_nullable
@@ -294,6 +341,9 @@ class __$$EpisodeMetadataImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$EpisodeMetadataImpl implements _EpisodeMetadata {
   const _$EpisodeMetadataImpl({
+    @JsonKey(name: 'section_name') this.sectionName,
+    @JsonKey(name: 'section_name_es') this.sectionNameEs,
+    this.image,
     @JsonKey(name: 'episode_number') required this.episodeNumber,
     @JsonKey(name: 'episode_id') required this.episodeId,
     required this.title,
@@ -310,6 +360,20 @@ class _$EpisodeMetadataImpl implements _EpisodeMetadata {
 
   factory _$EpisodeMetadataImpl.fromJson(Map<String, dynamic> json) =>
       _$$EpisodeMetadataImplFromJson(json);
+
+  /// Nombre corto de la sección (máximo 3 palabras)
+  @override
+  @JsonKey(name: 'section_name')
+  final String? sectionName;
+
+  /// Nombre corto en español
+  @override
+  @JsonKey(name: 'section_name_es')
+  final String? sectionNameEs;
+
+  /// Imagen representativa de la sección
+  @override
+  final String? image;
 
   /// Episode number (1-30)
   @override
@@ -377,7 +441,7 @@ class _$EpisodeMetadataImpl implements _EpisodeMetadata {
 
   @override
   String toString() {
-    return 'EpisodeMetadata(episodeNumber: $episodeNumber, episodeId: $episodeId, title: $title, titleEs: $titleEs, description: $description, descriptionEs: $descriptionEs, internalLevel: $internalLevel, estimatedTimeMinutes: $estimatedTimeMinutes, unlockRequirements: $unlockRequirements, tags: $tags, previousEpisode: $previousEpisode, nextEpisode: $nextEpisode)';
+    return 'EpisodeMetadata(sectionName: $sectionName, sectionNameEs: $sectionNameEs, image: $image, episodeNumber: $episodeNumber, episodeId: $episodeId, title: $title, titleEs: $titleEs, description: $description, descriptionEs: $descriptionEs, internalLevel: $internalLevel, estimatedTimeMinutes: $estimatedTimeMinutes, unlockRequirements: $unlockRequirements, tags: $tags, previousEpisode: $previousEpisode, nextEpisode: $nextEpisode)';
   }
 
   @override
@@ -385,6 +449,11 @@ class _$EpisodeMetadataImpl implements _EpisodeMetadata {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EpisodeMetadataImpl &&
+            (identical(other.sectionName, sectionName) ||
+                other.sectionName == sectionName) &&
+            (identical(other.sectionNameEs, sectionNameEs) ||
+                other.sectionNameEs == sectionNameEs) &&
+            (identical(other.image, image) || other.image == image) &&
             (identical(other.episodeNumber, episodeNumber) ||
                 other.episodeNumber == episodeNumber) &&
             (identical(other.episodeId, episodeId) ||
@@ -412,6 +481,9 @@ class _$EpisodeMetadataImpl implements _EpisodeMetadata {
   @override
   int get hashCode => Object.hash(
     runtimeType,
+    sectionName,
+    sectionNameEs,
+    image,
     episodeNumber,
     episodeId,
     title,
@@ -445,6 +517,9 @@ class _$EpisodeMetadataImpl implements _EpisodeMetadata {
 
 abstract class _EpisodeMetadata implements EpisodeMetadata {
   const factory _EpisodeMetadata({
+    @JsonKey(name: 'section_name') final String? sectionName,
+    @JsonKey(name: 'section_name_es') final String? sectionNameEs,
+    final String? image,
     @JsonKey(name: 'episode_number') required final int episodeNumber,
     @JsonKey(name: 'episode_id') required final String episodeId,
     required final String title,
@@ -462,6 +537,20 @@ abstract class _EpisodeMetadata implements EpisodeMetadata {
 
   factory _EpisodeMetadata.fromJson(Map<String, dynamic> json) =
       _$EpisodeMetadataImpl.fromJson;
+
+  /// Nombre corto de la sección (máximo 3 palabras)
+  @override
+  @JsonKey(name: 'section_name')
+  String? get sectionName;
+
+  /// Nombre corto en español
+  @override
+  @JsonKey(name: 'section_name_es')
+  String? get sectionNameEs;
+
+  /// Imagen representativa de la sección
+  @override
+  String? get image;
 
   /// Episode number (1-30)
   @override

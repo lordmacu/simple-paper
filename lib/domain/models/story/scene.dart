@@ -14,6 +14,12 @@ class Scene with _$Scene {
     
     /// Número de la escena en el episodio
     @JsonKey(name: 'scene_number') required int sceneNumber,
+
+    /// Nombre corto de la escena en inglés
+    @JsonKey(name: 'scene_name') String? sceneName,
+
+    /// Nombre corto en español
+    @JsonKey(name: 'scene_name_es') String? sceneNameEs,
     
     /// Ubicación donde ocurre la escena en inglés
     required String location,

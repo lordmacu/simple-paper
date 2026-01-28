@@ -3,25 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:office_app/presentation/screens/main_screen.dart';
 import 'package:office_app/presentation/screens/home/home_screen.dart';
-// Import wrappers for other tabs to avoid errors, or create placeholders.
-// Efficient way: Create placeholders inline or in separate files.
-// For now, let's create simple placeholders inline in the router or separate files if needed.
-// Better practice: separate files.
-
-// Placeholder screens
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
-  @override
-  Widget build(BuildContext context) =>
-      const Scaffold(body: Center(child: Text('Profile')));
-}
-
-class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({super.key});
-  @override
-  Widget build(BuildContext context) =>
-      const Scaffold(body: Center(child: Text('Settings')));
-}
+import 'package:office_app/presentation/screens/profile/profile_screen.dart';
+import 'package:office_app/presentation/screens/settings/settings_screen.dart';
 
 final appRouterProvider = Provider<GoRouter>((ref) {
   return GoRouter(
@@ -35,20 +18,47 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: '/home',
             pageBuilder: (context, state) =>
-                const NoTransitionPage(child: HomeScreen()),
+                _fadeSlidePage(const HomeScreen(), state),
           ),
           GoRoute(
             path: '/profile',
             pageBuilder: (context, state) =>
-                const NoTransitionPage(child: ProfileScreen()),
+                _fadeSlidePage(const ProfileScreen(), state),
           ),
           GoRoute(
             path: '/settings',
             pageBuilder: (context, state) =>
-                const NoTransitionPage(child: SettingsScreen()),
+                _fadeSlidePage(const SettingsScreen(), state),
           ),
         ],
       ),
     ],
   );
 });
+
+CustomTransitionPage _fadeSlidePage(Widget child, GoRouterState state) {
+  return CustomTransitionPage(
+    key: state.pageKey,
+    transitionDuration: const Duration(milliseconds: 320),
+    child: child,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      final curved = CurvedAnimation(
+        parent: animation,
+        curve: Curves.easeOutCubic,
+        reverseCurve: Curves.easeInCubic,
+      );
+      final offsetAnimation = Tween<Offset>(
+        begin: const Offset(0.04, 0.02),
+        end: Offset.zero,
+      ).animate(curved);
+
+      return FadeTransition(
+        opacity: curved,
+        child: SlideTransition(
+          position: offsetAnimation,
+          child: child,
+        ),
+      );
+    },
+  );
+}

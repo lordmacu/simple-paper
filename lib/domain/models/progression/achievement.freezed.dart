@@ -21,26 +21,11 @@ Achievement _$AchievementFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Achievement {
-  /// ID único del logro
-  @JsonKey(name: 'achievement_id')
-  String get achievementId => throw _privateConstructorUsedError;
-
-  /// Nombre del logro en inglés
+  String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-
-  /// Nombre en español
-  @JsonKey(name: 'name_es')
-  String get nameEs => throw _privateConstructorUsedError;
-
-  /// Descripción del logro en inglés
   String get description => throw _privateConstructorUsedError;
-
-  /// Descripción en español
-  @JsonKey(name: 'description_es')
-  String get descriptionEs => throw _privateConstructorUsedError;
-
-  /// URL del icono del logro
-  String get icon => throw _privateConstructorUsedError;
+  bool get unlocked => throw _privateConstructorUsedError;
+  DateTime? get unlockedAt => throw _privateConstructorUsedError;
 
   /// Serializes this Achievement to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -60,12 +45,11 @@ abstract class $AchievementCopyWith<$Res> {
   ) = _$AchievementCopyWithImpl<$Res, Achievement>;
   @useResult
   $Res call({
-    @JsonKey(name: 'achievement_id') String achievementId,
+    String id,
     String name,
-    @JsonKey(name: 'name_es') String nameEs,
     String description,
-    @JsonKey(name: 'description_es') String descriptionEs,
-    String icon,
+    bool unlocked,
+    DateTime? unlockedAt,
   });
 }
 
@@ -84,39 +68,34 @@ class _$AchievementCopyWithImpl<$Res, $Val extends Achievement>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? achievementId = null,
+    Object? id = null,
     Object? name = null,
-    Object? nameEs = null,
     Object? description = null,
-    Object? descriptionEs = null,
-    Object? icon = null,
+    Object? unlocked = null,
+    Object? unlockedAt = freezed,
   }) {
     return _then(
       _value.copyWith(
-            achievementId: null == achievementId
-                ? _value.achievementId
-                : achievementId // ignore: cast_nullable_to_non_nullable
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
                       as String,
             name: null == name
                 ? _value.name
                 : name // ignore: cast_nullable_to_non_nullable
                       as String,
-            nameEs: null == nameEs
-                ? _value.nameEs
-                : nameEs // ignore: cast_nullable_to_non_nullable
-                      as String,
             description: null == description
                 ? _value.description
                 : description // ignore: cast_nullable_to_non_nullable
                       as String,
-            descriptionEs: null == descriptionEs
-                ? _value.descriptionEs
-                : descriptionEs // ignore: cast_nullable_to_non_nullable
-                      as String,
-            icon: null == icon
-                ? _value.icon
-                : icon // ignore: cast_nullable_to_non_nullable
-                      as String,
+            unlocked: null == unlocked
+                ? _value.unlocked
+                : unlocked // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            unlockedAt: freezed == unlockedAt
+                ? _value.unlockedAt
+                : unlockedAt // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
           )
           as $Val,
     );
@@ -133,12 +112,11 @@ abstract class _$$AchievementImplCopyWith<$Res>
   @override
   @useResult
   $Res call({
-    @JsonKey(name: 'achievement_id') String achievementId,
+    String id,
     String name,
-    @JsonKey(name: 'name_es') String nameEs,
     String description,
-    @JsonKey(name: 'description_es') String descriptionEs,
-    String icon,
+    bool unlocked,
+    DateTime? unlockedAt,
   });
 }
 
@@ -156,39 +134,34 @@ class __$$AchievementImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? achievementId = null,
+    Object? id = null,
     Object? name = null,
-    Object? nameEs = null,
     Object? description = null,
-    Object? descriptionEs = null,
-    Object? icon = null,
+    Object? unlocked = null,
+    Object? unlockedAt = freezed,
   }) {
     return _then(
       _$AchievementImpl(
-        achievementId: null == achievementId
-            ? _value.achievementId
-            : achievementId // ignore: cast_nullable_to_non_nullable
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
                   as String,
         name: null == name
             ? _value.name
             : name // ignore: cast_nullable_to_non_nullable
                   as String,
-        nameEs: null == nameEs
-            ? _value.nameEs
-            : nameEs // ignore: cast_nullable_to_non_nullable
-                  as String,
         description: null == description
             ? _value.description
             : description // ignore: cast_nullable_to_non_nullable
                   as String,
-        descriptionEs: null == descriptionEs
-            ? _value.descriptionEs
-            : descriptionEs // ignore: cast_nullable_to_non_nullable
-                  as String,
-        icon: null == icon
-            ? _value.icon
-            : icon // ignore: cast_nullable_to_non_nullable
-                  as String,
+        unlocked: null == unlocked
+            ? _value.unlocked
+            : unlocked // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        unlockedAt: freezed == unlockedAt
+            ? _value.unlockedAt
+            : unlockedAt // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
       ),
     );
   }
@@ -198,47 +171,31 @@ class __$$AchievementImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AchievementImpl implements _Achievement {
   const _$AchievementImpl({
-    @JsonKey(name: 'achievement_id') required this.achievementId,
+    required this.id,
     required this.name,
-    @JsonKey(name: 'name_es') required this.nameEs,
     required this.description,
-    @JsonKey(name: 'description_es') required this.descriptionEs,
-    required this.icon,
+    this.unlocked = false,
+    this.unlockedAt,
   });
 
   factory _$AchievementImpl.fromJson(Map<String, dynamic> json) =>
       _$$AchievementImplFromJson(json);
 
-  /// ID único del logro
   @override
-  @JsonKey(name: 'achievement_id')
-  final String achievementId;
-
-  /// Nombre del logro en inglés
+  final String id;
   @override
   final String name;
-
-  /// Nombre en español
-  @override
-  @JsonKey(name: 'name_es')
-  final String nameEs;
-
-  /// Descripción del logro en inglés
   @override
   final String description;
-
-  /// Descripción en español
   @override
-  @JsonKey(name: 'description_es')
-  final String descriptionEs;
-
-  /// URL del icono del logro
+  @JsonKey()
+  final bool unlocked;
   @override
-  final String icon;
+  final DateTime? unlockedAt;
 
   @override
   String toString() {
-    return 'Achievement(achievementId: $achievementId, name: $name, nameEs: $nameEs, description: $description, descriptionEs: $descriptionEs, icon: $icon)';
+    return 'Achievement(id: $id, name: $name, description: $description, unlocked: $unlocked, unlockedAt: $unlockedAt)';
   }
 
   @override
@@ -246,28 +203,20 @@ class _$AchievementImpl implements _Achievement {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AchievementImpl &&
-            (identical(other.achievementId, achievementId) ||
-                other.achievementId == achievementId) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.nameEs, nameEs) || other.nameEs == nameEs) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.descriptionEs, descriptionEs) ||
-                other.descriptionEs == descriptionEs) &&
-            (identical(other.icon, icon) || other.icon == icon));
+            (identical(other.unlocked, unlocked) ||
+                other.unlocked == unlocked) &&
+            (identical(other.unlockedAt, unlockedAt) ||
+                other.unlockedAt == unlockedAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    achievementId,
-    name,
-    nameEs,
-    description,
-    descriptionEs,
-    icon,
-  );
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, description, unlocked, unlockedAt);
 
   /// Create a copy of Achievement
   /// with the given fields replaced by the non-null parameter values.
@@ -285,43 +234,26 @@ class _$AchievementImpl implements _Achievement {
 
 abstract class _Achievement implements Achievement {
   const factory _Achievement({
-    @JsonKey(name: 'achievement_id') required final String achievementId,
+    required final String id,
     required final String name,
-    @JsonKey(name: 'name_es') required final String nameEs,
     required final String description,
-    @JsonKey(name: 'description_es') required final String descriptionEs,
-    required final String icon,
+    final bool unlocked,
+    final DateTime? unlockedAt,
   }) = _$AchievementImpl;
 
   factory _Achievement.fromJson(Map<String, dynamic> json) =
       _$AchievementImpl.fromJson;
 
-  /// ID único del logro
   @override
-  @JsonKey(name: 'achievement_id')
-  String get achievementId;
-
-  /// Nombre del logro en inglés
+  String get id;
   @override
   String get name;
-
-  /// Nombre en español
-  @override
-  @JsonKey(name: 'name_es')
-  String get nameEs;
-
-  /// Descripción del logro en inglés
   @override
   String get description;
-
-  /// Descripción en español
   @override
-  @JsonKey(name: 'description_es')
-  String get descriptionEs;
-
-  /// URL del icono del logro
+  bool get unlocked;
   @override
-  String get icon;
+  DateTime? get unlockedAt;
 
   /// Create a copy of Achievement
   /// with the given fields replaced by the non-null parameter values.

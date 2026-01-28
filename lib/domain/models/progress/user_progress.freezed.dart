@@ -34,6 +34,13 @@ mixin _$UserProgress {
   /// XP total acumulado
   int get totalXp => throw _privateConstructorUsedError;
 
+  /// Logros
+  List<Achievement> get achievements => throw _privateConstructorUsedError;
+
+  /// Palabras para repasar
+  @JsonKey(name: 'review_words')
+  List<String> get reviewWords => throw _privateConstructorUsedError;
+
   /// Streak actual (días consecutivos)
   int get currentStreak => throw _privateConstructorUsedError;
 
@@ -62,6 +69,8 @@ abstract class $UserProgressCopyWith<$Res> {
     int lastUnlockedEpisode,
     int userLevel,
     int totalXp,
+    List<Achievement> achievements,
+    @JsonKey(name: 'review_words') List<String> reviewWords,
     int currentStreak,
     DateTime? lastAccessDate,
   });
@@ -86,6 +95,8 @@ class _$UserProgressCopyWithImpl<$Res, $Val extends UserProgress>
     Object? lastUnlockedEpisode = null,
     Object? userLevel = null,
     Object? totalXp = null,
+    Object? achievements = null,
+    Object? reviewWords = null,
     Object? currentStreak = null,
     Object? lastAccessDate = freezed,
   }) {
@@ -107,6 +118,14 @@ class _$UserProgressCopyWithImpl<$Res, $Val extends UserProgress>
                 ? _value.totalXp
                 : totalXp // ignore: cast_nullable_to_non_nullable
                       as int,
+            achievements: null == achievements
+                ? _value.achievements
+                : achievements // ignore: cast_nullable_to_non_nullable
+                      as List<Achievement>,
+            reviewWords: null == reviewWords
+                ? _value.reviewWords
+                : reviewWords // ignore: cast_nullable_to_non_nullable
+                      as List<String>,
             currentStreak: null == currentStreak
                 ? _value.currentStreak
                 : currentStreak // ignore: cast_nullable_to_non_nullable
@@ -135,6 +154,8 @@ abstract class _$$UserProgressImplCopyWith<$Res>
     int lastUnlockedEpisode,
     int userLevel,
     int totalXp,
+    List<Achievement> achievements,
+    @JsonKey(name: 'review_words') List<String> reviewWords,
     int currentStreak,
     DateTime? lastAccessDate,
   });
@@ -158,6 +179,8 @@ class __$$UserProgressImplCopyWithImpl<$Res>
     Object? lastUnlockedEpisode = null,
     Object? userLevel = null,
     Object? totalXp = null,
+    Object? achievements = null,
+    Object? reviewWords = null,
     Object? currentStreak = null,
     Object? lastAccessDate = freezed,
   }) {
@@ -179,6 +202,14 @@ class __$$UserProgressImplCopyWithImpl<$Res>
             ? _value.totalXp
             : totalXp // ignore: cast_nullable_to_non_nullable
                   as int,
+        achievements: null == achievements
+            ? _value._achievements
+            : achievements // ignore: cast_nullable_to_non_nullable
+                  as List<Achievement>,
+        reviewWords: null == reviewWords
+            ? _value._reviewWords
+            : reviewWords // ignore: cast_nullable_to_non_nullable
+                  as List<String>,
         currentStreak: null == currentStreak
             ? _value.currentStreak
             : currentStreak // ignore: cast_nullable_to_non_nullable
@@ -200,9 +231,13 @@ class _$UserProgressImpl implements _UserProgress {
     this.lastUnlockedEpisode = 1,
     this.userLevel = 1,
     this.totalXp = 0,
+    final List<Achievement> achievements = const [],
+    @JsonKey(name: 'review_words') final List<String> reviewWords = const [],
     this.currentStreak = 0,
     this.lastAccessDate,
-  }) : _completedEpisodes = completedEpisodes;
+  }) : _completedEpisodes = completedEpisodes,
+       _achievements = achievements,
+       _reviewWords = reviewWords;
 
   factory _$UserProgressImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserProgressImplFromJson(json);
@@ -235,6 +270,30 @@ class _$UserProgressImpl implements _UserProgress {
   @JsonKey()
   final int totalXp;
 
+  /// Logros
+  final List<Achievement> _achievements;
+
+  /// Logros
+  @override
+  @JsonKey()
+  List<Achievement> get achievements {
+    if (_achievements is EqualUnmodifiableListView) return _achievements;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_achievements);
+  }
+
+  /// Palabras para repasar
+  final List<String> _reviewWords;
+
+  /// Palabras para repasar
+  @override
+  @JsonKey(name: 'review_words')
+  List<String> get reviewWords {
+    if (_reviewWords is EqualUnmodifiableListView) return _reviewWords;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_reviewWords);
+  }
+
   /// Streak actual (días consecutivos)
   @override
   @JsonKey()
@@ -246,7 +305,7 @@ class _$UserProgressImpl implements _UserProgress {
 
   @override
   String toString() {
-    return 'UserProgress(completedEpisodes: $completedEpisodes, lastUnlockedEpisode: $lastUnlockedEpisode, userLevel: $userLevel, totalXp: $totalXp, currentStreak: $currentStreak, lastAccessDate: $lastAccessDate)';
+    return 'UserProgress(completedEpisodes: $completedEpisodes, lastUnlockedEpisode: $lastUnlockedEpisode, userLevel: $userLevel, totalXp: $totalXp, achievements: $achievements, reviewWords: $reviewWords, currentStreak: $currentStreak, lastAccessDate: $lastAccessDate)';
   }
 
   @override
@@ -263,6 +322,14 @@ class _$UserProgressImpl implements _UserProgress {
             (identical(other.userLevel, userLevel) ||
                 other.userLevel == userLevel) &&
             (identical(other.totalXp, totalXp) || other.totalXp == totalXp) &&
+            const DeepCollectionEquality().equals(
+              other._achievements,
+              _achievements,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other._reviewWords,
+              _reviewWords,
+            ) &&
             (identical(other.currentStreak, currentStreak) ||
                 other.currentStreak == currentStreak) &&
             (identical(other.lastAccessDate, lastAccessDate) ||
@@ -277,6 +344,8 @@ class _$UserProgressImpl implements _UserProgress {
     lastUnlockedEpisode,
     userLevel,
     totalXp,
+    const DeepCollectionEquality().hash(_achievements),
+    const DeepCollectionEquality().hash(_reviewWords),
     currentStreak,
     lastAccessDate,
   );
@@ -301,6 +370,8 @@ abstract class _UserProgress implements UserProgress {
     final int lastUnlockedEpisode,
     final int userLevel,
     final int totalXp,
+    final List<Achievement> achievements,
+    @JsonKey(name: 'review_words') final List<String> reviewWords,
     final int currentStreak,
     final DateTime? lastAccessDate,
   }) = _$UserProgressImpl;
@@ -323,6 +394,15 @@ abstract class _UserProgress implements UserProgress {
   /// XP total acumulado
   @override
   int get totalXp;
+
+  /// Logros
+  @override
+  List<Achievement> get achievements;
+
+  /// Palabras para repasar
+  @override
+  @JsonKey(name: 'review_words')
+  List<String> get reviewWords;
 
   /// Streak actual (días consecutivos)
   @override

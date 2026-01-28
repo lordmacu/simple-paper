@@ -25,14 +25,8 @@ _$EpisodeImpl _$$EpisodeImplFromJson(Map<String, dynamic> json) =>
           : VocabularyStory.fromJson(
               json['vocabulary_story'] as Map<String, dynamic>,
             ),
-      scenes:
-          (json['scenes'] as List<dynamic>?)
-              ?.map((e) => Scene.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          const [],
-      games: json['games'] == null
-          ? const []
-          : _gamesFromJson(json['games'] as List),
+      scenes: ScenesSection.fromJson(json['scenes'] as Map<String, dynamic>),
+      games: GamesSection.fromJson(json['games'] as Map<String, dynamic>),
       nextEpisodePreview: json['next_episode_preview'] == null
           ? null
           : NextEpisodePreview.fromJson(
@@ -58,6 +52,44 @@ Map<String, dynamic> _$$EpisodeImplToJson(_$EpisodeImpl instance) =>
       'next_episode_preview': instance.nextEpisodePreview,
       'progression': instance.progression,
       'content_wrappers': instance.contentWrappers,
+    };
+
+_$ScenesSectionImpl _$$ScenesSectionImplFromJson(Map<String, dynamic> json) =>
+    _$ScenesSectionImpl(
+      sectionName: json['section_name'] as String?,
+      sectionNameEs: json['section_name_es'] as String?,
+      image: json['image'] as String?,
+      data:
+          (json['data'] as List<dynamic>?)
+              ?.map((e) => Scene.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+    );
+
+Map<String, dynamic> _$$ScenesSectionImplToJson(_$ScenesSectionImpl instance) =>
+    <String, dynamic>{
+      'section_name': instance.sectionName,
+      'section_name_es': instance.sectionNameEs,
+      'image': instance.image,
+      'data': instance.data,
+    };
+
+_$GamesSectionImpl _$$GamesSectionImplFromJson(Map<String, dynamic> json) =>
+    _$GamesSectionImpl(
+      sectionName: json['section_name'] as String?,
+      sectionNameEs: json['section_name_es'] as String?,
+      image: json['image'] as String?,
+      data: json['data'] == null
+          ? const []
+          : _gamesFromJson(json['data'] as List),
+    );
+
+Map<String, dynamic> _$$GamesSectionImplToJson(_$GamesSectionImpl instance) =>
+    <String, dynamic>{
+      'section_name': instance.sectionName,
+      'section_name_es': instance.sectionNameEs,
+      'image': instance.image,
+      'data': instance.data,
     };
 
 _$CharactersInEpisodeImpl _$$CharactersInEpisodeImplFromJson(

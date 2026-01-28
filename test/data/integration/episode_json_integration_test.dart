@@ -22,7 +22,7 @@ void main() {
 
       expect(episode, isNotNull);
       expect(episode.episodeMetadata.episodeNumber, 1);
-      expect(episode.scenes, isNotEmpty);
+      expect(episode.scenes.data, isNotEmpty);
       expect(episode.characters.appearingInEpisode, isNotEmpty);
     });
   });

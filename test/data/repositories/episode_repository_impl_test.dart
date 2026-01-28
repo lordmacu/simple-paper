@@ -91,8 +91,8 @@ void main() {
         targetWords: [],
         phrases: [],
       ),
-      scenes: [],
-      games: [],
+      scenes: const ScenesSection(data: []),
+      games: const GamesSection(data: []),
       contentWrappers: const ContentWrappers(
         introText: BilingualText(en: 'Intro', es: 'Intro ES'),
         transition: BilingualText(en: 'Transition', es: 'Transicion ES'),

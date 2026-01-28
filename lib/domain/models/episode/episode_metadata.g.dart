@@ -9,6 +9,9 @@ part of 'episode_metadata.dart';
 _$EpisodeMetadataImpl _$$EpisodeMetadataImplFromJson(
   Map<String, dynamic> json,
 ) => _$EpisodeMetadataImpl(
+  sectionName: json['section_name'] as String?,
+  sectionNameEs: json['section_name_es'] as String?,
+  image: json['image'] as String?,
   episodeNumber: (json['episode_number'] as num).toInt(),
   episodeId: json['episode_id'] as String,
   title: json['title'] as String,
@@ -26,6 +29,9 @@ _$EpisodeMetadataImpl _$$EpisodeMetadataImplFromJson(
 Map<String, dynamic> _$$EpisodeMetadataImplToJson(
   _$EpisodeMetadataImpl instance,
 ) => <String, dynamic>{
+  'section_name': instance.sectionName,
+  'section_name_es': instance.sectionNameEs,
+  'image': instance.image,
   'episode_number': instance.episodeNumber,
   'episode_id': instance.episodeId,
   'title': instance.title,

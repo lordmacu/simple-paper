@@ -5,6 +5,9 @@ import 'package:office_app/domain/models/episode/episode.dart';
 import '../../widgets/vocabulary/vocabulary_segment_card.dart';
 import '../../widgets/common/duolingo_button.dart';
 import '../transition_screen.dart';
+import '../lesson/main_story_screen.dart';
+import '../games/games_screen.dart';
+import '../../providers/progress_providers.dart';
 
 /// Pantalla de Vocabulary Story
 /// Muestra la introducción de vocabulario del episodio con segmentos interactivos
@@ -84,26 +87,76 @@ class _VocabularyStoryScreenState
     // Obtener texto de transición
     final transitionText = widget.episode.contentWrappers.transition;
     
-    // Navegar a pantalla de transición
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => TransitionScreen(
-            transitionText: transitionText,
-            onContinue: () {
-              // TODO: Navigate to main story screen
-              Navigator.pop(context); // Close transition screen
-              Navigator.pop(context); // Close vocabulary screen
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('Ready for the story! 🎬'),
-                  backgroundColor: AppColors.primaryGreen,
-                ),
-              );
-            },
-          ),
+    // Navegar a pantalla de transición (que detectará personajes nuevos)
+    Navigator.of(context, rootNavigator: true).push(
+      MaterialPageRoute(
+        builder: (context) => TransitionScreen(
+          transitionText: transitionText,
+          episode: widget.episode,
+          onContinue: () {
+            Navigator.pop(context);
+            _navigateToMainStory();
+          },
         ),
-      );
+      ),
+    );
+  }
+
+  void _navigateToMainStory() {
+    Navigator.of(context, rootNavigator: true).push(
+      MaterialPageRoute(
+        builder: (context) => MainStoryScreen(
+          episode: widget.episode,
+          onComplete: () {
+            // Cerrar MainStoryScreen y navegar a GamesScreen
+            Navigator.pop(context);
+            _navigateToGames();
+          },
+        ),
+      ),
+    );
+  }
+
+  void _navigateToGames() async {
+    Navigator.of(context, rootNavigator: true).push(
+      MaterialPageRoute(
+        builder: (context) => GamesScreen(
+          episode: widget.episode,
+          pointsFromStory: 0, // TODO: pasar puntos reales de MainStoryScreen
+          onComplete: (totalPoints, maxPoints) async {
+            // Cerrar GamesScreen y VocabularyStoryScreen, volver a home
+            Navigator.pop(context); // Close games screen
+            Navigator.pop(context); // Close vocabulary screen
+
+            // Calcular estrellas basadas en desempeño de juegos
+            final stars = _calculateStars(totalPoints, maxPoints);
+
+            // Marcar episodio como completado
+            await ref.read(completeEpisodeProvider)(
+              episodeNumber: widget.episode.episodeMetadata.episodeNumber,
+              starsEarned: stars,
+              xpEarned: totalPoints,
+            );
+            
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Episode completed! 🎉'),
+                backgroundColor: AppColors.successGreen,
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  int _calculateStars(int points, int maxPoints) {
+    if (maxPoints <= 0) return 3;
+    final ratio = points / maxPoints;
+    if (ratio >= 0.9) return 3;
+    if (ratio >= 0.65) return 2;
+    if (ratio >= 0.35) return 1;
+    return 0;
   }
 
   @override

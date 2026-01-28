@@ -78,12 +78,18 @@ class GlobalProgressBar extends ConsumerWidget {
                       ),
                       
                       // Progreso actual con animación
-                      AnimatedContainer(
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.easeInOut,
-                        width: MediaQuery.of(context).size.width * progress - 40,
-                        height: 12,
-                        decoration: BoxDecoration(
+                      LayoutBuilder(
+                        builder: (context, constraints) {
+                          // Calcular ancho disponible (restando padding horizontal)
+                          final maxWidth = constraints.maxWidth;
+                          final progressWidth = (maxWidth * progress).clamp(0.0, maxWidth);
+                          
+                          return AnimatedContainer(
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.easeInOut,
+                            width: progressWidth,
+                            height: 12,
+                            decoration: BoxDecoration(
                           gradient: LinearGradient(
                             colors: [
                               AppColors.primaryGreen,
@@ -99,6 +105,8 @@ class GlobalProgressBar extends ConsumerWidget {
                             ),
                           ],
                         ),
+                          );
+                        },
                       ),
                     ],
                   ),

@@ -1,25 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter/services.dart' show rootBundle;
+import 'dart:convert';
 import '../widgets/common/duolingo_button.dart';
 import '../../core/constants/app_colors.dart';
 import '../../domain/models/content_wrappers/content_wrappers.dart';
+import '../../domain/models/episode/episode.dart';
+import '../../domain/models/character/unlocked_character.dart';
+import '../providers/character_providers.dart';
+import '../providers/template_variable_provider.dart';
+import 'character_unlock_screen.dart';
+import 'interview/character_interview_screen.dart';
+import 'interview/interview_summary_screen.dart';
 
 /// Pantalla de transición que se muestra entre Vocabulary Story y Main Story
 /// Muestra texto motivacional bilingüe antes de continuar con las escenas
-class TransitionScreen extends StatefulWidget {
+class TransitionScreen extends ConsumerStatefulWidget {
   final BilingualText transitionText;
+  final Episode episode;
   final VoidCallback onContinue;
 
   const TransitionScreen({
     Key? key,
     required this.transitionText,
+    required this.episode,
     required this.onContinue,
   }) : super(key: key);
 
   @override
-  State<TransitionScreen> createState() => _TransitionScreenState();
+  ConsumerState<TransitionScreen> createState() => _TransitionScreenState();
 }
 
-class _TransitionScreenState extends State<TransitionScreen>
+class _TransitionScreenState extends ConsumerState<TransitionScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
@@ -53,6 +65,171 @@ class _TransitionScreenState extends State<TransitionScreen>
   void dispose() {
     _animationController.dispose();
     super.dispose();
+  }
+
+  /// Detecta personajes con first_appearance: true y muestra pantalla de unlock
+  Future<void> _handleContinue() async {
+    // Buscar personajes nuevos en el episodio
+    final newCharacters = widget.episode.characters.appearingInEpisode
+        .where((character) => character.firstAppearance)
+        .toList();
+
+    if (newCharacters.isNotEmpty) {
+      // Filtrar solo los personajes que NO han sido desbloqueados previamente
+      final repository = ref.read(characterRepositoryProvider);
+      final charactersToUnlock = <dynamic>[];
+      
+      for (final character in newCharacters) {
+        final isUnlocked = await repository.isCharacterUnlocked(character.characterId);
+        if (!isUnlocked) {
+          charactersToUnlock.add(character);
+        }
+      }
+      
+      if (charactersToUnlock.isNotEmpty) {
+        // Limitar a máximo 2 personajes por vez
+        final charactersToShow = charactersToUnlock.take(2).toList();
+        
+        // Mostrar pantalla de unlock para cada personaje nuevo
+        _showCharacterUnlocks(charactersToShow, 0);
+      } else {
+        // Todos los personajes ya están desbloqueados
+        widget.onContinue();
+      }
+    } else {
+      // No hay personajes nuevos, continuar directamente
+      widget.onContinue();
+    }
+  }
+
+  /// Muestra las pantallas de unlock en secuencia y guarda los personajes
+  Future<void> _showCharacterUnlocks(List<dynamic> characters, int index) async {
+    if (index >= characters.length) {
+      // Terminamos de mostrar todos los personajes
+      widget.onContinue();
+      return;
+    }
+
+    final character = characters[index];
+    
+    // Guardar el personaje como desbloqueado
+    final repository = ref.read(characterRepositoryProvider);
+    final unlockedCharacter = UnlockedCharacter(
+      characterId: character.characterId,
+      defaultName: character.defaultName,
+      customName: null, // Se actualizará si el usuario lo renombra
+      unlockedAt: DateTime.now().millisecondsSinceEpoch,
+      episodeNumber: widget.episode.episodeMetadata.episodeNumber,
+    );
+    
+    await repository.unlockCharacter(unlockedCharacter);
+
+    if (!mounted) return;
+
+    await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => CharacterUnlockScreen(
+          character: character,
+          onContinue: () => Navigator.pop(context),
+        ),
+      ),
+    );
+
+    // Intentar mostrar entrevista solo si es nuevo
+    final interview = await _loadCharacterInterview(
+      episodeNumber: widget.episode.episodeMetadata.episodeNumber,
+      characterId: character.characterId,
+      characterName: character.defaultName,
+    );
+
+    if (!mounted) return;
+
+    if (interview != null) {
+      final result = await Navigator.push<Map<String, int>?>(
+        context,
+        MaterialPageRoute(
+          builder: (_) => CharacterInterviewScreen(
+            interview: interview,
+            onComplete: (correct, total) {
+              Navigator.pop<Map<String, int>?>(context, {
+                'correct': correct,
+                'total': total,
+              });
+            },
+          ),
+        ),
+      );
+
+      if (mounted && result != null) {
+        await Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => InterviewSummaryScreen(
+              correct: result['correct'] ?? 0,
+              total: result['total'] ?? interview.questions.length,
+              grammarPoints: interview.grammarPoints,
+              vocabularyUsed: interview.vocabularyUsed,
+              onContinue: () => Navigator.pop(context),
+            ),
+          ),
+        );
+      }
+    }
+
+    // Mostrar siguiente personaje o continuar
+    if (mounted) {
+      _showCharacterUnlocks(characters, index + 1);
+    }
+  }
+
+  /// Carga la entrevista desde assets si existe
+  Future<CharacterInterview?> _loadCharacterInterview({
+    required int episodeNumber,
+    required String characterId,
+    required String characterName,
+  }) async {
+    final ep = episodeNumber.toString().padLeft(2, '0');
+    final fileName = characterId.toLowerCase().replaceAll(' ', '_');
+    final path = 'assets/character_interviews/episode_a1_$ep/${fileName}_interview.json';
+
+    try {
+      final jsonString = await rootBundle.loadString(path);
+      final Map<String, dynamic> data = jsonDecode(jsonString)['character_interview'];
+      final questions = (data['questions'] as List<dynamic>).map((q) {
+        final opts = (q['options'] as List<dynamic>).map((o) {
+          return InterviewOption(
+            optionId: o['option_id'] ?? '',
+            textEn: o['text_en'] ?? '',
+            textEs: o['text_es'] ?? '',
+            isCorrect: o['is_correct'] ?? false,
+            feedbackEn: o['feedback_en'] ?? '',
+            feedbackEs: o['feedback_es'] ?? '',
+            grammarExplanation: o['grammar_explanation'],
+            culturalNote: o['cultural_note'],
+            mistakeType: o['mistake_type'],
+          );
+        }).toList();
+
+        return InterviewQuestion(
+          questionEn: q['question']['text_en'] ?? '',
+          questionEs: q['question']['text_es'] ?? '',
+          options: opts,
+        );
+      }).toList();
+
+      return CharacterInterview(
+        characterName: data['character_name'] ?? characterName,
+        avatarUrl: data['avatar_url'] ?? '',
+        episodeNumber: episodeNumber,
+        introEn: data['introduction']['text_en'] ?? '',
+        introEs: data['introduction']['text_es'] ?? '',
+        questions: questions,
+      );
+    } catch (_) {
+      // Si no existe o falla parseo, devolver null
+      return null;
+    }
   }
 
   @override
@@ -91,7 +268,7 @@ class _TransitionScreenState extends State<TransitionScreen>
                   padding: const EdgeInsets.all(24.0),
                   child: DuolingoButton(
                     text: 'Continue to Story',
-                    onPressed: widget.onContinue,
+                    onPressed: _handleContinue,
                     icon: Icons.arrow_forward,
                   ),
                 ),
@@ -180,7 +357,8 @@ class _TransitionScreenState extends State<TransitionScreen>
                 // Texto en inglés
                 _buildTextSection(
                   language: 'English',
-                  text: widget.transitionText.en,
+                  text: ref.read(templateVariableServiceProvider)
+                      .replaceVariables(widget.transitionText.en),
                   icon: Icons.translate,
                   color: AppColors.secondaryBlue,
                 ),
@@ -206,7 +384,8 @@ class _TransitionScreenState extends State<TransitionScreen>
                 // Texto en español
                 _buildTextSection(
                   language: 'Español',
-                  text: widget.transitionText.es,
+                  text: ref.read(templateVariableServiceProvider)
+                      .replaceVariables(widget.transitionText.es),
                   icon: Icons.translate,
                   color: AppColors.warningOrange,
                 ),

@@ -11,126 +11,125 @@
     }
   },
   "episode_metadata": {
+    "section_name": "First Meeting",
+    "section_name_es": "Primera Reunión",
+    "image": "/episodes/episode_2_scene.jpg",
     "episode_number": 2,
     "episode_id": "ep_002",
-    "title": "The Very Important Meeting (Nobody Is Ready)",
-    "title_es": "La Reunión Muy Importante (Nadie Está Listo)",
-    "description": "The boss announces a very important meeting. Jim smiles too much. Pam prepares notes. Nobody understands the schedule, and the meeting starts anyway.",
-    "description_es": "El jefe anuncia una reunión muy importante. Jim sonríe demasiado. Pam prepara notas. Nadie entiende el horario, y la reunión empieza de todas formas.",
+    "title": "The Very Important Meeting (Again)",
+    "title_es": "La Reunión Muy Importante (Otra Vez)",
+    "description": "{boss_name} calls a very important meeting. Nobody knows why. {jim_name} smiles, {pam_name} takes notes, and {player_name} tries to understand what is happening.",
+    "description_es": "{boss_name} convoca una reunión muy importante. Nadie sabe por qué. {jim_name} sonríe, {pam_name} toma notas y {player_name} intenta entender qué está pasando.",
     "internal_level": "A1",
     "estimated_time_minutes": 12,
     "unlock_requirements": null,
     "tags": [
       "meetings",
       "office_life",
-      "schedule",
-      "confusion"
+      "listening",
+      "awkward"
     ],
     "previous_episode": "ep_001",
     "next_episode": "ep_003"
   },
   "characters": {
+    "section_name": "Office Team",
+    "section_name_es": "Equipo Oficina",
+    "image": "/episodes/episode_2_scene.jpg",
     "appearing_in_episode": [
       {
         "character_id": "char_boss",
         "default_name": "MICHAEL",
-        "role": "Boss",
-        "role_es": "Jefe",
-        "personality": "Very enthusiastic and wants everyone to like him. He makes awkward jokes and says he is the best boss.",
-        "personality_es": "Muy entusiasta y quiere que todos lo quieran. Hace chistes incómodos y dice que es el mejor jefe.",
+        "role": "Regional Manager",
+        "role_es": "Gerente Regional",
+        "personality": "Enthusiastic boss who wants everyone to like him and thinks he is amazing.",
+        "personality_es": "Jefe entusiasta que quiere que todos lo quieran y piensa que es increíble.",
         "first_appearance": false,
         "customizable_name": true,
         "user_custom_name": null,
         "avatar_url": "/avatars/michael.png",
-        "intro_text": "Hello. I am the boss. The best boss. Today we have a very important meeting. It is important because I say it is important.",
-        "intro_text_es": "Hola. Yo soy el jefe. El mejor jefe. Hoy tenemos una reunión muy importante. Es importante porque yo digo que es importante."
+        "intro_text": "Hello. Welcome again. I am the boss. The best boss. Today I will lead this office to success. Probably.",
+        "intro_text_es": "Hola. Bienvenido otra vez. Yo soy el jefe. El mejor jefe. Hoy voy a guiar esta oficina al éxito. Probablemente."
       },
       {
         "character_id": "char_jim",
         "default_name": "JIM",
         "role": "Salesman",
         "role_es": "Vendedor",
-        "personality": "Calm and funny. He smiles a lot and makes jokes that sound serious.",
-        "personality_es": "Tranquilo y chistoso. Sonríe mucho y hace bromas que suenan serias.",
+        "personality": "Calm and sarcastic salesman who notices how strange the office is.",
+        "personality_es": "Vendedor tranquilo y sarcástico que nota lo extraña que es la oficina.",
         "first_appearance": false,
         "customizable_name": true,
         "user_custom_name": null,
         "avatar_url": "/avatars/jim.png",
-        "intro_text": "Hi. I am Jim. I smile a lot. It is my exercise. This meeting is very professional. Very serious. Very important. Probably.",
-        "intro_text_es": "Hola. Yo soy Jim. Yo sonrío mucho. Es mi ejercicio. Esta reunión es muy profesional. Muy seria. Muy importante. Tal vez."
+        "intro_text": "Yes. This is another normal day at work. Everything is very serious. Very normal.",
+        "intro_text_es": "Sí. Este es otro día normal en el trabajo. Todo es muy serio. Muy normal."
       },
       {
         "character_id": "char_pam",
         "default_name": "PAM",
         "role": "Receptionist",
         "role_es": "Recepcionista",
-        "personality": "Kind and helpful, but she knows the office can be chaotic. She tries to keep things organized.",
-        "personality_es": "Amable y servicial, pero sabe que la oficina puede ser caótica. Intenta mantener todo organizado.",
+        "personality": "Kind and helpful receptionist who understands the office chaos.",
+        "personality_es": "Recepcionista amable y servicial que entiende el caos de la oficina.",
         "first_appearance": false,
         "customizable_name": true,
         "user_custom_name": null,
         "avatar_url": "/avatars/pam.png",
-        "intro_text": "Hello. I am Pam. I have notes for the meeting. The notes are clear. The schedule is not clear. That is normal here.",
-        "intro_text_es": "Hola. Yo soy Pam. Yo tengo notas para la reunión. Las notas son claras. El horario no es claro. Eso es normal aquí."
+        "intro_text": "Hi. Welcome back. If things feel confusing, do not worry. That is normal here.",
+        "intro_text_es": "Hola. Bienvenido de nuevo. Si las cosas se sienten confusas, no te preocupes. Eso es normal aquí."
       },
       {
-        "character_id": "char_player",
-        "default_name": "PLAYER",
-        "role": "New employee",
-        "role_es": "Empleado nuevo",
-        "personality": "Curious and polite. You try to follow the schedule, but the schedule does not follow you.",
-        "personality_es": "Curioso y educado. Intentas seguir el horario, pero el horario no te sigue a ti.",
+        "character_id": "char_dwight",
+        "default_name": "DWIGHT",
+        "role": "Salesman",
+        "role_es": "Vendedor",
+        "personality": "Very intense salesman who follows rules and watches everyone.",
+        "personality_es": "Vendedor muy intenso que sigue las reglas y vigila a todos.",
         "first_appearance": false,
         "customizable_name": true,
         "user_custom_name": null,
-        "avatar_url": "/avatars/player.png",
-        "intro_text": "Hi. I am {player_name}. I want to do a good job. I have a question. What is the schedule? Nobody knows. Great.",
-        "intro_text_es": "Hola. Yo soy {player_name}. Yo quiero hacer un buen trabajo. Yo tengo una pregunta. ¿Cuál es el horario? Nadie sabe. Genial."
+        "avatar_url": "/avatars/dwight.png",
+        "intro_text": "I am watching this office. I am ready for any problem. Any problem at all.",
+        "intro_text_es": "Estoy vigilando esta oficina. Estoy listo para cualquier problema. Cualquier problema."
       }
     ],
     "mentioned_but_not_appearing": []
   },
   "vocabulary_focus": {
+    "section_name": "Office Meeting",
+    "section_name_es": "Reunión Oficina",
+    "image": "/episodes/episode_2_scene.jpg",
     "target_words": [
       {
-        "word": "schedule",
-        "translation_es": "horario",
+        "word": "meeting",
+        "translation_es": "reunión",
         "word_type": "noun",
         "word_type_es": "sustantivo",
-        "difficulty": 2,
-        "context_sentence": "The schedule is on the wall, but nobody understands the schedule.",
-        "context_sentence_es": "El horario está en la pared, pero nadie entiende el horario.",
-        "image_url": "/vocab/schedule.jpg"
-      },
-      {
-        "word": "important",
-        "translation_es": "importante",
-        "word_type": "adjective",
-        "word_type_es": "adjetivo",
         "difficulty": 1,
-        "context_sentence": "The boss says the meeting is very important.",
-        "context_sentence_es": "El jefe dice que la reunión es muy importante.",
-        "image_url": "/vocab/important.jpg"
+        "context_sentence": "{boss_name} calls a meeting in the office.",
+        "context_sentence_es": "{boss_name} convoca una reunión en la oficina.",
+        "image_url": "/vocab/meeting.jpg"
       },
       {
-        "word": "start",
-        "translation_es": "empezar",
+        "word": "listen",
+        "translation_es": "escuchar",
         "word_type": "verb",
         "word_type_es": "verbo",
         "difficulty": 1,
-        "context_sentence": "The meeting starts now, even without the schedule.",
-        "context_sentence_es": "La reunión empieza ahora, incluso sin el horario.",
-        "image_url": "/vocab/start.jpg"
+        "context_sentence": "{player_name} listens to the boss very carefully.",
+        "context_sentence_es": "{player_name} escucha al jefe con mucha atención.",
+        "image_url": "/vocab/listen.jpg"
       },
       {
-        "word": "late",
-        "translation_es": "tarde",
-        "word_type": "adjective",
-        "word_type_es": "adjetivo",
+        "word": "talk",
+        "translation_es": "hablar",
+        "word_type": "verb",
+        "word_type_es": "verbo",
         "difficulty": 1,
-        "context_sentence": "Jim is late, but he smiles like he is early.",
-        "context_sentence_es": "Jim llega tarde, pero sonríe como si llegara temprano.",
-        "image_url": "/vocab/late.jpg"
+        "context_sentence": "{boss_name} talks for a long time.",
+        "context_sentence_es": "{boss_name} habla por mucho tiempo.",
+        "image_url": "/vocab/talk.jpg"
       },
       {
         "word": "notes",
@@ -138,33 +137,46 @@
         "word_type": "noun",
         "word_type_es": "sustantivo",
         "difficulty": 2,
-        "context_sentence": "Pam has notes for the meeting.",
-        "context_sentence_es": "Pam tiene notas para la reunión.",
+        "context_sentence": "{pam_name} writes notes during the meeting.",
+        "context_sentence_es": "{pam_name} escribe notas durante la reunión.",
         "image_url": "/vocab/notes.jpg"
+      },
+      {
+        "word": "confused",
+        "translation_es": "confundido",
+        "word_type": "adjective",
+        "word_type_es": "adjetivo",
+        "difficulty": 2,
+        "context_sentence": "{player_name} feels confused after the meeting.",
+        "context_sentence_es": "{player_name} se siente confundido después de la reunión.",
+        "image_url": "/vocab/confused.jpg"
       }
     ],
     "phrases": [
       {
-        "phrase": "What time is the meeting?",
-        "translation_es": "¿A qué hora es la reunión?",
-        "usage_context": "Used when nobody understands the schedule.",
-        "usage_context_es": "Se usa cuando nadie entiende el horario."
+        "phrase": "This meeting is important",
+        "translation_es": "Esta reunión es importante",
+        "usage_context": "The boss says this before starting the meeting.",
+        "usage_context_es": "El jefe dice esto antes de comenzar la reunión."
       },
       {
-        "phrase": "This meeting is very important",
-        "translation_es": "Esta reunión es muy importante",
-        "usage_context": "Used when the boss wants attention.",
-        "usage_context_es": "Se usa cuando el jefe quiere atención."
+        "phrase": "Please listen carefully",
+        "translation_es": "Por favor escuche con atención",
+        "usage_context": "The boss wants everyone to pay attention.",
+        "usage_context_es": "El jefe quiere que todos presten atención."
       },
       {
-        "phrase": "We start now",
-        "translation_es": "Empezamos ahora",
-        "usage_context": "Used when the meeting starts with confusion.",
-        "usage_context_es": "Se usa cuando la reunión empieza con confusión."
+        "phrase": "I do not understand",
+        "translation_es": "No entiendo",
+        "usage_context": "The player feels confused during the meeting.",
+        "usage_context_es": "El jugador se siente confundido durante la reunión."
       }
     ]
   },
   "vocabulary_story": {
+    "section_name": "Office Words",
+    "section_name_es": "Palabras Oficina",
+    "image": "/episodes/episode_2_vocab.jpg",
     "title": "Learning Basic Words",
     "title_es": "Aprendiendo Palabras Básicas",
     "description": "A simple story to learn today's vocabulary",
@@ -172,24 +184,24 @@
     "segments": [
       {
         "segment_id": "vocab_001",
-        "image_url": "/vocab/schedule.jpg",
-        "word_focus": "schedule",
+        "image_url": "/vocab/meeting.jpg",
+        "word_focus": "meeting",
         "text": {
-          "en": "The SCHEDULE is on the wall. The SCHEDULE looks clear. Nobody understands the SCHEDULE.",
-          "es": "El HORARIO está en la pared. El HORARIO parece claro. Nadie entiende el HORARIO."
+          "en": "The MEETING starts now. It is long. Very long.",
+          "es": "La REUNIÓN empieza ahora. Es larga. Muy larga."
         },
-        "visual_aid": "🕒 📋 😕",
+        "visual_aid": "📅 😐",
         "emphasis_style": "bold_uppercase"
       },
       {
         "segment_id": "vocab_002",
-        "image_url": "/vocab/important.jpg",
-        "word_focus": "important",
+        "image_url": "/vocab/name.jpg",
+        "word_focus": "name",
         "text": {
-          "en": "The boss says the meeting is IMPORTANT. Everything is IMPORTANT when the boss talks.",
-          "es": "El jefe dice que la reunión es IMPORTANTE. Todo es IMPORTANTE cuando el jefe habla."
+          "en": "My NAME is on the paper. The boss says it very loud.",
+          "es": "Mi NOMBRE está en el papel. El jefe lo dice muy fuerte."
         },
-        "visual_aid": "❗ 😄",
+        "visual_aid": "🪪 📄",
         "interactive": {
           "type": "simple_input",
           "question": "What is your name?",
@@ -201,501 +213,523 @@
       },
       {
         "segment_id": "vocab_003",
-        "image_url": "/vocab/start.jpg",
-        "word_focus": "start",
+        "image_url": "/vocab/manager.jpg",
+        "word_focus": "manager",
         "text": {
-          "en": "The meeting STARTS now. It STARTS without the schedule.",
-          "es": "La reunión EMPIEZA ahora. EMPIEZA sin el horario."
+          "en": "The MANAGER talks a lot. He is very proud.",
+          "es": "El GERENTE habla mucho. Él está muy orgulloso."
         },
-        "visual_aid": "▶️ 🕒"
+        "visual_aid": "🧑‍💼 🎤"
       },
       {
         "segment_id": "vocab_004",
-        "image_url": "/vocab/late.jpg",
-        "word_focus": "late",
+        "image_url": "/vocab/schedule.jpg",
+        "word_focus": "schedule",
         "text": {
-          "en": "Jim is LATE. Jim smiles. Jim is always LATE.",
-          "es": "Jim llega TARDE. Jim sonríe. Jim siempre llega TARDE."
+          "en": "The SCHEDULE is on the wall. It looks very serious.",
+          "es": "El HORARIO está en la pared. Se ve muy serio."
         },
-        "visual_aid": "⏰ 😁"
+        "visual_aid": "🕒 🧱"
       },
       {
         "segment_id": "vocab_005",
-        "image_url": "/vocab/notes.jpg",
-        "word_focus": "notes",
+        "image_url": "/vocab/break.jpg",
+        "word_focus": "break",
         "text": {
-          "en": "Pam has NOTES for the meeting. The NOTES are ready. The meeting is not ready.",
-          "es": "Pam tiene NOTAS para la reunión. Las NOTAS están listas. La reunión no está lista."
+          "en": "The BREAK is short. Very short. Too short.",
+          "es": "El DESCANSO es corto. Muy corto. Demasiado corto."
         },
-        "visual_aid": "📝 📎"
+        "visual_aid": "☕ ⏱️"
       },
       {
         "segment_id": "vocab_summary",
         "word_focus": null,
         "text": {
-          "en": "Great! Now you know: SCHEDULE, IMPORTANT, START, LATE, NOTES. The meeting can begin. Probably.",
-          "es": "¡Genial! Ahora conoces: HORARIO, IMPORTANTE, EMPIEZA, TARDE, NOTAS. La reunión puede empezar. Tal vez."
+          "en": "Great! Now you know: MEETING, NAME, MANAGER, SCHEDULE, BREAK. Yes. Very important office words.",
+          "es": "¡Genial! Ahora conoces: REUNIÓN, NOMBRE, GERENTE, HORARIO, DESCANSO. Sí. Palabras muy importantes de oficina."
         },
         "visual_aid": "✅ 📚 ➡️"
       }
     ]
   },
-  "scenes": [
-    {
-      "scene_id": "scene_002_001",
-      "scene_number": 1,
-      "location": "Office floor",
-      "location_es": "Piso de la oficina",
-      "time": "Morning",
-      "time_es": "Mañana",
-      "description": "The boss calls everyone together for a very important meeting. The schedule is on the wall.",
-      "description_es": "El jefe llama a todos para una reunión muy importante. El horario está en la pared.",
-      "dialogue": [
-        {
-          "line_id": 1,
-          "character_id": "char_boss",
-          "character_display_name": "MICHAEL",
-          "text": "Attention everyone. We have a very IMPORTANT meeting. I planned it myself. I am great at plans.",
-          "translation_es": "Atención a todos. Tenemos una reunión muy IMPORTANTE. Yo la planeé. Yo soy muy bueno con los planes.",
-          "emotion": "proud_but_lying",
-          "notes": "Michael brags about planning, even when nothing is clear.",
-          "notes_es": "Michael presume de planear, incluso cuando nada es claro.",
-          "highlighted_vocab": [
-            "important"
-          ],
-          "template_vars": [
-            "boss_name"
-          ]
-        },
-        {
-          "line_id": 2,
-          "character_id": "char_pam",
-          "character_display_name": "PAM",
-          "text": "The SCHEDULE is here. It is simple. It has many arrows.",
-          "translation_es": "El HORARIO está aquí. Es simple. Tiene muchas flechas.",
-          "emotion": "calm",
-          "notes": "Pam tries to be helpful while admitting confusion.",
-          "notes_es": "Pam intenta ayudar mientras admite la confusión.",
-          "highlighted_vocab": [
-            "schedule"
-          ],
-          "template_vars": [
-            "pam_name"
-          ]
-        },
-        {
-          "line_id": 3,
-          "character_id": "player",
-          "character_display_name": "YOU",
-          "text": null,
-          "is_interactive": true,
-          "interaction_type": "choice",
-          "choices": [
-            {
-              "choice_id": "a",
-              "text": "What time does the meeting START?",
-              "translation_es": "¿A qué hora EMPIEZA la reunión?",
-              "points": 10,
-              "personality_impact": "curious",
-              "vocab_used": [
-                "start"
-              ]
-            },
-            {
-              "choice_id": "b",
-              "text": "The SCHEDULE looks clear.",
-              "translation_es": "El HORARIO se ve claro.",
-              "points": 5,
-              "personality_impact": "polite",
-              "vocab_used": [
-                "schedule"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "scene_id": "scene_002_002",
-      "scene_number": 2,
-      "location": "Conference room",
-      "location_es": "Sala de reuniones",
-      "time": "A few minutes later",
-      "time_es": "Unos minutos después",
-      "description": "The meeting starts without everyone. Jim arrives smiling.",
-      "description_es": "La reunión empieza sin todos. Jim llega sonriendo.",
-      "dialogue": [
-        {
-          "line_id": 1,
-          "character_id": "char_boss",
-          "character_display_name": "MICHAEL",
-          "text": "We START now. Leaders start early. I am a leader.",
-          "translation_es": "EMPEZAMOS ahora. Los líderes empiezan temprano. Yo soy un líder.",
-          "emotion": "excited",
-          "notes": "Michael calls himself a leader to feel important.",
-          "notes_es": "Michael se llama líder para sentirse importante.",
-          "highlighted_vocab": [
-            "start"
-          ],
-          "template_vars": [
-            "boss_name"
-          ]
-        },
-        {
-          "line_id": 2,
-          "character_id": "char_jim",
-          "character_display_name": "JIM",
-          "text": "Sorry. I am LATE. The SCHEDULE and I are not friends.",
-          "translation_es": "Perdón. Llego TARDE. El HORARIO y yo no somos amigos.",
-          "emotion": "sarcastic",
-          "notes": "Jim jokes by sounding honest and calm.",
-          "notes_es": "Jim bromea sonando honesto y tranquilo.",
-          "highlighted_vocab": [
-            "late",
-            "schedule"
-          ],
-          "template_vars": [
-            "jim_name"
-          ]
-        },
-        {
-          "line_id": 3,
-          "character_id": "player",
-          "character_display_name": "YOU",
-          "text": null,
-          "is_interactive": true,
-          "interaction_type": "choice",
-          "choices": [
-            {
-              "choice_id": "a",
-              "text": "The meeting is very IMPORTANT.",
-              "translation_es": "La reunión es muy IMPORTANTE.",
-              "points": 10,
-              "personality_impact": "supportive",
-              "vocab_used": [
-                "important"
-              ]
-            },
-            {
-              "choice_id": "b",
-              "text": "I am also LATE.",
-              "translation_es": "Yo también llego TARDE.",
-              "points": 5,
-              "personality_impact": "honest",
-              "vocab_used": [
-                "late"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "scene_id": "scene_002_003",
-      "scene_number": 3,
-      "location": "Conference room",
-      "location_es": "Sala de reuniones",
-      "time": "During the meeting",
-      "time_es": "Durante la reunión",
-      "description": "Pam takes notes while the boss talks about himself.",
-      "description_es": "Pam toma notas mientras el jefe habla de sí mismo.",
-      "dialogue": [
-        {
-          "line_id": 1,
-          "character_id": "char_pam",
-          "character_display_name": "PAM",
-          "text": "I have NOTES. The NOTES are clear. The meeting is not clear.",
-          "translation_es": "Yo tengo NOTAS. Las NOTAS son claras. La reunión no es clara.",
-          "emotion": "patient",
-          "notes": "Pam stays organized while everything else is chaos.",
-          "notes_es": "Pam se mantiene organizada mientras todo es caos.",
-          "highlighted_vocab": [
-            "notes"
-          ],
-          "template_vars": [
-            "pam_name"
-          ]
-        },
-        {
-          "line_id": 2,
-          "character_id": "char_boss",
-          "character_display_name": "MICHAEL",
-          "text": "Please write this in your NOTES. I am the best boss. In history.",
-          "translation_es": "Por favor escriban esto en sus NOTAS. Yo soy el mejor jefe. En la historia.",
-          "emotion": "confident",
-          "notes": "Michael wants his bragging recorded forever.",
-          "notes_es": "Michael quiere que su orgullo quede escrito para siempre.",
-          "highlighted_vocab": [
-            "notes"
-          ],
-          "template_vars": [
-            "boss_name"
-          ]
-        },
-        {
-          "line_id": 3,
-          "character_id": "player",
-          "character_display_name": "YOU",
-          "text": null,
-          "is_interactive": true,
-          "interaction_type": "choice",
-          "choices": [
-            {
-              "choice_id": "a",
-              "text": "I write NOTES now.",
-              "translation_es": "Yo escribo NOTAS ahora.",
-              "points": 10,
-              "personality_impact": "organized",
-              "vocab_used": [
-                "notes"
-              ]
-            },
-            {
-              "choice_id": "b",
-              "text": "The SCHEDULE is still confusing.",
-              "translation_es": "El HORARIO todavía es confuso.",
-              "points": 5,
-              "personality_impact": "honest",
-              "vocab_used": [
-                "schedule"
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "games": [
-    {
-      "game_id": "ep002_game_01",
-      "game_type": "matching",
-      "title": "Match the Words!",
-      "title_es": "¡Empareja las Palabras!",
-      "instructions": "Match each English word with its Spanish meaning",
-      "instructions_es": "Empareja cada palabra en inglés con su significado en español",
-      "optional": true,
-      "unlocked_after_episode": true,
-      "time_limit_seconds": 60,
-      "xp_reward": 20,
-      "content": {
-        "items": [
+  "scenes": {
+    "section_name": "Boss Meeting",
+    "section_name_es": "Reunión Jefe",
+    "image": "/episodes/episode_2_scene.jpg",
+    "data": [
+      {
+        "scene_id": "scene_002_001",
+        "scene_number": 1,
+        "location": "Office floor",
+        "location_es": "Piso de la oficina",
+        "scene_name": "The Announcement",
+        "scene_name_es": "El anuncio",
+        "time": "Morning",
+        "time_es": "Mañana",
+        "description": "{boss_name} stands in the office and calls everyone to a very important meeting.",
+        "description_es": "{boss_name} se pone de pie en la oficina y llama a todos a una reunión muy importante.",
+        "dialogue": [
           {
-            "id": 1,
-            "left": "schedule",
-            "right": "horario",
-            "image_url": "/vocab/schedule.jpg"
+            "line_id": 1,
+            "character_id": "char_boss",
+            "character_display_name": "BOSS",
+            "text": "Attention everyone. This MEETING is very important. Very, very important.",
+            "translation_es": "Atención a todos. Esta reunión es muy importante. Muy, muy importante.",
+            "emotion": "proud_but_lying",
+            "notes": "The boss says every meeting is important.",
+            "notes_es": "El jefe dice que todas las reuniones son importantes.",
+            "highlighted_vocab": [
+              "meeting"
+            ],
+            "template_vars": [
+              "boss_name"
+            ]
           },
           {
-            "id": 2,
-            "left": "important",
-            "right": "importante",
-            "image_url": "/vocab/important.jpg"
+            "line_id": 2,
+            "character_id": "char_jim",
+            "character_display_name": "JIM",
+            "text": "Yes. This MEETING feels extremely important.",
+            "translation_es": "Sí. Esta reunión se siente extremadamente importante.",
+            "emotion": "sarcastic",
+            "notes": "Jim pretends to agree seriously.",
+            "notes_es": "Jim finge estar de acuerdo de forma seria.",
+            "highlighted_vocab": [
+              "meeting"
+            ],
+            "template_vars": [
+              "jim_name"
+            ]
           },
           {
-            "id": 3,
-            "left": "start",
-            "right": "empezar",
-            "image_url": "/vocab/start.jpg"
-          },
-          {
-            "id": 4,
-            "left": "late",
-            "right": "tarde",
-            "image_url": "/vocab/late.jpg"
-          },
-          {
-            "id": 5,
-            "left": "notes",
-            "right": "notas",
-            "image_url": "/vocab/notes.jpg"
+            "line_id": 3,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "I am ready for the meeting.",
+                "translation_es": "Estoy listo para la reunión.",
+                "points": 10,
+                "personality_impact": "professional",
+                "vocab_used": [
+                  "meeting"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "I feel confused.",
+                "translation_es": "Me siento confundido.",
+                "points": 5,
+                "personality_impact": "honest",
+                "vocab_used": [
+                  "confused"
+                ]
+              }
+            ]
           }
         ]
       },
-      "settings": {
-        "shuffle": true,
-        "show_images": true
-      }
-    },
-    {
-      "game_id": "ep002_game_02",
-      "game_type": "fill_blank",
-      "title": "Complete the Sentences",
-      "title_es": "Completa las Oraciones",
-      "instructions": "Fill in the missing words from the episode",
-      "instructions_es": "Completa las palabras que faltan del episodio",
-      "optional": true,
-      "unlocked_after_episode": true,
-      "time_limit_seconds": 90,
-      "xp_reward": 25,
-      "content": {
-        "items": [
+      {
+        "scene_id": "scene_002_002",
+        "scene_number": 2,
+        "location": "Conference room",
+        "location_es": "Sala de reuniones",
+        "scene_name": "Long Talk",
+        "scene_name_es": "Charla larga",
+        "time": "Minutes later",
+        "time_es": "Minutos después",
+        "description": "{boss_name} talks and talks. Nobody stops him.",
+        "description_es": "{boss_name} habla y habla. Nadie lo detiene.",
+        "dialogue": [
           {
-            "id": 1,
-            "sentence": "The _____ is on the wall, but nobody understands it.",
-            "sentence_es": "El _____ está en la pared, pero nadie lo entiende.",
-            "answer": "schedule",
-            "options": [
-              "schedule",
-              "notes",
-              "late"
+            "line_id": 1,
+            "character_id": "char_boss",
+            "character_display_name": "BOSS",
+            "text": "I TALK now. Please LISTEN carefully. This is leadership.",
+            "translation_es": "Yo hablo ahora. Por favor escuchen con atención. Esto es liderazgo.",
+            "emotion": "excited",
+            "notes": "The boss thinks talking a lot is leadership.",
+            "notes_es": "El jefe cree que hablar mucho es liderazgo.",
+            "highlighted_vocab": [
+              "talk",
+              "listen"
             ],
-            "hint": "It tells you the time for the meeting.",
-            "hint_es": "Dice la hora de la reunión.",
-            "character": "{pam_name}"
+            "template_vars": [
+              "boss_name"
+            ]
           },
           {
-            "id": 2,
-            "sentence": "The boss says the meeting is very _____.",
-            "sentence_es": "El jefe dice que la reunión es muy _____.",
-            "answer": "important",
-            "options": [
-              "important",
-              "late",
-              "start"
+            "line_id": 2,
+            "character_id": "char_pam",
+            "character_display_name": "PAM",
+            "text": "I take NOTES. I always take NOTES.",
+            "translation_es": "Yo tomo notas. Siempre tomo notas.",
+            "emotion": "calm",
+            "notes": "Pam stays calm in chaos.",
+            "notes_es": "Pam se mantiene tranquila en el caos.",
+            "highlighted_vocab": [
+              "notes"
             ],
-            "hint": "The boss says this word many times.",
-            "hint_es": "El jefe dice esta palabra muchas veces.",
-            "character": "{boss_name}"
+            "template_vars": [
+              "pam_name"
+            ]
+          }
+        ]
+      },
+      {
+        "scene_id": "scene_002_003",
+        "scene_number": 3,
+        "location": "Conference room",
+        "location_es": "Sala de reuniones",
+        "scene_name": "Quiet Smile",
+        "scene_name_es": "Sonrisa silenciosa",
+        "time": "Same time",
+        "time_es": "Al mismo tiempo",
+        "description": "{jim_name} smiles quietly while the meeting continues.",
+        "description_es": "{jim_name} sonríe en silencio mientras la reunión continúa.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_jim",
+            "character_display_name": "JIM",
+            "text": "I LISTEN and I learn so much.",
+            "translation_es": "Yo escucho y aprendo mucho.",
+            "emotion": "sarcastic",
+            "notes": "Jim clearly learns nothing.",
+            "notes_es": "Jim claramente no aprende nada.",
+            "highlighted_vocab": [
+              "listen"
+            ],
+            "template_vars": [
+              "jim_name"
+            ]
           },
           {
-            "id": 3,
-            "sentence": "We _____ the meeting now.",
-            "sentence_es": "_____ la reunión ahora.",
-            "answer": "start",
-            "options": [
-              "start",
-              "notes",
-              "late"
+            "line_id": 2,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "I listen carefully.",
+                "translation_es": "Escucho con atención.",
+                "points": 10,
+                "personality_impact": "focused",
+                "vocab_used": [
+                  "listen"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "I do not understand.",
+                "translation_es": "No entiendo.",
+                "points": 5,
+                "personality_impact": "confused"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "scene_id": "scene_002_004",
+        "scene_number": 4,
+        "location": "Office floor",
+        "location_es": "Piso de la oficina",
+        "scene_name": "After Meeting",
+        "scene_name_es": "Después de la reunión",
+        "time": "Later",
+        "time_es": "Más tarde",
+        "description": "The meeting ends. Nobody knows why it happened.",
+        "description_es": "La reunión termina. Nadie sabe por qué pasó.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_boss",
+            "character_display_name": "BOSS",
+            "text": "Great MEETING. I did an amazing job.",
+            "translation_es": "Gran reunión. Hice un trabajo increíble.",
+            "emotion": "proud",
+            "notes": "The boss congratulates himself.",
+            "notes_es": "El jefe se felicita a sí mismo.",
+            "highlighted_vocab": [
+              "meeting"
             ],
-            "hint": "This word means begin.",
-            "hint_es": "Esta palabra significa comenzar.",
-            "character": "{boss_name}"
+            "template_vars": [
+              "boss_name"
+            ]
           },
           {
-            "id": 4,
-            "sentence": "{jim_name} is _____. He smiles anyway.",
-            "sentence_es": "{jim_name} llega _____. Él sonríe de todas formas.",
-            "answer": "late",
-            "options": [
-              "late",
-              "important",
-              "schedule"
+            "line_id": 2,
+            "character_id": "char_pam",
+            "character_display_name": "PAM",
+            "text": "{player_name} looks CONFUSED.",
+            "translation_es": "{player_name} se ve confundido.",
+            "emotion": "kind",
+            "notes": "Pam notices everything.",
+            "notes_es": "Pam nota todo.",
+            "highlighted_vocab": [
+              "confused"
             ],
-            "hint": "This word means not on time.",
-            "hint_es": "Esta palabra significa no a tiempo.",
-            "character": "{jim_name}"
+            "template_vars": [
+              "player_name"
+            ]
           }
         ]
       }
-    },
-    {
-      "game_id": "ep002_game_03",
-      "game_type": "multiple_choice",
-      "title": "Episode Quiz",
-      "title_es": "Quiz del Episodio",
-      "instructions": "Answer questions about the episode",
-      "instructions_es": "Responde preguntas sobre el episodio",
-      "optional": true,
-      "unlocked_after_episode": true,
-      "time_limit_seconds": 120,
-      "xp_reward": 30,
-      "content": {
-        "items": [
-          {
-            "id": 1,
-            "question": "What does the boss say about the meeting?",
-            "question_es": "¿Qué dice el jefe sobre la reunión?",
-            "options": [
-              "It is very important",
-              "It is canceled",
-              "It is short",
-              "It is secret"
-            ],
-            "options_es": [
-              "Es muy importante",
-              "Está cancelada",
-              "Es corta",
-              "Es secreta"
-            ],
-            "correct_answer": 0,
-            "explanation": "The boss says the meeting is very important many times.",
-            "explanation_es": "El jefe dice que la reunión es muy importante muchas veces."
-          },
-          {
-            "id": 2,
-            "question": "Who understands the schedule?",
-            "question_es": "¿Quién entiende el horario?",
-            "options": [
-              "Everyone",
-              "Pam",
-              "Nobody",
-              "{jim_name}"
-            ],
-            "options_es": [
-              "Todos",
-              "Pam",
-              "Nadie",
-              "{jim_name}"
-            ],
-            "correct_answer": 2,
-            "explanation": "The schedule is on the wall, but nobody understands it.",
-            "explanation_es": "El horario está en la pared, pero nadie lo entiende."
-          },
-          {
-            "id": 3,
-            "question": "What does Pam have during the meeting?",
-            "question_es": "¿Qué tiene Pam durante la reunión?",
-            "options": [
-              "Notes",
-              "Food",
-              "Questions",
-              "A new schedule"
-            ],
-            "options_es": [
-              "Notas",
-              "Comida",
-              "Preguntas",
-              "Un nuevo horario"
-            ],
-            "correct_answer": 0,
-            "explanation": "Pam has notes and tries to stay organized.",
-            "explanation_es": "Pam tiene notas e intenta mantenerse organizada."
-          }
-        ]
+    ]
+  },
+  "games": {
+    "section_name": "Practice Games",
+    "section_name_es": "Juegos Práctica",
+    "image": "/episodes/episode_2_scene.jpg",
+    "data": [
+      {
+        "game_id": "ep2_game_01",
+        "game_type": "matching",
+        "title": "Match the Words!",
+        "title_es": "¡Empareja las Palabras!",
+        "instructions": "Match each English word with its Spanish meaning",
+        "instructions_es": "Empareja cada palabra en inglés con su significado en español",
+        "optional": true,
+        "unlocked_after_episode": true,
+        "time_limit_seconds": 60,
+        "xp_reward": 20,
+        "content": {
+          "items": [
+            {
+              "id": 1,
+              "left": "meeting",
+              "right": "reunión",
+              "image_url": "/vocab/meeting.jpg"
+            },
+            {
+              "id": 2,
+              "left": "name",
+              "right": "nombre",
+              "image_url": "/vocab/name.jpg"
+            },
+            {
+              "id": 3,
+              "left": "manager",
+              "right": "gerente",
+              "image_url": "/vocab/manager.jpg"
+            },
+            {
+              "id": 4,
+              "left": "schedule",
+              "right": "horario",
+              "image_url": "/vocab/schedule.jpg"
+            },
+            {
+              "id": 5,
+              "left": "break",
+              "right": "descanso",
+              "image_url": "/vocab/break.jpg"
+            }
+          ]
+        },
+        "settings": {
+          "shuffle": true,
+          "show_images": true
+        }
+      },
+      {
+        "game_id": "ep2_game_02",
+        "game_type": "fill_blank",
+        "title": "Complete the Sentences",
+        "title_es": "Completa las Oraciones",
+        "instructions": "Fill in the missing words from the episode",
+        "instructions_es": "Completa las palabras que faltan del episodio",
+        "optional": true,
+        "unlocked_after_episode": true,
+        "time_limit_seconds": 90,
+        "xp_reward": 25,
+        "content": {
+          "items": [
+            {
+              "id": 1,
+              "sentence": "The _____ starts now. Everyone looks tired.",
+              "sentence_es": "La _____ empieza ahora. Todos se ven cansados.",
+              "answer": "meeting",
+              "options": [
+                "meeting",
+                "break",
+                "name"
+              ],
+              "hint": "People sit and listen for a long time.",
+              "hint_es": "Las personas se sientan y escuchan por mucho tiempo.",
+              "character": "{boss_name}"
+            },
+            {
+              "id": 2,
+              "sentence": "My _____ is on the paper in big letters.",
+              "sentence_es": "Mi _____ está en el papel con letras grandes.",
+              "answer": "name",
+              "options": [
+                "name",
+                "schedule",
+                "manager"
+              ],
+              "hint": "This word tells who you are.",
+              "hint_es": "Esta palabra dice quién eres.",
+              "character": "{pam_name}"
+            },
+            {
+              "id": 3,
+              "sentence": "The _____ talks a lot in the office.",
+              "sentence_es": "El _____ habla mucho en la oficina.",
+              "answer": "manager",
+              "options": [
+                "manager",
+                "break",
+                "schedule"
+              ],
+              "hint": "This person is the boss.",
+              "hint_es": "Esta persona es el jefe.",
+              "character": "{jim_name}"
+            },
+            {
+              "id": 4,
+              "sentence": "The _____ is on the wall next to the door.",
+              "sentence_es": "El _____ está en la pared junto a la puerta.",
+              "answer": "schedule",
+              "options": [
+                "schedule",
+                "name",
+                "meeting"
+              ],
+              "hint": "This shows times and plans.",
+              "hint_es": "Esto muestra horarios y planes.",
+              "character": "{pam_name}"
+            }
+          ]
+        }
+      },
+      {
+        "game_id": "ep2_game_03",
+        "game_type": "multiple_choice",
+        "title": "Episode Quiz",
+        "title_es": "Quiz del Episodio",
+        "instructions": "Answer questions about the episode",
+        "instructions_es": "Responde preguntas sobre el episodio",
+        "optional": true,
+        "unlocked_after_episode": true,
+        "time_limit_seconds": 120,
+        "xp_reward": 30,
+        "content": {
+          "items": [
+            {
+              "id": 1,
+              "question": "What starts the episode in the office?",
+              "question_es": "¿Qué empieza el episodio en la oficina?",
+              "options": [
+                "A meeting",
+                "A party",
+                "A break",
+                "A game"
+              ],
+              "options_es": [
+                "Una reunión",
+                "Una fiesta",
+                "Un descanso",
+                "Un juego"
+              ],
+              "correct_answer": 0,
+              "explanation": "The episode starts with a meeting at the office.",
+              "explanation_es": "El episodio empieza con una reunión en la oficina."
+            },
+            {
+              "id": 2,
+              "question": "Who talks a lot during the episode?",
+              "question_es": "¿Quién habla mucho durante el episodio?",
+              "options": [
+                "The manager",
+                "The new coworker",
+                "The client",
+                "The security guard"
+              ],
+              "options_es": [
+                "El gerente",
+                "El nuevo compañero",
+                "El cliente",
+                "El guardia de seguridad"
+              ],
+              "correct_answer": 0,
+              "explanation": "The manager talks a lot and feels very important.",
+              "explanation_es": "El gerente habla mucho y se siente muy importante."
+            },
+            {
+              "id": 3,
+              "question": "What do people want after the meeting?",
+              "question_es": "¿Qué quieren las personas después de la reunión?",
+              "options": [
+                "A break",
+                "Another meeting",
+                "More work",
+                "A test"
+              ],
+              "options_es": [
+                "Un descanso",
+                "Otra reunión",
+                "Más trabajo",
+                "Una prueba"
+              ],
+              "correct_answer": 0,
+              "explanation": "After a long meeting, everyone wants a break.",
+              "explanation_es": "Después de una reunión larga, todos quieren un descanso."
+            }
+          ]
+        }
       }
-    }
-  ],
+    ]
+  },
   "content_wrappers": {
+    "section_name": "Office Chaos",
+    "section_name_es": "Caos Oficina",
+    "image": "/episodes/episode_2_scene.jpg",
     "intro_text": {
-      "en": "Welcome back to the office. This is a calm place with calm people. Very calm. Completely calm. Please ignore the boss.",
-      "es": "Bienvenido de nuevo a la oficina. Este es un lugar tranquilo con personas tranquilas. Muy tranquilo. Completamente tranquilo. Por favor ignora al jefe."
+      "en": "Welcome back to the office. Today there is a very important meeting. Everyone says it is important. Nobody knows why. This is normal office life. Completely normal.",
+      "es": "Bienvenido de nuevo a la oficina. Hoy hay una reunión muy importante. Todos dicen que es importante. Nadie sabe por qué. Esta es la vida normal de oficina. Completamente normal."
     },
     "transition": {
-      "en": "Great. Now you know the words. Now we use the words in a real meeting. The meeting is important. The schedule is not.",
-      "es": "Genial. Ahora conoces las palabras. Ahora usamos las palabras en una reunión real. La reunión es importante. El horario no."
+      "en": "Great. Now you know the words. Now you use them in the meeting. Please listen carefully. The boss talks for a long time.",
+      "es": "Muy bien. Ahora conoces las palabras. Ahora las usas en la reunión. Por favor escucha con atención. El jefe habla por mucho tiempo."
     },
     "conclusion": {
-      "en": "Good job. You survived the meeting. You learned new words. You heard many speeches. The meeting started late and ended late. Success.",
-      "es": "Buen trabajo. Sobreviviste a la reunión. Aprendiste nuevas palabras. Escuchaste muchos discursos. La reunión empezó tarde y terminó tarde. Éxito."
+      "en": "Good job. You survive the meeting. You listen. You take notes. You feel confused. The boss feels amazing. This is a successful meeting.",
+      "es": "Buen trabajo. Sobrevives a la reunión. Escuchas. Tomas notas. Te sientes confundido. El jefe se siente increíble. Esta es una reunión exitosa."
     },
     "reflection_prompt": {
-      "question_en": "Write one sentence using the word \"schedule\" or \"important\"",
-      "question_es": "Escribe una oración usando la palabra \"horario\" o \"importante\"",
+      "question_en": "Write one sentence using the word \"meeting\" or \"confused\".",
+      "question_es": "Escribe una oración usando la palabra \"reunión\" o \"confundido\".",
       "type": "free_text",
       "optional": true,
       "max_length": 100,
       "vocab_practice": [
-        "schedule",
-        "important"
+        "meeting",
+        "confused"
       ]
     }
   },
   "next_episode_preview": {
-    "preview_text_en": "Next time, the boss brings food to the office, Jim asks many serious questions, and nobody knows who eats the last piece.",
-    "preview_text_es": "La próxima vez, el jefe trae comida a la oficina, Jim hace muchas preguntas serias y nadie sabe quién come el último pedazo.",
-    "teaser_image": "/previews/ep_003.jpg"
+    "section_name": "Office Chaos",
+    "section_name_es": "Caos Oficina",
+    "image": "/episodes/episode_2_scene.jpg",
+    "preview_text_en": "{boss_name} plans a very important office activity, but {jim_name} has a prank ready and nothing goes as planned.",
+    "preview_text_es": "{boss_name} planea una actividad muy importante en la oficina, pero {jim_name} tiene una broma lista y nada sale como se espera.",
+    "teaser_image": "/previews/ep_3.jpg"
   },
   "progression": {
+    "section_name": "Your Progress",
+    "section_name_es": "Tu Progreso",
+    "image": "/episodes/episode_2_scene.jpg",
     "xp_earned_base": 50,
     "xp_bonus_conditions": [
       {
@@ -718,34 +752,39 @@
           "char_boss",
           "char_jim",
           "char_pam",
-          "char_player"
+          "char_dwight"
         ]
       },
       {
         "type": "location",
         "location_ids": [
-          "Office floor",
-          "Conference room"
+          "office",
+          "meeting_room",
+          "reception"
         ]
       }
     ],
     "achievements": [
       {
-        "achievement_id": "first_meeting_survivor",
-        "name": "First Meeting Survivor",
-        "name_es": "Sobreviviente de la Primera Reunión",
-        "description": "You attend a very important meeting, understand new words, and stay calm during confusion.",
-        "description_es": "Asistes a una reunión muy importante, entiendes nuevas palabras y mantienes la calma durante la confusión.",
-        "icon": "/achievements/first_meeting_survivor.png"
+        "achievement_id": "first_meeting",
+        "name": "First Meeting",
+        "name_es": "Primera Reunión",
+        "description": "You complete your first office meeting and survive a very long talk from the boss.",
+        "description_es": "Completas tu primera reunión de oficina y sobrevives a una charla muy larga del jefe.",
+        "icon": "/achievements/first_meeting.png",
+        "image": "/achievements/first_meeting_banner.jpg"
       }
     ]
   },
   "metadata": {
-    "created_date": "2026-01-26",
+    "section_name": "Office Meeting",
+    "section_name_es": "Reunión Oficina",
+    "image": "/episodes/episode_2_scene.jpg",
+    "created_date": "2026-01-28",
     "version": "1.0",
     "author": "Course Team",
     "content_level": "beginner",
-    "estimated_words": 350,
+    "estimated_words": 320,
     "estimated_unique_vocabulary": 45,
     "structure_type": "vocab_story_then_main_story"
   }

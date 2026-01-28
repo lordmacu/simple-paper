@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../progression/achievement.dart';
+
 part 'user_progress.freezed.dart';
 part 'user_progress.g.dart';
 
@@ -18,6 +20,12 @@ class UserProgress with _$UserProgress {
     
     /// XP total acumulado
     @Default(0) int totalXp,
+
+    /// Logros
+    @Default([]) List<Achievement> achievements,
+
+    /// Palabras para repasar
+    @JsonKey(name: 'review_words') @Default([]) List<String> reviewWords,
     
     /// Streak actual (días consecutivos)
     @Default(0) int currentStreak,

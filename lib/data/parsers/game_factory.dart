@@ -1,6 +1,10 @@
 import '../../domain/models/game/matching_game.dart';
 import '../../domain/models/game/fill_blank_game.dart';
 import '../../domain/models/game/multiple_choice_game.dart';
+import '../../domain/models/game/audio_choice_game.dart';
+import '../../domain/models/game/order_sentence_game.dart';
+import '../../domain/models/game/typing_game.dart';
+import '../../domain/models/game/spot_word_game.dart';
 import '../../domain/models/game/game.dart';
 
 /// Factory para crear instancias de juegos según su tipo
@@ -29,6 +33,19 @@ class GameFactory {
           
         case 'multiple_choice':
           return MultipleChoiceGame.fromJson(json);
+        
+        case 'audio_choice':
+          return AudioChoiceGame.fromJson(json);
+        
+        case 'order_sentence':
+          return OrderSentenceGame.fromJson(json);
+
+        case 'typing':
+          return TypingGame.fromJson(json);
+
+        case 'spot_word':
+          return SpotWordGame.fromJson(json);
+        
           
         default:
           throw UnsupportedGameTypeException(gameType);
@@ -99,7 +116,7 @@ class UnsupportedGameTypeException implements Exception {
   
   @override
   String toString() => 'Unsupported game type: $gameType. '
-      'Supported types: matching, fill_blank, multiple_choice';
+      'Supported types: matching, fill_blank, multiple_choice, audio_choice, order_sentence, typing, spot_word';
 }
 
 /// Excepción general de parseo de juegos

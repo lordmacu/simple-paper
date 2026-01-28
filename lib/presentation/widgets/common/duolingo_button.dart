@@ -86,7 +86,7 @@ class _DuolingoButtonState extends State<DuolingoButton>
         foregroundColor: Colors.white,
         disabledBackgroundColor: AppColors.textSecondary.withOpacity(0.3),
         disabledForegroundColor: Colors.white.withOpacity(0.5),
-        padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 32),
+        padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 16),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
         ),
@@ -124,7 +124,7 @@ class _DuolingoButtonState extends State<DuolingoButton>
       style: OutlinedButton.styleFrom(
         foregroundColor: isEnabled ? AppColors.textPrimary : AppColors.textSecondary,
         disabledForegroundColor: AppColors.textSecondary.withOpacity(0.5),
-        padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 32),
+        padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 16),
         side: BorderSide(
           color: isEnabled
               ? AppColors.textPrimary.withOpacity(0.3)

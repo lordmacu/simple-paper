@@ -1,4 +1,5 @@
 import '../models/progress/user_progress.dart';
+import '../models/progress/review_word_entry.dart';
 
 /// Interface del repositorio de progreso del usuario
 /// Define el contrato para guardar y recuperar el progreso del jugador
@@ -63,6 +64,27 @@ abstract class IProgressRepository {
   /// 
   /// Returns: Lista de IDs de logros desbloqueados
   Future<List<String>> getUnlockedAchievements();
+
+  /// Agrega palabras para repasar
+  /// 
+  /// [words] - Lista de palabras para repasar
+  /// [level] - Nivel del episodio (A1, A2, etc.)
+  /// [episodeNumber] - Número del episodio
+  Future<void> addReviewWords({
+    required List<String> words,
+    required String level,
+    required int episodeNumber,
+  });
+
+  /// Obtiene todas las palabras a repasar
+  Future<List<ReviewWordEntry>> getReviewWords();
+
+  /// Elimina una palabra a repasar específica
+  Future<void> removeReviewWord({
+    required String word,
+    required String level,
+    required int episodeNumber,
+  });
   
   /// Desbloquea un logro
   /// 

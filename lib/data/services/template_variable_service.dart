@@ -25,6 +25,11 @@ class TemplateVariableService {
     _currentValues = Map.from(_defaults);
   }
 
+  /// Reset público para restaurar defaults
+  Future<void> resetToDefaults() async {
+    _resetToDefaults();
+  }
+
   /// Actualiza una variable específica
   void updateVariable(String key, String value) {
     if (_defaults.containsKey(key)) {
