@@ -7,6 +7,7 @@ import '../../../domain/models/episode/episode.dart';
 import '../../../domain/models/story/scene.dart';
 import '../../../domain/models/story/dialogue.dart';
 import '../../../domain/models/vocabulary/vocabulary_word.dart';
+import '../../../core/utils/section_progress.dart';
 import '../../providers/template_variable_provider.dart';
 import '../../providers/progress_providers.dart';
 import '../../widgets/story/character_dialogue_bubble.dart';
@@ -37,6 +38,7 @@ class MainStoryScreen extends ConsumerStatefulWidget {
 
 class _MainStoryScreenState extends ConsumerState<MainStoryScreen>
     with SingleTickerProviderStateMixin {
+  static const String _logTag = '[MainStory]';
   late int _currentSceneIndex;
   int _currentDialogueIndex = 0;
   int _totalPoints = 0;
@@ -213,6 +215,7 @@ class _MainStoryScreenState extends ConsumerState<MainStoryScreen>
           correctChoices: _correctChoices,
           incorrectChoices: _incorrectChoices,
           wordsToReview: wordsToReview,
+          learnedWords: widget.episode.vocabularyFocus.targetWords,
           onReviewWords: () async {
             await ref.read(addReviewWordsProvider)(
               words: wordsToReview,
@@ -227,14 +230,28 @@ class _MainStoryScreenState extends ConsumerState<MainStoryScreen>
             );
           },
           onContinue: () async {
+            debugPrint('$_logTag onContinue start');
             if (wordsToReview.isNotEmpty) {
+              debugPrint('$_logTag adding review words: ${wordsToReview.length}');
               await ref.read(addReviewWordsProvider)(
                 words: wordsToReview,
                 level: widget.episode.episodeMetadata.internalLevel,
                 episodeNumber: widget.episode.episodeMetadata.episodeNumber,
               );
             }
+            debugPrint('$_logTag marking story/scene sections');
+            await ref.read(markSectionCompletedProvider)(
+              episodeNumber: widget.episode.episodeMetadata.episodeNumber,
+              sectionId: SectionProgressIds.story,
+            );
+            for (final scene in widget.episode.scenes.data) {
+              await ref.read(markSectionCompletedProvider)(
+                episodeNumber: widget.episode.episodeMetadata.episodeNumber,
+                sectionId: SectionProgressIds.sceneId(scene.sceneNumber),
+              );
+            }
             if (!mounted) return;
+            debugPrint('$_logTag onContinue finish -> pop summary + onComplete');
             Navigator.of(context).pop(); // close summary screen
             widget.onComplete();
           },

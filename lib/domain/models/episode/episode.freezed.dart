@@ -41,6 +41,11 @@ mixin _$Episode {
   @JsonKey(name: 'vocabulary_story')
   VocabularyStory? get vocabularyStory => throw _privateConstructorUsedError;
 
+  /// Listening & shadowing
+  @JsonKey(name: 'listening_shadowing')
+  ListeningShadowingSection? get listeningShadowing =>
+      throw _privateConstructorUsedError;
+
   /// Escenas de la historia principal
   @JsonKey(name: 'scenes')
   ScenesSection get scenes => throw _privateConstructorUsedError;
@@ -81,6 +86,8 @@ abstract class $EpisodeCopyWith<$Res> {
     @JsonKey(name: 'characters') CharactersInEpisode characters,
     @JsonKey(name: 'vocabulary_focus') VocabularyFocus vocabularyFocus,
     @JsonKey(name: 'vocabulary_story') VocabularyStory? vocabularyStory,
+    @JsonKey(name: 'listening_shadowing')
+    ListeningShadowingSection? listeningShadowing,
     @JsonKey(name: 'scenes') ScenesSection scenes,
     @JsonKey(name: 'games') GamesSection games,
     @JsonKey(name: 'next_episode_preview')
@@ -94,6 +101,7 @@ abstract class $EpisodeCopyWith<$Res> {
   $CharactersInEpisodeCopyWith<$Res> get characters;
   $VocabularyFocusCopyWith<$Res> get vocabularyFocus;
   $VocabularyStoryCopyWith<$Res>? get vocabularyStory;
+  $ListeningShadowingSectionCopyWith<$Res>? get listeningShadowing;
   $ScenesSectionCopyWith<$Res> get scenes;
   $GamesSectionCopyWith<$Res> get games;
   $NextEpisodePreviewCopyWith<$Res>? get nextEpisodePreview;
@@ -121,6 +129,7 @@ class _$EpisodeCopyWithImpl<$Res, $Val extends Episode>
     Object? characters = null,
     Object? vocabularyFocus = null,
     Object? vocabularyStory = freezed,
+    Object? listeningShadowing = freezed,
     Object? scenes = null,
     Object? games = null,
     Object? nextEpisodePreview = freezed,
@@ -149,6 +158,10 @@ class _$EpisodeCopyWithImpl<$Res, $Val extends Episode>
                 ? _value.vocabularyStory
                 : vocabularyStory // ignore: cast_nullable_to_non_nullable
                       as VocabularyStory?,
+            listeningShadowing: freezed == listeningShadowing
+                ? _value.listeningShadowing
+                : listeningShadowing // ignore: cast_nullable_to_non_nullable
+                      as ListeningShadowingSection?,
             scenes: null == scenes
                 ? _value.scenes
                 : scenes // ignore: cast_nullable_to_non_nullable
@@ -232,6 +245,23 @@ class _$EpisodeCopyWithImpl<$Res, $Val extends Episode>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
+  $ListeningShadowingSectionCopyWith<$Res>? get listeningShadowing {
+    if (_value.listeningShadowing == null) {
+      return null;
+    }
+
+    return $ListeningShadowingSectionCopyWith<$Res>(
+      _value.listeningShadowing!,
+      (value) {
+        return _then(_value.copyWith(listeningShadowing: value) as $Val);
+      },
+    );
+  }
+
+  /// Create a copy of Episode
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
   $ScenesSectionCopyWith<$Res> get scenes {
     return $ScenesSectionCopyWith<$Res>(_value.scenes, (value) {
       return _then(_value.copyWith(scenes: value) as $Val);
@@ -299,6 +329,8 @@ abstract class _$$EpisodeImplCopyWith<$Res> implements $EpisodeCopyWith<$Res> {
     @JsonKey(name: 'characters') CharactersInEpisode characters,
     @JsonKey(name: 'vocabulary_focus') VocabularyFocus vocabularyFocus,
     @JsonKey(name: 'vocabulary_story') VocabularyStory? vocabularyStory,
+    @JsonKey(name: 'listening_shadowing')
+    ListeningShadowingSection? listeningShadowing,
     @JsonKey(name: 'scenes') ScenesSection scenes,
     @JsonKey(name: 'games') GamesSection games,
     @JsonKey(name: 'next_episode_preview')
@@ -317,6 +349,8 @@ abstract class _$$EpisodeImplCopyWith<$Res> implements $EpisodeCopyWith<$Res> {
   $VocabularyFocusCopyWith<$Res> get vocabularyFocus;
   @override
   $VocabularyStoryCopyWith<$Res>? get vocabularyStory;
+  @override
+  $ListeningShadowingSectionCopyWith<$Res>? get listeningShadowing;
   @override
   $ScenesSectionCopyWith<$Res> get scenes;
   @override
@@ -348,6 +382,7 @@ class __$$EpisodeImplCopyWithImpl<$Res>
     Object? characters = null,
     Object? vocabularyFocus = null,
     Object? vocabularyStory = freezed,
+    Object? listeningShadowing = freezed,
     Object? scenes = null,
     Object? games = null,
     Object? nextEpisodePreview = freezed,
@@ -376,6 +411,10 @@ class __$$EpisodeImplCopyWithImpl<$Res>
             ? _value.vocabularyStory
             : vocabularyStory // ignore: cast_nullable_to_non_nullable
                   as VocabularyStory?,
+        listeningShadowing: freezed == listeningShadowing
+            ? _value.listeningShadowing
+            : listeningShadowing // ignore: cast_nullable_to_non_nullable
+                  as ListeningShadowingSection?,
         scenes: null == scenes
             ? _value.scenes
             : scenes // ignore: cast_nullable_to_non_nullable
@@ -410,6 +449,7 @@ class _$EpisodeImpl implements _Episode {
     @JsonKey(name: 'characters') required this.characters,
     @JsonKey(name: 'vocabulary_focus') required this.vocabularyFocus,
     @JsonKey(name: 'vocabulary_story') this.vocabularyStory,
+    @JsonKey(name: 'listening_shadowing') this.listeningShadowing,
     @JsonKey(name: 'scenes') required this.scenes,
     @JsonKey(name: 'games') required this.games,
     @JsonKey(name: 'next_episode_preview') this.nextEpisodePreview,
@@ -445,6 +485,11 @@ class _$EpisodeImpl implements _Episode {
   @JsonKey(name: 'vocabulary_story')
   final VocabularyStory? vocabularyStory;
 
+  /// Listening & shadowing
+  @override
+  @JsonKey(name: 'listening_shadowing')
+  final ListeningShadowingSection? listeningShadowing;
+
   /// Escenas de la historia principal
   @override
   @JsonKey(name: 'scenes')
@@ -471,7 +516,7 @@ class _$EpisodeImpl implements _Episode {
 
   @override
   String toString() {
-    return 'Episode(episodeMetadata: $episodeMetadata, citySettings: $citySettings, characters: $characters, vocabularyFocus: $vocabularyFocus, vocabularyStory: $vocabularyStory, scenes: $scenes, games: $games, nextEpisodePreview: $nextEpisodePreview, progression: $progression, contentWrappers: $contentWrappers)';
+    return 'Episode(episodeMetadata: $episodeMetadata, citySettings: $citySettings, characters: $characters, vocabularyFocus: $vocabularyFocus, vocabularyStory: $vocabularyStory, listeningShadowing: $listeningShadowing, scenes: $scenes, games: $games, nextEpisodePreview: $nextEpisodePreview, progression: $progression, contentWrappers: $contentWrappers)';
   }
 
   @override
@@ -489,6 +534,8 @@ class _$EpisodeImpl implements _Episode {
                 other.vocabularyFocus == vocabularyFocus) &&
             (identical(other.vocabularyStory, vocabularyStory) ||
                 other.vocabularyStory == vocabularyStory) &&
+            (identical(other.listeningShadowing, listeningShadowing) ||
+                other.listeningShadowing == listeningShadowing) &&
             (identical(other.scenes, scenes) || other.scenes == scenes) &&
             (identical(other.games, games) || other.games == games) &&
             (identical(other.nextEpisodePreview, nextEpisodePreview) ||
@@ -508,6 +555,7 @@ class _$EpisodeImpl implements _Episode {
     characters,
     vocabularyFocus,
     vocabularyStory,
+    listeningShadowing,
     scenes,
     games,
     nextEpisodePreview,
@@ -538,6 +586,8 @@ abstract class _Episode implements Episode {
     @JsonKey(name: 'vocabulary_focus')
     required final VocabularyFocus vocabularyFocus,
     @JsonKey(name: 'vocabulary_story') final VocabularyStory? vocabularyStory,
+    @JsonKey(name: 'listening_shadowing')
+    final ListeningShadowingSection? listeningShadowing,
     @JsonKey(name: 'scenes') required final ScenesSection scenes,
     @JsonKey(name: 'games') required final GamesSection games,
     @JsonKey(name: 'next_episode_preview')
@@ -573,6 +623,11 @@ abstract class _Episode implements Episode {
   @override
   @JsonKey(name: 'vocabulary_story')
   VocabularyStory? get vocabularyStory;
+
+  /// Listening & shadowing
+  @override
+  @JsonKey(name: 'listening_shadowing')
+  ListeningShadowingSection? get listeningShadowing;
 
   /// Escenas de la historia principal
   @override

@@ -49,8 +49,11 @@ class _MatchingGameWidgetState extends ConsumerState<MatchingGameWidget> {
 
   void _setupItems() {
     final items = widget.game.content.items;
-    _leftItems = List<MatchingItem>.from(items);
-    _rightItems = List<MatchingItem>.from(items);
+    final pool = List<MatchingItem>.from(items);
+    pool.shuffle(Random());
+    final limited = pool.take(5).toList();
+    _leftItems = List<MatchingItem>.from(limited);
+    _rightItems = List<MatchingItem>.from(limited);
 
     if (widget.game.settings?.shuffle ?? true) {
       _leftItems.shuffle(Random());
@@ -96,7 +99,7 @@ class _MatchingGameWidgetState extends ConsumerState<MatchingGameWidget> {
       }
     });
 
-    if (_matchedIds.length == widget.game.content.items.length) {
+    if (_matchedIds.length == _leftItems.length) {
       _finishGame();
     }
   }
@@ -114,33 +117,41 @@ class _MatchingGameWidgetState extends ConsumerState<MatchingGameWidget> {
   @override
   Widget build(BuildContext context) {
     final template = ref.read(templateVariableServiceProvider);
-    final instructions = template.replaceVariables(widget.game.instructions);
+    final rawInstructions = widget.game.instructionsEs.isNotEmpty
+        ? widget.game.instructionsEs
+        : widget.game.instructions;
+    final instructions = template.replaceVariables(rawInstructions);
 
-    return Padding(
-      padding: const EdgeInsets.all(20),
-      child: Column(
-        children: [
-          _buildHeader(instructions, template),
-          const SizedBox(height: 16),
-          Expanded(
-            child: Row(
+    return MediaQuery.removePadding(
+      context: context,
+      removeTop: true,
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+        child: Column(
+          children: [
+            _buildHeader(instructions, template),
+            const SizedBox(height: 16),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(child: _buildColumn(_leftItems, template, isTarget: true)),
+                Expanded(
+                  child: _buildColumn(_leftItems, template, isTarget: true),
+                ),
                 const SizedBox(width: 12),
                 Expanded(child: _buildColumn(_rightItems, template)),
               ],
             ),
-          ),
-          const SizedBox(height: 12),
-          Text(
-            'Score: $_score',
-            style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: AppColors.textPrimary,
+            const SizedBox(height: 12),
+            Text(
+              'Score: $_score',
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: AppColors.textPrimary,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

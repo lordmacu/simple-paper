@@ -539,10 +539,6 @@ mixin _$VocabularySegment {
   /// Text in both languages
   BilingualText get text => throw _privateConstructorUsedError;
 
-  /// Visual aid (emojis)
-  @JsonKey(name: 'visual_aid')
-  String? get visualAid => throw _privateConstructorUsedError;
-
   /// Emphasis style for the word
   @JsonKey(name: 'emphasis_style')
   String? get emphasisStyle => throw _privateConstructorUsedError;
@@ -572,7 +568,6 @@ abstract class $VocabularySegmentCopyWith<$Res> {
     @JsonKey(name: 'image_url') String? imageUrl,
     @JsonKey(name: 'word_focus') String? wordFocus,
     BilingualText text,
-    @JsonKey(name: 'visual_aid') String? visualAid,
     @JsonKey(name: 'emphasis_style') String? emphasisStyle,
     VocabularyInteractive? interactive,
   });
@@ -600,7 +595,6 @@ class _$VocabularySegmentCopyWithImpl<$Res, $Val extends VocabularySegment>
     Object? imageUrl = freezed,
     Object? wordFocus = freezed,
     Object? text = null,
-    Object? visualAid = freezed,
     Object? emphasisStyle = freezed,
     Object? interactive = freezed,
   }) {
@@ -622,10 +616,6 @@ class _$VocabularySegmentCopyWithImpl<$Res, $Val extends VocabularySegment>
                 ? _value.text
                 : text // ignore: cast_nullable_to_non_nullable
                       as BilingualText,
-            visualAid: freezed == visualAid
-                ? _value.visualAid
-                : visualAid // ignore: cast_nullable_to_non_nullable
-                      as String?,
             emphasisStyle: freezed == emphasisStyle
                 ? _value.emphasisStyle
                 : emphasisStyle // ignore: cast_nullable_to_non_nullable
@@ -678,7 +668,6 @@ abstract class _$$VocabularySegmentImplCopyWith<$Res>
     @JsonKey(name: 'image_url') String? imageUrl,
     @JsonKey(name: 'word_focus') String? wordFocus,
     BilingualText text,
-    @JsonKey(name: 'visual_aid') String? visualAid,
     @JsonKey(name: 'emphasis_style') String? emphasisStyle,
     VocabularyInteractive? interactive,
   });
@@ -707,7 +696,6 @@ class __$$VocabularySegmentImplCopyWithImpl<$Res>
     Object? imageUrl = freezed,
     Object? wordFocus = freezed,
     Object? text = null,
-    Object? visualAid = freezed,
     Object? emphasisStyle = freezed,
     Object? interactive = freezed,
   }) {
@@ -729,10 +717,6 @@ class __$$VocabularySegmentImplCopyWithImpl<$Res>
             ? _value.text
             : text // ignore: cast_nullable_to_non_nullable
                   as BilingualText,
-        visualAid: freezed == visualAid
-            ? _value.visualAid
-            : visualAid // ignore: cast_nullable_to_non_nullable
-                  as String?,
         emphasisStyle: freezed == emphasisStyle
             ? _value.emphasisStyle
             : emphasisStyle // ignore: cast_nullable_to_non_nullable
@@ -754,7 +738,6 @@ class _$VocabularySegmentImpl implements _VocabularySegment {
     @JsonKey(name: 'image_url') this.imageUrl,
     @JsonKey(name: 'word_focus') this.wordFocus,
     required this.text,
-    @JsonKey(name: 'visual_aid') this.visualAid,
     @JsonKey(name: 'emphasis_style') this.emphasisStyle,
     this.interactive,
   });
@@ -781,11 +764,6 @@ class _$VocabularySegmentImpl implements _VocabularySegment {
   @override
   final BilingualText text;
 
-  /// Visual aid (emojis)
-  @override
-  @JsonKey(name: 'visual_aid')
-  final String? visualAid;
-
   /// Emphasis style for the word
   @override
   @JsonKey(name: 'emphasis_style')
@@ -797,7 +775,7 @@ class _$VocabularySegmentImpl implements _VocabularySegment {
 
   @override
   String toString() {
-    return 'VocabularySegment(segmentId: $segmentId, imageUrl: $imageUrl, wordFocus: $wordFocus, text: $text, visualAid: $visualAid, emphasisStyle: $emphasisStyle, interactive: $interactive)';
+    return 'VocabularySegment(segmentId: $segmentId, imageUrl: $imageUrl, wordFocus: $wordFocus, text: $text, emphasisStyle: $emphasisStyle, interactive: $interactive)';
   }
 
   @override
@@ -812,8 +790,6 @@ class _$VocabularySegmentImpl implements _VocabularySegment {
             (identical(other.wordFocus, wordFocus) ||
                 other.wordFocus == wordFocus) &&
             (identical(other.text, text) || other.text == text) &&
-            (identical(other.visualAid, visualAid) ||
-                other.visualAid == visualAid) &&
             (identical(other.emphasisStyle, emphasisStyle) ||
                 other.emphasisStyle == emphasisStyle) &&
             (identical(other.interactive, interactive) ||
@@ -828,7 +804,6 @@ class _$VocabularySegmentImpl implements _VocabularySegment {
     imageUrl,
     wordFocus,
     text,
-    visualAid,
     emphasisStyle,
     interactive,
   );
@@ -856,7 +831,6 @@ abstract class _VocabularySegment implements VocabularySegment {
     @JsonKey(name: 'image_url') final String? imageUrl,
     @JsonKey(name: 'word_focus') final String? wordFocus,
     required final BilingualText text,
-    @JsonKey(name: 'visual_aid') final String? visualAid,
     @JsonKey(name: 'emphasis_style') final String? emphasisStyle,
     final VocabularyInteractive? interactive,
   }) = _$VocabularySegmentImpl;
@@ -882,11 +856,6 @@ abstract class _VocabularySegment implements VocabularySegment {
   /// Text in both languages
   @override
   BilingualText get text;
-
-  /// Visual aid (emojis)
-  @override
-  @JsonKey(name: 'visual_aid')
-  String? get visualAid;
 
   /// Emphasis style for the word
   @override

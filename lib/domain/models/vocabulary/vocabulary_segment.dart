@@ -66,9 +66,6 @@ class VocabularySegment with _$VocabularySegment {
     /// Text in both languages
     required BilingualText text,
     
-    /// Visual aid (emojis)
-    @JsonKey(name: 'visual_aid') String? visualAid,
-    
     /// Emphasis style for the word
     @JsonKey(name: 'emphasis_style') String? emphasisStyle,
     

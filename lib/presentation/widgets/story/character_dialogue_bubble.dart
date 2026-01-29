@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../domain/models/story/dialogue.dart';
 import '../../../domain/models/episode/character.dart';
+import '../../providers/template_variable_provider.dart';
+import '../../providers/tts_provider.dart';
 
 /// Burbuja de diálogo de personaje estilo The Office
-class CharacterDialogueBubble extends StatefulWidget {
+class CharacterDialogueBubble extends ConsumerStatefulWidget {
   final Dialogue dialogue;
   final List<Character> episodeCharacters;
   final Function(String)? onVocabTap;
@@ -18,10 +21,12 @@ class CharacterDialogueBubble extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<CharacterDialogueBubble> createState() => _CharacterDialogueBubbleState();
+  ConsumerState<CharacterDialogueBubble> createState() =>
+      _CharacterDialogueBubbleState();
 }
 
-class _CharacterDialogueBubbleState extends State<CharacterDialogueBubble> {
+class _CharacterDialogueBubbleState
+    extends ConsumerState<CharacterDialogueBubble> {
   bool _showingTranslation = false;
 
   /// Obtiene el personaje por su ID
@@ -52,10 +57,19 @@ class _CharacterDialogueBubbleState extends State<CharacterDialogueBubble> {
 
   /// Construye el texto con palabras de vocabulario resaltadas
   Widget _buildHighlightedText(BuildContext context) {
+    final template = ref.read(templateVariableServiceProvider);
+    final rawText = widget.dialogue.text;
+    final rawTranslation = widget.dialogue.translationEs;
+    final text =
+        rawText != null ? template.replaceVariables(rawText) : null;
+    final translation = rawTranslation != null
+        ? template.replaceVariables(rawTranslation)
+        : null;
+
     // Si mostramos traducción, mostrar solo texto plano sin highlighting
     if (_showingTranslation) {
       return Text(
-        widget.dialogue.translationEs ?? widget.dialogue.text ?? '',
+        translation ?? text ?? '',
         style: const TextStyle(
           fontSize: 16,
           color: AppColors.textPrimary,
@@ -64,9 +78,9 @@ class _CharacterDialogueBubbleState extends State<CharacterDialogueBubble> {
       );
     }
     
-    if (widget.dialogue.highlightedVocab.isEmpty || widget.dialogue.text == null) {
+    if (widget.dialogue.highlightedVocab.isEmpty || text == null) {
       return Text(
-        widget.dialogue.text ?? '',
+        text ?? '',
         style: const TextStyle(
           fontSize: 16,
           color: AppColors.textPrimary,
@@ -77,7 +91,7 @@ class _CharacterDialogueBubbleState extends State<CharacterDialogueBubble> {
 
     // Crear spans para resaltar vocabulario
     final spans = <InlineSpan>[];
-    String remainingText = widget.dialogue.text!;
+    String remainingText = text;
     
     // Ordenar palabras de vocabulario por longitud (más largas primero)
     final vocabWords = List<String>.from(widget.dialogue.highlightedVocab)
@@ -98,9 +112,6 @@ class _CharacterDialogueBubbleState extends State<CharacterDialogueBubble> {
                 fontSize: 16,
                 color: AppColors.secondaryBlue,
                 fontWeight: FontWeight.bold,
-                decoration: TextDecoration.underline,
-                decorationColor: AppColors.secondaryBlue,
-                decorationStyle: TextDecorationStyle.dotted,
                 height: 1.5,
               ),
               recognizer: widget.onVocabTap != null
@@ -147,10 +158,23 @@ class _CharacterDialogueBubbleState extends State<CharacterDialogueBubble> {
     );
   }
 
+  Future<void> _speakDialogue() async {
+    final template = ref.read(templateVariableServiceProvider);
+    final rawText = widget.dialogue.text ?? '';
+    final text = template.replaceVariables(rawText);
+    if (text.trim().isEmpty) return;
+    final tts = ref.read(ttsServiceProvider);
+    await tts.speak(text);
+  }
+
   @override
   Widget build(BuildContext context) {
     final character = _getCharacter();
-    final displayName = widget.dialogue.characterDisplayName ?? character?.defaultName ?? 'Unknown';
+    final displayNameRaw =
+        widget.dialogue.characterDisplayName ?? character?.defaultName ?? 'Unknown';
+    final displayName = ref
+        .read(templateVariableServiceProvider)
+        .replaceVariables(displayNameRaw);
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -226,31 +250,63 @@ class _CharacterDialogueBubbleState extends State<CharacterDialogueBubble> {
                     
                     // Botón de traducción
                     const SizedBox(height: 8),
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          _showingTranslation = !_showingTranslation;
-                        });
-                      },
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(
-                            _showingTranslation ? Icons.translate_outlined : Icons.translate,
-                            size: 16,
-                            color: AppColors.secondaryBlue,
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              _showingTranslation = !_showingTranslation;
+                            });
+                          },
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(
+                                _showingTranslation
+                                    ? Icons.translate_outlined
+                                    : Icons.translate,
+                                size: 16,
+                                color: AppColors.secondaryBlue,
+                              ),
+                              const SizedBox(width: 4),
+                              Text(
+                                _showingTranslation
+                                    ? 'Ver original'
+                                    : 'Ver traducción',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: AppColors.secondaryBlue,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ],
                           ),
-                          const SizedBox(width: 4),
-                          Text(
-                            _showingTranslation ? 'Ver original' : 'Ver traducción',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: AppColors.secondaryBlue,
-                              fontWeight: FontWeight.w600,
-                            ),
+                        ),
+                        const SizedBox(width: 12),
+                        InkWell(
+                          onTap: _speakDialogue,
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: const [
+                              Icon(
+                                Icons.volume_up,
+                                size: 16,
+                                color: AppColors.primaryGreen,
+                              ),
+                              SizedBox(width: 4),
+                              Text(
+                                'Escuchar',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: AppColors.primaryGreen,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                     
                     // Emoción (opcional)

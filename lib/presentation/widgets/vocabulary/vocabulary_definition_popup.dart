@@ -1,11 +1,15 @@
-import 'package:flutter/material.dart';
 import 'dart:ui';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../domain/models/vocabulary/vocabulary_word.dart';
+import '../../providers/template_variable_provider.dart';
+import '../../providers/tts_provider.dart';
 
 /// Popup de definición de vocabulario
 /// Muestra la palabra, traducción, tipo, y ejemplo en contexto
-class VocabularyDefinitionPopup extends StatelessWidget {
+class VocabularyDefinitionPopup extends ConsumerStatefulWidget {
   final VocabularyWord word;
   final VoidCallback onClose;
 
@@ -15,6 +19,13 @@ class VocabularyDefinitionPopup extends StatelessWidget {
     required this.onClose,
   }) : super(key: key);
 
+  @override
+  ConsumerState<VocabularyDefinitionPopup> createState() =>
+      _VocabularyDefinitionPopupState();
+}
+
+class _VocabularyDefinitionPopupState
+    extends ConsumerState<VocabularyDefinitionPopup> {
   /// Icono basado en el tipo de palabra
   IconData _getWordTypeIcon(String wordType) {
     final type = wordType.toLowerCase();
@@ -50,10 +61,27 @@ class VocabularyDefinitionPopup extends StatelessWidget {
     }
   }
 
+  Future<void> _speakWord() async {
+    final template = ref.read(templateVariableServiceProvider);
+    final text = template.replaceVariables(widget.word.word);
+    if (text.trim().isEmpty) return;
+    final tts = ref.read(ttsServiceProvider);
+    await tts.speak(text);
+  }
+
+  Future<void> _speakExample(String exampleEn) async {
+    if (exampleEn.trim().isEmpty) return;
+    final tts = ref.read(ttsServiceProvider);
+    await tts.speak(exampleEn);
+  }
+
   @override
   Widget build(BuildContext context) {
+    final template = ref.read(templateVariableServiceProvider);
+    final exampleEn = template.replaceVariables(widget.word.contextSentence);
+    final exampleEs = template.replaceVariables(widget.word.contextSentenceEs);
     return GestureDetector(
-      onTap: onClose,
+      onTap: widget.onClose,
       child: Container(
         color: Colors.black.withOpacity(0.5),
         child: Center(
@@ -107,30 +135,51 @@ class VocabularyDefinitionPopup extends StatelessWidget {
                               end: Alignment.bottomRight,
                             ),
                           ),
-                          child: Column(
+                          child: Stack(
                             children: [
-                              // Palabra en inglés
-                              Text(
-                                word.word.toUpperCase(),
-                                style: const TextStyle(
-                                  fontSize: 32,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                  letterSpacing: 1.5,
-                                ),
-                                textAlign: TextAlign.center,
+                              Column(
+                                children: [
+                                  // Palabra en inglés
+                                  GestureDetector(
+                                    onTap: _speakWord,
+                                    child: Text(
+                                      widget.word.word.toUpperCase(),
+                                      style: const TextStyle(
+                                        fontSize: 32,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                        letterSpacing: 1.5,
+                                        decoration: TextDecoration.none,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 8),
+
+                                  // Traducción
+                                  Text(
+                                    widget.word.translationEs,
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      color: Colors.white.withOpacity(0.9),
+                                      fontWeight: FontWeight.w500,
+                                      decoration: TextDecoration.none,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ],
                               ),
-                              const SizedBox(height: 8),
-                              
-                              // Traducción
-                              Text(
-                                word.translationEs,
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.white.withOpacity(0.9),
-                                  fontWeight: FontWeight.w500,
+                              Positioned(
+                                right: 0,
+                                top: 0,
+                                child: IconButton(
+                                  tooltip: 'Escuchar palabra',
+                                  onPressed: _speakWord,
+                                  icon: const Icon(
+                                    Icons.volume_up,
+                                    color: Colors.white,
+                                  ),
                                 ),
-                                textAlign: TextAlign.center,
                               ),
                             ],
                           ),
@@ -158,17 +207,18 @@ class VocabularyDefinitionPopup extends StatelessWidget {
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Icon(
-                                          _getWordTypeIcon(word.wordType),
+                                          _getWordTypeIcon(widget.word.wordType),
                                           size: 16,
                                           color: AppColors.primaryGreen,
                                         ),
                                         const SizedBox(width: 6),
                                         Text(
-                                          word.wordType,
+                                          widget.word.wordType,
                                           style: const TextStyle(
                                             fontSize: 14,
                                             fontWeight: FontWeight.w600,
                                             color: AppColors.primaryGreen,
+                                            decoration: TextDecoration.none,
                                           ),
                                         ),
                                       ],
@@ -183,7 +233,8 @@ class VocabularyDefinitionPopup extends StatelessWidget {
                                       vertical: 6,
                                     ),
                                     decoration: BoxDecoration(
-                                      color: _getDifficultyColor(word.difficulty).withOpacity(0.1),
+                                      color: _getDifficultyColor(widget.word.difficulty)
+                                          .withOpacity(0.1),
                                       borderRadius: BorderRadius.circular(12),
                                     ),
                                     child: Row(
@@ -192,15 +243,16 @@ class VocabularyDefinitionPopup extends StatelessWidget {
                                         Icon(
                                           Icons.bar_chart,
                                           size: 16,
-                                          color: _getDifficultyColor(word.difficulty),
+                                          color: _getDifficultyColor(widget.word.difficulty),
                                         ),
                                         const SizedBox(width: 6),
                                         Text(
-                                          'Level ${word.difficulty}',
+                                          'Level ${widget.word.difficulty}',
                                           style: TextStyle(
                                             fontSize: 14,
                                             fontWeight: FontWeight.w600,
-                                            color: _getDifficultyColor(word.difficulty),
+                                            color: _getDifficultyColor(widget.word.difficulty),
+                                            decoration: TextDecoration.none,
                                           ),
                                         ),
                                       ],
@@ -241,6 +293,7 @@ class VocabularyDefinitionPopup extends StatelessWidget {
                                             fontWeight: FontWeight.bold,
                                             color: AppColors.secondaryBlue,
                                             letterSpacing: 0.5,
+                                            decoration: TextDecoration.none,
                                           ),
                                         ),
                                       ],
@@ -248,24 +301,45 @@ class VocabularyDefinitionPopup extends StatelessWidget {
                                     const SizedBox(height: 8),
                                     
                                     // Ejemplo en inglés
-                                    Text(
-                                      word.contextSentence,
-                                      style: const TextStyle(
-                                        fontSize: 15,
-                                        color: AppColors.textPrimary,
-                                        height: 1.5,
-                                      ),
+                                    Row(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        GestureDetector(
+                                          onTap: () => _speakExample(exampleEn),
+                                          child: const Icon(
+                                            Icons.play_circle_filled,
+                                            size: 18,
+                                            color: AppColors.primaryGreen,
+                                          ),
+                                        ),
+                                        const SizedBox(width: 8),
+                                        Expanded(
+                                          child: GestureDetector(
+                                            onTap: () => _speakExample(exampleEn),
+                                            child: Text(
+                                              exampleEn,
+                                              style: const TextStyle(
+                                                fontSize: 15,
+                                                color: AppColors.textPrimary,
+                                                height: 1.5,
+                                                decoration: TextDecoration.none,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                     const SizedBox(height: 8),
                                     
                                     // Ejemplo en español
                                     Text(
-                                      word.contextSentenceEs,
+                                      exampleEs,
                                       style: TextStyle(
                                         fontSize: 14,
                                         color: AppColors.textSecondary,
                                         fontStyle: FontStyle.italic,
                                         height: 1.4,
+                                        decoration: TextDecoration.none,
                                       ),
                                     ),
                                   ],
@@ -278,7 +352,7 @@ class VocabularyDefinitionPopup extends StatelessWidget {
                               SizedBox(
                                 width: double.infinity,
                                 child: ElevatedButton(
-                                  onPressed: onClose,
+                                  onPressed: widget.onClose,
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: AppColors.primaryGreen,
                                     foregroundColor: Colors.white,
@@ -294,6 +368,7 @@ class VocabularyDefinitionPopup extends StatelessWidget {
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold,
                                       letterSpacing: 0.5,
+                                      decoration: TextDecoration.none,
                                     ),
                                   ),
                                 ),

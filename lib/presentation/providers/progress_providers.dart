@@ -110,3 +110,29 @@ final removeReviewWordProvider = Provider<Future<void> Function({
     ref.invalidate(userProgressProvider);
   };
 });
+
+/// Provider para obtener secciones completadas de un episodio
+final completedSectionsProvider =
+    FutureProvider.family<Set<String>, int>((ref, episodeNumber) async {
+  final repository = ref.watch(progressRepositoryProvider);
+  return await repository.getCompletedSections(episodeNumber);
+});
+
+/// Provider para marcar una sección como completada
+final markSectionCompletedProvider =
+    Provider<Future<void> Function({
+      required int episodeNumber,
+      required String sectionId,
+    })>((ref) {
+  return ({
+    required int episodeNumber,
+    required String sectionId,
+  }) async {
+    final repository = ref.read(progressRepositoryProvider);
+    await repository.markSectionCompleted(
+      episodeNumber: episodeNumber,
+      sectionId: sectionId,
+    );
+    ref.invalidate(completedSectionsProvider(episodeNumber));
+  };
+});

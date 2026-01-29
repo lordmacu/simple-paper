@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../domain/models/story/scene.dart';
+import '../../providers/template_variable_provider.dart';
 
 /// Header de la escena mostrando ubicación y tiempo
-class SceneHeader extends StatelessWidget {
+class SceneHeader extends ConsumerWidget {
   final Scene scene;
   final VoidCallback onShowTranslation;
 
@@ -14,7 +16,11 @@ class SceneHeader extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final template = ref.read(templateVariableServiceProvider);
+    final location = template.replaceVariables(scene.location);
+    final time = template.replaceVariables(scene.time);
+    final description = template.replaceVariables(scene.description);
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -46,7 +52,7 @@ class SceneHeader extends StatelessWidget {
               const SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  scene.location,
+                  location,
                   style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -79,7 +85,7 @@ class SceneHeader extends StatelessWidget {
               ),
               const SizedBox(width: 8),
               Text(
-                scene.time,
+                time,
                 style: TextStyle(
                   fontSize: 14,
                   color: AppColors.textSecondary,
@@ -89,10 +95,10 @@ class SceneHeader extends StatelessWidget {
             ],
           ),
           // Descripción (opcional)
-          if (scene.description.isNotEmpty) ...[
+          if (description.isNotEmpty) ...[
             const SizedBox(height: 12),
             Text(
-              scene.description,
+              description,
               style: TextStyle(
                 fontSize: 13,
                 color: AppColors.textSecondary,

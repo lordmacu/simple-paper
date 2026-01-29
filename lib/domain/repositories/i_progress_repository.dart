@@ -85,6 +85,15 @@ abstract class IProgressRepository {
     required String level,
     required int episodeNumber,
   });
+
+  /// Obtiene secciones completadas de un episodio
+  Future<Set<String>> getCompletedSections(int episodeNumber);
+
+  /// Marca una sección como completada
+  Future<void> markSectionCompleted({
+    required int episodeNumber,
+    required String sectionId,
+  });
   
   /// Desbloquea un logro
   /// 

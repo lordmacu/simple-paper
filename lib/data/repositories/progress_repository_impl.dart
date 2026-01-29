@@ -11,6 +11,7 @@ import '../services/achievement_service.dart';
 /// Implementación del repositorio de progreso usando SharedPreferences
 class ProgressRepositoryImpl implements IProgressRepository {
   static const String _progressKey = 'user_progress';
+  static const String _sectionProgressKey = 'section_progress_v1';
   final SharedPreferences _prefs;
   final ReviewWordsDb _reviewWordsDb;
   final AchievementService _achievementService;
@@ -258,6 +259,50 @@ class ProgressRepositoryImpl implements IProgressRepository {
   @override
   Future<void> resetProgress() async {
     await _prefs.remove(_progressKey);
+    await _prefs.remove(_sectionProgressKey);
+  }
+
+  @override
+  Future<Set<String>> getCompletedSections(int episodeNumber) async {
+    final map = await _getSectionProgressMap();
+    return map[episodeNumber] ?? <String>{};
+  }
+
+  @override
+  Future<void> markSectionCompleted({
+    required int episodeNumber,
+    required String sectionId,
+  }) async {
+    final map = await _getSectionProgressMap();
+    final current = map[episodeNumber] ?? <String>{};
+    if (current.contains(sectionId)) return;
+    final updated = {...current, sectionId};
+    map[episodeNumber] = updated;
+    await _saveSectionProgressMap(map);
+  }
+
+  Future<Map<int, Set<String>>> _getSectionProgressMap() async {
+    final jsonString = _prefs.getString(_sectionProgressKey);
+    if (jsonString == null) return {};
+    final decoded = jsonDecode(jsonString) as Map<String, dynamic>;
+    final result = <int, Set<String>>{};
+    for (final entry in decoded.entries) {
+      final key = int.tryParse(entry.key);
+      if (key == null) continue;
+      final list = (entry.value as List).whereType<String>().toSet();
+      result[key] = list;
+    }
+    return result;
+  }
+
+  Future<void> _saveSectionProgressMap(
+    Map<int, Set<String>> map,
+  ) async {
+    final jsonMap = <String, dynamic>{};
+    for (final entry in map.entries) {
+      jsonMap[entry.key.toString()] = entry.value.toList();
+    }
+    await _prefs.setString(_sectionProgressKey, jsonEncode(jsonMap));
   }
 
   int _calculateLevel(int totalXp) {

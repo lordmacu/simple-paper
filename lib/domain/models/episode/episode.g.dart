@@ -25,6 +25,11 @@ _$EpisodeImpl _$$EpisodeImplFromJson(Map<String, dynamic> json) =>
           : VocabularyStory.fromJson(
               json['vocabulary_story'] as Map<String, dynamic>,
             ),
+      listeningShadowing: json['listening_shadowing'] == null
+          ? null
+          : ListeningShadowingSection.fromJson(
+              json['listening_shadowing'] as Map<String, dynamic>,
+            ),
       scenes: ScenesSection.fromJson(json['scenes'] as Map<String, dynamic>),
       games: GamesSection.fromJson(json['games'] as Map<String, dynamic>),
       nextEpisodePreview: json['next_episode_preview'] == null
@@ -47,6 +52,7 @@ Map<String, dynamic> _$$EpisodeImplToJson(_$EpisodeImpl instance) =>
       'characters': instance.characters,
       'vocabulary_focus': instance.vocabularyFocus,
       'vocabulary_story': instance.vocabularyStory,
+      'listening_shadowing': instance.listeningShadowing,
       'scenes': instance.scenes,
       'games': instance.games,
       'next_episode_preview': instance.nextEpisodePreview,

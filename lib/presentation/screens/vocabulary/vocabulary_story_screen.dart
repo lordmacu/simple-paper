@@ -1,13 +1,20 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:office_app/core/constants/app_colors.dart';
 import 'package:office_app/domain/models/episode/episode.dart';
+import 'package:office_app/domain/models/vocabulary/vocabulary_segment.dart';
+import 'package:office_app/core/utils/section_progress.dart';
 import '../../widgets/vocabulary/vocabulary_segment_card.dart';
 import '../../widgets/common/duolingo_button.dart';
 import '../transition_screen.dart';
 import '../lesson/main_story_screen.dart';
 import '../games/games_screen.dart';
 import '../../providers/progress_providers.dart';
+import '../../providers/template_variable_provider.dart';
+import '../../providers/tts_provider.dart';
+import '../listening_shadowing/listening_shadowing_screen.dart';
 
 /// Pantalla de Vocabulary Story
 /// Muestra la introducción de vocabulario del episodio con segmentos interactivos
@@ -31,10 +38,14 @@ class _VocabularyStoryScreenState
   final PageController _pageController = PageController();
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
+  late final List<VocabularySegment> _shuffledSegments;
 
   @override
   void initState() {
     super.initState();
+    final originalSegments = widget.episode.vocabularyStory?.segments ?? [];
+    _shuffledSegments = List<VocabularySegment>.from(originalSegments)
+      ..shuffle(Random());
     _animationController = AnimationController(
       duration: const Duration(milliseconds: 600),
       vsync: this,
@@ -54,8 +65,7 @@ class _VocabularyStoryScreenState
   }
 
   void _nextSegment() {
-    if (_currentSegmentIndex <
-        widget.episode.vocabularyStory!.segments.length - 1) {
+    if (_currentSegmentIndex < _shuffledSegments.length - 1) {
       setState(() {
         _currentSegmentIndex++;
       });
@@ -84,9 +94,36 @@ class _VocabularyStoryScreenState
   }
 
   void _completeVocabularyStory() {
+    ref.read(markSectionCompletedProvider)(
+      episodeNumber: widget.episode.episodeMetadata.episodeNumber,
+      sectionId: SectionProgressIds.vocab,
+    );
+    _openListeningShadowingOrTransition();
+  }
+
+  void _openListeningShadowingOrTransition() {
+    final listening = widget.episode.listeningShadowing;
+    if (listening != null && listening.data.isNotEmpty) {
+      Navigator.of(context, rootNavigator: true).push(
+        MaterialPageRoute(
+          builder: (_) => ListeningShadowingScreen(
+            episode: widget.episode,
+            onComplete: () {
+              Navigator.pop(context);
+              _openTransitionScreen();
+            },
+          ),
+        ),
+      );
+      return;
+    }
+    _openTransitionScreen();
+  }
+
+  void _openTransitionScreen() {
     // Obtener texto de transición
     final transitionText = widget.episode.contentWrappers.transition;
-    
+
     // Navegar a pantalla de transición (que detectará personajes nuevos)
     Navigator.of(context, rootNavigator: true).push(
       MaterialPageRoute(
@@ -159,6 +196,26 @@ class _VocabularyStoryScreenState
     return 0;
   }
 
+  Future<void> _playTextForSegment(VocabularySegment segment) async {
+    final template = ref.read(templateVariableServiceProvider);
+    final rawText = segment.text.en;
+    final text = template.replaceVariables(rawText);
+
+    if (text.trim().isEmpty) return;
+    final tts = ref.read(ttsServiceProvider);
+    await tts.speak(text);
+  }
+
+  Future<void> _playWordForSegment(VocabularySegment segment) async {
+    final rawWord = segment.wordFocus ?? '';
+    if (rawWord.trim().isEmpty) return;
+    final template = ref.read(templateVariableServiceProvider);
+    final word = template.replaceVariables(rawWord);
+    if (word.trim().isEmpty) return;
+    final tts = ref.read(ttsServiceProvider);
+    await tts.speak(word);
+  }
+
   @override
   Widget build(BuildContext context) {
     final vocabularyStory = widget.episode.vocabularyStory;
@@ -175,7 +232,7 @@ class _VocabularyStoryScreenState
       );
     }
     
-    final totalSegments = vocabularyStory.segments.length;
+    final totalSegments = _shuffledSegments.length;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -272,9 +329,16 @@ class _VocabularyStoryScreenState
                 },
                 itemBuilder: (context, index) {
                   return VocabularySegmentCard(
-                    segment: vocabularyStory.segments[index],
+                    segment: _shuffledSegments[index],
                     onNext: _nextSegment,
                     isLastSegment: index == totalSegments - 1,
+                    onPlayWord:
+                        (_shuffledSegments[index].wordFocus?.trim().isNotEmpty ??
+                                false)
+                            ? () => _playWordForSegment(_shuffledSegments[index])
+                            : null,
+                    onPlayText: () =>
+                        _playTextForSegment(_shuffledSegments[index]),
                   );
                 },
               ),
@@ -304,7 +368,7 @@ class _VocabularyStoryScreenState
                       if (_currentSegmentIndex > 0) ...[
                         Expanded(
                           child: DuolingoButton(
-                            text: 'Previous',
+                            text: 'Anterior',
                             onPressed: _previousSegment,
                             isSecondary: true,
                             icon: Icons.arrow_back,
@@ -318,8 +382,8 @@ class _VocabularyStoryScreenState
                         flex: _currentSegmentIndex > 0 ? 1 : 1,
                         child: DuolingoButton(
                           text: _currentSegmentIndex == totalSegments - 1
-                              ? 'Continue'
-                              : 'Next',
+                              ? 'Continuar'
+                              : 'Continuar',
                           onPressed: _nextSegment,
                           icon: _currentSegmentIndex == totalSegments - 1
                               ? Icons.check_circle

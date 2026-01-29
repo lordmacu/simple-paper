@@ -10,12 +10,16 @@ class VocabularySegmentCard extends ConsumerStatefulWidget {
   final VocabularySegment segment;
   final VoidCallback onNext;
   final bool isLastSegment;
+  final VoidCallback? onPlayWord;
+  final VoidCallback? onPlayText;
 
   const VocabularySegmentCard({
     super.key,
     required this.segment,
     required this.onNext,
     this.isLastSegment = false,
+    this.onPlayWord,
+    this.onPlayText,
   });
 
   @override
@@ -82,65 +86,93 @@ class _VocabularySegmentCardState
                 _buildAnimatedChild(
                   delay: 0,
                   child: Container(
-              height: 200,
-              decoration: BoxDecoration(
-                color: AppColors.cardBackground,
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(
-                  color: AppColors.primaryGreen.withOpacity(0.3),
-                  width: 2,
-                ),
-              ),
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      _getIconForWord(widget.segment.wordFocus ?? ''),
-                      size: 80,
-                      color: AppColors.primaryGreen,
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      (widget.segment.wordFocus ?? '').toUpperCase(),
-                      style: const TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.primaryGreen,
-                        letterSpacing: 2,
+                    height: 200,
+                    decoration: BoxDecoration(
+                      color: AppColors.cardBackground,
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(
+                        color: AppColors.primaryGreen.withOpacity(0.3),
+                        width: 2,
                       ),
                     ),
-                  ],
-                ),
-              ),
-            ),
-                ),
-
-              const SizedBox(height: 32),
-
-              // Visual aid (emojis)
-              if (widget.segment.visualAid?.isNotEmpty ?? false)
-                _buildAnimatedChild(
-                  delay: 100,
-                  child: Center(
-                    child: Text(
-                      widget.segment.visualAid ?? '',
-                      style: const TextStyle(fontSize: 48),
+                    child: Stack(
+                      children: [
+                        Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                _getIconForWord(widget.segment.wordFocus ?? ''),
+                                size: 80,
+                                color: AppColors.primaryGreen,
+                              ),
+                              const SizedBox(height: 8),
+                              Text(
+                                (widget.segment.wordFocus ?? '').toUpperCase(),
+                                style: const TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                  color: AppColors.primaryGreen,
+                                  letterSpacing: 2,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        if (widget.onPlayWord != null)
+                          Positioned(
+                            right: 12,
+                            bottom: 12,
+                            child: GestureDetector(
+                              onTap: widget.onPlayWord,
+                              child: Container(
+                                width: 48,
+                                height: 48,
+                                decoration: BoxDecoration(
+                                  color: AppColors.primaryGreen,
+                                  shape: BoxShape.circle,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(0.12),
+                                      blurRadius: 10,
+                                      offset: const Offset(0, 6),
+                                    ),
+                                  ],
+                                ),
+                                child: const Icon(
+                                  Icons.play_arrow,
+                                  color: Colors.white,
+                                  size: 28,
+                                ),
+                              ),
+                            ),
+                          ),
+                      ],
                     ),
                   ),
                 ),
 
-              const SizedBox(height: 24),
+              const SizedBox(height: 32),
 
               // Texto en inglés con palabra enfatizada
               _buildAnimatedChild(
                 delay: 200,
-                child: _buildTextWithEmphasis(
-                  context,
-                  widget.segment.text.en,
-                  widget.segment.wordFocus ?? '',
-                  isSpanish: false,
-                ),
+                child: widget.onPlayText == null
+                    ? _buildTextWithEmphasis(
+                        context,
+                        widget.segment.text.en,
+                        widget.segment.wordFocus ?? '',
+                        isSpanish: false,
+                      )
+                    : GestureDetector(
+                        onTap: widget.onPlayText,
+                        child: _buildTextWithEmphasis(
+                          context,
+                          widget.segment.text.en,
+                          widget.segment.wordFocus ?? '',
+                          isSpanish: false,
+                        ),
+                      ),
               ),
 
               const SizedBox(height: 16),

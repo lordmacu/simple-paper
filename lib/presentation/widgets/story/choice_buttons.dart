@@ -1,9 +1,11 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../domain/models/story/choice.dart';
 
 /// Botones de elección interactiva en diálogos
-class ChoiceButtons extends StatelessWidget {
+class ChoiceButtons extends StatefulWidget {
   final List<Choice> choices;
   final String? selectedChoiceId;
   final Function(String choiceId, int points) onChoiceSelected;
@@ -16,10 +18,47 @@ class ChoiceButtons extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<ChoiceButtons> createState() => _ChoiceButtonsState();
+}
+
+class _ChoiceButtonsState extends State<ChoiceButtons> {
+  late List<Choice> _shuffledChoices;
+
+  @override
+  void initState() {
+    super.initState();
+    _shuffledChoices = _shuffle(widget.choices);
+  }
+
+  @override
+  void didUpdateWidget(covariant ChoiceButtons oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (!_sameChoices(oldWidget.choices, widget.choices)) {
+      _shuffledChoices = _shuffle(widget.choices);
+    }
+  }
+
+  List<Choice> _shuffle(List<Choice> choices) {
+    final copy = List<Choice>.from(choices);
+    copy.shuffle(Random());
+    return copy;
+  }
+
+  bool _sameChoices(List<Choice> a, List<Choice> b) {
+    if (a.length != b.length) return false;
+    for (var i = 0; i < a.length; i++) {
+      if (a[i].choiceId != b[i].choiceId) return false;
+    }
+    return true;
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final hasSelection = selectedChoiceId != null;
-    final maxPoints = choices.isNotEmpty
-        ? choices.map((choice) => choice.points).reduce((a, b) => a > b ? a : b)
+    final hasSelection = widget.selectedChoiceId != null;
+    final maxPoints = _shuffledChoices.isNotEmpty
+        ? _shuffledChoices
+            .map((choice) => choice.points)
+            .reduce((a, b) => a > b ? a : b)
         : 0;
 
     return Column(
@@ -29,7 +68,7 @@ class ChoiceButtons extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(bottom: 16),
           child: Text(
-            '¿Qué responderías?',
+            '¿Cual frase es la correcta?',
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
@@ -40,10 +79,10 @@ class ChoiceButtons extends StatelessWidget {
         ),
 
         // Botones de opciones
-        ...choices.asMap().entries.map((entry) {
+        ..._shuffledChoices.asMap().entries.map((entry) {
           final index = entry.key;
           final choice = entry.value;
-          final isSelected = selectedChoiceId == choice.choiceId;
+          final isSelected = widget.selectedChoiceId == choice.choiceId;
           final isDisabled = hasSelection && !isSelected;
           final isCorrect = hasSelection && choice.points == maxPoints;
           final isIncorrectSelected = hasSelection && isSelected && !isCorrect;
@@ -59,8 +98,8 @@ class ChoiceButtons extends StatelessWidget {
               showResult: hasSelection,
               isCorrect: isCorrect,
               isIncorrectSelected: isIncorrectSelected,
-              onTap: selectedChoiceId == null
-                  ? () => onChoiceSelected(choice.choiceId, choice.points)
+              onTap: widget.selectedChoiceId == null
+                  ? () => widget.onChoiceSelected(choice.choiceId, choice.points)
                   : null,
             ),
           );

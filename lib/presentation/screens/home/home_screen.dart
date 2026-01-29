@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:office_app/core/constants/app_colors.dart';
 import '../review_words/review_words_screen.dart';
 import 'widgets/episode_list_screen.dart';
-import 'widgets/global_progress_bar.dart';
 import '../settings/settings_screen.dart';
 import '../../providers/personalization_providers.dart';
 import '../../providers/progress_providers.dart';
@@ -103,7 +102,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       ),
       body: Column(
         children: const [
-          GlobalProgressBar(),
           Expanded(child: EpisodeListScreen()),
         ],
       ),

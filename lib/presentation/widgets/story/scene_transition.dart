@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../domain/models/story/scene.dart';
+import '../../providers/template_variable_provider.dart';
 
 /// Pantalla de transición entre escenas
 /// Muestra la nueva ubicación y tiempo antes de empezar los diálogos
-class SceneTransition extends StatefulWidget {
+class SceneTransition extends ConsumerStatefulWidget {
   final Scene scene;
   final VoidCallback onContinue;
 
@@ -15,10 +17,10 @@ class SceneTransition extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<SceneTransition> createState() => _SceneTransitionState();
+  ConsumerState<SceneTransition> createState() => _SceneTransitionState();
 }
 
-class _SceneTransitionState extends State<SceneTransition>
+class _SceneTransitionState extends ConsumerState<SceneTransition>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _fadeAnimation;
@@ -69,6 +71,11 @@ class _SceneTransitionState extends State<SceneTransition>
 
   @override
   Widget build(BuildContext context) {
+    final template = ref.read(templateVariableServiceProvider);
+    final location = template.replaceVariables(widget.scene.location);
+    final locationEs = template.replaceVariables(widget.scene.locationEs);
+    final time = template.replaceVariables(widget.scene.time);
+    final description = template.replaceVariables(widget.scene.description);
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -164,7 +171,7 @@ class _SceneTransitionState extends State<SceneTransition>
                           child: Column(
                             children: [
                               Text(
-                                widget.scene.location,
+                                location,
                                 style: const TextStyle(
                                   fontSize: 32,
                                   fontWeight: FontWeight.bold,
@@ -174,7 +181,7 @@ class _SceneTransitionState extends State<SceneTransition>
                               ),
                               const SizedBox(height: 8),
                               Text(
-                                widget.scene.locationEs,
+                                locationEs,
                                 style: TextStyle(
                                   fontSize: 18,
                                   color: AppColors.textSecondary,
@@ -215,7 +222,7 @@ class _SceneTransitionState extends State<SceneTransition>
                               ),
                               const SizedBox(width: 8),
                               Text(
-                                widget.scene.time,
+                                time,
                                 style: TextStyle(
                                   fontSize: 16,
                                   color: AppColors.secondaryBlue,
@@ -228,12 +235,12 @@ class _SceneTransitionState extends State<SceneTransition>
                       ),
 
                       // Descripción (si existe)
-                      if (widget.scene.description.isNotEmpty) ...[
+                      if (description.isNotEmpty) ...[
                         const SizedBox(height: 32),
                         FadeTransition(
                           opacity: _fadeAnimation,
                           child: Text(
-                            widget.scene.description,
+                            description,
                             style: TextStyle(
                               fontSize: 15,
                               color: AppColors.textSecondary,

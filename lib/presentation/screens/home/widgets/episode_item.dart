@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 import '../../../../domain/models/episode/episode.dart';
 import '../../../../core/constants/app_colors.dart';
+import '../../../../core/utils/section_progress.dart';
 import '../../lesson/main_story_screen.dart';
 import '../../vocabulary/vocabulary_story_screen.dart';
+import '../../listening_shadowing/listening_shadowing_screen.dart';
 import '../../games/games_screen.dart';
+import '../../../widgets/stacked_3d_section_button.dart';
+import '../../../providers/progress_providers.dart';
 /// Estado del episodio
 enum EpisodeStatus {
   locked,    // Bloqueado (no se puede acceder)
@@ -11,7 +17,7 @@ enum EpisodeStatus {
   completed, // Completado (ya se jugó)
 }
 
-class EpisodeItem extends StatefulWidget {
+class EpisodeItem extends ConsumerStatefulWidget {
   final Episode episode;
   final VoidCallback? onTap;
   final EpisodeStatus status;
@@ -26,11 +32,12 @@ class EpisodeItem extends StatefulWidget {
   });
 
   @override
-  State<EpisodeItem> createState() => _EpisodeItemState();
+  ConsumerState<EpisodeItem> createState() => _EpisodeItemState();
 }
 
-class _EpisodeItemState extends State<EpisodeItem>
+class _EpisodeItemState extends ConsumerState<EpisodeItem>
     with SingleTickerProviderStateMixin {
+  static const String _logTag = 'EPISODE_UNLOCK';
   late AnimationController _animationController;
   late Animation<double> _scaleAnimation;
 
@@ -111,7 +118,12 @@ class _EpisodeItemState extends State<EpisodeItem>
   }
 
   void _handleTap() {
-    if (widget.status == EpisodeStatus.locked) return;
+    if (widget.status == EpisodeStatus.locked) {
+      debugPrint(
+        '$_logTag tap_locked episode=${widget.episode.episodeMetadata.episodeNumber}',
+      );
+      return;
+    }
     
     _animationController.forward().then((_) {
       _animationController.reverse();
@@ -127,7 +139,12 @@ class _EpisodeItemState extends State<EpisodeItem>
         builder: (_) => MainStoryScreen(
           episode: widget.episode,
           initialSceneIndex: initialScene ?? 0,
-          onComplete: () => Navigator.pop(context),
+          onComplete: () {
+            final navigator = Navigator.of(context, rootNavigator: true);
+            if (navigator.canPop()) {
+              navigator.pop();
+            }
+          },
         ),
       ),
     );
@@ -150,10 +167,102 @@ class _EpisodeItemState extends State<EpisodeItem>
           episode: widget.episode,
           pointsFromStory: 0,
           initialIndex: initialIndex,
-          onComplete: (_, __) => Navigator.pop(context),
+          onComplete: (totalPoints, maxPoints) async {
+            await _completeEpisodeIfReady(
+              totalPoints: totalPoints,
+              maxPoints: maxPoints,
+            );
+            final navigator = Navigator.of(context, rootNavigator: true);
+            if (navigator.canPop()) {
+              navigator.pop();
+            }
+          },
         ),
       ),
     );
+  }
+
+  void _openListeningShadowing() {
+    if (widget.status == EpisodeStatus.locked) return;
+    Navigator.of(context, rootNavigator: true).push(
+      MaterialPageRoute(
+        builder: (_) => ListeningShadowingScreen(
+          episode: widget.episode,
+          onComplete: () {
+            final navigator = Navigator.of(context, rootNavigator: true);
+            if (navigator.canPop()) {
+              navigator.pop();
+            }
+          },
+        ),
+      ),
+    );
+  }
+
+  Future<void> _completeEpisodeIfReady({
+    required int totalPoints,
+    required int maxPoints,
+  }) async {
+    final repository = ref.read(progressRepositoryProvider);
+    final completed = await repository.getCompletedSections(
+      widget.episode.episodeMetadata.episodeNumber,
+    );
+    final required = _buildRequiredSectionIds();
+    debugPrint(
+      '$_logTag check_complete episode=${widget.episode.episodeMetadata.episodeNumber} '
+      'completed=${completed.length} required=${required.length}',
+    );
+    final missing = required.difference(completed);
+    if (missing.isNotEmpty) {
+      final done = required.intersection(completed).toList()..sort();
+      final total = required.length;
+      final doneCount = done.length;
+      final percent = total == 0 ? 0 : ((doneCount / total) * 100).round();
+      debugPrint(
+        '$_logTag missing_sections episode=${widget.episode.episodeMetadata.episodeNumber} '
+        'missing=${missing.toList()} done=$done '
+        'progress=$doneCount/$total (${percent}%)',
+      );
+      return;
+    }
+    final stars = _calculateStars(totalPoints, maxPoints);
+    debugPrint(
+      '$_logTag completing episode=${widget.episode.episodeMetadata.episodeNumber} '
+      'stars=$stars xp=$totalPoints max=$maxPoints',
+    );
+    await ref.read(completeEpisodeProvider)(
+      episodeNumber: widget.episode.episodeMetadata.episodeNumber,
+      starsEarned: stars,
+      xpEarned: totalPoints,
+    );
+  }
+
+  Set<String> _buildRequiredSectionIds() {
+    final ids = <String>{
+      SectionProgressIds.vocab,
+      SectionProgressIds.story,
+      SectionProgressIds.games,
+    };
+    final listening = widget.episode.listeningShadowing;
+    if (listening != null && listening.data.isNotEmpty) {
+      ids.add(SectionProgressIds.listeningShadowing);
+    }
+    for (final scene in widget.episode.scenes.data) {
+      ids.add(SectionProgressIds.sceneId(scene.sceneNumber));
+    }
+    for (final entry in widget.episode.games.data.asMap().entries) {
+      ids.add(SectionProgressIds.gameId(entry.key + 1));
+    }
+    return ids;
+  }
+
+  int _calculateStars(int points, int maxPoints) {
+    if (maxPoints <= 0) return 3;
+    final ratio = points / maxPoints;
+    if (ratio >= 0.9) return 3;
+    if (ratio >= 0.65) return 2;
+    if (ratio >= 0.35) return 1;
+    return 0;
   }
 
   @override
@@ -289,7 +398,31 @@ class _EpisodeItemState extends State<EpisodeItem>
         if (widget.status != EpisodeStatus.locked)
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: SectionPath(entries: _buildSections()),
+            child: ref
+                .watch(completedSectionsProvider(
+                  widget.episode.episodeMetadata.episodeNumber,
+                ))
+                .when(
+                  data: (completed) {
+                    final entries = _buildSections();
+                    debugPrint(
+                      '$_logTag home_sections episode=${widget.episode.episodeMetadata.episodeNumber} '
+                      'completed=${completed.toList()} entries=${entries.map((e) => e.id).toList()}',
+                    );
+                    return SectionPath(
+                      entries: entries,
+                      completedSectionIds: completed,
+                    );
+                  },
+                  loading: () => SectionPath(
+                    entries: _buildSections(),
+                    completedSectionIds: const <String>{},
+                  ),
+                  error: (_, __) => SectionPath(
+                    entries: _buildSections(),
+                    completedSectionIds: const <String>{},
+                  ),
+                ),
           ),
       ],
     );
@@ -299,40 +432,44 @@ class _EpisodeItemState extends State<EpisodeItem>
     final sections = <Map<String, dynamic>>[];
 
     sections.add({
-      'label': widget.episode.scenes.sectionNameEs ??
-          widget.episode.scenes.sectionName ??
-          'Historia',
-      'onTap': () => _openStory(),
+      'id': SectionProgressIds.vocab,
+      'label': 'Vocabulario',
+      'icon': Iconsax.book,
+      'onTap': _openVocab,
     });
+
+    final listening = widget.episode.listeningShadowing;
+    if (listening != null && listening.data.isNotEmpty) {
+      sections.add({
+        'id': SectionProgressIds.listeningShadowing,
+        'label': listening.sectionNameEs ??
+            listening.sectionName ??
+            'Listening',
+        'icon': Icons.headphones,
+        'onTap': _openListeningShadowing,
+      });
+    }
 
     for (final scene in widget.episode.scenes.data) {
       final sceneName = (scene.sceneName?.isNotEmpty ?? false)
           ? scene.sceneName!
           : 'Scene ${scene.sceneNumber}';
       sections.add({
+        'id': SectionProgressIds.sceneId(scene.sceneNumber),
         'label': sceneName,
+        'icon': Iconsax.message,
         'onTap': () => _openStory(initialScene: scene.sceneNumber - 1),
       });
     }
-
-    sections.add({
-      'label': 'Vocabulario',
-      'onTap': _openVocab,
-    });
-
-    sections.add({
-      'label': widget.episode.games.sectionNameEs ??
-          widget.episode.games.sectionName ??
-          'Juegos',
-      'onTap': _openGames,
-    });
 
     for (final entry in widget.episode.games.data.asMap().entries) {
       final idx = entry.key;
       final dynamic game = entry.value;
       final gameTitle = (game.titleEs ?? game.title ?? 'Juego ${idx + 1}');
       sections.add({
+        'id': SectionProgressIds.gameId(idx + 1),
         'label': gameTitle,
+        'icon': Iconsax.play,
         'onTap': () => _openGames(initialIndex: idx),
       });
     }
@@ -341,10 +478,10 @@ class _EpisodeItemState extends State<EpisodeItem>
       final idx = entry.key;
       final data = entry.value;
       return SectionEntry(
+        id: data['id'] as String,
         label: data['label'] as String,
+        icon: data['icon'] as IconData?,
         onTap: data['onTap'] as VoidCallback,
-        index: idx,
-        total: sections.length,
       );
     }).toList();
   }
@@ -352,29 +489,43 @@ class _EpisodeItemState extends State<EpisodeItem>
 
 class SectionPath extends StatelessWidget {
   final List<SectionEntry> entries;
+  final Set<String> completedSectionIds;
 
-  const SectionPath({required this.entries});
+  const SectionPath({
+    required this.entries,
+    required this.completedSectionIds,
+  });
 
   @override
   Widget build(BuildContext context) {
     const offsets = [-90.0, 0.0, 90.0, 0.0];
+    final firstIncompleteIndex =
+        entries.indexWhere((e) => !completedSectionIds.contains(e.id));
+    final enabledIndex =
+        firstIncompleteIndex == -1 ? entries.length - 1 : firstIncompleteIndex;
+
     return Column(
       children: entries.asMap().entries.map((entry) {
         final i = entry.key;
         final data = entry.value;
         final isLast = i == entries.length - 1;
         final offsetX = offsets[i % offsets.length];
+        final isEnabled = i <= enabledIndex;
         return SizedBox(
           width: double.infinity,
-          height: isLast ? 90 : 110,
+          height: isLast ? 130 : 130,
           child: Stack(
             alignment: Alignment.center,
             children: [
               Transform.translate(
                 offset: Offset(offsetX, 0),
-                child: _SectionButton(
+                child: Stacked3DSectionButton(
                   label: data.label,
                   onTap: data.onTap,
+                  topColor: AppColors.primaryGreen,
+                  isEnabled: isEnabled,
+                  icon: data.icon,
+                  iconSize: 35,
                 ),
               ),
             ],
@@ -386,66 +537,15 @@ class SectionPath extends StatelessWidget {
 }
 
 class SectionEntry {
+  final String id;
   final String label;
+  final IconData? icon;
   final VoidCallback onTap;
-  final int index;
-  final int total;
 
   const SectionEntry({
+    required this.id,
     required this.label,
-    required this.onTap,
-    required this.index,
-    required this.total,
-  });
-}
-
-class _SectionButton extends StatelessWidget {
-  final String label;
-  final VoidCallback onTap;
-
-  const _SectionButton({
-    required this.label,
+    this.icon,
     required this.onTap,
   });
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(40),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            width: 56,
-            height: 56,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: AppColors.cardBackground,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.07),
-                  blurRadius: 8,
-                  offset: const Offset(0, 4),
-                ),
-              ],
-              border: Border.all(color: AppColors.divider, width: 1),
-            ),
-          ),
-          const SizedBox(height: 8),
-          SizedBox(
-            width: 140,
-            child: Text(
-              label,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontWeight: FontWeight.w700,
-                color: AppColors.textPrimary,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 }

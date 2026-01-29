@@ -1,7 +1,9 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../../core/utils/section_progress.dart';
 import '../../../domain/models/episode/episode.dart';
 import '../../../domain/models/game/game.dart';
 import '../../../domain/models/game/matching_game.dart';
@@ -22,10 +24,11 @@ import 'widgets/typing_game_widget.dart';
 import 'widgets/spot_word_game_widget.dart';
 import 'package:collection/collection.dart';
 import 'game_transition_screen.dart';
+import '../../providers/progress_providers.dart';
 
 /// Pantalla de juegos del episodio
 /// Muestra los mini-juegos secuencialmente
-class GamesScreen extends StatefulWidget {
+class GamesScreen extends ConsumerStatefulWidget {
   final Episode episode;
   final int pointsFromStory;
   final void Function(int totalPoints, int maxPoints) onComplete;
@@ -40,10 +43,11 @@ class GamesScreen extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<GamesScreen> createState() => _GamesScreenState();
+  ConsumerState<GamesScreen> createState() => _GamesScreenState();
 }
 
-class _GamesScreenState extends State<GamesScreen> {
+class _GamesScreenState extends ConsumerState<GamesScreen> {
+  static const String _logTag = 'EPISODE_UNLOCK';
   int _currentGameIndex = 0;
   int _totalPoints = 0;
   late final int _maxTotalPoints;
@@ -63,10 +67,19 @@ class _GamesScreenState extends State<GamesScreen> {
   bool get _isLastGame => _currentGameIndex == _totalGames - 1;
 
   /// Avanza al siguiente juego
-  void _handleGameComplete(int points) {
+  Future<void> _handleGameComplete(int points) async {
     _totalPoints += points;
+    await ref.read(markSectionCompletedProvider)(
+      episodeNumber: widget.episode.episodeMetadata.episodeNumber,
+      sectionId: SectionProgressIds.gameId(_currentGameIndex + 1),
+    );
 
     if (_isLastGame) {
+      await ref.read(markSectionCompletedProvider)(
+        episodeNumber: widget.episode.episodeMetadata.episodeNumber,
+        sectionId: SectionProgressIds.games,
+      );
+      await _maybeCompleteEpisode();
       // Mostrar pantalla de resultados antes de completar
       Navigator.push(
         context,
@@ -86,11 +99,59 @@ class _GamesScreenState extends State<GamesScreen> {
     }
   }
 
+  Future<void> _maybeCompleteEpisode() async {
+    final episodeNumber = widget.episode.episodeMetadata.episodeNumber;
+    final repository = ref.read(progressRepositoryProvider);
+    final episodeProgress = await repository.getEpisodeProgress(episodeNumber);
+    if (episodeProgress?.isCompleted ?? false) {
+      debugPrint('$_logTag already_completed episode=$episodeNumber');
+      return;
+    }
+    final completed = await repository.getCompletedSections(episodeNumber);
+    final required =
+        SectionProgressIds.buildOrderedIds(widget.episode).toSet();
+    final missing = required.difference(completed);
+    final done = required.intersection(completed).toList()..sort();
+    final total = required.length;
+    final doneCount = done.length;
+    final percent = total == 0 ? 0 : ((doneCount / total) * 100).round();
+    debugPrint(
+      '$_logTag games_complete_check episode=$episodeNumber completed=${completed.length} '
+      'required=${required.length} missing=${missing.toList()} done=$done '
+      'progress=$doneCount/$total (${percent}%)',
+    );
+    if (missing.isNotEmpty) return;
+    final stars = _calculateStars(_totalPoints, _maxTotalPoints);
+    debugPrint(
+      '$_logTag games_complete_unlock episode=$episodeNumber stars=$stars '
+      'xp=$_totalPoints max=$_maxTotalPoints',
+    );
+    await ref.read(completeEpisodeProvider)(
+      episodeNumber: episodeNumber,
+      starsEarned: stars,
+      xpEarned: _totalPoints,
+    );
+  }
+
+  int _calculateStars(int points, int maxPoints) {
+    if (maxPoints <= 0) return 3;
+    final ratio = points / maxPoints;
+    if (ratio >= 0.9) return 3;
+    if (ratio >= 0.65) return 2;
+    if (ratio >= 0.35) return 1;
+    return 0;
+  }
+
   @override
   Widget build(BuildContext context) {
     if (widget.episode.games.data.isEmpty) {
       // No hay juegos, completar directamente
       WidgetsBinding.instance.addPostFrameCallback((_) {
+        ref.read(markSectionCompletedProvider)(
+          episodeNumber: widget.episode.episodeMetadata.episodeNumber,
+          sectionId: SectionProgressIds.games,
+        );
+        _maybeCompleteEpisode();
         widget.onComplete(_totalPoints, _maxTotalPoints);
       });
       
@@ -143,13 +204,13 @@ class _GamesScreenState extends State<GamesScreen> {
     return RepaintBoundary(
       child: AnimatedSwitcher(
         duration: const Duration(milliseconds: 350),
-        switchInCurve: Curves.easeOutBack,
+        switchInCurve: Curves.easeOut,
         switchOutCurve: Curves.easeIn,
         transitionBuilder: (child, anim) {
           final offsetAnim = Tween<Offset>(
             begin: const Offset(0.05, 0.08),
             end: Offset.zero,
-          ).animate(CurvedAnimation(parent: anim, curve: Curves.easeOut));
+          ).animate(anim);
           return SlideTransition(
             position: offsetAnim,
             child: FadeTransition(opacity: anim, child: child),

@@ -8,6 +8,7 @@ import '../../../../core/constants/app_colors.dart';
 
 class EpisodeListScreen extends ConsumerWidget {
   const EpisodeListScreen({super.key});
+  static const String _logTag = 'EPISODE_UNLOCK';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -38,6 +39,10 @@ class EpisodeListScreen extends ConsumerWidget {
                 final episodeProgress = userProgress.completedEpisodes[episodeNumber];
                 final isUnlocked = episodeNumber <= userProgress.lastUnlockedEpisode;
                 final isCompleted = episodeProgress?.isCompleted ?? false;
+                debugPrint(
+                  '$_logTag episode=$episodeNumber unlocked=$isUnlocked '
+                  'lastUnlocked=${userProgress.lastUnlockedEpisode} completed=$isCompleted',
+                );
                 
                 final status = isCompleted
                     ? EpisodeStatus.completed
