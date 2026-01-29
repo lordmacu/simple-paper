@@ -1,0 +1,1525 @@
+{
+  "city_settings": {
+    "default_city": "Scranton",
+    "user_selected_city": null,
+    "localizable": true,
+    "city_specific_content": {
+      "office_name": "{company_name} {city}",
+      "default_company_name": "Dunder Mifflin",
+      "office_type": "Paper Company",
+      "office_type_es": "Compañía de Papel"
+    }
+  },
+  "scenes": {
+    "section_name": "Office Day",
+    "section_name_es": "Día Oficina",
+    "image": "/episodes/episode_3_scene.jpg",
+    "data": [
+      {
+        "scene_id": "scene_003_001",
+        "scene_number": 1,
+        "location": "Reception area",
+        "location_es": "Área de recepción",
+        "scene_name": "Welcome Office",
+        "scene_name_es": "Bienvenida oficina",
+        "time": "Morning",
+        "time_es": "Mañana",
+        "description": "The player arrives at the office and meets the boss and the receptionist.",
+        "description_es": "El jugador llega a la oficina y conoce al jefe y a la recepcionista.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_boss",
+            "character_display_name": "MICHAEL",
+            "text": "Welcome to the OFFICE. This OFFICE is special because I work here.",
+            "translation_es": "Bienvenido a la oficina. Esta oficina es especial porque yo trabajo aquí.",
+            "emotion": "proud",
+            "notes": "Michael makes everything about himself.",
+            "notes_es": "Michael hace que todo se trate de él.",
+            "highlighted_vocab": [
+              "office"
+            ],
+            "template_vars": [
+              "boss_name"
+            ]
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_boss",
+            "character_display_name": "MICHAEL",
+            "text": "I am the boss of this OFFICE. Many people say I am the best boss.",
+            "translation_es": "Yo soy el jefe de esta oficina. Muchas personas dicen que soy el mejor jefe.",
+            "emotion": "proud_but_lying",
+            "notes": "He praises himself again.",
+            "notes_es": "Se elogia otra vez.",
+            "highlighted_vocab": [
+              "office"
+            ],
+            "template_vars": [
+              "boss_name"
+            ]
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_boss",
+            "character_display_name": "MICHAEL",
+            "text": "Please remember my NAME. My NAME is very important.",
+            "translation_es": "Por favor recuerda mi nombre. Mi nombre es muy importante.",
+            "emotion": "serious",
+            "notes": "Michael thinks his name is very important.",
+            "notes_es": "Michael cree que su nombre es muy importante.",
+            "highlighted_vocab": [
+              "name"
+            ],
+            "template_vars": [
+              "boss_name"
+            ]
+          },
+          {
+            "line_id": 4,
+            "character_id": "char_boss",
+            "character_display_name": "MICHAEL",
+            "text": "Your JOB here is to enjoy this OFFICE. And work. But enjoy first.",
+            "translation_es": "Tu trabajo aquí es disfrutar esta oficina. Y trabajar. Pero disfruta primero.",
+            "emotion": "excited",
+            "notes": "Michael gives strange job advice.",
+            "notes_es": "Michael da consejos raros sobre el trabajo.",
+            "highlighted_vocab": [
+              "job",
+              "office"
+            ],
+            "template_vars": [
+              "boss_name"
+            ]
+          },
+          {
+            "line_id": 5,
+            "character_id": "char_pam",
+            "character_display_name": "PAM",
+            "text": "Hi. Welcome to the OFFICE. Do not worry. This is a normal day.",
+            "translation_es": "Hola. Bienvenido a la oficina. No te preocupes. Este es un día normal.",
+            "emotion": "calm",
+            "notes": "Pam says it is normal, but it is not.",
+            "notes_es": "Pam dice que es normal, pero no lo es.",
+            "highlighted_vocab": [
+              "office"
+            ],
+            "template_vars": [
+              "pam_name"
+            ]
+          },
+          {
+            "line_id": 6,
+            "character_id": "char_pam",
+            "character_display_name": "PAM",
+            "text": "This is my DESK. I work at this DESK every day.",
+            "translation_es": "Este es mi escritorio. Yo trabajo en este escritorio todos los días.",
+            "emotion": "friendly",
+            "notes": "Pam explains something simple.",
+            "notes_es": "Pam explica algo simple.",
+            "highlighted_vocab": [
+              "desk"
+            ],
+            "template_vars": [
+              "pam_name"
+            ]
+          },
+          {
+            "line_id": 7,
+            "character_id": "char_pam",
+            "character_display_name": "PAM",
+            "text": "The PHONE is here. It rings many times.",
+            "translation_es": "El teléfono está aquí. Suena muchas veces.",
+            "emotion": "tired",
+            "notes": "The phone never stops ringing.",
+            "notes_es": "El teléfono nunca deja de sonar.",
+            "highlighted_vocab": [
+              "phone"
+            ],
+            "template_vars": [
+              "pam_name"
+            ]
+          },
+          {
+            "line_id": 8,
+            "character_id": "char_pam",
+            "character_display_name": "PAM",
+            "text": "Your NAME is on this paper. This is official.",
+            "translation_es": "Tu nombre está en este papel. Esto es oficial.",
+            "emotion": "helpful",
+            "notes": "Pam tries to be professional.",
+            "notes_es": "Pam intenta ser profesional.",
+            "highlighted_vocab": [
+              "name"
+            ],
+            "template_vars": [
+              "player_name"
+            ]
+          },
+          {
+            "line_id": 9,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "Which phrase is correct?",
+            "prompt_es": "¿Qué frase es correcta?",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "I work in a JOB office desk.",
+                "translation_es": "Yo trabajo en un trabajo oficina escritorio.",
+                "points": 0,
+                "personality_impact": "friendly",
+                "vocab_used": [
+                  "job",
+                  "office",
+                  "desk"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "I work in this OFFICE at a DESK.",
+                "translation_es": "Yo trabajo en esta oficina en un escritorio.",
+                "points": 10,
+                "personality_impact": "neutral"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "scene_id": "scene_003_002",
+        "scene_number": 2,
+        "location": "Sales area",
+        "location_es": "Área de ventas",
+        "scene_name": "Serious Work",
+        "scene_name_es": "Trabajo serio",
+        "time": "Late morning",
+        "time_es": "Media mañana",
+        "description": "Jim and Dwight show the player the sales area.",
+        "description_es": "Jim y Dwight muestran al jugador el área de ventas.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_jim",
+            "character_display_name": "JIM",
+            "text": "This OFFICE is very serious. Very serious work happens here.",
+            "translation_es": "Esta oficina es muy seria. Trabajo muy serio sucede aquí.",
+            "emotion": "sarcastic",
+            "notes": "Jim sounds serious but is joking.",
+            "notes_es": "Jim suena serio pero está bromeando.",
+            "highlighted_vocab": [
+              "office"
+            ],
+            "template_vars": [
+              "jim_name"
+            ]
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_jim",
+            "character_display_name": "JIM",
+            "text": "This is my DESK. I sit at this DESK and think.",
+            "translation_es": "Este es mi escritorio. Yo me siento en este escritorio y pienso.",
+            "emotion": "calm",
+            "notes": "Jim pretends his desk is important.",
+            "notes_es": "Jim finge que su escritorio es importante.",
+            "highlighted_vocab": [
+              "desk"
+            ],
+            "template_vars": [
+              "jim_name"
+            ]
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_jim",
+            "character_display_name": "JIM",
+            "text": "Sometimes the PHONE rings. Sometimes it does not.",
+            "translation_es": "A veces el teléfono suena. A veces no.",
+            "emotion": "neutral",
+            "notes": "Jim makes boring facts funny.",
+            "notes_es": "Jim hace datos aburridos divertidos.",
+            "highlighted_vocab": [
+              "phone"
+            ],
+            "template_vars": [
+              "jim_name"
+            ]
+          },
+          {
+            "line_id": 4,
+            "character_id": "char_jim",
+            "character_display_name": "JIM",
+            "text": "This JOB is exciting. Very exciting.",
+            "translation_es": "Este trabajo es emocionante. Muy emocionante.",
+            "emotion": "sarcastic",
+            "notes": "He clearly means the opposite.",
+            "notes_es": "Claramente quiere decir lo contrario.",
+            "highlighted_vocab": [
+              "job"
+            ],
+            "template_vars": [
+              "jim_name"
+            ]
+          },
+          {
+            "line_id": 5,
+            "character_id": "char_dwight",
+            "character_display_name": "DWIGHT",
+            "text": "This is a DESK. It has four legs. I tested it.",
+            "translation_es": "Este es un escritorio. Tiene cuatro patas. Yo lo probé.",
+            "emotion": "serious",
+            "notes": "Dwight over-explains.",
+            "notes_es": "Dwight explica demasiado.",
+            "highlighted_vocab": [
+              "desk"
+            ],
+            "template_vars": [
+              "dwight_name"
+            ]
+          },
+          {
+            "line_id": 6,
+            "character_id": "char_dwight",
+            "character_display_name": "DWIGHT",
+            "text": "The OFFICE must be protected. I protect this OFFICE.",
+            "translation_es": "La oficina debe ser protegida. Yo protejo esta oficina.",
+            "emotion": "intense",
+            "notes": "Dwight takes his role too seriously.",
+            "notes_es": "Dwight toma su papel demasiado en serio.",
+            "highlighted_vocab": [
+              "office"
+            ],
+            "template_vars": [
+              "dwight_name"
+            ]
+          },
+          {
+            "line_id": 7,
+            "character_id": "char_dwight",
+            "character_display_name": "DWIGHT",
+            "text": "The PHONE is a tool. A powerful tool.",
+            "translation_es": "El teléfono es una herramienta. Una herramienta poderosa.",
+            "emotion": "dramatic",
+            "notes": "He dramatizes simple objects.",
+            "notes_es": "Dramatiza objetos simples.",
+            "highlighted_vocab": [
+              "phone"
+            ],
+            "template_vars": [
+              "dwight_name"
+            ]
+          },
+          {
+            "line_id": 8,
+            "character_id": "char_dwight",
+            "character_display_name": "DWIGHT",
+            "text": "Your JOB here is to follow rules. Many rules.",
+            "translation_es": "Tu trabajo aquí es seguir reglas. Muchas reglas.",
+            "emotion": "strict",
+            "notes": "Dwight loves rules.",
+            "notes_es": "Dwight ama las reglas.",
+            "highlighted_vocab": [
+              "job"
+            ],
+            "template_vars": [
+              "dwight_name"
+            ]
+          },
+          {
+            "line_id": 9,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "Which phrase is correct?",
+            "prompt_es": "¿Qué frase es correcta?",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "The DESK works my job.",
+                "translation_es": "El escritorio trabaja mi trabajo.",
+                "points": 0,
+                "personality_impact": "friendly",
+                "vocab_used": [
+                  "desk",
+                  "job"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "I do my JOB at this DESK.",
+                "translation_es": "Yo hago mi trabajo en este escritorio.",
+                "points": 10,
+                "personality_impact": "neutral"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "scene_id": "scene_003_003",
+        "scene_number": 3,
+        "location": "Office floor",
+        "location_es": "Piso de la oficina",
+        "scene_name": "Boss Pride",
+        "scene_name_es": "Orgullo del jefe",
+        "time": "Afternoon",
+        "time_es": "Tarde",
+        "description": "Michael checks if the player likes the office.",
+        "description_es": "Michael verifica si al jugador le gusta la oficina.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_boss",
+            "character_display_name": "MICHAEL",
+            "text": "So. Do you like this OFFICE?",
+            "translation_es": "Entonces. ¿Te gusta esta oficina?",
+            "emotion": "hopeful",
+            "notes": "Michael needs approval.",
+            "notes_es": "Michael necesita aprobación.",
+            "highlighted_vocab": [
+              "office"
+            ],
+            "template_vars": [
+              "boss_name"
+            ]
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_boss",
+            "character_display_name": "MICHAEL",
+            "text": "I chose every DESK. In my mind.",
+            "translation_es": "Yo elegí cada escritorio. En mi mente.",
+            "emotion": "proud",
+            "notes": "He did not really choose them.",
+            "notes_es": "Realmente no los eligió.",
+            "highlighted_vocab": [
+              "desk"
+            ],
+            "template_vars": [
+              "boss_name"
+            ]
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_boss",
+            "character_display_name": "MICHAEL",
+            "text": "The PHONE system here is amazing. I approved it.",
+            "translation_es": "El sistema de teléfono aquí es increíble. Yo lo aprobé.",
+            "emotion": "boastful",
+            "notes": "Michael claims credit.",
+            "notes_es": "Michael se atribuye el crédito.",
+            "highlighted_vocab": [
+              "phone"
+            ],
+            "template_vars": [
+              "boss_name"
+            ]
+          },
+          {
+            "line_id": 4,
+            "character_id": "char_boss",
+            "character_display_name": "MICHAEL",
+            "text": "Your JOB is safe here. Because I am here.",
+            "translation_es": "Tu trabajo está seguro aquí. Porque yo estoy aquí.",
+            "emotion": "confident",
+            "notes": "Michael exaggerates his importance.",
+            "notes_es": "Michael exagera su importancia.",
+            "highlighted_vocab": [
+              "job"
+            ],
+            "template_vars": [
+              "boss_name"
+            ]
+          },
+          {
+            "line_id": 5,
+            "character_id": "char_jim",
+            "character_display_name": "JIM",
+            "text": "Yes. This OFFICE is the best OFFICE.",
+            "translation_es": "Sí. Esta oficina es la mejor oficina.",
+            "emotion": "sarcastic",
+            "notes": "Jim plays along.",
+            "notes_es": "Jim sigue el juego.",
+            "highlighted_vocab": [
+              "office"
+            ],
+            "template_vars": [
+              "jim_name"
+            ]
+          },
+          {
+            "line_id": 6,
+            "character_id": "char_jim",
+            "character_display_name": "JIM",
+            "text": "I love my DESK. I miss it on weekends.",
+            "translation_es": "Yo amo mi escritorio. Lo extraño los fines de semana.",
+            "emotion": "dry",
+            "notes": "He clearly does not miss it.",
+            "notes_es": "Claramente no lo extraña.",
+            "highlighted_vocab": [
+              "desk"
+            ],
+            "template_vars": [
+              "jim_name"
+            ]
+          },
+          {
+            "line_id": 7,
+            "character_id": "char_jim",
+            "character_display_name": "JIM",
+            "text": "The PHONE brings joy. And noise.",
+            "translation_es": "El teléfono trae alegría. Y ruido.",
+            "emotion": "amused",
+            "notes": "Jim jokes calmly.",
+            "notes_es": "Jim bromea con calma.",
+            "highlighted_vocab": [
+              "phone"
+            ],
+            "template_vars": [
+              "jim_name"
+            ]
+          },
+          {
+            "line_id": 8,
+            "character_id": "char_jim",
+            "character_display_name": "JIM",
+            "text": "This JOB is a dream. A very small dream.",
+            "translation_es": "Este trabajo es un sueño. Un sueño muy pequeño.",
+            "emotion": "sarcastic",
+            "notes": "Classic Jim sarcasm.",
+            "notes_es": "Sarcasmo clásico de Jim.",
+            "highlighted_vocab": [
+              "job"
+            ],
+            "template_vars": [
+              "jim_name"
+            ]
+          },
+          {
+            "line_id": 9,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "Which phrase is correct?",
+            "prompt_es": "¿Qué frase es correcta?",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "My NAME job is office.",
+                "translation_es": "Mi nombre trabajo es oficina.",
+                "points": 0,
+                "personality_impact": "friendly",
+                "vocab_used": [
+                  "name",
+                  "job",
+                  "office"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "My NAME is on my DESK at this OFFICE.",
+                "translation_es": "Mi nombre está en mi escritorio en esta oficina.",
+                "points": 10,
+                "personality_impact": "neutral"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "episode_metadata": {
+    "section_name": "Office Prank",
+    "section_name_es": "Broma Oficina",
+    "image": "/episodes/episode_3_scene.jpg",
+    "episode_number": 3,
+    "episode_id": "ep_003",
+    "title": "The Small Prank",
+    "title_es": "La Pequeña Broma",
+    "description": "{jim_name} plans a very small prank. {boss_name} talks a lot and feels very proud. The office looks busy, but nobody really works.",
+    "description_es": "{jim_name} planea una broma muy pequeña. {boss_name} habla mucho y se siente muy orgulloso. La oficina parece ocupada, pero nadie trabaja de verdad.",
+    "internal_level": "A1",
+    "estimated_time_minutes": 12,
+    "unlock_requirements": null,
+    "tags": [
+      "office_life",
+      "prank",
+      "meetings",
+      "daily_routine"
+    ],
+    "previous_episode": "ep_002",
+    "next_episode": "ep_004"
+  },
+  "characters": {
+    "section_name": "Office Team",
+    "section_name_es": "Equipo Oficina",
+    "image": "/episodes/episode_3_scene.jpg",
+    "appearing_in_episode": [
+      {
+        "character_id": "char_boss",
+        "default_name": "MICHAEL",
+        "role": "Office Manager",
+        "role_es": "Gerente de Oficina",
+        "personality": "Enthusiastic boss who wants everyone to like him and believes he is the best boss in the world.",
+        "personality_es": "Jefe entusiasta que quiere caerle bien a todos y cree que es el mejor jefe del mundo.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/michael.png",
+        "intro_text": "Hello. Welcome to the office. I am the boss. The best boss. Many people say this. I also say this.",
+        "intro_text_es": "Hola. Bienvenido a la oficina. Yo soy el jefe. El mejor jefe. Muchas personas dicen esto. Yo también lo digo."
+      },
+      {
+        "character_id": "char_jim",
+        "default_name": "JIM",
+        "role": "Salesman",
+        "role_es": "Vendedor",
+        "personality": "Calm and sarcastic salesman who makes jokes that sound serious.",
+        "personality_es": "Vendedor tranquilo y sarcástico que hace bromas que suenan serias.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/jim.png",
+        "intro_text": "Yes. This is a very serious office. Very professional. You can see the seriousness everywhere.",
+        "intro_text_es": "Sí. Esta es una oficina muy seria. Muy profesional. Puedes ver la seriedad en todas partes."
+      },
+      {
+        "character_id": "char_pam",
+        "default_name": "PAM",
+        "role": "Receptionist",
+        "role_es": "Recepcionista",
+        "personality": "Kind and helpful receptionist who understands the office chaos.",
+        "personality_es": "Recepcionista amable y servicial que entiende el caos de la oficina.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/pam.png",
+        "intro_text": "Hi. Welcome. Do not worry. The office is always like this. You learn to smile.",
+        "intro_text_es": "Hola. Bienvenido. No te preocupes. La oficina siempre es así. Aprendes a sonreír."
+      },
+      {
+        "character_id": "char_dwight",
+        "default_name": "DWIGHT",
+        "role": "Salesman",
+        "role_es": "Vendedor",
+        "personality": "Very serious salesman who follows rules and watches everyone.",
+        "personality_es": "Vendedor muy serio que sigue las reglas y vigila a todos.",
+        "first_appearance": true,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/dwight.png",
+        "intro_text": "I am Dwight. I work here. I watch everything. This office is under control.",
+        "intro_text_es": "Yo soy Dwight. Trabajo aquí. Yo observo todo. Esta oficina está bajo control."
+      }
+    ],
+    "mentioned_but_not_appearing": []
+  },
+  "vocabulary_focus": {
+    "section_name": "Office Prank",
+    "section_name_es": "Broma Oficina",
+    "image": "/episodes/episode_3_scene.jpg",
+    "target_words": [
+      {
+        "word": "prank",
+        "translation_es": "broma",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 2,
+        "context_sentence": "{jim_name} plans a small prank in the office.",
+        "context_sentence_es": "{jim_name} planea una pequeña broma en la oficina.",
+        "image_url": "/vocab/prank.jpg",
+        "usage_examples": [
+          "The prank is very simple.",
+          "This prank is not dangerous.",
+          "{boss_name} does not understand the prank."
+        ],
+        "usage_examples_es": [
+          "La broma es muy simple.",
+          "Esta broma no es peligrosa.",
+          "{boss_name} no entiende la broma."
+        ]
+      },
+      {
+        "word": "busy",
+        "translation_es": "ocupado",
+        "word_type": "adjective",
+        "word_type_es": "adjetivo",
+        "difficulty": 1,
+        "context_sentence": "The office looks busy today.",
+        "context_sentence_es": "La oficina se ve ocupada hoy.",
+        "image_url": "/vocab/busy.jpg",
+        "usage_examples": [
+          "I am busy at work.",
+          "Everyone looks busy in the office.",
+          "{pam_name} looks busy, but she waits."
+        ],
+        "usage_examples_es": [
+          "Estoy ocupado en el trabajo.",
+          "Todos se ven ocupados en la oficina.",
+          "{pam_name} se ve ocupada, pero espera."
+        ]
+      },
+      {
+        "word": "proud",
+        "translation_es": "orgulloso",
+        "word_type": "adjective",
+        "word_type_es": "adjetivo",
+        "difficulty": 2,
+        "context_sentence": "{boss_name} feels very proud.",
+        "context_sentence_es": "{boss_name} se siente muy orgulloso.",
+        "image_url": "/vocab/proud.jpg",
+        "usage_examples": [
+          "The boss feels proud today.",
+          "I feel proud at work.",
+          "{boss_name} feels proud in the meeting."
+        ],
+        "usage_examples_es": [
+          "El jefe se siente orgulloso hoy.",
+          "Me siento orgulloso en el trabajo.",
+          "{boss_name} se siente orgulloso en la reunión."
+        ]
+      },
+      {
+        "word": "work",
+        "translation_es": "trabajar",
+        "word_type": "verb",
+        "word_type_es": "verbo",
+        "difficulty": 1,
+        "context_sentence": "People work very little today.",
+        "context_sentence_es": "La gente trabaja muy poco hoy.",
+        "image_url": "/vocab/work.jpg",
+        "usage_examples": [
+          "I work in an office.",
+          "We work every day.",
+          "They work after the meeting."
+        ],
+        "usage_examples_es": [
+          "Trabajo en una oficina.",
+          "Trabajamos todos los días.",
+          "Ellos trabajan después de la reunión."
+        ]
+      },
+      {
+        "word": "joke",
+        "translation_es": "chiste",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 1,
+        "context_sentence": "The prank is a joke.",
+        "context_sentence_es": "La broma es un chiste.",
+        "image_url": "/vocab/joke.jpg",
+        "usage_examples": [
+          "This joke is funny.",
+          "{jim_name} tells a joke.",
+          "The joke is very small."
+        ],
+        "usage_examples_es": [
+          "Este chiste es divertido.",
+          "{jim_name} cuenta un chiste.",
+          "El chiste es muy pequeño."
+        ]
+      }
+    ],
+    "phrases": [
+      {
+        "phrase": "We look very busy",
+        "translation_es": "Nos vemos muy ocupados",
+        "usage_context": "The office wants to look busy in front of the boss.",
+        "usage_context_es": "La oficina quiere verse ocupada frente al jefe."
+      },
+      {
+        "phrase": "This is a small prank",
+        "translation_es": "Esta es una pequeña broma",
+        "usage_context": "{jim_name} explains the prank to a coworker.",
+        "usage_context_es": "{jim_name} explica la broma a un compañero."
+      },
+      {
+        "phrase": "The boss feels proud",
+        "translation_es": "El jefe se siente orgulloso",
+        "usage_context": "The boss talks and feels proud in the meeting.",
+        "usage_context_es": "El jefe habla y se siente orgulloso en la reunión."
+      }
+    ]
+  },
+  "vocabulary_story": {
+    "section_name": "New Words",
+    "section_name_es": "Palabras Nuevas",
+    "image": "/episodes/episode_3_vocab.jpg",
+    "title": "Learning Basic Words",
+    "title_es": "Aprendiendo Palabras Básicas",
+    "description": "A simple story to learn today's vocabulary",
+    "description_es": "Una historia simple para aprender el vocabulario de hoy",
+    "segments": [
+      {
+        "segment_id": "vocab_office_01",
+        "image_url": "/vocab/office.jpg",
+        "word_focus": "office",
+        "text": {
+          "en": "This is the OFFICE. It has desks, people, and strange noises.",
+          "es": "Esta es la OFICINA. Tiene escritorios, personas y ruidos extraños."
+        },
+        "emphasis_style": "bold_uppercase"
+      },
+      {
+        "segment_id": "vocab_office_02",
+        "image_url": "/vocab/office.jpg",
+        "word_focus": "office",
+        "text": {
+          "en": "The OFFICE is quiet. Sometimes. Not today.",
+          "es": "La OFICINA es tranquila. A veces. Hoy no."
+        }
+      },
+      {
+        "segment_id": "vocab_office_03",
+        "image_url": "/vocab/office.jpg",
+        "word_focus": "office",
+        "text": {
+          "en": "Many people work in this OFFICE.",
+          "es": "Muchas personas trabajan en esta OFICINA."
+        }
+      },
+      {
+        "segment_id": "vocab_desk_01",
+        "image_url": "/vocab/desk.jpg",
+        "word_focus": "desk",
+        "text": {
+          "en": "This is a DESK. It is full of paper.",
+          "es": "Este es un ESCRITORIO. Está lleno de papel."
+        }
+      },
+      {
+        "segment_id": "vocab_desk_02",
+        "image_url": "/vocab/desk.jpg",
+        "word_focus": "desk",
+        "text": {
+          "en": "The DESK is clean. This is surprising.",
+          "es": "El ESCRITORIO está limpio. Esto es sorprendente."
+        }
+      },
+      {
+        "segment_id": "vocab_desk_03",
+        "image_url": "/vocab/desk.jpg",
+        "word_focus": "desk",
+        "text": {
+          "en": "Jim sits at his DESK and waits.",
+          "es": "Jim se sienta en su ESCRITORIO y espera."
+        }
+      },
+      {
+        "segment_id": "vocab_phone_01",
+        "image_url": "/vocab/phone.jpg",
+        "word_focus": "phone",
+        "text": {
+          "en": "The PHONE rings. It rings again.",
+          "es": "El TELÉFONO suena. Suena otra vez."
+        }
+      },
+      {
+        "segment_id": "vocab_phone_02",
+        "image_url": "/vocab/phone.jpg",
+        "word_focus": "phone",
+        "text": {
+          "en": "Pam answers the PHONE with a smile.",
+          "es": "Pam responde el TELÉFONO con una sonrisa."
+        }
+      },
+      {
+        "segment_id": "vocab_phone_03",
+        "image_url": "/vocab/phone.jpg",
+        "word_focus": "phone",
+        "text": {
+          "en": "The PHONE is very important. Michael says this.",
+          "es": "El TELÉFONO es muy importante. Michael dice esto."
+        }
+      },
+      {
+        "segment_id": "vocab_name_01",
+        "image_url": "/vocab/name.jpg",
+        "word_focus": "name",
+        "text": {
+          "en": "My NAME is {player_name}.",
+          "es": "Mi NOMBRE es {player_name}."
+        }
+      },
+      {
+        "segment_id": "vocab_name_02",
+        "image_url": "/vocab/name.jpg",
+        "word_focus": "name",
+        "text": {
+          "en": "Michael says his NAME many times.",
+          "es": "Michael dice su NOMBRE muchas veces."
+        }
+      },
+      {
+        "segment_id": "vocab_name_03",
+        "image_url": "/vocab/name.jpg",
+        "word_focus": "name",
+        "text": {
+          "en": "Please say your NAME slowly.",
+          "es": "Por favor di tu NOMBRE despacio."
+        }
+      },
+      {
+        "segment_id": "vocab_job_01",
+        "image_url": "/vocab/job.jpg",
+        "word_focus": "job",
+        "text": {
+          "en": "This JOB is new for you.",
+          "es": "Este TRABAJO es nuevo para ti."
+        }
+      },
+      {
+        "segment_id": "vocab_job_02",
+        "image_url": "/vocab/job.jpg",
+        "word_focus": "job",
+        "text": {
+          "en": "Michael loves his JOB. Very much.",
+          "es": "Michael ama su TRABAJO. Mucho."
+        }
+      },
+      {
+        "segment_id": "vocab_job_03",
+        "image_url": "/vocab/job.jpg",
+        "word_focus": "job",
+        "text": {
+          "en": "Your JOB is important. Michael says this too.",
+          "es": "Tu TRABAJO es importante. Michael también dice esto."
+        }
+      },
+      {
+        "segment_id": "vocab_mix_01",
+        "image_url": "/vocab/office.jpg",
+        "word_focus": "office",
+        "text": {
+          "en": "In the OFFICE, you sit at a DESK and answer the PHONE.",
+          "es": "En la OFICINA, te sientas en un ESCRITORIO y respondes el TELÉFONO."
+        }
+      },
+      {
+        "segment_id": "vocab_mix_02",
+        "image_url": "/vocab/job.jpg",
+        "word_focus": "job",
+        "text": {
+          "en": "Your JOB has a DESK and a NAME on it.",
+          "es": "Tu TRABAJO tiene un ESCRITORIO y un NOMBRE en él."
+        }
+      },
+      {
+        "segment_id": "vocab_summary",
+        "word_focus": null,
+        "text": {
+          "en": "Great! Now you know: OFFICE, DESK, PHONE, NAME, JOB. The office is proud of you. Michael is very proud.",
+          "es": "¡Genial! Ahora conoces: OFICINA, ESCRITORIO, TELÉFONO, NOMBRE, TRABAJO. La oficina está orgullosa de ti. Michael está muy orgulloso."
+        }
+      }
+    ]
+  },
+  "listening_shadowing": {
+    "section_name": "Office Prank",
+    "section_name_es": "Broma Oficina",
+    "image": "/episodes/episode_3_scene.jpg",
+    "instructions": "Listen to the line. Then repeat it aloud before the timer ends.",
+    "instructions_es": "Escucha la línea. Luego repítela en voz alta antes de que termine el tiempo.",
+    "data": [
+      {
+        "item_id": "listen_001",
+        "character_id": "char_jim",
+        "character_display_name": "JIM",
+        "text": "I plan a prank as a joke, I look busy, I work slowly, and the boss feels proud.",
+        "text_es": "Planeo una broma como chiste, me veo ocupado, trabajo despacio y el jefe se siente orgulloso.",
+        "tts_text": "I plan a prank as a joke, I look busy, I work slowly, and the boss feels proud.",
+        "tts_voice_id": "en_us_male_1",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "prank",
+          "joke",
+          "busy",
+          "work",
+          "proud"
+        ]
+      },
+      {
+        "item_id": "listen_002",
+        "character_id": "char_pam",
+        "character_display_name": "PAM",
+        "text": "This prank is a joke, we look busy at work, and {boss_name} feels very proud.",
+        "text_es": "Esta broma es un chiste, nos vemos ocupados en el trabajo y {boss_name} se siente muy orgulloso.",
+        "tts_text": "This prank is a joke, we look busy at work, and the boss feels very proud.",
+        "tts_voice_id": "en_us_female_1",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "prank",
+          "joke",
+          "busy",
+          "work",
+          "proud"
+        ]
+      },
+      {
+        "item_id": "listen_003",
+        "character_id": "char_boss",
+        "character_display_name": "BOSS",
+        "text": "I feel proud when you work, look busy, and laugh at this prank joke.",
+        "text_es": "Me siento orgulloso cuando trabajan, se ven ocupados y se ríen de esta broma.",
+        "tts_text": "I feel proud when you work, look busy, and laugh at this prank joke.",
+        "tts_voice_id": "en_us_male_2",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "proud",
+          "work",
+          "busy",
+          "prank",
+          "joke"
+        ]
+      },
+      {
+        "item_id": "listen_004",
+        "character_id": "char_jim",
+        "character_display_name": "JIM",
+        "text": "The prank is a joke, we look busy at work, and the boss stays proud.",
+        "text_es": "La broma es un chiste, nos vemos ocupados en el trabajo y el jefe sigue orgulloso.",
+        "tts_text": "The prank is a joke, we look busy at work, and the boss stays proud.",
+        "tts_voice_id": "en_us_male_1",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "prank",
+          "joke",
+          "busy",
+          "work",
+          "proud"
+        ]
+      },
+      {
+        "item_id": "listen_005",
+        "character_id": "char_pam",
+        "character_display_name": "PAM",
+        "text": "I work a little, look busy, enjoy the prank, and smile at the joke.",
+        "text_es": "Trabajo un poco, me veo ocupada, disfruto la broma y sonrío con el chiste.",
+        "tts_text": "I work a little, look busy, enjoy the prank, and smile at the joke.",
+        "tts_voice_id": "en_us_female_1",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "work",
+          "busy",
+          "prank",
+          "joke",
+          "proud"
+        ]
+      },
+      {
+        "item_id": "listen_006",
+        "character_id": "char_boss",
+        "character_display_name": "BOSS",
+        "text": "This prank joke makes me proud when everyone looks busy at work.",
+        "text_es": "Este chiste de broma me hace sentir orgulloso cuando todos se ven ocupados en el trabajo.",
+        "tts_text": "This prank joke makes me proud when everyone looks busy at work.",
+        "tts_voice_id": "en_us_male_2",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "prank",
+          "joke",
+          "proud",
+          "busy",
+          "work"
+        ]
+      },
+      {
+        "item_id": "listen_007",
+        "character_id": "char_jim",
+        "character_display_name": "JIM",
+        "text": "I plan a prank joke, I work slowly, look busy, and the boss feels proud.",
+        "text_es": "Planeo una broma chiste, trabajo despacio, me veo ocupado y el jefe se siente orgulloso.",
+        "tts_text": "I plan a prank joke, I work slowly, look busy, and the boss feels proud.",
+        "tts_voice_id": "en_us_male_1",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "prank",
+          "joke",
+          "work",
+          "busy",
+          "proud"
+        ]
+      },
+      {
+        "item_id": "listen_008",
+        "character_id": "char_pam",
+        "character_display_name": "PAM",
+        "text": "The prank is a simple joke, we work little, but we look busy.",
+        "text_es": "La broma es un chiste simple, trabajamos poco, pero nos vemos ocupados.",
+        "tts_text": "The prank is a simple joke, we work little, but we look busy.",
+        "tts_voice_id": "en_us_female_1",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "prank",
+          "joke",
+          "work",
+          "busy",
+          "proud"
+        ]
+      },
+      {
+        "item_id": "listen_009",
+        "character_id": "char_boss",
+        "character_display_name": "BOSS",
+        "text": "I feel proud when this prank joke makes everyone look busy at work.",
+        "text_es": "Me siento orgulloso cuando esta broma hace que todos se vean ocupados en el trabajo.",
+        "tts_text": "I feel proud when this prank joke makes everyone look busy at work.",
+        "tts_voice_id": "en_us_male_2",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "proud",
+          "prank",
+          "joke",
+          "busy",
+          "work"
+        ]
+      },
+      {
+        "item_id": "listen_010",
+        "character_id": "char_jim",
+        "character_display_name": "JIM",
+        "text": "The prank is a joke, we work together, look busy, and the boss stays proud.",
+        "text_es": "La broma es un chiste, trabajamos juntos, nos vemos ocupados y el jefe sigue orgulloso.",
+        "tts_text": "The prank is a joke, we work together, look busy, and the boss stays proud.",
+        "tts_voice_id": "en_us_male_1",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 11,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "prank",
+          "joke",
+          "work",
+          "busy",
+          "proud"
+        ]
+      }
+    ]
+  },
+  "games": {
+    "section_name": "Office Prank",
+    "section_name_es": "Broma Oficina",
+    "image": "/episodes/episode_3_scene.jpg",
+    "data": [
+      {
+        "game_id": "ep3_game_01",
+        "game_type": "matching",
+        "title": "Match the Words!",
+        "title_es": "¡Empareja las Palabras!",
+        "instructions": "Match each English word with its Spanish meaning.",
+        "instructions_es": "Empareja cada palabra en inglés con su significado en español.",
+        "optional": true,
+        "unlocked_after_episode": true,
+        "time_limit_seconds": 90,
+        "xp_reward": 25,
+        "content": {
+          "items": [
+            {
+              "id": 1,
+              "left": "prank",
+              "right": "broma",
+              "image_url": "/vocab/prank.jpg"
+            },
+            {
+              "id": 2,
+              "left": "busy",
+              "right": "ocupado",
+              "image_url": "/vocab/busy.jpg"
+            },
+            {
+              "id": 3,
+              "left": "proud",
+              "right": "orgulloso",
+              "image_url": "/vocab/proud.jpg"
+            },
+            {
+              "id": 4,
+              "left": "work",
+              "right": "trabajar",
+              "image_url": "/vocab/work.jpg"
+            },
+            {
+              "id": 5,
+              "left": "joke",
+              "right": "chiste",
+              "image_url": "/vocab/joke.jpg"
+            },
+            {
+              "id": 6,
+              "left": "office",
+              "right": "oficina",
+              "image_url": "/vocab/office.jpg"
+            },
+            {
+              "id": 7,
+              "left": "boss",
+              "right": "jefe",
+              "image_url": "/vocab/boss.jpg"
+            },
+            {
+              "id": 8,
+              "left": "team",
+              "right": "equipo",
+              "image_url": "/vocab/team.jpg"
+            }
+          ]
+        },
+        "settings": {
+          "shuffle": true,
+          "show_images": true
+        }
+      },
+      {
+        "game_id": "ep3_game_02",
+        "game_type": "fill_blank",
+        "title": "Complete the Sentences",
+        "title_es": "Completa las Oraciones",
+        "instructions": "Fill in the missing words from the episode.",
+        "instructions_es": "Completa las palabras que faltan del episodio.",
+        "optional": true,
+        "unlocked_after_episode": true,
+        "time_limit_seconds": 150,
+        "xp_reward": 35,
+        "content": {
+          "items": [
+            {
+              "id": 1,
+              "sentence": "{jim_name} plans a small ____ in the office.",
+              "sentence_es": "{jim_name} planea una pequeña ____ en la oficina.",
+              "answer": "prank",
+              "options": [
+                "prank",
+                "work",
+                "team"
+              ],
+              "hint": "It is a funny action.",
+              "hint_es": "Es una acción divertida.",
+              "character": "{jim_name}"
+            },
+            {
+              "id": 2,
+              "sentence": "The office looks very ____ today.",
+              "sentence_es": "La oficina se ve muy ____ hoy.",
+              "answer": "busy",
+              "options": [
+                "busy",
+                "proud",
+                "joke"
+              ],
+              "hint": "People look active.",
+              "hint_es": "La gente se ve activa.",
+              "character": "{pam_name}"
+            },
+            {
+              "id": 3,
+              "sentence": "{boss_name} feels very ____ in the meeting.",
+              "sentence_es": "{boss_name} se siente muy ____ en la reunión.",
+              "answer": "proud",
+              "options": [
+                "proud",
+                "busy",
+                "work"
+              ],
+              "hint": "It is a good feeling.",
+              "hint_es": "Es un buen sentimiento.",
+              "character": "{boss_name}"
+            },
+            {
+              "id": 4,
+              "sentence": "We ____ a little after the meeting.",
+              "sentence_es": "____ un poco después de la reunión.",
+              "answer": "work",
+              "options": [
+                "work",
+                "joke",
+                "prank"
+              ],
+              "hint": "It is a job action.",
+              "hint_es": "Es una acción de trabajo.",
+              "character": "{player_name}"
+            },
+            {
+              "id": 5,
+              "sentence": "The prank is just a ____.",
+              "sentence_es": "La broma es solo un ____.",
+              "answer": "joke",
+              "options": [
+                "joke",
+                "work",
+                "busy"
+              ],
+              "hint": "It makes people laugh.",
+              "hint_es": "Hace reír a la gente.",
+              "character": "{jim_name}"
+            },
+            {
+              "id": 6,
+              "sentence": "People look busy, but they do not ____ much.",
+              "sentence_es": "La gente se ve ocupada, pero no ____ mucho.",
+              "answer": "work",
+              "options": [
+                "work",
+                "joke",
+                "proud"
+              ],
+              "hint": "It is an office action.",
+              "hint_es": "Es una acción de oficina.",
+              "character": "{pam_name}"
+            },
+            {
+              "id": 7,
+              "sentence": "{boss_name} laughs at the prank and feels ____.",
+              "sentence_es": "{boss_name} se ríe de la broma y se siente ____.",
+              "answer": "proud",
+              "options": [
+                "proud",
+                "busy",
+                "work"
+              ],
+              "hint": "It shows satisfaction.",
+              "hint_es": "Muestra satisfacción.",
+              "character": "{boss_name}"
+            }
+          ]
+        }
+      },
+      {
+        "game_id": "ep3_game_03",
+        "game_type": "multiple_choice",
+        "title": "Episode Quiz",
+        "title_es": "Quiz del Episodio",
+        "instructions": "Answer questions about the episode.",
+        "instructions_es": "Responde preguntas sobre el episodio.",
+        "optional": true,
+        "unlocked_after_episode": true,
+        "time_limit_seconds": 180,
+        "xp_reward": 45,
+        "content": {
+          "items": [
+            {
+              "id": 1,
+              "question": "What does {jim_name} plan in the office?",
+              "question_es": "¿Qué planea {jim_name} en la oficina?",
+              "options": [
+                "A prank",
+                "A meeting",
+                "A report",
+                "A call"
+              ],
+              "options_es": [
+                "Una broma",
+                "Una reunión",
+                "Un informe",
+                "Una llamada"
+              ],
+              "correct_answer": 0,
+              "explanation": "{jim_name} plans a small prank.",
+              "explanation_es": "{jim_name} planea una pequeña broma."
+            },
+            {
+              "id": 2,
+              "question": "How does the office look?",
+              "question_es": "¿Cómo se ve la oficina?",
+              "options": [
+                "Busy",
+                "Empty",
+                "Angry",
+                "Closed"
+              ],
+              "options_es": [
+                "Ocupada",
+                "Vacía",
+                "Enojada",
+                "Cerrada"
+              ],
+              "correct_answer": 0,
+              "explanation": "People try to look busy.",
+              "explanation_es": "La gente intenta verse ocupada."
+            },
+            {
+              "id": 3,
+              "question": "How does {boss_name} feel?",
+              "question_es": "¿Cómo se siente {boss_name}?",
+              "options": [
+                "Proud",
+                "Sad",
+                "Angry",
+                "Tired"
+              ],
+              "options_es": [
+                "Orgulloso",
+                "Triste",
+                "Enojado",
+                "Cansado"
+              ],
+              "correct_answer": 0,
+              "explanation": "The boss feels proud.",
+              "explanation_es": "El jefe se siente orgulloso."
+            },
+            {
+              "id": 4,
+              "question": "Do people work a lot?",
+              "question_es": "¿La gente trabaja mucho?",
+              "options": [
+                "No, they work little",
+                "Yes, they work a lot",
+                "They do not work",
+                "They leave early"
+              ],
+              "options_es": [
+                "No, trabajan poco",
+                "Sí, trabajan mucho",
+                "No trabajan",
+                "Se van temprano"
+              ],
+              "correct_answer": 0,
+              "explanation": "They look busy but work little.",
+              "explanation_es": "Se ven ocupados pero trabajan poco."
+            },
+            {
+              "id": 5,
+              "question": "What is the prank?",
+              "question_es": "¿Qué es la broma?",
+              "options": [
+                "A joke",
+                "A problem",
+                "A rule",
+                "A task"
+              ],
+              "options_es": [
+                "Un chiste",
+                "Un problema",
+                "Una regla",
+                "Una tarea"
+              ],
+              "correct_answer": 0,
+              "explanation": "The prank is just a joke.",
+              "explanation_es": "La broma es solo un chiste."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "content_wrappers": {
+    "section_name": "Office Prank",
+    "section_name_es": "Broma Oficina",
+    "image": "/episodes/episode_3_scene.jpg",
+    "intro_text": {
+      "en": "Welcome to the office. This is a place of hard work, serious faces, and very important people. That is what everyone wants you to think.",
+      "es": "Bienvenido a la oficina. Este es un lugar de trabajo duro, caras serias y personas muy importantes. Eso es lo que todos quieren que pienses."
+    },
+    "transition": {
+      "en": "Great. Now you know the words. Now you use them in the office. The office where people look busy, but strange things happen every day.",
+      "es": "Muy bien. Ahora conoces las palabras. Ahora las usas en la oficina. La oficina donde la gente se ve ocupada, pero pasan cosas extrañas todos los días."
+    },
+    "conclusion": {
+      "en": "Good job. You learned new words, you saw a small prank, and the boss feels very proud. The office looks busy. The work can wait.",
+      "es": "Buen trabajo. Aprendiste nuevas palabras, viste una pequeña broma y el jefe se siente muy orgulloso. La oficina se ve ocupada. El trabajo puede esperar."
+    },
+    "reflection_prompt": {
+      "question_en": "Write one sentence using the word \"prank\" or \"busy\".",
+      "question_es": "Escribe una oración usando la palabra \"prank\" o \"busy\".",
+      "type": "free_text",
+      "optional": true,
+      "max_length": 100,
+      "vocab_practice": [
+        "prank",
+        "busy"
+      ]
+    }
+  },
+  "next_episode_preview": {
+    "section_name": "Office Lunch",
+    "section_name_es": "Almuerzo Oficina",
+    "image": "/episodes/episode_4_scene.jpg",
+    "preview_text_en": "Next time, it is lunch time, {boss_name} has a big idea, and the office pretends to work with food.",
+    "preview_text_es": "La próxima vez es hora del almuerzo, {boss_name} tiene una gran idea y la oficina finge trabajar con comida.",
+    "teaser_image": "/previews/ep_004.jpg"
+  },
+  "progression": {
+    "section_name": "First Prank",
+    "section_name_es": "Primera Broma",
+    "image": "/episodes/episode_3_scene.jpg",
+    "xp_earned_base": 50,
+    "xp_bonus_conditions": [
+      {
+        "condition": "complete_all_games",
+        "bonus_xp": 25
+      },
+      {
+        "condition": "perfect_choices",
+        "bonus_xp": 15
+      },
+      {
+        "condition": "write_reflection",
+        "bonus_xp": 10
+      }
+    ],
+    "unlocks": [
+      {
+        "type": "character",
+        "character_ids": [
+          "char_jim",
+          "char_pam",
+          "char_boss"
+        ]
+      },
+      {
+        "type": "location",
+        "location_ids": [
+          "office_floor",
+          "meeting_room"
+        ]
+      }
+    ],
+    "achievements": [
+      {
+        "achievement_id": "first_prank",
+        "name": "First Office Prank",
+        "name_es": "Primera Broma en la Oficina",
+        "description": "You complete your first prank and learn how the office pretends to work.",
+        "description_es": "Completas tu primera broma y aprendes cómo la oficina finge trabajar.",
+        "icon": "/achievements/first_prank.png",
+        "image": "/achievements/first_prank_banner.jpg"
+      }
+    ]
+  },
+  "metadata": {
+    "section_name": "Office Prank",
+    "section_name_es": "Broma Oficina",
+    "image": "/episodes/episode_3_scene.jpg",
+    "created_date": "2026-01-29",
+    "version": "1.0",
+    "author": "Course Team",
+    "content_level": "beginner",
+    "estimated_words": 320,
+    "estimated_unique_vocabulary": 48,
+    "structure_type": "vocab_story_then_main_story"
+  }
+}

@@ -38,6 +38,31 @@ class MainStoryScreen extends ConsumerStatefulWidget {
 
 class _MainStoryScreenState extends ConsumerState<MainStoryScreen>
     with SingleTickerProviderStateMixin {
+  _SpeakerSide _speakerSide(String? characterId) {
+    if (characterId == null || characterId.isEmpty) {
+      return _SpeakerSide.leftAvatarRightBubble;
+    }
+    final ids = <String>[];
+    for (final d in _currentScene.dialogue) {
+      final id = d.characterId;
+      if (id == null || id.isEmpty) continue;
+      if (!ids.contains(id)) ids.add(id);
+      if (ids.length >= 2) break;
+    }
+    if (ids.isEmpty) {
+      return _SpeakerSide.leftAvatarRightBubble;
+    }
+    if (ids.length == 1) {
+      return _SpeakerSide.leftAvatarRightBubble;
+    }
+    if (characterId == ids.first) {
+      return _SpeakerSide.rightAvatarLeftBubble;
+    }
+    if (characterId == ids[1]) {
+      return _SpeakerSide.leftAvatarRightBubble;
+    }
+    return _SpeakerSide.leftAvatarRightBubble;
+  }
   static const String _logTag = '[MainStory]';
   late int _currentSceneIndex;
   int _currentDialogueIndex = 0;
@@ -477,14 +502,19 @@ class _MainStoryScreenState extends ConsumerState<MainStoryScreen>
                       const SizedBox(height: 24),
 
                       // Diálogos previos ya mostrados
-                      ..._displayedDialogues.map((dialogue) => Padding(
-                        padding: const EdgeInsets.only(bottom: 16),
-                        child: CharacterDialogueBubble(
-                          dialogue: dialogue,
-                          episodeCharacters: widget.episode.characters.appearingInEpisode,
-                          onVocabTap: _showVocabularyDefinition,
-                        ),
-                      )),
+                      ..._displayedDialogues.map((dialogue) {
+                        final side = _speakerSide(dialogue.characterId);
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 16),
+                          child: CharacterDialogueBubble(
+                            dialogue: dialogue,
+                            episodeCharacters: widget.episode.characters.appearingInEpisode,
+                            onVocabTap: _showVocabularyDefinition,
+                            avatarOnRight: side == _SpeakerSide.rightAvatarLeftBubble,
+                            bubbleAlignRight: side == _SpeakerSide.leftAvatarRightBubble,
+                          ),
+                        );
+                      }),
 
                       // Diálogo actual (no interactivo)
                       if (!_currentDialogue.isInteractive && !_displayedDialogues.contains(_currentDialogue))
@@ -498,6 +528,12 @@ class _MainStoryScreenState extends ConsumerState<MainStoryScreen>
                                 dialogue: _currentDialogue,
                                 episodeCharacters: widget.episode.characters.appearingInEpisode,
                                 onVocabTap: _showVocabularyDefinition,
+                                avatarOnRight:
+                                    _speakerSide(_currentDialogue.characterId) ==
+                                        _SpeakerSide.rightAvatarLeftBubble,
+                                bubbleAlignRight:
+                                    _speakerSide(_currentDialogue.characterId) ==
+                                        _SpeakerSide.leftAvatarRightBubble,
                               ),
                             ),
                           ),
@@ -510,7 +546,7 @@ class _MainStoryScreenState extends ConsumerState<MainStoryScreen>
                           child: SlideTransition(
                             position: _slideAnimation,
                             child: Padding(
-                              padding: const EdgeInsets.only(bottom: 16),
+                              padding: const EdgeInsets.only(bottom: 32),
                               child: ChoiceButtons(
                                 choices: _currentDialogue.choices,
                                 selectedChoiceId: _selectedChoiceId,
@@ -560,4 +596,9 @@ class _MainStoryScreenState extends ConsumerState<MainStoryScreen>
       ),
     );
   }
+}
+
+enum _SpeakerSide {
+  rightAvatarLeftBubble,
+  leftAvatarRightBubble,
 }

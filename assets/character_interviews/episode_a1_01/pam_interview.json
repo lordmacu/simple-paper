@@ -1,0 +1,320 @@
+{
+  "character_interview": {
+    "character_name": "PAM",
+    "episode_number": 1,
+    "introduction": {
+      "text_en": "Hello. I am Pam. I am at the desk. This is the office.",
+      "text_es": "Hola. Yo soy Pam. Yo estoy en el escritorio. Esta es la oficina."
+    },
+    "questions": [
+      {
+        "question_id": 1,
+        "question": {
+          "text_en": "Are you in the office?",
+          "text_es": "¿Estás en la oficina?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "Yes, I am in the office.",
+            "text_es": "Sí, yo estoy en la oficina.",
+            "is_correct": true,
+            "feedback_en": "Excellent! You used 'I am' correctly to answer.",
+            "feedback_es": "¡Excelente! Usaste 'I am' correctamente para responder.",
+            "grammar_explanation": "Correct use of 'to be' with subject 'I'.",
+            "cultural_note": "This is a normal and polite answer at work."
+          },
+          {
+            "option_id": "B",
+            "text_en": "Yes, I in the office.",
+            "text_es": "Sí, yo en la oficina.",
+            "is_correct": false,
+            "feedback_en": "Not quite. You are missing the verb 'am'. The correct form is 'I am'.",
+            "feedback_es": "No del todo. Falta el verbo 'am'. La forma correcta es 'I am'.",
+            "grammar_explanation": "The verb 'to be' is required.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "Yes, I am hello.",
+            "text_es": "Sí, yo soy hola.",
+            "is_correct": false,
+            "feedback_en": "Not quite. 'Hello' is not a place. You need 'office'.",
+            "feedback_es": "No del todo. 'Hello' no es un lugar. Necesitas 'office'.",
+            "grammar_explanation": "Wrong vocabulary for location.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "Office boss meeting.",
+            "text_es": "Oficina jefe reunión.",
+            "is_correct": false,
+            "feedback_en": "This does not make sense as an answer.",
+            "feedback_es": "Esto no tiene sentido como respuesta.",
+            "grammar_explanation": "This is not a complete sentence.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      },
+      {
+        "question_id": 2,
+        "question": {
+          "text_en": "Are you the boss?",
+          "text_es": "¿Eres el jefe?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "No, I am not the boss.",
+            "text_es": "No, yo no soy el jefe.",
+            "is_correct": true,
+            "feedback_en": "Great! This is a clear and correct answer.",
+            "feedback_es": "¡Muy bien! Es una respuesta clara y correcta.",
+            "grammar_explanation": "Correct negative form with 'to be'.",
+            "cultural_note": "It is polite and normal in an office."
+          },
+          {
+            "option_id": "B",
+            "text_en": "No, I not the boss.",
+            "text_es": "No, yo no el jefe.",
+            "is_correct": false,
+            "feedback_en": "You need the verb 'am'. Say 'I am not'.",
+            "feedback_es": "Necesitas el verbo 'am'. Di 'I am not'.",
+            "grammar_explanation": "Missing verb 'to be'.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "No, I am the desk.",
+            "text_es": "No, yo soy el escritorio.",
+            "is_correct": false,
+            "feedback_en": "A person cannot be a desk. Use 'boss'.",
+            "feedback_es": "Una persona no puede ser un escritorio. Usa 'boss'.",
+            "grammar_explanation": "Wrong vocabulary choice.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "Hello meeting boss.",
+            "text_es": "Hola reunión jefe.",
+            "is_correct": false,
+            "feedback_en": "This answer does not fit the question.",
+            "feedback_es": "Esta respuesta no encaja con la pregunta.",
+            "grammar_explanation": "No logical connection to the question.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      },
+      {
+        "question_id": 3,
+        "question": {
+          "text_en": "Is this a desk?",
+          "text_es": "¿Esto es un escritorio?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "Yes, this is a desk.",
+            "text_es": "Sí, esto es un escritorio.",
+            "is_correct": true,
+            "feedback_en": "Nice! You used 'this is' correctly.",
+            "feedback_es": "¡Bien! Usaste 'this is' correctamente.",
+            "grammar_explanation": "Correct structure with 'this is'.",
+            "cultural_note": "Normal description in an office."
+          },
+          {
+            "option_id": "B",
+            "text_en": "Yes, this a desk.",
+            "text_es": "Sí, esto un escritorio.",
+            "is_correct": false,
+            "feedback_en": "You are missing 'is'. Say 'this is'.",
+            "feedback_es": "Falta 'is'. Di 'this is'.",
+            "grammar_explanation": "Missing verb 'to be'.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "Yes, this is a meeting.",
+            "text_es": "Sí, esto es una reunión.",
+            "is_correct": false,
+            "feedback_en": "A desk is not a meeting. Wrong word.",
+            "feedback_es": "Un escritorio no es una reunión. Palabra incorrecta.",
+            "grammar_explanation": "Wrong vocabulary item.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "Boss desk hello.",
+            "text_es": "Jefe escritorio hola.",
+            "is_correct": false,
+            "feedback_en": "This does not answer the question.",
+            "feedback_es": "Esto no responde a la pregunta.",
+            "grammar_explanation": "Not a meaningful sentence.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      },
+      {
+        "question_id": 4,
+        "question": {
+          "text_en": "Is the boss in the office?",
+          "text_es": "¿El jefe está en la oficina?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "Yes, the boss is in the office.",
+            "text_es": "Sí, el jefe está en la oficina.",
+            "is_correct": true,
+            "feedback_en": "Correct! You used 'he is' form with 'boss'.",
+            "feedback_es": "¡Correcto! Usaste la forma correcta con 'boss'.",
+            "grammar_explanation": "Correct use of 'is' with third person.",
+            "cultural_note": "Appropriate workplace information."
+          },
+          {
+            "option_id": "B",
+            "text_en": "Yes, the boss are in the office.",
+            "text_es": "Sí, el jefe están en la oficina.",
+            "is_correct": false,
+            "feedback_en": "Use 'is', not 'are', with 'boss'.",
+            "feedback_es": "Usa 'is', no 'are', con 'boss'.",
+            "grammar_explanation": "Wrong verb form.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "Yes, the boss is the desk.",
+            "text_es": "Sí, el jefe es el escritorio.",
+            "is_correct": false,
+            "feedback_en": "A person is not a desk.",
+            "feedback_es": "Una persona no es un escritorio.",
+            "grammar_explanation": "Incorrect vocabulary meaning.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "Hello hello hello.",
+            "text_es": "Hola hola hola.",
+            "is_correct": false,
+            "feedback_en": "This does not answer the question.",
+            "feedback_es": "Esto no responde a la pregunta.",
+            "grammar_explanation": "No relevant information.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      },
+      {
+        "question_id": 5,
+        "question": {
+          "text_en": "Is there a meeting?",
+          "text_es": "¿Hay una reunión?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "Yes, there is a meeting.",
+            "text_es": "Sí, hay una reunión.",
+            "is_correct": true,
+            "feedback_en": "Good job! This is clear and correct.",
+            "feedback_es": "¡Buen trabajo! Es claro y correcto.",
+            "grammar_explanation": "Correct simple structure with 'is'.",
+            "cultural_note": "Normal office communication."
+          },
+          {
+            "option_id": "B",
+            "text_en": "Yes, there are a meeting.",
+            "text_es": "Sí, hay una reunión (mal).",
+            "is_correct": false,
+            "feedback_en": "Use 'is' with 'a meeting'.",
+            "feedback_es": "Usa 'is' con 'a meeting'.",
+            "grammar_explanation": "Singular noun needs 'is'.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "Yes, there is a desk.",
+            "text_es": "Sí, hay un escritorio.",
+            "is_correct": false,
+            "feedback_en": "The question is about a meeting, not a desk.",
+            "feedback_es": "La pregunta es sobre una reunión, no un escritorio.",
+            "grammar_explanation": "Wrong vocabulary focus.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "Boss office hello.",
+            "text_es": "Jefe oficina hola.",
+            "is_correct": false,
+            "feedback_en": "This answer is not clear.",
+            "feedback_es": "Esta respuesta no es clara.",
+            "grammar_explanation": "Not a full sentence.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      },
+      {
+        "question_id": 6,
+        "question": {
+          "text_en": "Do you say hello in the office?",
+          "text_es": "¿Dices hola en la oficina?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "Yes, I say hello.",
+            "text_es": "Sí, yo digo hola.",
+            "is_correct": true,
+            "feedback_en": "Great! This is friendly and correct.",
+            "feedback_es": "¡Genial! Es amable y correcto.",
+            "grammar_explanation": "Correct simple present structure.",
+            "cultural_note": "Saying hello is polite at work."
+          },
+          {
+            "option_id": "B",
+            "text_en": "Yes, I hello.",
+            "text_es": "Sí, yo hola.",
+            "is_correct": false,
+            "feedback_en": "You need a verb. Use 'say'.",
+            "feedback_es": "Necesitas un verbo. Usa 'say'.",
+            "grammar_explanation": "Missing main verb.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "Yes, I say desk.",
+            "text_es": "Sí, yo digo escritorio.",
+            "is_correct": false,
+            "feedback_en": "You say 'hello', not 'desk'.",
+            "feedback_es": "Dices 'hello', no 'desk'.",
+            "grammar_explanation": "Incorrect vocabulary word.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "No hello boss.",
+            "text_es": "No hola jefe.",
+            "is_correct": false,
+            "feedback_en": "This is unclear and rude.",
+            "feedback_es": "Esto es poco claro y grosero.",
+            "grammar_explanation": "Incorrect and inappropriate structure.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      }
+    ],
+    "pedagogical_focus": {
+      "grammar_points": [
+        "Present simple of 'to be'",
+        "Subject pronouns I, you, he"
+      ],
+      "vocabulary_used": [
+        "office",
+        "boss",
+        "desk",
+        "hello",
+        "meeting"
+      ],
+      "difficulty_level": "A1.1"
+    }
+  }
+}

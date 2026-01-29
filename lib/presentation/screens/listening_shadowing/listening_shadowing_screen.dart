@@ -6,6 +6,7 @@ import 'package:speech_to_text/speech_to_text.dart';
 
 import '../../../core/constants/app_colors.dart';
 import '../../../core/utils/section_progress.dart';
+import '../../../core/utils/haptic_utils.dart';
 import '../../../domain/models/episode/episode.dart';
 import '../../../domain/models/listening_shadowing/listening_shadowing.dart';
 import '../../providers/progress_providers.dart';
@@ -35,10 +36,12 @@ class _ListeningShadowingScreenState
   Timer? _timer;
   int? _timeLeft;
   Timer? _silenceTimer;
+  Timer? _ttsTimer;
   DateTime? _lastResultAt;
   String _lastRecognized = '';
   bool _speechReady = false;
   bool _isListening = false;
+  bool _isSpeaking = false;
   String _recognized = '';
   double _lastScore = 0.0;
   bool? _isCorrect;
@@ -58,6 +61,7 @@ class _ListeningShadowingScreenState
   void dispose() {
     _timer?.cancel();
     _silenceTimer?.cancel();
+    _ttsTimer?.cancel();
     super.dispose();
   }
 
@@ -182,6 +186,10 @@ class _ListeningShadowingScreenState
   }
 
   Future<void> _playTts() async {
+    _ttsTimer?.cancel();
+    setState(() {
+      _isSpeaking = true;
+    });
     final template = ref.read(templateVariableServiceProvider);
     final raw = _currentItem.ttsText.isNotEmpty
         ? _currentItem.ttsText
@@ -189,7 +197,27 @@ class _ListeningShadowingScreenState
     final text = template.replaceVariables(raw);
     if (text.trim().isEmpty) return;
     final tts = ref.read(ttsServiceProvider);
-    await tts.speak(text);
+    final voiceId = (_currentItem.ttsVoiceId ?? '').toLowerCase();
+    final isFemale = RegExp(r'(^|_)female(_|$)').hasMatch(voiceId);
+    final isMale = !isFemale && RegExp(r'(^|_)male(_|$)').hasMatch(voiceId);
+    final pitch = isMale ? 0.85 : 1.05;
+    final rate = isMale ? 0.42 : 0.45;
+    print('Playing TTS: $text pitch=$pitch rate=$rate voiceId $voiceId');
+    await tts.speak(
+      text,
+      pitch: pitch,
+      rate: rate,
+      voiceGender: isMale ? 'male' : 'female',
+      voiceIdHint: voiceId,
+    );
+    final seconds = _currentItem.estimatedAudioDurationSeconds ?? 0;
+    final duration = Duration(milliseconds: (seconds * 1000) + 400);
+    _ttsTimer = Timer(duration, () {
+      if (!mounted) return;
+      setState(() {
+        _isSpeaking = false;
+      });
+    });
   }
 
   Set<int> _matchedTokenIndices(String spoken, String target) {
@@ -244,6 +272,7 @@ class _ListeningShadowingScreenState
       _speech.stop();
       _silenceTimer?.cancel();
     }
+    _ttsTimer?.cancel();
     if (_currentIndex < _items.length - 1) {
       setState(() {
         _currentIndex++;
@@ -253,6 +282,7 @@ class _ListeningShadowingScreenState
         _lastScore = 0.0;
         _isCorrect = null;
         _isListening = false;
+        _isSpeaking = false;
       });
       _startTimer();
       return;
@@ -296,6 +326,9 @@ class _ListeningShadowingScreenState
 
     final textEn = template.replaceVariables(_currentItem.text);
     final textEs = template.replaceVariables(_currentItem.textEs);
+    final speakerName = template.replaceVariables(
+      _currentItem.characterDisplayName ?? 'Speaker',
+    );
     final matched = _matchedTokenIndices(_recognized, textEn);
     final repeatCount = _currentItem.repeatCount ?? 1;
 
@@ -363,7 +396,7 @@ class _ListeningShadowingScreenState
                       ),
                       const SizedBox(width: 8),
                       Text(
-                        _currentItem.characterDisplayName ?? 'Speaker',
+                        speakerName,
                         style: const TextStyle(
                           fontWeight: FontWeight.w700,
                           color: AppColors.textPrimary,
@@ -403,7 +436,7 @@ class _ListeningShadowingScreenState
                   ),
                   const SizedBox(height: 12),
                   GestureDetector(
-                    onTap: _playTts,
+                    onTap: HapticUtils.wrap(_playTts),
                     child: RichText(
                       text: TextSpan(
                         style: const TextStyle(
@@ -420,7 +453,7 @@ class _ListeningShadowingScreenState
                   Align(
                     alignment: Alignment.centerLeft,
                     child: OutlinedButton.icon(
-                      onPressed: _playTts,
+                      onPressed: _isListening ? null : HapticUtils.wrap(_playTts),
                       style: OutlinedButton.styleFrom(
                         side: BorderSide(
                           color: AppColors.secondaryBlue.withOpacity(0.6),
@@ -489,12 +522,16 @@ class _ListeningShadowingScreenState
                       ),
                       const SizedBox(width: 8),
                       GestureDetector(
-                        onTap: _toggleListening,
+                        onTap: _isSpeaking
+                            ? null
+                            : HapticUtils.wrap(_toggleListening),
                         child: Container(
                           width: 44,
                           height: 44,
                           decoration: BoxDecoration(
-                            color: AppColors.primaryGreen,
+                            color: _isSpeaking
+                                ? AppColors.textSecondary.withOpacity(0.3)
+                                : AppColors.primaryGreen,
                             shape: BoxShape.circle,
                             boxShadow: [
                               BoxShadow(
@@ -575,7 +612,9 @@ class _ListeningShadowingScreenState
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: _isListening ? null : _next,
+                onPressed: (_isListening || _isSpeaking)
+                    ? null
+                    : HapticUtils.wrap(_next),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.primaryGreen,
                   foregroundColor: Colors.white,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:office_app/core/constants/app_colors.dart';
+import 'package:office_app/core/utils/haptic_utils.dart';
 
 /// Botón Continue estilo Duolingo
 /// Con animación de escala al presionar y diseño vibrante
@@ -78,7 +79,7 @@ class _DuolingoButtonState extends State<DuolingoButton>
     final bool isEnabled = widget.onPressed != null;
 
     return ElevatedButton(
-      onPressed: widget.onPressed,
+      onPressed: HapticUtils.wrap(widget.onPressed),
       style: ElevatedButton.styleFrom(
         backgroundColor: isEnabled
             ? AppColors.primaryGreen
@@ -120,7 +121,7 @@ class _DuolingoButtonState extends State<DuolingoButton>
     final bool isEnabled = widget.onPressed != null;
 
     return OutlinedButton(
-      onPressed: widget.onPressed,
+      onPressed: HapticUtils.wrap(widget.onPressed),
       style: OutlinedButton.styleFrom(
         foregroundColor: isEnabled ? AppColors.textPrimary : AppColors.textSecondary,
         disabledForegroundColor: AppColors.textSecondary.withOpacity(0.5),

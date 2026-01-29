@@ -12,12 +12,16 @@ class CharacterDialogueBubble extends ConsumerStatefulWidget {
   final Dialogue dialogue;
   final List<Character> episodeCharacters;
   final Function(String)? onVocabTap;
+  final bool avatarOnRight;
+  final bool bubbleAlignRight;
 
   const CharacterDialogueBubble({
     Key? key,
     required this.dialogue,
     required this.episodeCharacters,
     this.onVocabTap,
+    this.avatarOnRight = false,
+    this.bubbleAlignRight = false,
   }) : super(key: key);
 
   @override
@@ -176,47 +180,71 @@ class _CharacterDialogueBubbleState
         .read(templateVariableServiceProvider)
         .replaceVariables(displayNameRaw);
 
+    final bubbleOnRight = widget.bubbleAlignRight;
+    final bubbleColor = bubbleOnRight
+        ? AppColors.secondaryBlue.withOpacity(0.12)
+        : AppColors.cardBackground;
+    final bubbleBorder = bubbleOnRight
+        ? AppColors.secondaryBlue.withOpacity(0.4)
+        : AppColors.primaryGreen.withOpacity(0.2);
+    final nameAlign = widget.avatarOnRight ? TextAlign.right : TextAlign.left;
+    final contentAlign =
+        bubbleOnRight ? CrossAxisAlignment.end : CrossAxisAlignment.start;
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment:
+          bubbleOnRight ? MainAxisAlignment.end : MainAxisAlignment.start,
       children: [
-        // Avatar del personaje
-        Container(
-          width: 48,
-          height: 48,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            gradient: LinearGradient(
-              colors: [
-                AppColors.primaryGreen.withOpacity(0.3),
-                AppColors.secondaryBlue.withOpacity(0.3),
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
+        if (!widget.avatarOnRight) ...[
+          // Avatar del personaje (izquierda)
+          Container(
+            width: 48,
+            height: 48,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: LinearGradient(
+                colors: [
+                  AppColors.primaryGreen.withOpacity(0.3),
+                  AppColors.secondaryBlue.withOpacity(0.3),
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+            ),
+            child: Icon(
+              _getCharacterIcon(displayName),
+              color: AppColors.textPrimary,
+              size: 24,
             ),
           ),
-          child: Icon(
-            _getCharacterIcon(displayName),
-            color: AppColors.textPrimary,
-            size: 24,
-          ),
-        ),
-
-        const SizedBox(width: 12),
+          const SizedBox(width: 12),
+        ],
 
         // Burbuja de diálogo
         Expanded(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: contentAlign,
             children: [
               // Nombre del personaje
               Padding(
-                padding: const EdgeInsets.only(left: 12, bottom: 4),
-                child: Text(
-                  displayName,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.textSecondary,
+                padding: EdgeInsets.only(
+                  left: widget.avatarOnRight ? 0 : 12,
+                  right: widget.avatarOnRight ? 12 : 0,
+                  bottom: 4,
+                ),
+                child: Align(
+                  alignment: widget.avatarOnRight
+                      ? Alignment.centerRight
+                      : Alignment.centerLeft,
+                  child: Text(
+                    displayName,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.textSecondary,
+                    ),
+                    textAlign: nameAlign,
                   ),
                 ),
               ),
@@ -228,10 +256,10 @@ class _CharacterDialogueBubbleState
                   vertical: 12,
                 ),
                 decoration: BoxDecoration(
-                  color: AppColors.cardBackground,
+                  color: bubbleColor,
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(
-                    color: AppColors.primaryGreen.withOpacity(0.2),
+                    color: bubbleBorder,
                     width: 1,
                   ),
                   boxShadow: [
@@ -243,7 +271,7 @@ class _CharacterDialogueBubbleState
                   ],
                 ),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: contentAlign,
                   children: [
                     // Texto del diálogo
                     _buildHighlightedText(context),
@@ -327,6 +355,31 @@ class _CharacterDialogueBubbleState
             ],
           ),
         ),
+
+        if (widget.avatarOnRight) ...[
+          const SizedBox(width: 12),
+          // Avatar del personaje (derecha)
+          Container(
+            width: 48,
+            height: 48,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: LinearGradient(
+                colors: [
+                  AppColors.primaryGreen.withOpacity(0.3),
+                  AppColors.secondaryBlue.withOpacity(0.3),
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+            ),
+            child: Icon(
+              _getCharacterIcon(displayName),
+              color: AppColors.textPrimary,
+              size: 24,
+            ),
+          ),
+        ],
       ],
     );
   }

@@ -33,6 +33,7 @@ class TransitionScreen extends ConsumerStatefulWidget {
 
 class _TransitionScreenState extends ConsumerState<TransitionScreen>
     with SingleTickerProviderStateMixin {
+  static const String _logTag = 'INTERVIEW_FLOW';
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
   late Animation<Offset> _slideAnimation;
@@ -190,10 +191,14 @@ class _TransitionScreenState extends ConsumerState<TransitionScreen>
     required String characterName,
   }) async {
     final ep = episodeNumber.toString().padLeft(2, '0');
-    final fileName = characterId.toLowerCase().replaceAll(' ', '_');
+    var fileName = characterId.toLowerCase().replaceAll(' ', '_');
+    if (fileName.startsWith('char_')) {
+      fileName = fileName.substring('char_'.length);
+    }
     final path = 'assets/character_interviews/episode_a1_$ep/${fileName}_interview.json';
 
     try {
+      debugPrint('$_logTag load_try $path');
       final jsonString = await rootBundle.loadString(path);
       final Map<String, dynamic> data = jsonDecode(jsonString)['character_interview'];
       final questions = (data['questions'] as List<dynamic>).map((q) {
@@ -226,8 +231,9 @@ class _TransitionScreenState extends ConsumerState<TransitionScreen>
         introEs: data['introduction']['text_es'] ?? '',
         questions: questions,
       );
-    } catch (_) {
+    } catch (e) {
       // Si no existe o falla parseo, devolver null
+      debugPrint('$_logTag load_fail $path error=$e');
       return null;
     }
   }

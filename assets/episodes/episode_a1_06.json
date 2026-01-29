@@ -1,0 +1,1466 @@
+{
+  "city_settings": {
+    "default_city": "Scranton",
+    "user_selected_city": null,
+    "localizable": true,
+    "city_specific_content": {
+      "office_name": "{company_name} {city}",
+      "default_company_name": "Dunder Mifflin",
+      "office_type": "Paper Company",
+      "office_type_es": "Compañía de Papel"
+    }
+  },
+  "episode_metadata": {
+    "section_name": "Office Prank",
+    "section_name_es": "Broma Oficina",
+    "image": "/episodes/episode_6_scene.jpg",
+    "episode_number": 6,
+    "episode_id": "ep_006",
+    "title": "The Strange Paper",
+    "title_es": "El Papel Extraño",
+    "description": "{jim_name} puts a very strange paper on Dwight desk. Dwight sees the paper and starts to watch everyone. The office becomes quiet, awkward, and a little silly.",
+    "description_es": "{jim_name} pone un papel muy extraño en el escritorio de Dwight. Dwight ve el papel y empieza a vigilar a todos. La oficina se vuelve silenciosa, incómoda y un poco ridícula.",
+    "internal_level": "A1",
+    "estimated_time_minutes": 12,
+    "unlock_requirements": null,
+    "tags": [
+      "office_life",
+      "pranks",
+      "desks",
+      "workday"
+    ],
+    "previous_episode": "ep_005",
+    "next_episode": "ep_007"
+  },
+  "characters": {
+    "section_name": "Desk Mystery",
+    "section_name_es": "Misterio Escritorio",
+    "image": "/episodes/episode_6_scene.jpg",
+    "appearing_in_episode": [
+      {
+        "character_id": "char_boss",
+        "default_name": "MICHAEL",
+        "role": "Office boss",
+        "role_es": "Jefe de la oficina",
+        "personality": "Enthusiastic boss who wants attention, believes he is amazing, and talks more than necessary.",
+        "personality_es": "Jefe entusiasta que quiere atención, cree que es increíble y habla más de lo necesario.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/michael.png",
+        "intro_text": "Welcome. I am the boss. The best boss. I sense a mystery in this office.",
+        "intro_text_es": "Bienvenido. Yo soy el jefe. El mejor jefe. Siento un misterio en esta oficina."
+      },
+      {
+        "character_id": "char_jim",
+        "default_name": "JIM",
+        "role": "Salesman",
+        "role_es": "Vendedor",
+        "personality": "Relaxed and sarcastic worker who pretends everything is serious when it is not.",
+        "personality_es": "Trabajador relajado y sarcástico que finge que todo es serio cuando no lo es.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/jim.png",
+        "intro_text": "Yes. This desk situation is very serious. Very important desk business.",
+        "intro_text_es": "Sí. Esta situación del escritorio es muy seria. Negocio de escritorio muy importante."
+      },
+      {
+        "character_id": "char_pam",
+        "default_name": "PAM",
+        "role": "Receptionist",
+        "role_es": "Recepcionista",
+        "personality": "Kind and calm receptionist who quietly comments on the office chaos.",
+        "personality_es": "Recepcionista amable y tranquila que comenta en silencio el caos de la oficina.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/pam.png",
+        "intro_text": "Hello. Welcome to the office. A strange paper is a normal thing here.",
+        "intro_text_es": "Hola. Bienvenido a la oficina. Un papel extraño es algo normal aquí."
+      },
+      {
+        "character_id": "char_dwight",
+        "default_name": "DWIGHT",
+        "role": "Salesman",
+        "role_es": "Vendedor",
+        "personality": "Intense and serious worker who watches everything and treats small problems like emergencies.",
+        "personality_es": "Trabajador intenso y serio que observa todo y trata problemas pequeños como emergencias.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/dwight.png",
+        "intro_text": "Someone touched my desk. This is not acceptable. I will investigate.",
+        "intro_text_es": "Alguien tocó mi escritorio. Esto no es aceptable. Investigaré."
+      }
+    ],
+    "mentioned_but_not_appearing": []
+  },
+  "vocabulary_focus": {
+    "section_name": "Office Watch",
+    "section_name_es": "Vigilar Oficina",
+    "image": "/episodes/episode_6_scene.jpg",
+    "target_words": [
+      {
+        "word": "paper",
+        "translation_es": "papel",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 1,
+        "context_sentence": "{jim_name} puts a strange paper on the desk.",
+        "context_sentence_es": "{jim_name} pone un papel extraño en el escritorio.",
+        "image_url": "/vocab/paper.jpg",
+        "usage_examples": [
+          "The paper is on the desk.",
+          "This paper looks strange.",
+          "I see a paper at work."
+        ],
+        "usage_examples_es": [
+          "El papel está en el escritorio.",
+          "Este papel se ve extraño.",
+          "Yo veo un papel en el trabajo."
+        ]
+      },
+      {
+        "word": "desk",
+        "translation_es": "escritorio",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 1,
+        "context_sentence": "Dwight looks at his desk.",
+        "context_sentence_es": "Dwight mira su escritorio.",
+        "image_url": "/vocab/desk.jpg",
+        "usage_examples": [
+          "My desk is clean.",
+          "The desk is small.",
+          "The paper is on the desk."
+        ],
+        "usage_examples_es": [
+          "Mi escritorio está limpio.",
+          "El escritorio es pequeño.",
+          "El papel está en el escritorio."
+        ]
+      },
+      {
+        "word": "strange",
+        "translation_es": "extraño",
+        "word_type": "adjective",
+        "word_type_es": "adjetivo",
+        "difficulty": 2,
+        "context_sentence": "The paper is strange.",
+        "context_sentence_es": "El papel es extraño.",
+        "image_url": "/vocab/strange.jpg",
+        "usage_examples": [
+          "This is a strange paper.",
+          "The office feels strange.",
+          "Dwight has a strange look."
+        ],
+        "usage_examples_es": [
+          "Este es un papel extraño.",
+          "La oficina se siente extraña.",
+          "Dwight tiene una mirada extraña."
+        ]
+      },
+      {
+        "word": "watch",
+        "translation_es": "vigilar",
+        "word_type": "verb",
+        "word_type_es": "verbo",
+        "difficulty": 2,
+        "context_sentence": "Dwight watches everyone in the office.",
+        "context_sentence_es": "Dwight vigila a todos en la oficina.",
+        "image_url": "/vocab/watch.jpg",
+        "usage_examples": [
+          "I watch my desk.",
+          "Dwight watches the office.",
+          "They watch each other."
+        ],
+        "usage_examples_es": [
+          "Yo vigilo mi escritorio.",
+          "Dwight vigila la oficina.",
+          "Ellos se vigilan entre sí."
+        ]
+      },
+      {
+        "word": "quiet",
+        "translation_es": "silencioso",
+        "word_type": "adjective",
+        "word_type_es": "adjetivo",
+        "difficulty": 2,
+        "context_sentence": "The office is quiet.",
+        "context_sentence_es": "La oficina está silenciosa.",
+        "image_url": "/vocab/quiet.jpg",
+        "usage_examples": [
+          "The room is quiet.",
+          "Everyone is quiet now.",
+          "The office feels quiet."
+        ],
+        "usage_examples_es": [
+          "La sala está silenciosa.",
+          "Todos están silenciosos ahora.",
+          "La oficina se siente silenciosa."
+        ]
+      }
+    ],
+    "phrases": [
+      {
+        "phrase": "What is this paper",
+        "translation_es": "¿Qué es este papel?",
+        "usage_context": "A character sees a strange paper on a desk.",
+        "usage_context_es": "Un personaje ve un papel extraño en un escritorio."
+      },
+      {
+        "phrase": "Everyone is quiet",
+        "translation_es": "Todos están en silencio",
+        "usage_context": "The office becomes silent after the prank.",
+        "usage_context_es": "La oficina se vuelve silenciosa después de la broma."
+      },
+      {
+        "phrase": "I watch you",
+        "translation_es": "Yo te vigilo",
+        "usage_context": "Dwight says this when he feels suspicious.",
+        "usage_context_es": "Dwight dice esto cuando se siente sospechoso."
+      }
+    ]
+  },
+  "vocabulary_story": {
+    "section_name": "Desk Mystery",
+    "section_name_es": "Misterio Escritorio",
+    "image": "/episodes/episode_6_scene.jpg",
+    "title": "Learning Basic Words",
+    "title_es": "Aprendiendo Palabras Básicas",
+    "image_vocab": "/episodes/episode_6_vocab.jpg",
+    "description": "A simple story to learn today's vocabulary",
+    "description_es": "Una historia simple para aprender el vocabulario de hoy",
+    "segments": [
+      {
+        "segment_id": "vocab_word1_01",
+        "image_url": "/vocab/desk.jpg",
+        "word_focus": "desk",
+        "text": {
+          "en": "The DESK is clean.",
+          "es": "El ESCRITORIO está limpio."
+        },
+        "emphasis_style": "bold_uppercase"
+      },
+      {
+        "segment_id": "vocab_word1_02",
+        "image_url": "/vocab/desk.jpg",
+        "word_focus": "desk",
+        "text": {
+          "en": "This DESK is Dwight desk.",
+          "es": "Este ESCRITORIO es el escritorio de Dwight."
+        }
+      },
+      {
+        "segment_id": "vocab_word1_03",
+        "image_url": "/vocab/desk.jpg",
+        "word_focus": "desk",
+        "text": {
+          "en": "Someone touches the DESK.",
+          "es": "Alguien toca el ESCRITORIO."
+        }
+      },
+      {
+        "segment_id": "vocab_word2_01",
+        "image_url": "/vocab/paper.jpg",
+        "word_focus": "paper",
+        "text": {
+          "en": "There is a PAPER on the desk.",
+          "es": "Hay un PAPEL en el escritorio."
+        }
+      },
+      {
+        "segment_id": "vocab_word2_02",
+        "image_url": "/vocab/paper.jpg",
+        "word_focus": "paper",
+        "text": {
+          "en": "The PAPER looks strange.",
+          "es": "El PAPEL se ve extraño."
+        }
+      },
+      {
+        "segment_id": "vocab_word2_03",
+        "image_url": "/vocab/paper.jpg",
+        "word_focus": "paper",
+        "text": {
+          "en": "Dwight hates this PAPER.",
+          "es": "Dwight odia este PAPEL."
+        }
+      },
+      {
+        "segment_id": "vocab_word3_01",
+        "image_url": "/vocab/watch.jpg",
+        "word_focus": "watch",
+        "text": {
+          "en": "Dwight WATCHES the desk.",
+          "es": "Dwight OBSERVA el escritorio."
+        }
+      },
+      {
+        "segment_id": "vocab_word3_02",
+        "image_url": "/vocab/watch.jpg",
+        "word_focus": "watch",
+        "text": {
+          "en": "He WATCHES everyone.",
+          "es": "Él OBSERVA a todos."
+        }
+      },
+      {
+        "segment_id": "vocab_word3_03",
+        "image_url": "/vocab/watch.jpg",
+        "word_focus": "watch",
+        "text": {
+          "en": "Jim WATCHES and smiles.",
+          "es": "Jim OBSERVA y sonríe."
+        }
+      },
+      {
+        "segment_id": "vocab_word4_01",
+        "image_url": "/vocab/rule.jpg",
+        "word_focus": "rule",
+        "text": {
+          "en": "There is a RULE about desks.",
+          "es": "Hay una REGLA sobre escritorios."
+        }
+      },
+      {
+        "segment_id": "vocab_word4_02",
+        "image_url": "/vocab/rule.jpg",
+        "word_focus": "rule",
+        "text": {
+          "en": "Dwight loves the RULE.",
+          "es": "Dwight ama la REGLA."
+        }
+      },
+      {
+        "segment_id": "vocab_word4_03",
+        "image_url": "/vocab/rule.jpg",
+        "word_focus": "rule",
+        "text": {
+          "en": "Michael makes a new RULE.",
+          "es": "Michael crea una nueva REGLA."
+        }
+      },
+      {
+        "segment_id": "vocab_word5_01",
+        "image_url": "/vocab/mystery.jpg",
+        "word_focus": "mystery",
+        "text": {
+          "en": "This is a MYSTERY.",
+          "es": "Esto es un MISTERIO."
+        }
+      },
+      {
+        "segment_id": "vocab_word5_02",
+        "image_url": "/vocab/mystery.jpg",
+        "word_focus": "mystery",
+        "text": {
+          "en": "The PAPER creates a MYSTERY.",
+          "es": "El PAPEL crea un MISTERIO."
+        }
+      },
+      {
+        "segment_id": "vocab_word5_03",
+        "image_url": "/vocab/mystery.jpg",
+        "word_focus": "mystery",
+        "text": {
+          "en": "Michael loves a MYSTERY.",
+          "es": "Michael ama un MISTERIO."
+        }
+      },
+      {
+        "segment_id": "vocab_mix_01",
+        "image_url": "/vocab/desk.jpg",
+        "word_focus": "desk",
+        "text": {
+          "en": "The DESK has a PAPER and a MYSTERY.",
+          "es": "El ESCRITORIO tiene un PAPEL y un MISTERIO."
+        }
+      },
+      {
+        "segment_id": "vocab_mix_02",
+        "image_url": "/vocab/rule.jpg",
+        "word_focus": "rule",
+        "text": {
+          "en": "The RULE says watch the DESK.",
+          "es": "La REGLA dice observar el ESCRITORIO."
+        }
+      },
+      {
+        "segment_id": "vocab_summary",
+        "word_focus": null,
+        "text": {
+          "en": "Great. Now you know: DESK, PAPER, WATCH, RULE, MYSTERY. Now we will use these words in a story.",
+          "es": "Genial. Ahora conoces: ESCRITORIO, PAPEL, OBSERVAR, REGLA, MISTERIO. Ahora usaremos estas palabras en una historia."
+        }
+      }
+    ]
+  },
+  "listening_shadowing": {
+    "section_name": "Office Watch",
+    "section_name_es": "Vigilar Oficina",
+    "image": "/episodes/episode_6_scene.jpg",
+    "instructions": "Listen to the line. Then repeat it aloud before the timer ends.",
+    "instructions_es": "Escucha la línea. Luego repítela en voz alta antes de que termine el tiempo.",
+    "data": [
+      {
+        "item_id": "listen_001",
+        "character_id": "char_jim",
+        "character_display_name": "JIM",
+        "text": "I put a strange paper on the desk, then I watch the quiet office.",
+        "text_es": "Yo pongo un papel extraño en el escritorio, luego vigilo la oficina silenciosa.",
+        "tts_text": "I put a strange paper on the desk, then I watch the quiet office.",
+        "tts_voice_id": "en_us_male_1",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "paper",
+          "desk",
+          "strange",
+          "watch",
+          "quiet"
+        ]
+      },
+      {
+        "item_id": "listen_002",
+        "character_id": "char_dwight",
+        "character_display_name": "DWIGHT",
+        "text": "I see a strange paper on my desk and I watch everyone in a quiet office.",
+        "text_es": "Yo veo un papel extraño en mi escritorio y vigilo a todos en una oficina silenciosa.",
+        "tts_text": "I see a strange paper on my desk and I watch everyone in a quiet office.",
+        "tts_voice_id": "en_us_male_2",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 11,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "paper",
+          "desk",
+          "strange",
+          "watch",
+          "quiet"
+        ]
+      },
+      {
+        "item_id": "listen_003",
+        "character_id": "char_pam",
+        "character_display_name": "PAM",
+        "text": "The strange paper is on the desk, and I watch the quiet room.",
+        "text_es": "El papel extraño está en el escritorio y yo observo la sala silenciosa.",
+        "tts_text": "The strange paper is on the desk, and I watch the quiet room.",
+        "tts_voice_id": "en_us_female_1",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "paper",
+          "desk",
+          "strange",
+          "watch",
+          "quiet"
+        ]
+      },
+      {
+        "item_id": "listen_004",
+        "character_id": "char_dwight",
+        "character_display_name": "DWIGHT",
+        "text": "This strange paper on the desk makes me watch the quiet office closely.",
+        "text_es": "Este papel extraño en el escritorio me hace vigilar la oficina silenciosa atentamente.",
+        "tts_text": "This strange paper on the desk makes me watch the quiet office closely.",
+        "tts_voice_id": "en_us_male_2",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 11,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "paper",
+          "desk",
+          "strange",
+          "watch",
+          "quiet"
+        ]
+      },
+      {
+        "item_id": "listen_005",
+        "character_id": "char_jim",
+        "character_display_name": "JIM",
+        "text": "The office is quiet when Dwight watches a strange paper on his desk.",
+        "text_es": "La oficina está silenciosa cuando Dwight vigila un papel extraño en su escritorio.",
+        "tts_text": "The office is quiet when Dwight watches a strange paper on his desk.",
+        "tts_voice_id": "en_us_male_1",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 11,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "paper",
+          "desk",
+          "strange",
+          "watch",
+          "quiet"
+        ]
+      },
+      {
+        "item_id": "listen_006",
+        "character_id": "char_pam",
+        "character_display_name": "PAM",
+        "text": "I watch Dwight look at the strange paper on the desk in a quiet office.",
+        "text_es": "Yo observo a Dwight mirar el papel extraño en el escritorio en una oficina silenciosa.",
+        "tts_text": "I watch Dwight look at the strange paper on the desk in a quiet office.",
+        "tts_voice_id": "en_us_female_1",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 11,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "paper",
+          "desk",
+          "strange",
+          "watch",
+          "quiet"
+        ]
+      },
+      {
+        "item_id": "listen_007",
+        "character_id": "char_dwight",
+        "character_display_name": "DWIGHT",
+        "text": "I watch the desk, the strange paper, and the quiet office all day.",
+        "text_es": "Yo vigilo el escritorio, el papel extraño y la oficina silenciosa todo el día.",
+        "tts_text": "I watch the desk, the strange paper, and the quiet office all day.",
+        "tts_voice_id": "en_us_male_2",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 11,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "paper",
+          "desk",
+          "strange",
+          "watch",
+          "quiet"
+        ]
+      },
+      {
+        "item_id": "listen_008",
+        "character_id": "char_jim",
+        "character_display_name": "JIM",
+        "text": "The strange paper on the desk makes the office quiet as I watch.",
+        "text_es": "El papel extraño en el escritorio hace que la oficina esté silenciosa mientras observo.",
+        "tts_text": "The strange paper on the desk makes the office quiet as I watch.",
+        "tts_voice_id": "en_us_male_1",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "paper",
+          "desk",
+          "strange",
+          "watch",
+          "quiet"
+        ]
+      },
+      {
+        "item_id": "listen_009",
+        "character_id": "char_pam",
+        "character_display_name": "PAM",
+        "text": "Everyone is quiet when Dwight watches the strange paper on the desk.",
+        "text_es": "Todos están silenciosos cuando Dwight vigila el papel extraño en el escritorio.",
+        "tts_text": "Everyone is quiet when Dwight watches the strange paper on the desk.",
+        "tts_voice_id": "en_us_female_1",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 11,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "paper",
+          "desk",
+          "strange",
+          "watch",
+          "quiet"
+        ]
+      },
+      {
+        "item_id": "listen_010",
+        "character_id": "char_dwight",
+        "character_display_name": "DWIGHT",
+        "text": "I watch carefully because a strange paper sits on my desk in a quiet office.",
+        "text_es": "Yo vigilo con cuidado porque un papel extraño está en mi escritorio en una oficina silenciosa.",
+        "tts_text": "I watch carefully because a strange paper sits on my desk in a quiet office.",
+        "tts_voice_id": "en_us_male_2",
+        "estimated_audio_duration_seconds": 8,
+        "repeat_timer_seconds": 12,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "paper",
+          "desk",
+          "strange",
+          "watch",
+          "quiet"
+        ]
+      }
+    ]
+  },
+  "games": {
+    "section_name": "Office Games",
+    "section_name_es": "Juegos Oficina",
+    "image": "/episodes/episode_6_scene.jpg",
+    "data": [
+      {
+        "game_id": "ep6_game_01",
+        "game_type": "matching",
+        "title": "Match the Words!",
+        "title_es": "¡Empareja las Palabras!",
+        "instructions": "Match each English word with its Spanish meaning.",
+        "instructions_es": "Empareja cada palabra en inglés con su significado en español.",
+        "optional": true,
+        "unlocked_after_episode": true,
+        "time_limit_seconds": 90,
+        "xp_reward": 25,
+        "content": {
+          "items": [
+            {
+              "id": 1,
+              "left": "paper",
+              "right": "papel",
+              "image_url": "/vocab/paper.jpg"
+            },
+            {
+              "id": 2,
+              "left": "desk",
+              "right": "escritorio",
+              "image_url": "/vocab/desk.jpg"
+            },
+            {
+              "id": 3,
+              "left": "strange",
+              "right": "extraño",
+              "image_url": "/vocab/strange.jpg"
+            },
+            {
+              "id": 4,
+              "left": "watch",
+              "right": "vigilar",
+              "image_url": "/vocab/watch.jpg"
+            },
+            {
+              "id": 5,
+              "left": "quiet",
+              "right": "silencioso",
+              "image_url": "/vocab/quiet.jpg"
+            },
+            {
+              "id": 6,
+              "left": "paper",
+              "right": "papel",
+              "image_url": "/vocab/paper.jpg"
+            },
+            {
+              "id": 7,
+              "left": "desk",
+              "right": "escritorio",
+              "image_url": "/vocab/desk.jpg"
+            },
+            {
+              "id": 8,
+              "left": "quiet",
+              "right": "silencioso",
+              "image_url": "/vocab/quiet.jpg"
+            }
+          ]
+        },
+        "settings": {
+          "shuffle": true,
+          "show_images": true
+        }
+      },
+      {
+        "game_id": "ep6_game_02",
+        "game_type": "fill_blank",
+        "title": "Complete the Sentences",
+        "title_es": "Completa las Oraciones",
+        "instructions": "Fill in the missing words from the episode.",
+        "instructions_es": "Completa las palabras que faltan del episodio.",
+        "optional": true,
+        "unlocked_after_episode": true,
+        "time_limit_seconds": 150,
+        "xp_reward": 35,
+        "content": {
+          "items": [
+            {
+              "id": 1,
+              "sentence": "{jim_name} puts a _____ on the desk.",
+              "sentence_es": "{jim_name} pone un _____ en el escritorio.",
+              "answer": "paper",
+              "options": [
+                "paper",
+                "quiet",
+                "watch"
+              ],
+              "hint": "It is on the desk.",
+              "hint_es": "Está en el escritorio.",
+              "character": "{jim_name}"
+            },
+            {
+              "id": 2,
+              "sentence": "Dwight looks at his _____.",
+              "sentence_es": "Dwight mira su _____.",
+              "answer": "desk",
+              "options": [
+                "desk",
+                "paper",
+                "quiet"
+              ],
+              "hint": "You work on it.",
+              "hint_es": "Trabajas en él.",
+              "character": "DWIGHT"
+            },
+            {
+              "id": 3,
+              "sentence": "The paper is _____.",
+              "sentence_es": "El papel es _____.",
+              "answer": "strange",
+              "options": [
+                "strange",
+                "quiet",
+                "desk"
+              ],
+              "hint": "It is not normal.",
+              "hint_es": "No es normal.",
+              "character": "{pam_name}"
+            },
+            {
+              "id": 4,
+              "sentence": "Dwight _____ everyone in the office.",
+              "sentence_es": "Dwight _____ a todos en la oficina.",
+              "answer": "watch",
+              "options": [
+                "watch",
+                "desk",
+                "paper"
+              ],
+              "hint": "He looks very carefully.",
+              "hint_es": "Él mira con mucho cuidado.",
+              "character": "DWIGHT"
+            },
+            {
+              "id": 5,
+              "sentence": "The office is very _____.",
+              "sentence_es": "La oficina está muy _____.",
+              "answer": "quiet",
+              "options": [
+                "quiet",
+                "paper",
+                "desk"
+              ],
+              "hint": "There is no noise.",
+              "hint_es": "No hay ruido.",
+              "character": "{boss_name}"
+            },
+            {
+              "id": 6,
+              "sentence": "The _____ is on the desk.",
+              "sentence_es": "El _____ está en el escritorio.",
+              "answer": "paper",
+              "options": [
+                "paper",
+                "watch",
+                "quiet"
+              ],
+              "hint": "It is white and flat.",
+              "hint_es": "Es blanco y plano.",
+              "character": "{pam_name}"
+            },
+            {
+              "id": 7,
+              "sentence": "Everyone is _____ when Dwight watches.",
+              "sentence_es": "Todos están _____ cuando Dwight vigila.",
+              "answer": "quiet",
+              "options": [
+                "quiet",
+                "desk",
+                "paper"
+              ],
+              "hint": "No one talks.",
+              "hint_es": "Nadie habla.",
+              "character": "{boss_name}"
+            }
+          ]
+        }
+      },
+      {
+        "game_id": "ep6_game_03",
+        "game_type": "multiple_choice",
+        "title": "Episode Quiz",
+        "title_es": "Quiz del Episodio",
+        "instructions": "Answer questions about the episode.",
+        "instructions_es": "Responde preguntas sobre el episodio.",
+        "optional": true,
+        "unlocked_after_episode": true,
+        "time_limit_seconds": 180,
+        "xp_reward": 45,
+        "content": {
+          "items": [
+            {
+              "id": 1,
+              "question": "What does {jim_name} put on the desk?",
+              "question_es": "¿Qué pone {jim_name} en el escritorio?",
+              "options": [
+                "A strange paper",
+                "A phone",
+                "A coffee",
+                "A chair"
+              ],
+              "options_es": [
+                "Un papel extraño",
+                "Un teléfono",
+                "Un café",
+                "Una silla"
+              ],
+              "correct_answer": 0,
+              "explanation": "{jim_name} puts a strange paper on the desk.",
+              "explanation_es": "{jim_name} pone un papel extraño en el escritorio."
+            },
+            {
+              "id": 2,
+              "question": "How does the office feel after the paper appears?",
+              "question_es": "¿Cómo se siente la oficina después de que aparece el papel?",
+              "options": [
+                "Quiet",
+                "Loud",
+                "Happy",
+                "Messy"
+              ],
+              "options_es": [
+                "Silenciosa",
+                "Ruidosa",
+                "Feliz",
+                "Desordenada"
+              ],
+              "correct_answer": 0,
+              "explanation": "Everyone becomes quiet.",
+              "explanation_es": "Todos se vuelven silenciosos."
+            },
+            {
+              "id": 3,
+              "question": "Who watches everyone carefully?",
+              "question_es": "¿Quién vigila a todos con cuidado?",
+              "options": [
+                "Dwight",
+                "{pam_name}",
+                "{jim_name}",
+                "{boss_name}"
+              ],
+              "options_es": [
+                "Dwight",
+                "{pam_name}",
+                "{jim_name}",
+                "{boss_name}"
+              ],
+              "correct_answer": 0,
+              "explanation": "Dwight watches everyone in the office.",
+              "explanation_es": "Dwight vigila a todos en la oficina."
+            },
+            {
+              "id": 4,
+              "question": "Where is the paper?",
+              "question_es": "¿Dónde está el papel?",
+              "options": [
+                "On the desk",
+                "On the floor",
+                "In the bag",
+                "In the trash"
+              ],
+              "options_es": [
+                "En el escritorio",
+                "En el suelo",
+                "En la bolsa",
+                "En la basura"
+              ],
+              "correct_answer": 0,
+              "explanation": "The paper is on the desk.",
+              "explanation_es": "El papel está en el escritorio."
+            },
+            {
+              "id": 5,
+              "question": "Why is the situation funny?",
+              "question_es": "¿Por qué la situación es divertida?",
+              "options": [
+                "Everyone acts very serious",
+                "There is music",
+                "The boss sleeps",
+                "The desk breaks"
+              ],
+              "options_es": [
+                "Todos actúan muy serios",
+                "Hay música",
+                "El jefe duerme",
+                "El escritorio se rompe"
+              ],
+              "correct_answer": 0,
+              "explanation": "A small paper makes everyone act serious and quiet.",
+              "explanation_es": "Un papel pequeño hace que todos actúen serios y silenciosos."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "scenes": {
+    "section_name": "Desk Mystery",
+    "section_name_es": "Misterio Escritorio",
+    "image": "/episodes/episode_6_scene.jpg",
+    "data": [
+      {
+        "scene_id": "scene_006_001",
+        "scene_number": 1,
+        "location": "Office desks",
+        "location_es": "Escritorios de la oficina",
+        "scene_name": "The Strange Paper",
+        "scene_name_es": "El Papel Extraño",
+        "time": "Morning",
+        "time_es": "Mañana",
+        "description": "Dwight finds a strange paper on his desk and starts an investigation.",
+        "description_es": "Dwight encuentra un papel extraño en su escritorio y comienza una investigación.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_dwight",
+            "character_display_name": "DWIGHT",
+            "text": "This is my DESK. There is a PAPER on my DESK.",
+            "translation_es": "Este es mi escritorio. Hay un papel en mi escritorio.",
+            "emotion": "alarmed",
+            "notes": "Dwight treats the paper like a crime.",
+            "notes_es": "Dwight trata el papel como un crimen.",
+            "highlighted_vocab": [
+              "desk",
+              "paper"
+            ]
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_dwight",
+            "character_display_name": "DWIGHT",
+            "text": "This PAPER creates a MYSTERY.",
+            "translation_es": "Este papel crea un misterio.",
+            "emotion": "dramatic",
+            "notes": "Everything is a mystery to Dwight.",
+            "notes_es": "Todo es un misterio para Dwight.",
+            "highlighted_vocab": [
+              "paper",
+              "mystery"
+            ]
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_dwight",
+            "character_display_name": "DWIGHT",
+            "text": "I WATCH everyone now.",
+            "translation_es": "Ahora observo a todos.",
+            "emotion": "suspicious",
+            "notes": "Dwight watches the whole office.",
+            "notes_es": "Dwight observa a toda la oficina.",
+            "highlighted_vocab": [
+              "watch"
+            ]
+          },
+          {
+            "line_id": 4,
+            "character_id": "char_dwight",
+            "character_display_name": "DWIGHT",
+            "text": "There is a RULE about my DESK.",
+            "translation_es": "Hay una regla sobre mi escritorio.",
+            "emotion": "serious",
+            "notes": "Dwight believes desks have rules.",
+            "notes_es": "Dwight cree que los escritorios tienen reglas.",
+            "highlighted_vocab": [
+              "rule",
+              "desk"
+            ]
+          },
+          {
+            "line_id": 5,
+            "character_id": "char_jim",
+            "character_display_name": "JIM",
+            "text": "Yes Dwight. This PAPER is very important.",
+            "translation_es": "Sí Dwight. Este papel es muy importante.",
+            "emotion": "sarcastic",
+            "notes": "Jim pretends the paper matters.",
+            "notes_es": "Jim finge que el papel importa.",
+            "highlighted_vocab": [
+              "paper"
+            ]
+          },
+          {
+            "line_id": 6,
+            "character_id": "char_jim",
+            "character_display_name": "JIM",
+            "text": "This DESK looks very serious today.",
+            "translation_es": "Este escritorio se ve muy serio hoy.",
+            "emotion": "dry",
+            "notes": "Jim jokes about the desk.",
+            "notes_es": "Jim bromea sobre el escritorio.",
+            "highlighted_vocab": [
+              "desk"
+            ]
+          },
+          {
+            "line_id": 7,
+            "character_id": "char_jim",
+            "character_display_name": "JIM",
+            "text": "I WATCH the PAPER too.",
+            "translation_es": "Yo también observo el papel.",
+            "emotion": "mocking",
+            "notes": "Jim joins the fake investigation.",
+            "notes_es": "Jim se une a la falsa investigación.",
+            "highlighted_vocab": [
+              "watch",
+              "paper"
+            ]
+          },
+          {
+            "line_id": 8,
+            "character_id": "char_jim",
+            "character_display_name": "JIM",
+            "text": "This is a big MYSTERY.",
+            "translation_es": "Esto es un gran misterio.",
+            "emotion": "sarcastic",
+            "notes": "Jim exaggerates.",
+            "notes_es": "Jim exagera.",
+            "highlighted_vocab": [
+              "mystery"
+            ]
+          },
+          {
+            "line_id": 9,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "What do you say?",
+            "prompt_es": "¿Qué dices?",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "Desk mystery paper rule.",
+                "translation_es": "Escritorio misterio papel regla.",
+                "points": 0,
+                "personality_impact": "confused",
+                "vocab_used": [
+                  "desk",
+                  "mystery",
+                  "paper",
+                  "rule"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "This paper creates a mystery.",
+                "translation_es": "Este papel crea un misterio.",
+                "points": 10,
+                "personality_impact": "neutral"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "scene_id": "scene_006_002",
+        "scene_number": 2,
+        "location": "Reception area",
+        "location_es": "Área de recepción",
+        "scene_name": "Pam Explains",
+        "scene_name_es": "Pam Explica",
+        "time": "Later",
+        "time_es": "Después",
+        "description": "Pam tries to calm everyone down.",
+        "description_es": "Pam intenta calmar a todos.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_pam",
+            "character_display_name": "PAM",
+            "text": "Hello. This PAPER is not dangerous.",
+            "translation_es": "Hola. Este papel no es peligroso.",
+            "emotion": "calm",
+            "notes": "Pam stays reasonable.",
+            "notes_es": "Pam se mantiene razonable.",
+            "highlighted_vocab": [
+              "paper"
+            ]
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_pam",
+            "character_display_name": "PAM",
+            "text": "The DESK is fine.",
+            "translation_es": "El escritorio está bien.",
+            "emotion": "reassuring",
+            "notes": "Pam reassures Dwight.",
+            "notes_es": "Pam tranquiliza a Dwight.",
+            "highlighted_vocab": [
+              "desk"
+            ]
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_pam",
+            "character_display_name": "PAM",
+            "text": "There is no RULE about strange PAPER.",
+            "translation_es": "No hay una regla sobre papel extraño.",
+            "emotion": "gentle",
+            "notes": "Pam explains reality.",
+            "notes_es": "Pam explica la realidad.",
+            "highlighted_vocab": [
+              "rule",
+              "paper"
+            ]
+          },
+          {
+            "line_id": 4,
+            "character_id": "char_pam",
+            "character_display_name": "PAM",
+            "text": "This is not a MYSTERY.",
+            "translation_es": "Esto no es un misterio.",
+            "emotion": "soft",
+            "notes": "Pam disagrees calmly.",
+            "notes_es": "Pam no está de acuerdo con calma.",
+            "highlighted_vocab": [
+              "mystery"
+            ]
+          },
+          {
+            "line_id": 5,
+            "character_id": "char_dwight",
+            "character_display_name": "DWIGHT",
+            "text": "I WATCH everything to protect the office.",
+            "translation_es": "Yo observo todo para proteger la oficina.",
+            "emotion": "defensive",
+            "notes": "Dwight feels important.",
+            "notes_es": "Dwight se siente importante.",
+            "highlighted_vocab": [
+              "watch"
+            ]
+          },
+          {
+            "line_id": 6,
+            "character_id": "char_dwight",
+            "character_display_name": "DWIGHT",
+            "text": "This DESK is my responsibility.",
+            "translation_es": "Este escritorio es mi responsabilidad.",
+            "emotion": "serious",
+            "notes": "He takes ownership seriously.",
+            "notes_es": "Toma la responsabilidad muy en serio.",
+            "highlighted_vocab": [
+              "desk"
+            ]
+          },
+          {
+            "line_id": 7,
+            "character_id": "char_dwight",
+            "character_display_name": "DWIGHT",
+            "text": "The RULE is order.",
+            "translation_es": "La regla es el orden.",
+            "emotion": "strict",
+            "notes": "Dwight defines rules himself.",
+            "notes_es": "Dwight define reglas él mismo.",
+            "highlighted_vocab": [
+              "rule"
+            ]
+          },
+          {
+            "line_id": 8,
+            "character_id": "char_dwight",
+            "character_display_name": "DWIGHT",
+            "text": "I still see a MYSTERY.",
+            "translation_es": "Aún veo un misterio.",
+            "emotion": "suspicious",
+            "notes": "He does not give up.",
+            "notes_es": "No se rinde.",
+            "highlighted_vocab": [
+              "mystery"
+            ]
+          },
+          {
+            "line_id": 9,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "What do you say to Pam?",
+            "prompt_es": "¿Qué le dices a Pam?",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "Mystery desk rule watch.",
+                "translation_es": "Misterio escritorio regla observar.",
+                "points": 0,
+                "personality_impact": "confused",
+                "vocab_used": [
+                  "mystery",
+                  "desk",
+                  "rule",
+                  "watch"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "The paper is not a mystery.",
+                "translation_es": "El papel no es un misterio.",
+                "points": 10,
+                "personality_impact": "neutral"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "scene_id": "scene_006_003",
+        "scene_number": 3,
+        "location": "Office floor",
+        "location_es": "Área de la oficina",
+        "scene_name": "Boss Conclusion",
+        "scene_name_es": "Conclusión del Jefe",
+        "time": "End of day",
+        "time_es": "Final del día",
+        "description": "{boss_name} gives his opinion about the mystery.",
+        "description_es": "{boss_name} da su opinión sobre el misterio.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_boss",
+            "character_display_name": "MICHAEL",
+            "text": "I love this MYSTERY. I invented office mysteries.",
+            "translation_es": "Me encanta este misterio. Yo inventé los misterios de oficina.",
+            "emotion": "proud_but_lying",
+            "notes": "Michael takes credit.",
+            "notes_es": "Michael se atribuye el mérito.",
+            "highlighted_vocab": [
+              "mystery"
+            ],
+            "template_vars": [
+              "boss_name"
+            ]
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_boss",
+            "character_display_name": "MICHAEL",
+            "text": "This PAPER is art.",
+            "translation_es": "Este papel es arte.",
+            "emotion": "confident",
+            "notes": "Michael changes the story.",
+            "notes_es": "Michael cambia la historia.",
+            "highlighted_vocab": [
+              "paper"
+            ]
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_boss",
+            "character_display_name": "MICHAEL",
+            "text": "There is a RULE now. All desks have art.",
+            "translation_es": "Ahora hay una regla. Todos los escritorios tienen arte.",
+            "emotion": "decisive",
+            "notes": "Michael creates rules.",
+            "notes_es": "Michael crea reglas.",
+            "highlighted_vocab": [
+              "rule",
+              "desk"
+            ]
+          },
+          {
+            "line_id": 4,
+            "character_id": "char_boss",
+            "character_display_name": "MICHAEL",
+            "text": "I WATCH creativity.",
+            "translation_es": "Yo observo la creatividad.",
+            "emotion": "serious_but_funny",
+            "notes": "He sounds deep.",
+            "notes_es": "Suena profundo.",
+            "highlighted_vocab": [
+              "watch"
+            ]
+          },
+          {
+            "line_id": 5,
+            "character_id": "char_jim",
+            "character_display_name": "JIM",
+            "text": "Yes. This DESK art is very inspiring.",
+            "translation_es": "Sí. Este arte de escritorio es muy inspirador.",
+            "emotion": "dry",
+            "notes": "Jim plays along.",
+            "notes_es": "Jim sigue el juego.",
+            "highlighted_vocab": [
+              "desk"
+            ]
+          },
+          {
+            "line_id": 6,
+            "character_id": "char_jim",
+            "character_display_name": "JIM",
+            "text": "I WATCH it every day.",
+            "translation_es": "Lo observo todos los días.",
+            "emotion": "sarcastic",
+            "notes": "He will not watch it.",
+            "notes_es": "No lo observará.",
+            "highlighted_vocab": [
+              "watch"
+            ]
+          },
+          {
+            "line_id": 7,
+            "character_id": "char_jim",
+            "character_display_name": "JIM",
+            "text": "The MYSTERY is solved.",
+            "translation_es": "El misterio está resuelto.",
+            "emotion": "ironic",
+            "notes": "Nothing is solved.",
+            "notes_es": "Nada está resuelto.",
+            "highlighted_vocab": [
+              "mystery"
+            ]
+          },
+          {
+            "line_id": 8,
+            "character_id": "char_jim",
+            "character_display_name": "JIM",
+            "text": "The RULE is strange.",
+            "translation_es": "La regla es extraña.",
+            "emotion": "dry",
+            "notes": "Jim comments quietly.",
+            "notes_es": "Jim comenta en voz baja.",
+            "highlighted_vocab": [
+              "rule"
+            ]
+          },
+          {
+            "line_id": 9,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "How do you react?",
+            "prompt_es": "¿Cómo reaccionas?",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "Desk paper rule mystery watch.",
+                "translation_es": "Escritorio papel regla misterio observar.",
+                "points": 0,
+                "personality_impact": "confused",
+                "vocab_used": [
+                  "desk",
+                  "paper",
+                  "rule",
+                  "mystery",
+                  "watch"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "This office mystery is very strange.",
+                "translation_es": "Este misterio de oficina es muy extraño.",
+                "points": 10,
+                "personality_impact": "neutral"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "content_wrappers": {
+    "section_name": "Strange Paper",
+    "section_name_es": "Papel Extraño",
+    "image": "/episodes/episode_6_scene.jpg",
+    "intro_text": {
+      "en": "Welcome to the office. This is a calm place with calm people. Today there is a desk, a paper, and a problem. A very big problem. It is just paper.",
+      "es": "Bienvenido a la oficina. Este es un lugar tranquilo con personas tranquilas. Hoy hay un escritorio, un papel y un problema. Un problema muy grande. Es solo papel."
+    },
+    "transition": {
+      "en": "Good. Now you know the words. Now the office uses the words. The paper is strange. The desk is important. Someone watches everyone. Nobody moves.",
+      "es": "Bien. Ahora conoces las palabras. Ahora la oficina usa las palabras. El papel es extraño. El escritorio es importante. Alguien vigila a todos. Nadie se mueve."
+    },
+    "conclusion": {
+      "en": "Nice work. You learn new words. You see a strange paper. You watch a quiet office. Everyone survives. For now.",
+      "es": "Buen trabajo. Aprendes nuevas palabras. Ves un papel extraño. Observas una oficina silenciosa. Todos sobreviven. Por ahora."
+    },
+    "reflection_prompt": {
+      "question_en": "Write one sentence using the word 'paper' or 'desk'.",
+      "question_es": "Escribe una oración usando la palabra 'paper' o 'desk'.",
+      "type": "free_text",
+      "optional": true,
+      "max_length": 100,
+      "vocab_practice": [
+        "paper",
+        "desk"
+      ]
+    }
+  },
+  "next_episode_preview": {
+    "section_name": "Office Prank",
+    "section_name_es": "Broma Oficina",
+    "image": "/episodes/episode_7_scene.jpg",
+    "preview_text_en": "Next time, {jim_name} plans a small prank, {boss_name} feels very proud, and the office pretends to work.",
+    "preview_text_es": "La próxima vez, {jim_name} planea una pequeña broma, {boss_name} se siente muy orgulloso y la oficina finge trabajar.",
+    "teaser_image": "/previews/ep_007.jpg"
+  },
+  "progression": {
+    "section_name": "Desk Mystery",
+    "section_name_es": "Misterio Escritorio",
+    "image": "/episodes/episode_6_scene.jpg",
+    "xp_earned_base": 50,
+    "xp_bonus_conditions": [
+      {
+        "condition": "complete_all_games",
+        "bonus_xp": 25
+      },
+      {
+        "condition": "perfect_choices",
+        "bonus_xp": 15
+      },
+      {
+        "condition": "write_reflection",
+        "bonus_xp": 10
+      }
+    ],
+    "unlocks": [
+      {
+        "type": "character",
+        "character_ids": [
+          "char_boss",
+          "char_jim",
+          "char_pam",
+          "char_dwight"
+        ]
+      },
+      {
+        "type": "location",
+        "location_ids": [
+          "office_desks",
+          "reception_area",
+          "office_floor"
+        ]
+      }
+    ],
+    "achievements": [
+      {
+        "achievement_id": "office_detective",
+        "name": "Office Detective",
+        "name_es": "Detective de Oficina",
+        "description": "You follow the mystery, observe the paper, and survive Dwight investigation.",
+        "description_es": "Sigues el misterio, observas el papel y sobrevives la investigación de Dwight.",
+        "icon": "/achievements/office_detective.png",
+        "image": "/achievements/office_detective_banner.jpg"
+      }
+    ]
+  },
+  "metadata": {
+    "section_name": "Desk Mystery",
+    "section_name_es": "Misterio Escritorio",
+    "image": "/episodes/episode_6_scene.jpg",
+    "created_date": "2026-01-29",
+    "version": "1.0",
+    "author": "Course Team",
+    "content_level": "beginner",
+    "estimated_words": 380,
+    "estimated_unique_vocabulary": 42,
+    "structure_type": "vocab_story_then_main_story"
+  }
+}

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:office_app/core/constants/app_colors.dart';
 import 'package:office_app/domain/models/vocabulary/vocabulary_segment.dart';
 import 'package:office_app/presentation/providers/template_variable_provider.dart';
+import 'package:office_app/core/utils/haptic_utils.dart';
 
 /// Card que muestra un segmento individual de vocabulario
 /// Con imagen, texto bilingüe, palabra enfatizada y ayudas visuales (emojis)
@@ -124,7 +125,7 @@ class _VocabularySegmentCardState
                             right: 12,
                             bottom: 12,
                             child: GestureDetector(
-                              onTap: widget.onPlayWord,
+                              onTap: HapticUtils.wrap(widget.onPlayWord),
                               child: Container(
                                 width: 48,
                                 height: 48,
@@ -165,7 +166,7 @@ class _VocabularySegmentCardState
                         isSpanish: false,
                       )
                     : GestureDetector(
-                        onTap: widget.onPlayText,
+                        onTap: HapticUtils.wrap(widget.onPlayText),
                         child: _buildTextWithEmphasis(
                           context,
                           widget.segment.text.en,

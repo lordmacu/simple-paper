@@ -9,6 +9,7 @@ import '../../vocabulary/vocabulary_story_screen.dart';
 import '../../listening_shadowing/listening_shadowing_screen.dart';
 import '../../games/games_screen.dart';
 import '../../../widgets/stacked_3d_section_button.dart';
+import '../../../widgets/stacked_3d_button.dart';
 import '../../../providers/progress_providers.dart';
 /// Estado del episodio
 enum EpisodeStatus {
@@ -504,13 +505,15 @@ class SectionPath extends StatelessWidget {
     final enabledIndex =
         firstIncompleteIndex == -1 ? entries.length - 1 : firstIncompleteIndex;
 
-    return Column(
-      children: entries.asMap().entries.map((entry) {
-        final i = entry.key;
-        final data = entry.value;
-        final isLast = i == entries.length - 1;
-        final offsetX = offsets[i % offsets.length];
-        final isEnabled = i <= enabledIndex;
+    return ListView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: entries.length,
+      itemBuilder: (context, index) {
+        final data = entries[index];
+        final isLast = index == entries.length - 1;
+        final offsetX = offsets[index % offsets.length];
+        final isEnabled = index <= enabledIndex;
         return SizedBox(
           width: double.infinity,
           height: isLast ? 130 : 130,
@@ -519,19 +522,67 @@ class SectionPath extends StatelessWidget {
             children: [
               Transform.translate(
                 offset: Offset(offsetX, 0),
-                child: Stacked3DSectionButton(
-                  label: data.label,
-                  onTap: data.onTap,
-                  topColor: AppColors.primaryGreen,
-                  isEnabled: isEnabled,
-                  icon: data.icon,
-                  iconSize: 35,
-                ),
+                child: isEnabled
+                    ? Stacked3DSectionButton(
+                        label: data.label,
+                        onTap: data.onTap,
+                        topColor: AppColors.primaryGreen,
+                        isEnabled: true,
+                        icon: data.icon,
+                        iconSize: 35,
+                      )
+                    : _DisabledSectionButton(label: data.label, icon: data.icon),
               ),
             ],
           ),
         );
-      }).toList(),
+      },
+    );
+  }
+}
+
+class _DisabledSectionButton extends StatelessWidget {
+  final String? label;
+  final IconData? icon;
+
+  const _DisabledSectionButton({
+    required this.label,
+    required this.icon,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final hasLabel = (label ?? '').trim().isNotEmpty;
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Stacked3DButton(
+          topColor: AppColors.primaryGreen,
+          isEnabled: false,
+          icon: icon,
+          iconSize: 35,
+        ),
+        if (hasLabel) ...[
+          const SizedBox(height: 6),
+          SizedBox(
+            width: 140,
+            height: 36,
+            child: Text(
+              label!,
+              textAlign: TextAlign.center,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              softWrap: true,
+              style: const TextStyle(
+                fontWeight: FontWeight.w700,
+                color: AppColors.textSecondary,
+                fontSize: 13,
+                height: 1.1,
+              ),
+            ),
+          ),
+        ],
+      ],
     );
   }
 }
