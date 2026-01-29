@@ -28,48 +28,59 @@ class EpisodeListScreen extends ConsumerWidget {
         
         return userProgressAsyncValue.when(
           data: (userProgress) {
-            return ListView.builder(
-              padding: const EdgeInsets.only(top: 16, bottom: 100),
-              itemCount: episodes.length,
-              itemBuilder: (context, index) {
-                final episode = episodes[index];
-                final episodeNumber = episode.episodeMetadata.episodeNumber;
-                
-                // Determinar estado del episodio basado en progreso real
-                final episodeProgress = userProgress.completedEpisodes[episodeNumber];
-                final isUnlocked = episodeNumber <= userProgress.lastUnlockedEpisode;
-                final isCompleted = episodeProgress?.isCompleted ?? false;
-                debugPrint(
-                  '$_logTag episode=$episodeNumber unlocked=$isUnlocked '
-                  'lastUnlocked=${userProgress.lastUnlockedEpisode} completed=$isCompleted',
-                );
-                
-                final status = isCompleted
-                    ? EpisodeStatus.completed
-                    : isUnlocked
-                        ? EpisodeStatus.unlocked
-                        : EpisodeStatus.locked;
-                
-                final stars = episodeProgress?.starsEarned ?? 0;
-                
-                return EpisodeItem(
-                  episode: episode,
-                  status: status,
-                  starsEarned: stars,
-                  onTap: () {
-                    // Navigate to Vocabulary Story screen
-                    if (status != EpisodeStatus.locked) {
-                      Navigator.of(context, rootNavigator: true).push(
-                        MaterialPageRoute(
-                          builder: (context) => VocabularyStoryScreen(
-                            episode: episode,
-                          ),
-                        ),
+            return CustomScrollView(
+              slivers: [
+                SliverPadding(
+                  padding: const EdgeInsets.only(top: 16, bottom: 100),
+                  sliver: SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                      final episode = episodes[index];
+                      final episodeNumber =
+                          episode.episodeMetadata.episodeNumber;
+
+                      // Determinar estado del episodio basado en progreso real
+                      final episodeProgress =
+                          userProgress.completedEpisodes[episodeNumber];
+                      final isUnlocked =
+                          episodeNumber <= userProgress.lastUnlockedEpisode;
+                      final isCompleted = episodeProgress?.isCompleted ?? false;
+                      debugPrint(
+                        '$_logTag episode=$episodeNumber unlocked=$isUnlocked '
+                        'lastUnlocked=${userProgress.lastUnlockedEpisode} completed=$isCompleted',
                       );
-                    }
-                  },
-                );
-              },
+
+                      final status = isCompleted
+                          ? EpisodeStatus.completed
+                          : isUnlocked
+                              ? EpisodeStatus.unlocked
+                              : EpisodeStatus.locked;
+
+                      final stars = episodeProgress?.starsEarned ?? 0;
+
+                      return EpisodeItem(
+                        episode: episode,
+                        status: status,
+                        starsEarned: stars,
+                        onTap: () {
+                          // Navigate to Vocabulary Story screen
+                          if (status != EpisodeStatus.locked) {
+                            Navigator.of(context, rootNavigator: true).push(
+                              MaterialPageRoute(
+                                builder: (context) => VocabularyStoryScreen(
+                                  episode: episode,
+                                ),
+                              ),
+                            );
+                          }
+                        },
+                      );
+                    },
+                    childCount: episodes.length,
+                  ),
+                ),
+                ),
+              ],
             );
           },
           loading: () => const Center(
