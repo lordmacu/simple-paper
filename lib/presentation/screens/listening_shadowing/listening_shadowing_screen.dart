@@ -189,38 +189,84 @@ class _ListeningShadowingScreenState
 
   /// Extracts a clean preview from potentially concatenated web speech results.
   /// Web Speech API on Chrome sometimes concatenates partial results without spaces,
-  /// producing strings like "this officethis office has" instead of "this office has".
-  /// This method attempts to extract only the final coherent phrase.
+  /// producing strings like "hellohello myhello my namehello my name is cristian"
+  /// instead of "hello my name is cristian".
+  /// This method extracts only the final coherent phrase.
   String _extractCleanPreview(String text) {
     if (text.isEmpty) return '';
 
-    // Tokenize the raw input
-    final allWords = text.split(RegExp(r'\s+'));
-    if (allWords.isEmpty) return text;
-
-    // Get the first word to look for repeated pattern starts
-    final firstWord = allWords.first.toLowerCase();
-    if (firstWord.isEmpty) return text;
-
-    // Find words that START with the first word (indicates concatenation point)
-    // e.g., in "this officethis office has", "officethis" contains "this"
-    final result = <String>[];
-    for (final word in allWords) {
-      final lower = word.toLowerCase();
-      // Check if this word contains the first word as a suffix (concatenation)
-      final idx = lower.indexOf(firstWord);
-      if (idx > 0) {
-        // This word is concatenated, like "officethis"
-        // Take only the part before the concatenation point
-        // Actually, we want to restart from here, so clear previous and start fresh
-        result.clear();
-        result.add(word.substring(idx)); // Start from "this..."
-      } else {
-        result.add(word);
+    // Strategy: Find the LAST occurrence of what looks like the start of the phrase
+    // and take everything from there.
+    // 
+    // Pattern: "hellohello myhello my namehello my name is cristian"
+    // We need to find the last "hello" that starts a coherent phrase.
+    
+    final words = text.split(RegExp(r'\s+'));
+    if (words.isEmpty) return text;
+    
+    // First, try to detect the first word of the intended phrase
+    // by finding repeated patterns at word boundaries
+    String? firstWord;
+    
+    // Check if first "word" contains a repeated pattern like "hellohello"
+    final first = words.first.toLowerCase();
+    for (int len = 2; len <= first.length ~/ 2; len++) {
+      final prefix = first.substring(0, len);
+      if (first.substring(len).startsWith(prefix)) {
+        firstWord = prefix;
+        break;
       }
     }
-
-    return result.join(' ');
+    
+    // If we couldn't detect from repetition, use the first short word
+    if (firstWord == null) {
+      // Try to extract from concatenated word like "namehello" -> "hello"
+      // by looking for common short words
+      firstWord = first.length <= 6 ? first : first.substring(0, 5);
+    }
+    
+    // Now scan from the END to find where the final phrase starts
+    // Look for the last occurrence of firstWord at the START of a word
+    int lastStart = 0;
+    for (int i = words.length - 1; i >= 0; i--) {
+      final word = words[i].toLowerCase();
+      if (word.startsWith(firstWord)) {
+        lastStart = i;
+        break;
+      }
+      // Also check if this word CONTAINS the firstWord (concatenated)
+      final idx = word.lastIndexOf(firstWord);
+      if (idx > 0) {
+        // Found concatenation like "namehello" - extract "hello" and everything after
+        final extracted = words[i].substring(idx);
+        final result = [extracted, ...words.sublist(i + 1)];
+        return result.join(' ');
+      }
+    }
+    
+    // Return from the last start position
+    if (lastStart > 0) {
+      return words.sublist(lastStart).join(' ');
+    }
+    
+    // Fallback: try to clean individual concatenated words
+    final cleaned = <String>[];
+    for (final word in words) {
+      final lower = word.toLowerCase();
+      // Check for doubled word like "hellohello"
+      for (int len = 2; len <= lower.length ~/ 2; len++) {
+        final prefix = lower.substring(0, len);
+        if (lower == prefix + prefix) {
+          cleaned.add(prefix);
+          break;
+        }
+      }
+      if (cleaned.isEmpty || cleaned.last != word.toLowerCase()) {
+        cleaned.add(word);
+      }
+    }
+    
+    return cleaned.join(' ');
   }
 
   void _evaluateResult() {
