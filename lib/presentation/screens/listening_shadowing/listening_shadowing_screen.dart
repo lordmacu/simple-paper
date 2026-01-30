@@ -141,7 +141,21 @@ class _ListeningShadowingScreenState
       onResult: (result) {
         if (!mounted) return;
         final raw = result.recognizedWords;
-        final next = kIsWeb ? _normalizeRecognized(raw) : raw;
+        // On web, use only the final result to avoid concatenation bugs.
+        // Intermediate results on Chrome/Web often contain concatenated
+        // partial phrases like "this officethis office hasthis office has a"
+        // which are impossible to clean reliably. We simply ignore all
+        // intermediate results and only process the final one.
+        if (kIsWeb && !result.finalResult) {
+          // Show a simple preview to the user but don't commit
+          final preview = _extractCleanPreview(raw);
+          setState(() {
+            _recognized = preview;
+            _lastResultAt = DateTime.now();
+          });
+          return;
+        }
+        final next = kIsWeb ? _extractCleanPreview(raw) : raw;
         setState(() {
           _recognized = next;
           _lastResultAt = DateTime.now();
@@ -173,210 +187,40 @@ class _ListeningShadowingScreenState
     });
   }
 
-  String _normalizeRecognized(String text) {
-    // First, try to fix concatenated incremental results from Chrome Android
-    // Pattern: "hellohello myhello my namehello my name is cristian"
-    // We need to extract just the final complete phrase
-    final fixed = _fixConcatenatedResults(text);
+  /// Extracts a clean preview from potentially concatenated web speech results.
+  /// Web Speech API on Chrome sometimes concatenates partial results without spaces,
+  /// producing strings like "this officethis office has" instead of "this office has".
+  /// This method attempts to extract only the final coherent phrase.
+  String _extractCleanPreview(String text) {
+    if (text.isEmpty) return '';
 
-    var tokens = _tokenize(fixed);
-    if (tokens.isEmpty) return '';
-    final compact = <String>[];
-    for (final t in tokens) {
-      if (compact.isEmpty || compact.last != t) {
-        compact.add(t);
-      }
-    }
-    final lastTokens = _tokenize(_lastRecognized);
-    tokens = _collapseRepeatedPrefix(compact, lastTokens);
-    tokens = _keepLastRepeatedSuffix(tokens);
-    if (lastTokens.isNotEmpty && compact.length >= lastTokens.length * 2) {
-      final first = compact.sublist(0, lastTokens.length);
-      final second = compact.sublist(lastTokens.length, lastTokens.length * 2);
-      if (_listEquals(first, lastTokens) && _listEquals(second, lastTokens)) {
-        return tokens.sublist(lastTokens.length).join(' ');
-      }
-    }
-    if (lastTokens.isNotEmpty &&
-        compact.length < lastTokens.length &&
-        _listEquals(lastTokens.sublist(0, compact.length), compact)) {
-      return _lastRecognized;
-    }
-    return tokens.join(' ');
-  }
+    // Tokenize the raw input
+    final allWords = text.split(RegExp(r'\s+'));
+    if (allWords.isEmpty) return text;
 
-  /// Fixes concatenated incremental results from Chrome Android
-  /// Input: "hellohello myhello my namehello my name is cristian"
-  /// Output: "hello my name is cristian"
-  String _fixConcatenatedResults(String text) {
-    if (text.isEmpty) return text;
+    // Get the first word to look for repeated pattern starts
+    final firstWord = allWords.first.toLowerCase();
+    if (firstWord.isEmpty) return text;
 
-    // Split by spaces to get chunks
-    final chunks = text.split(' ');
-    if (chunks.length <= 1) return text;
-
-    // Look for concatenated words (e.g., "hellohello" or "myhello")
-    // These happen when incremental results are concatenated without spaces
+    // Find words that START with the first word (indicates concatenation point)
+    // e.g., in "this officethis office has", "officethis" contains "this"
     final result = <String>[];
-
-    for (final chunk in chunks) {
-      if (chunk.isEmpty) continue;
-
-      // Check if this chunk contains concatenated words
-      // by looking for a repeated pattern at the boundary
-      final separated = _separateConcatenatedWords(chunk);
-      result.addAll(separated);
-    }
-
-    if (result.isEmpty) return text;
-
-    // Now try to find the last complete phrase by detecting repeated sequences
-    // Pattern: [hello, hello, my, hello, my, name, hello, my, name, is, cristian]
-    // We want: [hello, my, name, is, cristian]
-    return _extractFinalPhrase(result).join(' ');
-  }
-
-  /// Separates concatenated words like "hellohello" or "myhello"
-  List<String> _separateConcatenatedWords(String word) {
-    if (word.length < 4) return [word];
-
-    final lower = word.toLowerCase();
-
-    // Try to find repeated patterns at the start
-    // "hellohello" -> ["hello", "hello"]
-    for (var len = 2; len <= word.length ~/ 2; len++) {
-      final prefix = lower.substring(0, len);
-      if (lower.substring(len).startsWith(prefix)) {
-        // Found a repeat
-        final parts = <String>[];
-        var remaining = lower;
-        while (remaining.startsWith(prefix)) {
-          parts.add(prefix);
-          remaining = remaining.substring(prefix.length);
-        }
-        if (remaining.isNotEmpty) {
-          parts.addAll(_separateConcatenatedWords(remaining));
-        }
-        return parts;
+    for (final word in allWords) {
+      final lower = word.toLowerCase();
+      // Check if this word contains the first word as a suffix (concatenation)
+      final idx = lower.indexOf(firstWord);
+      if (idx > 0) {
+        // This word is concatenated, like "officethis"
+        // Take only the part before the concatenation point
+        // Actually, we want to restart from here, so clear previous and start fresh
+        result.clear();
+        result.add(word.substring(idx)); // Start from "this..."
+      } else {
+        result.add(word);
       }
     }
 
-    // Try to detect word boundary by looking for common word patterns
-    // "myhello" -> ["my", "hello"]
-    final commonWords = ['hello', 'my', 'name', 'is', 'the', 'a', 'an', 'i', 'am', 'you', 'are', 'we', 'they', 'he', 'she', 'it', 'this', 'that', 'what', 'how', 'where', 'when', 'why', 'yes', 'no', 'ok', 'hi', 'hey'];
-
-    for (final commonWord in commonWords) {
-      if (lower.length > commonWord.length && lower.endsWith(commonWord)) {
-        final prefix = lower.substring(0, lower.length - commonWord.length);
-        if (prefix.isNotEmpty) {
-          final prefixParts = _separateConcatenatedWords(prefix);
-          return [...prefixParts, commonWord];
-        }
-      }
-    }
-
-    return [word];
-  }
-
-  /// Extracts the final complete phrase from repeated incremental results
-  /// Input: [hello, hello, my, hello, my, name, hello, my, name, is, cristian]
-  /// Output: [hello, my, name, is, cristian]
-  List<String> _extractFinalPhrase(List<String> tokens) {
-    if (tokens.length < 3) return tokens;
-
-    // Find the last occurrence of the first token
-    // This likely marks the start of the final complete phrase
-    final firstToken = tokens.first.toLowerCase();
-    var lastStart = 0;
-
-    for (var i = tokens.length - 1; i > 0; i--) {
-      if (tokens[i].toLowerCase() == firstToken) {
-        lastStart = i;
-        break;
-      }
-    }
-
-    if (lastStart > 0 && lastStart < tokens.length - 1) {
-      return tokens.sublist(lastStart);
-    }
-
-    return tokens;
-  }
-
-  bool _listEquals(List<String> a, List<String> b) {
-    if (a.length != b.length) return false;
-    for (var i = 0; i < a.length; i++) {
-      if (a[i] != b[i]) return false;
-    }
-    return true;
-  }
-
-  List<String> _collapseRepeatedPrefix(
-    List<String> tokens,
-    List<String> lastTokens,
-  ) {
-    if (tokens.length < 2) return tokens;
-    var result = List<String>.from(tokens);
-    final maxUnit = result.length ~/ 2;
-
-    if (lastTokens.isNotEmpty && result.length >= lastTokens.length * 2) {
-      while (result.length >= lastTokens.length * 2 &&
-          _listEquals(
-            result.sublist(0, lastTokens.length),
-            result.sublist(lastTokens.length, lastTokens.length * 2),
-          )) {
-        result = result.sublist(lastTokens.length);
-      }
-      return result;
-    }
-
-    final limit = maxUnit < 6 ? maxUnit : 6;
-    for (var unitLen = 1; unitLen <= limit; unitLen++) {
-      while (result.length >= unitLen * 2) {
-        final first = result.sublist(0, unitLen);
-        final second = result.sublist(unitLen, unitLen * 2);
-        if (_listEquals(first, second)) {
-          result = result.sublist(unitLen);
-        } else {
-          break;
-        }
-      }
-    }
-    return result;
-  }
-
-  List<String> _keepLastRepeatedSuffix(List<String> tokens) {
-    if (tokens.length < 6) return tokens;
-    int bestStart = -1;
-    for (var start = 0; start <= tokens.length - 3; start++) {
-      final suffix = tokens.sublist(start);
-      if (suffix.length < 3) continue;
-      if (_containsSlice(tokens, 0, start, suffix)) {
-        bestStart = start;
-      }
-    }
-    if (bestStart <= 0) return tokens;
-    return tokens.sublist(bestStart);
-  }
-
-  bool _containsSlice(
-    List<String> tokens,
-    int from,
-    int to,
-    List<String> slice,
-  ) {
-    if (slice.isEmpty || to - from < slice.length) return false;
-    for (var i = from; i <= to - slice.length; i++) {
-      var match = true;
-      for (var j = 0; j < slice.length; j++) {
-        if (tokens[i + j] != slice[j]) {
-          match = false;
-          break;
-        }
-      }
-      if (match) return true;
-    }
-    return false;
+    return result.join(' ');
   }
 
   void _evaluateResult() {

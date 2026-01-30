@@ -20,68 +20,16 @@ class MiniStoryScreen extends ConsumerStatefulWidget {
 }
 
 class _MiniStoryScreenState extends ConsumerState<MiniStoryScreen> {
-  bool _isPlaying = false;
-  List<String> _paragraphTexts = [];
-  int _currentParagraphIndex = 0;
-
   @override
   void dispose() {
     final tts = ref.read(ttsServiceProvider);
-    tts.setCompletionHandler(null);
     tts.stop();
     super.dispose();
   }
 
-  void _toggleFullStoryTts() {
-    final tts = ref.read(ttsServiceProvider);
-    if (_isPlaying) {
-      tts.setCompletionHandler(null);
-      tts.stop();
-      setState(() {
-        _isPlaying = false;
-        _paragraphTexts = [];
-        _currentParagraphIndex = 0;
-      });
-    } else {
-      final miniStory = widget.episode.miniStory;
-      if (miniStory == null) return;
-      final template = ref.read(templateVariableServiceProvider);
-      _paragraphTexts = miniStory.paragraphs
-          .map((p) => template.replaceVariables(p.text.en))
-          .toList();
-      if (_paragraphTexts.isEmpty) return;
-      _currentParagraphIndex = 0;
-      tts.setCompletionHandler(_onParagraphComplete);
-      tts.speak(_paragraphTexts[_currentParagraphIndex]);
-      setState(() => _isPlaying = true);
-    }
-  }
-
-  void _onParagraphComplete() {
-    if (!mounted) return;
-    _currentParagraphIndex++;
-    if (_currentParagraphIndex < _paragraphTexts.length) {
-      final tts = ref.read(ttsServiceProvider);
-      tts.speak(_paragraphTexts[_currentParagraphIndex]);
-    } else {
-      setState(() {
-        _isPlaying = false;
-        _paragraphTexts = [];
-        _currentParagraphIndex = 0;
-      });
-      ref.read(ttsServiceProvider).setCompletionHandler(null);
-    }
-  }
-
   void _stopAndClose() {
     final tts = ref.read(ttsServiceProvider);
-    tts.setCompletionHandler(null);
     tts.stop();
-    setState(() {
-      _isPlaying = false;
-      _paragraphTexts = [];
-      _currentParagraphIndex = 0;
-    });
   }
 
   @override
@@ -128,11 +76,6 @@ class _MiniStoryScreenState extends ConsumerState<MiniStoryScreen> {
               NavigationUtils.closeToHome(context);
             },
             tooltip: 'Cerrar',
-          ),
-          IconButton(
-            icon: Icon(_isPlaying ? Icons.volume_off : Icons.volume_up),
-            onPressed: _toggleFullStoryTts,
-            tooltip: _isPlaying ? 'Detener' : 'Leer historia',
           ),
         ],
       ),
