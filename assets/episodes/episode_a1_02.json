@@ -11,23 +11,22 @@
     }
   },
   "episode_metadata": {
-    "section_name": "Important Meeting",
-    "section_name_es": "Reunión Importante",
-    "image": "/episodes/episode_02_scene.jpg",
+    "section_name": "Office Questions",
+    "section_name_es": "Preguntas Oficina",
+    "image": "/episodes/episode_2_scene.jpg",
     "episode_number": 2,
     "episode_id": "ep_002",
-    "title": "The Very Important Meeting",
-    "title_es": "La Reunión Muy Importante",
-    "description": "{boss_name} calls a very important meeting. Everyone sits down, opens a notebook, and waits. The meeting starts. It is long. It is very confusing. It is also not very important.",
-    "description_es": "{boss_name} llama a una reunión muy importante. Todos se sientan, abren un cuaderno y esperan. La reunión empieza. Es larga. Es muy confusa. Y no es tan importante.",
+    "title": "What Is This Office?",
+    "title_es": "¿Qué Es Esta Oficina?",
+    "description": "Leo asks many what and where questions about the office. Some questions are useful. Some questions are very confusing. Everyone tries to help, but Leo talks more than he listens.",
+    "description_es": "Leo hace muchas preguntas de qué y dónde sobre la oficina. Algunas preguntas son útiles. Otras son muy confusas. Todos intentan ayudar, pero Leo habla más de lo que escucha.",
     "internal_level": "A1",
     "estimated_time_minutes": 12,
     "unlock_requirements": null,
     "tags": [
-      "meetings",
       "office_life",
-      "listening",
-      "basic_questions"
+      "questions",
+      "beginners"
     ],
     "previous_episode": "ep_001",
     "next_episode": "ep_003"
@@ -39,67 +38,67 @@
     "appearing_in_episode": [
       {
         "character_id": "char_boss",
-        "default_name": "MICHAEL",
-        "role": "Boss",
-        "role_es": "Jefe",
-        "personality": "Enthusiastic boss who wants everyone to like him and believes he is amazing at his job.",
-        "personality_es": "Jefe entusiasta que quiere que todos lo quieran y cree que es increíble en su trabajo.",
+        "default_name": "LEO",
+        "role": "Regional manager",
+        "role_es": "Gerente regional",
+        "personality": "Enthusiastic boss who wants to be loved, makes awkward jokes, and believes he is the best boss in the world.",
+        "personality_es": "Jefe entusiasta que quiere ser querido, hace bromas incómodas y cree que es el mejor jefe del mundo.",
         "first_appearance": false,
         "customizable_name": true,
         "user_custom_name": null,
-        "avatar_url": "/avatars/michael.png",
-        "intro_text": "Hello. I am the boss. The best boss in this office. You are lucky to work here with me.",
-        "intro_text_es": "Hola. Yo soy el jefe. El mejor jefe de esta oficina. Tienes suerte de trabajar aquí conmigo."
+        "avatar_url": "/avatars/leo.png",
+        "intro_text": "Hello. I am LEO. I am the boss. Where is the boss? I am here. What is this office? It is my office. I am a great boss. Maybe the greatest.",
+        "intro_text_es": "Hola. Yo soy LEO. Yo soy el jefe. ¿Dónde está el jefe? Yo estoy aquí. ¿Qué es esta oficina? Es mi oficina. Yo soy un gran jefe. Tal vez el más grande."
       },
       {
         "character_id": "char_jim",
-        "default_name": "JIM",
+        "default_name": "BEN",
         "role": "Salesman",
         "role_es": "Vendedor",
-        "personality": "Relaxed and sarcastic salesman who quietly jokes about everything around him.",
-        "personality_es": "Vendedor relajado y sarcástico que hace bromas silenciosas sobre todo a su alrededor.",
+        "personality": "Sarcastic and relaxed salesman who makes dry jokes while pretending to be serious.",
+        "personality_es": "Vendedor sarcástico y relajado que hace bromas secas mientras finge ser serio.",
         "first_appearance": false,
         "customizable_name": true,
         "user_custom_name": null,
-        "avatar_url": "/avatars/jim.png",
-        "intro_text": "Yes. This is a very serious office. Very important work happens here every day.",
-        "intro_text_es": "Sí. Esta es una oficina muy seria. Trabajo muy importante pasa aquí todos los días."
+        "avatar_url": "/avatars/ben.png",
+        "intro_text": "Hi. I am BEN. What is my job? I sell paper. Where do I work? Here. This is a very serious office. Very serious.",
+        "intro_text_es": "Hola. Yo soy BEN. ¿Cuál es mi trabajo? Yo vendo papel. ¿Dónde trabajo? Aquí. Esta es una oficina muy seria. Muy seria."
       },
       {
         "character_id": "char_pam",
-        "default_name": "PAM",
+        "default_name": "MIA",
         "role": "Receptionist",
         "role_es": "Recepcionista",
-        "personality": "Kind and helpful receptionist who understands the office chaos.",
+        "personality": "Kind and helpful receptionist who understands the chaos of the office.",
         "personality_es": "Recepcionista amable y servicial que entiende el caos de la oficina.",
         "first_appearance": false,
         "customizable_name": true,
         "user_custom_name": null,
-        "avatar_url": "/avatars/pam.png",
-        "intro_text": "Welcome. I help people here. Do not worry. The office is always like this.",
-        "intro_text_es": "Bienvenido. Yo ayudo a las personas aquí. No te preocupes. La oficina siempre es así."
+        "avatar_url": "/avatars/mia.png",
+        "intro_text": "Hello. I am MIA. Where is your desk? It is over there. What is this place? This is the office. Do not worry. This is normal.",
+        "intro_text_es": "Hola. Yo soy MIA. ¿Dónde está tu escritorio? Está allá. ¿Qué es este lugar? Esta es la oficina. No te preocupes. Esto es normal."
       },
       {
         "character_id": "char_dwight",
-        "default_name": "DWIGHT",
-        "role": "Salesman",
-        "role_es": "Vendedor",
-        "personality": "Intense and serious salesman who follows rules and watches everyone.",
-        "personality_es": "Vendedor intenso y serio que sigue las reglas y vigila a todos.",
-        "first_appearance": true,
+        "default_name": "DAN",
+        "role": "Assistant regional manager",
+        "role_es": "Asistente del gerente regional",
+        "personality": "Intense and rule-focused employee who takes his job very seriously.",
+        "personality_es": "Empleado intenso y enfocado en las reglas que toma su trabajo muy en serio.",
+        "first_appearance": false,
         "customizable_name": true,
         "user_custom_name": null,
-        "avatar_url": "/avatars/dwight.png",
-        "intro_text": "I am the assistant regional manager. I see everything. I am ready for any emergency.",
-        "intro_text_es": "Yo soy el asistente del gerente regional. Veo todo. Estoy listo para cualquier emergencia."
+        "avatar_url": "/avatars/dan.png",
+        "intro_text": "I am DAN. What is my position? I am the assistant regional manager. Where is my desk? It is close. I watch everything.",
+        "intro_text_es": "Yo soy DAN. ¿Cuál es mi puesto? Yo soy el asistente del gerente regional. ¿Dónde está mi escritorio? Está cerca. Yo observo todo."
       }
     ],
     "mentioned_but_not_appearing": []
   },
   "vocabulary_focus": {
-    "section_name": "Office Meeting",
-    "section_name_es": "Reunión Oficina",
-    "image": "/episodes/episode_02_scene.jpg",
+    "section_name": "Office Words",
+    "section_name_es": "Palabras Oficina",
+    "image": "/episodes/episode_2_scene.jpg",
     "target_words": [
       {
         "word": "meeting",
@@ -107,119 +106,151 @@
         "word_type": "noun",
         "word_type_es": "sustantivo",
         "difficulty": 1,
-        "context_sentence": "The meeting starts in the office.",
-        "context_sentence_es": "La reunión empieza en la oficina.",
+        "context_sentence": "The meeting is in the morning.",
+        "context_sentence_es": "La reunión es en la mañana.",
         "image_url": "/vocab/meeting.jpg",
         "usage_examples": [
           "The meeting is very long.",
-          "The meeting is in the morning.",
-          "Everyone is in the meeting."
+          "The meeting is in this room.",
+          "The boss is in the meeting."
         ],
         "usage_examples_es": [
           "La reunión es muy larga.",
-          "La reunión es en la mañana.",
-          "Todos están en la reunión."
+          "La reunión es en esta sala.",
+          "El jefe está en la reunión."
         ]
       },
       {
-        "word": "notebook",
-        "translation_es": "cuaderno",
+        "word": "room",
+        "translation_es": "sala",
         "word_type": "noun",
         "word_type_es": "sustantivo",
         "difficulty": 1,
-        "context_sentence": "Everyone brings a notebook to the meeting.",
-        "context_sentence_es": "Todos llevan un cuaderno a la reunión.",
-        "image_url": "/vocab/notebook.jpg",
+        "context_sentence": "This room is small.",
+        "context_sentence_es": "Esta sala es pequeña.",
+        "image_url": "/vocab/room.jpg",
         "usage_examples": [
-          "I have a notebook.",
-          "The notebook is on the desk.",
-          "She opens her notebook."
+          "The meeting room is here.",
+          "This room is quiet.",
+          "Where is the room?"
         ],
         "usage_examples_es": [
-          "Yo tengo un cuaderno.",
-          "El cuaderno está sobre el escritorio.",
-          "Ella abre su cuaderno."
+          "La sala de reuniones está aquí.",
+          "Esta sala es silenciosa.",
+          "¿Dónde está la sala?"
         ]
       },
       {
-        "word": "listen",
-        "translation_es": "escuchar",
-        "word_type": "verb",
-        "word_type_es": "verbo",
+        "word": "manager",
+        "translation_es": "gerente",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
         "difficulty": 2,
-        "context_sentence": "They listen to {boss_name} in the meeting.",
-        "context_sentence_es": "Ellos escuchan a {boss_name} en la reunión.",
-        "image_url": "/vocab/listen.jpg",
+        "context_sentence": "The manager asks many questions.",
+        "context_sentence_es": "El gerente hace muchas preguntas.",
+        "image_url": "/vocab/manager.jpg",
         "usage_examples": [
-          "I listen in the meeting.",
-          "They listen to the boss.",
-          "We listen and wait."
+          "The manager is very serious.",
+          "The manager is in the office.",
+          "Where is the manager?"
         ],
         "usage_examples_es": [
-          "Yo escucho en la reunión.",
-          "Ellos escuchan al jefe.",
-          "Nosotros escuchamos y esperamos."
+          "El gerente es muy serio.",
+          "El gerente está en la oficina.",
+          "¿Dónde está el gerente?"
         ]
       },
       {
-        "word": "talk",
-        "translation_es": "hablar",
-        "word_type": "verb",
-        "word_type_es": "verbo",
+        "word": "place",
+        "translation_es": "lugar",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
         "difficulty": 2,
-        "context_sentence": "{boss_name} talks for a long time.",
-        "context_sentence_es": "{boss_name} habla por mucho tiempo.",
-        "image_url": "/vocab/talk.jpg",
+        "context_sentence": "This place is strange.",
+        "context_sentence_es": "Este lugar es extraño.",
+        "image_url": "/vocab/place.jpg",
         "usage_examples": [
-          "The boss talks a lot.",
-          "She talks in the meeting.",
-          "They talk after the meeting."
+          "This place is the office.",
+          "The meeting place is here.",
+          "What place is this?"
         ],
         "usage_examples_es": [
-          "El jefe habla mucho.",
-          "Ella habla en la reunión.",
-          "Ellos hablan después de la reunión."
+          "Este lugar es la oficina.",
+          "El lugar de la reunión es aquí.",
+          "¿Qué lugar es este?"
         ]
       },
       {
-        "word": "wait",
-        "translation_es": "esperar",
-        "word_type": "verb",
-        "word_type_es": "verbo",
+        "word": "question",
+        "translation_es": "pregunta",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
         "difficulty": 1,
-        "context_sentence": "Everyone waits for the meeting to end.",
-        "context_sentence_es": "Todos esperan que la reunión termine.",
-        "image_url": "/vocab/wait.jpg",
+        "context_sentence": "Leo has one question.",
+        "context_sentence_es": "Leo tiene una pregunta.",
+        "image_url": "/vocab/question.jpg",
         "usage_examples": [
-          "I wait at my desk.",
-          "They wait and listen.",
-          "We wait for the boss."
+          "This question is easy.",
+          "That question is strange.",
+          "What is your question?"
         ],
         "usage_examples_es": [
-          "Yo espero en mi escritorio.",
-          "Ellos esperan y escuchan.",
-          "Nosotros esperamos al jefe."
+          "Esta pregunta es fácil.",
+          "Esa pregunta es extraña.",
+          "¿Cuál es tu pregunta?"
         ]
       }
     ],
     "phrases": [
       {
-        "phrase": "This meeting is very important",
-        "translation_es": "Esta reunión es muy importante",
-        "usage_context": "Used when the boss wants everyone to pay attention.",
-        "usage_context_es": "Se usa cuando el jefe quiere que todos presten atención."
+        "phrase": "What is this?",
+        "translation_es": "¿Qué es esto?",
+        "usage_context": "Used when asking about an object or situation in the office.",
+        "usage_context_es": "Se usa para preguntar sobre un objeto o situación en la oficina."
       },
       {
-        "phrase": "Please take a notebook",
-        "translation_es": "Por favor toma un cuaderno",
-        "usage_context": "Used before the meeting starts.",
-        "usage_context_es": "Se usa antes de que empiece la reunión."
+        "phrase": "Where is the meeting?",
+        "translation_es": "¿Dónde es la reunión?",
+        "usage_context": "Used when looking for the meeting location.",
+        "usage_context_es": "Se usa cuando se busca el lugar de la reunión."
       },
       {
-        "phrase": "We wait and listen",
-        "translation_es": "Esperamos y escuchamos",
-        "usage_context": "Used when the boss talks for a long time.",
-        "usage_context_es": "Se usa cuando el jefe habla por mucho tiempo."
+        "phrase": "This is the room",
+        "translation_es": "Esta es la sala",
+        "usage_context": "Used to show the correct place, often after confusion.",
+        "usage_context_es": "Se usa para mostrar el lugar correcto, a menudo después de confusión."
+      }
+    ]
+  },
+  "mini_story": {
+    "section_name": "Office Questions",
+    "section_name_es": "Preguntas Oficina",
+    "image": "/episodes/episode_2_scene.jpg",
+    "title": "Short Story",
+    "title_es": "Historia corta",
+    "description": "A short story to practice today's topic.",
+    "description_es": "Una historia corta para practicar el tema de hoy.",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "text": {
+          "en": "It is the second day at Simple Paper in Aurora. Leo stands near the desks and looks confused. He asks, \"What is this office?\" Ben points at a desk and smiles.",
+          "es": "Es el segundo día en Simple Paper en Aurora. Leo está cerca de los escritorios y se ve confundido. Él pregunta: \"¿Qué es esta oficina?\" Ben señala un escritorio y sonríe."
+        }
+      },
+      {
+        "id": "p2",
+        "text": {
+          "en": "Mia walks by with a computer. Leo asks, \"Where is the meeting?\" Mia says the meeting is in the room near the office door.",
+          "es": "Mia pasa con una computadora. Leo pregunta: \"¿Dónde es la reunión?\" Mia dice que la reunión es en la sala cerca de la puerta de la oficina."
+        }
+      },
+      {
+        "id": "p3",
+        "text": {
+          "en": "Dan hears the questions and looks serious. Leo asks one more question, and everyone waits. The meeting starts late because Leo asks what is his chair.",
+          "es": "Dan escucha las preguntas y se ve serio. Leo hace una pregunta más y todos esperan. La reunión empieza tarde porque Leo pregunta qué es su silla."
+        }
       }
     ]
   },
@@ -233,406 +264,722 @@
     "description_es": "Una historia simple para aprender el vocabulario de hoy",
     "segments": [
       {
-        "segment_id": "vocab_word1_01",
+        "segment_id": "vocab_meeting_01",
         "image_url": "/vocab/meeting.jpg",
         "word_focus": "meeting",
         "text": {
-          "en": "The MEETING starts now. Everyone looks serious.",
-          "es": "La REUNIÓN empieza ahora. Todos se ven serios."
+          "en": "The MEETING is in the morning.",
+          "es": "La REUNIÓN es en la mañana."
         },
-        "visual_aid": "📅😐",
         "emphasis_style": "bold_uppercase"
       },
       {
-        "segment_id": "vocab_word1_02",
+        "segment_id": "vocab_meeting_02",
         "image_url": "/vocab/meeting.jpg",
         "word_focus": "meeting",
         "text": {
-          "en": "The MEETING is long. Very long.",
-          "es": "La REUNIÓN es larga. Muy larga."
-        },
-        "visual_aid": "⏰😴"
-      },
-      {
-        "segment_id": "vocab_word1_03",
-        "image_url": "/vocab/meeting.jpg",
-        "word_focus": "meeting",
-        "text": {
-          "en": "The boss loves the MEETING.",
-          "es": "Al jefe le encanta la REUNIÓN."
-        },
-        "visual_aid": "👔❤️"
-      },
-      {
-        "segment_id": "vocab_word2_01",
-        "image_url": "/vocab/team.jpg",
-        "word_focus": "team",
-        "text": {
-          "en": "The TEAM is here. The TEAM is ready.",
-          "es": "El EQUIPO está aquí. El EQUIPO está listo."
-        },
-        "visual_aid": "👥💼",
-        "interactive": {
-          "type": "simple_input",
-          "question": "What is your name?",
-          "question_es": "¿Cuál es tu nombre?",
-          "input_type": "text",
-          "save_as": "player_name_vocab",
-          "example": "Alex"
+          "en": "The MEETING is very long.",
+          "es": "La REUNIÓN es muy larga."
         }
       },
       {
-        "segment_id": "vocab_word2_02",
-        "image_url": "/vocab/team.jpg",
-        "word_focus": "team",
+        "segment_id": "vocab_meeting_03",
+        "image_url": "/vocab/meeting.jpg",
+        "word_focus": "meeting",
         "text": {
-          "en": "The TEAM works together. Sometimes.",
-          "es": "El EQUIPO trabaja junto. A veces."
-        },
-        "visual_aid": "🤝🙂"
+          "en": "What is this MEETING about? Nobody knows.",
+          "es": "¿De qué es esta REUNIÓN? Nadie sabe."
+        }
       },
       {
-        "segment_id": "vocab_word2_03",
-        "image_url": "/vocab/team.jpg",
-        "word_focus": "team",
+        "segment_id": "vocab_boss_01",
+        "image_url": "/vocab/boss.jpg",
+        "word_focus": "boss",
         "text": {
-          "en": "The TEAM listens to the boss.",
-          "es": "El EQUIPO escucha al jefe."
-        },
-        "visual_aid": "👂👔"
+          "en": "The BOSS is in the office.",
+          "es": "El JEFE está en la oficina."
+        }
       },
       {
-        "segment_id": "vocab_word3_01",
-        "image_url": "/vocab/work.jpg",
-        "word_focus": "work",
+        "segment_id": "vocab_boss_02",
+        "image_url": "/vocab/boss.jpg",
+        "word_focus": "boss",
         "text": {
-          "en": "This is WORK. Important WORK.",
-          "es": "Esto es TRABAJO. TRABAJO importante."
-        },
-        "visual_aid": "💻📊"
+          "en": "The BOSS loves meetings.",
+          "es": "El JEFE ama las reuniones."
+        }
       },
       {
-        "segment_id": "vocab_word3_02",
-        "image_url": "/vocab/work.jpg",
-        "word_focus": "work",
+        "segment_id": "vocab_boss_03",
+        "image_url": "/vocab/boss.jpg",
+        "word_focus": "boss",
         "text": {
-          "en": "WORK happens in the office.",
-          "es": "El TRABAJO pasa en la oficina."
-        },
-        "visual_aid": "🏢📝"
+          "en": "Where is the BOSS? He is everywhere.",
+          "es": "¿Dónde está el JEFE? Está en todas partes."
+        }
       },
       {
-        "segment_id": "vocab_word3_03",
-        "image_url": "/vocab/work.jpg",
-        "word_focus": "work",
+        "segment_id": "vocab_room_01",
+        "image_url": "/vocab/room.jpg",
+        "word_focus": "room",
         "text": {
-          "en": "Sometimes WORK is boring.",
-          "es": "A veces el TRABAJO es aburrido."
-        },
-        "visual_aid": "😐⌨️"
+          "en": "This ROOM is small.",
+          "es": "Esta SALA es pequeña."
+        }
       },
       {
-        "segment_id": "vocab_word4_01",
-        "image_url": "/vocab/paper.jpg",
-        "word_focus": "paper",
+        "segment_id": "vocab_room_02",
+        "image_url": "/vocab/room.jpg",
+        "word_focus": "room",
         "text": {
-          "en": "The PAPER is on the desk.",
-          "es": "El PAPEL está en el escritorio."
-        },
-        "visual_aid": "📄🪑"
+          "en": "The MEETING room is full.",
+          "es": "La SALA de REUNIÓN está llena."
+        }
       },
       {
-        "segment_id": "vocab_word4_02",
-        "image_url": "/vocab/paper.jpg",
-        "word_focus": "paper",
+        "segment_id": "vocab_room_03",
+        "image_url": "/vocab/room.jpg",
+        "word_focus": "room",
         "text": {
-          "en": "The PAPER is very important. Maybe.",
-          "es": "El PAPEL es muy importante. Tal vez."
-        },
-        "visual_aid": "📄🤔"
+          "en": "Where is the ROOM? It is over there.",
+          "es": "¿Dónde está la SALA? Está allá."
+        }
       },
       {
-        "segment_id": "vocab_word4_03",
-        "image_url": "/vocab/paper.jpg",
-        "word_focus": "paper",
+        "segment_id": "vocab_desk_01",
+        "image_url": "/vocab/desk.jpg",
+        "word_focus": "desk",
         "text": {
-          "en": "Dwight loves the PAPER.",
-          "es": "A Dwight le encanta el PAPEL."
-        },
-        "visual_aid": "📄😄"
+          "en": "This DESK is clean.",
+          "es": "Este ESCRITORIO está limpio."
+        }
       },
       {
-        "segment_id": "vocab_word5_01",
-        "image_url": "/vocab/chair.jpg",
-        "word_focus": "chair",
+        "segment_id": "vocab_desk_02",
+        "image_url": "/vocab/desk.jpg",
+        "word_focus": "desk",
         "text": {
-          "en": "This is a CHAIR. You sit here.",
-          "es": "Esto es una SILLA. Te sientas aquí."
-        },
-        "visual_aid": "🪑👇"
+          "en": "The DESK is in the office.",
+          "es": "El ESCRITORIO está en la oficina."
+        }
       },
       {
-        "segment_id": "vocab_word5_02",
-        "image_url": "/vocab/chair.jpg",
-        "word_focus": "chair",
+        "segment_id": "vocab_desk_03",
+        "image_url": "/vocab/desk.jpg",
+        "word_focus": "desk",
         "text": {
-          "en": "The CHAIR is not comfortable.",
-          "es": "La SILLA no es cómoda."
-        },
-        "visual_aid": "🪑😣"
+          "en": "What is on the DESK? Paper.",
+          "es": "¿Qué hay en el ESCRITORIO? Papel."
+        }
       },
       {
-        "segment_id": "vocab_word5_03",
-        "image_url": "/vocab/chair.jpg",
-        "word_focus": "chair",
+        "segment_id": "vocab_office_01",
+        "image_url": "/vocab/office.jpg",
+        "word_focus": "office",
         "text": {
-          "en": "The MEETING has many CHAIRS.",
-          "es": "La REUNIÓN tiene muchas SILLAS."
-        },
-        "visual_aid": "🪑🪑"
+          "en": "This OFFICE is very busy.",
+          "es": "Esta OFICINA está muy ocupada."
+        }
+      },
+      {
+        "segment_id": "vocab_office_02",
+        "image_url": "/vocab/office.jpg",
+        "word_focus": "office",
+        "text": {
+          "en": "The OFFICE has many desks.",
+          "es": "La OFICINA tiene muchos escritorios."
+        }
+      },
+      {
+        "segment_id": "vocab_office_03",
+        "image_url": "/vocab/office.jpg",
+        "word_focus": "office",
+        "text": {
+          "en": "Where is the OFFICE? In Aurora.",
+          "es": "¿Dónde está la OFICINA? En Aurora."
+        }
       },
       {
         "segment_id": "vocab_mix_01",
         "image_url": "/vocab/meeting.jpg",
         "word_focus": "meeting",
         "text": {
-          "en": "The MEETING starts and the TEAM is late.",
-          "es": "La REUNIÓN empieza y el EQUIPO llega tarde."
-        },
-        "visual_aid": "⏰👥"
+          "en": "The MEETING is in the ROOM with the BOSS.",
+          "es": "La REUNIÓN es en la SALA con el JEFE."
+        }
       },
       {
         "segment_id": "vocab_mix_02",
-        "image_url": "/vocab/paper.jpg",
-        "word_focus": "paper",
+        "image_url": "/vocab/desk.jpg",
+        "word_focus": "desk",
         "text": {
-          "en": "The PAPER is on the CHAIR.",
-          "es": "El PAPEL está en la SILLA."
-        },
-        "visual_aid": "📄🪑"
+          "en": "The DESK is in the OFFICE near the ROOM.",
+          "es": "El ESCRITORIO está en la OFICINA cerca de la SALA."
+        }
       },
       {
         "segment_id": "vocab_summary",
         "word_focus": null,
         "text": {
-          "en": "Great! Now you know: MEETING, TEAM, WORK, PAPER, CHAIR. This office is very proud of you.",
-          "es": "¡Genial! Ahora conoces: REUNIÓN, EQUIPO, TRABAJO, PAPEL, SILLA. Esta oficina está muy orgullosa de ti."
-        },
-        "visual_aid": "✅📚➡️"
+          "en": "Great. Now you know: MEETING, BOSS, ROOM, DESK, OFFICE. What a productive meeting. Very productive.",
+          "es": "Genial. Ahora conoces: REUNIÓN, JEFE, SALA, ESCRITORIO, OFICINA. Qué reunión tan productiva. Muy productiva."
+        }
       }
     ]
   },
   "listening_shadowing": {
-    "section_name": "Meeting Practice",
-    "section_name_es": "Práctica Reunión",
-    "image": "/episodes/episode_02_scene.jpg",
+    "section_name": "Office Lines",
+    "section_name_es": "Líneas Oficina",
+    "image": "/episodes/episode_2_scene.jpg",
     "instructions": "Listen to the line. Then repeat it aloud before the timer ends.",
     "instructions_es": "Escucha la línea. Luego repítela en voz alta antes de que termine el tiempo.",
     "data": [
       {
         "item_id": "listen_001",
-        "character_id": "char_boss",
-        "character_display_name": "{boss_name}",
-        "text": "In the meeting, everyone brings a notebook, listen politely, talk less, and wait calmly.",
-        "text_es": "En la reunión, todos traen un cuaderno, escuchan con cortesía, hablan menos y esperan con calma.",
-        "tts_text": "In the meeting, everyone brings a notebook, listen politely, talk less, and wait calmly.",
+        "character_id": "char_leo",
+        "character_display_name": "LEO",
+        "text": "The manager asks one question in the meeting about the room and this strange place.",
+        "text_es": "El gerente hace una pregunta en la reunión sobre la sala y este lugar extraño.",
+        "tts_text": "The manager asks one question in the meeting about the room and this strange place.",
         "tts_voice_id": "en_us_male_1",
         "estimated_audio_duration_seconds": 6,
         "repeat_timer_seconds": 10,
         "repeat_count": 2,
         "focus_vocab": [
-          "meeting",
-          "notebook",
-          "listen",
-          "talk",
-          "wait"
+          "MEETING",
+          "ROOM",
+          "MANAGER",
+          "PLACE",
+          "QUESTION"
         ]
       },
       {
         "item_id": "listen_002",
-        "character_id": "char_pam",
-        "character_display_name": "{pam_name}",
-        "text": "During the meeting, I open my notebook, listen carefully, talk little, and wait patiently.",
-        "text_es": "Durante la reunión, yo abro mi cuaderno, escucho con atención, hablo poco y espero con paciencia.",
-        "tts_text": "During the meeting, I open my notebook, listen carefully, talk little, and wait patiently.",
+        "character_id": "char_mia",
+        "character_display_name": "MIA",
+        "text": "The meeting is in the room, and the manager answers every question about this place.",
+        "text_es": "La reunión es en la sala y el gerente responde cada pregunta sobre este lugar.",
+        "tts_text": "The meeting is in the room, and the manager answers every question about this place.",
         "tts_voice_id": "en_us_female_1",
         "estimated_audio_duration_seconds": 6,
         "repeat_timer_seconds": 10,
         "repeat_count": 2,
         "focus_vocab": [
-          "meeting",
-          "notebook",
-          "listen",
-          "talk",
-          "wait"
+          "MEETING",
+          "ROOM",
+          "MANAGER",
+          "PLACE",
+          "QUESTION"
         ]
       },
       {
         "item_id": "listen_003",
-        "character_id": "char_jim",
-        "character_display_name": "{jim_name}",
-        "text": "At the meeting, I bring a notebook, listen to the boss, talk softly, and wait quietly.",
-        "text_es": "En la reunión, llevo un cuaderno, escucho al jefe, hablo suave y espero en silencio.",
-        "tts_text": "At the meeting, I bring a notebook, listen to the boss, talk softly, and wait quietly.",
+        "character_id": "char_ben",
+        "character_display_name": "BEN",
+        "text": "This place has one room for the meeting, and the manager hears every question.",
+        "text_es": "Este lugar tiene una sala para la reunión y el gerente escucha cada pregunta.",
+        "tts_text": "This place has one room for the meeting, and the manager hears every question.",
         "tts_voice_id": "en_us_male_2",
         "estimated_audio_duration_seconds": 6,
         "repeat_timer_seconds": 10,
         "repeat_count": 2,
         "focus_vocab": [
-          "meeting",
-          "notebook",
-          "listen",
-          "talk",
-          "wait"
+          "MEETING",
+          "ROOM",
+          "MANAGER",
+          "PLACE",
+          "QUESTION"
         ]
       },
       {
         "item_id": "listen_004",
-        "character_id": "char_player",
-        "character_display_name": "{player_name}",
-        "text": "In this meeting, I have a notebook, listen a lot, talk once, and wait again.",
-        "text_es": "En esta reunión, tengo un cuaderno, escucho mucho, hablo una vez y espero otra vez.",
-        "tts_text": "In this meeting, I have a notebook, listen a lot, talk once, and wait again.",
-        "tts_voice_id": "en_us_neutral_1",
+        "character_id": "char_dan",
+        "character_display_name": "DAN",
+        "text": "The manager is in the room before the meeting, and one question changes the place.",
+        "text_es": "El gerente está en la sala antes de la reunión y una pregunta cambia el lugar.",
+        "tts_text": "The manager is in the room before the meeting, and one question changes the place.",
+        "tts_voice_id": "en_us_male_3",
         "estimated_audio_duration_seconds": 6,
         "repeat_timer_seconds": 10,
         "repeat_count": 2,
         "focus_vocab": [
-          "meeting",
-          "notebook",
-          "listen",
-          "talk",
-          "wait"
+          "MEETING",
+          "ROOM",
+          "MANAGER",
+          "PLACE",
+          "QUESTION"
         ]
       },
       {
         "item_id": "listen_005",
-        "character_id": "char_boss",
-        "character_display_name": "{boss_name}",
-        "text": "This meeting needs a notebook, so listen to me, talk later, and wait please.",
-        "text_es": "Esta reunión necesita un cuaderno, así que escúchame, habla después y espera por favor.",
-        "tts_text": "This meeting needs a notebook, so listen to me, talk later, and wait please.",
+        "character_id": "char_leo",
+        "character_display_name": "LEO",
+        "text": "Leo asks a question because the meeting room looks like a strange place.",
+        "text_es": "Leo hace una pregunta porque la sala de reuniones parece un lugar extraño.",
+        "tts_text": "Leo asks a question because the meeting room looks like a strange place.",
         "tts_voice_id": "en_us_male_1",
         "estimated_audio_duration_seconds": 6,
         "repeat_timer_seconds": 10,
         "repeat_count": 2,
         "focus_vocab": [
-          "meeting",
-          "notebook",
-          "listen",
-          "talk",
-          "wait"
+          "MEETING",
+          "ROOM",
+          "MANAGER",
+          "PLACE",
+          "QUESTION"
         ]
       },
       {
         "item_id": "listen_006",
-        "character_id": "char_pam",
-        "character_display_name": "{pam_name}",
-        "text": "Every meeting feels long when I bring a notebook, listen, talk little, and wait.",
-        "text_es": "Cada reunión se siente larga cuando llevo un cuaderno, escucho, hablo poco y espero.",
-        "tts_text": "Every meeting feels long when I bring a notebook, listen, talk little, and wait.",
+        "character_id": "char_mia",
+        "character_display_name": "MIA",
+        "text": "The manager stops the meeting in the room after a funny question about the place.",
+        "text_es": "El gerente detiene la reunión en la sala después de una pregunta graciosa sobre el lugar.",
+        "tts_text": "The manager stops the meeting in the room after a funny question about the place.",
         "tts_voice_id": "en_us_female_1",
-        "estimated_audio_duration_seconds": 6,
-        "repeat_timer_seconds": 10,
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 11,
         "repeat_count": 2,
         "focus_vocab": [
-          "meeting",
-          "notebook",
-          "listen",
-          "talk",
-          "wait"
+          "MEETING",
+          "ROOM",
+          "MANAGER",
+          "PLACE",
+          "QUESTION"
         ]
       },
       {
         "item_id": "listen_007",
-        "character_id": "char_jim",
-        "character_display_name": "{jim_name}",
-        "text": "In the meeting room, I hold a notebook, listen closely, talk briefly, and wait smiling.",
-        "text_es": "En la sala de reunión, sostengo un cuaderno, escucho de cerca, hablo breve y espero sonriendo.",
-        "tts_text": "In the meeting room, I hold a notebook, listen closely, talk briefly, and wait smiling.",
+        "character_id": "char_ben",
+        "character_display_name": "BEN",
+        "text": "Every question in the meeting makes the manager look at the room and the place.",
+        "text_es": "Cada pregunta en la reunión hace que el gerente mire la sala y el lugar.",
+        "tts_text": "Every question in the meeting makes the manager look at the room and the place.",
         "tts_voice_id": "en_us_male_2",
         "estimated_audio_duration_seconds": 6,
         "repeat_timer_seconds": 10,
         "repeat_count": 2,
         "focus_vocab": [
-          "meeting",
-          "notebook",
-          "listen",
-          "talk",
-          "wait"
+          "MEETING",
+          "ROOM",
+          "MANAGER",
+          "PLACE",
+          "QUESTION"
         ]
       },
       {
         "item_id": "listen_008",
-        "character_id": "char_player",
-        "character_display_name": "{player_name}",
-        "text": "For this meeting, I use a notebook, listen carefully, talk slowly, and wait politely.",
-        "text_es": "Para esta reunión, uso un cuaderno, escucho con cuidado, hablo despacio y espero con educación.",
-        "tts_text": "For this meeting, I use a notebook, listen carefully, talk slowly, and wait politely.",
-        "tts_voice_id": "en_us_neutral_1",
-        "estimated_audio_duration_seconds": 6,
-        "repeat_timer_seconds": 10,
+        "character_id": "char_sam",
+        "character_display_name": "SAM",
+        "text": "The meeting room is quiet until the manager hears one strange question about the place.",
+        "text_es": "La sala de reuniones está en silencio hasta que el gerente escucha una pregunta extraña sobre el lugar.",
+        "tts_text": "The meeting room is quiet until the manager hears one strange question about the place.",
+        "tts_voice_id": "en_us_male_4",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 11,
         "repeat_count": 2,
         "focus_vocab": [
-          "meeting",
-          "notebook",
-          "listen",
-          "talk",
-          "wait"
+          "MEETING",
+          "ROOM",
+          "MANAGER",
+          "PLACE",
+          "QUESTION"
         ]
       },
       {
         "item_id": "listen_009",
-        "character_id": "char_boss",
-        "character_display_name": "{boss_name}",
-        "text": "In every meeting, bring a notebook, listen to my talk, and wait for instructions.",
-        "text_es": "En cada reunión, trae un cuaderno, escucha mi charla y espera instrucciones.",
-        "tts_text": "In every meeting, bring a notebook, listen to my talk, and wait for instructions.",
+        "character_id": "char_ana",
+        "character_display_name": "ANA",
+        "text": "The manager answers a question in the meeting room about this place again.",
+        "text_es": "El gerente responde una pregunta en la sala de reuniones sobre este lugar otra vez.",
+        "tts_text": "The manager answers a question in the meeting room about this place again.",
+        "tts_voice_id": "en_us_female_2",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "MEETING",
+          "ROOM",
+          "MANAGER",
+          "PLACE",
+          "QUESTION"
+        ]
+      },
+      {
+        "item_id": "listen_010",
+        "character_id": "char_leo",
+        "character_display_name": "LEO",
+        "text": "After the meeting, Leo asks one last question about the room and the place.",
+        "text_es": "Después de la reunión, Leo hace una última pregunta sobre la sala y el lugar.",
+        "tts_text": "After the meeting, Leo asks one last question about the room and the place.",
         "tts_voice_id": "en_us_male_1",
         "estimated_audio_duration_seconds": 6,
         "repeat_timer_seconds": 10,
         "repeat_count": 2,
         "focus_vocab": [
-          "meeting",
-          "notebook",
-          "listen",
-          "talk",
-          "wait"
-        ]
-      },
-      {
-        "item_id": "listen_010",
-        "character_id": "char_pam",
-        "character_display_name": "{pam_name}",
-        "text": "After the meeting, I close my notebook, stop to listen, talk later, and wait.",
-        "text_es": "Después de la reunión, cierro mi cuaderno, dejo de escuchar, hablo después y espero.",
-        "tts_text": "After the meeting, I close my notebook, stop to listen, talk later, and wait.",
-        "tts_voice_id": "en_us_female_1",
-        "estimated_audio_duration_seconds": 6,
-        "repeat_timer_seconds": 10,
-        "repeat_count": 2,
-        "focus_vocab": [
-          "meeting",
-          "notebook",
-          "listen",
-          "talk",
-          "wait"
+          "MEETING",
+          "ROOM",
+          "MANAGER",
+          "PLACE",
+          "QUESTION"
         ]
       }
     ]
   },
-  "games": {
-    "section_name": "Meeting Games",
-    "section_name_es": "Juegos Reunión",
-    "image": "/episodes/episode_02_scene.jpg",
+  "scenes": {
+    "section_name": "Office Questions",
+    "section_name_es": "Preguntas oficina",
+    "image": "/episodes/episode_2_scene.jpg",
     "data": [
       {
-        "game_id": "ep02_game_01",
+        "scene_id": "scene_002_001",
+        "scene_number": 1,
+        "location": "Office floor",
+        "location_es": "Área de oficinas",
+        "scene_name": "Where is everyone",
+        "scene_name_es": "Dónde está todos",
+        "time": "Morning",
+        "time_es": "Mañana",
+        "description": "Leo starts the day by asking many questions about the office.",
+        "description_es": "Leo comienza el día haciendo muchas preguntas sobre la oficina.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_boss",
+            "character_display_name": "LEO",
+            "text": "Good morning. I am the BOSS. Where is everyone?",
+            "translation_es": "Buenos días. Yo soy el jefe. ¿Dónde está todos?",
+            "emotion": "excited",
+            "notes": "Leo always reminds people he is the boss.",
+            "notes_es": "Leo siempre recuerda a todos que es el jefe.",
+            "highlighted_vocab": [
+              "boss"
+            ],
+            "template_vars": [
+              "boss_name"
+            ]
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_boss",
+            "character_display_name": "LEO",
+            "text": "What is this OFFICE without people? It feels empty.",
+            "translation_es": "¿Qué es esta oficina sin personas? Se siente vacía.",
+            "emotion": "confused",
+            "notes": "He takes the office very personally.",
+            "notes_es": "Él se toma la oficina muy personal.",
+            "highlighted_vocab": [
+              "office"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_boss",
+            "character_display_name": "LEO",
+            "text": "I do not like an OFFICE without attention.",
+            "translation_es": "No me gusta una oficina sin atención.",
+            "emotion": "dramatic",
+            "notes": "Leo needs attention to feel complete.",
+            "notes_es": "Leo necesita atención para sentirse completo.",
+            "highlighted_vocab": [
+              "office"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 4,
+            "character_id": "char_jim",
+            "character_display_name": "BEN",
+            "text": "Good morning. This OFFICE is very calm today.",
+            "translation_es": "Buenos días. Esta oficina está muy tranquila hoy.",
+            "emotion": "sarcastic",
+            "notes": "Ben pretends calm is impressive.",
+            "notes_es": "Ben finge que la calma es impresionante.",
+            "highlighted_vocab": [
+              "office"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 5,
+            "character_id": "char_jim",
+            "character_display_name": "BEN",
+            "text": "Yes, calm is very productive.",
+            "translation_es": "Sí, la calma es muy productiva.",
+            "emotion": "sarcastic",
+            "notes": "Dry humor as usual.",
+            "notes_es": "Humor seco como siempre.",
+            "highlighted_vocab": [],
+            "template_vars": []
+          },
+          {
+            "line_id": 6,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "Which question is correct?",
+            "prompt_es": "¿Qué pregunta es correcta?",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "Where the OFFICE is?",
+                "translation_es": "¿Dónde la oficina está?",
+                "points": 0,
+                "personality_impact": "friendly",
+                "vocab_used": [
+                  "office"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "Where is the OFFICE?",
+                "translation_es": "¿Dónde está la oficina?",
+                "points": 10,
+                "personality_impact": "neutral"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "scene_id": "scene_002_002",
+        "scene_number": 2,
+        "location": "Meeting room",
+        "location_es": "Sala de reuniones",
+        "scene_name": "Important meeting",
+        "scene_name_es": "Reunión importante",
+        "time": "Late morning",
+        "time_es": "Media mañana",
+        "description": "Leo prepares an important meeting in the meeting room.",
+        "description_es": "Leo prepara una reunión importante en la sala de reuniones.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_boss",
+            "character_display_name": "LEO",
+            "text": "This MEETING is very important. Very important.",
+            "translation_es": "Esta reunión es muy importante. Muy importante.",
+            "emotion": "proud_but_lying",
+            "notes": "Leo says every meeting is important.",
+            "notes_es": "Leo dice que todas las reuniones son importantes.",
+            "highlighted_vocab": [
+              "meeting"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_boss",
+            "character_display_name": "LEO",
+            "text": "What is this MEETING about? It is about leadership.",
+            "translation_es": "¿De qué es esta reunión? Es sobre liderazgo.",
+            "emotion": "confident",
+            "notes": "Leadership usually means Leo talking.",
+            "notes_es": "Liderazgo normalmente significa que Leo habla.",
+            "highlighted_vocab": [
+              "meeting"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_jim",
+            "character_display_name": "BEN",
+            "text": "Yes. This MEETING will change everything.",
+            "translation_es": "Sí. Esta reunión cambiará todo.",
+            "emotion": "sarcastic",
+            "notes": "Ben does not believe it.",
+            "notes_es": "Ben no lo cree.",
+            "highlighted_vocab": [
+              "meeting"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 4,
+            "character_id": "char_jim",
+            "character_display_name": "BEN",
+            "text": "Especially the length of the day.",
+            "translation_es": "Especialmente la duración del día.",
+            "emotion": "sarcastic",
+            "notes": "Meetings feel endless.",
+            "notes_es": "Las reuniones se sienten interminables.",
+            "highlighted_vocab": [],
+            "template_vars": []
+          },
+          {
+            "line_id": 5,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "Choose the correct sentence.",
+            "prompt_es": "Elige la frase correcta.",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "What this MEETING is?",
+                "translation_es": "¿Qué esta reunión es?",
+                "points": 0,
+                "personality_impact": "friendly",
+                "vocab_used": [
+                  "meeting"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "What is this MEETING?",
+                "translation_es": "¿Qué es esta reunión?",
+                "points": 10,
+                "personality_impact": "neutral"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "scene_id": "scene_002_003",
+        "scene_number": 3,
+        "location": "Office desks",
+        "location_es": "Escritorios de oficina",
+        "scene_name": "Room confusion",
+        "scene_name_es": "Confusión de sala",
+        "time": "Afternoon",
+        "time_es": "Tarde",
+        "description": "Dan explains where the meeting room is.",
+        "description_es": "Dan explica dónde está la sala de reuniones.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_dwight",
+            "character_display_name": "DAN",
+            "text": "The ROOM is over there. I measured it.",
+            "translation_es": "La sala está allá. Yo la medí.",
+            "emotion": "serious",
+            "notes": "Dan measures everything.",
+            "notes_es": "Dan mide todo.",
+            "highlighted_vocab": [
+              "room"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_dwight",
+            "character_display_name": "DAN",
+            "text": "This ROOM is secure.",
+            "translation_es": "Esta sala es segura.",
+            "emotion": "confident",
+            "notes": "He treats rooms like fortresses.",
+            "notes_es": "Trata las salas como fortalezas.",
+            "highlighted_vocab": [
+              "room"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_jim",
+            "character_display_name": "BEN",
+            "text": "Yes. This ROOM feels very safe.",
+            "translation_es": "Sí. Esta sala se siente muy segura.",
+            "emotion": "sarcastic",
+            "notes": "Ben plays along.",
+            "notes_es": "Ben sigue el juego.",
+            "highlighted_vocab": [
+              "room"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 4,
+            "character_id": "char_jim",
+            "character_display_name": "BEN",
+            "text": "Especially from boredom.",
+            "translation_es": "Especialmente del aburrimiento.",
+            "emotion": "sarcastic",
+            "notes": "Meetings are boring.",
+            "notes_es": "Las reuniones son aburridas.",
+            "highlighted_vocab": [],
+            "template_vars": []
+          },
+          {
+            "line_id": 5,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "Choose the correct question.",
+            "prompt_es": "Elige la pregunta correcta.",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "Where the ROOM is?",
+                "translation_es": "¿Dónde la sala está?",
+                "points": 0,
+                "personality_impact": "friendly",
+                "vocab_used": [
+                  "room"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "Where is the ROOM?",
+                "translation_es": "¿Dónde está la sala?",
+                "points": 10,
+                "personality_impact": "neutral"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "content_wrappers": {
+    "section_name": "Office Chaos",
+    "section_name_es": "Caos oficina",
+    "image": "/episodes/episode_2_scene.jpg",
+    "intro_text": {
+      "en": "Welcome back to {company_name}. This is a normal OFFICE with normal people. Very normal. Today, {boss_name} has questions. Many questions. Some questions are not helpful. Some questions are loud.",
+      "es": "Bienvenido de nuevo a {company_name}. Esta es una oficina normal con personas normales. Muy normal. Hoy, {boss_name} tiene preguntas. Muchas preguntas. Algunas preguntas no ayudan. Algunas preguntas son muy ruidosas."
+    },
+    "transition": {
+      "en": "Great. Now you know today’s words. Now you will use them in the OFFICE. The OFFICE where a MEETING can last forever, and the BOSS thinks that is a talent.",
+      "es": "Genial. Ahora conoces las palabras de hoy. Ahora las vas a usar en la oficina. La oficina donde una reunión puede durar para siempre, y el jefe cree que eso es un talento."
+    },
+    "conclusion": {
+      "en": "Good job. You asked and answered many questions with be. You found the ROOM, you survived the MEETING, and you stayed calm in the OFFICE. That is impressive. {boss_name} is still the BOSS, but you are the hero of your own DESK.",
+      "es": "Buen trabajo. Hiciste y respondiste muchas preguntas con el verbo ser o estar. Encontraste la sala, sobreviviste la reunión y te mantuviste tranquilo en la oficina. Eso es impresionante. {boss_name} sigue siendo el jefe, pero tú eres el héroe de tu propio escritorio."
+    },
+    "reflection_prompt": {
+      "question_en": "Write one sentence using the word 'meeting' or 'boss'.",
+      "question_es": "Escribe una oración usando la palabra 'reunión' o 'jefe'.",
+      "type": "free_text",
+      "optional": true,
+      "max_length": 100,
+      "vocab_practice": [
+        "meeting",
+        "boss"
+      ]
+    }
+  },
+  "games": {
+    "section_name": "Office Games",
+    "section_name_es": "Juegos Oficina",
+    "image": "/episodes/episode_2_scene.jpg",
+    "data": [
+      {
+        "game_id": "ep2_game_01",
         "game_type": "matching",
         "title": "Match the Words!",
         "title_es": "¡Empareja las Palabras!",
-        "instructions": "Match each English word with its Spanish meaning",
-        "instructions_es": "Empareja cada palabra en inglés con su significado en español",
+        "instructions": "Match each English word with its Spanish meaning.",
+        "instructions_es": "Empareja cada palabra en inglés con su significado en español.",
         "optional": true,
         "unlocked_after_episode": true,
         "time_limit_seconds": 90,
@@ -647,45 +994,45 @@
             },
             {
               "id": 2,
-              "left": "notebook",
-              "right": "cuaderno",
-              "image_url": "/vocab/notebook.jpg"
+              "left": "room",
+              "right": "sala",
+              "image_url": "/vocab/room.jpg"
             },
             {
               "id": 3,
-              "left": "listen",
-              "right": "escuchar",
-              "image_url": "/vocab/listen.jpg"
+              "left": "manager",
+              "right": "gerente",
+              "image_url": "/vocab/manager.jpg"
             },
             {
               "id": 4,
-              "left": "talk",
-              "right": "hablar",
-              "image_url": "/vocab/talk.jpg"
+              "left": "place",
+              "right": "lugar",
+              "image_url": "/vocab/place.jpg"
             },
             {
               "id": 5,
-              "left": "wait",
-              "right": "esperar",
-              "image_url": "/vocab/wait.jpg"
+              "left": "question",
+              "right": "pregunta",
+              "image_url": "/vocab/question.jpg"
             },
             {
               "id": 6,
-              "left": "office",
-              "right": "oficina",
-              "image_url": "/vocab/office.jpg"
-            },
-            {
-              "id": 7,
-              "left": "boss",
-              "right": "jefe",
-              "image_url": "/vocab/boss.jpg"
-            },
-            {
-              "id": 8,
               "left": "desk",
               "right": "escritorio",
               "image_url": "/vocab/desk.jpg"
+            },
+            {
+              "id": 7,
+              "left": "chair",
+              "right": "silla",
+              "image_url": "/vocab/chair.jpg"
+            },
+            {
+              "id": 8,
+              "left": "office",
+              "right": "oficina",
+              "image_url": "/vocab/office.jpg"
             }
           ]
         },
@@ -695,12 +1042,12 @@
         }
       },
       {
-        "game_id": "ep02_game_02",
+        "game_id": "ep2_game_02",
         "game_type": "fill_blank",
         "title": "Complete the Sentences",
         "title_es": "Completa las Oraciones",
-        "instructions": "Fill in the missing words from the episode",
-        "instructions_es": "Completa las palabras que faltan del episodio",
+        "instructions": "Fill in the missing words from the episode.",
+        "instructions_es": "Completa las palabras que faltan del episodio.",
         "optional": true,
         "unlocked_after_episode": true,
         "time_limit_seconds": 150,
@@ -709,13 +1056,13 @@
           "items": [
             {
               "id": 1,
-              "sentence": "The _____ starts now in the office.",
-              "sentence_es": "La _____ empieza ahora en la oficina.",
+              "sentence": "The _____ is in the room near the office.",
+              "sentence_es": "La _____ está en la sala cerca de la oficina.",
               "answer": "meeting",
               "options": [
                 "meeting",
-                "desk",
-                "name"
+                "question",
+                "place"
               ],
               "hint": "This word is about people talking together.",
               "hint_es": "Esta palabra es sobre personas hablando juntas.",
@@ -723,98 +1070,98 @@
             },
             {
               "id": 2,
-              "sentence": "Everyone brings a _____ to the meeting.",
-              "sentence_es": "Todos traen un _____ a la reunión.",
-              "answer": "notebook",
+              "sentence": "This _____ is very small for a meeting.",
+              "sentence_es": "Esta _____ es muy pequeña para una reunión.",
+              "answer": "room",
               "options": [
-                "notebook",
-                "office",
-                "name"
+                "room",
+                "manager",
+                "desk"
               ],
-              "hint": "You write in this object.",
-              "hint_es": "Tú escribes en este objeto.",
+              "hint": "This word is a space with walls.",
+              "hint_es": "Esta palabra es un espacio con paredes.",
               "character": "{pam_name}"
             },
             {
               "id": 3,
-              "sentence": "Please _____ to the boss.",
-              "sentence_es": "Por favor _____ al jefe.",
-              "answer": "listen",
+              "sentence": "The _____ asks many questions today.",
+              "sentence_es": "El _____ hace muchas preguntas hoy.",
+              "answer": "manager",
               "options": [
-                "listen",
-                "talk",
-                "wait"
+                "manager",
+                "place",
+                "chair"
               ],
-              "hint": "You use your ears.",
-              "hint_es": "Usas tus oídos.",
-              "character": "{jim_name}"
-            },
-            {
-              "id": 4,
-              "sentence": "The boss can _____ for a long time.",
-              "sentence_es": "El jefe puede _____ por mucho tiempo.",
-              "answer": "talk",
-              "options": [
-                "talk",
-                "wait",
-                "listen"
-              ],
-              "hint": "You use your voice.",
-              "hint_es": "Usas tu voz.",
+              "hint": "This person is the boss.",
+              "hint_es": "Esta persona es el jefe.",
               "character": "{boss_name}"
             },
             {
-              "id": 5,
-              "sentence": "We _____ until the meeting ends.",
-              "sentence_es": "Nosotros _____ hasta que la reunión termine.",
-              "answer": "wait",
+              "id": 4,
+              "sentence": "This _____ feels strange in the morning.",
+              "sentence_es": "Este _____ se siente extraño en la mañana.",
+              "answer": "place",
               "options": [
-                "wait",
-                "talk",
-                "listen"
+                "place",
+                "meeting",
+                "computer"
               ],
-              "hint": "You stay and do nothing.",
-              "hint_es": "Te quedas y no haces nada.",
-              "character": "{player_name}"
+              "hint": "This word talks about location.",
+              "hint_es": "Esta palabra habla de un lugar.",
+              "character": "{jim_name}"
+            },
+            {
+              "id": 5,
+              "sentence": "{boss_name} has one _____ about the office.",
+              "sentence_es": "{boss_name} tiene una _____ sobre la oficina.",
+              "answer": "question",
+              "options": [
+                "question",
+                "room",
+                "name"
+              ],
+              "hint": "This word starts with what or where.",
+              "hint_es": "Esta palabra empieza con qué o dónde.",
+              "character": "{boss_name}"
             },
             {
               "id": 6,
-              "sentence": "My notebook is on the _____.",
-              "sentence_es": "Mi cuaderno está sobre el _____.",
-              "answer": "desk",
+              "sentence": "The meeting room is the _____ near the door.",
+              "sentence_es": "La sala de reuniones es el _____ cerca de la puerta.",
+              "answer": "place",
               "options": [
-                "desk",
-                "office",
-                "boss"
+                "place",
+                "manager",
+                "question"
               ],
-              "hint": "You work on this furniture.",
-              "hint_es": "Trabajas en este mueble.",
+              "hint": "This word is about where something is.",
+              "hint_es": "Esta palabra es sobre dónde está algo.",
               "character": "{pam_name}"
             },
             {
               "id": 7,
-              "sentence": "The _____ is here for the meeting.",
-              "sentence_es": "El _____ está aquí para la reunión.",
-              "answer": "boss",
+              "sentence": "{jim_name} waits in the _____ before the meeting.",
+              "sentence_es": "{jim_name} espera en la _____ antes de la reunión.",
+              "answer": "room",
               "options": [
-                "boss",
-                "name",
-                "desk"
+                "room",
+                "desk",
+                "manager"
               ],
-              "hint": "This person leads the team.",
-              "hint_es": "Esta persona lidera el equipo.",
+              "hint": "This word is a space inside the office.",
+              "hint_es": "Esta palabra es un espacio dentro de la oficina.",
               "character": "{jim_name}"
             }
           ]
         }
       },
       {
-        "game_id": "ep02_game_03",
+        "game_id": "ep2_game_03",
         "game_type": "multiple_choice",
         "title": "Episode Quiz",
         "title_es": "Quiz del Episodio",
-        "instructions": "Answer questions about the episode",
-        "instructions_es": "Responde preguntas sobre el episodio",
+        "instructions": "Answer questions about the episode.",
+        "instructions_es": "Responde preguntas sobre el episodio.",
         "optional": true,
         "unlocked_after_episode": true,
         "time_limit_seconds": 180,
@@ -823,569 +1170,120 @@
           "items": [
             {
               "id": 1,
-              "question": "Why does everyone bring a notebook to the meeting?",
-              "question_es": "¿Por qué todos llevan un cuaderno a la reunión?",
+              "question": "What does {boss_name} ask many times in the episode?",
+              "question_es": "¿Qué pregunta {boss_name} muchas veces en el episodio?",
               "options": [
-                "To write notes",
-                "To eat lunch",
-                "To leave early",
-                "To sleep"
+                "Questions about the office",
+                "Food for lunch",
+                "Music for work",
+                "The weather"
               ],
               "options_es": [
-                "Para escribir notas",
-                "Para almorzar",
-                "Para irse temprano",
-                "Para dormir"
+                "Preguntas sobre la oficina",
+                "Comida para el almuerzo",
+                "Música para trabajar",
+                "El clima"
               ],
               "correct_answer": 0,
-              "explanation": "They bring a notebook to write during the meeting.",
-              "explanation_es": "Llevan un cuaderno para escribir durante la reunión."
+              "explanation": "{boss_name} asks many what and where questions.",
+              "explanation_es": "{boss_name} hace muchas preguntas de qué y dónde."
             },
             {
               "id": 2,
-              "question": "Who talks the most in the meeting?",
-              "question_es": "¿Quién habla más en la reunión?",
+              "question": "Where is the meeting?",
+              "question_es": "¿Dónde es la reunión?",
               "options": [
-                "{boss_name}",
-                "{jim_name}",
-                "{pam_name}",
-                "{player_name}"
+                "In the room near the door",
+                "At the desk",
+                "Outside the office",
+                "In the car"
               ],
               "options_es": [
-                "{boss_name}",
-                "{jim_name}",
-                "{pam_name}",
-                "{player_name}"
+                "En la sala cerca de la puerta",
+                "En el escritorio",
+                "Fuera de la oficina",
+                "En el carro"
               ],
               "correct_answer": 0,
-              "explanation": "The boss talks for a long time.",
-              "explanation_es": "El jefe habla por mucho tiempo."
+              "explanation": "The meeting is in the room near the office door.",
+              "explanation_es": "La reunión es en la sala cerca de la puerta de la oficina."
             },
             {
               "id": 3,
-              "question": "What do people do when the boss talks?",
-              "question_es": "¿Qué hacen las personas cuando el jefe habla?",
+              "question": "Who looks serious during the questions?",
+              "question_es": "¿Quién se ve serio durante las preguntas?",
               "options": [
-                "They listen and wait",
-                "They leave the office",
-                "They play games",
-                "They sleep"
+                "Dan",
+                "Max",
+                "Eva",
+                "Ray"
               ],
               "options_es": [
-                "Escuchan y esperan",
-                "Salen de la oficina",
-                "Juegan",
-                "Duermen"
+                "Dan",
+                "Max",
+                "Eva",
+                "Ray"
               ],
               "correct_answer": 0,
-              "explanation": "They listen to the boss and wait.",
-              "explanation_es": "Escuchan al jefe y esperan."
+              "explanation": "Dan looks serious when he hears many questions.",
+              "explanation_es": "Dan se ve serio cuando escucha muchas preguntas."
             },
             {
               "id": 4,
-              "question": "Where does the meeting happen?",
-              "question_es": "¿Dónde ocurre la reunión?",
+              "question": "Why does the meeting start late?",
+              "question_es": "¿Por qué la reunión empieza tarde?",
               "options": [
-                "In the office",
-                "At home",
-                "In a cafe",
-                "Outside"
+                "{boss_name} asks many questions",
+                "The room is locked",
+                "The manager is absent",
+                "The computer is broken"
               ],
               "options_es": [
-                "En la oficina",
-                "En casa",
-                "En un café",
-                "Afuera"
+                "{boss_name} hace muchas preguntas",
+                "La sala está cerrada",
+                "El gerente no está",
+                "La computadora está dañada"
               ],
               "correct_answer": 0,
-              "explanation": "The meeting happens in the office.",
-              "explanation_es": "La reunión ocurre en la oficina."
+              "explanation": "The meeting starts late because of many questions.",
+              "explanation_es": "La reunión empieza tarde por muchas preguntas."
             },
             {
               "id": 5,
-              "question": "Is the meeting very important?",
-              "question_es": "¿La reunión es muy importante?",
+              "question": "What type of questions are practiced in this episode?",
+              "question_es": "¿Qué tipo de preguntas se practican en este episodio?",
               "options": [
-                "It looks important but it is confusing",
-                "Yes, it is very short",
-                "No, it is fun",
-                "It is outside"
+                "What and where questions",
+                "Yes or no questions",
+                "Past tense questions",
+                "Future questions"
               ],
               "options_es": [
-                "Parece importante pero es confusa",
-                "Sí, es muy corta",
-                "No, es divertida",
-                "Es afuera"
+                "Preguntas de qué y dónde",
+                "Preguntas de sí o no",
+                "Preguntas en pasado",
+                "Preguntas en futuro"
               ],
               "correct_answer": 0,
-              "explanation": "The meeting feels important but confusing.",
-              "explanation_es": "La reunión se siente importante pero confusa."
+              "explanation": "This episode practices what and where questions with be.",
+              "explanation_es": "Este episodio practica preguntas de qué y dónde con el verbo be."
             }
           ]
         }
       }
     ]
   },
-  "scenes": {
-    "section_name": "Boss Meeting",
-    "section_name_es": "Reunión jefe",
-    "image": "/episodes/episode_2_scene.jpg",
-    "data": [
-      {
-        "scene_id": "scene_002_001",
-        "scene_number": 1,
-        "location": "Office floor",
-        "location_es": "Piso de oficina",
-        "scene_name": "The Announcement",
-        "scene_name_es": "El anuncio",
-        "time": "Morning",
-        "time_es": "Mañana",
-        "description": "The boss gathers everyone for a very important meeting. Nobody knows why.",
-        "description_es": "El jefe reúne a todos para una reunión muy importante. Nadie sabe por qué.",
-        "dialogue": [
-          {
-            "line_id": 1,
-            "character_id": "char_boss",
-            "character_display_name": "MICHAEL",
-            "text": "Everyone, please sit on a CHAIR. We have a MEETING. A very important MEETING.",
-            "translation_es": "Todos, por favor siéntense en una silla. Tenemos una reunión. Una reunión muy importante.",
-            "emotion": "excited",
-            "notes": "Michael thinks every meeting is historic.",
-            "notes_es": "Michael cree que cada reunión es histórica.",
-            "highlighted_vocab": [
-              "chair",
-              "meeting"
-            ],
-            "template_vars": [
-              "boss_name"
-            ]
-          },
-          {
-            "line_id": 2,
-            "character_id": "char_boss",
-            "character_display_name": "MICHAEL",
-            "text": "This MEETING is about WORK. Very serious WORK.",
-            "translation_es": "Esta reunión es sobre trabajo. Trabajo muy serio.",
-            "emotion": "proud_but_lying",
-            "notes": "He says serious work but has no plan.",
-            "notes_es": "Dice trabajo serio pero no tiene plan.",
-            "highlighted_vocab": [
-              "meeting",
-              "work"
-            ]
-          },
-          {
-            "line_id": 3,
-            "character_id": "char_boss",
-            "character_display_name": "MICHAEL",
-            "text": "I lead the TEAM. I am the best leader of this TEAM.",
-            "translation_es": "Yo lidero al equipo. Soy el mejor líder de este equipo.",
-            "emotion": "boastful",
-            "notes": "Michael compliments himself.",
-            "notes_es": "Michael se felicita a sí mismo.",
-            "highlighted_vocab": [
-              "team"
-            ]
-          },
-          {
-            "line_id": 4,
-            "character_id": "char_boss",
-            "character_display_name": "MICHAEL",
-            "text": "Please take a PAPER. Important ideas need PAPER.",
-            "translation_es": "Por favor tomen un papel. Las ideas importantes necesitan papel.",
-            "emotion": "serious",
-            "notes": "He loves office props.",
-            "notes_es": "Le encantan los objetos de oficina.",
-            "highlighted_vocab": [
-              "paper"
-            ]
-          },
-          {
-            "line_id": 5,
-            "character_id": "char_jim",
-            "character_display_name": "JIM",
-            "text": "Yes. This MEETING feels very important already.",
-            "translation_es": "Sí. Esta reunión ya se siente muy importante.",
-            "emotion": "sarcastic",
-            "notes": "Jim is clearly joking.",
-            "notes_es": "Jim claramente está bromeando.",
-            "highlighted_vocab": [
-              "meeting"
-            ]
-          },
-          {
-            "line_id": 6,
-            "character_id": "char_jim",
-            "character_display_name": "JIM",
-            "text": "I sit on my CHAIR and I wait for the WORK.",
-            "translation_es": "Me siento en mi silla y espero el trabajo.",
-            "emotion": "sarcastic",
-            "notes": "Nothing is happening.",
-            "notes_es": "No pasa nada.",
-            "highlighted_vocab": [
-              "chair",
-              "work"
-            ]
-          },
-          {
-            "line_id": 7,
-            "character_id": "char_jim",
-            "character_display_name": "JIM",
-            "text": "The TEAM looks ready. Very ready.",
-            "translation_es": "El equipo se ve listo. Muy listo.",
-            "emotion": "dry",
-            "notes": "Nobody is ready.",
-            "notes_es": "Nadie está listo.",
-            "highlighted_vocab": [
-              "team"
-            ]
-          },
-          {
-            "line_id": 8,
-            "character_id": "char_jim",
-            "character_display_name": "JIM",
-            "text": "I bring a PAPER because the boss likes PAPER.",
-            "translation_es": "Traigo un papel porque al jefe le gusta el papel.",
-            "emotion": "sarcastic",
-            "notes": "Callback to the teaser.",
-            "notes_es": "Referencia al adelanto.",
-            "highlighted_vocab": [
-              "paper"
-            ]
-          },
-          {
-            "line_id": 9,
-            "character_id": "player",
-            "character_display_name": "YOU",
-            "text": null,
-            "is_interactive": true,
-            "interaction_type": "choice",
-            "choices": [
-              {
-                "choice_id": "a",
-                "text": "I am ready for the MEETING.",
-                "translation_es": "Estoy listo para la reunión.",
-                "points": 10,
-                "personality_impact": "friendly",
-                "vocab_used": [
-                  "meeting"
-                ]
-              },
-              {
-                "choice_id": "b",
-                "text": "I sit on a CHAIR.",
-                "translation_es": "Me siento en una silla.",
-                "points": 5,
-                "personality_impact": "neutral",
-                "vocab_used": [
-                  "chair"
-                ]
-              },
-              {
-                "choice_id": "c",
-                "text": "I need more PAPER.",
-                "translation_es": "Necesito más papel.",
-                "points": 5,
-                "personality_impact": "neutral",
-                "vocab_used": [
-                  "paper"
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "scene_id": "scene_002_002",
-        "scene_number": 2,
-        "location": "Meeting room",
-        "location_es": "Sala de reuniones",
-        "scene_name": "The Discussion",
-        "scene_name_es": "La discusión",
-        "time": "Morning",
-        "time_es": "Mañana",
-        "description": "The meeting continues, but nothing is clear.",
-        "description_es": "La reunión continúa, pero nada es claro.",
-        "dialogue": [
-          {
-            "line_id": 1,
-            "character_id": "char_dwight",
-            "character_display_name": "DWIGHT",
-            "text": "This MEETING needs rules. I protect the TEAM during the MEETING.",
-            "translation_es": "Esta reunión necesita reglas. Yo protejo al equipo durante la reunión.",
-            "emotion": "intense",
-            "notes": "Dwight takes control.",
-            "notes_es": "Dwight toma el control.",
-            "highlighted_vocab": [
-              "meeting",
-              "team"
-            ]
-          },
-          {
-            "line_id": 2,
-            "character_id": "char_dwight",
-            "character_display_name": "DWIGHT",
-            "text": "Everyone sits on the correct CHAIR. This is important WORK.",
-            "translation_es": "Todos se sientan en la silla correcta. Esto es trabajo importante.",
-            "emotion": "serious",
-            "notes": "Overly dramatic.",
-            "notes_es": "Demasiado dramático.",
-            "highlighted_vocab": [
-              "chair",
-              "work"
-            ]
-          },
-          {
-            "line_id": 3,
-            "character_id": "char_dwight",
-            "character_display_name": "DWIGHT",
-            "text": "I write notes on PAPER. Many notes.",
-            "translation_es": "Yo escribo notas en papel. Muchas notas.",
-            "emotion": "focused",
-            "notes": "He loves structure.",
-            "notes_es": "Le encanta la estructura.",
-            "highlighted_vocab": [
-              "paper"
-            ]
-          },
-          {
-            "line_id": 4,
-            "character_id": "char_dwight",
-            "character_display_name": "DWIGHT",
-            "text": "The TEAM follows me.",
-            "translation_es": "El equipo me sigue.",
-            "emotion": "confident",
-            "notes": "They do not.",
-            "notes_es": "No lo hacen.",
-            "highlighted_vocab": [
-              "team"
-            ]
-          },
-          {
-            "line_id": 5,
-            "character_id": "char_pam",
-            "character_display_name": "PAM",
-            "text": "Do not worry. This MEETING is normal. Very normal.",
-            "translation_es": "No te preocupes. Esta reunión es normal. Muy normal.",
-            "emotion": "calm",
-            "notes": "Everything is chaos.",
-            "notes_es": "Todo es caos.",
-            "highlighted_vocab": [
-              "meeting"
-            ]
-          },
-          {
-            "line_id": 6,
-            "character_id": "char_pam",
-            "character_display_name": "PAM",
-            "text": "Please take a CHAIR and relax.",
-            "translation_es": "Por favor toma una silla y relájate.",
-            "emotion": "kind",
-            "notes": "Pam tries to help.",
-            "notes_es": "Pam intenta ayudar.",
-            "highlighted_vocab": [
-              "chair"
-            ]
-          },
-          {
-            "line_id": 7,
-            "character_id": "char_pam",
-            "character_display_name": "PAM",
-            "text": "The WORK here is interesting. Sometimes.",
-            "translation_es": "El trabajo aquí es interesante. A veces.",
-            "emotion": "gentle_sarcasm",
-            "notes": "Classic Pam line.",
-            "notes_es": "Línea clásica de Pam.",
-            "highlighted_vocab": [
-              "work"
-            ]
-          },
-          {
-            "line_id": 8,
-            "character_id": "char_pam",
-            "character_display_name": "PAM",
-            "text": "The TEAM likes snacks more than PAPER.",
-            "translation_es": "Al equipo le gustan más los bocadillos que el papel.",
-            "emotion": "playful",
-            "notes": "Light office humor.",
-            "notes_es": "Humor ligero de oficina.",
-            "highlighted_vocab": [
-              "team",
-              "paper"
-            ]
-          },
-          {
-            "line_id": 9,
-            "character_id": "player",
-            "character_display_name": "YOU",
-            "text": null,
-            "is_interactive": true,
-            "interaction_type": "choice",
-            "choices": [
-              {
-                "choice_id": "a",
-                "text": "I like this TEAM.",
-                "translation_es": "Me gusta este equipo.",
-                "points": 10,
-                "personality_impact": "friendly",
-                "vocab_used": [
-                  "team"
-                ]
-              },
-              {
-                "choice_id": "b",
-                "text": "This MEETING is long.",
-                "translation_es": "Esta reunión es larga.",
-                "points": 5,
-                "personality_impact": "honest",
-                "vocab_used": [
-                  "meeting"
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "scene_id": "scene_002_003",
-        "scene_number": 3,
-        "location": "Office floor",
-        "location_es": "Piso de oficina",
-        "scene_name": "The End",
-        "scene_name_es": "El final",
-        "time": "Later",
-        "time_es": "Más tarde",
-        "description": "The meeting ends without a clear reason.",
-        "description_es": "La reunión termina sin una razón clara.",
-        "dialogue": [
-          {
-            "line_id": 1,
-            "character_id": "char_boss",
-            "character_display_name": "MICHAEL",
-            "text": "Great MEETING, TEAM. Very productive WORK.",
-            "translation_es": "Gran reunión, equipo. Trabajo muy productivo.",
-            "emotion": "proud",
-            "notes": "Nothing happened.",
-            "notes_es": "No pasó nada.",
-            "highlighted_vocab": [
-              "meeting",
-              "team",
-              "work"
-            ]
-          },
-          {
-            "line_id": 2,
-            "character_id": "char_boss",
-            "character_display_name": "MICHAEL",
-            "text": "You can keep the PAPER. It is history now.",
-            "translation_es": "Pueden quedarse con el papel. Ahora es historia.",
-            "emotion": "dramatic",
-            "notes": "Overstatement.",
-            "notes_es": "Exageración.",
-            "highlighted_vocab": [
-              "paper"
-            ]
-          },
-          {
-            "line_id": 3,
-            "character_id": "char_jim",
-            "character_display_name": "JIM",
-            "text": "Yes. Best MEETING ever.",
-            "translation_es": "Sí. La mejor reunión de todas.",
-            "emotion": "sarcastic",
-            "notes": "Classic Jim.",
-            "notes_es": "Clásico Jim.",
-            "highlighted_vocab": [
-              "meeting"
-            ]
-          },
-          {
-            "line_id": 4,
-            "character_id": "char_jim",
-            "character_display_name": "JIM",
-            "text": "I go back to my CHAIR and my WORK.",
-            "translation_es": "Vuelvo a mi silla y a mi trabajo.",
-            "emotion": "dry",
-            "notes": "Nothing changes.",
-            "notes_es": "Nada cambia.",
-            "highlighted_vocab": [
-              "chair",
-              "work"
-            ]
-          },
-          {
-            "line_id": 5,
-            "character_id": "player",
-            "character_display_name": "YOU",
-            "text": null,
-            "is_interactive": true,
-            "interaction_type": "choice",
-            "choices": [
-              {
-                "choice_id": "a",
-                "text": "Good MEETING, boss.",
-                "translation_es": "Buena reunión, jefe.",
-                "points": 10,
-                "personality_impact": "polite",
-                "vocab_used": [
-                  "meeting"
-                ]
-              },
-              {
-                "choice_id": "b",
-                "text": "I like this WORK.",
-                "translation_es": "Me gusta este trabajo.",
-                "points": 5,
-                "personality_impact": "optimistic",
-                "vocab_used": [
-                  "work"
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  "content_wrappers": {
-    "section_name": "Important Meeting",
-    "section_name_es": "Reunión Importante",
-    "image": "/episodes/episode_02_scene.jpg",
-    "intro_text": {
-      "en": "Welcome back to the office. Today there is a very important meeting. Everyone looks serious. Everyone has a notebook. Nobody knows why they are here. This is a normal office day. Very normal.",
-      "es": "Bienvenido de nuevo a la oficina. Hoy hay una reunión muy importante. Todos se ven serios. Todos tienen un cuaderno. Nadie sabe por qué está aquí. Este es un día normal de oficina. Muy normal."
-    },
-    "transition": {
-      "en": "Great job. Now you know the words for this meeting. Now you can listen, talk, and wait like a real office worker. Please wait. The meeting is still not finished.",
-      "es": "Buen trabajo. Ahora conoces las palabras para esta reunión. Ahora puedes escuchar, hablar y esperar como un verdadero trabajador de oficina. Por favor espera. La reunión todavía no termina."
-    },
-    "conclusion": {
-      "en": "You did it. You survived the meeting. You listened a lot. You talked a little. You waited a long time. The meeting ends. Nothing changes. This is office life.",
-      "es": "Lo lograste. Sobreviviste a la reunión. Escuchaste mucho. Hablaste un poco. Esperaste mucho tiempo. La reunión termina. Nada cambia. Esta es la vida de oficina."
-    },
-    "reflection_prompt": {
-      "question_en": "Write one sentence using the word \"meeting\" or \"notebook\"",
-      "question_es": "Escribe una oración usando la palabra \"meeting\" o \"notebook\"",
-      "type": "free_text",
-      "optional": true,
-      "max_length": 100,
-      "vocab_practice": [
-        "meeting",
-        "notebook"
-      ]
-    }
-  },
   "next_episode_preview": {
-    "section_name": "Office Prank",
-    "section_name_es": "Broma oficina",
+    "section_name": "Yes or No",
+    "section_name_es": "Sí o no",
     "image": "/episodes/episode_3_scene.jpg",
-    "preview_text_en": "Next time, {jim_name} plans a small prank, {boss_name} feels very proud, and the office tries to look busy.",
-    "preview_text_es": "La próxima vez, {jim_name} planea una pequeña broma, {boss_name} se siente muy orgulloso y la oficina intenta verse ocupada.",
-    "teaser_image": "/previews/ep_003.jpg"
+    "preview_text_en": "Next time, {boss_name} asks many YES or NO questions, and none of the answers are good enough for him.",
+    "preview_text_es": "La próxima vez, {boss_name} hace muchas preguntas de sí o no, y ninguna respuesta es suficiente para él.",
+    "teaser_image": "/previews/ep_3.jpg"
   },
   "progression": {
-    "section_name": "Your Progress",
-    "section_name_es": "Tu progreso",
+    "section_name": "Office Progress",
+    "section_name_es": "Progreso Oficina",
     "image": "/episodes/episode_2_scene.jpg",
     "xp_earned_base": 50,
     "xp_bonus_conditions": [
@@ -1406,42 +1304,44 @@
       {
         "type": "character",
         "character_ids": [
-          "char_boss",
-          "char_jim",
-          "char_pam",
-          "char_dwight"
+          "char_leo",
+          "char_ben",
+          "char_mia",
+          "char_dan",
+          "char_sam",
+          "char_ana"
         ]
       },
       {
         "type": "location",
         "location_ids": [
-          "Office floor",
-          "Meeting room"
+          "office_floor",
+          "meeting_room"
         ]
       }
     ],
     "achievements": [
       {
-        "achievement_id": "first_meeting",
-        "name": "First Meeting",
-        "name_es": "Primera reunión",
-        "description": "You finish your first office meeting and survive the boss.",
-        "description_es": "Terminas tu primera reunión de oficina y sobrevives al jefe.",
-        "icon": "/achievements/first_meeting.png",
-        "image": "/achievements/first_meeting_banner.jpg"
+        "achievement_id": "first_questions",
+        "name": "First Office Questions",
+        "name_es": "Primeras Preguntas de Oficina",
+        "description": "You ask and understand what and where questions in the office for the first time.",
+        "description_es": "Haces y entiendes preguntas de qué y dónde en la oficina por primera vez.",
+        "icon": "/achievements/first_questions.png",
+        "image": "/achievements/first_questions_banner.jpg"
       }
     ]
   },
   "metadata": {
-    "section_name": "Important Meeting",
-    "section_name_es": "Reunión Importante",
-    "image": "/episodes/episode_02_scene.jpg",
-    "created_date": "2026-01-29",
+    "section_name": "Office Questions",
+    "section_name_es": "Preguntas oficina",
+    "image": "/episodes/episode_2_scene.jpg",
+    "created_date": "2026-01-30",
     "version": "1.0",
     "author": "Course Team",
     "content_level": "beginner",
-    "estimated_words": 320,
-    "estimated_unique_vocabulary": 55,
+    "estimated_words": 420,
+    "estimated_unique_vocabulary": 45,
     "structure_type": "vocab_story_then_main_story"
   }
 }

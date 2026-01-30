@@ -26,54 +26,65 @@ class InterviewSummaryScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              IconButton(
-                icon: const Icon(Icons.arrow_back, color: AppColors.textPrimary),
-                onPressed: () => Navigator.pop(context),
-              ),
-              const SizedBox(height: 8),
-              const Text(
-                'Resumen de la entrevista',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w800,
-                  color: AppColors.textPrimary,
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      IconButton(
+                        icon: const Icon(
+                          Icons.arrow_back,
+                          color: AppColors.textPrimary,
+                        ),
+                        onPressed: () => Navigator.pop(context),
+                      ),
+                      const SizedBox(height: 8),
+                      const Text(
+                        'Resumen de la entrevista',
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w800,
+                          color: AppColors.textPrimary,
+                        ),
+                      ),
+                      const SizedBox(height: 6),
+                      Text(
+                        'Puntaje: $correct / $total  ($percent%)',
+                        style: const TextStyle(
+                          color: AppColors.textSecondary,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      _StatCard(
+                        icon: Icons.check_circle,
+                        label: 'Correctas',
+                        value: '$correct',
+                        color: AppColors.primaryGreen,
+                      ),
+                      const SizedBox(height: 10),
+                      _StatCard(
+                        icon: Icons.help_outline,
+                        label: 'Incorrectas',
+                        value: '${total - correct}',
+                        color: AppColors.warningOrange,
+                      ),
+                      const SizedBox(height: 20),
+                      _Section(
+                        title: 'Puntos gramaticales',
+                        items: grammarPoints,
+                      ),
+                      const SizedBox(height: 16),
+                      _Section(
+                        title: 'Vocabulario usado',
+                        items: vocabularyUsed,
+                      ),
+                      const SizedBox(height: 20),
+                    ],
+                  ),
                 ),
               ),
-              const SizedBox(height: 6),
-              Text(
-                'Puntaje: $correct / $total  ($percent%)',
-                style: const TextStyle(
-                  color: AppColors.textSecondary,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              const SizedBox(height: 16),
-              _StatCard(
-                icon: Icons.check_circle,
-                label: 'Correctas',
-                value: '$correct',
-                color: AppColors.primaryGreen,
-              ),
-              const SizedBox(height: 10),
-              _StatCard(
-                icon: Icons.help_outline,
-                label: 'Incorrectas',
-                value: '${total - correct}',
-                color: AppColors.warningOrange,
-              ),
-              const SizedBox(height: 20),
-              _Section(
-                title: 'Puntos gramaticales',
-                items: grammarPoints,
-              ),
-              const SizedBox(height: 16),
-              _Section(
-                title: 'Vocabulario usado',
-                items: vocabularyUsed,
-              ),
-              const Spacer(),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
@@ -87,7 +98,7 @@ class InterviewSummaryScreen extends StatelessWidget {
                   ),
                   onPressed: onContinue,
                   child: const Text(
-                    'Continue to lesson',
+                    'Continuar',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,

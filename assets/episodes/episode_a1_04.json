@@ -10,1445 +10,9 @@
       "office_type_es": "Compañía de Papel"
     }
   },
-  "episode_metadata": {
-    "section_name": "Lunch Time",
-    "section_name_es": "Hora de Almuerzo",
-    "image": "/episodes/episode_4_scene.jpg",
-    "episode_number": 4,
-    "episode_id": "ep_004",
-    "title": "The Very Serious Lunch",
-    "title_es": "El Almuerzo Muy Serio",
-    "description": "It is lunch time in the office. {boss_name} says lunch is very important for productivity. People eat, talk, and pretend this is a very serious work activity.",
-    "description_es": "Es hora del almuerzo en la oficina. {boss_name} dice que el almuerzo es muy importante para la productividad. Las personas comen, hablan y fingen que es una actividad de trabajo muy seria.",
-    "internal_level": "A1",
-    "estimated_time_minutes": 12,
-    "unlock_requirements": null,
-    "tags": [
-      "office_life",
-      "food",
-      "humor",
-      "daily_routine"
-    ],
-    "previous_episode": "ep_003",
-    "next_episode": "ep_005"
-  },
-  "characters": {
-    "section_name": "Office Team",
-    "section_name_es": "Equipo Oficina",
-    "image": "/episodes/episode_4_scene.jpg",
-    "appearing_in_episode": [
-      {
-        "character_id": "char_boss",
-        "default_name": "BOSS",
-        "role": "Office boss",
-        "role_es": "Jefe de la oficina",
-        "personality": "Enthusiastic boss who loves attention and believes he is the best boss in the world.",
-        "personality_es": "Jefe entusiasta que ama la atención y cree que es el mejor jefe del mundo.",
-        "first_appearance": false,
-        "customizable_name": true,
-        "user_custom_name": null,
-        "avatar_url": "/avatars/boss.png",
-        "intro_text": "Welcome. I am the boss. The great boss. Lunch time is important work time.",
-        "intro_text_es": "Bienvenido. Yo soy el jefe. El gran jefe. La hora del almuerzo es tiempo de trabajo importante."
-      },
-      {
-        "character_id": "char_jim",
-        "default_name": "JIM",
-        "role": "Salesman",
-        "role_es": "Vendedor",
-        "personality": "Calm and sarcastic worker who enjoys jokes and small pranks in the office.",
-        "personality_es": "Trabajador tranquilo y sarcástico que disfruta las bromas pequeñas en la oficina.",
-        "first_appearance": false,
-        "customizable_name": true,
-        "user_custom_name": null,
-        "avatar_url": "/avatars/jim.png",
-        "intro_text": "Yes, this is lunch time. Very serious lunch. Very important lunch work.",
-        "intro_text_es": "Sí, esta es la hora del almuerzo. Almuerzo muy serio. Trabajo de almuerzo muy importante."
-      },
-      {
-        "character_id": "char_pam",
-        "default_name": "PAM",
-        "role": "Receptionist",
-        "role_es": "Recepcionista",
-        "personality": "Kind and helpful receptionist who sees the chaos and smiles politely.",
-        "personality_es": "Recepcionista amable y servicial que ve el caos y sonríe con educación.",
-        "first_appearance": false,
-        "customizable_name": true,
-        "user_custom_name": null,
-        "avatar_url": "/avatars/pam.png",
-        "intro_text": "Hello. This is the office. Lunch happens here. Work also happens here. Sometimes.",
-        "intro_text_es": "Hola. Esta es la oficina. Aquí pasa el almuerzo. Aquí también pasa el trabajo. A veces."
-      }
-    ],
-    "mentioned_but_not_appearing": []
-  },
-  "vocabulary_focus": {
-    "section_name": "Lunch Office",
-    "section_name_es": "Almuerzo Oficina",
-    "image": "/episodes/episode_4_scene.jpg",
-    "target_words": [
-      {
-        "word": "lunch",
-        "translation_es": "almuerzo",
-        "word_type": "noun",
-        "word_type_es": "sustantivo",
-        "difficulty": 1,
-        "context_sentence": "Lunch is very important to {boss_name}.",
-        "context_sentence_es": "El almuerzo es muy importante para {boss_name}.",
-        "image_url": "/vocab/lunch.jpg",
-        "usage_examples": [
-          "Lunch is at twelve.",
-          "This lunch is very serious.",
-          "We talk a lot at lunch."
-        ],
-        "usage_examples_es": [
-          "El almuerzo es a las doce.",
-          "Este almuerzo es muy serio.",
-          "Hablamos mucho en el almuerzo."
-        ]
-      },
-      {
-        "word": "food",
-        "translation_es": "comida",
-        "word_type": "noun",
-        "word_type_es": "sustantivo",
-        "difficulty": 1,
-        "context_sentence": "The office has food on every desk.",
-        "context_sentence_es": "La oficina tiene comida en cada escritorio.",
-        "image_url": "/vocab/food.jpg",
-        "usage_examples": [
-          "The food is on the table.",
-          "This food looks good.",
-          "Food is everywhere today."
-        ],
-        "usage_examples_es": [
-          "La comida está en la mesa.",
-          "Esta comida se ve bien.",
-          "La comida está en todas partes hoy."
-        ]
-      },
-      {
-        "word": "eat",
-        "translation_es": "comer",
-        "word_type": "verb",
-        "word_type_es": "verbo",
-        "difficulty": 1,
-        "context_sentence": "People eat and pretend to work.",
-        "context_sentence_es": "Las personas comen y fingen trabajar.",
-        "image_url": "/vocab/eat.jpg",
-        "usage_examples": [
-          "I eat at my desk.",
-          "We eat and talk.",
-          "{boss_name} eats very slowly."
-        ],
-        "usage_examples_es": [
-          "Yo como en mi escritorio.",
-          "Comemos y hablamos.",
-          "{boss_name} come muy despacio."
-        ]
-      },
-      {
-        "word": "break",
-        "translation_es": "descanso",
-        "word_type": "noun",
-        "word_type_es": "sustantivo",
-        "difficulty": 2,
-        "context_sentence": "Lunch is a break from work.",
-        "context_sentence_es": "El almuerzo es un descanso del trabajo.",
-        "image_url": "/vocab/break.jpg",
-        "usage_examples": [
-          "This break is long.",
-          "We need a lunch break.",
-          "The break feels important."
-        ],
-        "usage_examples_es": [
-          "Este descanso es largo.",
-          "Necesitamos un descanso para almorzar.",
-          "El descanso se siente importante."
-        ]
-      },
-      {
-        "word": "idea",
-        "translation_es": "idea",
-        "word_type": "noun",
-        "word_type_es": "sustantivo",
-        "difficulty": 2,
-        "context_sentence": "{boss_name} has a big idea at lunch.",
-        "context_sentence_es": "{boss_name} tiene una gran idea en el almuerzo.",
-        "image_url": "/vocab/idea.jpg",
-        "usage_examples": [
-          "This idea is strange.",
-          "The idea sounds important.",
-          "Lunch brings many ideas."
-        ],
-        "usage_examples_es": [
-          "Esta idea es extraña.",
-          "La idea suena importante.",
-          "El almuerzo trae muchas ideas."
-        ]
-      }
-    ],
-    "phrases": [
-      {
-        "phrase": "It is lunch time",
-        "translation_es": "Es hora del almuerzo",
-        "usage_context": "Used when everyone stops working to eat.",
-        "usage_context_es": "Se usa cuando todos dejan de trabajar para comer."
-      },
-      {
-        "phrase": "This is very important",
-        "translation_es": "Esto es muy importante",
-        "usage_context": "Often said by {boss_name}, even for small things.",
-        "usage_context_es": "A menudo lo dice {boss_name}, incluso para cosas pequeñas."
-      },
-      {
-        "phrase": "We eat and work",
-        "translation_es": "Comemos y trabajamos",
-        "usage_context": "Said when people pretend lunch is still work.",
-        "usage_context_es": "Se dice cuando las personas fingen que el almuerzo sigue siendo trabajo."
-      }
-    ]
-  },
-  "vocabulary_story": {
-    "section_name": "Office Words",
-    "section_name_es": "Palabras Oficina",
-    "image": "/episodes/episode_4_scene.jpg",
-    "title": "Learning Basic Words",
-    "title_es": "Aprendiendo Palabras Básicas",
-    "description": "A simple story to learn today's vocabulary",
-    "description_es": "Una historia simple para aprender el vocabulario de hoy",
-    "segments": [
-      {
-        "segment_id": "vocab_prank_01",
-        "image_url": "/vocab/prank.jpg",
-        "word_focus": "prank",
-        "text": {
-          "en": "A PRANK is a funny action in the office.",
-          "es": "Una BROMA es una acción divertida en la oficina."
-        },
-        "emphasis_style": "bold_uppercase"
-      },
-      {
-        "segment_id": "vocab_prank_02",
-        "image_url": "/vocab/prank.jpg",
-        "word_focus": "prank",
-        "text": {
-          "en": "{jim_name} plans a small PRANK.",
-          "es": "{jim_name} planea una pequeña BROMA."
-        }
-      },
-      {
-        "segment_id": "vocab_prank_03",
-        "image_url": "/vocab/prank.jpg",
-        "word_focus": "prank",
-        "text": {
-          "en": "The PRANK is not dangerous. It is just funny.",
-          "es": "La BROMA no es peligrosa. Solo es divertida."
-        }
-      },
-      {
-        "segment_id": "vocab_busy_01",
-        "image_url": "/vocab/busy.jpg",
-        "word_focus": "busy",
-        "text": {
-          "en": "People look BUSY in the office.",
-          "es": "La gente se ve OCUPADA en la oficina."
-        }
-      },
-      {
-        "segment_id": "vocab_busy_02",
-        "image_url": "/vocab/busy.jpg",
-        "word_focus": "busy",
-        "text": {
-          "en": "Everyone looks BUSY before the boss arrives.",
-          "es": "Todos se ven OCUPADOS antes de que llegue el jefe."
-        }
-      },
-      {
-        "segment_id": "vocab_busy_03",
-        "image_url": "/vocab/busy.jpg",
-        "word_focus": "busy",
-        "text": {
-          "en": "They look BUSY, but they wait.",
-          "es": "Se ven OCUPADOS, pero esperan."
-        }
-      },
-      {
-        "segment_id": "vocab_proud_01",
-        "image_url": "/vocab/proud.jpg",
-        "word_focus": "proud",
-        "text": {
-          "en": "{boss_name} feels PROUD today.",
-          "es": "{boss_name} se siente ORGULLOSO hoy."
-        }
-      },
-      {
-        "segment_id": "vocab_proud_02",
-        "image_url": "/vocab/proud.jpg",
-        "word_focus": "proud",
-        "text": {
-          "en": "The boss feels PROUD in the meeting.",
-          "es": "El jefe se siente ORGULLOSO en la reunión."
-        }
-      },
-      {
-        "segment_id": "vocab_proud_03",
-        "image_url": "/vocab/proud.jpg",
-        "word_focus": "proud",
-        "text": {
-          "en": "A PROUD boss talks a lot.",
-          "es": "Un jefe ORGULLOSO habla mucho."
-        }
-      },
-      {
-        "segment_id": "vocab_work_01",
-        "image_url": "/vocab/work.jpg",
-        "word_focus": "work",
-        "text": {
-          "en": "People WORK in the office.",
-          "es": "La gente TRABAJA en la oficina."
-        }
-      },
-      {
-        "segment_id": "vocab_work_02",
-        "image_url": "/vocab/work.jpg",
-        "word_focus": "work",
-        "text": {
-          "en": "They WORK after the meeting.",
-          "es": "Ellos TRABAJAN después de la reunión."
-        }
-      },
-      {
-        "segment_id": "vocab_work_03",
-        "image_url": "/vocab/work.jpg",
-        "word_focus": "work",
-        "text": {
-          "en": "Sometimes they WORK very little.",
-          "es": "A veces TRABAJAN muy poco."
-        }
-      },
-      {
-        "segment_id": "vocab_joke_01",
-        "image_url": "/vocab/joke.jpg",
-        "word_focus": "joke",
-        "text": {
-          "en": "A JOKE makes people laugh.",
-          "es": "Un CHISTE hace reír a la gente."
-        }
-      },
-      {
-        "segment_id": "vocab_joke_02",
-        "image_url": "/vocab/joke.jpg",
-        "word_focus": "joke",
-        "text": {
-          "en": "The PRANK is a JOKE.",
-          "es": "La BROMA es un CHISTE."
-        }
-      },
-      {
-        "segment_id": "vocab_joke_03",
-        "image_url": "/vocab/joke.jpg",
-        "word_focus": "joke",
-        "text": {
-          "en": "{jim_name} tells a JOKE with a straight face.",
-          "es": "{jim_name} cuenta un CHISTE con cara seria."
-        }
-      },
-      {
-        "segment_id": "vocab_mix_01",
-        "image_url": "/vocab/prank.jpg",
-        "word_focus": "prank",
-        "text": {
-          "en": "The PRANK makes everyone look BUSY.",
-          "es": "La BROMA hace que todos se vean OCUPADOS."
-        }
-      },
-      {
-        "segment_id": "vocab_mix_02",
-        "image_url": "/vocab/work.jpg",
-        "word_focus": "work",
-        "text": {
-          "en": "They WORK a little, but the JOKE continues.",
-          "es": "Ellos TRABAJAN un poco, pero el CHISTE continúa."
-        }
-      },
-      {
-        "segment_id": "vocab_summary",
-        "word_focus": null,
-        "text": {
-          "en": "Great! Now you know: PRANK, BUSY, PROUD, WORK, and JOKE. Now the office story can begin.",
-          "es": "¡Genial! Ahora conoces: BROMA, OCUPADO, ORGULLOSO, TRABAJAR y CHISTE. Ahora la historia de la oficina puede comenzar."
-        }
-      }
-    ]
-  },
-  "listening_shadowing": {
-    "section_name": "Lunch Lines",
-    "section_name_es": "Frases Almuerzo",
-    "image": "/episodes/episode_4_scene.jpg",
-    "instructions": "Listen to the line. Then repeat it aloud before the timer ends.",
-    "instructions_es": "Escucha la línea. Luego repítela en voz alta antes de que termine el tiempo.",
-    "data": [
-      {
-        "item_id": "listen_001",
-        "character_id": "char_boss",
-        "character_display_name": "{boss_name}",
-        "text": "At lunch, my idea is to eat food during a break and call it work.",
-        "text_es": "En el almuerzo, mi idea es comer comida durante un descanso y llamarlo trabajo.",
-        "tts_text": "At lunch, my idea is to eat food during a break and call it work.",
-        "tts_voice_id": "en_us_male_1",
-        "estimated_audio_duration_seconds": 6,
-        "repeat_timer_seconds": 10,
-        "repeat_count": 2,
-        "focus_vocab": [
-          "lunch",
-          "food",
-          "eat",
-          "break",
-          "idea"
-        ]
-      },
-      {
-        "item_id": "listen_002",
-        "character_id": "char_pam",
-        "character_display_name": "{pam_name}",
-        "text": "During lunch, we eat food on a break while the idea sounds very serious.",
-        "text_es": "Durante el almuerzo, comemos comida en un descanso mientras la idea suena muy seria.",
-        "tts_text": "During lunch, we eat food on a break while the idea sounds very serious.",
-        "tts_voice_id": "en_us_female_1",
-        "estimated_audio_duration_seconds": 6,
-        "repeat_timer_seconds": 10,
-        "repeat_count": 2,
-        "focus_vocab": [
-          "lunch",
-          "food",
-          "eat",
-          "break",
-          "idea"
-        ]
-      },
-      {
-        "item_id": "listen_003",
-        "character_id": "char_jim",
-        "character_display_name": "{jim_name}",
-        "text": "At lunch, the idea is to eat food fast, take a break, and smile.",
-        "text_es": "En el almuerzo, la idea es comer comida rápido, tomar un descanso y sonreír.",
-        "tts_text": "At lunch, the idea is to eat food fast, take a break, and smile.",
-        "tts_voice_id": "en_us_male_2",
-        "estimated_audio_duration_seconds": 5,
-        "repeat_timer_seconds": 9,
-        "repeat_count": 2,
-        "focus_vocab": [
-          "lunch",
-          "food",
-          "eat",
-          "break",
-          "idea"
-        ]
-      },
-      {
-        "item_id": "listen_004",
-        "character_id": "char_boss",
-        "character_display_name": "{boss_name}",
-        "text": "This lunch idea says we eat food on a break for productivity.",
-        "text_es": "Esta idea de almuerzo dice que comemos comida en un descanso para productividad.",
-        "tts_text": "This lunch idea says we eat food on a break for productivity.",
-        "tts_voice_id": "en_us_male_1",
-        "estimated_audio_duration_seconds": 5,
-        "repeat_timer_seconds": 9,
-        "repeat_count": 2,
-        "focus_vocab": [
-          "lunch",
-          "food",
-          "eat",
-          "break",
-          "idea"
-        ]
-      },
-      {
-        "item_id": "listen_005",
-        "character_id": "char_pam",
-        "character_display_name": "{pam_name}",
-        "text": "At lunch, I eat food, enjoy the break, and hear a big idea.",
-        "text_es": "En el almuerzo, yo como comida, disfruto el descanso y escucho una gran idea.",
-        "tts_text": "At lunch, I eat food, enjoy the break, and hear a big idea.",
-        "tts_voice_id": "en_us_female_1",
-        "estimated_audio_duration_seconds": 5,
-        "repeat_timer_seconds": 9,
-        "repeat_count": 2,
-        "focus_vocab": [
-          "lunch",
-          "food",
-          "eat",
-          "break",
-          "idea"
-        ]
-      },
-      {
-        "item_id": "listen_006",
-        "character_id": "char_jim",
-        "character_display_name": "{jim_name}",
-        "text": "Our lunch idea is simple: eat food, take a break, and nod.",
-        "text_es": "Nuestra idea de almuerzo es simple: comer comida, tomar un descanso y asentir.",
-        "tts_text": "Our lunch idea is simple: eat food, take a break, and nod.",
-        "tts_voice_id": "en_us_male_2",
-        "estimated_audio_duration_seconds": 5,
-        "repeat_timer_seconds": 9,
-        "repeat_count": 2,
-        "focus_vocab": [
-          "lunch",
-          "food",
-          "eat",
-          "break",
-          "idea"
-        ]
-      },
-      {
-        "item_id": "listen_007",
-        "character_id": "char_boss",
-        "character_display_name": "{boss_name}",
-        "text": "At lunch, this idea helps us eat food during a very important break.",
-        "text_es": "En el almuerzo, esta idea nos ayuda a comer comida durante un descanso muy importante.",
-        "tts_text": "At lunch, this idea helps us eat food during a very important break.",
-        "tts_voice_id": "en_us_male_1",
-        "estimated_audio_duration_seconds": 6,
-        "repeat_timer_seconds": 10,
-        "repeat_count": 2,
-        "focus_vocab": [
-          "lunch",
-          "food",
-          "eat",
-          "break",
-          "idea"
-        ]
-      },
-      {
-        "item_id": "listen_008",
-        "character_id": "char_pam",
-        "character_display_name": "{pam_name}",
-        "text": "We smile at lunch, eat food on a break, and praise the idea.",
-        "text_es": "Sonreímos en el almuerzo, comemos comida en un descanso y elogiamos la idea.",
-        "tts_text": "We smile at lunch, eat food on a break, and praise the idea.",
-        "tts_voice_id": "en_us_female_1",
-        "estimated_audio_duration_seconds": 5,
-        "repeat_timer_seconds": 9,
-        "repeat_count": 2,
-        "focus_vocab": [
-          "lunch",
-          "food",
-          "eat",
-          "break",
-          "idea"
-        ]
-      },
-      {
-        "item_id": "listen_009",
-        "character_id": "char_jim",
-        "character_display_name": "{jim_name}",
-        "text": "At lunch, the idea feels official as we eat food on a break.",
-        "text_es": "En el almuerzo, la idea se siente oficial mientras comemos comida en un descanso.",
-        "tts_text": "At lunch, the idea feels official as we eat food on a break.",
-        "tts_voice_id": "en_us_male_2",
-        "estimated_audio_duration_seconds": 6,
-        "repeat_timer_seconds": 10,
-        "repeat_count": 2,
-        "focus_vocab": [
-          "lunch",
-          "food",
-          "eat",
-          "break",
-          "idea"
-        ]
-      },
-      {
-        "item_id": "listen_010",
-        "character_id": "char_boss",
-        "character_display_name": "{boss_name}",
-        "text": "My lunch idea is simple: eat food, respect the break, and agree.",
-        "text_es": "Mi idea de almuerzo es simple: comer comida, respetar el descanso y estar de acuerdo.",
-        "tts_text": "My lunch idea is simple: eat food, respect the break, and agree.",
-        "tts_voice_id": "en_us_male_1",
-        "estimated_audio_duration_seconds": 6,
-        "repeat_timer_seconds": 10,
-        "repeat_count": 2,
-        "focus_vocab": [
-          "lunch",
-          "food",
-          "eat",
-          "break",
-          "idea"
-        ]
-      }
-    ]
-  },
-  "games": {
-    "section_name": "Lunch Games",
-    "section_name_es": "Juegos Almuerzo",
-    "image": "/episodes/episode_4_scene.jpg",
-    "data": [
-      {
-        "game_id": "ep004_game_01",
-        "game_type": "matching",
-        "title": "Match the Words!",
-        "title_es": "¡Empareja las Palabras!",
-        "instructions": "Match each English word or phrase with its Spanish meaning.",
-        "instructions_es": "Empareja cada palabra o frase en inglés con su significado en español.",
-        "optional": true,
-        "unlocked_after_episode": true,
-        "time_limit_seconds": 90,
-        "xp_reward": 25,
-        "content": {
-          "items": [
-            {
-              "id": 1,
-              "left": "lunch",
-              "right": "almuerzo",
-              "image_url": "/vocab/lunch.jpg"
-            },
-            {
-              "id": 2,
-              "left": "food",
-              "right": "comida",
-              "image_url": "/vocab/food.jpg"
-            },
-            {
-              "id": 3,
-              "left": "eat",
-              "right": "comer",
-              "image_url": "/vocab/eat.jpg"
-            },
-            {
-              "id": 4,
-              "left": "break",
-              "right": "descanso",
-              "image_url": "/vocab/break.jpg"
-            },
-            {
-              "id": 5,
-              "left": "idea",
-              "right": "idea",
-              "image_url": "/vocab/idea.jpg"
-            },
-            {
-              "id": 6,
-              "left": "It is lunch time",
-              "right": "Es hora del almuerzo",
-              "image_url": "/vocab/lunch.jpg"
-            },
-            {
-              "id": 7,
-              "left": "This is very important",
-              "right": "Esto es muy importante",
-              "image_url": "/vocab/idea.jpg"
-            },
-            {
-              "id": 8,
-              "left": "We eat and work",
-              "right": "Comemos y trabajamos",
-              "image_url": "/vocab/eat.jpg"
-            }
-          ]
-        },
-        "settings": {
-          "shuffle": true,
-          "show_images": true
-        }
-      },
-      {
-        "game_id": "ep004_game_02",
-        "game_type": "fill_blank",
-        "title": "Complete the Sentences",
-        "title_es": "Completa las Oraciones",
-        "instructions": "Fill in the missing words from the episode.",
-        "instructions_es": "Completa las palabras que faltan del episodio.",
-        "optional": true,
-        "unlocked_after_episode": true,
-        "time_limit_seconds": 150,
-        "xp_reward": 35,
-        "content": {
-          "items": [
-            {
-              "id": 1,
-              "sentence": "At _____ time, everyone smiles at the desk.",
-              "sentence_es": "A la hora del _____, todos sonríen en el escritorio.",
-              "answer": "lunch",
-              "options": [
-                "lunch",
-                "idea",
-                "break"
-              ],
-              "hint": "This happens at twelve.",
-              "hint_es": "Esto pasa a las doce.",
-              "character": "{pam_name}"
-            },
-            {
-              "id": 2,
-              "sentence": "The _____ is on every desk today.",
-              "sentence_es": "La _____ está en cada escritorio hoy.",
-              "answer": "food",
-              "options": [
-                "food",
-                "idea",
-                "break"
-              ],
-              "hint": "People can eat it.",
-              "hint_es": "Las personas pueden comerla.",
-              "character": "{jim_name}"
-            },
-            {
-              "id": 3,
-              "sentence": "People _____ and talk during the meeting.",
-              "sentence_es": "Las personas _____ y hablan durante la reunión.",
-              "answer": "eat",
-              "options": [
-                "eat",
-                "work",
-                "break"
-              ],
-              "hint": "You do this with food.",
-              "hint_es": "Haces esto con comida.",
-              "character": "{pam_name}"
-            },
-            {
-              "id": 4,
-              "sentence": "Lunch is a _____ from work.",
-              "sentence_es": "El almuerzo es un _____ del trabajo.",
-              "answer": "break",
-              "options": [
-                "break",
-                "idea",
-                "food"
-              ],
-              "hint": "You stop working.",
-              "hint_es": "Dejas de trabajar.",
-              "character": "{boss_name}"
-            },
-            {
-              "id": 5,
-              "sentence": "{boss_name} has a big _____ at lunch.",
-              "sentence_es": "{boss_name} tiene una gran _____ en el almuerzo.",
-              "answer": "idea",
-              "options": [
-                "idea",
-                "food",
-                "break"
-              ],
-              "hint": "It sounds important.",
-              "hint_es": "Suena importante.",
-              "character": "{boss_name}"
-            },
-            {
-              "id": 6,
-              "sentence": "We _____ food and pretend to work.",
-              "sentence_es": "_____ comida y fingimos trabajar.",
-              "answer": "eat",
-              "options": [
-                "eat",
-                "break",
-                "idea"
-              ],
-              "hint": "This uses your mouth.",
-              "hint_es": "Esto usa tu boca.",
-              "character": "{jim_name}"
-            },
-            {
-              "id": 7,
-              "sentence": "This lunch _____ feels very serious.",
-              "sentence_es": "Esta _____ de almuerzo se siente muy seria.",
-              "answer": "idea",
-              "options": [
-                "idea",
-                "food",
-                "break"
-              ],
-              "hint": "The boss explains it a lot.",
-              "hint_es": "El jefe la explica mucho.",
-              "character": "{pam_name}"
-            }
-          ]
-        }
-      },
-      {
-        "game_id": "ep004_game_03",
-        "game_type": "multiple_choice",
-        "title": "Episode Quiz",
-        "title_es": "Quiz del Episodio",
-        "instructions": "Answer questions about the episode.",
-        "instructions_es": "Responde preguntas sobre el episodio.",
-        "optional": true,
-        "unlocked_after_episode": true,
-        "time_limit_seconds": 180,
-        "xp_reward": 45,
-        "content": {
-          "items": [
-            {
-              "id": 1,
-              "question": "What does {boss_name} say about lunch?",
-              "question_es": "¿Qué dice {boss_name} sobre el almuerzo?",
-              "options": [
-                "It is very important",
-                "It is very boring",
-                "It is very short",
-                "It is very late"
-              ],
-              "options_es": [
-                "Es muy importante",
-                "Es muy aburrido",
-                "Es muy corto",
-                "Es muy tarde"
-              ],
-              "correct_answer": 0,
-              "explanation": "{boss_name} says lunch helps productivity.",
-              "explanation_es": "{boss_name} dice que el almuerzo ayuda a la productividad."
-            },
-            {
-              "id": 2,
-              "question": "What do people do during lunch?",
-              "question_es": "¿Qué hacen las personas durante el almuerzo?",
-              "options": [
-                "They eat food",
-                "They sleep",
-                "They run",
-                "They leave"
-              ],
-              "options_es": [
-                "Comen comida",
-                "Duermen",
-                "Corren",
-                "Se van"
-              ],
-              "correct_answer": 0,
-              "explanation": "People eat food at their desks.",
-              "explanation_es": "Las personas comen comida en sus escritorios."
-            },
-            {
-              "id": 3,
-              "question": "How does lunch feel in the office?",
-              "question_es": "¿Cómo se siente el almuerzo en la oficina?",
-              "options": [
-                "Very serious",
-                "Very scary",
-                "Very quiet",
-                "Very sad"
-              ],
-              "options_es": [
-                "Muy serio",
-                "Muy aterrador",
-                "Muy silencioso",
-                "Muy triste"
-              ],
-              "correct_answer": 0,
-              "explanation": "The office pretends lunch is serious work.",
-              "explanation_es": "La oficina finge que el almuerzo es trabajo serio."
-            },
-            {
-              "id": 4,
-              "question": "What is lunch also called in the episode?",
-              "question_es": "¿Cómo se llama también el almuerzo en el episodio?",
-              "options": [
-                "A break",
-                "A party",
-                "A test",
-                "A game"
-              ],
-              "options_es": [
-                "Un descanso",
-                "Una fiesta",
-                "Una prueba",
-                "Un juego"
-              ],
-              "correct_answer": 0,
-              "explanation": "Lunch is a break from work.",
-              "explanation_es": "El almuerzo es un descanso del trabajo."
-            },
-            {
-              "id": 5,
-              "question": "Who has a big idea at lunch?",
-              "question_es": "¿Quién tiene una gran idea en el almuerzo?",
-              "options": [
-                "{boss_name}",
-                "{jim_name}",
-                "{pam_name}",
-                "{player_name}"
-              ],
-              "options_es": [
-                "{boss_name}",
-                "{jim_name}",
-                "{pam_name}",
-                "{player_name}"
-              ],
-              "correct_answer": 0,
-              "explanation": "The big idea comes from {boss_name}.",
-              "explanation_es": "La gran idea viene de {boss_name}."
-            }
-          ]
-        }
-      }
-    ]
-  },
-  "content_wrappers": {
-    "section_name": "Lunch Time",
-    "section_name_es": "Hora Almuerzo",
-    "image": "/episodes/episode_4_scene.jpg",
-    "intro_text": {
-      "en": "Welcome to the office. It is lunch time. People are smiling, eating, and not working. {boss_name} says this is very important work. Everyone nods. No one believes it.",
-      "es": "Bienvenido a la oficina. Es hora del almuerzo. Las personas sonríen, comen y no trabajan. {boss_name} dice que este es un trabajo muy importante. Todos asienten. Nadie lo cree."
-    },
-    "transition": {
-      "en": "Great. Now you know the lunch words. Lunch is food. Lunch is a break. Lunch is also a big idea. Now watch how the office eats and pretends to work.",
-      "es": "Genial. Ahora conoces las palabras del almuerzo. El almuerzo es comida. El almuerzo es un descanso. El almuerzo también es una gran idea. Ahora mira cómo la oficina come y finge trabajar."
-    },
-    "conclusion": {
-      "en": "Good job. You survived office lunch. You learned new words. You ate with your eyes. {boss_name} feels proud. Tomorrow there is another idea. It is probably also lunch.",
-      "es": "Buen trabajo. Sobreviviste al almuerzo de la oficina. Aprendiste nuevas palabras. Comiste con los ojos. {boss_name} se siente orgulloso. Mañana hay otra idea. Probablemente también es almuerzo."
-    },
-    "reflection_prompt": {
-      "question_en": "Write one sentence using the word \"lunch\" or \"idea\".",
-      "question_es": "Escribe una oración usando la palabra \"lunch\" o \"idea\".",
-      "type": "free_text",
-      "optional": true,
-      "max_length": 100,
-      "vocab_practice": [
-        "lunch",
-        "idea"
-      ]
-    }
-  },
-  "scenes": {
-    "section_name": "Office Lunch",
-    "section_name_es": "Almuerzo Oficina",
-    "image": "/episodes/episode_4_scene.jpg",
-    "data": [
-      {
-        "scene_id": "scene_004_001",
-        "scene_number": 1,
-        "location": "Office kitchen",
-        "location_es": "Cocina de la oficina",
-        "scene_name": "The Big Idea",
-        "scene_name_es": "La Gran Idea",
-        "time": "Lunch time",
-        "time_es": "Hora del almuerzo",
-        "description": "{boss_name} calls everyone to the kitchen to share a very important lunch idea.",
-        "description_es": "{boss_name} llama a todos a la cocina para compartir una idea de almuerzo muy importante.",
-        "dialogue": [
-          {
-            "line_id": 1,
-            "character_id": "char_boss",
-            "character_display_name": "BOSS",
-            "text": "Everyone, this is LUNCH, but it is also WORK. I invented work lunch.",
-            "translation_es": "Todos, este es el almuerzo, pero también es trabajo. Yo inventé el trabajo con almuerzo.",
-            "emotion": "excited",
-            "notes": "The boss believes he invents simple ideas.",
-            "notes_es": "El jefe cree que inventa ideas simples.",
-            "highlighted_vocab": [
-              "work"
-            ],
-            "template_vars": [
-              "boss_name"
-            ]
-          },
-          {
-            "line_id": 2,
-            "character_id": "char_boss",
-            "character_display_name": "BOSS",
-            "text": "We eat, we WORK, and we look BUSY. This makes me PROUD.",
-            "translation_es": "Comemos, trabajamos y nos vemos ocupados. Esto me hace sentir orgulloso.",
-            "emotion": "proud",
-            "notes": "He connects food with productivity.",
-            "notes_es": "Él conecta la comida con la productividad.",
-            "highlighted_vocab": [
-              "work",
-              "busy",
-              "proud"
-            ],
-            "template_vars": [
-              "boss_name"
-            ]
-          },
-          {
-            "line_id": 3,
-            "character_id": "char_boss",
-            "character_display_name": "BOSS",
-            "text": "This is not a PRANK. This is serious food business.",
-            "translation_es": "Esto no es una broma. Este es un negocio serio de comida.",
-            "emotion": "serious_but_funny",
-            "notes": "He tries to sound serious but fails.",
-            "notes_es": "Intenta sonar serio, pero falla.",
-            "highlighted_vocab": [
-              "prank"
-            ],
-            "template_vars": [
-              "boss_name"
-            ]
-          },
-          {
-            "line_id": 4,
-            "character_id": "char_boss",
-            "character_display_name": "BOSS",
-            "text": "I tell a JOKE now. Lunch is free. Just kidding. Maybe.",
-            "translation_es": "Ahora cuento un chiste. El almuerzo es gratis. Es broma. Tal vez.",
-            "emotion": "awkward",
-            "notes": "The boss makes an awkward joke.",
-            "notes_es": "El jefe hace un chiste incómodo.",
-            "highlighted_vocab": [
-              "joke"
-            ],
-            "template_vars": [
-              "boss_name"
-            ]
-          },
-          {
-            "line_id": 5,
-            "character_id": "char_jim",
-            "character_display_name": "JIM",
-            "text": "Yes, this is very serious WORK. Eating is very professional.",
-            "translation_es": "Sí, este es un trabajo muy serio. Comer es muy profesional.",
-            "emotion": "sarcastic",
-            "notes": "Jim pretends to agree.",
-            "notes_es": "Jim finge estar de acuerdo.",
-            "highlighted_vocab": [
-              "work"
-            ],
-            "template_vars": [
-              "jim_name"
-            ]
-          },
-          {
-            "line_id": 6,
-            "character_id": "char_jim",
-            "character_display_name": "JIM",
-            "text": "I look BUSY with a sandwich. Very BUSY.",
-            "translation_es": "Me veo ocupado con un sándwich. Muy ocupado.",
-            "emotion": "sarcastic",
-            "notes": "Jim mocks being busy.",
-            "notes_es": "Jim se burla de verse ocupado.",
-            "highlighted_vocab": [
-              "busy"
-            ],
-            "template_vars": [
-              "jim_name"
-            ]
-          },
-          {
-            "line_id": 7,
-            "character_id": "char_jim",
-            "character_display_name": "JIM",
-            "text": "This feels like a PRANK, but with food.",
-            "translation_es": "Esto se siente como una broma, pero con comida.",
-            "emotion": "amused",
-            "notes": "Jim hints at a prank.",
-            "notes_es": "Jim insinúa una broma.",
-            "highlighted_vocab": [
-              "prank"
-            ],
-            "template_vars": [
-              "jim_name"
-            ]
-          },
-          {
-            "line_id": 8,
-            "character_id": "char_jim",
-            "character_display_name": "JIM",
-            "text": "I enjoy the JOKE and the lunch.",
-            "translation_es": "Disfruto el chiste y el almuerzo.",
-            "emotion": "relaxed",
-            "notes": "Jim stays calm.",
-            "notes_es": "Jim se mantiene tranquilo.",
-            "highlighted_vocab": [
-              "joke"
-            ],
-            "template_vars": [
-              "jim_name"
-            ]
-          },
-          {
-            "line_id": 9,
-            "character_id": "player",
-            "character_display_name": "YOU",
-            "is_interactive": true,
-            "interaction_type": "choice",
-            "prompt": "Which sentence sounds correct?",
-            "prompt_es": "¿Qué frase suena correcta?",
-            "choices": [
-              {
-                "choice_id": "a",
-                "text": "I busy work lunch.",
-                "translation_es": "Yo ocupado trabajo almuerzo.",
-                "points": 0,
-                "personality_impact": "confused",
-                "vocab_used": [
-                  "busy",
-                  "work"
-                ]
-              },
-              {
-                "choice_id": "b",
-                "text": "I work at lunch and look busy.",
-                "translation_es": "Trabajo en el almuerzo y me veo ocupado.",
-                "points": 10,
-                "personality_impact": "neutral"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "scene_id": "scene_004_002",
-        "scene_number": 2,
-        "location": "Office desks",
-        "location_es": "Escritorios de la oficina",
-        "scene_name": "Pretend Work",
-        "scene_name_es": "Trabajo Falso",
-        "time": "After lunch",
-        "time_es": "Después del almuerzo",
-        "description": "Everyone returns to their desks and pretends to work.",
-        "description_es": "Todos regresan a sus escritorios y fingen trabajar.",
-        "dialogue": [
-          {
-            "line_id": 1,
-            "character_id": "char_pam",
-            "character_display_name": "PAM",
-            "text": "Welcome back. We look BUSY now.",
-            "translation_es": "Bienvenidos de nuevo. Ahora nos vemos ocupados.",
-            "emotion": "calm",
-            "notes": "Pam observes calmly.",
-            "notes_es": "Pam observa con calma.",
-            "highlighted_vocab": [
-              "busy"
-            ],
-            "template_vars": [
-              "pam_name"
-            ]
-          },
-          {
-            "line_id": 2,
-            "character_id": "char_pam",
-            "character_display_name": "PAM",
-            "text": "This WORK is very quiet today.",
-            "translation_es": "Este trabajo es muy silencioso hoy.",
-            "emotion": "gentle_sarcasm",
-            "notes": "Quiet work means no work.",
-            "notes_es": "Trabajo silencioso significa poco trabajo.",
-            "highlighted_vocab": [
-              "work"
-            ],
-            "template_vars": [
-              "pam_name"
-            ]
-          },
-          {
-            "line_id": 3,
-            "character_id": "char_pam",
-            "character_display_name": "PAM",
-            "text": "The boss feels PROUD. That is important.",
-            "translation_es": "El jefe se siente orgulloso. Eso es importante.",
-            "emotion": "polite",
-            "notes": "Pam knows how the office works.",
-            "notes_es": "Pam sabe cómo funciona la oficina.",
-            "highlighted_vocab": [
-              "proud"
-            ],
-            "template_vars": [
-              "pam_name"
-            ]
-          },
-          {
-            "line_id": 4,
-            "character_id": "char_pam",
-            "character_display_name": "PAM",
-            "text": "Please enjoy the JOKE quietly.",
-            "translation_es": "Por favor disfruten el chiste en silencio.",
-            "emotion": "kind",
-            "notes": "Pam accepts the chaos.",
-            "notes_es": "Pam acepta el caos.",
-            "highlighted_vocab": [
-              "joke"
-            ],
-            "template_vars": [
-              "pam_name"
-            ]
-          },
-          {
-            "line_id": 5,
-            "character_id": "char_jim",
-            "character_display_name": "JIM",
-            "text": "I am very BUSY now. I stare at my screen.",
-            "translation_es": "Estoy muy ocupado ahora. Miro mi pantalla.",
-            "emotion": "sarcastic",
-            "notes": "Jim does nothing.",
-            "notes_es": "Jim no hace nada.",
-            "highlighted_vocab": [
-              "busy"
-            ],
-            "template_vars": [
-              "jim_name"
-            ]
-          },
-          {
-            "line_id": 6,
-            "character_id": "char_jim",
-            "character_display_name": "JIM",
-            "text": "This WORK is excellent. No movement.",
-            "translation_es": "Este trabajo es excelente. Sin movimiento.",
-            "emotion": "sarcastic",
-            "notes": "Jim jokes about inactivity.",
-            "notes_es": "Jim bromea sobre la inactividad.",
-            "highlighted_vocab": [
-              "work"
-            ],
-            "template_vars": [
-              "jim_name"
-            ]
-          },
-          {
-            "line_id": 7,
-            "character_id": "char_jim",
-            "character_display_name": "JIM",
-            "text": "The lunch idea feels like a PRANK.",
-            "translation_es": "La idea del almuerzo se siente como una broma.",
-            "emotion": "amused",
-            "notes": "Jim sees the prank clearly.",
-            "notes_es": "Jim ve claramente la broma.",
-            "highlighted_vocab": [
-              "prank"
-            ],
-            "template_vars": [
-              "jim_name"
-            ]
-          },
-          {
-            "line_id": 8,
-            "character_id": "char_jim",
-            "character_display_name": "JIM",
-            "text": "It is a good JOKE day.",
-            "translation_es": "Es un buen día de chistes.",
-            "emotion": "relaxed",
-            "notes": "Jim enjoys it.",
-            "notes_es": "Jim lo disfruta.",
-            "highlighted_vocab": [
-              "joke"
-            ],
-            "template_vars": [
-              "jim_name"
-            ]
-          },
-          {
-            "line_id": 9,
-            "character_id": "player",
-            "character_display_name": "YOU",
-            "is_interactive": true,
-            "interaction_type": "choice",
-            "prompt": "What should you say?",
-            "prompt_es": "¿Qué debes decir?",
-            "choices": [
-              {
-                "choice_id": "a",
-                "text": "I proud busy.",
-                "translation_es": "Yo orgulloso ocupado.",
-                "points": 0,
-                "personality_impact": "awkward",
-                "vocab_used": [
-                  "proud",
-                  "busy"
-                ]
-              },
-              {
-                "choice_id": "b",
-                "text": "I look busy and work quietly.",
-                "translation_es": "Me veo ocupado y trabajo en silencio.",
-                "points": 10,
-                "personality_impact": "neutral"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "scene_id": "scene_004_003",
-        "scene_number": 3,
-        "location": "Meeting area",
-        "location_es": "Área de reuniones",
-        "scene_name": "Proud Ending",
-        "scene_name_es": "Final Orgulloso",
-        "time": "End of lunch",
-        "time_es": "Final del almuerzo",
-        "description": "{boss_name} checks the office and feels successful.",
-        "description_es": "{boss_name} revisa la oficina y se siente exitoso.",
-        "dialogue": [
-          {
-            "line_id": 1,
-            "character_id": "char_boss",
-            "character_display_name": "BOSS",
-            "text": "Look at this WORK. Perfect. Everyone looks BUSY.",
-            "translation_es": "Miren este trabajo. Perfecto. Todos se ven ocupados.",
-            "emotion": "proud",
-            "notes": "The boss is satisfied.",
-            "notes_es": "El jefe está satisfecho.",
-            "highlighted_vocab": [
-              "work",
-              "busy"
-            ],
-            "template_vars": [
-              "boss_name"
-            ]
-          },
-          {
-            "line_id": 2,
-            "character_id": "char_boss",
-            "character_display_name": "BOSS",
-            "text": "I feel very PROUD of my lunch idea.",
-            "translation_es": "Me siento muy orgulloso de mi idea del almuerzo.",
-            "emotion": "proud",
-            "notes": "He praises himself.",
-            "notes_es": "Se felicita a sí mismo.",
-            "highlighted_vocab": [
-              "proud"
-            ],
-            "template_vars": [
-              "boss_name"
-            ]
-          },
-          {
-            "line_id": 3,
-            "character_id": "char_boss",
-            "character_display_name": "BOSS",
-            "text": "This is not a PRANK. This is leadership.",
-            "translation_es": "Esto no es una broma. Esto es liderazgo.",
-            "emotion": "confident",
-            "notes": "He misunderstands leadership.",
-            "notes_es": "Malinterpreta el liderazgo.",
-            "highlighted_vocab": [
-              "prank"
-            ],
-            "template_vars": [
-              "boss_name"
-            ]
-          },
-          {
-            "line_id": 4,
-            "character_id": "char_boss",
-            "character_display_name": "BOSS",
-            "text": "I tell one more JOKE. Lunch meeting tomorrow.",
-            "translation_es": "Cuento un chiste más. Reunión con almuerzo mañana.",
-            "emotion": "excited",
-            "notes": "Everyone is afraid.",
-            "notes_es": "Todos tienen miedo.",
-            "highlighted_vocab": [
-              "joke"
-            ],
-            "template_vars": [
-              "boss_name"
-            ]
-          },
-          {
-            "line_id": 5,
-            "character_id": "char_pam",
-            "character_display_name": "PAM",
-            "text": "Yes. Very normal WORK day.",
-            "translation_es": "Sí. Un día de trabajo muy normal.",
-            "emotion": "calm_sarcasm",
-            "notes": "Pam ends calmly.",
-            "notes_es": "Pam termina con calma.",
-            "highlighted_vocab": [
-              "work"
-            ],
-            "template_vars": [
-              "pam_name"
-            ]
-          },
-          {
-            "line_id": 6,
-            "character_id": "char_pam",
-            "character_display_name": "PAM",
-            "text": "Everyone looks BUSY. Always.",
-            "translation_es": "Todos se ven ocupados. Siempre.",
-            "emotion": "gentle",
-            "notes": "Routine chaos.",
-            "notes_es": "Caos rutinario.",
-            "highlighted_vocab": [
-              "busy"
-            ],
-            "template_vars": [
-              "pam_name"
-            ]
-          },
-          {
-            "line_id": 7,
-            "character_id": "char_pam",
-            "character_display_name": "PAM",
-            "text": "The boss feels PROUD. That helps.",
-            "translation_es": "El jefe se siente orgulloso. Eso ayuda.",
-            "emotion": "polite",
-            "notes": "Pam knows the rule.",
-            "notes_es": "Pam conoce la regla.",
-            "highlighted_vocab": [
-              "proud"
-            ],
-            "template_vars": [
-              "pam_name"
-            ]
-          },
-          {
-            "line_id": 8,
-            "character_id": "char_pam",
-            "character_display_name": "PAM",
-            "text": "Now back to WORK.",
-            "translation_es": "Ahora de vuelta al trabajo.",
-            "emotion": "neutral",
-            "notes": "End of scene.",
-            "notes_es": "Fin de la escena.",
-            "highlighted_vocab": [
-              "work"
-            ],
-            "template_vars": [
-              "pam_name"
-            ]
-          },
-          {
-            "line_id": 9,
-            "character_id": "player",
-            "character_display_name": "YOU",
-            "is_interactive": true,
-            "interaction_type": "choice",
-            "prompt": "How do you respond?",
-            "prompt_es": "¿Cómo respondes?",
-            "choices": [
-              {
-                "choice_id": "a",
-                "text": "I joke work proud.",
-                "translation_es": "Yo chiste trabajo orgulloso.",
-                "points": 0,
-                "personality_impact": "confused",
-                "vocab_used": [
-                  "joke",
-                  "work",
-                  "proud"
-                ]
-              },
-              {
-                "choice_id": "b",
-                "text": "Yes, I work and look busy.",
-                "translation_es": "Sí, trabajo y me veo ocupado.",
-                "points": 10,
-                "personality_impact": "neutral"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  "next_episode_preview": {
-    "section_name": "Big Meeting",
-    "section_name_es": "Gran Reunión",
-    "image": "/episodes/episode_5_scene.jpg",
-    "preview_text_en": "Next time, there is a meeting, {boss_name} talks a lot, and {jim_name} looks busy without doing work.",
-    "preview_text_es": "La próxima vez hay una reunión, {boss_name} habla mucho y {jim_name} se ve ocupado sin trabajar.",
-    "teaser_image": "/previews/ep_005.jpg"
-  },
   "progression": {
-    "section_name": "Lunch Work",
-    "section_name_es": "Trabajo Almuerzo",
+    "section_name": "Your Progress",
+    "section_name_es": "Tu Progreso",
     "image": "/episodes/episode_4_scene.jpg",
     "xp_earned_base": 50,
     "xp_bonus_conditions": [
@@ -1471,40 +35,1363 @@
         "character_ids": [
           "char_boss",
           "char_jim",
-          "char_pam"
+          "char_pam",
+          "char_dwight"
         ]
       },
       {
         "type": "location",
         "location_ids": [
-          "office_kitchen",
-          "office_desks",
-          "meeting_area"
+          "main_office",
+          "reception_area",
+          "boss_office"
         ]
       }
     ],
     "achievements": [
       {
-        "achievement_id": "lunch_professional",
-        "name": "Lunch Is Work",
-        "name_es": "El Almuerzo Es Trabajo",
-        "description": "You survive the boss lunch plan and you look busy with food like a true office pro.",
-        "description_es": "Sobrevives el plan de almuerzo del jefe y te ves ocupado con comida como un verdadero profesional de oficina.",
-        "icon": "/achievements/lunch_professional.png",
-        "image": "/achievements/lunch_professional_banner.jpg"
+        "achievement_id": "desk_detective",
+        "name": "Desk Detective",
+        "name_es": "Detective de Escritorios",
+        "description": "You can say whose desk it is and ask how things are in the office.",
+        "description_es": "Puedes decir de quién es el escritorio y preguntar cómo son las cosas en la oficina.",
+        "icon": "/achievements/desk_detective.png",
+        "image": "/achievements/desk_detective_banner.jpg"
       }
     ]
   },
   "metadata": {
-    "section_name": "Lunch Time",
-    "section_name_es": "Hora Almuerzo",
+    "section_name": "Whose Desk",
+    "section_name_es": "De Quién",
     "image": "/episodes/episode_4_scene.jpg",
-    "created_date": "2026-01-29",
+    "created_date": "2026-01-30",
     "version": "1.0",
     "author": "Course Team",
     "content_level": "beginner",
-    "estimated_words": 320,
-    "estimated_unique_vocabulary": 55,
+    "estimated_words": 420,
+    "estimated_unique_vocabulary": 45,
     "structure_type": "vocab_story_then_main_story"
+  },
+  "episode_metadata": {
+    "section_name": "Wh Questions",
+    "section_name_es": "Preguntas Wh",
+    "image": "/episodes/episode_4_scene.jpg",
+    "episode_number": 4,
+    "episode_id": "ep_004",
+    "title": "Whose Desk Is This?",
+    "title_es": "¿De Quién Es Este Escritorio?",
+    "description": "Leo proudly explains whose desk is whose, even when nobody asks. Ben asks too many how questions, and the office becomes strangely personal.",
+    "description_es": "Leo explica con orgullo de quién es cada escritorio, incluso cuando nadie se lo pide. Ben hace demasiadas preguntas con how y la oficina se vuelve extrañamente personal.",
+    "internal_level": "A1",
+    "estimated_time_minutes": 12,
+    "unlock_requirements": null,
+    "tags": [
+      "office_life",
+      "questions",
+      "possessives",
+      "first_day"
+    ],
+    "previous_episode": "ep_003",
+    "next_episode": "ep_005"
+  },
+  "characters": {
+    "section_name": "Office Team",
+    "section_name_es": "Equipo Oficina",
+    "image": "/episodes/episode_4_scene.jpg",
+    "appearing_in_episode": [
+      {
+        "character_id": "char_boss",
+        "default_name": "LEO",
+        "role": "Regional manager",
+        "role_es": "Gerente regional",
+        "personality": "Enthusiastic boss who wants everyone to like him and constantly brags about being the best boss.",
+        "personality_es": "Jefe entusiasta que quiere que todos lo quieran y siempre presume de ser el mejor jefe.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/leo.png",
+        "intro_text": "Hello. I am LEO. I am the boss. This is my office and this is my paper company. I am the best boss here. Probably in the world.",
+        "intro_text_es": "Hola. Yo soy LEO. Yo soy el jefe. Esta es mi oficina y esta es mi empresa de papel. Yo soy el mejor jefe aquí. Probablemente en el mundo."
+      },
+      {
+        "character_id": "char_jim",
+        "default_name": "BEN",
+        "role": "Salesman",
+        "role_es": "Vendedor",
+        "personality": "Laid-back salesman with a sarcastic sense of humor who observes the chaos with calm irony.",
+        "personality_es": "Vendedor relajado con humor sarcástico que observa el caos con ironía tranquila.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/ben.png",
+        "intro_text": "Hi. I am BEN. This is a very serious office. Very professional. You can see it clearly.",
+        "intro_text_es": "Hola. Yo soy BEN. Esta es una oficina muy seria. Muy profesional. Se puede ver claramente."
+      },
+      {
+        "character_id": "char_pam",
+        "default_name": "MIA",
+        "role": "Receptionist",
+        "role_es": "Recepcionista",
+        "personality": "Kind and artistic receptionist who helps everyone and comments softly on the office madness.",
+        "personality_es": "Recepcionista amable y artística que ayuda a todos y comenta con suavidad la locura de la oficina.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/mia.png",
+        "intro_text": "Welcome. I am MIA. This is my desk and this is your desk area. Do not worry. The office is always like this.",
+        "intro_text_es": "Bienvenido. Yo soy MIA. Este es mi escritorio y esta es tu área de escritorio. No te preocupes. La oficina siempre es así."
+      },
+      {
+        "character_id": "char_dwight",
+        "default_name": "DAN",
+        "role": "Assistant regional manager",
+        "role_es": "Asistente del gerente regional",
+        "personality": "Intense and rule-obsessed employee who takes his job and himself very seriously.",
+        "personality_es": "Empleado intenso y obsesionado con las reglas que se toma su trabajo y a sí mismo muy en serio.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/dan.png",
+        "intro_text": "I am DAN. I am the assistant regional manager. This is his office and that is her desk. Everything has a place.",
+        "intro_text_es": "Yo soy DAN. Yo soy el asistente del gerente regional. Esta es su oficina y ese es su escritorio. Todo tiene un lugar."
+      }
+    ],
+    "mentioned_but_not_appearing": []
+  },
+  "vocabulary_focus": {
+    "section_name": "Possession",
+    "section_name_es": "Posesión",
+    "image": "/episodes/episode_4_scene.jpg",
+    "target_words": [
+      {
+        "word": "desk",
+        "translation_es": "escritorio",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 1,
+        "context_sentence": "Leo talks about his desk like it is very important.",
+        "context_sentence_es": "Leo habla de su escritorio como si fuera muy importante.",
+        "image_url": "/vocab/desk.jpg",
+        "usage_examples": [
+          "This is my desk.",
+          "That desk is very small.",
+          "The desk is clean today."
+        ],
+        "usage_examples_es": [
+          "Este es mi escritorio.",
+          "Ese escritorio es muy pequeño.",
+          "El escritorio está limpio hoy."
+        ]
+      },
+      {
+        "word": "name",
+        "translation_es": "nombre",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 1,
+        "context_sentence": "Ben asks for the name on the desk.",
+        "context_sentence_es": "Ben pregunta por el nombre en el escritorio.",
+        "image_url": "/vocab/name.jpg",
+        "usage_examples": [
+          "My name is on the desk.",
+          "Her name is very long.",
+          "The name is correct."
+        ],
+        "usage_examples_es": [
+          "Mi nombre está en el escritorio.",
+          "Su nombre es muy largo.",
+          "El nombre es correcto."
+        ]
+      },
+      {
+        "word": "his",
+        "translation_es": "su (de él)",
+        "word_type": "possessive adjective",
+        "word_type_es": "adjetivo posesivo",
+        "difficulty": 2,
+        "context_sentence": "Leo says the desk is his.",
+        "context_sentence_es": "Leo dice que el escritorio es suyo.",
+        "image_url": "/vocab/his.jpg",
+        "usage_examples": [
+          "This is his desk.",
+          "That is his name.",
+          "His desk is near the window."
+        ],
+        "usage_examples_es": [
+          "Este es su escritorio.",
+          "Ese es su nombre.",
+          "Su escritorio está cerca de la ventana."
+        ]
+      },
+      {
+        "word": "her",
+        "translation_es": "su (de ella)",
+        "word_type": "possessive adjective",
+        "word_type_es": "adjetivo posesivo",
+        "difficulty": 2,
+        "context_sentence": "Mia says the desk is her desk.",
+        "context_sentence_es": "Mia dice que el escritorio es su escritorio.",
+        "image_url": "/vocab/her.jpg",
+        "usage_examples": [
+          "This is her desk.",
+          "Her name is on the paper.",
+          "The chair is her chair."
+        ],
+        "usage_examples_es": [
+          "Este es su escritorio.",
+          "Su nombre está en el papel.",
+          "La silla es su silla."
+        ]
+      },
+      {
+        "word": "how",
+        "translation_es": "cómo",
+        "word_type": "question word",
+        "word_type_es": "palabra interrogativa",
+        "difficulty": 2,
+        "context_sentence": "Ben asks how this desk is so important.",
+        "context_sentence_es": "Ben pregunta cómo este escritorio es tan importante.",
+        "image_url": "/vocab/how.jpg",
+        "usage_examples": [
+          "How is this your desk?",
+          "How is her name here?",
+          "How is this correct?"
+        ],
+        "usage_examples_es": [
+          "¿Cómo es este tu escritorio?",
+          "¿Cómo está su nombre aquí?",
+          "¿Cómo es esto correcto?"
+        ]
+      }
+    ],
+    "phrases": [
+      {
+        "phrase": "Whose desk is this?",
+        "translation_es": "¿De quién es este escritorio?",
+        "usage_context": "Used to ask about ownership in the office.",
+        "usage_context_es": "Se usa para preguntar sobre posesión en la oficina."
+      },
+      {
+        "phrase": "This is his desk.",
+        "translation_es": "Este es su escritorio.",
+        "usage_context": "Used to explain who owns an object.",
+        "usage_context_es": "Se usa para explicar de quién es un objeto."
+      },
+      {
+        "phrase": "How is this so important?",
+        "translation_es": "¿Cómo es esto tan importante?",
+        "usage_context": "Used when something feels too serious or dramatic.",
+        "usage_context_es": "Se usa cuando algo parece demasiado serio o dramático."
+      }
+    ]
+  },
+  "vocabulary_story": {
+    "section_name": "Office Words",
+    "section_name_es": "Palabras Oficina",
+    "image": "/episodes/episode_4_vocab.jpg",
+    "title": "Learning Basic Words",
+    "title_es": "Aprendiendo Palabras Básicas",
+    "description": "A simple story to learn today's vocabulary",
+    "description_es": "Una historia simple para aprender el vocabulario de hoy",
+    "segments": [
+      {
+        "segment_id": "vocab_desk_01",
+        "image_url": "/vocab/desk.jpg",
+        "word_focus": "desk",
+        "text": {
+          "en": "This is my DESK. It is small but important.",
+          "es": "Este es mi ESCRITORIO. Es pequeño pero importante."
+        },
+        "emphasis_style": "bold_uppercase"
+      },
+      {
+        "segment_id": "vocab_desk_02",
+        "image_url": "/vocab/desk.jpg",
+        "word_focus": "desk",
+        "text": {
+          "en": "The DESK has paper. A lot of paper.",
+          "es": "El ESCRITORIO tiene papel. Mucho papel."
+        }
+      },
+      {
+        "segment_id": "vocab_desk_03",
+        "image_url": "/vocab/desk.jpg",
+        "word_focus": "desk",
+        "text": {
+          "en": "This is her DESK. She likes it.",
+          "es": "Este es su ESCRITORIO. A ella le gusta."
+        }
+      },
+      {
+        "segment_id": "vocab_office_01",
+        "image_url": "/vocab/office.jpg",
+        "word_focus": "office",
+        "text": {
+          "en": "This OFFICE is very busy.",
+          "es": "Esta OFICINA es muy ocupada."
+        }
+      },
+      {
+        "segment_id": "vocab_office_02",
+        "image_url": "/vocab/office.jpg",
+        "word_focus": "office",
+        "text": {
+          "en": "The OFFICE has many desks.",
+          "es": "La OFICINA tiene muchos escritorios."
+        }
+      },
+      {
+        "segment_id": "vocab_office_03",
+        "image_url": "/vocab/office.jpg",
+        "word_focus": "office",
+        "text": {
+          "en": "This is his OFFICE. He is proud.",
+          "es": "Esta es su OFICINA. Él está orgulloso."
+        }
+      },
+      {
+        "segment_id": "vocab_boss_01",
+        "image_url": "/vocab/boss.jpg",
+        "word_focus": "boss",
+        "text": {
+          "en": "The BOSS is here.",
+          "es": "El JEFE está aquí."
+        }
+      },
+      {
+        "segment_id": "vocab_boss_02",
+        "image_url": "/vocab/boss.jpg",
+        "word_focus": "boss",
+        "text": {
+          "en": "The BOSS likes meetings.",
+          "es": "El JEFE ama las reuniones."
+        }
+      },
+      {
+        "segment_id": "vocab_boss_03",
+        "image_url": "/vocab/boss.jpg",
+        "word_focus": "boss",
+        "text": {
+          "en": "This is his BOSS voice. It is loud.",
+          "es": "Esta es su voz de JEFE. Es fuerte."
+        }
+      },
+      {
+        "segment_id": "vocab_his_01",
+        "image_url": "/vocab/his.jpg",
+        "word_focus": "his",
+        "text": {
+          "en": "This is HIS desk.",
+          "es": "Este es SU escritorio."
+        }
+      },
+      {
+        "segment_id": "vocab_his_02",
+        "image_url": "/vocab/his.jpg",
+        "word_focus": "his",
+        "text": {
+          "en": "That is HIS office.",
+          "es": "Esa es SU oficina."
+        }
+      },
+      {
+        "segment_id": "vocab_his_03",
+        "image_url": "/vocab/his.jpg",
+        "word_focus": "his",
+        "text": {
+          "en": "This is HIS paper. He smiles.",
+          "es": "Este es SU papel. Él sonríe."
+        }
+      },
+      {
+        "segment_id": "vocab_her_01",
+        "image_url": "/vocab/her.jpg",
+        "word_focus": "her",
+        "text": {
+          "en": "This is HER desk.",
+          "es": "Este es SU escritorio."
+        }
+      },
+      {
+        "segment_id": "vocab_her_02",
+        "image_url": "/vocab/her.jpg",
+        "word_focus": "her",
+        "text": {
+          "en": "That is HER office space.",
+          "es": "Ese es SU espacio de oficina."
+        }
+      },
+      {
+        "segment_id": "vocab_her_03",
+        "image_url": "/vocab/her.jpg",
+        "word_focus": "her",
+        "text": {
+          "en": "This is HER chair. She is happy.",
+          "es": "Esta es SU silla. Ella está feliz."
+        }
+      },
+      {
+        "segment_id": "vocab_mix_01",
+        "image_url": "/vocab/desk.jpg",
+        "word_focus": "desk",
+        "text": {
+          "en": "This is HIS DESK in the OFFICE.",
+          "es": "Este es SU ESCRITORIO en la OFICINA."
+        }
+      },
+      {
+        "segment_id": "vocab_mix_02",
+        "image_url": "/vocab/boss.jpg",
+        "word_focus": "boss",
+        "text": {
+          "en": "The BOSS is at HER DESK now.",
+          "es": "El JEFE está en SU ESCRITORIO ahora."
+        }
+      },
+      {
+        "segment_id": "vocab_summary",
+        "word_focus": null,
+        "text": {
+          "en": "Great. Now you know: DESK, OFFICE, BOSS, HIS, HER. Very good. The boss is proud. Probably.",
+          "es": "Genial. Ahora conoces: ESCRITORIO, OFICINA, JEFE, SU, SU. Muy bien. El jefe está orgulloso. Probablemente."
+        }
+      }
+    ]
+  },
+  "mini_story": {
+    "section_name": "Whose Desk",
+    "section_name_es": "De Quién",
+    "image": "/episodes/episode_4_scene.jpg",
+    "title": "Short Story",
+    "title_es": "Historia corta",
+    "description": "A short story to practice today's topic.",
+    "description_es": "Una historia corta para practicar el tema de hoy.",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "text": {
+          "en": "In the office at Simple Paper in Aurora, Leo stands near the desks before a small meeting. He talks about his desk, her desk, and your desk. Everyone listens, even when nobody asks.",
+          "es": "En la oficina de Simple Paper en Aurora, Leo está de pie cerca de los escritorios antes de una pequeña reunión. Él habla de su escritorio, su escritorio y tu escritorio. Todos escuchan, incluso cuando nadie lo pide."
+        }
+      },
+      {
+        "id": "p2",
+        "text": {
+          "en": "Ben looks at a desk with a name on it. He asks, \"Whose desk is this?\" Then he asks, \"How is this so important?\" Leo smiles and points at the desk.",
+          "es": "Ben mira un escritorio con un nombre. Él pregunta, \"¿De quién es este escritorio?\" Luego pregunta, \"¿Cómo es esto tan importante?\" Leo sonríe y señala el escritorio."
+        }
+      },
+      {
+        "id": "p3",
+        "text": {
+          "en": "Mia says the desk is her desk, and the name is correct. Leo says yes and feels ready to continue the meeting. Ben nods and thinks the office feels very personal today.",
+          "es": "Mia dice que el escritorio es su escritorio y que el nombre es correcto. Leo dice sí y se siente listo para continuar la reunión. Ben asiente y piensa que la oficina se siente muy personal hoy."
+        }
+      }
+    ]
+  },
+  "listening_shadowing": {
+    "section_name": "Whose Desk",
+    "section_name_es": "De Quién",
+    "image": "/episodes/episode_4_scene.jpg",
+    "instructions": "Listen to the line. Then repeat it aloud before the timer ends.",
+    "instructions_es": "Escucha la línea. Luego repítela en voz alta antes de que termine el tiempo.",
+    "data": [
+      {
+        "item_id": "listen_001",
+        "character_id": "char_leo",
+        "character_display_name": "LEO",
+        "text": "This desk has his name, her note, and Ben asks how this desk becomes so important.",
+        "text_es": "Este escritorio tiene su nombre, su nota, y Ben pregunta cómo este escritorio se vuelve tan importante.",
+        "tts_text": "This desk has his name, her note, and Ben asks how this desk becomes so important.",
+        "tts_voice_id": "en_us_male_1",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "DESK",
+          "NAME",
+          "HIS",
+          "HER",
+          "HOW"
+        ]
+      },
+      {
+        "item_id": "listen_002",
+        "character_id": "char_ben",
+        "character_display_name": "BEN",
+        "text": "I see a desk with his name, her paper, and I ask how this is correct.",
+        "text_es": "Veo un escritorio con su nombre, su papel, y pregunto cómo esto es correcto.",
+        "tts_text": "I see a desk with his name, her paper, and I ask how this is correct.",
+        "tts_voice_id": "en_us_male_2",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "DESK",
+          "NAME",
+          "HIS",
+          "HER",
+          "HOW"
+        ]
+      },
+      {
+        "item_id": "listen_003",
+        "character_id": "char_mia",
+        "character_display_name": "MIA",
+        "text": "This desk is her desk, his name is wrong, and Leo asks how this happens.",
+        "text_es": "Este escritorio es su escritorio, su nombre es incorrecto, y Leo pregunta cómo pasa esto.",
+        "tts_text": "This desk is her desk, his name is wrong, and Leo asks how this happens.",
+        "tts_voice_id": "en_us_female_1",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "DESK",
+          "NAME",
+          "HIS",
+          "HER",
+          "HOW"
+        ]
+      },
+      {
+        "item_id": "listen_004",
+        "character_id": "char_dan",
+        "character_display_name": "DAN",
+        "text": "I protect my desk, check his name, see her look, and ask how this helps.",
+        "text_es": "Yo protejo mi escritorio, reviso su nombre, veo su mirada, y pregunto cómo ayuda esto.",
+        "tts_text": "I protect my desk, check his name, see her look, and ask how this helps.",
+        "tts_voice_id": "en_us_male_3",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "DESK",
+          "NAME",
+          "HIS",
+          "HER",
+          "HOW"
+        ]
+      },
+      {
+        "item_id": "listen_005",
+        "character_id": "char_sam",
+        "character_display_name": "SAM",
+        "text": "At the desk, his name is clear, her chair is ready, and I ask how.",
+        "text_es": "En el escritorio, su nombre es claro, su silla está lista, y yo pregunto cómo.",
+        "tts_text": "At the desk, his name is clear, her chair is ready, and I ask how.",
+        "tts_voice_id": "en_us_male_4",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 9,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "DESK",
+          "NAME",
+          "HIS",
+          "HER",
+          "HOW"
+        ]
+      },
+      {
+        "item_id": "listen_006",
+        "character_id": "char_ana",
+        "character_display_name": "ANA",
+        "text": "This desk shows his name, her rules, and everyone asks how this is fair.",
+        "text_es": "Este escritorio muestra su nombre, sus reglas, y todos preguntan cómo es justo esto.",
+        "tts_text": "This desk shows his name, her rules, and everyone asks how this is fair.",
+        "tts_voice_id": "en_us_female_2",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "DESK",
+          "NAME",
+          "HIS",
+          "HER",
+          "HOW"
+        ]
+      },
+      {
+        "item_id": "listen_007",
+        "character_id": "char_max",
+        "character_display_name": "MAX",
+        "text": "I stand by the desk, read his name, see her smile, and ask how.",
+        "text_es": "Yo estoy junto al escritorio, leo su nombre, veo su sonrisa, y pregunto cómo.",
+        "tts_text": "I stand by the desk, read his name, see her smile, and ask how.",
+        "tts_voice_id": "en_us_male_5",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 9,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "DESK",
+          "NAME",
+          "HIS",
+          "HER",
+          "HOW"
+        ]
+      },
+      {
+        "item_id": "listen_008",
+        "character_id": "char_ian",
+        "character_display_name": "IAN",
+        "text": "During the meeting, the desk has his name, her note, and I ask how.",
+        "text_es": "Durante la reunión, el escritorio tiene su nombre, su nota, y pregunto cómo.",
+        "tts_text": "During the meeting, the desk has his name, her note, and I ask how.",
+        "tts_voice_id": "en_us_male_2",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 9,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "DESK",
+          "NAME",
+          "HIS",
+          "HER",
+          "HOW"
+        ]
+      },
+      {
+        "item_id": "listen_009",
+        "character_id": "char_lina",
+        "character_display_name": "LINA",
+        "text": "I clean the desk, fix his name, move her things, and ask how.",
+        "text_es": "Yo limpio el escritorio, arreglo su nombre, muevo sus cosas, y pregunto cómo.",
+        "tts_text": "I clean the desk, fix his name, move her things, and ask how.",
+        "tts_voice_id": "en_us_female_3",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 9,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "DESK",
+          "NAME",
+          "HIS",
+          "HER",
+          "HOW"
+        ]
+      },
+      {
+        "item_id": "listen_010",
+        "character_id": "char_tom",
+        "character_display_name": "TOM",
+        "text": "HR sees the desk, checks his name, notes her concern, and asks how.",
+        "text_es": "Recursos humanos ve el escritorio, revisa su nombre, nota su preocupación, y pregunta cómo.",
+        "tts_text": "HR sees the desk, checks his name, notes her concern, and asks how.",
+        "tts_voice_id": "en_us_male_1",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 9,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "DESK",
+          "NAME",
+          "HIS",
+          "HER",
+          "HOW"
+        ]
+      }
+    ]
+  },
+  "scenes": {
+    "section_name": "Desk Drama",
+    "section_name_es": "Drama Escritorio",
+    "image": "/episodes/episode_4_scene.jpg",
+    "data": [
+      {
+        "scene_id": "scene_004_001",
+        "scene_number": 1,
+        "location": "Main office",
+        "location_es": "Oficina principal",
+        "scene_name": "Whose desk?",
+        "scene_name_es": "¿De quién es?",
+        "time": "Morning",
+        "time_es": "Mañana",
+        "description": "Leo proudly shows desks and explains whose desk is whose.",
+        "description_es": "Leo muestra los escritorios con orgullo y explica de quién es cada uno.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_boss",
+            "character_display_name": "LEO",
+            "text": "Welcome to the OFFICE. This is my OFFICE. It is also your OFFICE. But mostly it is my OFFICE.",
+            "translation_es": "Bienvenido a la oficina. Esta es mi oficina. También es tu oficina. Pero principalmente es mi oficina.",
+            "emotion": "proud_but_lying",
+            "notes": "Leo makes everything about himself.",
+            "notes_es": "Leo hace que todo sea sobre él.",
+            "highlighted_vocab": [
+              "office"
+            ],
+            "template_vars": [
+              "boss_name"
+            ]
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_boss",
+            "character_display_name": "LEO",
+            "text": "This is my DESK. It is strong. It is important. Like me.",
+            "translation_es": "Este es mi escritorio. Es fuerte. Es importante. Como yo.",
+            "emotion": "proud",
+            "notes": "Leo compares himself to furniture.",
+            "notes_es": "Leo se compara con un mueble.",
+            "highlighted_vocab": [
+              "desk"
+            ],
+            "template_vars": [
+              "boss_name"
+            ]
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_jim",
+            "character_display_name": "BEN",
+            "text": "Yes. The DESK is very impressive. A very professional DESK.",
+            "translation_es": "Sí. El escritorio es muy impresionante. Un escritorio muy profesional.",
+            "emotion": "sarcastic",
+            "notes": "Ben sounds serious but is joking.",
+            "notes_es": "Ben suena serio pero está bromeando.",
+            "highlighted_vocab": [
+              "desk"
+            ],
+            "template_vars": [
+              "jim_name"
+            ]
+          },
+          {
+            "line_id": 4,
+            "character_id": "char_jim",
+            "character_display_name": "BEN",
+            "text": "How is HIS DESK so clean?",
+            "translation_es": "¿Cómo es su escritorio tan limpio?",
+            "emotion": "sarcastic",
+            "notes": "Ben asks a fake serious question.",
+            "notes_es": "Ben hace una pregunta falsamente seria.",
+            "highlighted_vocab": [
+              "his",
+              "desk"
+            ],
+            "template_vars": [
+              "jim_name"
+            ]
+          },
+          {
+            "line_id": 5,
+            "character_id": "char_boss",
+            "character_display_name": "LEO",
+            "text": "Because I am the BOSS. The BOSS has a clean DESK.",
+            "translation_es": "Porque yo soy el jefe. El jefe tiene un escritorio limpio.",
+            "emotion": "confident",
+            "notes": "Leo states something obvious like a rule.",
+            "notes_es": "Leo dice algo obvio como si fuera una regla.",
+            "highlighted_vocab": [
+              "boss",
+              "desk"
+            ],
+            "template_vars": [
+              "boss_name"
+            ]
+          },
+          {
+            "line_id": 6,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "Which sentence is correct?",
+            "prompt_es": "¿Qué frase es correcta?",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "This is her desk of the boss.",
+                "translation_es": "Este es su escritorio del jefe.",
+                "points": 0,
+                "personality_impact": "friendly",
+                "vocab_used": [
+                  "desk",
+                  "her"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "This is HIS DESK.",
+                "translation_es": "Este es su escritorio.",
+                "points": 10,
+                "personality_impact": "neutral"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "scene_id": "scene_004_002",
+        "scene_number": 2,
+        "location": "Reception area",
+        "location_es": "Recepción",
+        "scene_name": "Her desk",
+        "scene_name_es": "Su escritorio",
+        "time": "Late morning",
+        "time_es": "Media mañana",
+        "description": "Mia explains her desk while Dan watches carefully.",
+        "description_es": "Mia explica su escritorio mientras Dan observa con atención.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_pam",
+            "character_display_name": "MIA",
+            "text": "This is HER DESK. This is my DESK. I like my DESK.",
+            "translation_es": "Este es su escritorio. Este es mi escritorio. Me gusta mi escritorio.",
+            "emotion": "calm",
+            "notes": "Mia is simple and polite.",
+            "notes_es": "Mia es simple y educada.",
+            "highlighted_vocab": [
+              "her",
+              "desk"
+            ],
+            "template_vars": [
+              "pam_name"
+            ]
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_pam",
+            "character_display_name": "MIA",
+            "text": "The OFFICE is loud today. It is normal.",
+            "translation_es": "La oficina está ruidosa hoy. Es normal.",
+            "emotion": "relaxed",
+            "notes": "She pretends chaos is normal.",
+            "notes_es": "Ella finge que el caos es normal.",
+            "highlighted_vocab": [
+              "office"
+            ],
+            "template_vars": [
+              "pam_name"
+            ]
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_dwight",
+            "character_display_name": "DAN",
+            "text": "I check HER DESK. It is correct. It is safe.",
+            "translation_es": "Yo reviso su escritorio. Es correcto. Es seguro.",
+            "emotion": "serious",
+            "notes": "Dan takes desk inspection seriously.",
+            "notes_es": "Dan se toma la inspección del escritorio muy en serio.",
+            "highlighted_vocab": [
+              "her",
+              "desk"
+            ]
+          },
+          {
+            "line_id": 4,
+            "character_id": "char_dwight",
+            "character_display_name": "DAN",
+            "text": "How is HER DESK so organized?",
+            "translation_es": "¿Cómo es su escritorio tan organizado?",
+            "emotion": "confused",
+            "notes": "Dan asks a dramatic question.",
+            "notes_es": "Dan hace una pregunta dramática.",
+            "highlighted_vocab": [
+              "her",
+              "desk"
+            ]
+          },
+          {
+            "line_id": 5,
+            "character_id": "char_pam",
+            "character_display_name": "MIA",
+            "text": "Because it is my DESK.",
+            "translation_es": "Porque es mi escritorio.",
+            "emotion": "smiling",
+            "notes": "Simple answer to a serious question.",
+            "notes_es": "Respuesta simple a una pregunta seria.",
+            "highlighted_vocab": [
+              "desk"
+            ]
+          },
+          {
+            "line_id": 6,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "Choose the correct option.",
+            "prompt_es": "Elige la opción correcta.",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "This is she desk.",
+                "translation_es": "Este es ella escritorio.",
+                "points": 0,
+                "personality_impact": "friendly",
+                "vocab_used": [
+                  "desk"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "This is HER DESK.",
+                "translation_es": "Este es su escritorio.",
+                "points": 10,
+                "personality_impact": "neutral"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "scene_id": "scene_004_003",
+        "scene_number": 3,
+        "location": "Boss office",
+        "location_es": "Oficina del jefe",
+        "scene_name": "How questions",
+        "scene_name_es": "Preguntas cómo",
+        "time": "Afternoon",
+        "time_es": "Tarde",
+        "description": "Ben asks questions while Leo explains everything.",
+        "description_es": "Ben hace preguntas mientras Leo explica todo.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_jim",
+            "character_display_name": "BEN",
+            "text": "How is HIS OFFICE so big?",
+            "translation_es": "¿Cómo es su oficina tan grande?",
+            "emotion": "sarcastic",
+            "notes": "Ben asks with fake curiosity.",
+            "notes_es": "Ben pregunta con curiosidad falsa.",
+            "highlighted_vocab": [
+              "his",
+              "office"
+            ],
+            "template_vars": [
+              "jim_name"
+            ]
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_boss",
+            "character_display_name": "LEO",
+            "text": "Because I am the BOSS. The BOSS needs space.",
+            "translation_es": "Porque yo soy el jefe. El jefe necesita espacio.",
+            "emotion": "confident",
+            "notes": "Leo answers like it is obvious.",
+            "notes_es": "Leo responde como si fuera obvio.",
+            "highlighted_vocab": [
+              "boss"
+            ]
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_boss",
+            "character_display_name": "LEO",
+            "text": "This is HIS OFFICE and HIS DESK.",
+            "translation_es": "Esta es su oficina y su escritorio.",
+            "emotion": "proud",
+            "notes": "Leo talks about himself in third person.",
+            "notes_es": "Leo habla de sí mismo en tercera persona.",
+            "highlighted_vocab": [
+              "his",
+              "office",
+              "desk"
+            ]
+          },
+          {
+            "line_id": 4,
+            "character_id": "char_jim",
+            "character_display_name": "BEN",
+            "text": "Yes. Everything is HIS.",
+            "translation_es": "Sí. Todo es suyo.",
+            "emotion": "sarcastic",
+            "notes": "Ben summarizes the situation.",
+            "notes_es": "Ben resume la situación.",
+            "highlighted_vocab": [
+              "his"
+            ]
+          },
+          {
+            "line_id": 5,
+            "character_id": "char_boss",
+            "character_display_name": "LEO",
+            "text": "Correct. This OFFICE is perfect.",
+            "translation_es": "Correcto. Esta oficina es perfecta.",
+            "emotion": "excited",
+            "notes": "Leo reuses a word from the previous episode.",
+            "notes_es": "Leo reutiliza una palabra del episodio anterior.",
+            "highlighted_vocab": [
+              "office"
+            ]
+          },
+          {
+            "line_id": 6,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "Which question is correct?",
+            "prompt_es": "¿Qué pregunta es correcta?",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "How his office is?",
+                "translation_es": "¿Cómo su oficina es?",
+                "points": 0,
+                "personality_impact": "friendly",
+                "vocab_used": [
+                  "office"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "How is HIS OFFICE?",
+                "translation_es": "¿Cómo es su oficina?",
+                "points": 10,
+                "personality_impact": "neutral"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "games": {
+    "section_name": "Whose Desk",
+    "section_name_es": "De Quién",
+    "image": "/episodes/episode_4_scene.jpg",
+    "data": [
+      {
+        "game_id": "ep4_game_01",
+        "game_type": "matching",
+        "title": "Match the Words!",
+        "title_es": "¡Empareja las Palabras!",
+        "instructions": "Match each English word with its Spanish meaning",
+        "instructions_es": "Empareja cada palabra en inglés con su significado en español",
+        "optional": true,
+        "unlocked_after_episode": true,
+        "time_limit_seconds": 90,
+        "xp_reward": 25,
+        "content": {
+          "items": [
+            {
+              "id": 1,
+              "left": "desk",
+              "right": "escritorio",
+              "image_url": "/vocab/desk.jpg"
+            },
+            {
+              "id": 2,
+              "left": "name",
+              "right": "nombre",
+              "image_url": "/vocab/name.jpg"
+            },
+            {
+              "id": 3,
+              "left": "his",
+              "right": "su (de él)",
+              "image_url": "/vocab/his.jpg"
+            },
+            {
+              "id": 4,
+              "left": "her",
+              "right": "su (de ella)",
+              "image_url": "/vocab/her.jpg"
+            },
+            {
+              "id": 5,
+              "left": "how",
+              "right": "cómo",
+              "image_url": "/vocab/how.jpg"
+            },
+            {
+              "id": 6,
+              "left": "Whose desk is this?",
+              "right": "¿De quién es este escritorio?",
+              "image_url": "/vocab/desk.jpg"
+            },
+            {
+              "id": 7,
+              "left": "This is his desk.",
+              "right": "Este es su escritorio.",
+              "image_url": "/vocab/his.jpg"
+            },
+            {
+              "id": 8,
+              "left": "How is this so important?",
+              "right": "¿Cómo es esto tan importante?",
+              "image_url": "/vocab/how.jpg"
+            }
+          ]
+        },
+        "settings": {
+          "shuffle": true,
+          "show_images": true
+        }
+      },
+      {
+        "game_id": "ep4_game_02",
+        "game_type": "fill_blank",
+        "title": "Complete the Sentences",
+        "title_es": "Completa las Oraciones",
+        "instructions": "Fill in the missing words from the episode",
+        "instructions_es": "Completa las palabras que faltan del episodio",
+        "optional": true,
+        "unlocked_after_episode": true,
+        "time_limit_seconds": 150,
+        "xp_reward": 35,
+        "content": {
+          "items": [
+            {
+              "id": 1,
+              "sentence": "This is _____ desk, says {boss_name}.",
+              "sentence_es": "Este es el escritorio _____, dice {boss_name}.",
+              "answer": "his",
+              "options": [
+                "his",
+                "her",
+                "how"
+              ],
+              "hint": "Use the possessive for a man.",
+              "hint_es": "Usa el posesivo para un hombre.",
+              "character": "{boss_name}"
+            },
+            {
+              "id": 2,
+              "sentence": "That is _____ name on the desk, says {pam_name}.",
+              "sentence_es": "Ese es el _____ nombre en el escritorio, dice {pam_name}.",
+              "answer": "her",
+              "options": [
+                "her",
+                "his",
+                "how"
+              ],
+              "hint": "Use the possessive for a woman.",
+              "hint_es": "Usa el posesivo para una mujer.",
+              "character": "{pam_name}"
+            },
+            {
+              "id": 3,
+              "sentence": "_____ is this desk so important, asks {jim_name}.",
+              "sentence_es": "_____ es este escritorio tan importante, pregunta {jim_name}.",
+              "answer": "How",
+              "options": [
+                "How",
+                "His",
+                "Name"
+              ],
+              "hint": "Use the question word.",
+              "hint_es": "Usa la palabra interrogativa.",
+              "character": "{jim_name}"
+            },
+            {
+              "id": 4,
+              "sentence": "The _____ on the desk is correct.",
+              "sentence_es": "El _____ en el escritorio es correcto.",
+              "answer": "name",
+              "options": [
+                "name",
+                "desk",
+                "how"
+              ],
+              "hint": "It tells who the desk belongs to.",
+              "hint_es": "Dice a quién pertenece el escritorio.",
+              "character": "{boss_name}"
+            },
+            {
+              "id": 5,
+              "sentence": "This _____ is clean today.",
+              "sentence_es": "Este _____ está limpio hoy.",
+              "answer": "desk",
+              "options": [
+                "desk",
+                "name",
+                "her"
+              ],
+              "hint": "It is in the office.",
+              "hint_es": "Está en la oficina.",
+              "character": "{pam_name}"
+            },
+            {
+              "id": 6,
+              "sentence": "That is _____ desk near the window.",
+              "sentence_es": "Ese es el escritorio _____ cerca de la ventana.",
+              "answer": "his",
+              "options": [
+                "his",
+                "her",
+                "how"
+              ],
+              "hint": "Use the possessive for a man.",
+              "hint_es": "Usa el posesivo para un hombre.",
+              "character": "{jim_name}"
+            },
+            {
+              "id": 7,
+              "sentence": "_____ is her name on this desk?",
+              "sentence_es": "_____ está su nombre en este escritorio?",
+              "answer": "How",
+              "options": [
+                "How",
+                "His",
+                "Desk"
+              ],
+              "hint": "Ask about the situation.",
+              "hint_es": "Pregunta sobre la situación.",
+              "character": "{jim_name}"
+            }
+          ]
+        }
+      },
+      {
+        "game_id": "ep4_game_03",
+        "game_type": "multiple_choice",
+        "title": "Episode Quiz",
+        "title_es": "Quiz del Episodio",
+        "instructions": "Answer questions about the episode",
+        "instructions_es": "Responde preguntas sobre el episodio",
+        "optional": true,
+        "unlocked_after_episode": true,
+        "time_limit_seconds": 180,
+        "xp_reward": 45,
+        "content": {
+          "items": [
+            {
+              "id": 1,
+              "question": "What does {boss_name} talk about before the meeting?",
+              "question_es": "¿De qué habla {boss_name} antes de la reunión?",
+              "options": [
+                "His desk and other desks",
+                "Lunch plans",
+                "The weather",
+                "A new printer"
+              ],
+              "options_es": [
+                "Su escritorio y otros escritorios",
+                "Planes de almuerzo",
+                "El clima",
+                "Una impresora nueva"
+              ],
+              "correct_answer": 0,
+              "explanation": "{boss_name} talks about his desk, her desk, and your desk.",
+              "explanation_es": "{boss_name} habla de su escritorio, su escritorio y tu escritorio."
+            },
+            {
+              "id": 2,
+              "question": "Who asks how the desk becomes so important?",
+              "question_es": "¿Quién pregunta cómo el escritorio se vuelve tan importante?",
+              "options": [
+                "{jim_name}",
+                "{pam_name}",
+                "{boss_name}",
+                "{company_name}"
+              ],
+              "options_es": [
+                "{jim_name}",
+                "{pam_name}",
+                "{boss_name}",
+                "{company_name}"
+              ],
+              "correct_answer": 0,
+              "explanation": "{jim_name} asks how the situation becomes personal.",
+              "explanation_es": "{jim_name} pregunta cómo la situación se vuelve personal."
+            },
+            {
+              "id": 3,
+              "question": "What is on the desk in the story?",
+              "question_es": "¿Qué hay en el escritorio en la historia?",
+              "options": [
+                "A name",
+                "Food",
+                "A phone",
+                "A plant"
+              ],
+              "options_es": [
+                "Un nombre",
+                "Comida",
+                "Un teléfono",
+                "Una planta"
+              ],
+              "correct_answer": 0,
+              "explanation": "The name shows whose desk it is.",
+              "explanation_es": "El nombre muestra de quién es el escritorio."
+            },
+            {
+              "id": 4,
+              "question": "Which possessive is used for Mia?",
+              "question_es": "¿Qué posesivo se usa para Mia?",
+              "options": [
+                "her",
+                "his",
+                "how",
+                "name"
+              ],
+              "options_es": [
+                "her",
+                "his",
+                "how",
+                "name"
+              ],
+              "correct_answer": 0,
+              "explanation": "Her is used for a woman.",
+              "explanation_es": "Her se usa para una mujer."
+            },
+            {
+              "id": 5,
+              "question": "What type of question word is practiced in this episode?",
+              "question_es": "¿Qué tipo de palabra interrogativa se practica en este episodio?",
+              "options": [
+                "How",
+                "When",
+                "Why",
+                "Where"
+              ],
+              "options_es": [
+                "How",
+                "When",
+                "Why",
+                "Where"
+              ],
+              "correct_answer": 0,
+              "explanation": "The episode practices how questions with be.",
+              "explanation_es": "El episodio practica preguntas con how y be."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "content_wrappers": {
+    "section_name": "Whose Desk",
+    "section_name_es": "De Quién",
+    "image": "/episodes/episode_4_scene.jpg",
+    "intro_text": {
+      "en": "Welcome to the office. This is a normal place with normal people. Very normal. Everyone has a DESK. Everyone talks about the DESK. Especially the boss.",
+      "es": "Bienvenido a la oficina. Este es un lugar normal con personas normales. Muy normal. Todos tienen un escritorio. Todos hablan del escritorio. Especialmente el jefe."
+    },
+    "transition": {
+      "en": "Great. Now you know the words. DESK, OFFICE, BOSS, HIS, HER. Now we use them in real life. Office life. Desk life.",
+      "es": "Genial. Ahora conoces las palabras. Escritorio, oficina, jefe, su, su. Ahora las usamos en la vida real. Vida de oficina. Vida de escritorios."
+    },
+    "conclusion": {
+      "en": "Good job. You learned how to talk about HIS desk and HER desk. You asked how things are. You survived the office. The boss is proud. He says he always is.",
+      "es": "Buen trabajo. Aprendiste a hablar de su escritorio y su escritorio. Preguntaste cómo son las cosas. Sobreviviste a la oficina. El jefe está orgulloso. Él dice que siempre lo está."
+    },
+    "reflection_prompt": {
+      "question_en": "Write one sentence using the word 'DESK' or 'OFFICE'.",
+      "question_es": "Escribe una oración usando la palabra 'escritorio' u 'oficina'.",
+      "type": "free_text",
+      "optional": true,
+      "max_length": 100,
+      "vocab_practice": [
+        "desk",
+        "office"
+      ]
+    }
+  },
+  "next_episode_preview": {
+    "section_name": "Yes or No",
+    "section_name_es": "Sí o No",
+    "image": "/episodes/episode_4_scene.jpg",
+    "preview_text_en": "Next time, Ben asks even more questions, {boss_name} answers yes or no, and the meeting becomes very confusing.",
+    "preview_text_es": "La próxima vez, Ben hace aún más preguntas, {boss_name} responde sí o no, y la reunión se vuelve muy confusa.",
+    "teaser_image": "/previews/ep_005.jpg"
   }
 }

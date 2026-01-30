@@ -17,6 +17,8 @@ import '../../widgets/story/scene_transition.dart';
 import '../../widgets/vocabulary/vocabulary_definition_popup.dart';
 import '../review_words/review_words_screen.dart';
 import 'story_summary_screen.dart';
+import '../../../core/utils/navigation_utils.dart';
+import '../../providers/tts_provider.dart';
 
 /// Pantalla principal de escenas del episodio
 /// Muestra los diálogos secuencialmente con personajes
@@ -100,6 +102,14 @@ class _MainStoryScreenState extends ConsumerState<MainStoryScreen>
     _setupAnimations();
   }
 
+  @override
+  void dispose() {
+    ref.read(ttsServiceProvider).stop();
+    _animationController.dispose();
+    _scrollController.dispose();
+    super.dispose();
+  }
+
   void _setupAnimations() {
     _animationController = AnimationController(
       vsync: this,
@@ -120,13 +130,6 @@ class _MainStoryScreenState extends ConsumerState<MainStoryScreen>
     ));
 
     _animationController.forward();
-  }
-
-  @override
-  void dispose() {
-    _animationController.dispose();
-    _scrollController.dispose();
-    super.dispose();
   }
 
   Scene get _currentScene => widget.episode.scenes.data[_currentSceneIndex];
@@ -406,7 +409,10 @@ class _MainStoryScreenState extends ConsumerState<MainStoryScreen>
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.close, color: AppColors.textPrimary),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () {
+            ref.read(ttsServiceProvider).stop();
+            NavigationUtils.closeToHome(context);
+          },
         ),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -509,6 +515,7 @@ class _MainStoryScreenState extends ConsumerState<MainStoryScreen>
                           child: CharacterDialogueBubble(
                             dialogue: dialogue,
                             episodeCharacters: widget.episode.characters.appearingInEpisode,
+                            sceneNumber: _currentScene.sceneNumber,
                             onVocabTap: _showVocabularyDefinition,
                             avatarOnRight: side == _SpeakerSide.rightAvatarLeftBubble,
                             bubbleAlignRight: side == _SpeakerSide.leftAvatarRightBubble,
@@ -527,6 +534,7 @@ class _MainStoryScreenState extends ConsumerState<MainStoryScreen>
                               child: CharacterDialogueBubble(
                                 dialogue: _currentDialogue,
                                 episodeCharacters: widget.episode.characters.appearingInEpisode,
+                                sceneNumber: _currentScene.sceneNumber,
                                 onVocabTap: _showVocabularyDefinition,
                                 avatarOnRight:
                                     _speakerSide(_currentDialogue.characterId) ==

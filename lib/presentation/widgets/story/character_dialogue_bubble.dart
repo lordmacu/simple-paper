@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../../core/utils/avatar_asset_resolver.dart';
 import '../../../domain/models/story/dialogue.dart';
 import '../../../domain/models/episode/character.dart';
 import '../../providers/template_variable_provider.dart';
@@ -14,11 +15,13 @@ class CharacterDialogueBubble extends ConsumerStatefulWidget {
   final Function(String)? onVocabTap;
   final bool avatarOnRight;
   final bool bubbleAlignRight;
+  final int sceneNumber;
 
   const CharacterDialogueBubble({
     Key? key,
     required this.dialogue,
     required this.episodeCharacters,
+    required this.sceneNumber,
     this.onVocabTap,
     this.avatarOnRight = false,
     this.bubbleAlignRight = false,
@@ -32,13 +35,17 @@ class CharacterDialogueBubble extends ConsumerStatefulWidget {
 class _CharacterDialogueBubbleState
     extends ConsumerState<CharacterDialogueBubble> {
   bool _showingTranslation = false;
+  String _avatarAsset = '';
+  String? _avatarCharacterKey;
+  bool _isAvatarLoading = false;
 
   /// Obtiene el personaje por su ID
   Character? _getCharacter() {
     if (widget.dialogue.characterId == null) return null;
     try {
+      final target = _normalizeId(widget.dialogue.characterId ?? '');
       return widget.episodeCharacters.firstWhere(
-        (char) => char.characterId == widget.dialogue.characterId,
+        (char) => _normalizeId(char.characterId) == target,
       );
     } catch (e) {
       return null;
@@ -57,6 +64,113 @@ class _CharacterDialogueBubbleState
     if (name.contains('STANLEY')) return Icons.work;
     if (name.contains('RYAN')) return Icons.laptop;
     return Icons.person;
+  }
+
+  Future<void> _loadAvatar() async {
+    final character = _getCharacter();
+    final template = ref.read(templateVariableServiceProvider);
+    final fallbackName = template.replaceVariables(
+      widget.dialogue.characterDisplayName ?? character?.defaultName ?? '',
+    );
+    final avatarUrl = character?.avatarUrl ?? '';
+    final characterKey = _normalizeCharacterKey(
+      widget.dialogue.characterId ?? '',
+      avatarUrl,
+    );
+    if (characterKey.isEmpty || _avatarCharacterKey == characterKey) return;
+    final cacheKey = 'scene_${widget.sceneNumber}_character_$characterKey';
+    final cached = AvatarAssetResolver.getCached(cacheKey);
+    if (cached != null && cached.isNotEmpty) {
+      setState(() {
+        _avatarCharacterKey = characterKey;
+        _avatarAsset = cached;
+        _isAvatarLoading = false;
+      });
+      return;
+    }
+    if (avatarUrl.isNotEmpty && mounted) {
+      setState(() {
+        _isAvatarLoading = true;
+      });
+    }
+    final resolved = await AvatarAssetResolver.resolve(
+      avatarUrl: avatarUrl,
+      fallbackName: fallbackName,
+      cacheKey: cacheKey,
+    );
+    if (!mounted) return;
+    if (resolved.isNotEmpty) {
+      await precacheImage(AssetImage(resolved), context);
+      if (!mounted) return;
+      setState(() {
+        _avatarCharacterKey = characterKey;
+        _avatarAsset = resolved;
+        _isAvatarLoading = false;
+      });
+      return;
+    }
+    setState(() {
+      _avatarCharacterKey = characterKey;
+      _isAvatarLoading = false;
+    });
+  }
+
+  Widget _buildAvatar(String displayName, {required bool hasAvatarHint}) {
+    if (_avatarAsset.isNotEmpty) {
+      debugPrint('DIALOGUE_AVATAR render asset=$_avatarAsset');
+    }
+          debugPrint('DIALOGUE_AVATAR render $displayName asset=$_avatarAsset');
+
+    final child = _avatarAsset.isNotEmpty
+        ? ClipOval(
+            key: ValueKey<String>(_avatarAsset),
+            child: SizedBox(
+              width: 48,
+              height: 48,
+              child: Image.asset(
+                _avatarAsset,
+                fit: BoxFit.cover,
+                gaplessPlayback: true,
+              ),
+            ),
+          )
+        : (_isAvatarLoading || hasAvatarHint
+            ? const SizedBox(
+                key: ValueKey<String>('avatar_placeholder'),
+                width: 48,
+                height: 48,
+              )
+            : Container(
+            key: ValueKey<String>('icon_$displayName'),
+            width: 48,
+            height: 48,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: LinearGradient(
+                colors: [
+                  AppColors.primaryGreen.withOpacity(0.3),
+                  AppColors.secondaryBlue.withOpacity(0.3),
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+            ),
+            child: Icon(
+              _getCharacterIcon(displayName),
+              color: AppColors.textPrimary,
+              size: 24,
+            ),
+          ));
+
+    return AnimatedSwitcher(
+      duration: const Duration(milliseconds: 260),
+      switchInCurve: Curves.easeOut,
+      switchOutCurve: Curves.easeIn,
+      transitionBuilder: (child, animation) {
+        return FadeTransition(opacity: animation, child: child);
+      },
+      child: child,
+    );
   }
 
   /// Construye el texto con palabras de vocabulario resaltadas
@@ -172,6 +286,34 @@ class _CharacterDialogueBubbleState
   }
 
   @override
+  void initState() {
+    super.initState();
+    _loadAvatar();
+  }
+
+  @override
+  void didUpdateWidget(covariant CharacterDialogueBubble oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.dialogue.characterId != widget.dialogue.characterId) {
+      _loadAvatar();
+    }
+  }
+
+  String _normalizeCharacterKey(String value, String fallback) {
+    final raw = value.isNotEmpty ? value : fallback;
+    return _normalizeId(raw);
+  }
+
+  String _normalizeId(String value) {
+    var normalized = value.trim().toLowerCase();
+    if (normalized.startsWith('char_')) {
+      normalized = normalized.substring('char_'.length);
+    }
+    normalized = normalized.replaceAll(RegExp(r'[^a-z0-9_]'), '');
+    return normalized;
+  }
+
+  @override
   Widget build(BuildContext context) {
     final character = _getCharacter();
     final displayNameRaw =
@@ -198,25 +340,9 @@ class _CharacterDialogueBubbleState
       children: [
         if (!widget.avatarOnRight) ...[
           // Avatar del personaje (izquierda)
-          Container(
-            width: 48,
-            height: 48,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              gradient: LinearGradient(
-                colors: [
-                  AppColors.primaryGreen.withOpacity(0.3),
-                  AppColors.secondaryBlue.withOpacity(0.3),
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-            ),
-            child: Icon(
-              _getCharacterIcon(displayName),
-              color: AppColors.textPrimary,
-              size: 24,
-            ),
+          _buildAvatar(
+            displayName,
+            hasAvatarHint: (character?.avatarUrl ?? '').isNotEmpty,
           ),
           const SizedBox(width: 12),
         ],
@@ -359,25 +485,9 @@ class _CharacterDialogueBubbleState
         if (widget.avatarOnRight) ...[
           const SizedBox(width: 12),
           // Avatar del personaje (derecha)
-          Container(
-            width: 48,
-            height: 48,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              gradient: LinearGradient(
-                colors: [
-                  AppColors.primaryGreen.withOpacity(0.3),
-                  AppColors.secondaryBlue.withOpacity(0.3),
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-            ),
-            child: Icon(
-              _getCharacterIcon(displayName),
-              color: AppColors.textPrimary,
-              size: 24,
-            ),
+          _buildAvatar(
+            displayName,
+            hasAvatarHint: (character?.avatarUrl ?? '').isNotEmpty,
           ),
         ],
       ],

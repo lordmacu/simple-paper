@@ -31,14 +31,12 @@ class _CitySelectionScreenState extends ConsumerState<CitySelectionScreen> {
   @override
   void initState() {
     super.initState();
-    final service = ref.read(templateVariableServiceProvider);
-    _selected = service.getVariable('city');
+    _selected = ref.read(cityProvider);
   }
 
   @override
   Widget build(BuildContext context) {
-    final service = ref.watch(templateVariableServiceProvider);
-    final company = service.getVariable('company_name');
+    final company = ref.watch(companyNameProvider);
     final preview = '$company ${_selected ?? ''}';
 
     return Scaffold(

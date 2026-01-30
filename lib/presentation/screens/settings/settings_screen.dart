@@ -19,6 +19,7 @@ class SettingsScreen extends ConsumerStatefulWidget {
 class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   late final TextEditingController _nameController;
   String? _error;
+  double _ttsRate = 0.35;
 
   @override
   void initState() {
@@ -26,6 +27,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     final current =
         ref.read(templateVariableServiceProvider).getVariable('player_name');
     _nameController = TextEditingController(text: current);
+    Future.microtask(_loadTtsRate);
   }
 
   @override
@@ -45,13 +47,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         backgroundColor: Colors.white,
         elevation: 0,
         iconTheme: const IconThemeData(color: AppColors.textPrimary),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.refresh, color: AppColors.textSecondary),
-            tooltip: 'Reset a valores por defecto',
-            onPressed: () => _showResetDialog(context, service),
-          ),
-        ],
+        actions: const [],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -95,6 +91,50 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               label: const Text(
                 'Guardar',
                 style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            const SizedBox(height: 24),
+            const Text(
+              'Velocidad de voz (TTS)',
+              style: TextStyle(
+                fontWeight: FontWeight.w800,
+                fontSize: 18,
+                color: AppColors.textPrimary,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Container(
+              padding: const EdgeInsets.all(14),
+              decoration: BoxDecoration(
+                color: AppColors.cardBackground,
+                borderRadius: BorderRadius.circular(14),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Velocidad: ${(_ttsRate * 100).round()}%',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w700,
+                      color: AppColors.textPrimary,
+                    ),
+                  ),
+                  Slider(
+                    value: _ttsRate,
+                    min: 0.2,
+                    max: 0.8,
+                    divisions: 6,
+                    label: (_ttsRate * 100).round().toString(),
+                    onChanged: (value) async {
+                      setState(() => _ttsRate = value);
+                      await ref.read(setTtsRateProvider)(value);
+                    },
+                  ),
+                  const Text(
+                    'Más bajo = más lento',
+                    style: TextStyle(color: AppColors.textSecondary),
+                  ),
+                ],
               ),
             ),
             const SizedBox(height: 24),
@@ -143,30 +183,6 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               );
             }),
             const SizedBox(height: 24),
-            const Text(
-              'Reset rápido',
-              style: TextStyle(
-                fontWeight: FontWeight.w800,
-                fontSize: 18,
-                color: AppColors.textPrimary,
-              ),
-            ),
-            const SizedBox(height: 8),
-            ElevatedButton.icon(
-              icon: const Icon(Icons.restore),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.secondaryBlue,
-                minimumSize: const Size(double.infinity, 48),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14),
-                ),
-              ),
-              onPressed: () => _resetAll(service),
-              label: const Text(
-                'Resetear personalización',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ),
           ],
         ),
       ),
@@ -192,52 +208,25 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Nombre actualizado')),
       );
-      Navigator.of(context).pop();
     }
   }
 
-  Future<void> _resetAll(TemplateVariableService service) async {
-    await service.resetToDefaults();
-    ref.read(playerNameProvider.notifier).state =
-        service.getVariable('player_name');
-    final repo = ref.read(personalizationRepositoryProvider);
-    await repo.saveVariables(service.getAllVariables());
-    if (mounted) {
-      setState(() {
-        _nameController.text = service.getVariable('player_name');
-      });
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Personalización reseteada')),
-      );
+  Future<void> _loadTtsRate() async {
+    try {
+      final repo = ref.read(personalizationRepositoryProvider);
+      final saved = await repo.loadVariables();
+      final value = saved['tts_rate'];
+      if (value == null) return;
+      final parsed = double.tryParse(value);
+      if (parsed == null) return;
+      if (!mounted) return;
+      setState(() => _ttsRate = parsed);
+    } catch (_) {
+      // ignore
     }
   }
 
-  void _showResetDialog(BuildContext context, TemplateVariableService service) {
-    showDialog<void>(
-      context: context,
-      builder: (_) => AlertDialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        title: const Text('Resetear personalización'),
-        content: const Text(
-          'Se restaurarán nombre, ciudad, compañía, tipo de oficina y renombres de personajes a los valores por defecto.',
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Cancelar'),
-          ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(backgroundColor: AppColors.errorRed),
-            onPressed: () async {
-              Navigator.pop(context);
-              await _resetAll(service);
-            },
-            child: const Text('Resetear'),
-          ),
-        ],
-      ),
-    );
-  }
+  // Reset removido por requerimiento
 }
 
 class _CityCard extends ConsumerWidget {
@@ -246,9 +235,8 @@ class _CityCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final service = ref.watch(templateVariableServiceProvider);
-    final city = service.getVariable('city');
-    final company = service.getVariable('company_name');
+    final city = ref.watch(cityProvider);
+    final company = ref.watch(companyNameProvider);
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(14),
@@ -299,10 +287,9 @@ class _OfficeCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final service = ref.watch(templateVariableServiceProvider);
-    final company = service.getVariable('company_name');
-    final type = service.getVariable('office_type');
-    final city = service.getVariable('city');
+    final company = ref.watch(companyNameProvider);
+    final type = ref.watch(officeTypeProvider);
+    final city = ref.watch(cityProvider);
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(14),

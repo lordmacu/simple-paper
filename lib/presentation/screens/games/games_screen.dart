@@ -4,6 +4,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/utils/section_progress.dart';
+import '../../../data/sources/content_db.dart';
 import '../../../domain/models/episode/episode.dart';
 import '../../../domain/models/game/game.dart';
 import '../../../domain/models/game/matching_game.dart';
@@ -108,8 +109,12 @@ class _GamesScreenState extends ConsumerState<GamesScreen> {
       return;
     }
     final completed = await repository.getCompletedSections(episodeNumber);
+    final hasInterview = await ContentDb().hasInterviewForEpisode(episodeNumber);
     final required =
         SectionProgressIds.buildOrderedIds(widget.episode).toSet();
+    if (hasInterview) {
+      required.add(SectionProgressIds.interview);
+    }
     final missing = required.difference(completed);
     final done = required.intersection(completed).toList()..sort();
     final total = required.length;

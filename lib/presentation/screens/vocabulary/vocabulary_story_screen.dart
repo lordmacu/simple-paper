@@ -14,7 +14,14 @@ import '../games/games_screen.dart';
 import '../../providers/progress_providers.dart';
 import '../../providers/template_variable_provider.dart';
 import '../../providers/tts_provider.dart';
+import '../../providers/personalization_providers.dart';
 import '../listening_shadowing/listening_shadowing_screen.dart';
+import '../mini_story/mini_story_screen.dart';
+import '../../../data/sources/content_db.dart';
+import '../interview/interview_parser.dart';
+import '../interview/character_interview_screen.dart';
+import '../interview/interview_summary_screen.dart';
+import '../../../core/utils/navigation_utils.dart';
 
 /// Pantalla de Vocabulary Story
 /// Muestra la introducción de vocabulario del episodio con segmentos interactivos
@@ -59,9 +66,14 @@ class _VocabularyStoryScreenState
 
   @override
   void dispose() {
+    ref.read(ttsServiceProvider).stop();
     _animationController.dispose();
     _pageController.dispose();
     super.dispose();
+  }
+
+  void _stopTtsAndClose() {
+    ref.read(ttsServiceProvider).stop();
   }
 
   void _nextSegment() {
@@ -98,6 +110,21 @@ class _VocabularyStoryScreenState
       episodeNumber: widget.episode.episodeMetadata.episodeNumber,
       sectionId: SectionProgressIds.vocab,
     );
+    _openMiniStoryOrNext();
+  }
+
+  void _openMiniStoryOrNext() {
+    final miniStory = widget.episode.miniStory;
+    if (miniStory != null && miniStory.paragraphs.isNotEmpty) {
+      Navigator.of(context, rootNavigator: true)
+          .push(
+            MaterialPageRoute(
+              builder: (_) => MiniStoryScreen(episode: widget.episode),
+            ),
+          )
+          .then((_) => _openListeningShadowingOrTransition());
+      return;
+    }
     _openListeningShadowingOrTransition();
   }
 
@@ -109,8 +136,14 @@ class _VocabularyStoryScreenState
           builder: (_) => ListeningShadowingScreen(
             episode: widget.episode,
             onComplete: () {
-              Navigator.pop(context);
-              _openTransitionScreen();
+              final navigator = Navigator.of(context, rootNavigator: true);
+              if (navigator.canPop()) {
+                navigator.pop();
+              }
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                if (!mounted) return;
+                _openTransitionScreen();
+              });
             },
           ),
         ),
@@ -131,8 +164,14 @@ class _VocabularyStoryScreenState
           transitionText: transitionText,
           episode: widget.episode,
           onContinue: () {
-            Navigator.pop(context);
-            _navigateToMainStory();
+            final navigator = Navigator.of(context, rootNavigator: true);
+            if (navigator.canPop()) {
+              navigator.pop();
+            }
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              if (!mounted) return;
+              _navigateToMainStory();
+            });
           },
         ),
       ),
@@ -145,13 +184,213 @@ class _VocabularyStoryScreenState
         builder: (context) => MainStoryScreen(
           episode: widget.episode,
           onComplete: () {
-            // Cerrar MainStoryScreen y navegar a GamesScreen
-            Navigator.pop(context);
-            _navigateToGames();
+            _handleStoryComplete();
           },
         ),
       ),
     );
+  }
+
+  Future<void> _handleStoryComplete() async {
+    debugPrint(
+      'INTERVIEW_FLOW story_complete episode=${widget.episode.episodeMetadata.episodeNumber}',
+    );
+    final navigator = Navigator.of(context, rootNavigator: true);
+    if (navigator.canPop()) {
+      navigator.pop();
+    }
+    await Future.delayed(Duration.zero);
+    await _showPendingInterviewBeforeGames();
+    if (!mounted) return;
+    _navigateToGames();
+  }
+
+  Future<void> _showPendingInterviewBeforeGames() async {
+    final progressRepo = ref.read(progressRepositoryProvider);
+    final episodeNumber = widget.episode.episodeMetadata.episodeNumber;
+    final level = widget.episode.episodeMetadata.internalLevel;
+    final db = ContentDb();
+    final dbEntries = await db.getInterviewEntries(episodeNumber);
+    debugPrint(
+      'INTERVIEW_FLOW db_entries episode=$episodeNumber entries=${dbEntries.map((e) => '${e.characterId}:${e.interviewId}').toList()}',
+    );
+    final candidates = [...widget.episode.characters.appearingInEpisode];
+    candidates.sort(
+      (a, b) => (b.firstAppearance ? 1 : 0) - (a.firstAppearance ? 1 : 0),
+    );
+
+    debugPrint(
+      'INTERVIEW_FLOW before_games episode=$episodeNumber candidates=${candidates.map((c) => c.characterId).toList()}',
+    );
+
+    final entries = dbEntries.isNotEmpty
+        ? dbEntries.where((e) => _matchesLevel(e.interviewId, level)).toList()
+        : candidates.map((c) {
+            return InterviewDbEntry(
+              episodeNumber: episodeNumber,
+              characterId: c.characterId,
+              interviewId: 'default',
+              json: '',
+            );
+          }).toList()
+      ..shuffle(Random());
+
+    for (final entry in entries) {
+      final id = entry.characterId;
+      final interviewId = entry.interviewId;
+      final completed = await progressRepo.isInterviewCompleted(
+        level: level,
+        episodeNumber: episodeNumber,
+        characterId: id,
+        interviewId: interviewId,
+      );
+      debugPrint(
+        'INTERVIEW_FLOW check episode=$episodeNumber characterId=$id interviewId=$interviewId completed=$completed',
+      );
+      if (completed) continue;
+
+      final fallbackName = _resolveCharacterName(id, candidates);
+      final interview = await _loadCharacterInterview(
+        episodeNumber: episodeNumber,
+        characterId: id,
+        interviewId: interviewId,
+        characterName: fallbackName,
+      );
+      debugPrint(
+        'INTERVIEW_FLOW loaded episode=$episodeNumber characterId=$id interviewId=$interviewId found=${interview != null}',
+      );
+      if (!mounted) return;
+      if (interview == null) continue;
+
+      final result = await Navigator.push<Map<String, dynamic>?>(
+        context,
+        MaterialPageRoute(
+          builder: (_) => CharacterInterviewScreen(
+            interview: interview,
+            onComplete: (correct, total, wrongWords) {
+              Navigator.pop<Map<String, dynamic>?>(context, {
+                'correct': correct,
+                'total': total,
+                'wrongWords': wrongWords,
+              });
+            },
+          ),
+        ),
+      );
+
+      if (!mounted) return;
+      if (result != null) {
+        if (result['exitToHome'] == true) {
+          Navigator.of(context, rootNavigator: true)
+              .popUntil((route) => route.isFirst);
+          return;
+        }
+        final correct = result['correct'] ?? 0;
+        final total = result['total'] ?? interview.questions.length;
+        final wrongWords = (result['wrongWords'] as List<dynamic>?)
+                ?.whereType<String>()
+                .toList() ??
+            const <String>[];
+        if (correct < total) {
+          final reviewWords = wrongWords
+              .map((e) => e.trim().toLowerCase())
+              .where((e) => e.isNotEmpty)
+              .toList();
+          if (reviewWords.isNotEmpty) {
+            await ref.read(addReviewWordsProvider)(
+              words: reviewWords,
+              level: level,
+              episodeNumber: episodeNumber,
+            );
+          }
+        }
+        await progressRepo.markInterviewCompleted(
+          level: level,
+          episodeNumber: episodeNumber,
+          characterId: id,
+          interviewId: interviewId,
+        );
+        await ref.read(markSectionCompletedProvider)(
+          episodeNumber: episodeNumber,
+          sectionId: SectionProgressIds.interview,
+        );
+
+        await Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => InterviewSummaryScreen(
+              correct: correct,
+              total: total,
+              grammarPoints: interview.grammarPoints,
+              vocabularyUsed: interview.vocabularyUsed,
+              onContinue: () => Navigator.pop(context),
+            ),
+          ),
+        );
+      }
+
+      break;
+    }
+  }
+
+  String _resolveCharacterName(
+    String characterId,
+    List<dynamic> candidates,
+  ) {
+    var normalized = characterId.trim().toLowerCase();
+    if (normalized.startsWith('char_')) {
+      normalized = normalized.substring('char_'.length);
+    }
+    for (final character in candidates) {
+      var candidateId =
+          character.characterId.toString().trim().toLowerCase();
+      if (candidateId.startsWith('char_')) {
+        candidateId = candidateId.substring('char_'.length);
+      }
+      if (candidateId == normalized) {
+        return character.defaultName;
+      }
+    }
+    return normalized;
+  }
+
+  bool _matchesLevel(String interviewId, String level) {
+    if (interviewId.isEmpty || interviewId == 'default') return true;
+    final needle = 'episode_${level.toLowerCase()}_';
+    return interviewId.toLowerCase().contains(needle);
+  }
+
+  Future<CharacterInterview?> _loadCharacterInterview({
+    required int episodeNumber,
+    required String characterId,
+    required String interviewId,
+    required String characterName,
+  }) async {
+    var fileName = characterId.toLowerCase().replaceAll(' ', '_');
+    if (fileName.startsWith('char_')) {
+      fileName = fileName.substring('char_'.length);
+    }
+    try {
+      final db = ContentDb();
+      final dbJson = await db.getInterviewJson(
+        episodeNumber: episodeNumber,
+        characterId: fileName,
+        interviewId: interviewId,
+      );
+      debugPrint(
+        'INTERVIEW_FLOW load_db episode=$episodeNumber character=$fileName interviewId=$interviewId found=${dbJson != null}',
+      );
+      if (dbJson != null) {
+        return InterviewParser.parse(
+          dbJson,
+          episodeNumber: episodeNumber,
+          fallbackName: characterName,
+        );
+      }
+      return null;
+    } catch (_) {
+      return null;
+    }
   }
 
   void _navigateToGames() async {
@@ -218,8 +457,11 @@ class _VocabularyStoryScreenState
 
   @override
   Widget build(BuildContext context) {
+    // Esperar a que las variables personalizadas estén cargadas
+    ref.watch(personalizationInitProvider);
+
     final vocabularyStory = widget.episode.vocabularyStory;
-    
+
     // Si no hay vocabulary story, mostrar error
     if (vocabularyStory == null) {
       return Scaffold(
@@ -234,15 +476,24 @@ class _VocabularyStoryScreenState
     
     final totalSegments = _shuffledSegments.length;
 
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
+    return PopScope(
+      onPopInvokedWithResult: (didPop, result) {
+        if (didPop) {
+          _stopTtsAndClose();
+        }
+      },
+      child: Scaffold(
         backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.close, color: AppColors.textPrimary),
-          onPressed: () => Navigator.pop(context),
-        ),
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          leading: IconButton(
+            icon: const Icon(Icons.close, color: AppColors.textPrimary),
+            onPressed: () {
+              _stopTtsAndClose();
+              NavigationUtils.closeToHome(context);
+            },
+          ),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -398,6 +649,7 @@ class _VocabularyStoryScreenState
           ],
         ),
       ),
+    ),
     );
   }
 }

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../../core/utils/avatar_asset_resolver.dart';
 import '../../providers/template_variable_provider.dart';
+import '../../widgets/common/translation_overlay.dart';
+import '../../providers/tts_provider.dart';
+import '../../widgets/common/duolingo_button.dart';
 
 /// Datos mínimos para renderizar la entrevista del personaje.
 class CharacterInterview {
@@ -10,6 +14,7 @@ class CharacterInterview {
   final int episodeNumber;
   final String introEn;
   final String introEs;
+  final String characterGender;
   final List<String> grammarPoints;
   final List<String> vocabularyUsed;
   final List<InterviewQuestion> questions;
@@ -20,6 +25,7 @@ class CharacterInterview {
     required this.episodeNumber,
     required this.introEn,
     required this.introEs,
+    required this.characterGender,
     this.grammarPoints = const [],
     this.vocabularyUsed = const [],
     required this.questions,
@@ -65,7 +71,7 @@ class InterviewOption {
 /// Pantalla principal de entrevista de personaje.
 class CharacterInterviewScreen extends ConsumerStatefulWidget {
   final CharacterInterview interview;
-  final void Function(int correct, int total) onComplete;
+  final void Function(int correct, int total, List<String> wrongWords) onComplete;
 
   const CharacterInterviewScreen({
     Key? key,
@@ -84,6 +90,7 @@ class _CharacterInterviewScreenState
   int _correct = 0;
   int _selectedIndex = -1;
   bool _showFeedback = false;
+  final Set<String> _wrongWords = {};
   late final PageController _pageController;
   double _progressAnim = 0;
 
@@ -98,6 +105,7 @@ class _CharacterInterviewScreenState
 
   @override
   void dispose() {
+    ref.read(ttsServiceProvider).stop();
     _pageController.dispose();
     super.dispose();
   }
@@ -110,13 +118,20 @@ class _CharacterInterviewScreenState
       _showFeedback = true;
       if (option.isCorrect) _correct++;
     });
+    if (!option.isCorrect) {
+      _trackWrongWords(option);
+    }
     _animateProgress();
   }
 
   void _next() {
     final isLast = _currentIndex == widget.interview.questions.length - 1;
     if (isLast) {
-      widget.onComplete(_correct, widget.interview.questions.length);
+      widget.onComplete(
+        _correct,
+        widget.interview.questions.length,
+        _wrongWords.toList()..sort(),
+      );
       return;
     }
     setState(() {
@@ -141,12 +156,50 @@ class _CharacterInterviewScreenState
     });
   }
 
+  void _trackWrongWords(InterviewOption option) {
+    if (widget.interview.vocabularyUsed.isEmpty) return;
+    final vocabSet = widget.interview.vocabularyUsed
+        .map((e) => e.trim().toLowerCase())
+        .where((e) => e.isNotEmpty)
+        .toSet();
+    if (vocabSet.isEmpty) return;
+    _addWordsFromText(_question.questionEn, vocabSet);
+    _addWordsFromText(option.textEn, vocabSet);
+  }
+
+  void _addWordsFromText(String text, Set<String> vocabSet) {
+    final normalized = text
+        .toLowerCase()
+        .replaceAll(RegExp(r'[^a-z\\s]'), ' ')
+        .split(RegExp(r'\\s+'))
+        .where((w) => w.isNotEmpty)
+        .toList();
+    for (final word in normalized) {
+      if (vocabSet.contains(word)) {
+        _wrongWords.add(word);
+      }
+    }
+  }
+
   String _applyVars(String text) {
     return ref.read(templateVariableServiceProvider).replaceVariables(text);
   }
 
   @override
   Widget build(BuildContext context) {
+    void closeToHome() {
+      ref.read(ttsServiceProvider).stop();
+      Navigator.of(context).pop(<String, dynamic>{'exitToHome': true});
+    }
+
+    void speakText(String text) {
+      final gender = widget.interview.characterGender;
+      ref.read(ttsServiceProvider).speak(
+            text,
+            voiceGender: gender.isEmpty ? null : gender,
+          );
+    }
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -154,8 +207,18 @@ class _CharacterInterviewScreenState
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: AppColors.textPrimary),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () {
+            ref.read(ttsServiceProvider).stop();
+            Navigator.pop(context);
+          },
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.close, color: AppColors.textPrimary),
+            onPressed: closeToHome,
+            tooltip: 'Cerrar',
+          ),
+        ],
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -235,6 +298,7 @@ class _CharacterInterviewScreenState
               avatarUrl: widget.interview.avatarUrl,
               introEn: _applyVars(widget.interview.introEn),
               introEs: _applyVars(widget.interview.introEs),
+              onSpeak: speakText,
             ),
           ),
           Expanded(
@@ -249,31 +313,18 @@ class _CharacterInterviewScreenState
                 showFeedback: index == _currentIndex && _showFeedback,
                 onTap: (i) => _select(i),
                 apply: _applyVars,
+                onSpeak: speakText,
               ),
             ),
           ),
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: _showFeedback
-                      ? AppColors.primaryGreen
-                      : AppColors.cardBackground,
-                  foregroundColor:
-                      _showFeedback ? Colors.white : AppColors.textSecondary,
-                  padding: const EdgeInsets.symmetric(vertical: 14),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(14),
-                  ),
-                ),
+              child: DuolingoButton(
+                text: _currentIndex == widget.interview.questions.length - 1
+                    ? 'Terminar'
+                    : 'Continuar',
                 onPressed: _showFeedback ? _next : null,
-                child: Text(
-                  _currentIndex == widget.interview.questions.length - 1
-                      ? 'Terminar'
-                      : 'Continuar',
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                ),
               ),
             ),
           ),
@@ -283,21 +334,84 @@ class _CharacterInterviewScreenState
   }
 }
 
-class _IntroCard extends StatelessWidget {
+class _IntroCard extends StatefulWidget {
   final String characterName;
   final String avatarUrl;
   final String introEn;
   final String introEs;
+  final ValueChanged<String> onSpeak;
 
   const _IntroCard({
     required this.characterName,
     required this.avatarUrl,
     required this.introEn,
     required this.introEs,
+    required this.onSpeak,
   });
 
   @override
+  State<_IntroCard> createState() => _IntroCardState();
+}
+
+class _IntroCardState extends State<_IntroCard> {
+  String _avatarAsset = '';
+  bool _isAvatarLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadAvatar();
+  }
+
+  @override
+  void didUpdateWidget(covariant _IntroCard oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.avatarUrl != widget.avatarUrl ||
+        oldWidget.characterName != widget.characterName) {
+      _avatarAsset = '';
+      _loadAvatar();
+    }
+  }
+
+  Future<void> _loadAvatar() async {
+    setState(() {
+      _isAvatarLoading = true;
+    });
+    final resolved = await AvatarAssetResolver.resolve(
+      avatarUrl: widget.avatarUrl,
+      fallbackName: widget.characterName,
+      cacheKey: 'interview_${widget.characterName.toLowerCase()}',
+    );
+    if (!mounted) return;
+    if (resolved.isNotEmpty) {
+      await precacheImage(AssetImage(resolved), context);
+      if (!mounted) return;
+    }
+    setState(() {
+      _avatarAsset = resolved;
+      _isAvatarLoading = false;
+    });
+  }
+
+  void _showTranslation() {
+    showDialog(
+      context: context,
+      barrierColor: Colors.transparent,
+      useRootNavigator: false,
+      builder: (_) => TranslationOverlay(
+        title: 'Traducción',
+        content: widget.introEs,
+        onClose: () => Navigator.of(context, rootNavigator: false).pop(),
+        isQuote: true,
+      ),
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
+    debugPrint(
+      'INTERVIEW_AVATAR render name=${widget.characterName} url=${widget.avatarUrl}',
+    );
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -313,8 +427,8 @@ class _IntroCard extends StatelessWidget {
                 radius: 26,
                 backgroundColor: AppColors.secondaryBlue.withOpacity(0.15),
                 backgroundImage:
-                    avatarUrl.isNotEmpty ? NetworkImage(avatarUrl) : null,
-                child: avatarUrl.isEmpty
+                    _avatarAsset.isNotEmpty ? AssetImage(_avatarAsset) : null,
+                child: _avatarAsset.isEmpty && !_isAvatarLoading
                     ? const Icon(Icons.person, color: AppColors.secondaryBlue)
                     : null,
               ),
@@ -323,7 +437,7 @@ class _IntroCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    characterName,
+                    widget.characterName,
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w700,
@@ -343,18 +457,26 @@ class _IntroCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 10),
-          Text(
-            introEn,
-            style: const TextStyle(
-              color: AppColors.textPrimary,
-            ),
-          ),
-          const SizedBox(height: 4),
-          Text(
-            introEs,
-            style: const TextStyle(
-              color: AppColors.textSecondary,
-            ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: GestureDetector(
+                  onTap: () => widget.onSpeak(widget.introEn),
+                  child: Text(
+                    widget.introEn,
+                    style: const TextStyle(
+                      color: AppColors.textPrimary,
+                    ),
+                  ),
+                ),
+              ),
+              IconButton(
+                onPressed: widget.introEs.trim().isEmpty ? null : _showTranslation,
+                icon: const Icon(Icons.translate, color: AppColors.secondaryBlue),
+                tooltip: 'Ver traducción',
+              ),
+            ],
           ),
         ],
       ),
@@ -368,6 +490,7 @@ class _QuestionCard extends StatelessWidget {
   final bool showFeedback;
   final ValueChanged<int> onTap;
   final String Function(String) apply;
+  final ValueChanged<String> onSpeak;
 
   const _QuestionCard({
     required this.question,
@@ -375,6 +498,7 @@ class _QuestionCard extends StatelessWidget {
     required this.showFeedback,
     required this.onTap,
     required this.apply,
+    required this.onSpeak,
   });
 
   @override
@@ -394,186 +518,251 @@ class _QuestionCard extends StatelessWidget {
             ),
           ],
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              apply(question.questionEn),
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: AppColors.textPrimary,
-              ),
-            ),
-            const SizedBox(height: 6),
-            Text(
-              apply(question.questionEs),
-              style: const TextStyle(
-                color: AppColors.textSecondary,
-              ),
-            ),
-            const SizedBox(height: 12),
-            ...question.options.asMap().entries.map(
-              (entry) {
-                final idx = entry.key;
-                final opt = entry.value;
-                final isSelected = selectedIndex == idx;
-                final isCorrect = opt.isCorrect;
-                Color bg = AppColors.cardBackground;
-                Color fg = AppColors.textPrimary;
-                final bool show = showFeedback && isSelected;
-                final letter = opt.optionId.isNotEmpty
-                    ? opt.optionId
-                    : String.fromCharCode(65 + idx);
-
-                if (show) {
-                  bg = isCorrect ? AppColors.primaryGreen : AppColors.errorRed;
-                  fg = Colors.white;
-                }
-
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 10),
-                  child: InkWell(
-                    onTap: () => onTap(idx),
-                    borderRadius: BorderRadius.circular(12),
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 14,
-                        vertical: 12,
-                      ),
-                      decoration: BoxDecoration(
-                        color: bg,
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(
-                          color: showFeedback && isSelected
-                              ? Colors.transparent
-                              : AppColors.cardBackground,
-                        ),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                             Container(
-                               width: 32,
-                               height: 32,
-                               decoration: BoxDecoration(
-                                 color: show
-                                     ? Colors.white.withOpacity(0.25)
-                                     : AppColors.cardBackground,
-                                 shape: BoxShape.circle,
-                               ),
-                               child: Center(
-                                 child: Text(
-                                   letter,
-                                   style: TextStyle(
-                                     fontWeight: FontWeight.bold,
-                                      color: show ? Colors.white : AppColors.textSecondary,
-                                    ),
-                                 ),
-                               ),
-                             ),
-                              const SizedBox(width: 10),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      apply(opt.textEn),
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w700,
-                                        color: fg,
-                                      ),
-                                    ),
-                                    const SizedBox(height: 4),
-                                    Text(
-                                      apply(opt.textEs),
-                                      style: TextStyle(
-                                        color: show
-                                            ? Colors.white70
-                                            : AppColors.textSecondary,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              if (show)
-                                Icon(
-                                  isCorrect ? Icons.check_circle : Icons.cancel,
-                                  color: Colors.white,
-                                ),
-                            ],
-                          ),
-                          if (show) ...[
-                            const SizedBox(height: 10),
-                            Text(
-                              apply(opt.isCorrect ? opt.feedbackEn : opt.feedbackEs),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return SingleChildScrollView(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: ConstrainedBox(
+                constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Flexible(
+                          fit: FlexFit.loose,
+                          child: GestureDetector(
+                            onTap: () => onSpeak(apply(question.questionEn)),
+                            child: Text(
+                              apply(question.questionEn),
                               style: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w600,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: AppColors.textPrimary,
                               ),
                             ),
-                            if ((opt.mistakeType ?? '').isNotEmpty) ...[
-                              const SizedBox(height: 6),
-                              Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.15),
-                                  borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        const SizedBox(width: 6),
+                        IconButton(
+                          onPressed: apply(question.questionEs).trim().isEmpty
+                              ? null
+                              : () {
+                                  showDialog(
+                                    context: context,
+                                    barrierColor: Colors.transparent,
+                                    useRootNavigator: false,
+                                    builder: (_) => TranslationOverlay(
+                                      title: 'Traducción',
+                                      content: apply(question.questionEs),
+                                      onClose: () =>
+                                          Navigator.of(context, rootNavigator: false)
+                                              .pop(),
+                                      isQuote: true,
+                                    ),
+                                  );
+                                },
+                          icon: const Icon(
+                            Icons.translate,
+                            color: AppColors.secondaryBlue,
+                          ),
+                          tooltip: 'Ver traducción',
+                          padding: EdgeInsets.zero,
+                          constraints: const BoxConstraints(
+                            minWidth: 32,
+                            minHeight: 32,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    ...question.options.asMap().entries.map(
+                      (entry) {
+                        final idx = entry.key;
+                        final opt = entry.value;
+                        final isSelected = selectedIndex == idx;
+                        final isCorrect = opt.isCorrect;
+                        Color bg = AppColors.cardBackground;
+                        Color fg = AppColors.textPrimary;
+                        final bool show = showFeedback && isSelected;
+                        final letter = opt.optionId.isNotEmpty
+                            ? opt.optionId
+                            : String.fromCharCode(65 + idx);
+
+                        if (show) {
+                          bg =
+                              isCorrect ? AppColors.primaryGreen : AppColors.errorRed;
+                          fg = Colors.white;
+                        }
+
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 10),
+                          child: InkWell(
+                            onTap: () => onTap(idx),
+                            borderRadius: BorderRadius.circular(12),
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 14,
+                                vertical: 12,
+                              ),
+                              decoration: BoxDecoration(
+                                color: bg,
+                                borderRadius: BorderRadius.circular(12),
+                                border: Border.all(
+                                  color: showFeedback && isSelected
+                                      ? Colors.transparent
+                                      : AppColors.cardBackground,
                                 ),
-                                child: Text(
-                                  'Tipo de error: ${opt.mistakeType}',
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600,
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Container(
+                                        width: 32,
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                          color: show
+                                              ? Colors.white.withOpacity(0.25)
+                                              : AppColors.cardBackground,
+                                          shape: BoxShape.circle,
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            letter,
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: show
+                                                  ? Colors.white
+                                                  : AppColors.textSecondary,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(width: 10),
+                                      Expanded(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              apply(opt.textEn),
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w700,
+                                                color: fg,
+                                              ),
+                                            ),
+                                            const SizedBox(height: 4),
+                                            Text(
+                                              apply(opt.textEs),
+                                              style: TextStyle(
+                                                color: show
+                                                    ? Colors.white70
+                                                    : AppColors.textSecondary,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      if (show)
+                                        Icon(
+                                          isCorrect
+                                              ? Icons.check_circle
+                                              : Icons.cancel,
+                                          color: Colors.white,
+                                        ),
+                                    ],
                                   ),
+                                  if (show) ...[
+                                    const SizedBox(height: 10),
+                                    Text(
+                                      apply(opt.isCorrect
+                                          ? opt.feedbackEn
+                                          : opt.feedbackEs),
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                    if ((opt.mistakeType ?? '').isNotEmpty) ...[
+                                      const SizedBox(height: 6),
+                                      Container(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 10,
+                                          vertical: 6,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: Colors.white.withOpacity(0.15),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        child: Text(
+                                          'Tipo de error: ${opt.mistakeType}',
+                                          style: const TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                    if ((opt.grammarExplanation ?? '')
+                                        .isNotEmpty) ...[
+                                      const SizedBox(height: 8),
+                                      Text(
+                                        'Grammar: ${apply(opt.grammarExplanation ?? '')}',
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ],
+                                    if ((opt.culturalNote ?? '').isNotEmpty) ...[
+                                      const SizedBox(height: 6),
+                                      Text(
+                                        'Cultura: ${apply(opt.culturalNote ?? '')}',
+                                        style: const TextStyle(
+                                          color: Colors.white70,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ],
+                                  ],
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                    if (showFeedback && selectedIndex >= 0)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: Row(
+                          children: [
+                            const Icon(
+                              Icons.info_outline,
+                              color: AppColors.textSecondary,
+                              size: 18,
+                            ),
+                            const SizedBox(width: 6),
+                            const Expanded(
+                              child: Text(
+                                'Toca continuar para la siguiente pregunta',
+                                style: TextStyle(
+                                  color: AppColors.textSecondary,
                                 ),
                               ),
-                            ],
-                            if ((opt.grammarExplanation ?? '').isNotEmpty) ...[
-                              const SizedBox(height: 8),
-                              Text(
-                                'Grammar: ${apply(opt.grammarExplanation ?? '')}',
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ],
-                            if ((opt.culturalNote ?? '').isNotEmpty) ...[
-                              const SizedBox(height: 6),
-                              Text(
-                                'Cultura: ${apply(opt.culturalNote ?? '')}',
-                                style: const TextStyle(
-                                  color: Colors.white70,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ],
+                            ),
                           ],
-                        ],
+                        ),
                       ),
-                    ),
-                  ),
-                );
-              },
-            ),
-            if (showFeedback && selectedIndex >= 0)
-              Padding(
-                padding: const EdgeInsets.only(top: 8.0),
-                child: Row(
-                  children: [
-                    const Icon(Icons.info_outline, color: AppColors.textSecondary, size: 18),
-                    const SizedBox(width: 6),
-                    Text(
-                      'Toca continuar para la siguiente pregunta',
-                      style: const TextStyle(color: AppColors.textSecondary),
-                    ),
                   ],
                 ),
               ),
-          ],
+            );
+          },
         ),
       ),
     );

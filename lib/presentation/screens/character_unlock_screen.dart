@@ -7,6 +7,7 @@ import '../../domain/models/episode/character.dart';
 import '../widgets/character/rename_character_dialog.dart';
 import '../providers/template_variable_provider.dart';
 import '../providers/character_providers.dart';
+import '../../core/utils/avatar_asset_resolver.dart';
 import 'package:confetti/confetti.dart';
 
 /// Pantalla de celebración cuando se desbloquea un nuevo personaje
@@ -39,6 +40,8 @@ class _CharacterUnlockScreenState extends ConsumerState<CharacterUnlockScreen>
   
   String? _customName; // Nombre personalizado del usuario
   String? _showingTranslation; // 'personality' o 'intro' o null
+  String _avatarAsset = '';
+  bool _isAvatarLoading = false;
 
   @override
   void initState() {
@@ -104,6 +107,8 @@ class _CharacterUnlockScreenState extends ConsumerState<CharacterUnlockScreen>
         }
       });
     }
+
+    _loadAvatar();
   }
 
   @override
@@ -113,6 +118,38 @@ class _CharacterUnlockScreenState extends ConsumerState<CharacterUnlockScreen>
     _slideController.dispose();
     _confettiController.dispose();
     super.dispose();
+  }
+
+  @override
+  void didUpdateWidget(covariant CharacterUnlockScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.character.characterId != widget.character.characterId ||
+        oldWidget.character.avatarUrl != widget.character.avatarUrl) {
+      _avatarAsset = '';
+      _loadAvatar();
+    }
+  }
+
+  Future<void> _loadAvatar() async {
+    final avatarUrl = widget.character.avatarUrl ?? '';
+    if (avatarUrl.isEmpty) return;
+    setState(() {
+      _isAvatarLoading = true;
+    });
+    final resolved = await AvatarAssetResolver.resolve(
+      avatarUrl: avatarUrl,
+      fallbackName: widget.character.defaultName,
+      cacheKey: 'unlock_${widget.character.characterId}',
+    );
+    if (!mounted) return;
+    if (resolved.isNotEmpty) {
+      await precacheImage(AssetImage(resolved), context);
+      if (!mounted) return;
+    }
+    setState(() {
+      _avatarAsset = resolved;
+      _isAvatarLoading = false;
+    });
   }
 
   void _showRenameDialog() {
@@ -347,6 +384,16 @@ class _CharacterUnlockScreenState extends ConsumerState<CharacterUnlockScreen>
   }
 
   Widget _buildCharacterAvatar() {
+    final avatarChild = _avatarAsset.isNotEmpty
+        ? ClipOval(
+            child: Image.asset(
+              _avatarAsset,
+              width: 180,
+              height: 180,
+              fit: BoxFit.cover,
+            ),
+          )
+        : _getCharacterIcon(widget.character.defaultName);
     return Container(
       width: 200,
       height: 200,
@@ -381,7 +428,7 @@ class _CharacterUnlockScreenState extends ConsumerState<CharacterUnlockScreen>
             ),
           ),
           child: Center(
-            child: _getCharacterIcon(widget.character.defaultName),
+            child: _isAvatarLoading ? const SizedBox() : avatarChild,
           ),
         ),
       ),
@@ -445,7 +492,20 @@ class _CharacterUnlockScreenState extends ConsumerState<CharacterUnlockScreen>
                         ),
                       ),
                       child: Center(
-                        child: _getCharacterIcon(widget.character.defaultName),
+                        child: _isAvatarLoading
+                            ? const SizedBox()
+                            : (_avatarAsset.isNotEmpty
+                                ? ClipOval(
+                                    child: Image.asset(
+                                      _avatarAsset,
+                                      width: 70,
+                                      height: 70,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  )
+                                : _getCharacterIcon(
+                                    widget.character.defaultName,
+                                  )),
                       ),
                     ),
                   ),

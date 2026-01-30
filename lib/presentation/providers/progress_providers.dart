@@ -33,6 +33,19 @@ final isEpisodeUnlockedProvider = FutureProvider.family<bool, int>((ref, episode
   return await repository.isEpisodeUnlocked(episodeNumber);
 });
 
+/// Provider para desbloquear manualmente un episodio
+final unlockEpisodeProvider = Provider<Future<void> Function({
+  required int episodeNumber,
+})>((ref) {
+  return ({
+    required int episodeNumber,
+  }) async {
+    final repository = ref.read(progressRepositoryProvider);
+    await repository.unlockEpisode(episodeNumber);
+    ref.invalidate(userProgressProvider);
+  };
+});
+
 /// Provider para obtener el progreso de un episodio específico
 final episodeProgressProvider = FutureProvider.family<EpisodeProgress?, int>((ref, episodeNumber) async {
   final repository = ref.watch(progressRepositoryProvider);

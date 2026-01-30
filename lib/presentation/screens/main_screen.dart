@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -16,8 +17,9 @@ class _MainScreenState extends ConsumerState<MainScreen> {
   int _calculateSelectedIndex(BuildContext context) {
     final String location = GoRouterState.of(context).uri.path;
     if (location.startsWith('/home')) return 0;
-    if (location.startsWith('/profile')) return 1;
-    if (location.startsWith('/settings')) return 2;
+    if (location.startsWith('/review')) return 1;
+    if (location.startsWith('/profile')) return 2;
+    if (location.startsWith('/settings')) return 3;
     return 0;
   }
 
@@ -27,9 +29,12 @@ class _MainScreenState extends ConsumerState<MainScreen> {
         context.go('/home');
         break;
       case 1:
-        context.go('/profile');
+        context.go('/review');
         break;
       case 2:
+        context.go('/profile');
+        break;
+      case 3:
         context.go('/settings');
         break;
     }
@@ -38,6 +43,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: !kIsWeb,
       body: widget.child,
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
@@ -59,6 +65,11 @@ class _MainScreenState extends ConsumerState<MainScreen> {
               icon: Icon(Icons.home_outlined, size: 30),
               activeIcon: Icon(Icons.home_rounded, size: 30),
               label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.school_outlined, size: 30),
+              activeIcon: Icon(Icons.school, size: 30),
+              label: 'Review',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person_outline, size: 30),

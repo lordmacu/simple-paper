@@ -4,13 +4,20 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import '../../../../domain/models/episode/episode.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/utils/section_progress.dart';
+import '../../../../data/sources/content_db.dart';
 import '../../lesson/main_story_screen.dart';
 import '../../vocabulary/vocabulary_story_screen.dart';
 import '../../listening_shadowing/listening_shadowing_screen.dart';
+import '../../mini_story/mini_story_screen.dart';
 import '../../games/games_screen.dart';
+import '../../interview/character_interview_screen.dart';
+import '../../interview/interview_summary_screen.dart';
+import '../../interview/interview_parser.dart';
 import '../../../widgets/stacked_3d_section_button.dart';
 import '../../../widgets/stacked_3d_button.dart';
+import '../../../providers/episode_providers.dart';
 import '../../../providers/progress_providers.dart';
+import '../../../widgets/common/duolingo_button.dart';
 /// Estado del episodio
 enum EpisodeStatus {
   locked,    // Bloqueado (no se puede acceder)
@@ -21,6 +28,7 @@ enum EpisodeStatus {
 class EpisodeItem extends ConsumerStatefulWidget {
   final Episode episode;
   final VoidCallback? onTap;
+  final ValueChanged<int>? onUnlocked;
   final EpisodeStatus status;
   final int starsEarned; // 0-3 estrellas
 
@@ -28,6 +36,7 @@ class EpisodeItem extends ConsumerStatefulWidget {
     super.key,
     required this.episode,
     this.onTap,
+    this.onUnlocked,
     this.status = EpisodeStatus.unlocked,
     this.starsEarned = 0,
   });
@@ -41,6 +50,7 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
   static const String _logTag = 'EPISODE_UNLOCK';
   late AnimationController _animationController;
   late Animation<double> _scaleAnimation;
+  Offset? _tapPosition;
 
   @override
   void initState() {
@@ -123,6 +133,7 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
       debugPrint(
         '$_logTag tap_locked episode=${widget.episode.episodeMetadata.episodeNumber}',
       );
+      _showUnlockPopover(_tapPosition);
       return;
     }
     
@@ -131,6 +142,75 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
     });
     
     widget.onTap?.call();
+  }
+
+  Future<void> _showUnlockPopover(Offset? tapPosition) async {
+    final episodeNumber = widget.episode.episodeMetadata.episodeNumber;
+    await showDialog<void>(
+      context: context,
+      barrierDismissible: true,
+      builder: (context) {
+        return Dialog(
+          backgroundColor: Colors.transparent,
+          insetPadding: const EdgeInsets.symmetric(horizontal: 24),
+          child: Container(
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(22),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.2),
+                  blurRadius: 18,
+                  offset: const Offset(0, 8),
+                ),
+              ],
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  'Episodio $episodeNumber bloqueado',
+                  style: const TextStyle(
+                    color: AppColors.textPrimary,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                const Text(
+                  'Desbloquea este episodio y todos los anteriores.',
+                  style: TextStyle(
+                    color: AppColors.textSecondary,
+                    fontSize: 14,
+                  ),
+                ),
+                const SizedBox(height: 18),
+                DuolingoButton(
+                  text: 'Desbloquear',
+                  onPressed: () async {
+                    await ref.read(unlockEpisodeProvider)(
+                      episodeNumber: episodeNumber,
+                    );
+                    widget.onUnlocked?.call(episodeNumber);
+                    if (mounted) {
+                      Navigator.of(context).pop();
+                    }
+                  },
+                ),
+                const SizedBox(height: 10),
+                DuolingoButton(
+                  text: 'Ahora no',
+                  isSecondary: true,
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 
   void _openStory({int? initialScene}) {
@@ -200,6 +280,141 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
     );
   }
 
+  void _openMiniStory() {
+    if (widget.status == EpisodeStatus.locked) return;
+    if (widget.episode.miniStory == null) return;
+    Navigator.of(context, rootNavigator: true).push(
+      MaterialPageRoute(
+        builder: (_) => MiniStoryScreen(episode: widget.episode),
+      ),
+    );
+  }
+
+  Future<void> _openInterview() async {
+    if (widget.status == EpisodeStatus.locked) return;
+    final episodeNumber = widget.episode.episodeMetadata.episodeNumber;
+    final level = widget.episode.episodeMetadata.internalLevel;
+    final db = ContentDb();
+    final progressRepo = ref.read(progressRepositoryProvider);
+    final interviewEntries = await db.getInterviewEntries(episodeNumber);
+    final episodeCharacterIds = widget.episode.characters.appearingInEpisode
+        .map((c) => _normalizeCharacterId(c.characterId))
+        .toSet();
+    final filtered = interviewEntries.where((entry) {
+      final normalized = _normalizeCharacterId(entry.characterId);
+      return episodeCharacterIds.contains(normalized) &&
+          _matchesLevel(entry.interviewId, level);
+    }).toList();
+    final entries = (filtered.isNotEmpty ? filtered : interviewEntries)
+      ..shuffle();
+    debugPrint(
+      '$_logTag interview_open episode=$episodeNumber entries=${interviewEntries.map((e) => '${e.characterId}:${e.interviewId}').toList()}',
+    );
+    if (entries.isEmpty) return;
+
+    for (final entry in entries) {
+      final id = entry.characterId;
+      final interviewId = entry.interviewId;
+      final completed = await progressRepo.isInterviewCompleted(
+        level: level,
+        episodeNumber: episodeNumber,
+        characterId: id,
+        interviewId: interviewId,
+      );
+      debugPrint(
+        '$_logTag interview_check episode=$episodeNumber characterId=$id interviewId=$interviewId completed=$completed',
+      );
+      if (completed) continue;
+
+      final json = await db.getInterviewJson(
+        episodeNumber: episodeNumber,
+        characterId: id,
+        interviewId: interviewId,
+      );
+      debugPrint(
+        '$_logTag interview_json episode=$episodeNumber characterId=$id interviewId=$interviewId found=${json != null}',
+      );
+      if (json == null) continue;
+
+      final interview = InterviewParser.parse(
+        json,
+        episodeNumber: episodeNumber,
+        fallbackName: _resolveCharacterName(id),
+      );
+      if (interview == null) continue;
+
+      if (!mounted) return;
+
+      final result = await Navigator.push<Map<String, dynamic>?>(
+        context,
+        MaterialPageRoute(
+          builder: (_) => CharacterInterviewScreen(
+            interview: interview,
+            onComplete: (correct, total, wrongWords) {
+              Navigator.pop<Map<String, dynamic>?>(context, {
+                'correct': correct,
+                'total': total,
+                'wrongWords': wrongWords,
+              });
+            },
+          ),
+        ),
+      );
+
+      if (!mounted) return;
+      if (result != null) {
+        if (result['exitToHome'] == true) {
+          Navigator.of(context, rootNavigator: true)
+              .popUntil((route) => route.isFirst);
+          return;
+        }
+        final correct = result['correct'] ?? 0;
+        final total = result['total'] ?? interview.questions.length;
+        final wrongWords = (result['wrongWords'] as List<dynamic>?)
+                ?.whereType<String>()
+                .toList() ??
+            const <String>[];
+        if (correct < total) {
+          final reviewWords = wrongWords
+              .map((e) => e.trim().toLowerCase())
+              .where((e) => e.isNotEmpty)
+              .toList();
+          if (reviewWords.isNotEmpty) {
+            await ref.read(addReviewWordsProvider)(
+              words: reviewWords,
+              level: level,
+              episodeNumber: episodeNumber,
+            );
+          }
+        }
+        await progressRepo.markInterviewCompleted(
+          level: level,
+          episodeNumber: episodeNumber,
+          characterId: id,
+          interviewId: interviewId,
+        );
+        await ref.read(markSectionCompletedProvider)(
+          episodeNumber: episodeNumber,
+          sectionId: SectionProgressIds.interview,
+        );
+
+        await Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => InterviewSummaryScreen(
+              correct: correct,
+              total: total,
+              grammarPoints: interview.grammarPoints,
+              vocabularyUsed: interview.vocabularyUsed,
+              onContinue: () => Navigator.pop(context),
+            ),
+          ),
+        );
+      }
+      break;
+    }
+  }
+
   Future<void> _completeEpisodeIfReady({
     required int totalPoints,
     required int maxPoints,
@@ -208,7 +423,12 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
     final completed = await repository.getCompletedSections(
       widget.episode.episodeMetadata.episodeNumber,
     );
-    final required = _buildRequiredSectionIds();
+    final hasInterview = await ContentDb().hasInterviewForEpisode(
+      widget.episode.episodeMetadata.episodeNumber,
+    );
+    final required = _buildRequiredSectionIds(
+      includeInterview: hasInterview,
+    );
     debugPrint(
       '$_logTag check_complete episode=${widget.episode.episodeMetadata.episodeNumber} '
       'completed=${completed.length} required=${required.length}',
@@ -238,12 +458,19 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
     );
   }
 
-  Set<String> _buildRequiredSectionIds() {
+  Set<String> _buildRequiredSectionIds({required bool includeInterview}) {
     final ids = <String>{
       SectionProgressIds.vocab,
       SectionProgressIds.story,
       SectionProgressIds.games,
     };
+    if (widget.episode.miniStory != null &&
+        widget.episode.miniStory!.paragraphs.isNotEmpty) {
+      ids.add(SectionProgressIds.miniStory);
+    }
+    if (includeInterview) {
+      ids.add(SectionProgressIds.interview);
+    }
     final listening = widget.episode.listeningShadowing;
     if (listening != null && listening.data.isNotEmpty) {
       ids.add(SectionProgressIds.listeningShadowing);
@@ -257,6 +484,30 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
     return ids;
   }
 
+  String _resolveCharacterName(String characterId) {
+    final normalized = _normalizeCharacterId(characterId);
+    for (final character in widget.episode.characters.appearingInEpisode) {
+      if (_normalizeCharacterId(character.characterId) == normalized) {
+        return character.defaultName;
+      }
+    }
+    return characterId;
+  }
+
+  String _normalizeCharacterId(String characterId) {
+    var value = characterId.trim().toLowerCase().replaceAll(' ', '_');
+    if (value.startsWith('char_')) {
+      value = value.substring('char_'.length);
+    }
+    return value;
+  }
+
+  bool _matchesLevel(String interviewId, String level) {
+    if (interviewId.isEmpty || interviewId == 'default') return true;
+    final needle = 'episode_${level.toLowerCase()}_';
+    return interviewId.toLowerCase().contains(needle);
+  }
+
   int _calculateStars(int points, int maxPoints) {
     if (maxPoints <= 0) return 3;
     final ratio = points / maxPoints;
@@ -268,6 +519,9 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
 
   @override
   Widget build(BuildContext context) {
+    final interviewAvailability = ref.watch(
+      interviewAvailableProvider(widget.episode.episodeMetadata.episodeNumber),
+    );
     return Column(
       children: [
         ScaleTransition(
@@ -405,22 +659,36 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
                 ))
                 .when(
                   data: (completed) {
-                    final entries = _buildSections();
-                    debugPrint(
-                      '$_logTag home_sections episode=${widget.episode.episodeMetadata.episodeNumber} '
-                      'completed=${completed.toList()} entries=${entries.map((e) => e.id).toList()}',
-                    );
-                    return SectionPath(
-                      entries: entries,
-                      completedSectionIds: completed,
+                    return interviewAvailability.when(
+                      data: (hasInterview) {
+                        final entries = _buildSections(
+                          hasInterview: hasInterview,
+                        );
+                        debugPrint(
+                          '$_logTag home_sections episode=${widget.episode.episodeMetadata.episodeNumber} '
+                          'completed=${completed.toList()} entries=${entries.map((e) => e.id).toList()}',
+                        );
+                        return SectionPath(
+                          entries: entries,
+                          completedSectionIds: completed,
+                        );
+                      },
+                      loading: () => SectionPath(
+                        entries: _buildSections(hasInterview: false),
+                        completedSectionIds: completed,
+                      ),
+                      error: (_, __) => SectionPath(
+                        entries: _buildSections(hasInterview: false),
+                        completedSectionIds: completed,
+                      ),
                     );
                   },
                   loading: () => SectionPath(
-                    entries: _buildSections(),
+                    entries: _buildSections(hasInterview: false),
                     completedSectionIds: const <String>{},
                   ),
                   error: (_, __) => SectionPath(
-                    entries: _buildSections(),
+                    entries: _buildSections(hasInterview: false),
                     completedSectionIds: const <String>{},
                   ),
                 ),
@@ -429,7 +697,7 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
     );
   }
 
-  List<SectionEntry> _buildSections() {
+  List<SectionEntry> _buildSections({required bool hasInterview}) {
     final sections = <Map<String, dynamic>>[];
 
     sections.add({
@@ -438,6 +706,17 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
       'icon': Iconsax.book,
       'onTap': _openVocab,
     });
+
+    final miniStory = widget.episode.miniStory;
+    if (miniStory != null && miniStory.paragraphs.isNotEmpty) {
+      sections.add({
+        'id': SectionProgressIds.miniStory,
+        'label':
+            miniStory.sectionNameEs ?? miniStory.sectionName ?? 'Mini historia',
+        'icon': Icons.menu_book,
+        'onTap': _openMiniStory,
+      });
+    }
 
     final listening = widget.episode.listeningShadowing;
     if (listening != null && listening.data.isNotEmpty) {
@@ -448,6 +727,15 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
             'Listening',
         'icon': Icons.headphones,
         'onTap': _openListeningShadowing,
+      });
+    }
+
+    if (hasInterview) {
+      sections.add({
+        'id': SectionProgressIds.interview,
+        'label': 'Entrevista',
+        'icon': Icons.person,
+        'onTap': _openInterview,
       });
     }
 

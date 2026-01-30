@@ -1,17 +1,21 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 
 import '../../../core/constants/app_colors.dart';
+import '../../../core/utils/avatar_asset_resolver.dart';
 import '../../../core/utils/section_progress.dart';
 import '../../../core/utils/haptic_utils.dart';
+import '../../../core/utils/navigation_utils.dart';
 import '../../../domain/models/episode/episode.dart';
 import '../../../domain/models/listening_shadowing/listening_shadowing.dart';
 import '../../providers/progress_providers.dart';
 import '../../providers/template_variable_provider.dart';
 import '../../providers/tts_provider.dart';
+import '../../providers/personalization_providers.dart';
 
 class ListeningShadowingScreen extends ConsumerStatefulWidget {
   final Episode episode;
@@ -42,6 +46,9 @@ class _ListeningShadowingScreenState
   bool _speechReady = false;
   bool _isListening = false;
   bool _isSpeaking = false;
+  String? _lastAvatarLogItemId;
+  String _avatarAsset = '';
+  String? _avatarItemId;
   String _recognized = '';
   double _lastScore = 0.0;
   bool? _isCorrect;
@@ -53,6 +60,7 @@ class _ListeningShadowingScreenState
   @override
   void initState() {
     super.initState();
+    _loadAvatarForCurrentItem();
     _startTimer();
     _initSpeech();
   }
@@ -62,7 +70,18 @@ class _ListeningShadowingScreenState
     _timer?.cancel();
     _silenceTimer?.cancel();
     _ttsTimer?.cancel();
+    ref.read(ttsServiceProvider).stop();
     super.dispose();
+  }
+
+  void _stopAllAndClose() {
+    _timer?.cancel();
+    _silenceTimer?.cancel();
+    _ttsTimer?.cancel();
+    if (_isListening) {
+      _speech.stop();
+    }
+    ref.read(ttsServiceProvider).stop();
   }
 
   void _startTimer() {
@@ -121,8 +140,10 @@ class _ListeningShadowingScreenState
       localeId: 'en_US',
       onResult: (result) {
         if (!mounted) return;
+        final raw = result.recognizedWords;
+        final next = kIsWeb ? _normalizeRecognized(raw) : raw;
         setState(() {
-          _recognized = result.recognizedWords;
+          _recognized = next;
           _lastResultAt = DateTime.now();
         });
         _restartSilenceTimer();
@@ -150,6 +171,212 @@ class _ListeningShadowingScreenState
         _restartSilenceTimer();
       }
     });
+  }
+
+  String _normalizeRecognized(String text) {
+    // First, try to fix concatenated incremental results from Chrome Android
+    // Pattern: "hellohello myhello my namehello my name is cristian"
+    // We need to extract just the final complete phrase
+    final fixed = _fixConcatenatedResults(text);
+
+    var tokens = _tokenize(fixed);
+    if (tokens.isEmpty) return '';
+    final compact = <String>[];
+    for (final t in tokens) {
+      if (compact.isEmpty || compact.last != t) {
+        compact.add(t);
+      }
+    }
+    final lastTokens = _tokenize(_lastRecognized);
+    tokens = _collapseRepeatedPrefix(compact, lastTokens);
+    tokens = _keepLastRepeatedSuffix(tokens);
+    if (lastTokens.isNotEmpty && compact.length >= lastTokens.length * 2) {
+      final first = compact.sublist(0, lastTokens.length);
+      final second = compact.sublist(lastTokens.length, lastTokens.length * 2);
+      if (_listEquals(first, lastTokens) && _listEquals(second, lastTokens)) {
+        return tokens.sublist(lastTokens.length).join(' ');
+      }
+    }
+    if (lastTokens.isNotEmpty &&
+        compact.length < lastTokens.length &&
+        _listEquals(lastTokens.sublist(0, compact.length), compact)) {
+      return _lastRecognized;
+    }
+    return tokens.join(' ');
+  }
+
+  /// Fixes concatenated incremental results from Chrome Android
+  /// Input: "hellohello myhello my namehello my name is cristian"
+  /// Output: "hello my name is cristian"
+  String _fixConcatenatedResults(String text) {
+    if (text.isEmpty) return text;
+
+    // Split by spaces to get chunks
+    final chunks = text.split(' ');
+    if (chunks.length <= 1) return text;
+
+    // Look for concatenated words (e.g., "hellohello" or "myhello")
+    // These happen when incremental results are concatenated without spaces
+    final result = <String>[];
+
+    for (final chunk in chunks) {
+      if (chunk.isEmpty) continue;
+
+      // Check if this chunk contains concatenated words
+      // by looking for a repeated pattern at the boundary
+      final separated = _separateConcatenatedWords(chunk);
+      result.addAll(separated);
+    }
+
+    if (result.isEmpty) return text;
+
+    // Now try to find the last complete phrase by detecting repeated sequences
+    // Pattern: [hello, hello, my, hello, my, name, hello, my, name, is, cristian]
+    // We want: [hello, my, name, is, cristian]
+    return _extractFinalPhrase(result).join(' ');
+  }
+
+  /// Separates concatenated words like "hellohello" or "myhello"
+  List<String> _separateConcatenatedWords(String word) {
+    if (word.length < 4) return [word];
+
+    final lower = word.toLowerCase();
+
+    // Try to find repeated patterns at the start
+    // "hellohello" -> ["hello", "hello"]
+    for (var len = 2; len <= word.length ~/ 2; len++) {
+      final prefix = lower.substring(0, len);
+      if (lower.substring(len).startsWith(prefix)) {
+        // Found a repeat
+        final parts = <String>[];
+        var remaining = lower;
+        while (remaining.startsWith(prefix)) {
+          parts.add(prefix);
+          remaining = remaining.substring(prefix.length);
+        }
+        if (remaining.isNotEmpty) {
+          parts.addAll(_separateConcatenatedWords(remaining));
+        }
+        return parts;
+      }
+    }
+
+    // Try to detect word boundary by looking for common word patterns
+    // "myhello" -> ["my", "hello"]
+    final commonWords = ['hello', 'my', 'name', 'is', 'the', 'a', 'an', 'i', 'am', 'you', 'are', 'we', 'they', 'he', 'she', 'it', 'this', 'that', 'what', 'how', 'where', 'when', 'why', 'yes', 'no', 'ok', 'hi', 'hey'];
+
+    for (final commonWord in commonWords) {
+      if (lower.length > commonWord.length && lower.endsWith(commonWord)) {
+        final prefix = lower.substring(0, lower.length - commonWord.length);
+        if (prefix.isNotEmpty) {
+          final prefixParts = _separateConcatenatedWords(prefix);
+          return [...prefixParts, commonWord];
+        }
+      }
+    }
+
+    return [word];
+  }
+
+  /// Extracts the final complete phrase from repeated incremental results
+  /// Input: [hello, hello, my, hello, my, name, hello, my, name, is, cristian]
+  /// Output: [hello, my, name, is, cristian]
+  List<String> _extractFinalPhrase(List<String> tokens) {
+    if (tokens.length < 3) return tokens;
+
+    // Find the last occurrence of the first token
+    // This likely marks the start of the final complete phrase
+    final firstToken = tokens.first.toLowerCase();
+    var lastStart = 0;
+
+    for (var i = tokens.length - 1; i > 0; i--) {
+      if (tokens[i].toLowerCase() == firstToken) {
+        lastStart = i;
+        break;
+      }
+    }
+
+    if (lastStart > 0 && lastStart < tokens.length - 1) {
+      return tokens.sublist(lastStart);
+    }
+
+    return tokens;
+  }
+
+  bool _listEquals(List<String> a, List<String> b) {
+    if (a.length != b.length) return false;
+    for (var i = 0; i < a.length; i++) {
+      if (a[i] != b[i]) return false;
+    }
+    return true;
+  }
+
+  List<String> _collapseRepeatedPrefix(
+    List<String> tokens,
+    List<String> lastTokens,
+  ) {
+    if (tokens.length < 2) return tokens;
+    var result = List<String>.from(tokens);
+    final maxUnit = result.length ~/ 2;
+
+    if (lastTokens.isNotEmpty && result.length >= lastTokens.length * 2) {
+      while (result.length >= lastTokens.length * 2 &&
+          _listEquals(
+            result.sublist(0, lastTokens.length),
+            result.sublist(lastTokens.length, lastTokens.length * 2),
+          )) {
+        result = result.sublist(lastTokens.length);
+      }
+      return result;
+    }
+
+    final limit = maxUnit < 6 ? maxUnit : 6;
+    for (var unitLen = 1; unitLen <= limit; unitLen++) {
+      while (result.length >= unitLen * 2) {
+        final first = result.sublist(0, unitLen);
+        final second = result.sublist(unitLen, unitLen * 2);
+        if (_listEquals(first, second)) {
+          result = result.sublist(unitLen);
+        } else {
+          break;
+        }
+      }
+    }
+    return result;
+  }
+
+  List<String> _keepLastRepeatedSuffix(List<String> tokens) {
+    if (tokens.length < 6) return tokens;
+    int bestStart = -1;
+    for (var start = 0; start <= tokens.length - 3; start++) {
+      final suffix = tokens.sublist(start);
+      if (suffix.length < 3) continue;
+      if (_containsSlice(tokens, 0, start, suffix)) {
+        bestStart = start;
+      }
+    }
+    if (bestStart <= 0) return tokens;
+    return tokens.sublist(bestStart);
+  }
+
+  bool _containsSlice(
+    List<String> tokens,
+    int from,
+    int to,
+    List<String> slice,
+  ) {
+    if (slice.isEmpty || to - from < slice.length) return false;
+    for (var i = from; i <= to - slice.length; i++) {
+      var match = true;
+      for (var j = 0; j < slice.length; j++) {
+        if (tokens[i + j] != slice[j]) {
+          match = false;
+          break;
+        }
+      }
+      if (match) return true;
+    }
+    return false;
   }
 
   void _evaluateResult() {
@@ -201,7 +428,8 @@ class _ListeningShadowingScreenState
     final isFemale = RegExp(r'(^|_)female(_|$)').hasMatch(voiceId);
     final isMale = !isFemale && RegExp(r'(^|_)male(_|$)').hasMatch(voiceId);
     final pitch = isMale ? 0.85 : 1.05;
-    final rate = isMale ? 0.42 : 0.45;
+    final baseRate = tts.defaultRate;
+    final rate = isMale ? (baseRate * 0.95) : baseRate;
     print('Playing TTS: $text pitch=$pitch rate=$rate voiceId $voiceId');
     await tts.speak(
       text,
@@ -283,8 +511,11 @@ class _ListeningShadowingScreenState
         _isCorrect = null;
         _isListening = false;
         _isSpeaking = false;
+        _avatarItemId = null;
+        _avatarAsset = '';
       });
       _startTimer();
+      _loadAvatarForCurrentItem();
       return;
     }
     _completeSection();
@@ -304,6 +535,9 @@ class _ListeningShadowingScreenState
 
   @override
   Widget build(BuildContext context) {
+    // Esperar a que las variables personalizadas estén cargadas
+    ref.watch(personalizationInitProvider);
+
     final section = _section;
     if (section == null || section.data.isEmpty) {
       return Scaffold(
@@ -329,18 +563,29 @@ class _ListeningShadowingScreenState
     final speakerName = template.replaceVariables(
       _currentItem.characterDisplayName ?? 'Speaker',
     );
+    final avatarAsset = _avatarAsset;
+    _logAvatarOnce(speakerName);
     final matched = _matchedTokenIndices(_recognized, textEn);
     final repeatCount = _currentItem.repeatCount ?? 1;
 
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
+    return PopScope(
+      onPopInvokedWithResult: (didPop, result) {
+        if (didPop) {
+          _stopAllAndClose();
+        }
+      },
+      child: Scaffold(
         backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.close, color: AppColors.textPrimary),
-          onPressed: () => Navigator.pop(context),
-        ),
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          leading: IconButton(
+            icon: const Icon(Icons.close, color: AppColors.textPrimary),
+            onPressed: () {
+              _stopAllAndClose();
+              NavigationUtils.closeToHome(context);
+            },
+          ),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -362,10 +607,11 @@ class _ListeningShadowingScreenState
           ],
         ),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.min,
           children: [
             Text(
               instructions,
@@ -389,12 +635,14 @@ class _ListeningShadowingScreenState
                 children: [
                   Row(
                     children: [
-                      const Icon(
-                        Icons.record_voice_over,
-                        color: AppColors.secondaryBlue,
-                        size: 20,
-                      ),
-                      const SizedBox(width: 8),
+                      if (avatarAsset.isNotEmpty) ...[
+                        CircleAvatar(
+                          radius: 26,
+                          backgroundColor: AppColors.cardBackground,
+                          backgroundImage: AssetImage(avatarAsset),
+                        ),
+                        const SizedBox(width: 10),
+                      ],
                       Text(
                         speakerName,
                         style: const TextStyle(
@@ -634,6 +882,55 @@ class _ListeningShadowingScreenState
           ],
         ),
       ),
+    ),
     );
+  }
+
+  void _logAvatarOnce(String speakerName) {
+    final itemId = _currentItem.itemId;
+    if (_lastAvatarLogItemId == itemId) return;
+    _lastAvatarLogItemId = itemId;
+    final characterId = _currentItem.characterId ?? '';
+    final avatarUrl = _resolveAvatarUrl(characterId);
+    final avatarAsset = _avatarAsset;
+    debugPrint(
+      'LISTENING_AVATAR item=$itemId characterId=$characterId name=$speakerName avatarUrl=$avatarUrl avatarAsset=$avatarAsset',
+    );
+  }
+
+  String _resolveAvatarUrl(String characterId) {
+    final normalized = _normalizeCharacterId(characterId);
+    for (final character in widget.episode.characters.appearingInEpisode) {
+      if (_normalizeCharacterId(character.characterId) == normalized) {
+        return character.avatarUrl ?? '';
+      }
+    }
+    return '';
+  }
+
+  Future<void> _loadAvatarForCurrentItem() async {
+    if (_items.isEmpty) return;
+    final itemId = _currentItem.itemId;
+    if (_avatarItemId == itemId && _avatarAsset.isNotEmpty) return;
+    final characterId = _currentItem.characterId ?? '';
+    final avatarUrl = _resolveAvatarUrl(characterId);
+    final resolved = await AvatarAssetResolver.resolve(
+      avatarUrl: avatarUrl,
+      fallbackName: _currentItem.characterDisplayName,
+      cacheKey: itemId,
+    );
+    if (!mounted) return;
+    setState(() {
+      _avatarItemId = itemId;
+      _avatarAsset = resolved;
+    });
+  }
+
+  String _normalizeCharacterId(String characterId) {
+    var value = characterId.trim().toLowerCase().replaceAll(' ', '_');
+    if (value.startsWith('char_')) {
+      value = value.substring('char_'.length);
+    }
+    return value;
   }
 }

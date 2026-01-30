@@ -12,6 +12,7 @@ import '../services/achievement_service.dart';
 class ProgressRepositoryImpl implements IProgressRepository {
   static const String _progressKey = 'user_progress';
   static const String _sectionProgressKey = 'section_progress_v1';
+  static const String _interviewProgressKey = 'interview_progress_v1';
   final SharedPreferences _prefs;
   final ReviewWordsDb _reviewWordsDb;
   final AchievementService _achievementService;
@@ -160,6 +161,17 @@ class ProgressRepositoryImpl implements IProgressRepository {
   }
 
   @override
+  Future<void> unlockEpisode(int episodeNumber) async {
+    final progress = await getUserProgress();
+    if (episodeNumber <= progress.lastUnlockedEpisode) return;
+    final updated = progress.copyWith(
+      lastUnlockedEpisode: episodeNumber,
+      lastAccessDate: DateTime.now(),
+    );
+    await saveUserProgress(updated);
+  }
+
+  @override
   Future<List<String>> getUnlockedAchievements() async {
     final progress = await getUserProgress();
     return progress.achievements.map((a) => a.id).whereType<String>().toList();
@@ -281,6 +293,42 @@ class ProgressRepositoryImpl implements IProgressRepository {
     await _saveSectionProgressMap(map);
   }
 
+  @override
+  Future<bool> isInterviewCompleted({
+    required String level,
+    required int episodeNumber,
+    required String characterId,
+    required String interviewId,
+  }) async {
+    final key = _buildInterviewKey(
+      level: level,
+      episodeNumber: episodeNumber,
+      characterId: characterId,
+      interviewId: interviewId,
+    );
+    final list = _prefs.getStringList(_interviewProgressKey) ?? [];
+    return list.contains(key);
+  }
+
+  @override
+  Future<void> markInterviewCompleted({
+    required String level,
+    required int episodeNumber,
+    required String characterId,
+    required String interviewId,
+  }) async {
+    final key = _buildInterviewKey(
+      level: level,
+      episodeNumber: episodeNumber,
+      characterId: characterId,
+      interviewId: interviewId,
+    );
+    final list = _prefs.getStringList(_interviewProgressKey) ?? [];
+    if (list.contains(key)) return;
+    final updated = [...list, key];
+    await _prefs.setStringList(_interviewProgressKey, updated);
+  }
+
   Future<Map<int, Set<String>>> _getSectionProgressMap() async {
     final jsonString = _prefs.getString(_sectionProgressKey);
     if (jsonString == null) return {};
@@ -303,6 +351,31 @@ class ProgressRepositoryImpl implements IProgressRepository {
       jsonMap[entry.key.toString()] = entry.value.toList();
     }
     await _prefs.setString(_sectionProgressKey, jsonEncode(jsonMap));
+  }
+
+  String _buildInterviewKey({
+    required String level,
+    required int episodeNumber,
+    required String characterId,
+    required String interviewId,
+  }) {
+    final normalized = _normalizeCharacterId(characterId);
+    final normalizedInterview = _normalizeInterviewId(interviewId);
+    return '${level.toLowerCase()}|$episodeNumber|$normalized|$normalizedInterview';
+  }
+
+  String _normalizeCharacterId(String characterId) {
+    var value = characterId.trim().toLowerCase().replaceAll(' ', '_');
+    if (value.startsWith('char_')) {
+      value = value.substring('char_'.length);
+    }
+    return value;
+  }
+
+  String _normalizeInterviewId(String interviewId) {
+    var value = interviewId.trim().toLowerCase().replaceAll(' ', '_');
+    value = value.replaceAll(RegExp(r'[^a-z0-9_\\-]'), '');
+    return value.isEmpty ? 'default' : value;
   }
 
   int _calculateLevel(int totalXp) {

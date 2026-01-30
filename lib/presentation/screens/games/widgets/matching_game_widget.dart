@@ -90,14 +90,17 @@ class _MatchingGameWidgetState extends ConsumerState<MatchingGameWidget> {
       if (isCorrect) {
         _matchedIds.add(target.id);
         _score += 10;
-        _playSound(correct: true);
-        HapticFeedback.lightImpact();
       } else {
         _score = max(0, _score - 5);
-        _playSound(correct: false);
-        HapticFeedback.mediumImpact();
       }
     });
+    if (isCorrect) {
+      _playSound(correct: true);
+      HapticFeedback.lightImpact();
+    } else {
+      _playSound(correct: false);
+      HapticFeedback.mediumImpact();
+    }
 
     if (_matchedIds.length == _leftItems.length) {
       _finishGame();
@@ -303,8 +306,8 @@ class _MatchingGameWidgetState extends ConsumerState<MatchingGameWidget> {
         builder: (context, candidateData, rejectedData) {
           final hovering = candidateData.isNotEmpty;
           return AnimatedContainer(
-            duration: const Duration(milliseconds: 150),
-            curve: Curves.easeInOut,
+            duration: const Duration(milliseconds: 60),
+            curve: Curves.linear,
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
             decoration: BoxDecoration(
               color: matched

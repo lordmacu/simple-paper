@@ -13,3 +13,21 @@ final playerNameProvider = StateProvider<String>((ref) {
   final service = ref.watch(templateVariableServiceProvider);
   return service.getVariable('player_name');
 });
+
+/// Provider para ciudad
+final cityProvider = StateProvider<String>((ref) {
+  final service = ref.watch(templateVariableServiceProvider);
+  return service.getVariable('city');
+});
+
+/// Provider para nombre de compañía
+final companyNameProvider = StateProvider<String>((ref) {
+  final service = ref.watch(templateVariableServiceProvider);
+  return service.getVariable('company_name');
+});
+
+/// Provider para tipo de oficina
+final officeTypeProvider = StateProvider<String>((ref) {
+  final service = ref.watch(templateVariableServiceProvider);
+  return service.getVariable('office_type');
+});

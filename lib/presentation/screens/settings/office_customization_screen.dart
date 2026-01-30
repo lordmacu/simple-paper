@@ -23,11 +23,12 @@ class _OfficeCustomizationScreenState
   @override
   void initState() {
     super.initState();
-    final service = ref.read(templateVariableServiceProvider);
-    _companyController =
-        TextEditingController(text: service.getVariable('company_name'));
-    _typeController =
-        TextEditingController(text: service.getVariable('office_type'));
+    _companyController = TextEditingController(
+      text: ref.read(companyNameProvider),
+    );
+    _typeController = TextEditingController(
+      text: ref.read(officeTypeProvider),
+    );
   }
 
   @override
@@ -39,12 +40,11 @@ class _OfficeCustomizationScreenState
 
   @override
   Widget build(BuildContext context) {
-    final service = ref.watch(templateVariableServiceProvider);
-    final city = service.getVariable('city');
+    final city = ref.watch(cityProvider);
 
     final preview =
-        '${_companyController.text.trim().isEmpty ? service.getVariable('company_name') : _companyController.text.trim()} '
-        '${_typeController.text.trim().isEmpty ? service.getVariable('office_type') : _typeController.text.trim()} · $city';
+        '${_companyController.text.trim().isEmpty ? ref.read(companyNameProvider) : _companyController.text.trim()} '
+        '${_typeController.text.trim().isEmpty ? ref.read(officeTypeProvider) : _typeController.text.trim()} · $city';
 
     return Scaffold(
       backgroundColor: Colors.white,

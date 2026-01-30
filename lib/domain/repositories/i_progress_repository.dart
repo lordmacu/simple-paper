@@ -59,6 +59,11 @@ abstract class IProgressRepository {
   /// 
   /// Returns: true si está desbloqueado, false si no
   Future<bool> isEpisodeUnlocked(int episodeNumber);
+
+  /// Desbloquea episodios hasta el número indicado
+  /// 
+  /// [episodeNumber] - Episodio a desbloquear (incluye todos los anteriores)
+  Future<void> unlockEpisode(int episodeNumber);
   
   /// Obtiene la lista de logros desbloqueados
   /// 
@@ -93,6 +98,22 @@ abstract class IProgressRepository {
   Future<void> markSectionCompleted({
     required int episodeNumber,
     required String sectionId,
+  });
+
+  /// Verifica si una entrevista ya fue completada
+  Future<bool> isInterviewCompleted({
+    required String level,
+    required int episodeNumber,
+    required String characterId,
+    required String interviewId,
+  });
+
+  /// Marca una entrevista como completada
+  Future<void> markInterviewCompleted({
+    required String level,
+    required int episodeNumber,
+    required String characterId,
+    required String interviewId,
   });
   
   /// Desbloquea un logro

@@ -11,697 +11,748 @@
     }
   },
   "episode_metadata": {
-    "section_name": "Office Intro",
-    "section_name_es": "Inicio Oficina",
+    "section_name": "Daily Jobs",
+    "section_name_es": "Trabajos Diarios",
     "image": "/episodes/episode_7_scene.jpg",
     "episode_number": 7,
     "episode_id": "ep_007",
-    "title": "Welcome to the Office (Everyone Is Confused)",
-    "title_es": "Bienvenido a la Oficina (Todos Están Confundidos)",
-    "description": "The player arrives at the office for the first time. People say hello, look busy, and do not explain anything. It feels important, but nobody knows why.",
-    "description_es": "El jugador llega a la oficina por primera vez. Las personas saludan, fingen estar ocupadas y no explican nada. Parece importante, pero nadie sabe por qué.",
+    "title": "What Dan Does All Day",
+    "title_es": "Lo Que Dan Hace Todo El Día",
+    "description": "Leo asks many questions. Ben smiles and says very little. Dan explains his job using simple sentences about what he does every day. It feels important. It is not.",
+    "description_es": "Leo hace muchas preguntas. Ben sonríe y dice muy poco. Dan explica su trabajo usando oraciones simples sobre lo que él hace todos los días. Parece importante. No lo es.",
     "internal_level": "A1",
     "estimated_time_minutes": 12,
     "unlock_requirements": null,
     "tags": [
-      "greetings",
       "office_life",
-      "first_day"
+      "daily_work",
+      "questions",
+      "simple_present"
     ],
-    "previous_episode": null,
+    "previous_episode": "ep_006",
     "next_episode": "ep_008"
   },
   "characters": {
-    "section_name": "Office Team",
-    "section_name_es": "Equipo Oficina",
+    "section_name": "Office People",
+    "section_name_es": "Gente Oficina",
     "image": "/episodes/episode_7_scene.jpg",
     "appearing_in_episode": [
       {
         "character_id": "char_boss",
-        "default_name": "MICHAEL",
-        "role": "Boss",
-        "role_es": "Jefe",
-        "personality": "Enthusiastic boss who wants everyone to like him and believes he is the best boss in the world.",
-        "personality_es": "Jefe entusiasta que quiere que todos lo quieran y cree que es el mejor jefe del mundo.",
+        "default_name": "LEO",
+        "role": "boss",
+        "role_es": "jefe",
+        "personality": "Enthusiastic boss who wants attention and love. He asks many questions and believes every moment is important.",
+        "personality_es": "Jefe entusiasta que quiere atención y cariño. Hace muchas preguntas y cree que cada momento es importante.",
         "first_appearance": false,
         "customizable_name": true,
         "user_custom_name": null,
-        "avatar_url": "/avatars/michael.png",
-        "intro_text": "Hello. Welcome. I am the boss. The best boss. This meeting is very important because I am here.",
-        "intro_text_es": "Hola. Bienvenido. Yo soy el jefe. El mejor jefe. Esta reunión es muy importante porque yo estoy aquí."
+        "avatar_url": "/avatars/leo.png",
+        "intro_text": "Hello. I am Leo. I am the boss. The best boss. I ask questions because great bosses ask many questions.",
+        "intro_text_es": "Hola. Yo soy Leo. Yo soy el jefe. El mejor jefe. Yo hago preguntas porque los grandes jefes hacen muchas preguntas."
       },
       {
         "character_id": "char_jim",
-        "default_name": "JIM",
-        "role": "Salesman",
-        "role_es": "Vendedor",
-        "personality": "Calm and sarcastic salesman who makes jokes that sound serious.",
-        "personality_es": "Vendedor tranquilo y sarcástico que hace bromas que suenan serias.",
+        "default_name": "BEN",
+        "role": "salesman",
+        "role_es": "vendedor",
+        "personality": "Calm and sarcastic salesman who observes everything and smiles at strange moments.",
+        "personality_es": "Vendedor tranquilo y sarcástico que observa todo y sonríe en momentos extraños.",
         "first_appearance": false,
         "customizable_name": true,
         "user_custom_name": null,
-        "avatar_url": "/avatars/jim.png",
-        "intro_text": "Yes. This is a very normal office. Nothing strange happens here. Never.",
-        "intro_text_es": "Sí. Esta es una oficina muy normal. Nada extraño pasa aquí. Nunca."
-      },
-      {
-        "character_id": "char_pam",
-        "default_name": "PAM",
-        "role": "Receptionist",
-        "role_es": "Recepcionista",
-        "personality": "Kind and helpful receptionist who understands the office chaos.",
-        "personality_es": "Recepcionista amable y servicial que entiende el caos de la oficina.",
-        "first_appearance": false,
-        "customizable_name": true,
-        "user_custom_name": null,
-        "avatar_url": "/avatars/pam.png",
-        "intro_text": "Hi. Welcome to the office. Do not worry. This is a normal day here.",
-        "intro_text_es": "Hola. Bienvenido a la oficina. No te preocupes. Este es un día normal aquí."
+        "avatar_url": "/avatars/ben.png",
+        "intro_text": "Hi. I am Ben. I sell paper. I listen. I smile. This is a normal day. Very normal.",
+        "intro_text_es": "Hola. Yo soy Ben. Yo vendo papel. Yo escucho. Yo sonrío. Este es un día normal. Muy normal."
       },
       {
         "character_id": "char_dwight",
-        "default_name": "DWIGHT",
-        "role": "Salesman",
-        "role_es": "Vendedor",
-        "personality": "Very serious salesman who follows rules and watches everyone.",
-        "personality_es": "Vendedor muy serio que sigue las reglas y vigila a todos.",
+        "default_name": "DAN",
+        "role": "salesman",
+        "role_es": "vendedor",
+        "personality": "Serious and intense salesman who explains his job with confidence and too many details.",
+        "personality_es": "Vendedor serio e intenso que explica su trabajo con confianza y demasiados detalles.",
         "first_appearance": false,
         "customizable_name": true,
         "user_custom_name": null,
-        "avatar_url": "/avatars/dwight.png",
-        "intro_text": "I am the assistant regional manager. I am ready for any emergency. Even a paper emergency.",
-        "intro_text_es": "Yo soy el asistente del gerente regional. Estoy listo para cualquier emergencia. Incluso una emergencia de papel."
+        "avatar_url": "/avatars/dan.png",
+        "intro_text": "I am Dan. I work here. I follow rules. I do many things every day. Important things.",
+        "intro_text_es": "Yo soy Dan. Yo trabajo aquí. Yo sigo reglas. Yo hago muchas cosas todos los días. Cosas importantes."
+      },
+      {
+        "character_id": "char_pam",
+        "default_name": "MIA",
+        "role": "receptionist",
+        "role_es": "recepcionista",
+        "personality": "Kind receptionist who helps everyone and comments on the office situation.",
+        "personality_es": "Recepcionista amable que ayuda a todos y comenta sobre la situación de la oficina.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/mia.png",
+        "intro_text": "Welcome. I am Mia. I answer phones and help people. Yes, this is how the office is.",
+        "intro_text_es": "Bienvenido. Yo soy Mia. Yo contesto teléfonos y ayudo a las personas. Sí, así es la oficina."
       }
     ],
     "mentioned_but_not_appearing": []
   },
   "vocabulary_focus": {
-    "section_name": "Office Basics",
-    "section_name_es": "Básicos Oficina",
+    "section_name": "Daily Tasks",
+    "section_name_es": "Tareas Diarias",
     "image": "/episodes/episode_7_scene.jpg",
     "target_words": [
       {
-        "word": "office",
-        "translation_es": "oficina",
-        "word_type": "noun",
-        "word_type_es": "sustantivo",
-        "difficulty": 1,
-        "context_sentence": "This office looks busy, but people talk a lot.",
-        "context_sentence_es": "Esta oficina se ve ocupada, pero la gente habla mucho.",
-        "image_url": "/vocab/office.jpg",
-        "usage_examples": [
-          "The office is big.",
-          "I work in this office.",
-          "The office is very quiet today."
-        ],
-        "usage_examples_es": [
-          "La oficina es grande.",
-          "Yo trabajo en esta oficina.",
-          "La oficina está muy silenciosa hoy."
-        ]
-      },
-      {
-        "word": "desk",
-        "translation_es": "escritorio",
-        "word_type": "noun",
-        "word_type_es": "sustantivo",
-        "difficulty": 1,
-        "context_sentence": "The desk has papers, a phone, and no space.",
-        "context_sentence_es": "El escritorio tiene papeles, un teléfono y no tiene espacio.",
-        "image_url": "/vocab/desk.jpg",
-        "usage_examples": [
-          "This is my desk.",
-          "The desk is clean.",
-          "The desk is near the window."
-        ],
-        "usage_examples_es": [
-          "Este es mi escritorio.",
-          "El escritorio está limpio.",
-          "El escritorio está cerca de la ventana."
-        ]
-      },
-      {
-        "word": "boss",
-        "translation_es": "jefe",
-        "word_type": "noun",
-        "word_type_es": "sustantivo",
-        "difficulty": 1,
-        "context_sentence": "The boss talks for a long time.",
-        "context_sentence_es": "El jefe habla por mucho tiempo.",
-        "image_url": "/vocab/boss.jpg",
-        "usage_examples": [
-          "The boss is here.",
-          "The boss likes meetings.",
-          "The boss has many ideas."
-        ],
-        "usage_examples_es": [
-          "El jefe está aquí.",
-          "Al jefe le gustan las reuniones.",
-          "El jefe tiene muchas ideas."
-        ]
-      },
-      {
-        "word": "meeting",
-        "translation_es": "reunión",
-        "word_type": "noun",
-        "word_type_es": "sustantivo",
+        "word": "organize",
+        "translation_es": "organizar",
+        "word_type": "verb",
+        "word_type_es": "verbo",
         "difficulty": 2,
-        "context_sentence": "The meeting starts, but nobody listens.",
-        "context_sentence_es": "La reunión empieza, pero nadie escucha.",
-        "image_url": "/vocab/meeting.jpg",
+        "context_sentence": "Dan organizes his desk every morning.",
+        "context_sentence_es": "Dan organiza su escritorio todas las mañanas.",
+        "image_url": "/vocab/organize.jpg",
         "usage_examples": [
-          "The meeting is today.",
-          "The meeting is very long.",
-          "We have a meeting now."
+          "He organizes the papers.",
+          "She organizes the meeting notes.",
+          "Dan organizes everything very slowly."
         ],
         "usage_examples_es": [
-          "La reunión es hoy.",
-          "La reunión es muy larga.",
-          "Tenemos una reunión ahora."
+          "Él organiza los papeles.",
+          "Ella organiza las notas de la reunión.",
+          "Dan organiza todo muy lentamente."
         ]
       },
       {
-        "word": "coffee",
-        "translation_es": "café",
-        "word_type": "noun",
-        "word_type_es": "sustantivo",
-        "difficulty": 1,
-        "context_sentence": "Coffee helps people stay awake in the office.",
-        "context_sentence_es": "El café ayuda a las personas a mantenerse despiertas en la oficina.",
-        "image_url": "/vocab/coffee.jpg",
+        "word": "explain",
+        "translation_es": "explicar",
+        "word_type": "verb",
+        "word_type_es": "verbo",
+        "difficulty": 2,
+        "context_sentence": "He explains his job to everyone.",
+        "context_sentence_es": "Él explica su trabajo a todos.",
+        "image_url": "/vocab/explain.jpg",
         "usage_examples": [
-          "I drink coffee.",
-          "The coffee is hot.",
-          "Coffee is on the desk."
+          "He explains the task.",
+          "She explains the problem.",
+          "Dan explains his job again."
         ],
         "usage_examples_es": [
-          "Yo tomo café.",
-          "El café está caliente.",
-          "El café está sobre el escritorio."
+          "Él explica la tarea.",
+          "Ella explica el problema.",
+          "Dan explica su trabajo otra vez."
+        ]
+      },
+      {
+        "word": "follow",
+        "translation_es": "seguir",
+        "word_type": "verb",
+        "word_type_es": "verbo",
+        "difficulty": 2,
+        "context_sentence": "Ben follows the conversation and smiles.",
+        "context_sentence_es": "Ben sigue la conversación y sonríe.",
+        "image_url": "/vocab/follow.jpg",
+        "usage_examples": [
+          "He follows the rules.",
+          "She follows the plan.",
+          "Ben follows the meeting quietly."
+        ],
+        "usage_examples_es": [
+          "Él sigue las reglas.",
+          "Ella sigue el plan.",
+          "Ben sigue la reunión en silencio."
+        ]
+      },
+      {
+        "word": "repeat",
+        "translation_es": "repetir",
+        "word_type": "verb",
+        "word_type_es": "verbo",
+        "difficulty": 2,
+        "context_sentence": "Leo repeats the question many times.",
+        "context_sentence_es": "Leo repite la pregunta muchas veces.",
+        "image_url": "/vocab/repeat.jpg",
+        "usage_examples": [
+          "He repeats the question.",
+          "She repeats the instructions.",
+          "Leo repeats everything slowly."
+        ],
+        "usage_examples_es": [
+          "Él repite la pregunta.",
+          "Ella repite las instrucciones.",
+          "Leo repite todo lentamente."
+        ]
+      },
+      {
+        "word": "describe",
+        "translation_es": "describir",
+        "word_type": "verb",
+        "word_type_es": "verbo",
+        "difficulty": 3,
+        "context_sentence": "Dan describes his daily work.",
+        "context_sentence_es": "Dan describe su trabajo diario.",
+        "image_url": "/vocab/describe.jpg",
+        "usage_examples": [
+          "He describes his job.",
+          "She describes the office.",
+          "Dan describes every small detail."
+        ],
+        "usage_examples_es": [
+          "Él describe su trabajo.",
+          "Ella describe la oficina.",
+          "Dan describe cada pequeño detalle."
         ]
       }
     ],
     "phrases": [
       {
-        "phrase": "Nice to meet you",
-        "translation_es": "Mucho gusto",
-        "usage_context": "Used when people meet for the first time at the office.",
-        "usage_context_es": "Se usa cuando las personas se conocen por primera vez en la oficina."
+        "phrase": "What does he do?",
+        "translation_es": "¿Qué hace él?",
+        "usage_context": "Used when asking about a person’s job or daily tasks.",
+        "usage_context_es": "Se usa para preguntar sobre el trabajo o las tareas diarias de una persona."
       },
       {
-        "phrase": "This is my desk",
-        "translation_es": "Este es mi escritorio",
-        "usage_context": "Used to show where someone works.",
-        "usage_context_es": "Se usa para mostrar dónde trabaja alguien."
+        "phrase": "He does this every day.",
+        "translation_es": "Él hace esto todos los días.",
+        "usage_context": "Used to describe a regular routine.",
+        "usage_context_es": "Se usa para describir una rutina regular."
       },
       {
-        "phrase": "The meeting is long",
-        "translation_es": "La reunión es larga",
-        "usage_context": "Used when the meeting feels too long and boring.",
-        "usage_context_es": "Se usa cuando la reunión se siente muy larga y aburrida."
+        "phrase": "He explains it again.",
+        "translation_es": "Él lo explica otra vez.",
+        "usage_context": "Used when someone repeats an explanation.",
+        "usage_context_es": "Se usa cuando alguien repite una explicación."
+      }
+    ]
+  },
+  "mini_story": {
+    "section_name": "Daily Work",
+    "section_name_es": "Trabajo Diario",
+    "image": "/episodes/episode_7_scene.jpg",
+    "title": "Short Story",
+    "title_es": "Historia corta",
+    "description": "A short story to practice today's topic.",
+    "description_es": "Una historia corta para practicar el tema de hoy.",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "text": {
+          "en": "In the office at Simple Paper, Leo asks many questions. He talks a lot and waits for answers. Ben smiles and listens.",
+          "es": "En la oficina de Simple Paper, Leo hace muchas preguntas. Él habla mucho y espera respuestas. Ben sonríe y escucha."
+        }
+      },
+      {
+        "id": "p2",
+        "text": {
+          "en": "Dan explains what he does all day. He checks papers, answers emails, and works very slowly. Everyone waits for the meeting.",
+          "es": "Dan explica lo que él hace todo el día. Él revisa papeles, responde correos y trabaja muy lentamente. Todos esperan la reunión."
+        }
+      },
+      {
+        "id": "p3",
+        "text": {
+          "en": "Leo listens and asks again, What does he do? Dan repeats the same answer. Ben smiles again because the day feels very long.",
+          "es": "Leo escucha y pregunta otra vez, ¿Qué hace él? Dan repite la misma respuesta. Ben sonríe otra vez porque el día se siente muy largo."
+        }
       }
     ]
   },
   "vocabulary_story": {
-    "section_name": "Office Words",
-    "section_name_es": "Palabras Oficina",
-    "image": "/episodes/episode_7_vocab.jpg",
+    "section_name": "Daily Actions",
+    "section_name_es": "Acciones Diarias",
+    "image": "/episodes/episode_7_scene.jpg",
     "title": "Learning Basic Words",
     "title_es": "Aprendiendo Palabras Básicas",
+    "image_vocab": "/episodes/episode_7_vocab.jpg",
     "description": "A simple story to learn today's vocabulary",
     "description_es": "Una historia simple para aprender el vocabulario de hoy",
     "segments": [
       {
-        "segment_id": "vocab_meeting_01",
-        "image_url": "/vocab/meeting.jpg",
-        "word_focus": "MEETING",
+        "segment_id": "vocab_works_01",
+        "image_url": "/vocab/works.jpg",
+        "word_focus": "works",
         "text": {
-          "en": "The MEETING starts now.",
-          "es": "La REUNIÓN empieza ahora."
+          "en": "Dan WORKS at his desk every day.",
+          "es": "Dan TRABAJA en su escritorio todos los días."
         },
         "emphasis_style": "bold_uppercase"
       },
       {
-        "segment_id": "vocab_meeting_02",
-        "image_url": "/vocab/meeting.jpg",
-        "word_focus": "MEETING",
+        "segment_id": "vocab_works_02",
+        "image_url": "/vocab/works.jpg",
+        "word_focus": "works",
         "text": {
-          "en": "The MEETING is long.",
-          "es": "La REUNIÓN es larga."
+          "en": "Leo says he WORKS very hard. He says this a lot.",
+          "es": "Leo dice que TRABAJA muy duro. Él dice esto muchas veces."
         }
       },
       {
-        "segment_id": "vocab_meeting_03",
-        "image_url": "/vocab/meeting.jpg",
-        "word_focus": "MEETING",
+        "segment_id": "vocab_works_03",
+        "image_url": "/vocab/works.jpg",
+        "word_focus": "works",
         "text": {
-          "en": "Everyone is in the MEETING.",
-          "es": "Todos están en la REUNIÓN."
+          "en": "Ben WORKS and smiles. He always smiles.",
+          "es": "Ben TRABAJA y sonríe. Él siempre sonríe."
         }
       },
       {
-        "segment_id": "vocab_office_01",
-        "image_url": "/vocab/office.jpg",
-        "word_focus": "OFFICE",
+        "segment_id": "vocab_checks_01",
+        "image_url": "/vocab/checks.jpg",
+        "word_focus": "checks",
         "text": {
-          "en": "This OFFICE is small.",
-          "es": "Esta OFICINA es pequeña."
+          "en": "Dan CHECKS everything in the office.",
+          "es": "Dan REVISA todo en la oficina."
         }
       },
       {
-        "segment_id": "vocab_office_02",
-        "image_url": "/vocab/office.jpg",
-        "word_focus": "OFFICE",
+        "segment_id": "vocab_checks_02",
+        "image_url": "/vocab/checks.jpg",
+        "word_focus": "checks",
         "text": {
-          "en": "The OFFICE is very quiet.",
-          "es": "La OFICINA está muy silenciosa."
+          "en": "He CHECKS the desk. He checks again.",
+          "es": "Él REVISA el escritorio. Él revisa otra vez."
         }
       },
       {
-        "segment_id": "vocab_office_03",
-        "image_url": "/vocab/office.jpg",
-        "word_focus": "OFFICE",
+        "segment_id": "vocab_checks_03",
+        "image_url": "/vocab/checks.jpg",
+        "word_focus": "checks",
         "text": {
-          "en": "People work in the OFFICE.",
-          "es": "La gente trabaja en la OFICINA."
+          "en": "Leo CHECKS nothing, but he feels busy.",
+          "es": "Leo REVISA nada, pero se siente ocupado."
         }
       },
       {
-        "segment_id": "vocab_boss_01",
-        "image_url": "/vocab/boss.jpg",
-        "word_focus": "BOSS",
+        "segment_id": "vocab_helps_01",
+        "image_url": "/vocab/helps.jpg",
+        "word_focus": "helps",
         "text": {
-          "en": "The BOSS is here.",
-          "es": "El JEFE está aquí."
+          "en": "Mia HELPS people at the front desk.",
+          "es": "Mia AYUDA a las personas en la recepción."
         }
       },
       {
-        "segment_id": "vocab_boss_02",
-        "image_url": "/vocab/boss.jpg",
-        "word_focus": "BOSS",
+        "segment_id": "vocab_helps_02",
+        "image_url": "/vocab/helps.jpg",
+        "word_focus": "helps",
         "text": {
-          "en": "The BOSS talks a lot.",
-          "es": "El JEFE habla mucho."
+          "en": "She HELPS everyone. Even Leo.",
+          "es": "Ella AYUDA a todos. Incluso a Leo."
         }
       },
       {
-        "segment_id": "vocab_boss_03",
-        "image_url": "/vocab/boss.jpg",
-        "word_focus": "BOSS",
+        "segment_id": "vocab_helps_03",
+        "image_url": "/vocab/helps.jpg",
+        "word_focus": "helps",
         "text": {
-          "en": "The BOSS likes meetings.",
-          "es": "Al JEFE le gustan las reuniones."
+          "en": "Ben HELPS by listening and smiling.",
+          "es": "Ben AYUDA escuchando y sonriendo."
         }
       },
       {
-        "segment_id": "vocab_desk_01",
-        "image_url": "/vocab/desk.jpg",
-        "word_focus": "DESK",
+        "segment_id": "vocab_follows_01",
+        "image_url": "/vocab/follows.jpg",
+        "word_focus": "follows",
         "text": {
-          "en": "This DESK is clean.",
-          "es": "Este ESCRITORIO está limpio."
+          "en": "Dan FOLLOWS all the rules.",
+          "es": "Dan SIGUE todas las reglas."
         }
       },
       {
-        "segment_id": "vocab_desk_02",
-        "image_url": "/vocab/desk.jpg",
-        "word_focus": "DESK",
+        "segment_id": "vocab_follows_02",
+        "image_url": "/vocab/follows.jpg",
+        "word_focus": "follows",
         "text": {
-          "en": "The DESK has papers.",
-          "es": "El ESCRITORIO tiene papeles."
+          "en": "He FOLLOWS rules very carefully.",
+          "es": "Él SIGUE las reglas con mucho cuidado."
         }
       },
       {
-        "segment_id": "vocab_desk_03",
-        "image_url": "/vocab/desk.jpg",
-        "word_focus": "DESK",
+        "segment_id": "vocab_follows_03",
+        "image_url": "/vocab/follows.jpg",
+        "word_focus": "follows",
         "text": {
-          "en": "I sit at my DESK.",
-          "es": "Yo me siento en mi ESCRITORIO."
+          "en": "Leo says he FOLLOWS rules. Sometimes.",
+          "es": "Leo dice que SIGUE las reglas. A veces."
         }
       },
       {
-        "segment_id": "vocab_work_01",
-        "image_url": "/vocab/work.jpg",
-        "word_focus": "WORK",
+        "segment_id": "vocab_explains_01",
+        "image_url": "/vocab/explains.jpg",
+        "word_focus": "explains",
         "text": {
-          "en": "We do WORK here.",
-          "es": "Aquí hacemos TRABAJO."
+          "en": "Dan EXPLAINS his job every day.",
+          "es": "Dan EXPLICA su trabajo todos los días."
         }
       },
       {
-        "segment_id": "vocab_work_02",
-        "image_url": "/vocab/work.jpg",
-        "word_focus": "WORK",
+        "segment_id": "vocab_explains_02",
+        "image_url": "/vocab/explains.jpg",
+        "word_focus": "explains",
         "text": {
-          "en": "WORK starts in the morning.",
-          "es": "El TRABAJO empieza en la mañana."
+          "en": "He EXPLAINS everything. Slowly.",
+          "es": "Él EXPLICA todo. Lentamente."
         }
       },
       {
-        "segment_id": "vocab_work_03",
-        "image_url": "/vocab/work.jpg",
-        "word_focus": "WORK",
+        "segment_id": "vocab_explains_03",
+        "image_url": "/vocab/explains.jpg",
+        "word_focus": "explains",
         "text": {
-          "en": "WORK can be boring.",
-          "es": "El TRABAJO puede ser aburrido."
+          "en": "Leo EXPLAINS nothing, but he talks a lot.",
+          "es": "Leo EXPLICA nada, pero habla mucho."
         }
       },
       {
         "segment_id": "vocab_mix_01",
-        "image_url": "/vocab/meeting.jpg",
-        "word_focus": "MEETING",
+        "image_url": "/vocab/works.jpg",
+        "word_focus": "works",
         "text": {
-          "en": "The MEETING is in the OFFICE.",
-          "es": "La REUNIÓN es en la OFICINA."
+          "en": "Dan WORKS and CHECKS everything in the office.",
+          "es": "Dan TRABAJA y REVISA todo en la oficina."
         }
       },
       {
         "segment_id": "vocab_mix_02",
-        "image_url": "/vocab/desk.jpg",
-        "word_focus": "DESK",
+        "image_url": "/vocab/helps.jpg",
+        "word_focus": "helps",
         "text": {
-          "en": "The DESK is ready for WORK.",
-          "es": "El ESCRITORIO está listo para el TRABAJO."
+          "en": "Mia HELPS while Dan FOLLOWS the rules.",
+          "es": "Mia AYUDA mientras Dan SIGUE las reglas."
         }
       },
       {
         "segment_id": "vocab_summary",
         "word_focus": null,
         "text": {
-          "en": "Great. Now you know: MEETING, OFFICE, BOSS, DESK, WORK. This is a lot of work for one meeting.",
-          "es": "Genial. Ahora conoces: REUNIÓN, OFICINA, JEFE, ESCRITORIO, TRABAJO. Es mucho trabajo para una reunión."
+          "en": "Great! Now you know: WORKS, CHECKS, HELPS, FOLLOWS, EXPLAINS. Dan is ready to explain them again.",
+          "es": "¡Genial! Ahora conoces: TRABAJA, REVISA, AYUDA, SIGUE, EXPLICA. Dan está listo para explicarlas otra vez."
         }
       }
     ]
   },
   "listening_shadowing": {
-    "section_name": "Office Lines",
-    "section_name_es": "Líneas Oficina",
+    "section_name": "Daily Work",
+    "section_name_es": "Trabajo Diario",
     "image": "/episodes/episode_7_scene.jpg",
     "instructions": "Listen to the line. Then repeat it aloud before the timer ends.",
     "instructions_es": "Escucha la línea. Luego repítela en voz alta antes de que termine el tiempo.",
     "data": [
       {
         "item_id": "listen_001",
-        "character_id": "char_pam",
-        "character_display_name": "PAM",
-        "text": "In the office, my desk has coffee, the boss talks, and the meeting feels very long.",
-        "text_es": "En la oficina, mi escritorio tiene café, el jefe habla y la reunión se siente muy larga.",
-        "tts_text": "In the office, my desk has coffee, the boss talks, and the meeting feels very long.",
-        "tts_voice_id": "en_us_female_1",
+        "character_id": "char_leo",
+        "character_display_name": "LEO",
+        "text": "Dan organizes his desk, explains his job, follows the plan, repeats details, and describes everything proudly.",
+        "text_es": "Dan organiza su escritorio, explica su trabajo, sigue el plan, repite detalles y describe todo con orgullo.",
+        "tts_text": "Dan organizes his desk, explains his job, follows the plan, repeats details, and describes everything proudly.",
+        "tts_voice_id": "en_us_male_1",
         "estimated_audio_duration_seconds": 7,
         "repeat_timer_seconds": 10,
         "repeat_count": 2,
         "focus_vocab": [
-          "office",
-          "desk",
-          "boss",
-          "meeting",
-          "coffee"
+          "organize",
+          "explain",
+          "follow",
+          "repeat",
+          "describe"
         ]
       },
       {
         "item_id": "listen_002",
-        "character_id": "char_jim",
-        "character_display_name": "JIM",
-        "text": "At the office, I sit at my desk with coffee while the boss starts another meeting.",
-        "text_es": "En la oficina, me siento en mi escritorio con café mientras el jefe inicia otra reunión.",
-        "tts_text": "At the office, I sit at my desk with coffee while the boss starts another meeting.",
-        "tts_voice_id": "en_us_male_1",
+        "character_id": "char_ben",
+        "character_display_name": "BEN",
+        "text": "He organizes papers, explains each step, follows rules, repeats ideas, and describes his work calmly.",
+        "text_es": "Él organiza papeles, explica cada paso, sigue reglas, repite ideas y describe su trabajo con calma.",
+        "tts_text": "He organizes papers, explains each step, follows rules, repeats ideas, and describes his work calmly.",
+        "tts_voice_id": "en_us_male_2",
         "estimated_audio_duration_seconds": 7,
         "repeat_timer_seconds": 10,
         "repeat_count": 2,
         "focus_vocab": [
-          "office",
-          "desk",
-          "boss",
-          "meeting",
-          "coffee"
+          "organize",
+          "explain",
+          "follow",
+          "repeat",
+          "describe"
         ]
       },
       {
         "item_id": "listen_003",
-        "character_id": "char_boss",
-        "character_display_name": "BOSS",
-        "text": "In the office, the boss stands by the desk, drinks coffee, and explains the meeting.",
-        "text_es": "En la oficina, el jefe está junto al escritorio, toma café y explica la reunión.",
-        "tts_text": "In the office, the boss stands by the desk, drinks coffee, and explains the meeting.",
-        "tts_voice_id": "en_us_male_2",
+        "character_id": "char_dan",
+        "character_display_name": "DAN",
+        "text": "I organize my tasks, explain my job, follow the schedule, repeat steps, and describe daily work.",
+        "text_es": "Yo organizo mis tareas, explico mi trabajo, sigo el horario, repito pasos y describo el trabajo diario.",
+        "tts_text": "I organize my tasks, explain my job, follow the schedule, repeat steps, and describe daily work.",
+        "tts_voice_id": "en_us_male_3",
         "estimated_audio_duration_seconds": 7,
         "repeat_timer_seconds": 10,
         "repeat_count": 2,
         "focus_vocab": [
-          "office",
-          "desk",
-          "boss",
-          "meeting",
-          "coffee"
+          "organize",
+          "explain",
+          "follow",
+          "repeat",
+          "describe"
         ]
       },
       {
         "item_id": "listen_004",
-        "character_id": "char_pam",
-        "character_display_name": "PAM",
-        "text": "The office feels busy as the boss plans a meeting near my desk with coffee.",
-        "text_es": "La oficina se siente ocupada cuando el jefe planea una reunión cerca de mi escritorio con café.",
-        "tts_text": "The office feels busy as the boss plans a meeting near my desk with coffee.",
+        "character_id": "char_mia",
+        "character_display_name": "MIA",
+        "text": "Dan organizes slowly, explains carefully, follows rules, repeats answers, and describes small details.",
+        "text_es": "Dan organiza lentamente, explica con cuidado, sigue reglas, repite respuestas y describe pequeños detalles.",
+        "tts_text": "Dan organizes slowly, explains carefully, follows rules, repeats answers, and describes small details.",
         "tts_voice_id": "en_us_female_1",
         "estimated_audio_duration_seconds": 7,
         "repeat_timer_seconds": 10,
         "repeat_count": 2,
         "focus_vocab": [
-          "office",
-          "desk",
-          "boss",
-          "meeting",
-          "coffee"
+          "organize",
+          "explain",
+          "follow",
+          "repeat",
+          "describe"
         ]
       },
       {
         "item_id": "listen_005",
-        "character_id": "char_jim",
-        "character_display_name": "JIM",
-        "text": "In the office, my desk waits as the boss delays the meeting for coffee.",
-        "text_es": "En la oficina, mi escritorio espera mientras el jefe retrasa la reunión por café.",
-        "tts_text": "In the office, my desk waits as the boss delays the meeting for coffee.",
+        "character_id": "char_leo",
+        "character_display_name": "LEO",
+        "text": "He organizes everything, explains again, follows nothing, repeats questions, and describes it as important.",
+        "text_es": "Él organiza todo, explica otra vez, no sigue nada, repite preguntas y lo describe como importante.",
+        "tts_text": "He organizes everything, explains again, follows nothing, repeats questions, and describes it as important.",
         "tts_voice_id": "en_us_male_1",
-        "estimated_audio_duration_seconds": 7,
-        "repeat_timer_seconds": 10,
-        "repeat_count": 2,
-        "focus_vocab": [
-          "office",
-          "desk",
-          "boss",
-          "meeting",
-          "coffee"
-        ]
-      },
-      {
-        "item_id": "listen_006",
-        "character_id": "char_boss",
-        "character_display_name": "BOSS",
-        "text": "This office meeting needs coffee, says the boss, pointing at the desk.",
-        "text_es": "Esta reunión de oficina necesita café, dice el jefe, señalando el escritorio.",
-        "tts_text": "This office meeting needs coffee, says the boss, pointing at the desk.",
-        "tts_voice_id": "en_us_male_2",
-        "estimated_audio_duration_seconds": 7,
-        "repeat_timer_seconds": 10,
-        "repeat_count": 2,
-        "focus_vocab": [
-          "office",
-          "desk",
-          "boss",
-          "meeting",
-          "coffee"
-        ]
-      },
-      {
-        "item_id": "listen_007",
-        "character_id": "char_pam",
-        "character_display_name": "PAM",
-        "text": "In the office, the meeting starts as the boss finds coffee on the desk.",
-        "text_es": "En la oficina, la reunión empieza cuando el jefe encuentra café en el escritorio.",
-        "tts_text": "In the office, the meeting starts as the boss finds coffee on the desk.",
-        "tts_voice_id": "en_us_female_1",
-        "estimated_audio_duration_seconds": 7,
-        "repeat_timer_seconds": 10,
-        "repeat_count": 2,
-        "focus_vocab": [
-          "office",
-          "desk",
-          "boss",
-          "meeting",
-          "coffee"
-        ]
-      },
-      {
-        "item_id": "listen_008",
-        "character_id": "char_jim",
-        "character_display_name": "JIM",
-        "text": "At the office desk, coffee disappears when the boss announces a meeting.",
-        "text_es": "En el escritorio de la oficina, el café desaparece cuando el jefe anuncia una reunión.",
-        "tts_text": "At the office desk, coffee disappears when the boss announces a meeting.",
-        "tts_voice_id": "en_us_male_1",
-        "estimated_audio_duration_seconds": 7,
-        "repeat_timer_seconds": 10,
-        "repeat_count": 2,
-        "focus_vocab": [
-          "office",
-          "desk",
-          "boss",
-          "meeting",
-          "coffee"
-        ]
-      },
-      {
-        "item_id": "listen_009",
-        "character_id": "char_boss",
-        "character_display_name": "BOSS",
-        "text": "In the office, the boss loves coffee, the desk, and every long meeting.",
-        "text_es": "En la oficina, el jefe ama el café, el escritorio y cada reunión larga.",
-        "tts_text": "In the office, the boss loves coffee, the desk, and every long meeting.",
-        "tts_voice_id": "en_us_male_2",
-        "estimated_audio_duration_seconds": 7,
-        "repeat_timer_seconds": 10,
-        "repeat_count": 2,
-        "focus_vocab": [
-          "office",
-          "desk",
-          "boss",
-          "meeting",
-          "coffee"
-        ]
-      },
-      {
-        "item_id": "listen_010",
-        "character_id": "char_pam",
-        "character_display_name": "PAM",
-        "text": "The office feels calm until the boss, coffee, desk, and meeting appear together.",
-        "text_es": "La oficina se siente tranquila hasta que el jefe, el café, el escritorio y la reunión aparecen juntos.",
-        "tts_text": "The office feels calm until the boss, coffee, desk, and meeting appear together.",
-        "tts_voice_id": "en_us_female_1",
         "estimated_audio_duration_seconds": 8,
         "repeat_timer_seconds": 11,
         "repeat_count": 2,
         "focus_vocab": [
-          "office",
-          "desk",
-          "boss",
-          "meeting",
-          "coffee"
+          "organize",
+          "explain",
+          "follow",
+          "repeat",
+          "describe"
+        ]
+      },
+      {
+        "item_id": "listen_006",
+        "character_id": "char_ben",
+        "character_display_name": "BEN",
+        "text": "Dan organizes files, explains tasks, follows the process, repeats steps, and describes his role.",
+        "text_es": "Dan organiza archivos, explica tareas, sigue el proceso, repite pasos y describe su rol.",
+        "tts_text": "Dan organizes files, explains tasks, follows the process, repeats steps, and describes his role.",
+        "tts_voice_id": "en_us_male_2",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "organize",
+          "explain",
+          "follow",
+          "repeat",
+          "describe"
+        ]
+      },
+      {
+        "item_id": "listen_007",
+        "character_id": "char_dan",
+        "character_display_name": "DAN",
+        "text": "I organize carefully, explain slowly, follow routines, repeat instructions, and describe my day.",
+        "text_es": "Yo organizo con cuidado, explico lentamente, sigo rutinas, repito instrucciones y describo mi día.",
+        "tts_text": "I organize carefully, explain slowly, follow routines, repeat instructions, and describe my day.",
+        "tts_voice_id": "en_us_male_3",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "organize",
+          "explain",
+          "follow",
+          "repeat",
+          "describe"
+        ]
+      },
+      {
+        "item_id": "listen_008",
+        "character_id": "char_mia",
+        "character_display_name": "MIA",
+        "text": "He organizes notes, explains the job, follows orders, repeats answers, and describes the office.",
+        "text_es": "Él organiza notas, explica el trabajo, sigue órdenes, repite respuestas y describe la oficina.",
+        "tts_text": "He organizes notes, explains the job, follows orders, repeats answers, and describes the office.",
+        "tts_voice_id": "en_us_female_1",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "organize",
+          "explain",
+          "follow",
+          "repeat",
+          "describe"
+        ]
+      },
+      {
+        "item_id": "listen_009",
+        "character_id": "char_leo",
+        "character_display_name": "LEO",
+        "text": "Dan organizes his time, explains everything, follows habits, repeats stories, and describes work proudly.",
+        "text_es": "Dan organiza su tiempo, explica todo, sigue hábitos, repite historias y describe el trabajo con orgullo.",
+        "tts_text": "Dan organizes his time, explains everything, follows habits, repeats stories, and describes work proudly.",
+        "tts_voice_id": "en_us_male_1",
+        "estimated_audio_duration_seconds": 8,
+        "repeat_timer_seconds": 11,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "organize",
+          "explain",
+          "follow",
+          "repeat",
+          "describe"
+        ]
+      },
+      {
+        "item_id": "listen_010",
+        "character_id": "char_ben",
+        "character_display_name": "BEN",
+        "text": "He organizes work at Simple Paper, explains tasks, follows routines, repeats steps, and describes days.",
+        "text_es": "Él organiza el trabajo en Simple Paper, explica tareas, sigue rutinas, repite pasos y describe días.",
+        "tts_text": "He organizes work at Simple Paper, explains tasks, follows routines, repeats steps, and describes days.",
+        "tts_voice_id": "en_us_male_2",
+        "estimated_audio_duration_seconds": 8,
+        "repeat_timer_seconds": 11,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "organize",
+          "explain",
+          "follow",
+          "repeat",
+          "describe"
         ]
       }
     ]
   },
   "scenes": {
-    "section_name": "Boss Meeting",
-    "section_name_es": "Reunión Jefe",
+    "section_name": "Daily Work",
+    "section_name_es": "Trabajo Diario",
     "image": "/episodes/episode_7_scene.jpg",
     "data": [
       {
         "scene_id": "scene_007_001",
         "scene_number": 1,
-        "location": "Reception area",
-        "location_es": "Recepción",
-        "scene_name": "The Meeting",
-        "scene_name_es": "La reunión",
+        "location": "Main office",
+        "location_es": "Oficina principal",
+        "scene_name": "So Many Questions",
+        "scene_name_es": "Tantas preguntas",
         "time": "Morning",
         "time_es": "Mañana",
-        "description": "The boss starts an important meeting at the office reception.",
-        "description_es": "El jefe empieza una reunión importante en la recepción de la oficina.",
+        "description": "Leo stops everyone to ask what Dan does all day. Dan is ready. Very ready.",
+        "description_es": "Leo detiene a todos para preguntar qué hace Dan todo el día. Dan está listo. Muy listo.",
         "dialogue": [
           {
             "line_id": 1,
             "character_id": "char_boss",
-            "character_display_name": "MICHAEL",
-            "text": "Welcome everyone to the MEETING. This is a very special MEETING.",
-            "translation_es": "Bienvenidos a todos a la reunión. Esta es una reunión muy especial.",
+            "character_display_name": "LEO",
+            "text": "Good morning. I am the boss. The great boss. Today I ask an important question.",
+            "translation_es": "Buenos días. Yo soy el jefe. El gran jefe. Hoy hago una pregunta importante.",
             "emotion": "proud_but_lying",
-            "notes": "Michael always thinks every meeting is historic.",
-            "notes_es": "Michael siempre piensa que cada reunión es histórica.",
-            "highlighted_vocab": [
-              "meeting"
-            ],
+            "notes": "Leo always announces himself dramatically.",
+            "notes_es": "Leo siempre se presenta de forma dramática.",
+            "highlighted_vocab": [],
             "template_vars": [
               "boss_name"
             ]
           },
           {
             "line_id": 2,
-            "character_id": "char_pam",
-            "character_display_name": "PAM",
-            "text": "Yes. The MEETING is special. We are in the OFFICE. Like every day.",
-            "translation_es": "Sí. La reunión es especial. Estamos en la oficina. Como todos los días.",
-            "emotion": "calm_sarcastic",
-            "notes": "Pam gently points out nothing is new.",
-            "notes_es": "Pam señala con calma que nada es nuevo.",
-            "highlighted_vocab": [
-              "meeting",
-              "office"
-            ],
-            "template_vars": [
-              "pam_name"
-            ]
+            "character_id": "char_boss",
+            "character_display_name": "LEO",
+            "text": "Dan, what do you do all day? Everyone wants to know. I want to know the most.",
+            "translation_es": "Dan, ¿qué haces todo el día? Todos quieren saber. Yo quiero saber más.",
+            "emotion": "excited",
+            "notes": "Leo pretends everyone cares as much as he does.",
+            "notes_es": "Leo finge que a todos les importa tanto como a él.",
+            "highlighted_vocab": [],
+            "template_vars": []
           },
           {
             "line_id": 3,
-            "character_id": "char_boss",
-            "character_display_name": "MICHAEL",
-            "text": "This OFFICE is great because I am the BOSS here.",
-            "translation_es": "Esta oficina es genial porque yo soy el jefe aquí.",
-            "emotion": "excited",
-            "notes": "Michael makes everything about himself.",
-            "notes_es": "Michael hace que todo sea sobre él.",
+            "character_id": "char_dwight",
+            "character_display_name": "DAN",
+            "text": "I WORKS hard. I CHECKS the office. I FOLLOW rules.",
+            "translation_es": "Yo trabajo duro. Yo reviso la oficina. Yo sigo reglas.",
+            "emotion": "serious",
+            "notes": "Dan is intense and very confident.",
+            "notes_es": "Dan es intenso y muy confiado.",
             "highlighted_vocab": [
-              "office",
-              "boss"
+              "works",
+              "checks",
+              "follows"
             ],
-            "template_vars": [
-              "boss_name"
-            ]
+            "template_vars": []
           },
           {
             "line_id": 4,
-            "character_id": "char_pam",
-            "character_display_name": "PAM",
-            "text": "Yes. The BOSS likes to say that many times.",
-            "translation_es": "Sí. Al jefe le gusta decir eso muchas veces.",
-            "emotion": "polite",
-            "notes": "Pam stays professional.",
-            "notes_es": "Pam se mantiene profesional.",
+            "character_id": "char_dwight",
+            "character_display_name": "DAN",
+            "text": "I EXPLAINS my job because knowledge is power.",
+            "translation_es": "Yo explico mi trabajo porque el conocimiento es poder.",
+            "emotion": "proud",
+            "notes": "Dan takes everything very seriously.",
+            "notes_es": "Dan se toma todo muy en serio.",
             "highlighted_vocab": [
-              "boss"
+              "explains"
             ],
-            "template_vars": [
-              "pam_name"
-            ]
+            "template_vars": []
           },
           {
             "line_id": 5,
+            "character_id": "char_jim",
+            "character_display_name": "BEN",
+            "text": "Yes. Dan WORKS a lot. The most work. Very impressive work.",
+            "translation_es": "Sí. Dan trabaja mucho. El mayor trabajo. Trabajo muy impresionante.",
+            "emotion": "sarcastic",
+            "notes": "Ben sounds serious but is joking.",
+            "notes_es": "Ben suena serio pero está bromeando.",
+            "highlighted_vocab": [
+              "works"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 6,
+            "character_id": "char_pam",
+            "character_display_name": "MIA",
+            "text": "Dan also HELPS people. Sometimes they ask him to stop explaining.",
+            "translation_es": "Dan también ayuda a las personas. A veces le piden que deje de explicar.",
+            "emotion": "gentle_sarcastic",
+            "notes": "Mia is kind but honest.",
+            "notes_es": "Mia es amable pero honesta.",
+            "highlighted_vocab": [
+              "helps"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 7,
             "character_id": "player",
             "character_display_name": "YOU",
             "text": null,
             "is_interactive": true,
             "interaction_type": "choice",
-            "prompt": "Which phrase is correct?",
-            "prompt_es": "¿Qué frase es correcta?",
+            "prompt": "Which sentence is correct?",
+            "prompt_es": "¿Qué oración es correcta?",
             "choices": [
               {
                 "choice_id": "a",
-                "text": "I am in the MEETING office.",
-                "translation_es": "Estoy en la oficina reunión.",
+                "text": "He WORK hard every day.",
+                "translation_es": "Él trabaja duro todos los días.",
                 "points": 0,
                 "personality_impact": "friendly",
                 "vocab_used": [
-                  "meeting",
-                  "office"
+                  "works"
                 ]
               },
               {
                 "choice_id": "b",
-                "text": "I am in a MEETING at the OFFICE.",
-                "translation_es": "Estoy en una reunión en la oficina.",
+                "text": "He WORKS hard every day.",
+                "translation_es": "Él trabaja duro todos los días.",
                 "points": 10,
                 "personality_impact": "neutral"
               }
@@ -712,106 +763,107 @@
       {
         "scene_id": "scene_007_002",
         "scene_number": 2,
-        "location": "Sales area",
-        "location_es": "Área de ventas",
-        "scene_name": "Serious Work",
-        "scene_name_es": "Trabajo serio",
-        "time": "Mid morning",
+        "location": "Reception desk",
+        "location_es": "Recepción",
+        "scene_name": "Explaining Again",
+        "scene_name_es": "Explicando otra vez",
+        "time": "Late morning",
         "time_es": "Media mañana",
-        "description": "Jim talks about work while the boss listens proudly.",
-        "description_es": "Jim habla sobre el trabajo mientras el jefe escucha con orgullo.",
+        "description": "Dan continues explaining. No one is surprised.",
+        "description_es": "Dan continúa explicando. Nadie se sorprende.",
         "dialogue": [
           {
             "line_id": 1,
-            "character_id": "char_jim",
-            "character_display_name": "JIM",
-            "text": "Yes. This WORK is very serious. Very important WORK.",
-            "translation_es": "Sí. Este trabajo es muy serio. Trabajo muy importante.",
-            "emotion": "sarcastic",
-            "notes": "Jim sounds serious but jokes.",
-            "notes_es": "Jim suena serio pero bromea.",
+            "character_id": "char_dwight",
+            "character_display_name": "DAN",
+            "text": "This is my desk. It is strong. I CHECKS it every hour.",
+            "translation_es": "Este es mi escritorio. Es fuerte. Yo lo reviso cada hora.",
+            "emotion": "serious",
+            "notes": "Dan explains obvious things.",
+            "notes_es": "Dan explica cosas obvias.",
             "highlighted_vocab": [
-              "work"
+              "checks"
             ],
-            "template_vars": [
-              "jim_name"
-            ]
+            "template_vars": []
           },
           {
             "line_id": 2,
-            "character_id": "char_boss",
-            "character_display_name": "MICHAEL",
-            "text": "I love WORK. I am the best BOSS at WORK.",
-            "translation_es": "Yo amo el trabajo. Soy el mejor jefe en el trabajo.",
+            "character_id": "char_dwight",
+            "character_display_name": "DAN",
+            "text": "I FOLLOW rules to protect Simple Paper.",
+            "translation_es": "Yo sigo reglas para proteger Simple Paper.",
             "emotion": "proud",
-            "notes": "Michael praises himself again.",
-            "notes_es": "Michael se elogia otra vez.",
+            "notes": "Dan sees himself as a protector.",
+            "notes_es": "Dan se ve a sí mismo como un protector.",
             "highlighted_vocab": [
-              "work",
-              "boss"
+              "follows"
             ],
-            "template_vars": [
-              "boss_name"
-            ]
+            "template_vars": []
           },
           {
             "line_id": 3,
-            "character_id": "char_jim",
-            "character_display_name": "JIM",
-            "text": "Yes. Everyone loves WORK in this OFFICE.",
-            "translation_es": "Sí. Todos aman el trabajo en esta oficina.",
-            "emotion": "dry",
-            "notes": "Jim clearly lies with a straight face.",
-            "notes_es": "Jim claramente miente con cara seria.",
+            "character_id": "char_pam",
+            "character_display_name": "MIA",
+            "text": "Yes. Dan HELPS the office stay safe. Very safe.",
+            "translation_es": "Sí. Dan ayuda a que la oficina esté segura. Muy segura.",
+            "emotion": "calm",
+            "notes": "Mia supports Dan gently.",
+            "notes_es": "Mia apoya a Dan con calma.",
             "highlighted_vocab": [
-              "work",
-              "office"
+              "helps"
             ],
-            "template_vars": [
-              "jim_name"
-            ]
+            "template_vars": []
           },
           {
             "line_id": 4,
-            "character_id": "char_boss",
-            "character_display_name": "MICHAEL",
-            "text": "This OFFICE works because of me.",
-            "translation_es": "Esta oficina funciona por mí.",
-            "emotion": "confident",
-            "notes": "Michael claims full credit.",
-            "notes_es": "Michael se atribuye todo el mérito.",
-            "highlighted_vocab": [
-              "office"
-            ],
-            "template_vars": [
-              "boss_name"
-            ]
+            "character_id": "char_jim",
+            "character_display_name": "BEN",
+            "text": "I feel safe. I feel extremely safe.",
+            "translation_es": "Me siento seguro. Me siento extremadamente seguro.",
+            "emotion": "sarcastic",
+            "notes": "Ben exaggerates for humor.",
+            "notes_es": "Ben exagera para el humor.",
+            "highlighted_vocab": [],
+            "template_vars": []
           },
           {
             "line_id": 5,
+            "character_id": "char_dwight",
+            "character_display_name": "DAN",
+            "text": "Good. Safety is important. I EXPLAINS safety often.",
+            "translation_es": "Bien. La seguridad es importante. Yo explico la seguridad a menudo.",
+            "emotion": "serious",
+            "notes": "Dan repeats himself proudly.",
+            "notes_es": "Dan se repite con orgullo.",
+            "highlighted_vocab": [
+              "explains"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 6,
             "character_id": "player",
             "character_display_name": "YOU",
             "text": null,
             "is_interactive": true,
             "interaction_type": "choice",
-            "prompt": "Which phrase is correct?",
-            "prompt_es": "¿Qué frase es correcta?",
+            "prompt": "Choose the correct sentence.",
+            "prompt_es": "Elige la oración correcta.",
             "choices": [
               {
                 "choice_id": "a",
-                "text": "The WORK is my BOSS.",
-                "translation_es": "El trabajo es mi jefe.",
+                "text": "She HELP the office every day.",
+                "translation_es": "Ella ayuda a la oficina todos los días.",
                 "points": 0,
                 "personality_impact": "friendly",
                 "vocab_used": [
-                  "work",
-                  "boss"
+                  "helps"
                 ]
               },
               {
                 "choice_id": "b",
-                "text": "The BOSS talks about WORK.",
-                "translation_es": "El jefe habla sobre el trabajo.",
+                "text": "She HELPS the office every day.",
+                "translation_es": "Ella ayuda a la oficina todos los días.",
                 "points": 10,
                 "personality_impact": "neutral"
               }
@@ -822,103 +874,107 @@
       {
         "scene_id": "scene_007_003",
         "scene_number": 3,
-        "location": "Desk area",
-        "location_es": "Zona de escritorios",
-        "scene_name": "The Desk",
-        "scene_name_es": "El escritorio",
-        "time": "Late morning",
-        "time_es": "Final de la mañana",
-        "description": "Dwight explains his desk while Jim listens.",
-        "description_es": "Dwight explica su escritorio mientras Jim escucha.",
+        "location": "Conference area",
+        "location_es": "Área de reuniones",
+        "scene_name": "Boss Summary",
+        "scene_name_es": "Resumen del jefe",
+        "time": "Before lunch",
+        "time_es": "Antes del almuerzo",
+        "description": "Leo gives his summary. It is not short.",
+        "description_es": "Leo da su resumen. No es corto.",
         "dialogue": [
           {
             "line_id": 1,
-            "character_id": "char_dwight",
-            "character_display_name": "DWIGHT",
-            "text": "This DESK is strong. This DESK is ready for WORK.",
-            "translation_es": "Este escritorio es fuerte. Este escritorio está listo para el trabajo.",
-            "emotion": "serious",
-            "notes": "Dwight over-explains a desk.",
-            "notes_es": "Dwight explica demasiado un escritorio.",
+            "character_id": "char_boss",
+            "character_display_name": "LEO",
+            "text": "Thank you. I understand everything now. Dan WORKS. Dan CHECKS. Dan EXPLAINS.",
+            "translation_es": "Gracias. Ahora entiendo todo. Dan trabaja. Dan revisa. Dan explica.",
+            "emotion": "proud",
+            "notes": "Leo thinks repeating words means understanding.",
+            "notes_es": "Leo cree que repetir palabras es entender.",
             "highlighted_vocab": [
-              "desk",
-              "work"
+              "works",
+              "checks",
+              "explains"
             ],
             "template_vars": []
           },
           {
             "line_id": 2,
-            "character_id": "char_jim",
-            "character_display_name": "JIM",
-            "text": "Yes. This DESK is very impressive.",
-            "translation_es": "Sí. Este escritorio es muy impresionante.",
-            "emotion": "fake_serious",
-            "notes": "Jim pretends to care.",
-            "notes_es": "Jim finge que le importa.",
-            "highlighted_vocab": [
-              "desk"
-            ],
+            "character_id": "char_boss",
+            "character_display_name": "LEO",
+            "text": "This is why I am the best boss.",
+            "translation_es": "Por eso yo soy el mejor jefe.",
+            "emotion": "proud_but_lying",
+            "notes": "Leo always praises himself.",
+            "notes_es": "Leo siempre se elogia a sí mismo.",
+            "highlighted_vocab": [],
             "template_vars": [
-              "jim_name"
+              "boss_name"
             ]
           },
           {
             "line_id": 3,
-            "character_id": "char_dwight",
-            "character_display_name": "DWIGHT",
-            "text": "The BOSS should see this DESK.",
-            "translation_es": "El jefe debería ver este escritorio.",
-            "emotion": "proud",
-            "notes": "Dwight seeks approval.",
-            "notes_es": "Dwight busca aprobación.",
-            "highlighted_vocab": [
-              "boss",
-              "desk"
-            ],
+            "character_id": "char_jim",
+            "character_display_name": "BEN",
+            "text": "Yes. Leadership is strong today.",
+            "translation_es": "Sí. El liderazgo es fuerte hoy.",
+            "emotion": "sarcastic",
+            "notes": "Ben pretends to agree.",
+            "notes_es": "Ben finge estar de acuerdo.",
+            "highlighted_vocab": [],
             "template_vars": []
           },
           {
             "line_id": 4,
-            "character_id": "char_jim",
-            "character_display_name": "JIM",
-            "text": "Yes. The BOSS loves good WORK tools.",
-            "translation_es": "Sí. Al jefe le encantan las buenas herramientas de trabajo.",
-            "emotion": "sarcastic",
-            "notes": "Jim mixes sarcasm and truth.",
-            "notes_es": "Jim mezcla sarcasmo y verdad.",
+            "character_id": "char_dwight",
+            "character_display_name": "DAN",
+            "text": "I am happy to EXPLAINS again after lunch.",
+            "translation_es": "Estoy feliz de explicar otra vez después del almuerzo.",
+            "emotion": "excited",
+            "notes": "Dan is always ready to explain more.",
+            "notes_es": "Dan siempre está listo para explicar más.",
             "highlighted_vocab": [
-              "boss",
-              "work"
+              "explains"
             ],
-            "template_vars": [
-              "jim_name"
-            ]
+            "template_vars": []
           },
           {
             "line_id": 5,
+            "character_id": "char_pam",
+            "character_display_name": "MIA",
+            "text": "Great. We all wait for that.",
+            "translation_es": "Genial. Todos esperamos eso.",
+            "emotion": "gentle_sarcastic",
+            "notes": "Mia ends with calm sarcasm.",
+            "notes_es": "Mia termina con sarcasmo tranquilo.",
+            "highlighted_vocab": [],
+            "template_vars": []
+          },
+          {
+            "line_id": 6,
             "character_id": "player",
             "character_display_name": "YOU",
             "text": null,
             "is_interactive": true,
             "interaction_type": "choice",
-            "prompt": "Which phrase is correct?",
-            "prompt_es": "¿Qué frase es correcta?",
+            "prompt": "Which sentence sounds correct?",
+            "prompt_es": "¿Qué oración suena correcta?",
             "choices": [
               {
                 "choice_id": "a",
-                "text": "The DESK is the WORK.",
-                "translation_es": "El escritorio es el trabajo.",
+                "text": "He EXPLAIN his job very well.",
+                "translation_es": "Él explica su trabajo muy bien.",
                 "points": 0,
                 "personality_impact": "friendly",
                 "vocab_used": [
-                  "desk",
-                  "work"
+                  "explains"
                 ]
               },
               {
                 "choice_id": "b",
-                "text": "The DESK is ready for WORK.",
-                "translation_es": "El escritorio está listo para el trabajo.",
+                "text": "He EXPLAINS his job very well.",
+                "translation_es": "Él explica su trabajo muy bien.",
                 "points": 10,
                 "personality_impact": "neutral"
               }
@@ -929,8 +985,8 @@
     ]
   },
   "games": {
-    "section_name": "Office Games",
-    "section_name_es": "Juegos Oficina",
+    "section_name": "Daily Work",
+    "section_name_es": "Trabajo Diario",
     "image": "/episodes/episode_7_scene.jpg",
     "data": [
       {
@@ -938,8 +994,8 @@
         "game_type": "matching",
         "title": "Match the Words!",
         "title_es": "¡Empareja las Palabras!",
-        "instructions": "Match each English word with its Spanish meaning.",
-        "instructions_es": "Empareja cada palabra en inglés con su significado en español.",
+        "instructions": "Match each English word with its Spanish meaning",
+        "instructions_es": "Empareja cada palabra en inglés con su significado en español",
         "optional": true,
         "unlocked_after_episode": true,
         "time_limit_seconds": 90,
@@ -948,51 +1004,51 @@
           "items": [
             {
               "id": 1,
-              "left": "office",
-              "right": "oficina",
-              "image_url": "/vocab/office.jpg"
+              "left": "organize",
+              "right": "organizar",
+              "image_url": "/vocab/organize.jpg"
             },
             {
               "id": 2,
+              "left": "explain",
+              "right": "explicar",
+              "image_url": "/vocab/explain.jpg"
+            },
+            {
+              "id": 3,
+              "left": "follow",
+              "right": "seguir",
+              "image_url": "/vocab/follow.jpg"
+            },
+            {
+              "id": 4,
+              "left": "repeat",
+              "right": "repetir",
+              "image_url": "/vocab/repeat.jpg"
+            },
+            {
+              "id": 5,
+              "left": "describe",
+              "right": "describir",
+              "image_url": "/vocab/describe.jpg"
+            },
+            {
+              "id": 6,
               "left": "desk",
               "right": "escritorio",
               "image_url": "/vocab/desk.jpg"
             },
             {
-              "id": 3,
-              "left": "boss",
-              "right": "jefe",
-              "image_url": "/vocab/boss.jpg"
-            },
-            {
-              "id": 4,
+              "id": 7,
               "left": "meeting",
               "right": "reunión",
               "image_url": "/vocab/meeting.jpg"
             },
             {
-              "id": 5,
-              "left": "coffee",
-              "right": "café",
-              "image_url": "/vocab/coffee.jpg"
-            },
-            {
-              "id": 6,
-              "left": "window",
-              "right": "ventana",
-              "image_url": "/vocab/window.jpg"
-            },
-            {
-              "id": 7,
-              "left": "paper",
-              "right": "papel",
-              "image_url": "/vocab/paper.jpg"
-            },
-            {
               "id": 8,
-              "left": "phone",
-              "right": "teléfono",
-              "image_url": "/vocab/phone.jpg"
+              "left": "office",
+              "right": "oficina",
+              "image_url": "/vocab/office.jpg"
             }
           ]
         },
@@ -1006,8 +1062,8 @@
         "game_type": "fill_blank",
         "title": "Complete the Sentences",
         "title_es": "Completa las Oraciones",
-        "instructions": "Fill in the missing words from the episode.",
-        "instructions_es": "Completa las palabras que faltan del episodio.",
+        "instructions": "Fill in the missing words from the episode",
+        "instructions_es": "Completa las palabras que faltan del episodio",
         "optional": true,
         "unlocked_after_episode": true,
         "time_limit_seconds": 150,
@@ -1016,101 +1072,101 @@
           "items": [
             {
               "id": 1,
-              "sentence": "The _____ is very quiet before the meeting.",
-              "sentence_es": "La _____ está muy silenciosa antes de la reunión.",
-              "answer": "office",
+              "sentence": "{boss_name} asks questions while Dan _____ his job.",
+              "sentence_es": "{boss_name} hace preguntas mientras Dan _____ su trabajo.",
+              "answer": "explains",
               "options": [
-                "office",
-                "coffee",
-                "desk"
+                "explains",
+                "follows",
+                "repeats"
               ],
-              "hint": "It is the place where people work.",
-              "hint_es": "Es el lugar donde las personas trabajan.",
-              "character": "{pam_name}"
+              "hint": "This word means to give information.",
+              "hint_es": "Esta palabra significa dar información.",
+              "character": "{boss_name}"
             },
             {
               "id": 2,
-              "sentence": "My _____ has papers and a phone.",
-              "sentence_es": "Mi _____ tiene papeles y un teléfono.",
-              "answer": "desk",
+              "sentence": "Dan _____ his desk every morning.",
+              "sentence_es": "Dan _____ su escritorio todas las mañanas.",
+              "answer": "organizes",
               "options": [
-                "desk",
-                "office",
-                "meeting"
+                "organizes",
+                "repeats",
+                "describes"
               ],
-              "hint": "You sit here to work.",
-              "hint_es": "Te sientas aquí para trabajar.",
-              "character": "{jim_name}"
+              "hint": "This word means to put things in order.",
+              "hint_es": "Esta palabra significa poner cosas en orden.",
+              "character": "Dan"
             },
             {
               "id": 3,
-              "sentence": "The _____ talks a lot in the meeting.",
-              "sentence_es": "El _____ habla mucho en la reunión.",
-              "answer": "boss",
+              "sentence": "{jim_name} smiles and _____ the conversation.",
+              "sentence_es": "{jim_name} sonríe y _____ la conversación.",
+              "answer": "follows",
               "options": [
-                "boss",
-                "coffee",
-                "desk"
+                "follows",
+                "explains",
+                "organizes"
               ],
-              "hint": "This person is in charge.",
-              "hint_es": "Esta persona está a cargo.",
-              "character": "{boss_name}"
-            },
-            {
-              "id": 4,
-              "sentence": "The _____ starts at nine in the morning.",
-              "sentence_es": "La _____ empieza a las nueve de la mañana.",
-              "answer": "meeting",
-              "options": [
-                "meeting",
-                "office",
-                "coffee"
-              ],
-              "hint": "People talk together in this.",
-              "hint_es": "Las personas hablan juntas aquí.",
-              "character": "{pam_name}"
-            },
-            {
-              "id": 5,
-              "sentence": "I drink _____ to stay awake.",
-              "sentence_es": "Yo tomo _____ para mantenerme despierto.",
-              "answer": "coffee",
-              "options": [
-                "coffee",
-                "boss",
-                "desk"
-              ],
-              "hint": "It is a hot drink.",
-              "hint_es": "Es una bebida caliente.",
+              "hint": "This word means to pay attention and continue.",
+              "hint_es": "Esta palabra significa prestar atención y continuar.",
               "character": "{jim_name}"
             },
             {
-              "id": 6,
-              "sentence": "The boss stands near the _____ during the meeting.",
-              "sentence_es": "El jefe está cerca del _____ durante la reunión.",
-              "answer": "desk",
+              "id": 4,
+              "sentence": "Dan _____ the same answer again.",
+              "sentence_es": "Dan _____ la misma respuesta otra vez.",
+              "answer": "repeats",
               "options": [
-                "desk",
-                "office",
-                "coffee"
+                "repeats",
+                "describes",
+                "follows"
               ],
-              "hint": "It is a piece of furniture.",
-              "hint_es": "Es un mueble.",
-              "character": "{boss_name}"
+              "hint": "This word means to say again.",
+              "hint_es": "Esta palabra significa decir otra vez.",
+              "character": "Dan"
+            },
+            {
+              "id": 5,
+              "sentence": "Dan _____ his daily work very slowly.",
+              "sentence_es": "Dan _____ su trabajo diario muy lentamente.",
+              "answer": "describes",
+              "options": [
+                "describes",
+                "organizes",
+                "follows"
+              ],
+              "hint": "This word means to give details.",
+              "hint_es": "Esta palabra significa dar detalles.",
+              "character": "Dan"
+            },
+            {
+              "id": 6,
+              "sentence": "{pam_name} listens while Dan _____ each step.",
+              "sentence_es": "{pam_name} escucha mientras Dan _____ cada paso.",
+              "answer": "explains",
+              "options": [
+                "explains",
+                "repeats",
+                "organizes"
+              ],
+              "hint": "This word is about making things clear.",
+              "hint_es": "Esta palabra es sobre hacer algo claro.",
+              "character": "{pam_name}"
             },
             {
               "id": 7,
-              "sentence": "The office feels better after the _____ break.",
-              "sentence_es": "La oficina se siente mejor después de la pausa de _____.",
-              "answer": "coffee",
+              "sentence": "Everyone waits for the meeting and Dan _____ the rules.",
+              "sentence_es": "Todos esperan la reunión y Dan _____ las reglas.",
+              "answer": "follows",
               "options": [
-                "coffee",
-                "meeting",
-                "desk"
+                "follows",
+                "describes",
+                "repeats"
               ],
-              "hint": "People drink this in the office.",
-              "hint_es": "Las personas beben esto en la oficina.",
-              "character": "{pam_name}"
+              "hint": "This word means to do what is expected.",
+              "hint_es": "Esta palabra significa hacer lo que se espera.",
+              "character": "Dan"
             }
           ]
         }
@@ -1120,8 +1176,8 @@
         "game_type": "multiple_choice",
         "title": "Episode Quiz",
         "title_es": "Quiz del Episodio",
-        "instructions": "Answer questions about the episode.",
-        "instructions_es": "Responde preguntas sobre el episodio.",
+        "instructions": "Answer questions about the episode",
+        "instructions_es": "Responde preguntas sobre el episodio",
         "optional": true,
         "unlocked_after_episode": true,
         "time_limit_seconds": 180,
@@ -1130,103 +1186,103 @@
           "items": [
             {
               "id": 1,
-              "question": "Where does the story happen?",
-              "question_es": "¿Dónde ocurre la historia?",
+              "question": "What does Dan do during the episode?",
+              "question_es": "¿Qué hace Dan durante el episodio?",
               "options": [
-                "In an office",
-                "In a school",
-                "In a park",
-                "In a house"
+                "He explains his daily work.",
+                "He sleeps at his desk.",
+                "He leaves the office.",
+                "He plays games."
               ],
               "options_es": [
-                "En una oficina",
-                "En una escuela",
-                "En un parque",
-                "En una casa"
+                "Él explica su trabajo diario.",
+                "Él duerme en su escritorio.",
+                "Él sale de la oficina.",
+                "Él juega juegos."
               ],
               "correct_answer": 0,
-              "explanation": "The episode shows people working in an office.",
-              "explanation_es": "El episodio muestra personas trabajando en una oficina."
+              "explanation": "Dan explains what he does all day.",
+              "explanation_es": "Dan explica lo que él hace todo el día."
             },
             {
               "id": 2,
-              "question": "What does the boss like to do?",
-              "question_es": "¿Qué le gusta hacer al jefe?",
+              "question": "Who smiles and listens most of the time?",
+              "question_es": "¿Quién sonríe y escucha la mayor parte del tiempo?",
               "options": [
-                "Talk in meetings",
-                "Sleep at the desk",
-                "Run outside",
-                "Cook food"
+                "{jim_name}",
+                "{boss_name}",
+                "Dan",
+                "Sam"
               ],
               "options_es": [
-                "Hablar en reuniones",
-                "Dormir en el escritorio",
-                "Correr afuera",
-                "Cocinar comida"
+                "{jim_name}",
+                "{boss_name}",
+                "Dan",
+                "Sam"
               ],
               "correct_answer": 0,
-              "explanation": "The boss talks a lot during the meeting.",
-              "explanation_es": "El jefe habla mucho durante la reunión."
+              "explanation": "{jim_name} smiles and follows the conversation.",
+              "explanation_es": "{jim_name} sonríe y sigue la conversación."
             },
             {
               "id": 3,
-              "question": "What is on the desk?",
-              "question_es": "¿Qué hay en el escritorio?",
+              "question": "Why does the meeting feel long?",
+              "question_es": "¿Por qué la reunión se siente larga?",
               "options": [
-                "Coffee and papers",
-                "A bed",
-                "A car",
-                "A tree"
+                "Dan explains very slowly.",
+                "Nobody is at the office.",
+                "The work is finished.",
+                "The boss is silent."
               ],
               "options_es": [
-                "Café y papeles",
-                "Una cama",
-                "Un carro",
-                "Un árbol"
+                "Dan explica muy lentamente.",
+                "Nadie está en la oficina.",
+                "El trabajo está terminado.",
+                "El jefe está en silencio."
               ],
               "correct_answer": 0,
-              "explanation": "The desk has coffee and papers in the episode.",
-              "explanation_es": "El escritorio tiene café y papeles en el episodio."
+              "explanation": "Dan repeats and explains many details slowly.",
+              "explanation_es": "Dan repite y explica muchos detalles lentamente."
             },
             {
               "id": 4,
-              "question": "Why do people drink coffee?",
-              "question_es": "¿Por qué las personas toman café?",
+              "question": "What does {boss_name} do often in the episode?",
+              "question_es": "¿Qué hace {boss_name} a menudo en el episodio?",
               "options": [
-                "To stay awake",
-                "To sleep",
-                "To run faster",
-                "To leave work"
+                "He asks many questions.",
+                "He organizes the desk.",
+                "He waits quietly.",
+                "He describes the office."
               ],
               "options_es": [
-                "Para mantenerse despiertas",
-                "Para dormir",
-                "Para correr más rápido",
-                "Para salir del trabajo"
+                "Él hace muchas preguntas.",
+                "Él organiza el escritorio.",
+                "Él espera en silencio.",
+                "Él describe la oficina."
               ],
               "correct_answer": 0,
-              "explanation": "Coffee helps people stay awake at work.",
-              "explanation_es": "El café ayuda a las personas a mantenerse despiertas en el trabajo."
+              "explanation": "{boss_name} asks questions about the office and the work.",
+              "explanation_es": "{boss_name} hace preguntas sobre la oficina y el trabajo."
             },
             {
               "id": 5,
-              "question": "How does the meeting feel?",
-              "question_es": "¿Cómo se siente la reunión?",
+              "question": "Which action matches Dan best?",
+              "question_es": "¿Qué acción describe mejor a Dan?",
               "options": [
-                "Long",
-                "Very short",
-                "Funny and fast",
-                "Outside"
+                "Explain and repeat",
+                "Run and shout",
+                "Sleep and eat",
+                "Leave early"
               ],
               "options_es": [
-                "Larga",
-                "Muy corta",
-                "Divertida y rápida",
-                "Afuera"
+                "Explicar y repetir",
+                "Correr y gritar",
+                "Dormir y comer",
+                "Salir temprano"
               ],
               "correct_answer": 0,
-              "explanation": "The meeting feels long in the story.",
-              "explanation_es": "La reunión se siente larga en la historia."
+              "explanation": "Dan explains and repeats his work steps.",
+              "explanation_es": "Dan explica y repite los pasos de su trabajo."
             }
           ]
         }
@@ -1234,44 +1290,44 @@
     ]
   },
   "content_wrappers": {
-    "section_name": "Office Day",
-    "section_name_es": "Día Oficina",
+    "section_name": "Daily Talk",
+    "section_name_es": "Charla Diaria",
     "image": "/episodes/episode_7_scene.jpg",
     "intro_text": {
-      "en": "Welcome to the office. This is a calm place with calm people. Very calm. Very normal. The boss says it is normal. That means it is not normal.",
-      "es": "Bienvenido a la oficina. Este es un lugar tranquilo con personas tranquilas. Muy tranquilo. Muy normal. El jefe dice que es normal. Eso significa que no es normal."
+      "en": "Welcome to {company_name} in {city}. This is a normal office with normal people. Very normal. Leo is the boss, so it is also very loud. Today you will hear one big question: what does Dan do all day?",
+      "es": "Bienvenido a {company_name} en {city}. Esta es una oficina normal con personas normales. Muy normal. Leo es el jefe, así que también es muy ruidoso. Hoy escucharás una gran pregunta: ¿qué hace Dan todo el día?"
     },
     "transition": {
-      "en": "Great. Now you know the words. These words live in the office. They are always in a meeting. They never rest.",
-      "es": "Genial. Ahora conoces las palabras. Estas palabras viven en la oficina. Siempre están en una reunión. Nunca descansan."
+      "en": "Great. Now you know the words. Now you can survive the office conversation. Leo asks questions. Ben smiles like a professional. Dan explains everything like it is a documentary about paper.",
+      "es": "Genial. Ahora conoces las palabras. Ahora puedes sobrevivir la conversación de la oficina. Leo hace preguntas. Ben sonríe como un profesional. Dan explica todo como si fuera un documental sobre papel."
     },
     "conclusion": {
-      "en": "Good job. You finished the meeting. You survived the office. You learned new words. The boss is proud. He is always proud.",
-      "es": "Buen trabajo. Terminaste la reunión. Sobreviviste a la oficina. Aprendiste nuevas palabras. El jefe está orgulloso. Siempre está orgulloso."
+      "en": "Good job. You learned how to talk about what he, she, or it does. Dan WORKS, CHECKS, FOLLOWS, HELPS, and EXPLAINS. Leo learns this and then feels like a genius. This is a normal day here.",
+      "es": "Buen trabajo. Aprendiste a hablar de lo que él, ella o eso hace. Dan trabaja, revisa, sigue, ayuda y explica. Leo aprende esto y luego se siente como un genio. Este es un día normal aquí."
     },
     "reflection_prompt": {
-      "question_en": "Write one sentence using the word 'MEETING' or 'OFFICE'.",
-      "question_es": "Escribe una oración usando la palabra 'reunión' u 'oficina'.",
+      "question_en": "Write one sentence about Dan. Use the word \"works\" or \"explains\".",
+      "question_es": "Escribe una oración sobre Dan. Usa la palabra \"trabaja\" o \"explica\".",
       "type": "free_text",
       "optional": true,
       "max_length": 100,
       "vocab_practice": [
-        "MEETING",
-        "OFFICE"
+        "works",
+        "explains"
       ]
     }
   },
   "next_episode_preview": {
-    "section_name": "Office Prank",
-    "section_name_es": "Broma Oficina",
+    "section_name": "Office Time",
+    "section_name_es": "Tiempo Oficina",
     "image": "/episodes/episode_8_scene.jpg",
-    "preview_text_en": "{jim_name} plans a small prank at the office, but {boss_name} thinks it is a very serious meeting.",
-    "preview_text_es": "{jim_name} planea una pequeña broma en la oficina, pero {boss_name} piensa que es una reunión muy seria.",
+    "preview_text_en": "Next time, Dan talks about his daily routine, Leo checks the time many times, and the meeting starts late.",
+    "preview_text_es": "La próxima vez, Dan habla de su rutina diaria, Leo revisa la hora muchas veces y la reunión empieza tarde.",
     "teaser_image": "/previews/ep_008.jpg"
   },
   "progression": {
-    "section_name": "Your Progress",
-    "section_name_es": "Tu Progreso",
+    "section_name": "Progress Check",
+    "section_name_es": "Progreso",
     "image": "/episodes/episode_7_scene.jpg",
     "xp_earned_base": 50,
     "xp_bonus_conditions": [
@@ -1294,41 +1350,41 @@
         "character_ids": [
           "char_boss",
           "char_jim",
-          "char_pam",
-          "char_dwight"
+          "char_dwight",
+          "char_pam"
         ]
       },
       {
         "type": "location",
         "location_ids": [
-          "Reception area",
-          "Sales area",
-          "Desk area"
+          "Main office",
+          "Reception desk",
+          "Conference area"
         ]
       }
     ],
     "achievements": [
       {
-        "achievement_id": "meeting_survivor",
-        "name": "Meeting Survivor",
-        "name_es": "Sobreviviente de la reunión",
-        "description": "You finish a full meeting at the office and stay awake. This is a big success.",
-        "description_es": "Terminas una reunión completa en la oficina y te mantienes despierto. Este es un gran logro.",
-        "icon": "/achievements/meeting_survivor.png",
-        "image": "/achievements/meeting_survivor_banner.jpg"
+        "achievement_id": "explains_everything",
+        "name": "He Explains Everything",
+        "name_es": "Él explica todo",
+        "description": "You understand how he, she, or it works, checks, helps, follows, and explains. Dan is proud. Very proud.",
+        "description_es": "Tú entiendes cómo él, ella o eso trabaja, revisa, ayuda, sigue y explica. Dan está orgulloso. Muy orgulloso.",
+        "icon": "/achievements/explains_everything.png",
+        "image": "/achievements/explains_everything_banner.jpg"
       }
     ]
   },
   "metadata": {
-    "section_name": "Office Meeting",
-    "section_name_es": "Reunión Oficina",
+    "section_name": "Daily Work",
+    "section_name_es": "Trabajo Diario",
     "image": "/episodes/episode_7_scene.jpg",
-    "created_date": "2026-01-29",
+    "created_date": "2026-01-30",
     "version": "1.0",
     "author": "Course Team",
     "content_level": "beginner",
-    "estimated_words": 380,
-    "estimated_unique_vocabulary": 45,
+    "estimated_words": 320,
+    "estimated_unique_vocabulary": 58,
     "structure_type": "vocab_story_then_main_story"
   }
 }

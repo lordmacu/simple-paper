@@ -6,6 +6,7 @@ import '../../../domain/models/game/game.dart';
 import '../../../domain/models/game/matching_game.dart';
 import '../../../domain/models/game/multiple_choice_game.dart';
 import '../../widgets/common/duolingo_button.dart';
+import '../../../core/utils/navigation_utils.dart';
 
 /// Scaffold base para cualquier mini-juego.
 /// Muestra header con progreso, puntos acumulados y el cuerpo específico del juego.
@@ -36,7 +37,7 @@ class GameBaseScreen extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.close, color: AppColors.textPrimary),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => NavigationUtils.closeToHome(context),
         ),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

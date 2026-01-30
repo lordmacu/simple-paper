@@ -6,6 +6,7 @@ import '../../data/services/template_variable_service.dart';
 import 'progress_providers.dart' as progress;
 import 'template_variable_provider.dart';
 import 'character_providers.dart' as characters;
+import 'tts_provider.dart';
 
 /// Repositorio de personalización (usa SharedPreferences)
 final personalizationRepositoryProvider =
@@ -18,15 +19,36 @@ final personalizationRepositoryProvider =
   );
 });
 
+/// Indica si el nombre del jugador ya está guardado
+final hasPlayerNameProvider = FutureProvider<bool>((ref) async {
+  final repo = ref.watch(personalizationRepositoryProvider);
+  final saved = await repo.loadVariables();
+  final name = saved['player_name'];
+  return name != null && name.trim().isNotEmpty;
+});
+
 /// Inicializa TemplateVariableService con valores guardados (se ejecuta y olvida). 
 final personalizationInitProvider = FutureProvider<void>((ref) async {
   final repo = ref.watch(personalizationRepositoryProvider);
   final saved = await repo.loadVariables();
   if (saved.isNotEmpty) {
     ref.read(templateVariableServiceProvider).updateAll(saved);
-    // Sincroniza provider del nombre
-    final name = ref.read(templateVariableServiceProvider).getVariable('player_name');
-    ref.read(playerNameProvider.notifier).state = name;
+    // Sincroniza providers de personalización
+    final service = ref.read(templateVariableServiceProvider);
+    ref.read(playerNameProvider.notifier).state =
+        service.getVariable('player_name');
+    ref.read(cityProvider.notifier).state = service.getVariable('city');
+    ref.read(companyNameProvider.notifier).state =
+        service.getVariable('company_name');
+    ref.read(officeTypeProvider.notifier).state =
+        service.getVariable('office_type');
+    final rateValue = saved['tts_rate'];
+    if (rateValue != null) {
+      final parsed = double.tryParse(rateValue);
+      if (parsed != null) {
+        await ref.read(ttsServiceProvider).setDefaultRate(parsed);
+      }
+    }
   }
 });
 
@@ -46,6 +68,7 @@ final setCityProvider = Provider<Future<void> Function(String)>((ref) {
   return (String city) async {
     final repo = ref.read(personalizationRepositoryProvider);
     ref.read(templateVariableServiceProvider).updateVariable('city', city);
+    ref.read(cityProvider.notifier).state = city;
     await repo.setVariable('city', city);
   };
 });
@@ -55,6 +78,7 @@ final setCompanyNameProvider = Provider<Future<void> Function(String)>((ref) {
   return (String name) async {
     final repo = ref.read(personalizationRepositoryProvider);
     ref.read(templateVariableServiceProvider).updateVariable('company_name', name);
+    ref.read(companyNameProvider.notifier).state = name;
     await repo.setVariable('company_name', name);
   };
 });
@@ -64,7 +88,17 @@ final setOfficeTypeProvider = Provider<Future<void> Function(String)>((ref) {
   return (String type) async {
     final repo = ref.read(personalizationRepositoryProvider);
     ref.read(templateVariableServiceProvider).updateVariable('office_type', type);
+    ref.read(officeTypeProvider.notifier).state = type;
     await repo.setVariable('office_type', type);
+  };
+});
+
+/// Actualiza velocidad del TTS
+final setTtsRateProvider = Provider<Future<void> Function(double)>((ref) {
+  return (double rate) async {
+    final repo = ref.read(personalizationRepositoryProvider);
+    await repo.setVariable('tts_rate', rate.toStringAsFixed(2));
+    await ref.read(ttsServiceProvider).setDefaultRate(rate);
   };
 });
 

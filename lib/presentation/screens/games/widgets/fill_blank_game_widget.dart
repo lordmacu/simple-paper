@@ -27,6 +27,7 @@ class FillBlankGameWidget extends ConsumerStatefulWidget {
 }
 
 class _FillBlankGameWidgetState extends ConsumerState<FillBlankGameWidget> {
+  static const Duration _feedbackDelay = Duration(milliseconds: 500);
   int _currentIndex = 0;
   int _score = 0;
   Timer? _timer;
@@ -94,7 +95,7 @@ class _FillBlankGameWidgetState extends ConsumerState<FillBlankGameWidget> {
       HapticFeedback.mediumImpact();
     }
 
-    Future.delayed(const Duration(milliseconds: 2000), () {
+    Future.delayed(_feedbackDelay, () {
       if (!mounted) return;
       if (_currentIndex < _totalItems - 1) {
         setState(() {

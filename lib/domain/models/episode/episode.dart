@@ -6,6 +6,7 @@ import '../vocabulary/vocabulary_word.dart';
 import '../vocabulary/vocabulary_phrase.dart';
 import '../vocabulary/vocabulary_story.dart';
 import '../listening_shadowing/listening_shadowing.dart';
+import '../mini_story/mini_story.dart';
 import '../story/scene.dart';
 import '../game/matching_game.dart';
 import '../game/fill_blank_game.dart';
@@ -44,6 +45,9 @@ class Episode with _$Episode {
     /// Listening & shadowing
     @JsonKey(name: 'listening_shadowing')
     ListeningShadowingSection? listeningShadowing,
+
+    /// Mini historia (3 párrafos)
+    @JsonKey(name: 'mini_story') MiniStorySection? miniStory,
     
     /// Escenas de la historia principal
     @JsonKey(name: 'scenes') required ScenesSection scenes,

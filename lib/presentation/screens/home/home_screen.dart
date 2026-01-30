@@ -5,8 +5,8 @@ import '../review_words/review_words_screen.dart';
 import 'widgets/episode_list_screen.dart';
 import '../settings/settings_screen.dart';
 import '../../providers/personalization_providers.dart';
+import '../../providers/episode_providers.dart';
 import '../../providers/progress_providers.dart';
-import '../../providers/template_variable_provider.dart';
 import '../onboarding/welcome_name_screen.dart';
 import '../practice/practice_games_screen.dart';
 
@@ -18,14 +18,47 @@ class HomeScreen extends ConsumerStatefulWidget {
 }
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
-  bool _askedName = false;
-
   @override
   Widget build(BuildContext context) {
     // Asegura que las variables personalizadas se carguen
     ref.watch(personalizationInitProvider);
 
+    final hasNameAsync = ref.watch(hasPlayerNameProvider);
+    final hasEpisodesAsync = ref.watch(hasEpisodesProvider);
     final progressAsync = ref.watch(userProgressProvider);
+
+    if (hasNameAsync.isLoading || hasEpisodesAsync.isLoading) {
+      return const Scaffold(
+        backgroundColor: Colors.white,
+        body: Center(child: CircularProgressIndicator()),
+      );
+    }
+    if (hasNameAsync.hasError || hasEpisodesAsync.hasError) {
+      final nameError = hasNameAsync.error;
+      final episodesError = hasEpisodesAsync.error;
+      if (nameError != null) {
+        debugPrint('HOME_BOOT name_error=$nameError');
+      }
+      if (episodesError != null) {
+        debugPrint('HOME_BOOT episodes_error=$episodesError');
+      }
+      return const Scaffold(
+        backgroundColor: Colors.white,
+        body: Center(child: Text('Error cargando datos')),
+      );
+    }
+    final hasName = hasNameAsync.value ?? false;
+    final hasEpisodes = hasEpisodesAsync.value ?? false;
+    if (!hasName || !hasEpisodes) {
+      return WelcomeNameScreen(
+        onFinished: () {
+          ref.invalidate(hasPlayerNameProvider);
+          ref.invalidate(hasEpisodesProvider);
+          ref.invalidate(episodeListProvider);
+          ref.invalidate(userProgressProvider);
+        },
+      );
+    }
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -47,9 +80,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
             progressAsync.when(
               data: (progress) {
-                WidgetsBinding.instance.addPostFrameCallback((_) {
-                  _maybeAskName();
-                });
                 return Row(
                   children: [
                     IconButton(
@@ -104,29 +134,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         children: const [
           Expanded(child: EpisodeListScreen()),
         ],
-      ),
-    );
-  }
-
-  void _maybeAskName() {
-    if (_askedName) return;
-    // ensure init completed or still fine; but rely on template values
-    final currentName =
-        ref.read(templateVariableServiceProvider).getVariable('player_name');
-    if (currentName != 'New Hire') {
-      _askedName = true;
-      return;
-    }
-    _askedName = true;
-    Navigator.of(context, rootNavigator: true).push(
-      MaterialPageRoute(
-        fullscreenDialog: true,
-        builder: (_) => WelcomeNameScreen(
-          onFinished: () {
-            // after finishing, refresh streak header
-            ref.invalidate(userProgressProvider);
-          },
-        ),
       ),
     );
   }

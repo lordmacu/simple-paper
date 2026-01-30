@@ -34,6 +34,9 @@ dependencies:
   # Storage
   shared_preferences: ^2.3.4
   sqflite: ^2.4.1
+  sqflite_common_ffi: ^2.3.4+4
+  sqflite_common_ffi_web: ^0.4.5+2
+  sqlite3: ^2.4.6  # Force compatible version for web
   path: ^1.9.0
 
 dev_dependencies:
@@ -62,7 +65,10 @@ flutter:
   # Assets
   assets:
     - assets/episodes/
-    - assets/character_interviews/
+    - assets/characters/
+    - assets/avatars/
+    - assets/saludos.png
+    - assets/language/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

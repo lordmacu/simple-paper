@@ -6,12 +6,12 @@ class TemplateVariableService {
   // Valores por defecto
   final Map<String, String> _defaults = {
     'player_name': 'New Hire',
-    'boss_name': 'Michael',
-    'jim_name': 'Jim',
-    'pam_name': 'Pam',
-    'dwight_name': 'Dwight',
-    'company_name': 'Dunder Mifflin',
-    'city': 'Scranton',
+    'boss_name': 'Leo',
+    'jim_name': 'Ben',
+    'pam_name': 'Mia',
+    'dwight_name': 'Dan',
+    'company_name': 'Simple Paper',
+    'city': 'Aurora',
     'office_type': 'Paper Company',
   };
 

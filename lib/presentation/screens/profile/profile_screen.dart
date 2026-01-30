@@ -4,15 +4,24 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../domain/models/progression/achievement.dart';
 import '../../providers/progress_providers.dart';
+import '../../providers/template_variable_provider.dart';
+import '../../widgets/common/duolingo_button.dart';
 import '../../widgets/profile/xp_level_header.dart';
 import 'widgets/profile_header.dart';
 
-class ProfileScreen extends ConsumerWidget {
+class ProfileScreen extends ConsumerStatefulWidget {
   const ProfileScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends ConsumerState<ProfileScreen> {
+  @override
+  Widget build(BuildContext context) {
     final progressAsync = ref.watch(userProgressProvider);
+    final playerName =
+        ref.watch(templateVariableServiceProvider).getVariable('player_name');
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -43,7 +52,7 @@ class ProfileScreen extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ProfileHeader(
-                  userName: 'Player',
+                  userName: playerName,
                   streak: progress.currentStreak,
                   level: level,
                 ),
@@ -57,6 +66,7 @@ class ProfileScreen extends ConsumerWidget {
                   xpIntoLevel: xpIntoLevel.clamp(0, _xpForLevel(level)),
                 ),
                 const SizedBox(height: 16),
+                // Botón de carga de contenido oculto por requerimiento
                 _StatRow(
                   icon: Icons.check_circle,
                   label: 'Episodios completados',

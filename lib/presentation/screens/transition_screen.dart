@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter/services.dart' show rootBundle;
-import 'dart:convert';
 import '../widgets/common/duolingo_button.dart';
 import '../../core/constants/app_colors.dart';
+import '../../data/sources/content_db.dart';
 import '../../domain/models/content_wrappers/content_wrappers.dart';
 import '../../domain/models/episode/episode.dart';
 import '../../domain/models/character/unlocked_character.dart';
 import '../providers/character_providers.dart';
 import '../providers/template_variable_provider.dart';
+import '../providers/progress_providers.dart';
+import '../../core/utils/section_progress.dart';
 import 'character_unlock_screen.dart';
 import 'interview/character_interview_screen.dart';
 import 'interview/interview_summary_screen.dart';
+import 'interview/interview_parser.dart';
+import '../../core/utils/navigation_utils.dart';
 
 /// Pantalla de transición que se muestra entre Vocabulary Story y Main Story
 /// Muestra texto motivacional bilingüe antes de continuar con las escenas
@@ -90,24 +93,18 @@ class _TransitionScreenState extends ConsumerState<TransitionScreen>
       if (charactersToUnlock.isNotEmpty) {
         // Limitar a máximo 2 personajes por vez
         final charactersToShow = charactersToUnlock.take(2).toList();
-        
+
         // Mostrar pantalla de unlock para cada personaje nuevo
-        _showCharacterUnlocks(charactersToShow, 0);
-      } else {
-        // Todos los personajes ya están desbloqueados
-        widget.onContinue();
+        await _showCharacterUnlocks(charactersToShow, 0);
       }
-    } else {
-      // No hay personajes nuevos, continuar directamente
-      widget.onContinue();
     }
+
+    widget.onContinue();
   }
 
   /// Muestra las pantallas de unlock en secuencia y guarda los personajes
   Future<void> _showCharacterUnlocks(List<dynamic> characters, int index) async {
     if (index >= characters.length) {
-      // Terminamos de mostrar todos los personajes
-      widget.onContinue();
       return;
     }
 
@@ -137,38 +134,99 @@ class _TransitionScreenState extends ConsumerState<TransitionScreen>
       ),
     );
 
-    // Intentar mostrar entrevista solo si es nuevo
-    final interview = await _loadCharacterInterview(
-      episodeNumber: widget.episode.episodeMetadata.episodeNumber,
-      characterId: character.characterId,
-      characterName: character.defaultName,
+    // Mostrar siguiente personaje o continuar
+    if (mounted) {
+      await _showCharacterUnlocks(characters, index + 1);
+    }
+  }
+
+  Future<void> _showPendingInterview() async {
+    final progressRepo = ref.read(progressRepositoryProvider);
+    final episodeNumber = widget.episode.episodeMetadata.episodeNumber;
+    final level = widget.episode.episodeMetadata.internalLevel;
+    final candidates = [...widget.episode.characters.appearingInEpisode];
+    candidates.sort(
+      (a, b) => (b.firstAppearance ? 1 : 0) - (a.firstAppearance ? 1 : 0),
     );
 
-    if (!mounted) return;
+    for (final character in candidates) {
+      final completed = await progressRepo.isInterviewCompleted(
+        level: level,
+        episodeNumber: episodeNumber,
+        characterId: character.characterId,
+        interviewId: 'default',
+      );
+      if (completed) {
+        continue;
+      }
 
-    if (interview != null) {
-      final result = await Navigator.push<Map<String, int>?>(
+      final interview = await _loadCharacterInterview(
+        episodeNumber: episodeNumber,
+        characterId: character.characterId,
+        interviewId: 'default',
+        characterName: character.defaultName,
+      );
+
+      if (!mounted) return;
+      if (interview == null) {
+        continue;
+      }
+
+      final result = await Navigator.push<Map<String, dynamic>?>(
         context,
         MaterialPageRoute(
           builder: (_) => CharacterInterviewScreen(
             interview: interview,
-            onComplete: (correct, total) {
-              Navigator.pop<Map<String, int>?>(context, {
+            onComplete: (correct, total, wrongWords) {
+              Navigator.pop<Map<String, dynamic>?>(context, {
                 'correct': correct,
                 'total': total,
+                'wrongWords': wrongWords,
               });
             },
           ),
         ),
       );
 
-      if (mounted && result != null) {
+      if (!mounted) return;
+
+      if (result != null) {
+        final correct = result['correct'] ?? 0;
+        final total = result['total'] ?? interview.questions.length;
+        final wrongWords = (result['wrongWords'] as List<dynamic>?)
+                ?.whereType<String>()
+                .toList() ??
+            const <String>[];
+        if (correct < total) {
+          final reviewWords = wrongWords
+              .map((e) => e.trim().toLowerCase())
+              .where((e) => e.isNotEmpty)
+              .toList();
+          if (reviewWords.isNotEmpty) {
+            await ref.read(addReviewWordsProvider)(
+              words: reviewWords,
+              level: level,
+              episodeNumber: episodeNumber,
+            );
+          }
+        }
+        await progressRepo.markInterviewCompleted(
+          level: level,
+          episodeNumber: episodeNumber,
+          characterId: character.characterId,
+          interviewId: 'default',
+        );
+        await ref.read(markSectionCompletedProvider)(
+          episodeNumber: episodeNumber,
+          sectionId: SectionProgressIds.interview,
+        );
+
         await Navigator.push(
           context,
           MaterialPageRoute(
             builder: (_) => InterviewSummaryScreen(
-              correct: result['correct'] ?? 0,
-              total: result['total'] ?? interview.questions.length,
+              correct: correct,
+              total: total,
               grammarPoints: interview.grammarPoints,
               vocabularyUsed: interview.vocabularyUsed,
               onContinue: () => Navigator.pop(context),
@@ -176,11 +234,8 @@ class _TransitionScreenState extends ConsumerState<TransitionScreen>
           ),
         );
       }
-    }
 
-    // Mostrar siguiente personaje o continuar
-    if (mounted) {
-      _showCharacterUnlocks(characters, index + 1);
+      break;
     }
   }
 
@@ -188,99 +243,94 @@ class _TransitionScreenState extends ConsumerState<TransitionScreen>
   Future<CharacterInterview?> _loadCharacterInterview({
     required int episodeNumber,
     required String characterId,
+    required String interviewId,
     required String characterName,
   }) async {
-    final ep = episodeNumber.toString().padLeft(2, '0');
     var fileName = characterId.toLowerCase().replaceAll(' ', '_');
     if (fileName.startsWith('char_')) {
       fileName = fileName.substring('char_'.length);
     }
-    final path = 'assets/character_interviews/episode_a1_$ep/${fileName}_interview.json';
-
     try {
-      debugPrint('$_logTag load_try $path');
-      final jsonString = await rootBundle.loadString(path);
-      final Map<String, dynamic> data = jsonDecode(jsonString)['character_interview'];
-      final questions = (data['questions'] as List<dynamic>).map((q) {
-        final opts = (q['options'] as List<dynamic>).map((o) {
-          return InterviewOption(
-            optionId: o['option_id'] ?? '',
-            textEn: o['text_en'] ?? '',
-            textEs: o['text_es'] ?? '',
-            isCorrect: o['is_correct'] ?? false,
-            feedbackEn: o['feedback_en'] ?? '',
-            feedbackEs: o['feedback_es'] ?? '',
-            grammarExplanation: o['grammar_explanation'],
-            culturalNote: o['cultural_note'],
-            mistakeType: o['mistake_type'],
-          );
-        }).toList();
-
-        return InterviewQuestion(
-          questionEn: q['question']['text_en'] ?? '',
-          questionEs: q['question']['text_es'] ?? '',
-          options: opts,
-        );
-      }).toList();
-
-      return CharacterInterview(
-        characterName: data['character_name'] ?? characterName,
-        avatarUrl: data['avatar_url'] ?? '',
+      final db = ContentDb();
+      final dbJson = await db.getInterviewJson(
         episodeNumber: episodeNumber,
-        introEn: data['introduction']['text_en'] ?? '',
-        introEs: data['introduction']['text_es'] ?? '',
-        questions: questions,
+        characterId: fileName,
+        interviewId: interviewId,
       );
+      if (dbJson != null) {
+        debugPrint('$_logTag load_db episode=$episodeNumber character=$fileName');
+        return InterviewParser.parse(
+          dbJson,
+          episodeNumber: episodeNumber,
+          fallbackName: characterName,
+        );
+      }
+      debugPrint('$_logTag load_db_missing episode=$episodeNumber character=$fileName');
+      return null;
     } catch (e) {
       // Si no existe o falla parseo, devolver null
-      debugPrint('$_logTag load_fail $path error=$e');
+      debugPrint('$_logTag load_fail db episode=$episodeNumber character=$fileName error=$e');
       return null;
     }
   }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(
-        child: FadeTransition(
-          opacity: _fadeAnimation,
-          child: SlideTransition(
-            position: _slideAnimation,
-            child: Column(
-              children: [
-                // Header con icono decorativo
-                Padding(
-                  padding: const EdgeInsets.all(24.0),
-                  child: _buildHeader(),
-                ),
-
-                // Contenido principal
-                Expanded(
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                    child: Column(
-                      children: [
-                        const SizedBox(height: 40),
-                        _buildTransitionCard(),
-                        const SizedBox(height: 60),
-                      ],
+        child: Stack(
+          children: [
+            FadeTransition(
+              opacity: _fadeAnimation,
+              child: SlideTransition(
+                position: _slideAnimation,
+                child: Column(
+                  children: [
+                    // Header con icono decorativo
+                    Padding(
+                      padding: const EdgeInsets.all(24.0),
+                      child: _buildHeader(),
                     ),
-                  ),
-                ),
 
-                // Botón Continue
-                Padding(
-                  padding: const EdgeInsets.all(24.0),
-                  child: DuolingoButton(
-                    text: 'Continue to Story',
-                    onPressed: _handleContinue,
-                    icon: Icons.arrow_forward,
-                  ),
+                    // Contenido principal
+                    Expanded(
+                      child: SingleChildScrollView(
+                        padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                        child: Column(
+                          children: [
+                            const SizedBox(height: 40),
+                            _buildTransitionCard(),
+                            const SizedBox(height: 60),
+                          ],
+                        ),
+                      ),
+                    ),
+
+                    // Botón Continue
+                    Padding(
+                      padding: const EdgeInsets.all(24.0),
+                      child: DuolingoButton(
+                        text: 'Continuar',
+                        onPressed: _handleContinue,
+                        icon: Icons.arrow_forward,
+                      ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
-          ),
+            Positioned(
+              top: 8,
+              right: 8,
+              child: IconButton(
+                icon: const Icon(Icons.close, color: AppColors.textPrimary),
+                onPressed: () => NavigationUtils.closeToHome(context),
+                tooltip: 'Cerrar',
+              ),
+            ),
+          ],
         ),
       ),
     );

@@ -77,7 +77,7 @@ class EpisodePreviewScreen extends StatelessWidget {
               ),
               onPressed: onContinue,
               child: const Text(
-                'Continue to next episode',
+                'Continuar al próximo episodio',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
             ),

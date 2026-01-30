@@ -5,6 +5,7 @@ import 'package:office_app/presentation/screens/main_screen.dart';
 import 'package:office_app/presentation/screens/home/home_screen.dart';
 import 'package:office_app/presentation/screens/profile/profile_screen.dart';
 import 'package:office_app/presentation/screens/settings/settings_screen.dart';
+import 'package:office_app/presentation/screens/review/review_home_screen.dart';
 
 final appRouterProvider = Provider<GoRouter>((ref) {
   return GoRouter(
@@ -29,6 +30,11 @@ final appRouterProvider = Provider<GoRouter>((ref) {
             path: '/settings',
             pageBuilder: (context, state) =>
                 _fadeSlidePage(const SettingsScreen(), state),
+          ),
+          GoRoute(
+            path: '/review',
+            pageBuilder: (context, state) =>
+                _fadeSlidePage(const ReviewHomeScreen(), state),
           ),
         ],
       ),
