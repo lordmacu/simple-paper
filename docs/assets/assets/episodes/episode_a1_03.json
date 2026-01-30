@@ -1,0 +1,1334 @@
+{
+  "city_settings": {
+    "default_city": "Scranton",
+    "user_selected_city": null,
+    "localizable": true,
+    "city_specific_content": {
+      "office_name": "{company_name} {city}",
+      "default_company_name": "Dunder Mifflin",
+      "office_type": "Paper Company",
+      "office_type_es": "Compañía de Papel"
+    }
+  },
+  "episode_metadata": {
+    "section_name": "Yes or No",
+    "section_name_es": "Sí o No",
+    "image": "/episodes/episode_3_scene.jpg",
+    "episode_number": 3,
+    "episode_id": "ep_003",
+    "title": "Yes or No, Boss?",
+    "title_es": "¿Sí o No, Jefe?",
+    "description": "{boss_name} asks simple yes or no questions. The questions are easy. The situation is not. Every answer feels wrong, and {boss_name} is never fully happy.",
+    "description_es": "{boss_name} hace preguntas simples de sí o no. Las preguntas son fáciles. La situación no lo es. Cada respuesta parece incorrecta y {boss_name} nunca está completamente feliz.",
+    "internal_level": "A1",
+    "estimated_time_minutes": 12,
+    "unlock_requirements": null,
+    "tags": [
+      "yes_no_questions",
+      "office_life",
+      "boss",
+      "grammar_basics"
+    ],
+    "previous_episode": "ep_002",
+    "next_episode": "ep_004"
+  },
+  "characters": {
+    "section_name": "Yes No",
+    "section_name_es": "Sí No",
+    "image": "/episodes/episode_3_scene.jpg",
+    "appearing_in_episode": [
+      {
+        "character_id": "char_boss",
+        "default_name": "LEO",
+        "role": "Regional manager",
+        "role_es": "Gerente regional",
+        "personality": "Enthusiastic boss who needs approval, asks many questions, and believes every answer should praise him.",
+        "personality_es": "Jefe entusiasta que necesita aprobación, hace muchas preguntas y cree que todas las respuestas deben elogiarlo.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/leo.png",
+        "intro_text": "Hello. I am LEO. I am the BOSS. Today I ask yes or no questions. The correct answer is usually yes. Especially when the question is about me.",
+        "intro_text_es": "Hola. Yo soy LEO. Yo soy el JEFE. Hoy hago preguntas de sí o no. La respuesta correcta normalmente es sí. Especialmente cuando la pregunta es sobre mí."
+      },
+      {
+        "character_id": "char_jim",
+        "default_name": "BEN",
+        "role": "Salesman",
+        "role_es": "Vendedor",
+        "personality": "Sarcastic and calm salesman who answers questions seriously, even when they are very silly.",
+        "personality_es": "Vendedor sarcástico y tranquilo que responde preguntas con seriedad, incluso cuando son muy tontas.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/ben.png",
+        "intro_text": "Hi. I am BEN. I like yes or no questions. They are short. The answers are short. This meeting will not be short.",
+        "intro_text_es": "Hola. Yo soy BEN. Me gustan las preguntas de sí o no. Son cortas. Las respuestas son cortas. Esta reunión no será corta."
+      },
+      {
+        "character_id": "char_pam",
+        "default_name": "MIA",
+        "role": "Receptionist",
+        "role_es": "Recepcionista",
+        "personality": "Kind and helpful receptionist who politely answers questions and gently manages office chaos.",
+        "personality_es": "Recepcionista amable y servicial que responde preguntas con educación y maneja el caos de la oficina con calma.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/mia.png",
+        "intro_text": "Hello. I am MIA. Yes or no questions are easy. Unless the BOSS asks them many times. Then they are less easy.",
+        "intro_text_es": "Hola. Yo soy MIA. Las preguntas de sí o no son fáciles. A menos que el JEFE las haga muchas veces. Entonces son menos fáciles."
+      },
+      {
+        "character_id": "char_dwight",
+        "default_name": "DAN",
+        "role": "Assistant regional manager",
+        "role_es": "Asistente del gerente regional",
+        "personality": "Intense and rule-focused employee who treats every question like a test.",
+        "personality_es": "Empleado intenso y enfocado en las reglas que trata cada pregunta como un examen.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/dan.png",
+        "intro_text": "I am DAN. Yes or no questions are serious. I prepare for both answers. I am always correct.",
+        "intro_text_es": "Yo soy DAN. Las preguntas de sí o no son serias. Yo me preparo para ambas respuestas. Yo siempre tengo razón."
+      }
+    ],
+    "mentioned_but_not_appearing": []
+  },
+  "vocabulary_focus": {
+    "section_name": "Yes No",
+    "section_name_es": "Sí No",
+    "image": "/episodes/episode_3_scene.jpg",
+    "target_words": [
+      {
+        "word": "yes",
+        "translation_es": "sí",
+        "word_type": "adverb",
+        "word_type_es": "adverbio",
+        "difficulty": 1,
+        "context_sentence": "{boss_name} asks a question, and the answer is yes.",
+        "context_sentence_es": "{boss_name} hace una pregunta y la respuesta es sí.",
+        "image_url": "/vocab/yes.jpg",
+        "usage_examples": [
+          "Yes, this is the office.",
+          "Yes, you are ready.",
+          "Yes, the meeting is today."
+        ],
+        "usage_examples_es": [
+          "Sí, esta es la oficina.",
+          "Sí, tú estás listo.",
+          "Sí, la reunión es hoy."
+        ]
+      },
+      {
+        "word": "no",
+        "translation_es": "no",
+        "word_type": "adverb",
+        "word_type_es": "adverbio",
+        "difficulty": 1,
+        "context_sentence": "{boss_name} hears no, and he looks confused.",
+        "context_sentence_es": "{boss_name} escucha no y se ve confundido.",
+        "image_url": "/vocab/no.jpg",
+        "usage_examples": [
+          "No, this is not my desk.",
+          "No, the room is not free.",
+          "No, the answer is not correct."
+        ],
+        "usage_examples_es": [
+          "No, este no es mi escritorio.",
+          "No, la sala no está libre.",
+          "No, la respuesta no es correcta."
+        ]
+      },
+      {
+        "word": "correct",
+        "translation_es": "correcto",
+        "word_type": "adjective",
+        "word_type_es": "adjetivo",
+        "difficulty": 2,
+        "context_sentence": "{boss_name} wants the correct answer every time.",
+        "context_sentence_es": "{boss_name} quiere la respuesta correcta cada vez.",
+        "image_url": "/vocab/correct.jpg",
+        "usage_examples": [
+          "This answer is correct.",
+          "Yes is the correct answer.",
+          "The name on the desk is correct."
+        ],
+        "usage_examples_es": [
+          "Esta respuesta es correcta.",
+          "Sí es la respuesta correcta.",
+          "El nombre en el escritorio es correcto."
+        ]
+      },
+      {
+        "word": "ready",
+        "translation_es": "listo",
+        "word_type": "adjective",
+        "word_type_es": "adjetivo",
+        "difficulty": 2,
+        "context_sentence": "{boss_name} asks if everyone is ready.",
+        "context_sentence_es": "{boss_name} pregunta si todos están listos.",
+        "image_url": "/vocab/ready.jpg",
+        "usage_examples": [
+          "I am ready for the meeting.",
+          "The room is ready.",
+          "You are ready for questions."
+        ],
+        "usage_examples_es": [
+          "Yo estoy listo para la reunión.",
+          "La sala está lista.",
+          "Tú estás listo para las preguntas."
+        ]
+      },
+      {
+        "word": "sure",
+        "translation_es": "seguro",
+        "word_type": "adjective",
+        "word_type_es": "adjetivo",
+        "difficulty": 2,
+        "context_sentence": "{boss_name} asks if you are sure.",
+        "context_sentence_es": "{boss_name} pregunta si tú estás seguro.",
+        "image_url": "/vocab/sure.jpg",
+        "usage_examples": [
+          "I am sure this is correct.",
+          "Are you sure about the answer?",
+          "She is sure about the meeting."
+        ],
+        "usage_examples_es": [
+          "Yo estoy seguro de que esto es correcto.",
+          "¿Tú estás seguro de la respuesta?",
+          "Ella está segura de la reunión."
+        ]
+      }
+    ],
+    "phrases": [
+      {
+        "phrase": "Is this correct?",
+        "translation_es": "¿Esto es correcto?",
+        "usage_context": "Used to check an answer with the boss.",
+        "usage_context_es": "Se usa para confirmar una respuesta con el jefe."
+      },
+      {
+        "phrase": "Are you ready?",
+        "translation_es": "¿Estás listo?",
+        "usage_context": "Used before a meeting or questions.",
+        "usage_context_es": "Se usa antes de una reunión o preguntas."
+      },
+      {
+        "phrase": "Is that a yes or no?",
+        "translation_es": "¿Eso es sí o no?",
+        "usage_context": "Used when the answer is unclear.",
+        "usage_context_es": "Se usa cuando la respuesta no es clara."
+      }
+    ]
+  },
+  "vocabulary_story": {
+    "section_name": "Yes No",
+    "section_name_es": "Sí No",
+    "image": "/episodes/episode_3_scene.jpg",
+    "title": "Learning Basic Words",
+    "title_es": "Aprendiendo Palabras Básicas",
+    "description": "A simple story to learn today's vocabulary",
+    "description_es": "Una historia simple para aprender el vocabulario de hoy",
+    "segments": [
+      {
+        "segment_id": "vocab_yes_01",
+        "image_url": "/vocab/yes.jpg",
+        "word_focus": "yes",
+        "text": {
+          "en": "The answer is YES.",
+          "es": "La respuesta es SÍ."
+        },
+        "emphasis_style": "bold_uppercase"
+      },
+      {
+        "segment_id": "vocab_yes_02",
+        "image_url": "/vocab/yes.jpg",
+        "word_focus": "yes",
+        "text": {
+          "en": "The BOSS likes YES.",
+          "es": "Al JEFE le gusta el SÍ."
+        }
+      },
+      {
+        "segment_id": "vocab_yes_03",
+        "image_url": "/vocab/yes.jpg",
+        "word_focus": "yes",
+        "text": {
+          "en": "YES is a good answer here.",
+          "es": "SÍ es una buena respuesta aquí."
+        }
+      },
+      {
+        "segment_id": "vocab_no_01",
+        "image_url": "/vocab/no.jpg",
+        "word_focus": "no",
+        "text": {
+          "en": "Sometimes the answer is NO.",
+          "es": "A veces la respuesta es NO."
+        }
+      },
+      {
+        "segment_id": "vocab_no_02",
+        "image_url": "/vocab/no.jpg",
+        "word_focus": "no",
+        "text": {
+          "en": "The BOSS does not like NO.",
+          "es": "Al JEFE no le gusta el NO."
+        }
+      },
+      {
+        "segment_id": "vocab_no_03",
+        "image_url": "/vocab/no.jpg",
+        "word_focus": "no",
+        "text": {
+          "en": "NO is an honest answer.",
+          "es": "NO es una respuesta honesta."
+        }
+      },
+      {
+        "segment_id": "vocab_answer_01",
+        "image_url": "/vocab/answer.jpg",
+        "word_focus": "answer",
+        "text": {
+          "en": "This ANSWER is short.",
+          "es": "Esta RESPUESTA es corta."
+        }
+      },
+      {
+        "segment_id": "vocab_answer_02",
+        "image_url": "/vocab/answer.jpg",
+        "word_focus": "answer",
+        "text": {
+          "en": "YES or NO is an ANSWER.",
+          "es": "SÍ o NO es una RESPUESTA."
+        }
+      },
+      {
+        "segment_id": "vocab_answer_03",
+        "image_url": "/vocab/answer.jpg",
+        "word_focus": "answer",
+        "text": {
+          "en": "The ANSWER is clear.",
+          "es": "La RESPUESTA es clara."
+        }
+      },
+      {
+        "segment_id": "vocab_question_01",
+        "image_url": "/vocab/question.jpg",
+        "word_focus": "question",
+        "text": {
+          "en": "This QUESTION is easy.",
+          "es": "Esta PREGUNTA es fácil."
+        }
+      },
+      {
+        "segment_id": "vocab_question_02",
+        "image_url": "/vocab/question.jpg",
+        "word_focus": "question",
+        "text": {
+          "en": "The BOSS asks a QUESTION.",
+          "es": "El JEFE hace una PREGUNTA."
+        }
+      },
+      {
+        "segment_id": "vocab_question_03",
+        "image_url": "/vocab/question.jpg",
+        "word_focus": "question",
+        "text": {
+          "en": "Is this a yes or no QUESTION?",
+          "es": "¿Es esta una PREGUNTA de sí o no?"
+        }
+      },
+      {
+        "segment_id": "vocab_ready_01",
+        "image_url": "/vocab/ready.jpg",
+        "word_focus": "ready",
+        "text": {
+          "en": "I am READY.",
+          "es": "Yo estoy LISTO."
+        }
+      },
+      {
+        "segment_id": "vocab_ready_02",
+        "image_url": "/vocab/ready.jpg",
+        "word_focus": "ready",
+        "text": {
+          "en": "Everyone is READY.",
+          "es": "Todos están LISTOS."
+        }
+      },
+      {
+        "segment_id": "vocab_ready_03",
+        "image_url": "/vocab/ready.jpg",
+        "word_focus": "ready",
+        "text": {
+          "en": "READY for the QUESTION.",
+          "es": "LISTO para la PREGUNTA."
+        }
+      },
+      {
+        "segment_id": "vocab_mix_01",
+        "image_url": "/vocab/yes.jpg",
+        "word_focus": "yes",
+        "text": {
+          "en": "YES is the ANSWER to the QUESTION.",
+          "es": "SÍ es la RESPUESTA a la PREGUNTA."
+        }
+      },
+      {
+        "segment_id": "vocab_mix_02",
+        "image_url": "/vocab/ready.jpg",
+        "word_focus": "ready",
+        "text": {
+          "en": "I am READY to say NO.",
+          "es": "Yo estoy LISTO para decir NO."
+        }
+      },
+      {
+        "segment_id": "vocab_summary",
+        "word_focus": null,
+        "text": {
+          "en": "Great. Now you know: YES, NO, ANSWER, QUESTION, READY. The questions are short. The meeting is not.",
+          "es": "Genial. Ahora conoces: SÍ, NO, RESPUESTA, PREGUNTA, LISTO. Las preguntas son cortas. La reunión no."
+        }
+      }
+    ]
+  },
+  "mini_story": {
+    "section_name": "Yes No",
+    "section_name_es": "Sí No",
+    "image": "/episodes/episode_3_scene.jpg",
+    "title": "Short Story",
+    "title_es": "Historia corta",
+    "description": "A short story to practice today's topic.",
+    "description_es": "Una historia corta para practicar el tema de hoy.",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "text": {
+          "en": "Yesterday, the team is in a meeting room at Simple Paper in Aurora. Leo is the manager, and he asks many questions. Ben and Mia look at each other and wait.",
+          "es": "Ayer, el equipo está en una sala de reuniones en Simple Paper en Aurora. Leo es el gerente y hace muchas preguntas. Ben y Mia se miran y esperan."
+        }
+      },
+      {
+        "id": "p2",
+        "text": {
+          "en": "Leo asks yes or no questions with be. He asks, Are you ready? He asks, Is this the correct room? Every answer is yes or no, but Leo is not satisfied.",
+          "es": "Leo hace preguntas de sí o no con be. Él pregunta, ¿Están listos? Él pregunta, ¿Esta es la sala correcta? Cada respuesta es sí o no, pero Leo no está satisfecho."
+        }
+      },
+      {
+        "id": "p3",
+        "text": {
+          "en": "At the end, the meeting is over, but the questions continue. Leo asks one more question. Ben answers yes, and Leo asks another question.",
+          "es": "Al final, la reunión termina, pero las preguntas continúan. Leo hace una pregunta más. Ben responde sí, y Leo hace otra pregunta."
+        }
+      }
+    ]
+  },
+  "listening_shadowing": {
+    "section_name": "Yes No",
+    "section_name_es": "Sí No",
+    "image": "/episodes/episode_3_scene.jpg",
+    "instructions": "Listen to the line. Then repeat it aloud before the timer ends.",
+    "instructions_es": "Escucha la línea. Luego repítela en voz alta antes de que termine el tiempo.",
+    "data": [
+      {
+        "item_id": "listen_003_01",
+        "character_id": "char_boss",
+        "character_display_name": "LEO",
+        "text": "The QUESTION is easy, the ANSWER is YES or NO, and everyone is READY for me.",
+        "text_es": "La pregunta es fácil, la respuesta es sí o no, y todos están listos para mí.",
+        "tts_text": "The QUESTION is easy, the ANSWER is YES or NO, and everyone is READY for me.",
+        "tts_voice_id": "en_us_male_1",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "YES",
+          "NO",
+          "ANSWER",
+          "QUESTION",
+          "READY"
+        ]
+      },
+      {
+        "item_id": "listen_003_02",
+        "character_id": "char_jim",
+        "character_display_name": "BEN",
+        "text": "This QUESTION has an ANSWER, either YES or NO, and I am READY to listen.",
+        "text_es": "Esta pregunta tiene una respuesta, sí o no, y yo estoy listo para escuchar.",
+        "tts_text": "This QUESTION has an ANSWER, either YES or NO, and I am READY to listen.",
+        "tts_voice_id": "en_us_male_2",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "YES",
+          "NO",
+          "ANSWER",
+          "QUESTION",
+          "READY"
+        ]
+      },
+      {
+        "item_id": "listen_003_03",
+        "character_id": "char_pam",
+        "character_display_name": "MIA",
+        "text": "Every QUESTION needs an ANSWER, sometimes YES, sometimes NO, when people are READY.",
+        "text_es": "Cada pregunta necesita una respuesta, a veces sí, a veces no, cuando las personas están listas.",
+        "tts_text": "Every QUESTION needs an ANSWER, sometimes YES, sometimes NO, when people are READY.",
+        "tts_voice_id": "en_us_female_1",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 11,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "YES",
+          "NO",
+          "ANSWER",
+          "QUESTION",
+          "READY"
+        ]
+      },
+      {
+        "item_id": "listen_003_04",
+        "character_id": "char_dwight",
+        "character_display_name": "DAN",
+        "text": "I hear the QUESTION, I prepare the ANSWER, YES or NO, because I am READY.",
+        "text_es": "Yo escucho la pregunta, preparo la respuesta, sí o no, porque estoy listo.",
+        "tts_text": "I hear the QUESTION, I prepare the ANSWER, YES or NO, because I am READY.",
+        "tts_voice_id": "en_us_male_3",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 11,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "YES",
+          "NO",
+          "ANSWER",
+          "QUESTION",
+          "READY"
+        ]
+      },
+      {
+        "item_id": "listen_003_05",
+        "character_id": "char_boss",
+        "character_display_name": "LEO",
+        "text": "My QUESTION is important, the ANSWER is YES or NO, and you must be READY.",
+        "text_es": "Mi pregunta es importante, la respuesta es sí o no, y debes estar listo.",
+        "tts_text": "My QUESTION is important, the ANSWER is YES or NO, and you must be READY.",
+        "tts_voice_id": "en_us_male_1",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 11,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "YES",
+          "NO",
+          "ANSWER",
+          "QUESTION",
+          "READY"
+        ]
+      },
+      {
+        "item_id": "listen_003_06",
+        "character_id": "char_jim",
+        "character_display_name": "BEN",
+        "text": "I answer each QUESTION with an ANSWER, YES or NO, and I stay READY.",
+        "text_es": "Yo respondo cada pregunta con una respuesta, sí o no, y me mantengo listo.",
+        "tts_text": "I answer each QUESTION with an ANSWER, YES or NO, and I stay READY.",
+        "tts_voice_id": "en_us_male_2",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "YES",
+          "NO",
+          "ANSWER",
+          "QUESTION",
+          "READY"
+        ]
+      },
+      {
+        "item_id": "listen_003_07",
+        "character_id": "char_pam",
+        "character_display_name": "MIA",
+        "text": "The QUESTION sounds simple, the ANSWER is YES or NO, if you are READY.",
+        "text_es": "La pregunta suena simple, la respuesta es sí o no, si estás listo.",
+        "tts_text": "The QUESTION sounds simple, the ANSWER is YES or NO, if you are READY.",
+        "tts_voice_id": "en_us_female_1",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "YES",
+          "NO",
+          "ANSWER",
+          "QUESTION",
+          "READY"
+        ]
+      },
+      {
+        "item_id": "listen_003_08",
+        "character_id": "char_dwight",
+        "character_display_name": "DAN",
+        "text": "This QUESTION requires an ANSWER, YES or NO, and I am READY always.",
+        "text_es": "Esta pregunta requiere una respuesta, sí o no, y yo siempre estoy listo.",
+        "tts_text": "This QUESTION requires an ANSWER, YES or NO, and I am READY always.",
+        "tts_voice_id": "en_us_male_3",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "YES",
+          "NO",
+          "ANSWER",
+          "QUESTION",
+          "READY"
+        ]
+      },
+      {
+        "item_id": "listen_003_09",
+        "character_id": "char_boss",
+        "character_display_name": "LEO",
+        "text": "I ask a QUESTION, I expect an ANSWER, YES or NO, when you are READY.",
+        "text_es": "Yo hago una pregunta, espero una respuesta, sí o no, cuando estás listo.",
+        "tts_text": "I ask a QUESTION, I expect an ANSWER, YES or NO, when you are READY.",
+        "tts_voice_id": "en_us_male_1",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 11,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "YES",
+          "NO",
+          "ANSWER",
+          "QUESTION",
+          "READY"
+        ]
+      },
+      {
+        "item_id": "listen_003_10",
+        "character_id": "char_jim",
+        "character_display_name": "BEN",
+        "text": "Every QUESTION has an ANSWER, YES or NO, so stay READY and calm.",
+        "text_es": "Cada pregunta tiene una respuesta, sí o no, así que mantente listo y tranquilo.",
+        "tts_text": "Every QUESTION has an ANSWER, YES or NO, so stay READY and calm.",
+        "tts_voice_id": "en_us_male_2",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 11,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "YES",
+          "NO",
+          "ANSWER",
+          "QUESTION",
+          "READY"
+        ]
+      }
+    ]
+  },
+  "scenes": {
+    "section_name": "Yes No",
+    "section_name_es": "Sí No",
+    "image": "/episodes/episode_3_scene.jpg",
+    "data": [
+      {
+        "scene_id": "scene_003_001",
+        "scene_number": 1,
+        "location": "Meeting room",
+        "location_es": "Sala de reuniones",
+        "scene_name": "The Questions Start",
+        "scene_name_es": "Empiezan las preguntas",
+        "time": "Morning",
+        "time_es": "Mañana",
+        "description": "The team waits in the meeting room. {boss_name} prepares very serious yes or no questions.",
+        "description_es": "El equipo espera en la sala de reuniones. {boss_name} prepara preguntas muy serias de sí o no.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_leo",
+            "character_display_name": "LEO",
+            "text": "Welcome to the MEETING. This is a very important MEETING. I am a very important MANAGER.",
+            "translation_es": "Bienvenidos a la reunión. Esta es una reunión muy importante. Yo soy un gerente muy importante.",
+            "emotion": "proud_but_lying",
+            "notes": "Leo exaggerates his importance.",
+            "notes_es": "Leo exagera su importancia.",
+            "highlighted_vocab": [
+              "meeting",
+              "manager"
+            ],
+            "template_vars": [
+              "boss_name"
+            ]
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_ben",
+            "character_display_name": "BEN",
+            "text": "Yes, this MEETING is very serious. I feel very serious now.",
+            "translation_es": "Sí, esta reunión es muy seria. Yo me siento muy serio ahora.",
+            "emotion": "sarcastic",
+            "notes": "Ben pretends to take the meeting seriously.",
+            "notes_es": "Ben finge tomar la reunión en serio.",
+            "highlighted_vocab": [
+              "meeting"
+            ]
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_leo",
+            "character_display_name": "LEO",
+            "text": "Good. Are you READY for questions?",
+            "translation_es": "Bien. ¿Están listos para las preguntas?",
+            "emotion": "excited",
+            "notes": "Leo enjoys asking questions.",
+            "notes_es": "Leo disfruta hacer preguntas.",
+            "highlighted_vocab": [
+              "ready"
+            ]
+          },
+          {
+            "line_id": 4,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "How do you answer?",
+            "prompt_es": "¿Cómo respondes?",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "Ready yes.",
+                "translation_es": "Listo sí.",
+                "points": 0,
+                "personality_impact": "confused",
+                "vocab_used": [
+                  "ready"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "Yes, I am READY.",
+                "translation_es": "Sí, yo estoy listo.",
+                "points": 10,
+                "personality_impact": "neutral",
+                "vocab_used": [
+                  "ready"
+                ]
+              }
+            ]
+          },
+          {
+            "line_id": 5,
+            "character_id": "char_leo",
+            "character_display_name": "LEO",
+            "text": "Interesting answer. I do not like it. But we continue.",
+            "translation_es": "Respuesta interesante. No me gusta. Pero continuamos.",
+            "emotion": "annoyed",
+            "notes": "Leo is never satisfied.",
+            "notes_es": "Leo nunca está satisfecho.",
+            "highlighted_vocab": []
+          }
+        ]
+      },
+      {
+        "scene_id": "scene_003_002",
+        "scene_number": 2,
+        "location": "Meeting room",
+        "location_es": "Sala de reuniones",
+        "scene_name": "Yes or No",
+        "scene_name_es": "Sí o no",
+        "time": "Morning",
+        "time_es": "Mañana",
+        "description": "{boss_name} continues with simple yes or no questions.",
+        "description_es": "{boss_name} continúa con preguntas simples de sí o no.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_leo",
+            "character_display_name": "LEO",
+            "text": "Is this the correct ROOM?",
+            "translation_es": "¿Esta es la sala correcta?",
+            "emotion": "serious",
+            "notes": "Leo asks an obvious question.",
+            "notes_es": "Leo hace una pregunta obvia.",
+            "highlighted_vocab": [
+              "correct",
+              "room"
+            ]
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_mia",
+            "character_display_name": "MIA",
+            "text": "Yes. This is the ROOM. It is always this ROOM.",
+            "translation_es": "Sí. Esta es la sala. Siempre es esta sala.",
+            "emotion": "calm_sarcastic",
+            "notes": "Mia calmly states the obvious.",
+            "notes_es": "Mia dice lo obvio con calma.",
+            "highlighted_vocab": [
+              "room"
+            ]
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_leo",
+            "character_display_name": "LEO",
+            "text": "Are you SURE?",
+            "translation_es": "¿Estás seguro?",
+            "emotion": "suspicious",
+            "notes": "Leo doubts everything.",
+            "notes_es": "Leo duda de todo.",
+            "highlighted_vocab": [
+              "sure"
+            ]
+          },
+          {
+            "line_id": 4,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "Choose the best answer.",
+            "prompt_es": "Elige la mejor respuesta.",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "Sure yes.",
+                "translation_es": "Seguro sí.",
+                "points": 0,
+                "personality_impact": "awkward",
+                "vocab_used": [
+                  "sure"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "Yes, I am SURE.",
+                "translation_es": "Sí, yo estoy seguro.",
+                "points": 10,
+                "personality_impact": "neutral",
+                "vocab_used": [
+                  "sure"
+                ]
+              }
+            ]
+          },
+          {
+            "line_id": 5,
+            "character_id": "char_ben",
+            "character_display_name": "BEN",
+            "text": "This is excellent. I love these QUESTIONS.",
+            "translation_es": "Esto es excelente. Yo amo estas preguntas.",
+            "emotion": "dry",
+            "notes": "Ben clearly does not love the questions.",
+            "notes_es": "Ben claramente no ama las preguntas.",
+            "highlighted_vocab": [
+              "question"
+            ]
+          }
+        ]
+      },
+      {
+        "scene_id": "scene_003_003",
+        "scene_number": 3,
+        "location": "Meeting room",
+        "location_es": "Sala de reuniones",
+        "scene_name": "Never Enough",
+        "scene_name_es": "Nunca suficiente",
+        "time": "Later",
+        "time_es": "Más tarde",
+        "description": "The meeting ends, but the questions do not stop.",
+        "description_es": "La reunión termina, pero las preguntas no se detienen.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_leo",
+            "character_display_name": "LEO",
+            "text": "Final QUESTION. Is this a good MEETING?",
+            "translation_es": "Pregunta final. ¿Esta es una buena reunión?",
+            "emotion": "dramatic",
+            "notes": "Leo treats a simple question as dramatic.",
+            "notes_es": "Leo trata una pregunta simple como algo dramático.",
+            "highlighted_vocab": [
+              "question",
+              "meeting"
+            ]
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_ben",
+            "character_display_name": "BEN",
+            "text": "Yes. This is a very good MEETING.",
+            "translation_es": "Sí. Esta es una reunión muy buena.",
+            "emotion": "sarcastic",
+            "notes": "Ben answers with obvious sarcasm.",
+            "notes_es": "Ben responde con sarcasmo obvio.",
+            "highlighted_vocab": [
+              "meeting"
+            ]
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_leo",
+            "character_display_name": "LEO",
+            "text": "Correct. But also no. Think about it.",
+            "translation_es": "Correcto. Pero también no. Piénsalo.",
+            "emotion": "confusing",
+            "notes": "Leo contradicts himself.",
+            "notes_es": "Leo se contradice.",
+            "highlighted_vocab": [
+              "correct",
+              "no"
+            ]
+          },
+          {
+            "line_id": 4,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "What do you say?",
+            "prompt_es": "¿Qué dices?",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "No correct.",
+                "translation_es": "No correcto.",
+                "points": 0,
+                "personality_impact": "confused",
+                "vocab_used": [
+                  "correct"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "Yes, this is CORRECT.",
+                "translation_es": "Sí, esto es correcto.",
+                "points": 10,
+                "personality_impact": "neutral",
+                "vocab_used": [
+                  "correct"
+                ]
+              }
+            ]
+          },
+          {
+            "line_id": 5,
+            "character_id": "char_leo",
+            "character_display_name": "LEO",
+            "text": "Great answer. Or maybe not. Meeting over.",
+            "translation_es": "Gran respuesta. O tal vez no. Reunión terminada.",
+            "emotion": "proud_but_lying",
+            "notes": "Leo ends the meeting without clarity.",
+            "notes_es": "Leo termina la reunión sin claridad.",
+            "highlighted_vocab": []
+          }
+        ]
+      }
+    ]
+  },
+  "content_wrappers": {
+    "section_name": "Yes No",
+    "section_name_es": "Sí No",
+    "image": "/episodes/episode_3_scene.jpg",
+    "intro_text": {
+      "en": "Welcome to the office. This is a place of work, focus, and very serious questions. {boss_name} loves questions. Especially questions with yes or no. Especially when the answers are wrong.",
+      "es": "Bienvenido a la oficina. Este es un lugar de trabajo, enfoque y preguntas muy serias. A {boss_name} le encantan las preguntas. Especialmente las preguntas de sí o no. Especialmente cuando las respuestas están mal."
+    },
+    "transition": {
+      "en": "Great. Now you know the words. Yes. No. Correct. Ready. Sure. Simple words. Very dangerous words in this office. Now it is time to use them with {boss_name}. Good luck.",
+      "es": "Muy bien. Ahora conoces las palabras. Sí. No. Correcto. Listo. Seguro. Palabras simples. Palabras muy peligrosas en esta oficina. Ahora es el momento de usarlas con {boss_name}. Buena suerte."
+    },
+    "conclusion": {
+      "en": "Good job. You answered the questions. Or maybe you did not. It is hard to know with {boss_name}. You practiced yes or no questions, and you survived the meeting. That is a success.",
+      "es": "Buen trabajo. Respondiste las preguntas. O tal vez no. Es difícil saberlo con {boss_name}. Practicaste preguntas de sí o no y sobreviviste a la reunión. Eso es un éxito."
+    },
+    "reflection_prompt": {
+      "question_en": "Write one sentence using the word \"READY\" or \"CORRECT\".",
+      "question_es": "Escribe una oración usando la palabra \"listo\" o \"correcto\".",
+      "type": "free_text",
+      "optional": true,
+      "max_length": 100,
+      "vocab_practice": [
+        "ready",
+        "correct"
+      ]
+    }
+  },
+  "next_episode_preview": {
+    "section_name": "My Desk",
+    "section_name_es": "Mi escritorio",
+    "image": "/episodes/episode_4_scene.jpg",
+    "preview_text_en": "Next time, Leo talks about his desk, your desk, and everyone desk, and Ben asks how this becomes so personal.",
+    "preview_text_es": "La próxima vez, Leo habla de su escritorio, tu escritorio y el escritorio de todos, y Ben pregunta cómo esto se vuelve tan personal.",
+    "teaser_image": "/previews/ep_004.jpg"
+  },
+  "games": {
+    "section_name": "Word Games",
+    "section_name_es": "Juegos palabras",
+    "image": "/episodes/episode_3_scene.jpg",
+    "data": [
+      {
+        "game_id": "ep3_game_01",
+        "game_type": "matching",
+        "title": "Match the Words!",
+        "title_es": "¡Empareja las Palabras!",
+        "instructions": "Match each English word with its Spanish meaning",
+        "instructions_es": "Empareja cada palabra en inglés con su significado en español",
+        "optional": true,
+        "unlocked_after_episode": true,
+        "time_limit_seconds": 90,
+        "xp_reward": 25,
+        "content": {
+          "items": [
+            {
+              "id": 1,
+              "left": "YES",
+              "right": "SÍ",
+              "image_url": "/vocab/yes.jpg"
+            },
+            {
+              "id": 2,
+              "left": "NO",
+              "right": "NO",
+              "image_url": "/vocab/no.jpg"
+            },
+            {
+              "id": 3,
+              "left": "ANSWER",
+              "right": "RESPUESTA",
+              "image_url": "/vocab/answer.jpg"
+            },
+            {
+              "id": 4,
+              "left": "QUESTION",
+              "right": "PREGUNTA",
+              "image_url": "/vocab/question.jpg"
+            },
+            {
+              "id": 5,
+              "left": "READY",
+              "right": "LISTO",
+              "image_url": "/vocab/ready.jpg"
+            },
+            {
+              "id": 6,
+              "left": "MEETING",
+              "right": "REUNIÓN",
+              "image_url": "/vocab/meeting.jpg"
+            },
+            {
+              "id": 7,
+              "left": "ROOM",
+              "right": "SALA",
+              "image_url": "/vocab/room.jpg"
+            },
+            {
+              "id": 8,
+              "left": "BOSS",
+              "right": "JEFE",
+              "image_url": "/vocab/boss.jpg"
+            }
+          ]
+        },
+        "settings": {
+          "shuffle": true,
+          "show_images": true
+        }
+      },
+      {
+        "game_id": "ep3_game_02",
+        "game_type": "fill_blank",
+        "title": "Complete the Sentences",
+        "title_es": "Completa las Oraciones",
+        "instructions": "Fill in the missing words from the episode",
+        "instructions_es": "Completa las palabras que faltan del episodio",
+        "optional": true,
+        "unlocked_after_episode": true,
+        "time_limit_seconds": 150,
+        "xp_reward": 35,
+        "content": {
+          "items": [
+            {
+              "id": 1,
+              "sentence": "{boss_name} asks a _____.",
+              "sentence_es": "{boss_name} hace una _____.",
+              "answer": "QUESTION",
+              "options": [
+                "QUESTION",
+                "ANSWER",
+                "READY"
+              ],
+              "hint": "It ends with a question mark.",
+              "hint_es": "Termina con un signo de pregunta.",
+              "character": "{boss_name}"
+            },
+            {
+              "id": 2,
+              "sentence": "The _____ is YES.",
+              "sentence_es": "La _____ es sí.",
+              "answer": "ANSWER",
+              "options": [
+                "ANSWER",
+                "QUESTION",
+                "READY"
+              ],
+              "hint": "It is what you say after a question.",
+              "hint_es": "Es lo que dices después de una pregunta.",
+              "character": "{jim_name}"
+            },
+            {
+              "id": 3,
+              "sentence": "Are you _____?",
+              "sentence_es": "¿Estás _____?",
+              "answer": "READY",
+              "options": [
+                "READY",
+                "NO",
+                "YES"
+              ],
+              "hint": "It means prepared.",
+              "hint_es": "Significa preparado.",
+              "character": "{pam_name}"
+            },
+            {
+              "id": 4,
+              "sentence": "The answer is _____.",
+              "sentence_es": "La respuesta es _____.",
+              "answer": "YES",
+              "options": [
+                "YES",
+                "NO",
+                "READY"
+              ],
+              "hint": "The boss likes this answer.",
+              "hint_es": "Al jefe le gusta esta respuesta.",
+              "character": "{boss_name}"
+            },
+            {
+              "id": 5,
+              "sentence": "The answer is _____.",
+              "sentence_es": "La respuesta es _____.",
+              "answer": "NO",
+              "options": [
+                "NO",
+                "YES",
+                "QUESTION"
+              ],
+              "hint": "The boss does not like this answer.",
+              "hint_es": "Al jefe no le gusta esta respuesta.",
+              "character": "{jim_name}"
+            },
+            {
+              "id": 6,
+              "sentence": "Is this a yes or no _____?",
+              "sentence_es": "¿Es esta una _____ de sí o no?",
+              "answer": "QUESTION",
+              "options": [
+                "QUESTION",
+                "ANSWER",
+                "READY"
+              ],
+              "hint": "It is what you ask.",
+              "hint_es": "Es lo que preguntas.",
+              "character": "{pam_name}"
+            },
+            {
+              "id": 7,
+              "sentence": "{boss_name} wants an _____ now.",
+              "sentence_es": "{boss_name} quiere una _____ ahora.",
+              "answer": "ANSWER",
+              "options": [
+                "ANSWER",
+                "QUESTION",
+                "NO"
+              ],
+              "hint": "He wants it immediately.",
+              "hint_es": "Él la quiere de inmediato.",
+              "character": "{boss_name}"
+            }
+          ]
+        }
+      },
+      {
+        "game_id": "ep3_game_03",
+        "game_type": "multiple_choice",
+        "title": "Episode Quiz",
+        "title_es": "Quiz del Episodio",
+        "instructions": "Answer questions about the episode",
+        "instructions_es": "Responde preguntas sobre el episodio",
+        "optional": true,
+        "unlocked_after_episode": true,
+        "time_limit_seconds": 180,
+        "xp_reward": 45,
+        "content": {
+          "items": [
+            {
+              "id": 1,
+              "question": "What type of questions does {boss_name} ask in this episode?",
+              "question_es": "¿Qué tipo de preguntas hace {boss_name} en este episodio?",
+              "options": [
+                "Yes or no questions",
+                "Where questions only",
+                "Name questions only",
+                "Computer questions only"
+              ],
+              "options_es": [
+                "Preguntas de sí o no",
+                "Solo preguntas de dónde",
+                "Solo preguntas de nombre",
+                "Solo preguntas de computador"
+              ],
+              "correct_answer": 0,
+              "explanation": "{boss_name} focuses on yes or no questions and short answers with be.",
+              "explanation_es": "{boss_name} se enfoca en preguntas de sí o no y respuestas cortas con el verbo ser o estar."
+            },
+            {
+              "id": 2,
+              "question": "Which answer does {boss_name} usually like more?",
+              "question_es": "¿Qué respuesta le gusta más a {boss_name} normalmente?",
+              "options": [
+                "YES",
+                "NO",
+                "Maybe",
+                "Silence"
+              ],
+              "options_es": [
+                "Sí",
+                "No",
+                "Tal vez",
+                "Silencio"
+              ],
+              "correct_answer": 0,
+              "explanation": "{boss_name} prefers YES because it feels like approval.",
+              "explanation_es": "{boss_name} prefiere sí porque se siente como aprobación."
+            },
+            {
+              "id": 3,
+              "question": "Who stays calm and sarcastic during the questions?",
+              "question_es": "¿Quién se mantiene calmado y sarcástico durante las preguntas?",
+              "options": [
+                "BEN",
+                "DAN",
+                "MIA",
+                "{boss_name}"
+              ],
+              "options_es": [
+                "BEN",
+                "DAN",
+                "MIA",
+                "{boss_name}"
+              ],
+              "correct_answer": 0,
+              "explanation": "BEN answers with a serious tone, but he is joking.",
+              "explanation_es": "BEN responde con un tono serio, pero está bromeando."
+            },
+            {
+              "id": 4,
+              "question": "Who treats every question like a test?",
+              "question_es": "¿Quién trata cada pregunta como un examen?",
+              "options": [
+                "DAN",
+                "MIA",
+                "BEN",
+                "{player_name}"
+              ],
+              "options_es": [
+                "DAN",
+                "MIA",
+                "BEN",
+                "{player_name}"
+              ],
+              "correct_answer": 0,
+              "explanation": "DAN takes simple things very seriously.",
+              "explanation_es": "DAN toma las cosas simples muy en serio."
+            },
+            {
+              "id": 5,
+              "question": "What is the best idea before answering {boss_name}?",
+              "question_es": "¿Cuál es la mejor idea antes de responder a {boss_name}?",
+              "options": [
+                "Be READY",
+                "Run away",
+                "Ignore the question",
+                "Ask a new meeting"
+              ],
+              "options_es": [
+                "Estar listo",
+                "Huir",
+                "Ignorar la pregunta",
+                "Pedir una nueva reunión"
+              ],
+              "correct_answer": 0,
+              "explanation": "Being READY helps you answer quickly and clearly.",
+              "explanation_es": "Estar listo te ayuda a responder rápido y con claridad."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "progression": {
+    "section_name": "Yes No",
+    "section_name_es": "Sí No",
+    "image": "/episodes/episode_3_scene.jpg",
+    "xp_earned_base": 50,
+    "xp_bonus_conditions": [
+      {
+        "condition": "complete_all_games",
+        "bonus_xp": 25
+      },
+      {
+        "condition": "perfect_choices",
+        "bonus_xp": 15
+      },
+      {
+        "condition": "write_reflection",
+        "bonus_xp": 10
+      }
+    ],
+    "unlocks": [
+      {
+        "type": "character",
+        "character_ids": [
+          "char_leo",
+          "char_ben",
+          "char_mia"
+        ]
+      },
+      {
+        "type": "location",
+        "location_ids": [
+          "meeting_room"
+        ]
+      }
+    ],
+    "achievements": [
+      {
+        "achievement_id": "yes_no_survivor",
+        "name": "Yes or No Survivor",
+        "name_es": "Sobreviviente del sí o no",
+        "description": "Answer yes or no questions in a meeting and stay calm with {boss_name}.",
+        "description_es": "Responde preguntas de sí o no en una reunión y mantén la calma con {boss_name}.",
+        "icon": "/achievements/yes_no_survivor.png",
+        "image": "/achievements/yes_no_survivor_banner.jpg"
+      }
+    ]
+  },
+  "metadata": {
+    "section_name": "Yes No",
+    "section_name_es": "Sí No",
+    "image": "/episodes/episode_3_scene.jpg",
+    "created_date": "2026-01-30",
+    "version": "1.0",
+    "author": "Course Team",
+    "content_level": "beginner",
+    "estimated_words": 320,
+    "estimated_unique_vocabulary": 45,
+    "structure_type": "vocab_story_then_main_story"
+  }
+}

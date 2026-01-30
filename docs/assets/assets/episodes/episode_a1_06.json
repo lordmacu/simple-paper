@@ -1,0 +1,1435 @@
+{
+  "city_settings": {
+    "default_city": "Scranton",
+    "user_selected_city": null,
+    "localizable": true,
+    "city_specific_content": {
+      "office_name": "{company_name} {city}",
+      "default_company_name": "Dunder Mifflin",
+      "office_type": "Paper Company",
+      "office_type_es": "Compañía de Papel"
+    }
+  },
+  "episode_metadata": {
+    "section_name": "Daily Actions",
+    "section_name_es": "Acciones Diarias",
+    "image": "/episodes/episode_6_scene.jpg",
+    "episode_number": 6,
+    "episode_id": "ep_006",
+    "title": "What We Do All Day",
+    "title_es": "Lo Que Hacemos Todo el Día",
+    "description": "Ben explains what people do at {company_name}, using very simple sentences. Dan listens very closely and takes every daily action too seriously. It is just a normal workday, but Dan does not think so.",
+    "description_es": "Ben explica lo que las personas hacen en {company_name}, usando oraciones muy simples. Dan escucha con mucha atención y toma cada acción diaria demasiado en serio. Es solo un día normal de trabajo, pero Dan no lo cree.",
+    "internal_level": "A1",
+    "estimated_time_minutes": 12,
+    "unlock_requirements": null,
+    "tags": [
+      "office_life",
+      "daily_routines",
+      "simple_present"
+    ],
+    "previous_episode": "ep_005",
+    "next_episode": "ep_007"
+  },
+  "characters": {
+    "section_name": "Office Team",
+    "section_name_es": "Equipo Oficina",
+    "image": "/episodes/episode_6_scene.jpg",
+    "appearing_in_episode": [
+      {
+        "character_id": "char_boss",
+        "default_name": "LEO",
+        "role": "Boss",
+        "role_es": "Jefe",
+        "personality": "Enthusiastic boss who tries very hard to be liked and believes he is the best boss in the world.",
+        "personality_es": "Jefe entusiasta que se esfuerza mucho por agradar y cree que es el mejor jefe del mundo.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/leo.png",
+        "intro_text": "Hello. I am Leo. I am the boss. The great boss. The super boss. We work hard here and I lead very well.",
+        "intro_text_es": "Hola. Soy Leo. Soy el jefe. El gran jefe. El súper jefe. Trabajamos duro aquí y yo lidero muy bien."
+      },
+      {
+        "character_id": "char_jim",
+        "default_name": "BEN",
+        "role": "Salesman",
+        "role_es": "Vendedor",
+        "personality": "Sarcastic and relaxed salesman who makes dry jokes while acting serious.",
+        "personality_es": "Vendedor sarcástico y relajado que hace bromas secas mientras actúa serio.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/ben.png",
+        "intro_text": "Hi. I am Ben. We sell paper. We work together. This is a very serious office. Very serious.",
+        "intro_text_es": "Hola. Soy Ben. Vendemos papel. Trabajamos juntos. Esta es una oficina muy seria. Muy seria."
+      },
+      {
+        "character_id": "char_pam",
+        "default_name": "MIA",
+        "role": "Receptionist",
+        "role_es": "Recepcionista",
+        "personality": "Kind and helpful receptionist who observes the office chaos with a calm smile.",
+        "personality_es": "Recepcionista amable y servicial que observa el caos de la oficina con una sonrisa tranquila.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/mia.png",
+        "intro_text": "Welcome. I am Mia. I help everyone here. We answer phones and we survive the office.",
+        "intro_text_es": "Bienvenido. Soy Mia. Ayudo a todos aquí. Contestamos teléfonos y sobrevivimos a la oficina."
+      },
+      {
+        "character_id": "char_dwight",
+        "default_name": "DAN",
+        "role": "Salesman",
+        "role_es": "Vendedor",
+        "personality": "Intense and rule obsessed salesman who believes he is always prepared.",
+        "personality_es": "Vendedor intenso y obsesionado con las reglas que cree que siempre está preparado.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/dan.png",
+        "intro_text": "I am Dan. We follow rules. We work correctly. I watch everything. Always.",
+        "intro_text_es": "Soy Dan. Seguimos reglas. Trabajamos correctamente. Yo observo todo. Siempre."
+      }
+    ],
+    "mentioned_but_not_appearing": []
+  },
+  "vocabulary_focus": {
+    "section_name": "Daily Actions",
+    "section_name_es": "Acciones Diarias",
+    "image": "/episodes/episode_6_scene.jpg",
+    "target_words": [
+      {
+        "word": "work",
+        "translation_es": "trabajar",
+        "word_type": "verb",
+        "word_type_es": "verbo",
+        "difficulty": 1,
+        "context_sentence": "We work at {company_name} every day.",
+        "context_sentence_es": "Nosotros trabajamos en {company_name} todos los días.",
+        "image_url": "/vocab/work.jpg",
+        "usage_examples": [
+          "I work with Ben.",
+          "We work in the office.",
+          "They work very quietly."
+        ],
+        "usage_examples_es": [
+          "Yo trabajo con Ben.",
+          "Nosotros trabajamos en la oficina.",
+          "Ellos trabajan muy en silencio."
+        ]
+      },
+      {
+        "word": "check",
+        "translation_es": "revisar",
+        "word_type": "verb",
+        "word_type_es": "verbo",
+        "difficulty": 2,
+        "context_sentence": "We check emails in the morning.",
+        "context_sentence_es": "Nosotros revisamos correos en la mañana.",
+        "image_url": "/vocab/check.jpg",
+        "usage_examples": [
+          "I check my desk.",
+          "We check the papers.",
+          "They check everything twice."
+        ],
+        "usage_examples_es": [
+          "Yo reviso mi escritorio.",
+          "Nosotros revisamos los papeles.",
+          "Ellos revisan todo dos veces."
+        ]
+      },
+      {
+        "word": "answer",
+        "translation_es": "responder",
+        "word_type": "verb",
+        "word_type_es": "verbo",
+        "difficulty": 2,
+        "context_sentence": "We answer questions at work.",
+        "context_sentence_es": "Nosotros respondemos preguntas en el trabajo.",
+        "image_url": "/vocab/answer.jpg",
+        "usage_examples": [
+          "I answer the phone.",
+          "We answer very slowly.",
+          "They answer many questions."
+        ],
+        "usage_examples_es": [
+          "Yo respondo el teléfono.",
+          "Nosotros respondemos muy despacio.",
+          "Ellos responden muchas preguntas."
+        ]
+      },
+      {
+        "word": "talk",
+        "translation_es": "hablar",
+        "word_type": "verb",
+        "word_type_es": "verbo",
+        "difficulty": 1,
+        "context_sentence": "We talk about work all day.",
+        "context_sentence_es": "Nosotros hablamos sobre el trabajo todo el día.",
+        "image_url": "/vocab/talk.jpg",
+        "usage_examples": [
+          "I talk with Mia.",
+          "We talk in meetings.",
+          "They talk a lot."
+        ],
+        "usage_examples_es": [
+          "Yo hablo con Mia.",
+          "Nosotros hablamos en reuniones.",
+          "Ellos hablan mucho."
+        ]
+      },
+      {
+        "word": "wait",
+        "translation_es": "esperar",
+        "word_type": "verb",
+        "word_type_es": "verbo",
+        "difficulty": 1,
+        "context_sentence": "We wait for the meeting.",
+        "context_sentence_es": "Nosotros esperamos la reunión.",
+        "image_url": "/vocab/wait.jpg",
+        "usage_examples": [
+          "I wait at my desk.",
+          "We wait every morning.",
+          "They wait very seriously."
+        ],
+        "usage_examples_es": [
+          "Yo espero en mi escritorio.",
+          "Nosotros esperamos cada mañana.",
+          "Ellos esperan muy seriamente."
+        ]
+      }
+    ],
+    "phrases": [
+      {
+        "phrase": "What do we do?",
+        "translation_es": "¿Qué hacemos?",
+        "usage_context": "Used when talking about daily actions at work.",
+        "usage_context_es": "Se usa cuando se habla de acciones diarias en el trabajo."
+      },
+      {
+        "phrase": "We work every day.",
+        "translation_es": "Trabajamos todos los días.",
+        "usage_context": "A simple statement about routine.",
+        "usage_context_es": "Una afirmación simple sobre la rutina."
+      },
+      {
+        "phrase": "We wait for the meeting.",
+        "translation_es": "Esperamos la reunión.",
+        "usage_context": "Used when nothing happens but it feels important.",
+        "usage_context_es": "Se usa cuando no pasa nada pero parece importante."
+      }
+    ]
+  },
+  "mini_story": {
+    "section_name": "Daily Work",
+    "section_name_es": "Trabajo Diario",
+    "image": "/episodes/episode_6_scene.jpg",
+    "title": "Short Story",
+    "title_es": "Historia corta",
+    "description": "A short story to practice today's topic.",
+    "description_es": "Una historia corta para practicar el tema de hoy.",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "text": {
+          "en": "In the office at {company_name}, Ben talks about daily work. He explains what people do every day. He answers questions from the last meeting.",
+          "es": "En la oficina de {company_name}, Ben habla sobre el trabajo diario. Él explica lo que las personas hacen todos los días. Él responde preguntas de la última reunión."
+        }
+      },
+      {
+        "id": "p2",
+        "text": {
+          "en": "We work at our desks and we check emails. We answer questions and we talk about work. Dan listens very carefully and writes everything down.",
+          "es": "Nosotros trabajamos en nuestros escritorios y revisamos correos. Respondemos preguntas y hablamos sobre el trabajo. Dan escucha con mucho cuidado y escribe todo."
+        }
+      },
+      {
+        "id": "p3",
+        "text": {
+          "en": "Then we wait for another meeting. We think it is a normal day. Dan thinks it is very important.",
+          "es": "Luego esperamos otra reunión. Pensamos que es un día normal. Dan piensa que es muy importante."
+        }
+      }
+    ]
+  },
+  "vocabulary_story": {
+    "section_name": "Daily Actions",
+    "section_name_es": "Acciones Diarias",
+    "image": "/episodes/episode_6_vocab.jpg",
+    "title": "Learning Basic Words",
+    "title_es": "Aprendiendo Palabras Básicas",
+    "description": "A simple story to learn today's vocabulary",
+    "description_es": "Una historia simple para aprender el vocabulario de hoy",
+    "segments": [
+      {
+        "segment_id": "vocab_work_01",
+        "image_url": "/vocab/work.jpg",
+        "word_focus": "work",
+        "text": {
+          "en": "We WORK in the office.",
+          "es": "Nosotros TRABAJAMOS en la oficina."
+        },
+        "emphasis_style": "bold_uppercase"
+      },
+      {
+        "segment_id": "vocab_work_02",
+        "image_url": "/vocab/work.jpg",
+        "word_focus": "work",
+        "text": {
+          "en": "I WORK with my team.",
+          "es": "Yo TRABAJO con mi equipo."
+        }
+      },
+      {
+        "segment_id": "vocab_work_03",
+        "image_url": "/vocab/work.jpg",
+        "word_focus": "work",
+        "text": {
+          "en": "They WORK all day. All day.",
+          "es": "Ellos TRABAJAN todo el día. Todo el día."
+        }
+      },
+      {
+        "segment_id": "vocab_talk_01",
+        "image_url": "/vocab/talk.jpg",
+        "word_focus": "talk",
+        "text": {
+          "en": "We TALK in the office.",
+          "es": "Nosotros HABLAMOS en la oficina."
+        }
+      },
+      {
+        "segment_id": "vocab_talk_02",
+        "image_url": "/vocab/talk.jpg",
+        "word_focus": "talk",
+        "text": {
+          "en": "I TALK to my coworkers.",
+          "es": "Yo HABLO con mis compañeros."
+        }
+      },
+      {
+        "segment_id": "vocab_talk_03",
+        "image_url": "/vocab/talk.jpg",
+        "word_focus": "talk",
+        "text": {
+          "en": "They TALK a lot. A lot.",
+          "es": "Ellos HABLAN mucho. Mucho."
+        }
+      },
+      {
+        "segment_id": "vocab_help_01",
+        "image_url": "/vocab/help.jpg",
+        "word_focus": "help",
+        "text": {
+          "en": "We HELP each other.",
+          "es": "Nosotros AYUDAMOS a otros."
+        }
+      },
+      {
+        "segment_id": "vocab_help_02",
+        "image_url": "/vocab/help.jpg",
+        "word_focus": "help",
+        "text": {
+          "en": "I HELP my team.",
+          "es": "Yo AYUDO a mi equipo."
+        }
+      },
+      {
+        "segment_id": "vocab_help_03",
+        "image_url": "/vocab/help.jpg",
+        "word_focus": "help",
+        "text": {
+          "en": "They HELP at work.",
+          "es": "Ellos AYUDAN en el trabajo."
+        }
+      },
+      {
+        "segment_id": "vocab_sell_01",
+        "image_url": "/vocab/sell.jpg",
+        "word_focus": "sell",
+        "text": {
+          "en": "We SELL paper.",
+          "es": "Nosotros VENDEMOS papel."
+        }
+      },
+      {
+        "segment_id": "vocab_sell_02",
+        "image_url": "/vocab/sell.jpg",
+        "word_focus": "sell",
+        "text": {
+          "en": "I SELL products.",
+          "es": "Yo VENDO productos."
+        }
+      },
+      {
+        "segment_id": "vocab_sell_03",
+        "image_url": "/vocab/sell.jpg",
+        "word_focus": "sell",
+        "text": {
+          "en": "They SELL every day.",
+          "es": "Ellos VENDEN todos los días."
+        }
+      },
+      {
+        "segment_id": "vocab_eat_01",
+        "image_url": "/vocab/eat.jpg",
+        "word_focus": "eat",
+        "text": {
+          "en": "We EAT at lunch.",
+          "es": "Nosotros COMEMOS en el almuerzo."
+        }
+      },
+      {
+        "segment_id": "vocab_eat_02",
+        "image_url": "/vocab/eat.jpg",
+        "word_focus": "eat",
+        "text": {
+          "en": "I EAT at my desk.",
+          "es": "Yo COMO en mi escritorio."
+        }
+      },
+      {
+        "segment_id": "vocab_eat_03",
+        "image_url": "/vocab/eat.jpg",
+        "word_focus": "eat",
+        "text": {
+          "en": "They EAT during WORK.",
+          "es": "Ellos COMEN durante el TRABAJO."
+        }
+      },
+      {
+        "segment_id": "vocab_mix_01",
+        "image_url": "/vocab/work.jpg",
+        "word_focus": "work",
+        "text": {
+          "en": "We WORK and we TALK all day.",
+          "es": "Nosotros TRABAJAMOS y HABLAMOS todo el día."
+        }
+      },
+      {
+        "segment_id": "vocab_mix_02",
+        "image_url": "/vocab/help.jpg",
+        "word_focus": "help",
+        "text": {
+          "en": "I HELP and I SELL paper.",
+          "es": "Yo AYUDO y VENDO papel."
+        }
+      },
+      {
+        "segment_id": "vocab_summary",
+        "word_focus": null,
+        "text": {
+          "en": "Great! Now you know: WORK, TALK, HELP, SELL, EAT. We use these words every day at the office.",
+          "es": "¡Genial! Ahora conoces: TRABAJAR, HABLAR, AYUDAR, VENDER, COMER. Usamos estas palabras todos los días en la oficina."
+        }
+      }
+    ]
+  },
+  "listening_shadowing": {
+    "section_name": "Daily Actions",
+    "section_name_es": "Acciones Diarias",
+    "image": "/episodes/episode_6_scene.jpg",
+    "instructions": "Listen to the line. Then repeat it aloud before the timer ends.",
+    "instructions_es": "Escucha la línea. Luego repítela en voz alta antes de que termine el tiempo.",
+    "data": [
+      {
+        "item_id": "listen_001",
+        "character_id": "char_ben",
+        "character_display_name": "BEN",
+        "text": "We work at {company_name}, we check emails, we answer questions, we talk, and we wait.",
+        "text_es": "Nosotros trabajamos en {company_name}, revisamos correos, respondemos preguntas, hablamos y esperamos.",
+        "tts_text": "We work at {company_name}, we check emails, we answer questions, we talk, and we wait.",
+        "tts_voice_id": "en_us_male_1",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "WORK",
+          "CHECK",
+          "ANSWER",
+          "TALK",
+          "WAIT"
+        ]
+      },
+      {
+        "item_id": "listen_002",
+        "character_id": "char_dan",
+        "character_display_name": "DAN",
+        "text": "We work very seriously, we check details, we answer fast, we talk less, and we wait.",
+        "text_es": "Nosotros trabajamos muy seriamente, revisamos detalles, respondemos rápido, hablamos menos y esperamos.",
+        "tts_text": "We work very seriously, we check details, we answer fast, we talk less, and we wait.",
+        "tts_voice_id": "en_us_male_2",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 11,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "WORK",
+          "CHECK",
+          "ANSWER",
+          "TALK",
+          "WAIT"
+        ]
+      },
+      {
+        "item_id": "listen_003",
+        "character_id": "char_mia",
+        "character_display_name": "MIA",
+        "text": "At the office, we work together, check papers, answer calls, talk politely, and wait.",
+        "text_es": "En la oficina, trabajamos juntos, revisamos papeles, respondemos llamadas, hablamos con educación y esperamos.",
+        "tts_text": "At the office, we work together, check papers, answer calls, talk politely, and wait.",
+        "tts_voice_id": "en_us_female_1",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 11,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "WORK",
+          "CHECK",
+          "ANSWER",
+          "TALK",
+          "WAIT"
+        ]
+      },
+      {
+        "item_id": "listen_004",
+        "character_id": "char_ben",
+        "character_display_name": "BEN",
+        "text": "We work in the morning, check emails twice, answer questions, talk briefly, and wait.",
+        "text_es": "Trabajamos en la mañana, revisamos correos dos veces, respondemos preguntas, hablamos poco y esperamos.",
+        "tts_text": "We work in the morning, check emails twice, answer questions, talk briefly, and wait.",
+        "tts_voice_id": "en_us_male_1",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 11,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "WORK",
+          "CHECK",
+          "ANSWER",
+          "TALK",
+          "WAIT"
+        ]
+      },
+      {
+        "item_id": "listen_005",
+        "character_id": "char_dan",
+        "character_display_name": "DAN",
+        "text": "We work with rules, check lists, answer clearly, talk formally, and wait patiently.",
+        "text_es": "Trabajamos con reglas, revisamos listas, respondemos con claridad, hablamos formalmente y esperamos con paciencia.",
+        "tts_text": "We work with rules, check lists, answer clearly, talk formally, and wait patiently.",
+        "tts_voice_id": "en_us_male_2",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 11,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "WORK",
+          "CHECK",
+          "ANSWER",
+          "TALK",
+          "WAIT"
+        ]
+      },
+      {
+        "item_id": "listen_006",
+        "character_id": "char_mia",
+        "character_display_name": "MIA",
+        "text": "We work at our desks, check notes, answer phones, talk softly, and wait calmly.",
+        "text_es": "Trabajamos en nuestros escritorios, revisamos notas, respondemos teléfonos, hablamos suave y esperamos con calma.",
+        "tts_text": "We work at our desks, check notes, answer phones, talk softly, and wait calmly.",
+        "tts_voice_id": "en_us_female_1",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 11,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "WORK",
+          "CHECK",
+          "ANSWER",
+          "TALK",
+          "WAIT"
+        ]
+      },
+      {
+        "item_id": "listen_007",
+        "character_id": "char_ben",
+        "character_display_name": "BEN",
+        "text": "We work all day, check schedules, answer emails, talk about work, and wait.",
+        "text_es": "Trabajamos todo el día, revisamos horarios, respondemos correos, hablamos del trabajo y esperamos.",
+        "tts_text": "We work all day, check schedules, answer emails, talk about work, and wait.",
+        "tts_voice_id": "en_us_male_1",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "WORK",
+          "CHECK",
+          "ANSWER",
+          "TALK",
+          "WAIT"
+        ]
+      },
+      {
+        "item_id": "listen_008",
+        "character_id": "char_dan",
+        "character_display_name": "DAN",
+        "text": "We work with focus, check everything, answer carefully, talk little, and wait.",
+        "text_es": "Trabajamos con enfoque, revisamos todo, respondemos con cuidado, hablamos poco y esperamos.",
+        "tts_text": "We work with focus, check everything, answer carefully, talk little, and wait.",
+        "tts_voice_id": "en_us_male_2",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "WORK",
+          "CHECK",
+          "ANSWER",
+          "TALK",
+          "WAIT"
+        ]
+      },
+      {
+        "item_id": "listen_009",
+        "character_id": "char_mia",
+        "character_display_name": "MIA",
+        "text": "We work together, check messages, answer kindly, talk politely, and wait here.",
+        "text_es": "Trabajamos juntos, revisamos mensajes, respondemos con amabilidad, hablamos con educación y esperamos aquí.",
+        "tts_text": "We work together, check messages, answer kindly, talk politely, and wait here.",
+        "tts_voice_id": "en_us_female_1",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "WORK",
+          "CHECK",
+          "ANSWER",
+          "TALK",
+          "WAIT"
+        ]
+      },
+      {
+        "item_id": "listen_010",
+        "character_id": "char_ben",
+        "character_display_name": "BEN",
+        "text": "At {company_name}, we work, check tasks, answer questions, talk briefly, and wait.",
+        "text_es": "En {company_name}, trabajamos, revisamos tareas, respondemos preguntas, hablamos poco y esperamos.",
+        "tts_text": "At {company_name}, we work, check tasks, answer questions, talk briefly, and wait.",
+        "tts_voice_id": "en_us_male_1",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 11,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "WORK",
+          "CHECK",
+          "ANSWER",
+          "TALK",
+          "WAIT"
+        ]
+      }
+    ]
+  },
+  "scenes": {
+    "section_name": "Daily Work",
+    "section_name_es": "Trabajo diario",
+    "image": "/episodes/episode_6_scene.jpg",
+    "data": [
+      {
+        "scene_id": "scene_006_001",
+        "scene_number": 1,
+        "location": "Office floor",
+        "location_es": "Área de oficina",
+        "scene_name": "What We Do",
+        "scene_name_es": "Lo que hacemos",
+        "time": "Morning",
+        "time_es": "Mañana",
+        "description": "Ben explains daily work while Leo makes it about himself.",
+        "description_es": "Ben explica el trabajo diario mientras Leo lo hace sobre sí mismo.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_jim",
+            "character_display_name": "BEN",
+            "text": "We WORK here every day. Very serious work.",
+            "translation_es": "Trabajamos aquí todos los días. Trabajo muy serio.",
+            "emotion": "sarcastic",
+            "notes": "Ben sounds serious but is joking.",
+            "notes_es": "Ben suena serio pero está bromeando.",
+            "highlighted_vocab": [
+              "work"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_boss",
+            "character_display_name": "LEO",
+            "text": "Yes. We WORK because I am the best boss. In this office. In history.",
+            "translation_es": "Sí. Trabajamos porque yo soy el mejor jefe. En esta oficina. En la historia.",
+            "emotion": "proud_but_lying",
+            "notes": "Leo takes credit for everything.",
+            "notes_es": "Leo se atribuye todo.",
+            "highlighted_vocab": [
+              "work"
+            ],
+            "template_vars": [
+              "boss_name"
+            ]
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_jim",
+            "character_display_name": "BEN",
+            "text": "We also TALK to clients. A lot.",
+            "translation_es": "También hablamos con los clientes. Mucho.",
+            "emotion": "neutral",
+            "notes": "Normal statement with dry tone.",
+            "notes_es": "Declaración normal con tono seco.",
+            "highlighted_vocab": [
+              "talk"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 4,
+            "character_id": "char_boss",
+            "character_display_name": "LEO",
+            "text": "I TALK very well. People love my voice.",
+            "translation_es": "Yo hablo muy bien. A la gente le encanta mi voz.",
+            "emotion": "excited",
+            "notes": "Leo compliments himself.",
+            "notes_es": "Leo se halaga a sí mismo.",
+            "highlighted_vocab": [
+              "talk"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 5,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "Which sentence sounds correct?",
+            "prompt_es": "¿Qué frase suena correcta?",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "We WORKING every day.",
+                "translation_es": "Nosotros trabajando todos los días.",
+                "points": 0,
+                "personality_impact": "friendly",
+                "vocab_used": [
+                  "work"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "We WORK every day.",
+                "translation_es": "Nosotros trabajamos todos los días.",
+                "points": 10,
+                "personality_impact": "neutral"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "scene_id": "scene_006_002",
+        "scene_number": 2,
+        "location": "Reception desk",
+        "location_es": "Recepción",
+        "scene_name": "Office Talk",
+        "scene_name_es": "Charlas de oficina",
+        "time": "Late morning",
+        "time_es": "Media mañana",
+        "description": "Mia explains how people talk and help in the office.",
+        "description_es": "Mia explica cómo las personas hablan y ayudan en la oficina.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_pam",
+            "character_display_name": "MIA",
+            "text": "We TALK here a lot. Sometimes about work. Sometimes not.",
+            "translation_es": "Hablamos mucho aquí. A veces sobre trabajo. A veces no.",
+            "emotion": "calm",
+            "notes": "Mia gently jokes about office gossip.",
+            "notes_es": "Mia bromea suavemente sobre el chisme de oficina.",
+            "highlighted_vocab": [
+              "talk"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_pam",
+            "character_display_name": "MIA",
+            "text": "We also HELP each other. Most days.",
+            "translation_es": "También nos ayudamos. La mayoría de los días.",
+            "emotion": "kind",
+            "notes": "Kind but realistic tone.",
+            "notes_es": "Tono amable pero realista.",
+            "highlighted_vocab": [
+              "help"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_jim",
+            "character_display_name": "BEN",
+            "text": "Yes. We HELP when the boss does not create chaos.",
+            "translation_es": "Sí. Ayudamos cuando el jefe no crea caos.",
+            "emotion": "sarcastic",
+            "notes": "Ben jokes about Leo.",
+            "notes_es": "Ben bromea sobre Leo.",
+            "highlighted_vocab": [
+              "help"
+            ],
+            "template_vars": [
+              "boss_name"
+            ]
+          },
+          {
+            "line_id": 4,
+            "character_id": "char_pam",
+            "character_display_name": "MIA",
+            "text": "This is normal. Very normal.",
+            "translation_es": "Esto es normal. Muy normal.",
+            "emotion": "sarcastic",
+            "notes": "Running gag that everything is normal.",
+            "notes_es": "Broma recurrente de que todo es normal.",
+            "highlighted_vocab": [],
+            "template_vars": []
+          },
+          {
+            "line_id": 5,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "Which sentence is correct?",
+            "prompt_es": "¿Qué frase es correcta?",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "We HELPING people.",
+                "translation_es": "Nosotros ayudando personas.",
+                "points": 0,
+                "personality_impact": "friendly",
+                "vocab_used": [
+                  "help"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "We HELP people.",
+                "translation_es": "Nosotros ayudamos a las personas.",
+                "points": 10,
+                "personality_impact": "neutral"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "scene_id": "scene_006_003",
+        "scene_number": 3,
+        "location": "Sales area",
+        "location_es": "Área de ventas",
+        "scene_name": "Serious Sales",
+        "scene_name_es": "Ventas serias",
+        "time": "Afternoon",
+        "time_es": "Tarde",
+        "description": "Dan explains selling with extreme seriousness.",
+        "description_es": "Dan explica vender con seriedad extrema.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_dwight",
+            "character_display_name": "DAN",
+            "text": "We SELL paper. This is our mission.",
+            "translation_es": "Vendemos papel. Esta es nuestra misión.",
+            "emotion": "intense",
+            "notes": "Dan treats sales like a mission.",
+            "notes_es": "Dan trata las ventas como una misión.",
+            "highlighted_vocab": [
+              "sell"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_dwight",
+            "character_display_name": "DAN",
+            "text": "We SELL every day. I track everything.",
+            "translation_es": "Vendemos todos los días. Yo registro todo.",
+            "emotion": "serious",
+            "notes": "Overly serious explanation.",
+            "notes_es": "Explicación demasiado seria.",
+            "highlighted_vocab": [
+              "sell"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_jim",
+            "character_display_name": "BEN",
+            "text": "Yes. Very exciting. Very heroic.",
+            "translation_es": "Sí. Muy emocionante. Muy heroico.",
+            "emotion": "sarcastic",
+            "notes": "Ben pretends to agree.",
+            "notes_es": "Ben finge estar de acuerdo.",
+            "highlighted_vocab": [],
+            "template_vars": []
+          },
+          {
+            "line_id": 4,
+            "character_id": "char_dwight",
+            "character_display_name": "DAN",
+            "text": "I also EAT at my desk. For efficiency.",
+            "translation_es": "También como en mi escritorio. Por eficiencia.",
+            "emotion": "proud",
+            "notes": "Dan thinks eating at desk is a skill.",
+            "notes_es": "Dan cree que comer en el escritorio es una habilidad.",
+            "highlighted_vocab": [
+              "eat"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 5,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "Choose the correct sentence.",
+            "prompt_es": "Elige la frase correcta.",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "We SELLING paper.",
+                "translation_es": "Nosotros vendiendo papel.",
+                "points": 0,
+                "personality_impact": "friendly",
+                "vocab_used": [
+                  "sell"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "We SELL paper.",
+                "translation_es": "Nosotros vendemos papel.",
+                "points": 10,
+                "personality_impact": "neutral"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "scene_id": "scene_006_004",
+        "scene_number": 4,
+        "location": "Break room",
+        "location_es": "Sala de descanso",
+        "scene_name": "Lunch Talk",
+        "scene_name_es": "Charla de almuerzo",
+        "time": "Late afternoon",
+        "time_es": "Tarde",
+        "description": "The team talks about eating and working at the same time.",
+        "description_es": "El equipo habla sobre comer y trabajar al mismo tiempo.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_boss",
+            "character_display_name": "LEO",
+            "text": "We EAT together because I am a friendly boss.",
+            "translation_es": "Comemos juntos porque yo soy un jefe amigable.",
+            "emotion": "excited",
+            "notes": "Leo wants credit for lunch.",
+            "notes_es": "Leo quiere crédito por el almuerzo.",
+            "highlighted_vocab": [
+              "eat"
+            ],
+            "template_vars": [
+              "boss_name"
+            ]
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_jim",
+            "character_display_name": "BEN",
+            "text": "We EAT and we WORK. Multitasking.",
+            "translation_es": "Comemos y trabajamos. Multitarea.",
+            "emotion": "dry",
+            "notes": "Ben makes fun of office culture.",
+            "notes_es": "Ben se burla de la cultura de oficina.",
+            "highlighted_vocab": [
+              "eat",
+              "work"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_pam",
+            "character_display_name": "MIA",
+            "text": "This is healthy. Probably.",
+            "translation_es": "Esto es saludable. Probablemente.",
+            "emotion": "uncertain",
+            "notes": "Mia gently questions it.",
+            "notes_es": "Mia lo cuestiona suavemente.",
+            "highlighted_vocab": [],
+            "template_vars": []
+          },
+          {
+            "line_id": 4,
+            "character_id": "char_boss",
+            "character_display_name": "LEO",
+            "text": "I invented eating and working together.",
+            "translation_es": "Yo inventé comer y trabajar juntos.",
+            "emotion": "proud_but_lying",
+            "notes": "Classic Leo exaggeration.",
+            "notes_es": "Exageración clásica de Leo.",
+            "highlighted_vocab": [],
+            "template_vars": []
+          },
+          {
+            "line_id": 5,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "Which option is correct?",
+            "prompt_es": "¿Qué opción es correcta?",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "We EATING lunch.",
+                "translation_es": "Nosotros comiendo almuerzo.",
+                "points": 0,
+                "personality_impact": "friendly",
+                "vocab_used": [
+                  "eat"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "We EAT lunch.",
+                "translation_es": "Nosotros comemos almuerzo.",
+                "points": 10,
+                "personality_impact": "neutral"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "games": {
+    "section_name": "Daily Actions",
+    "section_name_es": "Acciones Diarias",
+    "image": "/episodes/episode_6_scene.jpg",
+    "data": [
+      {
+        "game_id": "ep6_game_01",
+        "game_type": "matching",
+        "title": "Match the Words!",
+        "title_es": "¡Empareja las Palabras!",
+        "instructions": "Match each English word with its Spanish meaning",
+        "instructions_es": "Empareja cada palabra en inglés con su significado en español",
+        "optional": true,
+        "unlocked_after_episode": true,
+        "time_limit_seconds": 90,
+        "xp_reward": 25,
+        "content": {
+          "items": [
+            {
+              "id": 1,
+              "left": "work",
+              "right": "trabajar",
+              "image_url": "/vocab/work.jpg"
+            },
+            {
+              "id": 2,
+              "left": "check",
+              "right": "revisar",
+              "image_url": "/vocab/check.jpg"
+            },
+            {
+              "id": 3,
+              "left": "answer",
+              "right": "responder",
+              "image_url": "/vocab/answer.jpg"
+            },
+            {
+              "id": 4,
+              "left": "talk",
+              "right": "hablar",
+              "image_url": "/vocab/talk.jpg"
+            },
+            {
+              "id": 5,
+              "left": "wait",
+              "right": "esperar",
+              "image_url": "/vocab/wait.jpg"
+            },
+            {
+              "id": 6,
+              "left": "question",
+              "right": "pregunta",
+              "image_url": "/vocab/question.jpg"
+            },
+            {
+              "id": 7,
+              "left": "meeting",
+              "right": "reunión",
+              "image_url": "/vocab/meeting.jpg"
+            },
+            {
+              "id": 8,
+              "left": "boss",
+              "right": "jefe",
+              "image_url": "/vocab/boss.jpg"
+            }
+          ]
+        },
+        "settings": {
+          "shuffle": true,
+          "show_images": true
+        }
+      },
+      {
+        "game_id": "ep6_game_02",
+        "game_type": "fill_blank",
+        "title": "Complete the Sentences",
+        "title_es": "Completa las Oraciones",
+        "instructions": "Fill in the missing words from the episode",
+        "instructions_es": "Completa las palabras que faltan del episodio",
+        "optional": true,
+        "unlocked_after_episode": true,
+        "time_limit_seconds": 150,
+        "xp_reward": 35,
+        "content": {
+          "items": [
+            {
+              "id": 1,
+              "sentence": "We _____ at {company_name} every day.",
+              "sentence_es": "Nosotros _____ en {company_name} todos los días.",
+              "answer": "work",
+              "options": [
+                "work",
+                "wait",
+                "talk"
+              ],
+              "hint": "This verb describes your job.",
+              "hint_es": "Este verbo describe tu trabajo.",
+              "character": "{jim_name}"
+            },
+            {
+              "id": 2,
+              "sentence": "We _____ emails in the morning.",
+              "sentence_es": "Nosotros _____ correos en la mañana.",
+              "answer": "check",
+              "options": [
+                "check",
+                "answer",
+                "wait"
+              ],
+              "hint": "You do this before you reply.",
+              "hint_es": "Haces esto antes de responder.",
+              "character": "{pam_name}"
+            },
+            {
+              "id": 3,
+              "sentence": "We _____ questions in the meeting.",
+              "sentence_es": "Nosotros _____ preguntas en la reunión.",
+              "answer": "answer",
+              "options": [
+                "answer",
+                "talk",
+                "work"
+              ],
+              "hint": "You do this after a question.",
+              "hint_es": "Haces esto después de una pregunta.",
+              "character": "{boss_name}"
+            },
+            {
+              "id": 4,
+              "sentence": "We _____ about work all day.",
+              "sentence_es": "Nosotros _____ sobre el trabajo todo el día.",
+              "answer": "talk",
+              "options": [
+                "talk",
+                "wait",
+                "check"
+              ],
+              "hint": "This verb uses your voice.",
+              "hint_es": "Este verbo usa tu voz.",
+              "character": "{jim_name}"
+            },
+            {
+              "id": 5,
+              "sentence": "We _____ for the meeting.",
+              "sentence_es": "Nosotros _____ la reunión.",
+              "answer": "wait",
+              "options": [
+                "wait",
+                "work",
+                "answer"
+              ],
+              "hint": "Nothing happens yet.",
+              "hint_es": "Nada pasa todavía.",
+              "character": "{pam_name}"
+            },
+            {
+              "id": 6,
+              "sentence": "We _____ papers at our desks.",
+              "sentence_es": "Nosotros _____ papeles en nuestros escritorios.",
+              "answer": "check",
+              "options": [
+                "check",
+                "talk",
+                "wait"
+              ],
+              "hint": "You look at details.",
+              "hint_es": "Miras los detalles.",
+              "character": "{boss_name}"
+            },
+            {
+              "id": 7,
+              "sentence": "We _____ together at the office.",
+              "sentence_es": "Nosotros _____ juntos en la oficina.",
+              "answer": "work",
+              "options": [
+                "work",
+                "answer",
+                "wait"
+              ],
+              "hint": "This is teamwork.",
+              "hint_es": "Esto es trabajo en equipo.",
+              "character": "{jim_name}"
+            }
+          ]
+        }
+      },
+      {
+        "game_id": "ep6_game_03",
+        "game_type": "multiple_choice",
+        "title": "Episode Quiz",
+        "title_es": "Quiz del Episodio",
+        "instructions": "Answer questions about the episode",
+        "instructions_es": "Responde preguntas sobre el episodio",
+        "optional": true,
+        "unlocked_after_episode": true,
+        "time_limit_seconds": 180,
+        "xp_reward": 45,
+        "content": {
+          "items": [
+            {
+              "id": 1,
+              "question": "What does Ben explain about work at {company_name}?",
+              "question_es": "¿Qué explica Ben sobre el trabajo en {company_name}?",
+              "options": [
+                "Daily actions",
+                "A party plan",
+                "A vacation",
+                "A problem"
+              ],
+              "options_es": [
+                "Acciones diarias",
+                "Un plan de fiesta",
+                "Vacaciones",
+                "Un problema"
+              ],
+              "correct_answer": 0,
+              "explanation": "Ben explains what people do every day.",
+              "explanation_es": "Ben explica lo que las personas hacen todos los días."
+            },
+            {
+              "id": 2,
+              "question": "Who takes daily actions very seriously?",
+              "question_es": "¿Quién toma las acciones diarias muy en serio?",
+              "options": [
+                "Dan",
+                "Mia",
+                "Sam",
+                "Max"
+              ],
+              "options_es": [
+                "Dan",
+                "Mia",
+                "Sam",
+                "Max"
+              ],
+              "correct_answer": 0,
+              "explanation": "Dan listens carefully and treats everything as important.",
+              "explanation_es": "Dan escucha con cuidado y trata todo como importante."
+            },
+            {
+              "id": 3,
+              "question": "What do people do before they answer questions?",
+              "question_es": "¿Qué hacen las personas antes de responder preguntas?",
+              "options": [
+                "They check emails",
+                "They sleep",
+                "They leave",
+                "They shout"
+              ],
+              "options_es": [
+                "Revisan correos",
+                "Duermen",
+                "Se van",
+                "Gritan"
+              ],
+              "correct_answer": 0,
+              "explanation": "They check information before they answer.",
+              "explanation_es": "Revisan información antes de responder."
+            },
+            {
+              "id": 4,
+              "question": "What office event happens again?",
+              "question_es": "¿Qué evento de oficina pasa otra vez?",
+              "options": [
+                "A meeting",
+                "A game",
+                "A trip",
+                "A show"
+              ],
+              "options_es": [
+                "Una reunión",
+                "Un juego",
+                "Un viaje",
+                "Un espectáculo"
+              ],
+              "correct_answer": 0,
+              "explanation": "The team waits for another meeting.",
+              "explanation_es": "El equipo espera otra reunión."
+            },
+            {
+              "id": 5,
+              "question": "How do people feel about the day?",
+              "question_es": "¿Cómo se sienten las personas sobre el día?",
+              "options": [
+                "It is normal",
+                "It is scary",
+                "It is strange",
+                "It is loud"
+              ],
+              "options_es": [
+                "Es normal",
+                "Es aterrador",
+                "Es extraño",
+                "Es ruidoso"
+              ],
+              "correct_answer": 0,
+              "explanation": "Most people think it is a normal day.",
+              "explanation_es": "La mayoría piensa que es un día normal."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "content_wrappers": {
+    "section_name": "Daily Work",
+    "section_name_es": "Trabajo diario",
+    "image": "/episodes/episode_6_scene.jpg",
+    "intro_text": {
+      "en": "Welcome to the office. This is a place where people WORK, TALK, HELP, SELL, and EAT. Sometimes at the same time. This is normal. Very normal.",
+      "es": "Bienvenido a la oficina. Este es un lugar donde las personas trabajan, hablan, ayudan, venden y comen. A veces al mismo tiempo. Esto es normal. Muy normal."
+    },
+    "transition": {
+      "en": "Great. Now you know the words. Now you use them at work. At the office. With people who say everything is normal.",
+      "es": "Genial. Ahora conoces las palabras. Ahora las usas en el trabajo. En la oficina. Con personas que dicen que todo es normal."
+    },
+    "conclusion": {
+      "en": "Good job. You learned how we WORK, TALK, HELP, SELL, and EAT at the office. You survived the day. The boss is proud. Probably.",
+      "es": "Buen trabajo. Aprendiste cómo trabajamos, hablamos, ayudamos, vendemos y comemos en la oficina. Sobreviviste al día. El jefe está orgulloso. Probablemente."
+    },
+    "reflection_prompt": {
+      "question_en": "Write one sentence using the word 'work' or 'help'.",
+      "question_es": "Escribe una oración usando la palabra 'trabajar' o 'ayudar'.",
+      "type": "free_text",
+      "optional": true,
+      "max_length": 100,
+      "vocab_practice": [
+        "work",
+        "help"
+      ]
+    }
+  },
+  "next_episode_preview": {
+    "section_name": "Office Questions",
+    "section_name_es": "Preguntas oficina",
+    "image": "/episodes/episode_7_scene.jpg",
+    "preview_text_en": "Next time, Leo asks many questions about the office, Ben smiles, and Dan explains what he does all day. Very slowly.",
+    "preview_text_es": "La próxima vez, Leo hace muchas preguntas sobre la oficina, Ben sonríe y Dan explica lo que él hace todo el día. Muy lentamente.",
+    "teaser_image": "/previews/ep_7.jpg"
+  },
+  "progression": {
+    "section_name": "Daily Progress",
+    "section_name_es": "Progreso diario",
+    "image": "/episodes/episode_6_scene.jpg",
+    "xp_earned_base": 50,
+    "xp_bonus_conditions": [
+      {
+        "condition": "complete_all_games",
+        "bonus_xp": 25
+      },
+      {
+        "condition": "perfect_choices",
+        "bonus_xp": 15
+      },
+      {
+        "condition": "write_reflection",
+        "bonus_xp": 10
+      }
+    ],
+    "unlocks": [
+      {
+        "type": "character",
+        "character_ids": [
+          "char_boss",
+          "char_jim",
+          "char_pam",
+          "char_dwight"
+        ]
+      },
+      {
+        "type": "location",
+        "location_ids": [
+          "office_floor",
+          "reception_desk",
+          "sales_area",
+          "break_room"
+        ]
+      }
+    ],
+    "achievements": [
+      {
+        "achievement_id": "daily_actions_pro",
+        "name": "Daily Actions Pro",
+        "name_es": "Experto en acciones diarias",
+        "description": "You use simple present statements to talk about what people do at work.",
+        "description_es": "Usas oraciones en presente simple para hablar de lo que las personas hacen en el trabajo.",
+        "icon": "/achievements/daily_actions_pro.png",
+        "image": "/achievements/daily_actions_pro_banner.jpg"
+      }
+    ]
+  },
+  "metadata": {
+    "section_name": "Daily Actions",
+    "section_name_es": "Acciones Diarias",
+    "image": "/episodes/episode_6_scene.jpg",
+    "created_date": "2026-01-30",
+    "version": "1.0",
+    "author": "Course Team",
+    "content_level": "beginner",
+    "estimated_words": 320,
+    "estimated_unique_vocabulary": 55,
+    "structure_type": "vocab_story_then_main_story"
+  }
+}
