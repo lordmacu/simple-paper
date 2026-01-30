@@ -1,0 +1,325 @@
+{
+  "character_interview": {
+    "character_name": "ANA",
+    "character_gender": "female",
+    "episode_number": 7,
+    "introduction": {
+      "text_en": "Hello. I am Ana. I like order and numbers.",
+      "text_es": "Hola. Soy Ana. Me gustan el orden y los números."
+    },
+    "questions": [
+      {
+        "question_id": 1,
+        "question": {
+          "text_en": "How many?",
+          "text_es": "¿Cuántos?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "five",
+            "text_es": "cinco",
+            "is_correct": true,
+            "feedback_en": "Excellent! You answered with a correct number.",
+            "feedback_es": "¡Excelente! Respondiste con un número correcto.",
+            "grammar_explanation": "A number answers a 'How many?' question.",
+            "cultural_note": "Short answers are normal in simple questions."
+          },
+          {
+            "option_id": "B",
+            "text_en": "five takes",
+            "text_es": "cinco toma",
+            "is_correct": false,
+            "feedback_en": "Not quite. You added an extra verb. Use only the number.",
+            "feedback_es": "No del todo. Agregaste un verbo extra. Usa solo el número.",
+            "grammar_explanation": "Do not add verbs when answering with a number.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "time",
+            "text_es": "tiempo",
+            "is_correct": false,
+            "feedback_en": "Not quite. 'Time' is not a number.",
+            "feedback_es": "No del todo. 'Tiempo' no es un número.",
+            "grammar_explanation": "You must answer with a number.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "no",
+            "text_es": "no",
+            "is_correct": false,
+            "feedback_en": "This does not answer the question.",
+            "feedback_es": "Esto no responde a la pregunta.",
+            "grammar_explanation": "The response does not match the question.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      },
+      {
+        "question_id": 2,
+        "question": {
+          "text_en": "How many?",
+          "text_es": "¿Cuántos?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "ten",
+            "text_es": "diez",
+            "is_correct": true,
+            "feedback_en": "Good job! This is a correct number.",
+            "feedback_es": "¡Bien hecho! Este es un número correcto.",
+            "grammar_explanation": "Numbers answer quantity questions.",
+            "cultural_note": "Simple numeric answers are clear."
+          },
+          {
+            "option_id": "B",
+            "text_en": "ten takes",
+            "text_es": "diez toma",
+            "is_correct": false,
+            "feedback_en": "Not quite. Do not add extra words.",
+            "feedback_es": "No del todo. No agregues palabras extra.",
+            "grammar_explanation": "Only the number is needed.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "many",
+            "text_es": "muchos",
+            "is_correct": false,
+            "feedback_en": "Not quite. You need a number, not 'many'.",
+            "feedback_es": "No del todo. Necesitas un número, no 'muchos'.",
+            "grammar_explanation": "'Many' is part of the question, not the answer.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "hello",
+            "text_es": "hola",
+            "is_correct": false,
+            "feedback_en": "This does not fit the question.",
+            "feedback_es": "Esto no encaja con la pregunta.",
+            "grammar_explanation": "Greetings do not answer quantity questions.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      },
+      {
+        "question_id": 3,
+        "question": {
+          "text_en": "It takes?",
+          "text_es": "¿Toma?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "It takes five.",
+            "text_es": "Toma cinco.",
+            "is_correct": true,
+            "feedback_en": "Excellent! You used 'It takes + number' correctly.",
+            "feedback_es": "¡Excelente! Usaste 'It takes + número' correctamente.",
+            "grammar_explanation": "Use 'It takes' with a number to talk about time.",
+            "cultural_note": "This is a common way to talk about duration."
+          },
+          {
+            "option_id": "B",
+            "text_en": "It take five.",
+            "text_es": "Toma cinco.",
+            "is_correct": false,
+            "feedback_en": "Not quite. You missed the 's' in 'takes'.",
+            "feedback_es": "No del todo. Falta la 's' en 'takes'.",
+            "grammar_explanation": "With 'it', the verb needs 's'.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "It takes many.",
+            "text_es": "Toma muchos.",
+            "is_correct": false,
+            "feedback_en": "Not quite. You need a number, not 'many'.",
+            "feedback_es": "No del todo. Necesitas un número, no 'muchos'.",
+            "grammar_explanation": "'It takes' needs a specific number.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "five",
+            "text_es": "cinco",
+            "is_correct": false,
+            "feedback_en": "This is incomplete for this question.",
+            "feedback_es": "Esto está incompleto para esta pregunta.",
+            "grammar_explanation": "The question asks for a full structure.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      },
+      {
+        "question_id": 4,
+        "question": {
+          "text_en": "It takes?",
+          "text_es": "¿Toma?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "It takes ten.",
+            "text_es": "Toma diez.",
+            "is_correct": true,
+            "feedback_en": "Good! Correct use of 'It takes'.",
+            "feedback_es": "¡Bien! Uso correcto de 'It takes'.",
+            "grammar_explanation": "Correct structure with number.",
+            "cultural_note": "Clear and neutral answer."
+          },
+          {
+            "option_id": "B",
+            "text_en": "It take ten.",
+            "text_es": "Toma diez.",
+            "is_correct": false,
+            "feedback_en": "Not quite. Remember 'takes' with 'it'.",
+            "feedback_es": "No del todo. Recuerda 'takes' con 'it'.",
+            "grammar_explanation": "Third person singular needs 's'.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "It takes time.",
+            "text_es": "Toma tiempo.",
+            "is_correct": false,
+            "feedback_en": "Not quite. You need a number here.",
+            "feedback_es": "No del todo. Necesitas un número aquí.",
+            "grammar_explanation": "This lesson practices numbers.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "no",
+            "text_es": "no",
+            "is_correct": false,
+            "feedback_en": "This does not answer the question.",
+            "feedback_es": "Esto no responde la pregunta.",
+            "grammar_explanation": "The response is unrelated.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      },
+      {
+        "question_id": 5,
+        "question": {
+          "text_en": "How many?",
+          "text_es": "¿Cuántos?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "fifteen",
+            "text_es": "quince",
+            "is_correct": true,
+            "feedback_en": "Excellent! Correct number choice.",
+            "feedback_es": "¡Excelente! Número correcto.",
+            "grammar_explanation": "Numbers answer quantity questions.",
+            "cultural_note": "Very clear response."
+          },
+          {
+            "option_id": "B",
+            "text_en": "fifteen takes",
+            "text_es": "quince toma",
+            "is_correct": false,
+            "feedback_en": "Not quite. Extra words are not needed.",
+            "feedback_es": "No del todo. No necesitas palabras extra.",
+            "grammar_explanation": "Keep answers short.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "twenty five",
+            "text_es": "veinticinco",
+            "is_correct": false,
+            "feedback_en": "Not quite. This number is not in this lesson.",
+            "feedback_es": "No del todo. Este número no está en la lección.",
+            "grammar_explanation": "Only certain numbers are practiced.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "It takes",
+            "text_es": "toma",
+            "is_correct": false,
+            "feedback_en": "This does not answer 'How many?'.",
+            "feedback_es": "Esto no responde '¿Cuántos?'.",
+            "grammar_explanation": "The structure does not match the question.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      },
+      {
+        "question_id": 6,
+        "question": {
+          "text_en": "It takes?",
+          "text_es": "¿Toma?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "It takes twenty.",
+            "text_es": "Toma veinte.",
+            "is_correct": true,
+            "feedback_en": "Great! Perfect use of the structure.",
+            "feedback_es": "¡Genial! Uso perfecto de la estructura.",
+            "grammar_explanation": "Correct form with 'It takes + number'.",
+            "cultural_note": "Sounds natural and clear."
+          },
+          {
+            "option_id": "B",
+            "text_en": "It take twenty.",
+            "text_es": "Toma veinte.",
+            "is_correct": false,
+            "feedback_en": "Not quite. Add 's' to 'take'.",
+            "feedback_es": "No del todo. Agrega 's' a 'take'.",
+            "grammar_explanation": "'It' needs 'takes'.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "It takes many.",
+            "text_es": "Toma muchos.",
+            "is_correct": false,
+            "feedback_en": "Not quite. Use a number, not 'many'.",
+            "feedback_es": "No del todo. Usa un número, no 'muchos'.",
+            "grammar_explanation": "The lesson focuses on numbers.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "twenty",
+            "text_es": "veinte",
+            "is_correct": false,
+            "feedback_en": "This answer is incomplete here.",
+            "feedback_es": "Esta respuesta está incompleta aquí.",
+            "grammar_explanation": "The full structure is required.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      }
+    ],
+    "pedagogical_focus": {
+      "grammar_points": [
+        "Numbers 1-20",
+        "How many...?",
+        "It takes + time"
+      ],
+      "vocabulary_used": [
+        "one",
+        "two",
+        "three",
+        "four",
+        "five",
+        "ten",
+        "fifteen",
+        "twenty"
+      ],
+      "difficulty_level": "A1.1"
+    }
+  }
+}

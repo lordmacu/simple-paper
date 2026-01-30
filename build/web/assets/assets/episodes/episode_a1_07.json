@@ -1,0 +1,1390 @@
+{
+  "city_settings": {
+    "default_city": "Scranton",
+    "user_selected_city": null,
+    "localizable": true,
+    "city_specific_content": {
+      "office_name": "{company_name} {city}",
+      "default_company_name": "Dunder Mifflin",
+      "office_type": "Paper Company",
+      "office_type_es": "Compañía de Papel"
+    }
+  },
+  "episode_metadata": {
+    "section_name": "Daily Jobs",
+    "section_name_es": "Trabajos Diarios",
+    "image": "/episodes/episode_7_scene.jpg",
+    "episode_number": 7,
+    "episode_id": "ep_007",
+    "title": "What Dan Does All Day",
+    "title_es": "Lo Que Dan Hace Todo El Día",
+    "description": "Leo asks many questions. Ben smiles and says very little. Dan explains his job using simple sentences about what he does every day. It feels important. It is not.",
+    "description_es": "Leo hace muchas preguntas. Ben sonríe y dice muy poco. Dan explica su trabajo usando oraciones simples sobre lo que él hace todos los días. Parece importante. No lo es.",
+    "internal_level": "A1",
+    "estimated_time_minutes": 12,
+    "unlock_requirements": null,
+    "tags": [
+      "office_life",
+      "daily_work",
+      "questions",
+      "simple_present"
+    ],
+    "previous_episode": "ep_006",
+    "next_episode": "ep_008"
+  },
+  "characters": {
+    "section_name": "Office People",
+    "section_name_es": "Gente Oficina",
+    "image": "/episodes/episode_7_scene.jpg",
+    "appearing_in_episode": [
+      {
+        "character_id": "char_boss",
+        "default_name": "LEO",
+        "role": "boss",
+        "role_es": "jefe",
+        "personality": "Enthusiastic boss who wants attention and love. He asks many questions and believes every moment is important.",
+        "personality_es": "Jefe entusiasta que quiere atención y cariño. Hace muchas preguntas y cree que cada momento es importante.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/leo.png",
+        "intro_text": "Hello. I am Leo. I am the boss. The best boss. I ask questions because great bosses ask many questions.",
+        "intro_text_es": "Hola. Yo soy Leo. Yo soy el jefe. El mejor jefe. Yo hago preguntas porque los grandes jefes hacen muchas preguntas."
+      },
+      {
+        "character_id": "char_jim",
+        "default_name": "BEN",
+        "role": "salesman",
+        "role_es": "vendedor",
+        "personality": "Calm and sarcastic salesman who observes everything and smiles at strange moments.",
+        "personality_es": "Vendedor tranquilo y sarcástico que observa todo y sonríe en momentos extraños.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/ben.png",
+        "intro_text": "Hi. I am Ben. I sell paper. I listen. I smile. This is a normal day. Very normal.",
+        "intro_text_es": "Hola. Yo soy Ben. Yo vendo papel. Yo escucho. Yo sonrío. Este es un día normal. Muy normal."
+      },
+      {
+        "character_id": "char_dwight",
+        "default_name": "DAN",
+        "role": "salesman",
+        "role_es": "vendedor",
+        "personality": "Serious and intense salesman who explains his job with confidence and too many details.",
+        "personality_es": "Vendedor serio e intenso que explica su trabajo con confianza y demasiados detalles.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/dan.png",
+        "intro_text": "I am Dan. I work here. I follow rules. I do many things every day. Important things.",
+        "intro_text_es": "Yo soy Dan. Yo trabajo aquí. Yo sigo reglas. Yo hago muchas cosas todos los días. Cosas importantes."
+      },
+      {
+        "character_id": "char_pam",
+        "default_name": "MIA",
+        "role": "receptionist",
+        "role_es": "recepcionista",
+        "personality": "Kind receptionist who helps everyone and comments on the office situation.",
+        "personality_es": "Recepcionista amable que ayuda a todos y comenta sobre la situación de la oficina.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/mia.png",
+        "intro_text": "Welcome. I am Mia. I answer phones and help people. Yes, this is how the office is.",
+        "intro_text_es": "Bienvenido. Yo soy Mia. Yo contesto teléfonos y ayudo a las personas. Sí, así es la oficina."
+      }
+    ],
+    "mentioned_but_not_appearing": []
+  },
+  "vocabulary_focus": {
+    "section_name": "Daily Tasks",
+    "section_name_es": "Tareas Diarias",
+    "image": "/episodes/episode_7_scene.jpg",
+    "target_words": [
+      {
+        "word": "organize",
+        "translation_es": "organizar",
+        "word_type": "verb",
+        "word_type_es": "verbo",
+        "difficulty": 2,
+        "context_sentence": "Dan organizes his desk every morning.",
+        "context_sentence_es": "Dan organiza su escritorio todas las mañanas.",
+        "image_url": "/vocab/organize.jpg",
+        "usage_examples": [
+          "He organizes the papers.",
+          "She organizes the meeting notes.",
+          "Dan organizes everything very slowly."
+        ],
+        "usage_examples_es": [
+          "Él organiza los papeles.",
+          "Ella organiza las notas de la reunión.",
+          "Dan organiza todo muy lentamente."
+        ]
+      },
+      {
+        "word": "explain",
+        "translation_es": "explicar",
+        "word_type": "verb",
+        "word_type_es": "verbo",
+        "difficulty": 2,
+        "context_sentence": "He explains his job to everyone.",
+        "context_sentence_es": "Él explica su trabajo a todos.",
+        "image_url": "/vocab/explain.jpg",
+        "usage_examples": [
+          "He explains the task.",
+          "She explains the problem.",
+          "Dan explains his job again."
+        ],
+        "usage_examples_es": [
+          "Él explica la tarea.",
+          "Ella explica el problema.",
+          "Dan explica su trabajo otra vez."
+        ]
+      },
+      {
+        "word": "follow",
+        "translation_es": "seguir",
+        "word_type": "verb",
+        "word_type_es": "verbo",
+        "difficulty": 2,
+        "context_sentence": "Ben follows the conversation and smiles.",
+        "context_sentence_es": "Ben sigue la conversación y sonríe.",
+        "image_url": "/vocab/follow.jpg",
+        "usage_examples": [
+          "He follows the rules.",
+          "She follows the plan.",
+          "Ben follows the meeting quietly."
+        ],
+        "usage_examples_es": [
+          "Él sigue las reglas.",
+          "Ella sigue el plan.",
+          "Ben sigue la reunión en silencio."
+        ]
+      },
+      {
+        "word": "repeat",
+        "translation_es": "repetir",
+        "word_type": "verb",
+        "word_type_es": "verbo",
+        "difficulty": 2,
+        "context_sentence": "Leo repeats the question many times.",
+        "context_sentence_es": "Leo repite la pregunta muchas veces.",
+        "image_url": "/vocab/repeat.jpg",
+        "usage_examples": [
+          "He repeats the question.",
+          "She repeats the instructions.",
+          "Leo repeats everything slowly."
+        ],
+        "usage_examples_es": [
+          "Él repite la pregunta.",
+          "Ella repite las instrucciones.",
+          "Leo repite todo lentamente."
+        ]
+      },
+      {
+        "word": "describe",
+        "translation_es": "describir",
+        "word_type": "verb",
+        "word_type_es": "verbo",
+        "difficulty": 3,
+        "context_sentence": "Dan describes his daily work.",
+        "context_sentence_es": "Dan describe su trabajo diario.",
+        "image_url": "/vocab/describe.jpg",
+        "usage_examples": [
+          "He describes his job.",
+          "She describes the office.",
+          "Dan describes every small detail."
+        ],
+        "usage_examples_es": [
+          "Él describe su trabajo.",
+          "Ella describe la oficina.",
+          "Dan describe cada pequeño detalle."
+        ]
+      }
+    ],
+    "phrases": [
+      {
+        "phrase": "What does he do?",
+        "translation_es": "¿Qué hace él?",
+        "usage_context": "Used when asking about a person’s job or daily tasks.",
+        "usage_context_es": "Se usa para preguntar sobre el trabajo o las tareas diarias de una persona."
+      },
+      {
+        "phrase": "He does this every day.",
+        "translation_es": "Él hace esto todos los días.",
+        "usage_context": "Used to describe a regular routine.",
+        "usage_context_es": "Se usa para describir una rutina regular."
+      },
+      {
+        "phrase": "He explains it again.",
+        "translation_es": "Él lo explica otra vez.",
+        "usage_context": "Used when someone repeats an explanation.",
+        "usage_context_es": "Se usa cuando alguien repite una explicación."
+      }
+    ]
+  },
+  "mini_story": {
+    "section_name": "Daily Work",
+    "section_name_es": "Trabajo Diario",
+    "image": "/episodes/episode_7_scene.jpg",
+    "title": "Short Story",
+    "title_es": "Historia corta",
+    "description": "A short story to practice today's topic.",
+    "description_es": "Una historia corta para practicar el tema de hoy.",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "text": {
+          "en": "In the office at Simple Paper, Leo asks many questions. He talks a lot and waits for answers. Ben smiles and listens.",
+          "es": "En la oficina de Simple Paper, Leo hace muchas preguntas. Él habla mucho y espera respuestas. Ben sonríe y escucha."
+        }
+      },
+      {
+        "id": "p2",
+        "text": {
+          "en": "Dan explains what he does all day. He checks papers, answers emails, and works very slowly. Everyone waits for the meeting.",
+          "es": "Dan explica lo que él hace todo el día. Él revisa papeles, responde correos y trabaja muy lentamente. Todos esperan la reunión."
+        }
+      },
+      {
+        "id": "p3",
+        "text": {
+          "en": "Leo listens and asks again, What does he do? Dan repeats the same answer. Ben smiles again because the day feels very long.",
+          "es": "Leo escucha y pregunta otra vez, ¿Qué hace él? Dan repite la misma respuesta. Ben sonríe otra vez porque el día se siente muy largo."
+        }
+      }
+    ]
+  },
+  "vocabulary_story": {
+    "section_name": "Daily Actions",
+    "section_name_es": "Acciones Diarias",
+    "image": "/episodes/episode_7_scene.jpg",
+    "title": "Learning Basic Words",
+    "title_es": "Aprendiendo Palabras Básicas",
+    "image_vocab": "/episodes/episode_7_vocab.jpg",
+    "description": "A simple story to learn today's vocabulary",
+    "description_es": "Una historia simple para aprender el vocabulario de hoy",
+    "segments": [
+      {
+        "segment_id": "vocab_works_01",
+        "image_url": "/vocab/works.jpg",
+        "word_focus": "works",
+        "text": {
+          "en": "Dan WORKS at his desk every day.",
+          "es": "Dan TRABAJA en su escritorio todos los días."
+        },
+        "emphasis_style": "bold_uppercase"
+      },
+      {
+        "segment_id": "vocab_works_02",
+        "image_url": "/vocab/works.jpg",
+        "word_focus": "works",
+        "text": {
+          "en": "Leo says he WORKS very hard. He says this a lot.",
+          "es": "Leo dice que TRABAJA muy duro. Él dice esto muchas veces."
+        }
+      },
+      {
+        "segment_id": "vocab_works_03",
+        "image_url": "/vocab/works.jpg",
+        "word_focus": "works",
+        "text": {
+          "en": "Ben WORKS and smiles. He always smiles.",
+          "es": "Ben TRABAJA y sonríe. Él siempre sonríe."
+        }
+      },
+      {
+        "segment_id": "vocab_checks_01",
+        "image_url": "/vocab/checks.jpg",
+        "word_focus": "checks",
+        "text": {
+          "en": "Dan CHECKS everything in the office.",
+          "es": "Dan REVISA todo en la oficina."
+        }
+      },
+      {
+        "segment_id": "vocab_checks_02",
+        "image_url": "/vocab/checks.jpg",
+        "word_focus": "checks",
+        "text": {
+          "en": "He CHECKS the desk. He checks again.",
+          "es": "Él REVISA el escritorio. Él revisa otra vez."
+        }
+      },
+      {
+        "segment_id": "vocab_checks_03",
+        "image_url": "/vocab/checks.jpg",
+        "word_focus": "checks",
+        "text": {
+          "en": "Leo CHECKS nothing, but he feels busy.",
+          "es": "Leo REVISA nada, pero se siente ocupado."
+        }
+      },
+      {
+        "segment_id": "vocab_helps_01",
+        "image_url": "/vocab/helps.jpg",
+        "word_focus": "helps",
+        "text": {
+          "en": "Mia HELPS people at the front desk.",
+          "es": "Mia AYUDA a las personas en la recepción."
+        }
+      },
+      {
+        "segment_id": "vocab_helps_02",
+        "image_url": "/vocab/helps.jpg",
+        "word_focus": "helps",
+        "text": {
+          "en": "She HELPS everyone. Even Leo.",
+          "es": "Ella AYUDA a todos. Incluso a Leo."
+        }
+      },
+      {
+        "segment_id": "vocab_helps_03",
+        "image_url": "/vocab/helps.jpg",
+        "word_focus": "helps",
+        "text": {
+          "en": "Ben HELPS by listening and smiling.",
+          "es": "Ben AYUDA escuchando y sonriendo."
+        }
+      },
+      {
+        "segment_id": "vocab_follows_01",
+        "image_url": "/vocab/follows.jpg",
+        "word_focus": "follows",
+        "text": {
+          "en": "Dan FOLLOWS all the rules.",
+          "es": "Dan SIGUE todas las reglas."
+        }
+      },
+      {
+        "segment_id": "vocab_follows_02",
+        "image_url": "/vocab/follows.jpg",
+        "word_focus": "follows",
+        "text": {
+          "en": "He FOLLOWS rules very carefully.",
+          "es": "Él SIGUE las reglas con mucho cuidado."
+        }
+      },
+      {
+        "segment_id": "vocab_follows_03",
+        "image_url": "/vocab/follows.jpg",
+        "word_focus": "follows",
+        "text": {
+          "en": "Leo says he FOLLOWS rules. Sometimes.",
+          "es": "Leo dice que SIGUE las reglas. A veces."
+        }
+      },
+      {
+        "segment_id": "vocab_explains_01",
+        "image_url": "/vocab/explains.jpg",
+        "word_focus": "explains",
+        "text": {
+          "en": "Dan EXPLAINS his job every day.",
+          "es": "Dan EXPLICA su trabajo todos los días."
+        }
+      },
+      {
+        "segment_id": "vocab_explains_02",
+        "image_url": "/vocab/explains.jpg",
+        "word_focus": "explains",
+        "text": {
+          "en": "He EXPLAINS everything. Slowly.",
+          "es": "Él EXPLICA todo. Lentamente."
+        }
+      },
+      {
+        "segment_id": "vocab_explains_03",
+        "image_url": "/vocab/explains.jpg",
+        "word_focus": "explains",
+        "text": {
+          "en": "Leo EXPLAINS nothing, but he talks a lot.",
+          "es": "Leo EXPLICA nada, pero habla mucho."
+        }
+      },
+      {
+        "segment_id": "vocab_mix_01",
+        "image_url": "/vocab/works.jpg",
+        "word_focus": "works",
+        "text": {
+          "en": "Dan WORKS and CHECKS everything in the office.",
+          "es": "Dan TRABAJA y REVISA todo en la oficina."
+        }
+      },
+      {
+        "segment_id": "vocab_mix_02",
+        "image_url": "/vocab/helps.jpg",
+        "word_focus": "helps",
+        "text": {
+          "en": "Mia HELPS while Dan FOLLOWS the rules.",
+          "es": "Mia AYUDA mientras Dan SIGUE las reglas."
+        }
+      },
+      {
+        "segment_id": "vocab_summary",
+        "word_focus": null,
+        "text": {
+          "en": "Great! Now you know: WORKS, CHECKS, HELPS, FOLLOWS, EXPLAINS. Dan is ready to explain them again.",
+          "es": "¡Genial! Ahora conoces: TRABAJA, REVISA, AYUDA, SIGUE, EXPLICA. Dan está listo para explicarlas otra vez."
+        }
+      }
+    ]
+  },
+  "listening_shadowing": {
+    "section_name": "Daily Work",
+    "section_name_es": "Trabajo Diario",
+    "image": "/episodes/episode_7_scene.jpg",
+    "instructions": "Listen to the line. Then repeat it aloud before the timer ends.",
+    "instructions_es": "Escucha la línea. Luego repítela en voz alta antes de que termine el tiempo.",
+    "data": [
+      {
+        "item_id": "listen_001",
+        "character_id": "char_leo",
+        "character_display_name": "LEO",
+        "text": "Dan organizes his desk, explains his job, follows the plan, repeats details, and describes everything proudly.",
+        "text_es": "Dan organiza su escritorio, explica su trabajo, sigue el plan, repite detalles y describe todo con orgullo.",
+        "tts_text": "Dan organizes his desk, explains his job, follows the plan, repeats details, and describes everything proudly.",
+        "tts_voice_id": "en_us_male_1",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "organize",
+          "explain",
+          "follow",
+          "repeat",
+          "describe"
+        ]
+      },
+      {
+        "item_id": "listen_002",
+        "character_id": "char_ben",
+        "character_display_name": "BEN",
+        "text": "He organizes papers, explains each step, follows rules, repeats ideas, and describes his work calmly.",
+        "text_es": "Él organiza papeles, explica cada paso, sigue reglas, repite ideas y describe su trabajo con calma.",
+        "tts_text": "He organizes papers, explains each step, follows rules, repeats ideas, and describes his work calmly.",
+        "tts_voice_id": "en_us_male_2",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "organize",
+          "explain",
+          "follow",
+          "repeat",
+          "describe"
+        ]
+      },
+      {
+        "item_id": "listen_003",
+        "character_id": "char_dan",
+        "character_display_name": "DAN",
+        "text": "I organize my tasks, explain my job, follow the schedule, repeat steps, and describe daily work.",
+        "text_es": "Yo organizo mis tareas, explico mi trabajo, sigo el horario, repito pasos y describo el trabajo diario.",
+        "tts_text": "I organize my tasks, explain my job, follow the schedule, repeat steps, and describe daily work.",
+        "tts_voice_id": "en_us_male_3",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "organize",
+          "explain",
+          "follow",
+          "repeat",
+          "describe"
+        ]
+      },
+      {
+        "item_id": "listen_004",
+        "character_id": "char_mia",
+        "character_display_name": "MIA",
+        "text": "Dan organizes slowly, explains carefully, follows rules, repeats answers, and describes small details.",
+        "text_es": "Dan organiza lentamente, explica con cuidado, sigue reglas, repite respuestas y describe pequeños detalles.",
+        "tts_text": "Dan organizes slowly, explains carefully, follows rules, repeats answers, and describes small details.",
+        "tts_voice_id": "en_us_female_1",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "organize",
+          "explain",
+          "follow",
+          "repeat",
+          "describe"
+        ]
+      },
+      {
+        "item_id": "listen_005",
+        "character_id": "char_leo",
+        "character_display_name": "LEO",
+        "text": "He organizes everything, explains again, follows nothing, repeats questions, and describes it as important.",
+        "text_es": "Él organiza todo, explica otra vez, no sigue nada, repite preguntas y lo describe como importante.",
+        "tts_text": "He organizes everything, explains again, follows nothing, repeats questions, and describes it as important.",
+        "tts_voice_id": "en_us_male_1",
+        "estimated_audio_duration_seconds": 8,
+        "repeat_timer_seconds": 11,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "organize",
+          "explain",
+          "follow",
+          "repeat",
+          "describe"
+        ]
+      },
+      {
+        "item_id": "listen_006",
+        "character_id": "char_ben",
+        "character_display_name": "BEN",
+        "text": "Dan organizes files, explains tasks, follows the process, repeats steps, and describes his role.",
+        "text_es": "Dan organiza archivos, explica tareas, sigue el proceso, repite pasos y describe su rol.",
+        "tts_text": "Dan organizes files, explains tasks, follows the process, repeats steps, and describes his role.",
+        "tts_voice_id": "en_us_male_2",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "organize",
+          "explain",
+          "follow",
+          "repeat",
+          "describe"
+        ]
+      },
+      {
+        "item_id": "listen_007",
+        "character_id": "char_dan",
+        "character_display_name": "DAN",
+        "text": "I organize carefully, explain slowly, follow routines, repeat instructions, and describe my day.",
+        "text_es": "Yo organizo con cuidado, explico lentamente, sigo rutinas, repito instrucciones y describo mi día.",
+        "tts_text": "I organize carefully, explain slowly, follow routines, repeat instructions, and describe my day.",
+        "tts_voice_id": "en_us_male_3",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "organize",
+          "explain",
+          "follow",
+          "repeat",
+          "describe"
+        ]
+      },
+      {
+        "item_id": "listen_008",
+        "character_id": "char_mia",
+        "character_display_name": "MIA",
+        "text": "He organizes notes, explains the job, follows orders, repeats answers, and describes the office.",
+        "text_es": "Él organiza notas, explica el trabajo, sigue órdenes, repite respuestas y describe la oficina.",
+        "tts_text": "He organizes notes, explains the job, follows orders, repeats answers, and describes the office.",
+        "tts_voice_id": "en_us_female_1",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "organize",
+          "explain",
+          "follow",
+          "repeat",
+          "describe"
+        ]
+      },
+      {
+        "item_id": "listen_009",
+        "character_id": "char_leo",
+        "character_display_name": "LEO",
+        "text": "Dan organizes his time, explains everything, follows habits, repeats stories, and describes work proudly.",
+        "text_es": "Dan organiza su tiempo, explica todo, sigue hábitos, repite historias y describe el trabajo con orgullo.",
+        "tts_text": "Dan organizes his time, explains everything, follows habits, repeats stories, and describes work proudly.",
+        "tts_voice_id": "en_us_male_1",
+        "estimated_audio_duration_seconds": 8,
+        "repeat_timer_seconds": 11,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "organize",
+          "explain",
+          "follow",
+          "repeat",
+          "describe"
+        ]
+      },
+      {
+        "item_id": "listen_010",
+        "character_id": "char_ben",
+        "character_display_name": "BEN",
+        "text": "He organizes work at Simple Paper, explains tasks, follows routines, repeats steps, and describes days.",
+        "text_es": "Él organiza el trabajo en Simple Paper, explica tareas, sigue rutinas, repite pasos y describe días.",
+        "tts_text": "He organizes work at Simple Paper, explains tasks, follows routines, repeats steps, and describes days.",
+        "tts_voice_id": "en_us_male_2",
+        "estimated_audio_duration_seconds": 8,
+        "repeat_timer_seconds": 11,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "organize",
+          "explain",
+          "follow",
+          "repeat",
+          "describe"
+        ]
+      }
+    ]
+  },
+  "scenes": {
+    "section_name": "Daily Work",
+    "section_name_es": "Trabajo Diario",
+    "image": "/episodes/episode_7_scene.jpg",
+    "data": [
+      {
+        "scene_id": "scene_007_001",
+        "scene_number": 1,
+        "location": "Main office",
+        "location_es": "Oficina principal",
+        "scene_name": "So Many Questions",
+        "scene_name_es": "Tantas preguntas",
+        "time": "Morning",
+        "time_es": "Mañana",
+        "description": "Leo stops everyone to ask what Dan does all day. Dan is ready. Very ready.",
+        "description_es": "Leo detiene a todos para preguntar qué hace Dan todo el día. Dan está listo. Muy listo.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_boss",
+            "character_display_name": "LEO",
+            "text": "Good morning. I am the boss. The great boss. Today I ask an important question.",
+            "translation_es": "Buenos días. Yo soy el jefe. El gran jefe. Hoy hago una pregunta importante.",
+            "emotion": "proud_but_lying",
+            "notes": "Leo always announces himself dramatically.",
+            "notes_es": "Leo siempre se presenta de forma dramática.",
+            "highlighted_vocab": [],
+            "template_vars": [
+              "boss_name"
+            ]
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_boss",
+            "character_display_name": "LEO",
+            "text": "Dan, what do you do all day? Everyone wants to know. I want to know the most.",
+            "translation_es": "Dan, ¿qué haces todo el día? Todos quieren saber. Yo quiero saber más.",
+            "emotion": "excited",
+            "notes": "Leo pretends everyone cares as much as he does.",
+            "notes_es": "Leo finge que a todos les importa tanto como a él.",
+            "highlighted_vocab": [],
+            "template_vars": []
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_dwight",
+            "character_display_name": "DAN",
+            "text": "I WORKS hard. I CHECKS the office. I FOLLOW rules.",
+            "translation_es": "Yo trabajo duro. Yo reviso la oficina. Yo sigo reglas.",
+            "emotion": "serious",
+            "notes": "Dan is intense and very confident.",
+            "notes_es": "Dan es intenso y muy confiado.",
+            "highlighted_vocab": [
+              "works",
+              "checks",
+              "follows"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 4,
+            "character_id": "char_dwight",
+            "character_display_name": "DAN",
+            "text": "I EXPLAINS my job because knowledge is power.",
+            "translation_es": "Yo explico mi trabajo porque el conocimiento es poder.",
+            "emotion": "proud",
+            "notes": "Dan takes everything very seriously.",
+            "notes_es": "Dan se toma todo muy en serio.",
+            "highlighted_vocab": [
+              "explains"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 5,
+            "character_id": "char_jim",
+            "character_display_name": "BEN",
+            "text": "Yes. Dan WORKS a lot. The most work. Very impressive work.",
+            "translation_es": "Sí. Dan trabaja mucho. El mayor trabajo. Trabajo muy impresionante.",
+            "emotion": "sarcastic",
+            "notes": "Ben sounds serious but is joking.",
+            "notes_es": "Ben suena serio pero está bromeando.",
+            "highlighted_vocab": [
+              "works"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 6,
+            "character_id": "char_pam",
+            "character_display_name": "MIA",
+            "text": "Dan also HELPS people. Sometimes they ask him to stop explaining.",
+            "translation_es": "Dan también ayuda a las personas. A veces le piden que deje de explicar.",
+            "emotion": "gentle_sarcastic",
+            "notes": "Mia is kind but honest.",
+            "notes_es": "Mia es amable pero honesta.",
+            "highlighted_vocab": [
+              "helps"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 7,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "Which sentence is correct?",
+            "prompt_es": "¿Qué oración es correcta?",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "He WORK hard every day.",
+                "translation_es": "Él trabaja duro todos los días.",
+                "points": 0,
+                "personality_impact": "friendly",
+                "vocab_used": [
+                  "works"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "He WORKS hard every day.",
+                "translation_es": "Él trabaja duro todos los días.",
+                "points": 10,
+                "personality_impact": "neutral"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "scene_id": "scene_007_002",
+        "scene_number": 2,
+        "location": "Reception desk",
+        "location_es": "Recepción",
+        "scene_name": "Explaining Again",
+        "scene_name_es": "Explicando otra vez",
+        "time": "Late morning",
+        "time_es": "Media mañana",
+        "description": "Dan continues explaining. No one is surprised.",
+        "description_es": "Dan continúa explicando. Nadie se sorprende.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_dwight",
+            "character_display_name": "DAN",
+            "text": "This is my desk. It is strong. I CHECKS it every hour.",
+            "translation_es": "Este es mi escritorio. Es fuerte. Yo lo reviso cada hora.",
+            "emotion": "serious",
+            "notes": "Dan explains obvious things.",
+            "notes_es": "Dan explica cosas obvias.",
+            "highlighted_vocab": [
+              "checks"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_dwight",
+            "character_display_name": "DAN",
+            "text": "I FOLLOW rules to protect Simple Paper.",
+            "translation_es": "Yo sigo reglas para proteger Simple Paper.",
+            "emotion": "proud",
+            "notes": "Dan sees himself as a protector.",
+            "notes_es": "Dan se ve a sí mismo como un protector.",
+            "highlighted_vocab": [
+              "follows"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_pam",
+            "character_display_name": "MIA",
+            "text": "Yes. Dan HELPS the office stay safe. Very safe.",
+            "translation_es": "Sí. Dan ayuda a que la oficina esté segura. Muy segura.",
+            "emotion": "calm",
+            "notes": "Mia supports Dan gently.",
+            "notes_es": "Mia apoya a Dan con calma.",
+            "highlighted_vocab": [
+              "helps"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 4,
+            "character_id": "char_jim",
+            "character_display_name": "BEN",
+            "text": "I feel safe. I feel extremely safe.",
+            "translation_es": "Me siento seguro. Me siento extremadamente seguro.",
+            "emotion": "sarcastic",
+            "notes": "Ben exaggerates for humor.",
+            "notes_es": "Ben exagera para el humor.",
+            "highlighted_vocab": [],
+            "template_vars": []
+          },
+          {
+            "line_id": 5,
+            "character_id": "char_dwight",
+            "character_display_name": "DAN",
+            "text": "Good. Safety is important. I EXPLAINS safety often.",
+            "translation_es": "Bien. La seguridad es importante. Yo explico la seguridad a menudo.",
+            "emotion": "serious",
+            "notes": "Dan repeats himself proudly.",
+            "notes_es": "Dan se repite con orgullo.",
+            "highlighted_vocab": [
+              "explains"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 6,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "Choose the correct sentence.",
+            "prompt_es": "Elige la oración correcta.",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "She HELP the office every day.",
+                "translation_es": "Ella ayuda a la oficina todos los días.",
+                "points": 0,
+                "personality_impact": "friendly",
+                "vocab_used": [
+                  "helps"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "She HELPS the office every day.",
+                "translation_es": "Ella ayuda a la oficina todos los días.",
+                "points": 10,
+                "personality_impact": "neutral"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "scene_id": "scene_007_003",
+        "scene_number": 3,
+        "location": "Conference area",
+        "location_es": "Área de reuniones",
+        "scene_name": "Boss Summary",
+        "scene_name_es": "Resumen del jefe",
+        "time": "Before lunch",
+        "time_es": "Antes del almuerzo",
+        "description": "Leo gives his summary. It is not short.",
+        "description_es": "Leo da su resumen. No es corto.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_boss",
+            "character_display_name": "LEO",
+            "text": "Thank you. I understand everything now. Dan WORKS. Dan CHECKS. Dan EXPLAINS.",
+            "translation_es": "Gracias. Ahora entiendo todo. Dan trabaja. Dan revisa. Dan explica.",
+            "emotion": "proud",
+            "notes": "Leo thinks repeating words means understanding.",
+            "notes_es": "Leo cree que repetir palabras es entender.",
+            "highlighted_vocab": [
+              "works",
+              "checks",
+              "explains"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_boss",
+            "character_display_name": "LEO",
+            "text": "This is why I am the best boss.",
+            "translation_es": "Por eso yo soy el mejor jefe.",
+            "emotion": "proud_but_lying",
+            "notes": "Leo always praises himself.",
+            "notes_es": "Leo siempre se elogia a sí mismo.",
+            "highlighted_vocab": [],
+            "template_vars": [
+              "boss_name"
+            ]
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_jim",
+            "character_display_name": "BEN",
+            "text": "Yes. Leadership is strong today.",
+            "translation_es": "Sí. El liderazgo es fuerte hoy.",
+            "emotion": "sarcastic",
+            "notes": "Ben pretends to agree.",
+            "notes_es": "Ben finge estar de acuerdo.",
+            "highlighted_vocab": [],
+            "template_vars": []
+          },
+          {
+            "line_id": 4,
+            "character_id": "char_dwight",
+            "character_display_name": "DAN",
+            "text": "I am happy to EXPLAINS again after lunch.",
+            "translation_es": "Estoy feliz de explicar otra vez después del almuerzo.",
+            "emotion": "excited",
+            "notes": "Dan is always ready to explain more.",
+            "notes_es": "Dan siempre está listo para explicar más.",
+            "highlighted_vocab": [
+              "explains"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 5,
+            "character_id": "char_pam",
+            "character_display_name": "MIA",
+            "text": "Great. We all wait for that.",
+            "translation_es": "Genial. Todos esperamos eso.",
+            "emotion": "gentle_sarcastic",
+            "notes": "Mia ends with calm sarcasm.",
+            "notes_es": "Mia termina con sarcasmo tranquilo.",
+            "highlighted_vocab": [],
+            "template_vars": []
+          },
+          {
+            "line_id": 6,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "Which sentence sounds correct?",
+            "prompt_es": "¿Qué oración suena correcta?",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "He EXPLAIN his job very well.",
+                "translation_es": "Él explica su trabajo muy bien.",
+                "points": 0,
+                "personality_impact": "friendly",
+                "vocab_used": [
+                  "explains"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "He EXPLAINS his job very well.",
+                "translation_es": "Él explica su trabajo muy bien.",
+                "points": 10,
+                "personality_impact": "neutral"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "games": {
+    "section_name": "Daily Work",
+    "section_name_es": "Trabajo Diario",
+    "image": "/episodes/episode_7_scene.jpg",
+    "data": [
+      {
+        "game_id": "ep7_game_01",
+        "game_type": "matching",
+        "title": "Match the Words!",
+        "title_es": "¡Empareja las Palabras!",
+        "instructions": "Match each English word with its Spanish meaning",
+        "instructions_es": "Empareja cada palabra en inglés con su significado en español",
+        "optional": true,
+        "unlocked_after_episode": true,
+        "time_limit_seconds": 90,
+        "xp_reward": 25,
+        "content": {
+          "items": [
+            {
+              "id": 1,
+              "left": "organize",
+              "right": "organizar",
+              "image_url": "/vocab/organize.jpg"
+            },
+            {
+              "id": 2,
+              "left": "explain",
+              "right": "explicar",
+              "image_url": "/vocab/explain.jpg"
+            },
+            {
+              "id": 3,
+              "left": "follow",
+              "right": "seguir",
+              "image_url": "/vocab/follow.jpg"
+            },
+            {
+              "id": 4,
+              "left": "repeat",
+              "right": "repetir",
+              "image_url": "/vocab/repeat.jpg"
+            },
+            {
+              "id": 5,
+              "left": "describe",
+              "right": "describir",
+              "image_url": "/vocab/describe.jpg"
+            },
+            {
+              "id": 6,
+              "left": "desk",
+              "right": "escritorio",
+              "image_url": "/vocab/desk.jpg"
+            },
+            {
+              "id": 7,
+              "left": "meeting",
+              "right": "reunión",
+              "image_url": "/vocab/meeting.jpg"
+            },
+            {
+              "id": 8,
+              "left": "office",
+              "right": "oficina",
+              "image_url": "/vocab/office.jpg"
+            }
+          ]
+        },
+        "settings": {
+          "shuffle": true,
+          "show_images": true
+        }
+      },
+      {
+        "game_id": "ep7_game_02",
+        "game_type": "fill_blank",
+        "title": "Complete the Sentences",
+        "title_es": "Completa las Oraciones",
+        "instructions": "Fill in the missing words from the episode",
+        "instructions_es": "Completa las palabras que faltan del episodio",
+        "optional": true,
+        "unlocked_after_episode": true,
+        "time_limit_seconds": 150,
+        "xp_reward": 35,
+        "content": {
+          "items": [
+            {
+              "id": 1,
+              "sentence": "{boss_name} asks questions while Dan _____ his job.",
+              "sentence_es": "{boss_name} hace preguntas mientras Dan _____ su trabajo.",
+              "answer": "explains",
+              "options": [
+                "explains",
+                "follows",
+                "repeats"
+              ],
+              "hint": "This word means to give information.",
+              "hint_es": "Esta palabra significa dar información.",
+              "character": "{boss_name}"
+            },
+            {
+              "id": 2,
+              "sentence": "Dan _____ his desk every morning.",
+              "sentence_es": "Dan _____ su escritorio todas las mañanas.",
+              "answer": "organizes",
+              "options": [
+                "organizes",
+                "repeats",
+                "describes"
+              ],
+              "hint": "This word means to put things in order.",
+              "hint_es": "Esta palabra significa poner cosas en orden.",
+              "character": "Dan"
+            },
+            {
+              "id": 3,
+              "sentence": "{jim_name} smiles and _____ the conversation.",
+              "sentence_es": "{jim_name} sonríe y _____ la conversación.",
+              "answer": "follows",
+              "options": [
+                "follows",
+                "explains",
+                "organizes"
+              ],
+              "hint": "This word means to pay attention and continue.",
+              "hint_es": "Esta palabra significa prestar atención y continuar.",
+              "character": "{jim_name}"
+            },
+            {
+              "id": 4,
+              "sentence": "Dan _____ the same answer again.",
+              "sentence_es": "Dan _____ la misma respuesta otra vez.",
+              "answer": "repeats",
+              "options": [
+                "repeats",
+                "describes",
+                "follows"
+              ],
+              "hint": "This word means to say again.",
+              "hint_es": "Esta palabra significa decir otra vez.",
+              "character": "Dan"
+            },
+            {
+              "id": 5,
+              "sentence": "Dan _____ his daily work very slowly.",
+              "sentence_es": "Dan _____ su trabajo diario muy lentamente.",
+              "answer": "describes",
+              "options": [
+                "describes",
+                "organizes",
+                "follows"
+              ],
+              "hint": "This word means to give details.",
+              "hint_es": "Esta palabra significa dar detalles.",
+              "character": "Dan"
+            },
+            {
+              "id": 6,
+              "sentence": "{pam_name} listens while Dan _____ each step.",
+              "sentence_es": "{pam_name} escucha mientras Dan _____ cada paso.",
+              "answer": "explains",
+              "options": [
+                "explains",
+                "repeats",
+                "organizes"
+              ],
+              "hint": "This word is about making things clear.",
+              "hint_es": "Esta palabra es sobre hacer algo claro.",
+              "character": "{pam_name}"
+            },
+            {
+              "id": 7,
+              "sentence": "Everyone waits for the meeting and Dan _____ the rules.",
+              "sentence_es": "Todos esperan la reunión y Dan _____ las reglas.",
+              "answer": "follows",
+              "options": [
+                "follows",
+                "describes",
+                "repeats"
+              ],
+              "hint": "This word means to do what is expected.",
+              "hint_es": "Esta palabra significa hacer lo que se espera.",
+              "character": "Dan"
+            }
+          ]
+        }
+      },
+      {
+        "game_id": "ep7_game_03",
+        "game_type": "multiple_choice",
+        "title": "Episode Quiz",
+        "title_es": "Quiz del Episodio",
+        "instructions": "Answer questions about the episode",
+        "instructions_es": "Responde preguntas sobre el episodio",
+        "optional": true,
+        "unlocked_after_episode": true,
+        "time_limit_seconds": 180,
+        "xp_reward": 45,
+        "content": {
+          "items": [
+            {
+              "id": 1,
+              "question": "What does Dan do during the episode?",
+              "question_es": "¿Qué hace Dan durante el episodio?",
+              "options": [
+                "He explains his daily work.",
+                "He sleeps at his desk.",
+                "He leaves the office.",
+                "He plays games."
+              ],
+              "options_es": [
+                "Él explica su trabajo diario.",
+                "Él duerme en su escritorio.",
+                "Él sale de la oficina.",
+                "Él juega juegos."
+              ],
+              "correct_answer": 0,
+              "explanation": "Dan explains what he does all day.",
+              "explanation_es": "Dan explica lo que él hace todo el día."
+            },
+            {
+              "id": 2,
+              "question": "Who smiles and listens most of the time?",
+              "question_es": "¿Quién sonríe y escucha la mayor parte del tiempo?",
+              "options": [
+                "{jim_name}",
+                "{boss_name}",
+                "Dan",
+                "Sam"
+              ],
+              "options_es": [
+                "{jim_name}",
+                "{boss_name}",
+                "Dan",
+                "Sam"
+              ],
+              "correct_answer": 0,
+              "explanation": "{jim_name} smiles and follows the conversation.",
+              "explanation_es": "{jim_name} sonríe y sigue la conversación."
+            },
+            {
+              "id": 3,
+              "question": "Why does the meeting feel long?",
+              "question_es": "¿Por qué la reunión se siente larga?",
+              "options": [
+                "Dan explains very slowly.",
+                "Nobody is at the office.",
+                "The work is finished.",
+                "The boss is silent."
+              ],
+              "options_es": [
+                "Dan explica muy lentamente.",
+                "Nadie está en la oficina.",
+                "El trabajo está terminado.",
+                "El jefe está en silencio."
+              ],
+              "correct_answer": 0,
+              "explanation": "Dan repeats and explains many details slowly.",
+              "explanation_es": "Dan repite y explica muchos detalles lentamente."
+            },
+            {
+              "id": 4,
+              "question": "What does {boss_name} do often in the episode?",
+              "question_es": "¿Qué hace {boss_name} a menudo en el episodio?",
+              "options": [
+                "He asks many questions.",
+                "He organizes the desk.",
+                "He waits quietly.",
+                "He describes the office."
+              ],
+              "options_es": [
+                "Él hace muchas preguntas.",
+                "Él organiza el escritorio.",
+                "Él espera en silencio.",
+                "Él describe la oficina."
+              ],
+              "correct_answer": 0,
+              "explanation": "{boss_name} asks questions about the office and the work.",
+              "explanation_es": "{boss_name} hace preguntas sobre la oficina y el trabajo."
+            },
+            {
+              "id": 5,
+              "question": "Which action matches Dan best?",
+              "question_es": "¿Qué acción describe mejor a Dan?",
+              "options": [
+                "Explain and repeat",
+                "Run and shout",
+                "Sleep and eat",
+                "Leave early"
+              ],
+              "options_es": [
+                "Explicar y repetir",
+                "Correr y gritar",
+                "Dormir y comer",
+                "Salir temprano"
+              ],
+              "correct_answer": 0,
+              "explanation": "Dan explains and repeats his work steps.",
+              "explanation_es": "Dan explica y repite los pasos de su trabajo."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "content_wrappers": {
+    "section_name": "Daily Talk",
+    "section_name_es": "Charla Diaria",
+    "image": "/episodes/episode_7_scene.jpg",
+    "intro_text": {
+      "en": "Welcome to {company_name} in {city}. This is a normal office with normal people. Very normal. Leo is the boss, so it is also very loud. Today you will hear one big question: what does Dan do all day?",
+      "es": "Bienvenido a {company_name} en {city}. Esta es una oficina normal con personas normales. Muy normal. Leo es el jefe, así que también es muy ruidoso. Hoy escucharás una gran pregunta: ¿qué hace Dan todo el día?"
+    },
+    "transition": {
+      "en": "Great. Now you know the words. Now you can survive the office conversation. Leo asks questions. Ben smiles like a professional. Dan explains everything like it is a documentary about paper.",
+      "es": "Genial. Ahora conoces las palabras. Ahora puedes sobrevivir la conversación de la oficina. Leo hace preguntas. Ben sonríe como un profesional. Dan explica todo como si fuera un documental sobre papel."
+    },
+    "conclusion": {
+      "en": "Good job. You learned how to talk about what he, she, or it does. Dan WORKS, CHECKS, FOLLOWS, HELPS, and EXPLAINS. Leo learns this and then feels like a genius. This is a normal day here.",
+      "es": "Buen trabajo. Aprendiste a hablar de lo que él, ella o eso hace. Dan trabaja, revisa, sigue, ayuda y explica. Leo aprende esto y luego se siente como un genio. Este es un día normal aquí."
+    },
+    "reflection_prompt": {
+      "question_en": "Write one sentence about Dan. Use the word \"works\" or \"explains\".",
+      "question_es": "Escribe una oración sobre Dan. Usa la palabra \"trabaja\" o \"explica\".",
+      "type": "free_text",
+      "optional": true,
+      "max_length": 100,
+      "vocab_practice": [
+        "works",
+        "explains"
+      ]
+    }
+  },
+  "next_episode_preview": {
+    "section_name": "Office Time",
+    "section_name_es": "Tiempo Oficina",
+    "image": "/episodes/episode_8_scene.jpg",
+    "preview_text_en": "Next time, Dan talks about his daily routine, Leo checks the time many times, and the meeting starts late.",
+    "preview_text_es": "La próxima vez, Dan habla de su rutina diaria, Leo revisa la hora muchas veces y la reunión empieza tarde.",
+    "teaser_image": "/previews/ep_008.jpg"
+  },
+  "progression": {
+    "section_name": "Progress Check",
+    "section_name_es": "Progreso",
+    "image": "/episodes/episode_7_scene.jpg",
+    "xp_earned_base": 50,
+    "xp_bonus_conditions": [
+      {
+        "condition": "complete_all_games",
+        "bonus_xp": 25
+      },
+      {
+        "condition": "perfect_choices",
+        "bonus_xp": 15
+      },
+      {
+        "condition": "write_reflection",
+        "bonus_xp": 10
+      }
+    ],
+    "unlocks": [
+      {
+        "type": "character",
+        "character_ids": [
+          "char_boss",
+          "char_jim",
+          "char_dwight",
+          "char_pam"
+        ]
+      },
+      {
+        "type": "location",
+        "location_ids": [
+          "Main office",
+          "Reception desk",
+          "Conference area"
+        ]
+      }
+    ],
+    "achievements": [
+      {
+        "achievement_id": "explains_everything",
+        "name": "He Explains Everything",
+        "name_es": "Él explica todo",
+        "description": "You understand how he, she, or it works, checks, helps, follows, and explains. Dan is proud. Very proud.",
+        "description_es": "Tú entiendes cómo él, ella o eso trabaja, revisa, ayuda, sigue y explica. Dan está orgulloso. Muy orgulloso.",
+        "icon": "/achievements/explains_everything.png",
+        "image": "/achievements/explains_everything_banner.jpg"
+      }
+    ]
+  },
+  "metadata": {
+    "section_name": "Daily Work",
+    "section_name_es": "Trabajo Diario",
+    "image": "/episodes/episode_7_scene.jpg",
+    "created_date": "2026-01-30",
+    "version": "1.0",
+    "author": "Course Team",
+    "content_level": "beginner",
+    "estimated_words": 320,
+    "estimated_unique_vocabulary": 58,
+    "structure_type": "vocab_story_then_main_story"
+  }
+}
