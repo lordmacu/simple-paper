@@ -7,6 +7,15 @@ final templateVariableServiceProvider = Provider<TemplateVariableService>((ref) 
   return TemplateVariableService();
 });
 
+/// Provider de versión que se incrementa cuando cambian las variables.
+/// Los widgets que necesitan reaccionar a cambios deben hacer `ref.watch(templateVersionProvider)`.
+final templateVersionProvider = StateProvider<int>((ref) => 0);
+
+/// Función helper para invalidar/refrescar el template en todos los widgets
+void invalidateTemplateVersion(WidgetRef ref) {
+  ref.read(templateVersionProvider.notifier).state++;
+}
+
 /// Provider for player name
 /// Allows listening and updating the player's name
 final playerNameProvider = StateProvider<String>((ref) {

@@ -277,6 +277,9 @@ class _TransitionScreenState extends ConsumerState<TransitionScreen>
 
   @override
   Widget build(BuildContext context) {
+    // Escuchar cambios en las variables del template para reconstruir
+    ref.watch(templateVersionProvider);
+    
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(

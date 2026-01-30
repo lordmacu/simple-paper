@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:html' as html show window;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +31,20 @@ class ListeningShadowingScreen extends ConsumerStatefulWidget {
   @override
   ConsumerState<ListeningShadowingScreen> createState() =>
       _ListeningShadowingScreenState();
+}
+
+/// Returns true if running on web AND on a mobile browser
+bool _isWebMobile() {
+  if (!kIsWeb) return false;
+  try {
+    final userAgent = html.window.navigator.userAgent.toLowerCase();
+    return userAgent.contains('mobile') ||
+        userAgent.contains('android') ||
+        userAgent.contains('iphone') ||
+        userAgent.contains('ipad');
+  } catch (_) {
+    return false;
+  }
 }
 
 class _ListeningShadowingScreenState
@@ -427,6 +442,8 @@ class _ListeningShadowingScreenState
   Widget build(BuildContext context) {
     // Esperar a que las variables personalizadas estén cargadas
     ref.watch(personalizationInitProvider);
+    // Escuchar cambios en las variables del template para reconstruir
+    ref.watch(templateVersionProvider);
 
     final section = _section;
     if (section == null || section.data.isEmpty) {
@@ -646,7 +663,8 @@ class _ListeningShadowingScreenState
                     ],
                   ),
                   const SizedBox(height: 10),
-                  Row(
+                  // Hide recording UI on web mobile (speech recognition is unreliable)
+                  if (!_isWebMobile()) ...[                  Row(
                     children: [
                       const Expanded(
                         child: Text(
@@ -687,8 +705,10 @@ class _ListeningShadowingScreenState
                       ),
                     ],
                   ),
+                  ],
                   const SizedBox(height: 12),
-                  if (_recognized.isNotEmpty) ...[
+                  // Sección de respuesta solo visible si NO es web mobile
+                  if (!_isWebMobile() && _recognized.isNotEmpty) ...[
                     Text(
                       'Tu respuesta:',
                       style: const TextStyle(
@@ -705,7 +725,7 @@ class _ListeningShadowingScreenState
                       ),
                     ),
                   ],
-                  if (_isCorrect != null) ...[
+                  if (!_isWebMobile() && _isCorrect != null) ...[
                     const SizedBox(height: 8),
                     Row(
                       children: [

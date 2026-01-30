@@ -459,6 +459,8 @@ class _VocabularyStoryScreenState
   Widget build(BuildContext context) {
     // Esperar a que las variables personalizadas estén cargadas
     ref.watch(personalizationInitProvider);
+    // Escuchar cambios en las variables del template para reconstruir
+    ref.watch(templateVersionProvider);
 
     final vocabularyStory = widget.episode.vocabularyStory;
 

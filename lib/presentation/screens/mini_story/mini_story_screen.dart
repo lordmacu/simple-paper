@@ -36,6 +36,9 @@ class _MiniStoryScreenState extends ConsumerState<MiniStoryScreen> {
   Widget build(BuildContext context) {
     // Esperar a que las variables personalizadas estén cargadas
     ref.watch(personalizationInitProvider);
+    // Escuchar cambios en las variables del template para reconstruir
+    final templateVersion = ref.watch(templateVersionProvider);
+    debugPrint('TEMPLATE_DEBUG MiniStoryScreen.build templateVersion=$templateVersion');
 
     final miniStory = widget.episode.miniStory;
     if (miniStory == null) {
@@ -47,6 +50,9 @@ class _MiniStoryScreenState extends ConsumerState<MiniStoryScreen> {
       );
     }
     final template = ref.watch(templateVariableServiceProvider);
+    // Log de valores actuales
+    debugPrint('TEMPLATE_DEBUG MiniStoryScreen template.city=${template.getVariable('city')} company=${template.getVariable('company_name')} office=${template.getVariable('office_type')}');
+    
     final tts = ref.read(ttsServiceProvider);
     final title = miniStory.titleEs?.isNotEmpty == true
         ? miniStory.titleEs!
@@ -87,8 +93,13 @@ class _MiniStoryScreenState extends ConsumerState<MiniStoryScreen> {
               itemCount: miniStory.paragraphs.length,
               itemBuilder: (context, index) {
                 final paragraph = miniStory.paragraphs[index];
-                final enText = template.replaceVariables(paragraph.text.en);
+                final rawEn = paragraph.text.en;
+                final enText = template.replaceVariables(rawEn);
                 final esText = template.replaceVariables(paragraph.text.es);
+                // Log del primer párrafo para ver si tiene variables
+                if (index == 0) {
+                  debugPrint('TEMPLATE_DEBUG MiniStoryScreen paragraph[0] rawEn="$rawEn" enText="$enText"');
+                }
                 return _ParagraphCard(
                   index: index + 1,
                   enText: enText,

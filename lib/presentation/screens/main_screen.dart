@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:office_app/core/constants/app_colors.dart';
+import '../providers/personalization_providers.dart';
 
 class MainScreen extends ConsumerStatefulWidget {
   final Widget child;
@@ -42,10 +43,14 @@ class _MainScreenState extends ConsumerState<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // Verificar si el usuario ya completó el onboarding
+    final hasNameAsync = ref.watch(hasPlayerNameProvider);
+    final showBottomNav = hasNameAsync.valueOrNull == true;
+    
     return Scaffold(
       resizeToAvoidBottomInset: !kIsWeb,
       body: widget.child,
-      bottomNavigationBar: Container(
+      bottomNavigationBar: showBottomNav ? Container(
         decoration: BoxDecoration(
           border: Border(
             top: BorderSide(color: Colors.grey.shade200, width: 2),
@@ -83,7 +88,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
             ),
           ],
         ),
-      ),
+      ) : null,
     );
   }
 }

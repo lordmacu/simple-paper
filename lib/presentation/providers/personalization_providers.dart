@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -60,6 +61,8 @@ final setPlayerNameProvider =
     ref.read(templateVariableServiceProvider).updateVariable('player_name', name);
     ref.read(playerNameProvider.notifier).state = name;
     await repo.setVariable('player_name', name);
+    // Invalidar versión para forzar reconstrucción de widgets
+    ref.read(templateVersionProvider.notifier).state++;
   };
 });
 
@@ -70,6 +73,10 @@ final setCityProvider = Provider<Future<void> Function(String)>((ref) {
     ref.read(templateVariableServiceProvider).updateVariable('city', city);
     ref.read(cityProvider.notifier).state = city;
     await repo.setVariable('city', city);
+    // Invalidar versión para forzar reconstrucción de widgets
+    final newVersion = ref.read(templateVersionProvider.notifier).state + 1;
+    ref.read(templateVersionProvider.notifier).state = newVersion;
+    debugPrint('TEMPLATE_DEBUG setCityProvider city=$city newVersion=$newVersion');
   };
 });
 
@@ -80,6 +87,10 @@ final setCompanyNameProvider = Provider<Future<void> Function(String)>((ref) {
     ref.read(templateVariableServiceProvider).updateVariable('company_name', name);
     ref.read(companyNameProvider.notifier).state = name;
     await repo.setVariable('company_name', name);
+    // Invalidar versión para forzar reconstrucción de widgets
+    final newVersion = ref.read(templateVersionProvider.notifier).state + 1;
+    ref.read(templateVersionProvider.notifier).state = newVersion;
+    debugPrint('TEMPLATE_DEBUG setCompanyNameProvider name=$name newVersion=$newVersion');
   };
 });
 
@@ -90,6 +101,10 @@ final setOfficeTypeProvider = Provider<Future<void> Function(String)>((ref) {
     ref.read(templateVariableServiceProvider).updateVariable('office_type', type);
     ref.read(officeTypeProvider.notifier).state = type;
     await repo.setVariable('office_type', type);
+    // Invalidar versión para forzar reconstrucción de widgets
+    final newVersion = ref.read(templateVersionProvider.notifier).state + 1;
+    ref.read(templateVersionProvider.notifier).state = newVersion;
+    debugPrint('TEMPLATE_DEBUG setOfficeTypeProvider type=$type newVersion=$newVersion');
   };
 });
 
@@ -119,6 +134,8 @@ final renameCharacterProvider =
       ref.read(templateVariableServiceProvider).updateVariable(key, newName);
       final repo = ref.read(personalizationRepositoryProvider);
       await repo.setVariable(key, newName);
+      // Invalidar versión para forzar reconstrucción de widgets
+      ref.read(templateVersionProvider.notifier).state++;
     }
   };
 });

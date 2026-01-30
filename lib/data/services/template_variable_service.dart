@@ -46,8 +46,14 @@ class TemplateVariableService {
     // Usamos los valores actuales (o defaults si no se han seteaado)
     _defaults.forEach((key, defaultValue) {
       final value = _currentValues[key] ?? defaultValue;
-      // Reemplazo simple de string. Podría optimizarse con RegExp si fuera crítico.
+      // 1. Reemplazo de placeholders {variable}
       result = result.replaceAll('{$key}', value);
+      
+      // 2. Si el valor actual es diferente al default, también reemplazamos
+      //    el valor por defecto literal (para JSONs que tienen "Simple Paper" en lugar de {company_name})
+      if (value != defaultValue && defaultValue.isNotEmpty) {
+        result = result.replaceAll(defaultValue, value);
+      }
     });
     return result;
   }
