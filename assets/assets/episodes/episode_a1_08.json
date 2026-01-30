@@ -1,0 +1,1463 @@
+{
+  "city_settings": {
+    "default_city": "Scranton",
+    "user_selected_city": null,
+    "localizable": true,
+    "city_specific_content": {
+      "office_name": "{company_name} {city}",
+      "default_company_name": "Dunder Mifflin",
+      "office_type": "Paper Company",
+      "office_type_es": "Compañía de Papel"
+    }
+  },
+  "episode_metadata": {
+    "section_name": "Office Time",
+    "section_name_es": "Tiempo Oficina",
+    "image": "/episodes/episode_8_scene.jpg",
+    "episode_number": 8,
+    "episode_id": "ep_008",
+    "title": "What Time Is This Meeting?",
+    "title_es": "¿A Qué Hora Es Esta Reunión?",
+    "description": "Dan talks about his daily routine, Leo checks the time again and again, and the meeting starts late. Everyone says the time, but nobody agrees on it.",
+    "description_es": "Dan habla de su rutina diaria, Leo revisa la hora una y otra vez, y la reunión empieza tarde. Todos dicen la hora, pero nadie está de acuerdo.",
+    "internal_level": "A1",
+    "estimated_time_minutes": 12,
+    "unlock_requirements": null,
+    "tags": [
+      "time",
+      "daily_routine",
+      "office_life",
+      "meetings"
+    ],
+    "previous_episode": "ep_007",
+    "next_episode": "ep_009"
+  },
+  "characters": {
+    "section_name": "Daily Time",
+    "section_name_es": "Tiempo diario",
+    "image": "/episodes/episode_8_scene.jpg",
+    "appearing_in_episode": [
+      {
+        "character_id": "char_boss",
+        "default_name": "LEO",
+        "role": "Boss",
+        "role_es": "Jefe",
+        "personality": "Enthusiastic boss who wants to be loved and admired. He talks a lot about time and meetings and believes every hour with him is important.",
+        "personality_es": "Jefe entusiasta que quiere ser amado y admirado. Habla mucho sobre el tiempo y las reuniones y cree que cada hora con él es importante.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/leo.png",
+        "intro_text": "Good morning. It is meeting time. It is always meeting time. I wake up early because great bosses respect time.",
+        "intro_text_es": "Buenos días. Es hora de reunión. Siempre es hora de reunión. Me despierto temprano porque los grandes jefes respetan el tiempo."
+      },
+      {
+        "character_id": "char_jim",
+        "default_name": "BEN",
+        "role": "Salesman",
+        "role_es": "Vendedor",
+        "personality": "Sarcastic and relaxed salesman. He notices the daily routine and comments on it with dry humor.",
+        "personality_es": "Vendedor sarcástico y relajado. Nota la rutina diaria y la comenta con humor seco.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/ben.png",
+        "intro_text": "Every morning is the same. Coffee at eight. Meetings at nine. Confusion all day.",
+        "intro_text_es": "Cada mañana es la misma. Café a las ocho. Reuniones a las nueve. Confusión todo el día."
+      },
+      {
+        "character_id": "char_pam",
+        "default_name": "MIA",
+        "role": "Receptionist",
+        "role_es": "Recepcionista",
+        "personality": "Kind and helpful receptionist. She keeps track of time and helps everyone with the daily schedule.",
+        "personality_es": "Recepcionista amable y servicial. Controla el tiempo y ayuda a todos con el horario diario.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/mia.png",
+        "intro_text": "In the morning I answer calls. At lunch time I eat fast. At the end of the day I smile and go home.",
+        "intro_text_es": "En la mañana respondo llamadas. A la hora del almuerzo como rápido. Al final del día sonrío y voy a casa."
+      },
+      {
+        "character_id": "char_dwight",
+        "default_name": "DAN",
+        "role": "Salesman",
+        "role_es": "Vendedor",
+        "personality": "Intense and disciplined salesman. He follows a strict daily routine and respects every minute.",
+        "personality_es": "Vendedor intenso y disciplinado. Sigue una rutina diaria estricta y respeta cada minuto.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/dan.png",
+        "intro_text": "I arrive at work at seven. I work all morning. I train at lunch time. This is the correct routine.",
+        "intro_text_es": "Llego al trabajo a las siete. Trabajo toda la mañana. Entreno a la hora del almuerzo. Esta es la rutina correcta."
+      },
+      {
+        "character_id": "char_stanley",
+        "default_name": "SAM",
+        "role": "Salesman",
+        "role_es": "Vendedor",
+        "personality": "Grumpy salesman who dislikes mornings and meetings. He only likes breaks and the end of the day.",
+        "personality_es": "Vendedor gruñón que no le gustan las mañanas ni las reuniones. Solo le gustan los descansos y el final del día.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/sam.png",
+        "intro_text": "In the morning I am tired. In the afternoon I am tired. At the end of the day I am happy.",
+        "intro_text_es": "En la mañana estoy cansado. En la tarde estoy cansado. Al final del día estoy feliz."
+      }
+    ],
+    "mentioned_but_not_appearing": []
+  },
+  "vocabulary_focus": {
+    "section_name": "Daily Time",
+    "section_name_es": "Tiempo Diario",
+    "image": "/episodes/episode_8_scene.jpg",
+    "target_words": [
+      {
+        "word": "morning",
+        "translation_es": "mañana",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 1,
+        "context_sentence": "The meeting is in the morning, but nobody is ready.",
+        "context_sentence_es": "La reunión es en la mañana, pero nadie está listo.",
+        "image_url": "/vocab/morning.jpg",
+        "usage_examples": [
+          "Dan works in the morning.",
+          "Leo talks a lot in the morning.",
+          "The office is quiet in the morning."
+        ],
+        "usage_examples_es": [
+          "Dan trabaja en la mañana.",
+          "Leo habla mucho en la mañana.",
+          "La oficina está tranquila en la mañana."
+        ]
+      },
+      {
+        "word": "afternoon",
+        "translation_es": "tarde",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 1,
+        "context_sentence": "The meeting moves to the afternoon again.",
+        "context_sentence_es": "La reunión pasa a la tarde otra vez.",
+        "image_url": "/vocab/afternoon.jpg",
+        "usage_examples": [
+          "The team works in the afternoon.",
+          "The boss eats lunch in the afternoon.",
+          "The office is loud in the afternoon."
+        ],
+        "usage_examples_es": [
+          "El equipo trabaja en la tarde.",
+          "El jefe almuerza en la tarde.",
+          "La oficina es ruidosa en la tarde."
+        ]
+      },
+      {
+        "word": "late",
+        "translation_es": "tarde (atrasado)",
+        "word_type": "adjective",
+        "word_type_es": "adjetivo",
+        "difficulty": 2,
+        "context_sentence": "The meeting is late, as always.",
+        "context_sentence_es": "La reunión está tarde, como siempre.",
+        "image_url": "/vocab/late.jpg",
+        "usage_examples": [
+          "Leo is late for the meeting.",
+          "The meeting starts late.",
+          "Everyone is late today."
+        ],
+        "usage_examples_es": [
+          "Leo llega tarde a la reunión.",
+          "La reunión empieza tarde.",
+          "Todos llegan tarde hoy."
+        ]
+      },
+      {
+        "word": "early",
+        "translation_es": "temprano",
+        "word_type": "adjective",
+        "word_type_es": "adjetivo",
+        "difficulty": 2,
+        "context_sentence": "Dan arrives early and waits.",
+        "context_sentence_es": "Dan llega temprano y espera.",
+        "image_url": "/vocab/early.jpg",
+        "usage_examples": [
+          "Dan is early at the office.",
+          "The office is empty early.",
+          "Nobody arrives early except Dan."
+        ],
+        "usage_examples_es": [
+          "Dan llega temprano a la oficina.",
+          "La oficina está vacía temprano.",
+          "Nadie llega temprano excepto Dan."
+        ]
+      },
+      {
+        "word": "now",
+        "translation_es": "ahora",
+        "word_type": "adverb",
+        "word_type_es": "adverbio",
+        "difficulty": 1,
+        "context_sentence": "Leo asks the time now again.",
+        "context_sentence_es": "Leo pregunta la hora ahora otra vez.",
+        "image_url": "/vocab/now.jpg",
+        "usage_examples": [
+          "The meeting starts now.",
+          "Leo checks the time now.",
+          "Everyone waits now."
+        ],
+        "usage_examples_es": [
+          "La reunión empieza ahora.",
+          "Leo revisa la hora ahora.",
+          "Todos esperan ahora."
+        ]
+      }
+    ],
+    "phrases": [
+      {
+        "phrase": "What time is it now?",
+        "translation_es": "¿Qué hora es ahora?",
+        "usage_context": "Used when Leo asks the time again in the office.",
+        "usage_context_es": "Se usa cuando Leo pregunta la hora otra vez en la oficina."
+      },
+      {
+        "phrase": "The meeting starts late.",
+        "translation_es": "La reunión empieza tarde.",
+        "usage_context": "Used to describe the usual office situation.",
+        "usage_context_es": "Se usa para describir la situación usual de la oficina."
+      },
+      {
+        "phrase": "I arrive early every day.",
+        "translation_es": "Llego temprano todos los días.",
+        "usage_context": "Used by Dan to talk about his routine.",
+        "usage_context_es": "La usa Dan para hablar de su rutina."
+      }
+    ]
+  },
+  "mini_story": {
+    "section_name": "Office Time",
+    "section_name_es": "Tiempo Oficina",
+    "image": "/episodes/episode_8_scene.jpg",
+    "title": "Short Story",
+    "title_es": "Historia corta",
+    "description": "A short story to practice today's topic.",
+    "description_es": "Una historia corta para practicar el tema de hoy.",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "text": {
+          "en": "In the morning at {company_name} in {city}, Dan arrives early. He organizes his desk and waits for the meeting. He does this every day.",
+          "es": "En la mañana en {company_name} en {city}, Dan llega temprano. Él organiza su escritorio y espera la reunión. Él hace esto todos los días."
+        }
+      },
+      {
+        "id": "p2",
+        "text": {
+          "en": "Leo checks the time again and again. He asks, What time is it now? Ben smiles and follows the schedule, but the meeting is late.",
+          "es": "Leo revisa la hora una y otra vez. Él pregunta, ¿Qué hora es ahora? Ben sonríe y sigue el horario, pero la reunión empieza tarde."
+        }
+      },
+      {
+        "id": "p3",
+        "text": {
+          "en": "In the afternoon, the meeting finally starts. Leo explains the plan again and repeats the same idea. Everyone listens and describes the meeting as very important.",
+          "es": "En la tarde, la reunión finalmente empieza. Leo explica el plan otra vez y repite la misma idea. Todos escuchan y describen la reunión como muy importante."
+        }
+      }
+    ]
+  },
+  "vocabulary_story": {
+    "section_name": "Daily Time",
+    "section_name_es": "Tiempo diario",
+    "image": "/episodes/episode_8_vocab.jpg",
+    "title": "Learning Basic Words",
+    "title_es": "Aprendiendo Palabras Básicas",
+    "description": "A simple story to learn today's vocabulary",
+    "description_es": "Una historia simple para aprender el vocabulario de hoy",
+    "segments": [
+      {
+        "segment_id": "vocab_morning_01",
+        "image_url": "/vocab/morning.jpg",
+        "word_focus": "morning",
+        "text": {
+          "en": "In the MORNING, people arrive at the office.",
+          "es": "En la MAÑANA, las personas llegan a la oficina."
+        },
+        "emphasis_style": "bold_uppercase"
+      },
+      {
+        "segment_id": "vocab_morning_02",
+        "image_url": "/vocab/morning.jpg",
+        "word_focus": "morning",
+        "text": {
+          "en": "The boss talks a lot in the MORNING.",
+          "es": "El jefe habla mucho en la MAÑANA."
+        }
+      },
+      {
+        "segment_id": "vocab_morning_03",
+        "image_url": "/vocab/morning.jpg",
+        "word_focus": "morning",
+        "text": {
+          "en": "Coffee is very important in the MORNING.",
+          "es": "El café es muy importante en la MAÑANA."
+        }
+      },
+      {
+        "segment_id": "vocab_afternoon_01",
+        "image_url": "/vocab/afternoon.jpg",
+        "word_focus": "afternoon",
+        "text": {
+          "en": "In the AFTERNOON, people work quietly.",
+          "es": "En la TARDE, las personas trabajan en silencio."
+        }
+      },
+      {
+        "segment_id": "vocab_afternoon_02",
+        "image_url": "/vocab/afternoon.jpg",
+        "word_focus": "afternoon",
+        "text": {
+          "en": "Meetings happen in the AFTERNOON.",
+          "es": "Las reuniones pasan en la TARDE."
+        }
+      },
+      {
+        "segment_id": "vocab_afternoon_03",
+        "image_url": "/vocab/afternoon.jpg",
+        "word_focus": "afternoon",
+        "text": {
+          "en": "Time feels slow in the AFTERNOON.",
+          "es": "El tiempo se siente lento en la TARDE."
+        }
+      },
+      {
+        "segment_id": "vocab_evening_01",
+        "image_url": "/vocab/evening.jpg",
+        "word_focus": "evening",
+        "text": {
+          "en": "In the EVENING, work ends.",
+          "es": "En la NOCHE, el trabajo termina."
+        }
+      },
+      {
+        "segment_id": "vocab_evening_02",
+        "image_url": "/vocab/evening.jpg",
+        "word_focus": "evening",
+        "text": {
+          "en": "People go home in the EVENING.",
+          "es": "Las personas van a casa en la NOCHE."
+        }
+      },
+      {
+        "segment_id": "vocab_evening_03",
+        "image_url": "/vocab/evening.jpg",
+        "word_focus": "evening",
+        "text": {
+          "en": "The office is quiet in the EVENING.",
+          "es": "La oficina está tranquila en la NOCHE."
+        }
+      },
+      {
+        "segment_id": "vocab_lunchtime_01",
+        "image_url": "/vocab/lunch_time.jpg",
+        "word_focus": "lunch time",
+        "text": {
+          "en": "At LUNCH TIME, people eat fast.",
+          "es": "A la HORA DEL ALMUERZO, las personas comen rápido."
+        }
+      },
+      {
+        "segment_id": "vocab_lunchtime_02",
+        "image_url": "/vocab/lunch_time.jpg",
+        "word_focus": "lunch time",
+        "text": {
+          "en": "Everyone is happy at LUNCH TIME.",
+          "es": "Todos están felices a la HORA DEL ALMUERZO."
+        }
+      },
+      {
+        "segment_id": "vocab_lunchtime_03",
+        "image_url": "/vocab/lunch_time.jpg",
+        "word_focus": "lunch time",
+        "text": {
+          "en": "Meetings stop at LUNCH TIME.",
+          "es": "Las reuniones paran a la HORA DEL ALMUERZO."
+        }
+      },
+      {
+        "segment_id": "vocab_endday_01",
+        "image_url": "/vocab/end_of_day.jpg",
+        "word_focus": "end of the day",
+        "text": {
+          "en": "At the END OF THE DAY, people smile.",
+          "es": "Al FINAL DEL DÍA, las personas sonríen."
+        }
+      },
+      {
+        "segment_id": "vocab_endday_02",
+        "image_url": "/vocab/end_of_day.jpg",
+        "word_focus": "end of the day",
+        "text": {
+          "en": "Work finishes at the END OF THE DAY.",
+          "es": "El trabajo termina al FINAL DEL DÍA."
+        }
+      },
+      {
+        "segment_id": "vocab_endday_03",
+        "image_url": "/vocab/end_of_day.jpg",
+        "word_focus": "end of the day",
+        "text": {
+          "en": "Everyone waits for the END OF THE DAY.",
+          "es": "Todos esperan el FINAL DEL DÍA."
+        }
+      },
+      {
+        "segment_id": "vocab_mix_01",
+        "image_url": "/vocab/morning.jpg",
+        "word_focus": "morning",
+        "text": {
+          "en": "In the MORNING, people think about LUNCH TIME.",
+          "es": "En la MAÑANA, las personas piensan en la HORA DEL ALMUERZO."
+        }
+      },
+      {
+        "segment_id": "vocab_mix_02",
+        "image_url": "/vocab/end_of_day.jpg",
+        "word_focus": "end of the day",
+        "text": {
+          "en": "In the AFTERNOON, everyone dreams about the END OF THE DAY.",
+          "es": "En la TARDE, todos sueñan con el FINAL DEL DÍA."
+        }
+      },
+      {
+        "segment_id": "vocab_summary",
+        "word_focus": null,
+        "text": {
+          "en": "Great! Now you know: MORNING, AFTERNOON, EVENING, LUNCH TIME, END OF THE DAY. Time to start the story.",
+          "es": "¡Genial! Ahora conoces: MAÑANA, TARDE, NOCHE, HORA DEL ALMUERZO, FINAL DEL DÍA. Es hora de empezar la historia."
+        }
+      }
+    ]
+  },
+  "listening_shadowing": {
+    "section_name": "Office Time",
+    "section_name_es": "Tiempo Oficina",
+    "image": "/episodes/episode_8_scene.jpg",
+    "instructions": "Listen to the line. Then repeat it aloud before the timer ends.",
+    "instructions_es": "Escucha la línea. Luego repítela en voz alta antes de que termine el tiempo.",
+    "data": [
+      {
+        "item_id": "listen_001",
+        "character_id": "char_dan",
+        "character_display_name": "DAN",
+        "text": "In the morning Dan arrives early, but the meeting is late in the afternoon now.",
+        "text_es": "En la mañana Dan llega temprano, pero la reunión está tarde en la tarde ahora.",
+        "tts_text": "In the morning Dan arrives early, but the meeting is late in the afternoon now.",
+        "tts_voice_id": "en_us_male_1",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "morning",
+          "afternoon",
+          "late",
+          "early",
+          "now"
+        ]
+      },
+      {
+        "item_id": "listen_002",
+        "character_id": "char_leo",
+        "character_display_name": "LEO",
+        "text": "Leo checks the time now; the morning plan is early, but the afternoon meeting is late.",
+        "text_es": "Leo revisa la hora ahora; el plan de la mañana es temprano, pero la reunión de la tarde está tarde.",
+        "tts_text": "Leo checks the time now; the morning plan is early, but the afternoon meeting is late.",
+        "tts_voice_id": "en_us_male_2",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 11,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "morning",
+          "afternoon",
+          "late",
+          "early",
+          "now"
+        ]
+      },
+      {
+        "item_id": "listen_003",
+        "character_id": "char_ben",
+        "character_display_name": "BEN",
+        "text": "Ben smiles now because the morning start is early and the afternoon meeting is late.",
+        "text_es": "Ben sonríe ahora porque el inicio de la mañana es temprano y la reunión de la tarde está tarde.",
+        "tts_text": "Ben smiles now because the morning start is early and the afternoon meeting is late.",
+        "tts_voice_id": "en_us_male_3",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "morning",
+          "afternoon",
+          "late",
+          "early",
+          "now"
+        ]
+      },
+      {
+        "item_id": "listen_004",
+        "character_id": "char_mia",
+        "character_display_name": "MIA",
+        "text": "Mia says now the morning desk work is early, but the afternoon meeting is late.",
+        "text_es": "Mia dice ahora que el trabajo de escritorio en la mañana es temprano, pero la reunión de la tarde está tarde.",
+        "tts_text": "Mia says now the morning desk work is early, but the afternoon meeting is late.",
+        "tts_voice_id": "en_us_female_1",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 11,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "morning",
+          "afternoon",
+          "late",
+          "early",
+          "now"
+        ]
+      },
+      {
+        "item_id": "listen_005",
+        "character_id": "char_sam",
+        "character_display_name": "SAM",
+        "text": "Sam waits now; the morning is early for work, and the afternoon meeting stays late.",
+        "text_es": "Sam espera ahora; la mañana es temprano para trabajar, y la reunión de la tarde sigue tarde.",
+        "tts_text": "Sam waits now; the morning is early for work, and the afternoon meeting stays late.",
+        "tts_voice_id": "en_us_male_4",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 11,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "morning",
+          "afternoon",
+          "late",
+          "early",
+          "now"
+        ]
+      },
+      {
+        "item_id": "listen_006",
+        "character_id": "char_ana",
+        "character_display_name": "ANA",
+        "text": "Ana says now the morning routine is early, but the afternoon schedule is late.",
+        "text_es": "Ana dice ahora que la rutina de la mañana es temprano, pero el horario de la tarde está tarde.",
+        "tts_text": "Ana says now the morning routine is early, but the afternoon schedule is late.",
+        "tts_voice_id": "en_us_female_2",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "morning",
+          "afternoon",
+          "late",
+          "early",
+          "now"
+        ]
+      },
+      {
+        "item_id": "listen_007",
+        "character_id": "char_max",
+        "character_display_name": "MAX",
+        "text": "Max laughs now because the morning start is early and the afternoon meeting is late.",
+        "text_es": "Max se ríe ahora porque el inicio de la mañana es temprano y la reunión de la tarde está tarde.",
+        "tts_text": "Max laughs now because the morning start is early and the afternoon meeting is late.",
+        "tts_voice_id": "en_us_male_5",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 11,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "morning",
+          "afternoon",
+          "late",
+          "early",
+          "now"
+        ]
+      },
+      {
+        "item_id": "listen_008",
+        "character_id": "char_ian",
+        "character_display_name": "IAN",
+        "text": "Ian notes now the morning task is early, but the afternoon plan becomes late.",
+        "text_es": "Ian anota ahora que la tarea de la mañana es temprano, pero el plan de la tarde se vuelve tarde.",
+        "tts_text": "Ian notes now the morning task is early, but the afternoon plan becomes late.",
+        "tts_voice_id": "en_us_male_6",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 11,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "morning",
+          "afternoon",
+          "late",
+          "early",
+          "now"
+        ]
+      },
+      {
+        "item_id": "listen_009",
+        "character_id": "char_ray",
+        "character_display_name": "RAY",
+        "text": "Ray sings now; the morning arrival is early and the afternoon meeting is late.",
+        "text_es": "Ray canta ahora; la llegada de la mañana es temprano y la reunión de la tarde está tarde.",
+        "tts_text": "Ray sings now; the morning arrival is early and the afternoon meeting is late.",
+        "tts_voice_id": "en_us_male_7",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "morning",
+          "afternoon",
+          "late",
+          "early",
+          "now"
+        ]
+      },
+      {
+        "item_id": "listen_010",
+        "character_id": "char_luis",
+        "character_display_name": "LUIS",
+        "text": "Luis explains now the morning plan is early, but the afternoon meeting remains late.",
+        "text_es": "Luis explica ahora que el plan de la mañana es temprano, pero la reunión de la tarde permanece tarde.",
+        "tts_text": "Luis explains now the morning plan is early, but the afternoon meeting remains late.",
+        "tts_voice_id": "en_us_male_8",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 11,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "morning",
+          "afternoon",
+          "late",
+          "early",
+          "now"
+        ]
+      }
+    ]
+  },
+  "scenes": {
+    "section_name": "Daily Routine",
+    "section_name_es": "Rutina diaria",
+    "image": "/episodes/episode_8_scene.jpg",
+    "data": [
+      {
+        "scene_id": "scene_008_001",
+        "scene_number": 1,
+        "location": "Office floor",
+        "location_es": "Área de oficinas",
+        "scene_name": "Morning arrival",
+        "scene_name_es": "Llegada por la mañana",
+        "time": "In the morning",
+        "time_es": "En la mañana",
+        "description": "The team arrives at the office. The boss is already talking about time.",
+        "description_es": "El equipo llega a la oficina. El jefe ya está hablando del tiempo.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_boss",
+            "character_display_name": "LEO",
+            "text": "Good MORNING everyone. I arrive early. Early bosses are the best bosses.",
+            "translation_es": "Buenos días a todos. Llego temprano. Los jefes que llegan temprano son los mejores jefes.",
+            "emotion": "proud_but_lying",
+            "notes": "Leo believes arriving early makes him superior.",
+            "notes_es": "Leo cree que llegar temprano lo hace superior.",
+            "highlighted_vocab": [
+              "morning"
+            ],
+            "template_vars": [
+              "boss_name"
+            ]
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_jim",
+            "character_display_name": "BEN",
+            "text": "Yes, the MORNING feels very productive. Very powerful. Very loud.",
+            "translation_es": "Sí, la mañana se siente muy productiva. Muy poderosa. Muy ruidosa.",
+            "emotion": "sarcastic",
+            "notes": "Ben pretends to agree while mocking the situation.",
+            "notes_es": "Ben finge estar de acuerdo mientras se burla de la situación.",
+            "highlighted_vocab": [
+              "morning"
+            ],
+            "template_vars": [
+              "jim_name"
+            ]
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_pam",
+            "character_display_name": "MIA",
+            "text": "In the MORNING, I answer phones and smile. This is my routine.",
+            "translation_es": "En la mañana, contesto teléfonos y sonrío. Esta es mi rutina.",
+            "emotion": "calm",
+            "notes": "Mia explains her normal routine calmly.",
+            "notes_es": "Mia explica su rutina normal con calma.",
+            "highlighted_vocab": [
+              "morning"
+            ],
+            "template_vars": [
+              "pam_name"
+            ]
+          },
+          {
+            "line_id": 4,
+            "character_id": "char_dwight",
+            "character_display_name": "DAN",
+            "text": "The MORNING is the strongest time of the day. I prepare for it.",
+            "translation_es": "La mañana es el momento más fuerte del día. Me preparo para ella.",
+            "emotion": "intense",
+            "notes": "Dan treats mornings like a serious mission.",
+            "notes_es": "Dan trata las mañanas como una misión seria.",
+            "highlighted_vocab": [
+              "morning"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 5,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "Which phrase is correct?",
+            "prompt_es": "¿Qué frase es correcta?",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "I work in the morning time every.",
+                "translation_es": "Trabajo en la mañana tiempo siempre.",
+                "points": 0,
+                "personality_impact": "friendly",
+                "vocab_used": [
+                  "morning"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "I work in the MORNING.",
+                "translation_es": "Trabajo en la mañana.",
+                "points": 10,
+                "personality_impact": "neutral"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "scene_id": "scene_008_002",
+        "scene_number": 2,
+        "location": "Conference room",
+        "location_es": "Sala de reuniones",
+        "scene_name": "Afternoon meeting",
+        "scene_name_es": "Reunión de la tarde",
+        "time": "In the afternoon",
+        "time_es": "En la tarde",
+        "description": "A meeting finally starts, much later than planned.",
+        "description_es": "Una reunión finalmente empieza, mucho más tarde de lo planeado.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_boss",
+            "character_display_name": "LEO",
+            "text": "This meeting is in the AFTERNOON because good ideas need time.",
+            "translation_es": "Esta reunión es en la tarde porque las buenas ideas necesitan tiempo.",
+            "emotion": "confident",
+            "notes": "Leo pretends the delay is part of his plan.",
+            "notes_es": "Leo finge que el retraso es parte de su plan.",
+            "highlighted_vocab": [
+              "afternoon"
+            ],
+            "template_vars": [
+              "boss_name"
+            ]
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_jim",
+            "character_display_name": "BEN",
+            "text": "Yes, the AFTERNOON meeting is very efficient. Very fast.",
+            "translation_es": "Sí, la reunión de la tarde es muy eficiente. Muy rápida.",
+            "emotion": "sarcastic",
+            "notes": "Ben jokes because the meeting is not efficient.",
+            "notes_es": "Ben bromea porque la reunión no es eficiente.",
+            "highlighted_vocab": [
+              "afternoon"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_dwight",
+            "character_display_name": "DAN",
+            "text": "I prefer meetings in the AFTERNOON. My energy is stable.",
+            "translation_es": "Prefiero reuniones en la tarde. Mi energía es estable.",
+            "emotion": "serious",
+            "notes": "Dan analyzes his energy seriously.",
+            "notes_es": "Dan analiza su energía con seriedad.",
+            "highlighted_vocab": [
+              "afternoon"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 4,
+            "character_id": "char_stanley",
+            "character_display_name": "SAM",
+            "text": "In the AFTERNOON, I want to go home.",
+            "translation_es": "En la tarde, quiero ir a casa.",
+            "emotion": "annoyed",
+            "notes": "Sam openly dislikes meetings.",
+            "notes_es": "Sam muestra abiertamente que no le gustan las reuniones.",
+            "highlighted_vocab": [
+              "afternoon"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 5,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "Which phrase is correct?",
+            "prompt_es": "¿Qué frase es correcta?",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "The meeting is in afternoon the.",
+                "translation_es": "La reunión es en tarde la.",
+                "points": 0,
+                "personality_impact": "friendly",
+                "vocab_used": [
+                  "afternoon"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "The meeting is in the AFTERNOON.",
+                "translation_es": "La reunión es en la tarde.",
+                "points": 10,
+                "personality_impact": "neutral"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "scene_id": "scene_008_003",
+        "scene_number": 3,
+        "location": "Break room",
+        "location_es": "Sala de descanso",
+        "scene_name": "Lunch time",
+        "scene_name_es": "Hora del almuerzo",
+        "time": "At lunch time",
+        "time_es": "A la hora del almuerzo",
+        "description": "Everyone finally relaxes for lunch.",
+        "description_es": "Todos finalmente se relajan para el almuerzo.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_pam",
+            "character_display_name": "MIA",
+            "text": "At LUNCH TIME, the office feels peaceful.",
+            "translation_es": "A la hora del almuerzo, la oficina se siente tranquila.",
+            "emotion": "relieved",
+            "notes": "Mia enjoys the calm moment.",
+            "notes_es": "Mia disfruta el momento de calma.",
+            "highlighted_vocab": [
+              "lunch time"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_boss",
+            "character_display_name": "LEO",
+            "text": "I eat fast at LUNCH TIME. Important bosses are always busy.",
+            "translation_es": "Como rápido a la hora del almuerzo. Los jefes importantes siempre están ocupados.",
+            "emotion": "proud",
+            "notes": "Leo brags even about eating.",
+            "notes_es": "Leo presume incluso sobre comer.",
+            "highlighted_vocab": [
+              "lunch time"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_jim",
+            "character_display_name": "BEN",
+            "text": "Yes, LUNCH TIME is very short. Very tragic.",
+            "translation_es": "Sí, la hora del almuerzo es muy corta. Muy trágica.",
+            "emotion": "dry",
+            "notes": "Ben exaggerates jokingly.",
+            "notes_es": "Ben exagera en tono de broma.",
+            "highlighted_vocab": [
+              "lunch time"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 4,
+            "character_id": "char_stanley",
+            "character_display_name": "SAM",
+            "text": "LUNCH TIME is the best time.",
+            "translation_es": "La hora del almuerzo es el mejor momento.",
+            "emotion": "happy",
+            "notes": "Food improves Sam's mood.",
+            "notes_es": "La comida mejora el humor de Sam.",
+            "highlighted_vocab": [
+              "lunch time"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 5,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "Which phrase is correct?",
+            "prompt_es": "¿Qué frase es correcta?",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "I eat in the lunch time the.",
+                "translation_es": "Como en la hora almuerzo la.",
+                "points": 0,
+                "personality_impact": "friendly",
+                "vocab_used": [
+                  "lunch time"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "I eat at LUNCH TIME.",
+                "translation_es": "Como a la hora del almuerzo.",
+                "points": 10,
+                "personality_impact": "neutral"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "scene_id": "scene_008_004",
+        "scene_number": 4,
+        "location": "Office exit",
+        "location_es": "Salida de la oficina",
+        "scene_name": "End of day",
+        "scene_name_es": "Final del día",
+        "time": "In the evening",
+        "time_es": "En la noche",
+        "description": "The workday finally ends.",
+        "description_es": "La jornada laboral finalmente termina.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_jim",
+            "character_display_name": "BEN",
+            "text": "In the EVENING, I remember happiness.",
+            "translation_es": "En la noche, recuerdo la felicidad.",
+            "emotion": "relieved",
+            "notes": "Ben jokes about freedom after work.",
+            "notes_es": "Ben bromea sobre la libertad después del trabajo.",
+            "highlighted_vocab": [
+              "evening"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_pam",
+            "character_display_name": "MIA",
+            "text": "At the END OF THE DAY, I go home and rest.",
+            "translation_es": "Al final del día, voy a casa y descanso.",
+            "emotion": "content",
+            "notes": "A calm and normal ending.",
+            "notes_es": "Un final tranquilo y normal.",
+            "highlighted_vocab": [
+              "end of the day"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_boss",
+            "character_display_name": "LEO",
+            "text": "The END OF THE DAY is sad. I miss my employees already.",
+            "translation_es": "El final del día es triste. Ya extraño a mis empleados.",
+            "emotion": "dramatic",
+            "notes": "Leo pretends to be emotional.",
+            "notes_es": "Leo finge ser emocional.",
+            "highlighted_vocab": [
+              "end of the day"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 4,
+            "character_id": "char_stanley",
+            "character_display_name": "SAM",
+            "text": "At the END OF THE DAY, I am free.",
+            "translation_es": "Al final del día, soy libre.",
+            "emotion": "happy",
+            "notes": "Sam is honest about leaving.",
+            "notes_es": "Sam es honesto sobre irse.",
+            "highlighted_vocab": [
+              "end of the day"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 5,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "Which phrase is correct?",
+            "prompt_es": "¿Qué frase es correcta?",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "I am happy in the end day.",
+                "translation_es": "Estoy feliz en el final día.",
+                "points": 0,
+                "personality_impact": "friendly",
+                "vocab_used": [
+                  "end of the day"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "I am happy at the END OF THE DAY.",
+                "translation_es": "Estoy feliz al final del día.",
+                "points": 10,
+                "personality_impact": "neutral"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "games": {
+    "section_name": "Office Time",
+    "section_name_es": "Tiempo Oficina",
+    "image": "/episodes/episode_8_scene.jpg",
+    "data": [
+      {
+        "game_id": "ep8_game_01",
+        "game_type": "matching",
+        "title": "Match the Words!",
+        "title_es": "¡Empareja las Palabras!",
+        "instructions": "Match each English word with its Spanish meaning",
+        "instructions_es": "Empareja cada palabra en inglés con su significado en español",
+        "optional": true,
+        "unlocked_after_episode": true,
+        "time_limit_seconds": 90,
+        "xp_reward": 25,
+        "content": {
+          "items": [
+            {
+              "id": 1,
+              "left": "morning",
+              "right": "mañana",
+              "image_url": "/vocab/morning.jpg"
+            },
+            {
+              "id": 2,
+              "left": "afternoon",
+              "right": "tarde",
+              "image_url": "/vocab/afternoon.jpg"
+            },
+            {
+              "id": 3,
+              "left": "late",
+              "right": "tarde (atrasado)",
+              "image_url": "/vocab/late.jpg"
+            },
+            {
+              "id": 4,
+              "left": "early",
+              "right": "temprano",
+              "image_url": "/vocab/early.jpg"
+            },
+            {
+              "id": 5,
+              "left": "now",
+              "right": "ahora",
+              "image_url": "/vocab/now.jpg"
+            },
+            {
+              "id": 6,
+              "left": "meeting",
+              "right": "reunión",
+              "image_url": "/vocab/meeting.jpg"
+            },
+            {
+              "id": 7,
+              "left": "office",
+              "right": "oficina",
+              "image_url": "/vocab/office.jpg"
+            },
+            {
+              "id": 8,
+              "left": "time",
+              "right": "hora",
+              "image_url": "/vocab/time.jpg"
+            }
+          ]
+        },
+        "settings": {
+          "shuffle": true,
+          "show_images": true
+        }
+      },
+      {
+        "game_id": "ep8_game_02",
+        "game_type": "fill_blank",
+        "title": "Complete the Sentences",
+        "title_es": "Completa las Oraciones",
+        "instructions": "Fill in the missing words from the episode",
+        "instructions_es": "Completa las palabras que faltan del episodio",
+        "optional": true,
+        "unlocked_after_episode": true,
+        "time_limit_seconds": 150,
+        "xp_reward": 35,
+        "content": {
+          "items": [
+            {
+              "id": 1,
+              "sentence": "{boss_name} checks the time _____ again.",
+              "sentence_es": "{boss_name} revisa la hora _____ otra vez.",
+              "answer": "now",
+              "options": [
+                "now",
+                "early",
+                "afternoon"
+              ],
+              "hint": "It means at this moment.",
+              "hint_es": "Significa en este momento.",
+              "character": "{boss_name}"
+            },
+            {
+              "id": 2,
+              "sentence": "Dan arrives _____ to the office.",
+              "sentence_es": "Dan llega _____ a la oficina.",
+              "answer": "early",
+              "options": [
+                "early",
+                "late",
+                "now"
+              ],
+              "hint": "It is before the normal time.",
+              "hint_es": "Es antes de la hora normal.",
+              "character": "Dan"
+            },
+            {
+              "id": 3,
+              "sentence": "The meeting is _____ today.",
+              "sentence_es": "La reunión está _____ hoy.",
+              "answer": "late",
+              "options": [
+                "late",
+                "morning",
+                "early"
+              ],
+              "hint": "It is after the planned time.",
+              "hint_es": "Es después de la hora planeada.",
+              "character": "{jim_name}"
+            },
+            {
+              "id": 4,
+              "sentence": "In the _____, the office is quiet.",
+              "sentence_es": "En la _____, la oficina está tranquila.",
+              "answer": "morning",
+              "options": [
+                "morning",
+                "afternoon",
+                "now"
+              ],
+              "hint": "It is the start of the day.",
+              "hint_es": "Es el inicio del día.",
+              "character": "{pam_name}"
+            },
+            {
+              "id": 5,
+              "sentence": "In the _____, the meeting starts.",
+              "sentence_es": "En la _____, la reunión empieza.",
+              "answer": "afternoon",
+              "options": [
+                "afternoon",
+                "morning",
+                "early"
+              ],
+              "hint": "It is after lunch time.",
+              "hint_es": "Es después del almuerzo.",
+              "character": "{boss_name}"
+            },
+            {
+              "id": 6,
+              "sentence": "{boss_name} says the plan is _____, but it changes.",
+              "sentence_es": "{boss_name} dice que el plan es _____, pero cambia.",
+              "answer": "early",
+              "options": [
+                "early",
+                "late",
+                "afternoon"
+              ],
+              "hint": "It is before the usual time.",
+              "hint_es": "Es antes de la hora usual.",
+              "character": "{boss_name}"
+            },
+            {
+              "id": 7,
+              "sentence": "Everyone waits _____ for the meeting.",
+              "sentence_es": "Todos esperan _____ la reunión.",
+              "answer": "now",
+              "options": [
+                "now",
+                "morning",
+                "early"
+              ],
+              "hint": "It is happening at this moment.",
+              "hint_es": "Sucede en este momento.",
+              "character": "{jim_name}"
+            }
+          ]
+        }
+      },
+      {
+        "game_id": "ep8_game_03",
+        "game_type": "multiple_choice",
+        "title": "Episode Quiz",
+        "title_es": "Quiz del Episodio",
+        "instructions": "Answer questions about the episode",
+        "instructions_es": "Responde preguntas sobre el episodio",
+        "optional": true,
+        "unlocked_after_episode": true,
+        "time_limit_seconds": 180,
+        "xp_reward": 45,
+        "content": {
+          "items": [
+            {
+              "id": 1,
+              "question": "Who arrives early at the office?",
+              "question_es": "¿Quién llega temprano a la oficina?",
+              "options": [
+                "Dan",
+                "{boss_name}",
+                "{pam_name}",
+                "{jim_name}"
+              ],
+              "options_es": [
+                "Dan",
+                "{boss_name}",
+                "{pam_name}",
+                "{jim_name}"
+              ],
+              "correct_answer": 0,
+              "explanation": "Dan arrives early every day.",
+              "explanation_es": "Dan llega temprano todos los días."
+            },
+            {
+              "id": 2,
+              "question": "When does the meeting start?",
+              "question_es": "¿Cuándo empieza la reunión?",
+              "options": [
+                "In the morning",
+                "In the afternoon",
+                "At night",
+                "Never"
+              ],
+              "options_es": [
+                "En la mañana",
+                "En la tarde",
+                "En la noche",
+                "Nunca"
+              ],
+              "correct_answer": 1,
+              "explanation": "The meeting starts in the afternoon.",
+              "explanation_es": "La reunión empieza en la tarde."
+            },
+            {
+              "id": 3,
+              "question": "How is the meeting time described?",
+              "question_es": "¿Cómo se describe la hora de la reunión?",
+              "options": [
+                "Early",
+                "Late",
+                "Perfect",
+                "Secret"
+              ],
+              "options_es": [
+                "Temprana",
+                "Tarde",
+                "Perfecta",
+                "Secreta"
+              ],
+              "correct_answer": 1,
+              "explanation": "The meeting is late.",
+              "explanation_es": "La reunión está tarde."
+            },
+            {
+              "id": 4,
+              "question": "What does {boss_name} do many times?",
+              "question_es": "¿Qué hace {boss_name} muchas veces?",
+              "options": [
+                "Checks the time",
+                "Leaves early",
+                "Closes the office",
+                "Sleeps"
+              ],
+              "options_es": [
+                "Revisa la hora",
+                "Se va temprano",
+                "Cierra la oficina",
+                "Duerme"
+              ],
+              "correct_answer": 0,
+              "explanation": "{boss_name} checks the time many times.",
+              "explanation_es": "{boss_name} revisa la hora muchas veces."
+            },
+            {
+              "id": 5,
+              "question": "Which word means at this moment?",
+              "question_es": "¿Qué palabra significa en este momento?",
+              "options": [
+                "Now",
+                "Early",
+                "Late",
+                "Afternoon"
+              ],
+              "options_es": [
+                "Ahora",
+                "Temprano",
+                "Tarde",
+                "Tarde"
+              ],
+              "correct_answer": 0,
+              "explanation": "Now means at this moment.",
+              "explanation_es": "Now significa en este momento."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "content_wrappers": {
+    "section_name": "Daily Routine",
+    "section_name_es": "Rutina diaria",
+    "image": "/episodes/episode_8_scene.jpg",
+    "intro_text": {
+      "en": "Welcome to {company_name}. It is a normal office with normal people. Very normal. Then {boss_name} talks about time like he invented the clock.",
+      "es": "Bienvenido a {company_name}. Es una oficina normal con gente normal. Muy normal. Luego {boss_name} habla del tiempo como si hubiera inventado el reloj."
+    },
+    "transition": {
+      "en": "Great. Now you know the words for MORNING, AFTERNOON, EVENING, LUNCH TIME, and END OF THE DAY. Now we use them at work, where time moves slowly in meetings and very fast at lunch.",
+      "es": "Genial. Ahora conoces las palabras para la mañana, la tarde, la noche, la hora del almuerzo y el final del día. Ahora las usamos en el trabajo, donde el tiempo va muy lento en las reuniones y muy rápido en el almuerzo."
+    },
+    "conclusion": {
+      "en": "Good job. You survived the day at {company_name}. You learned time expressions and you saw the office routine. In the morning, people arrive. In the afternoon, the meeting happens. At lunch time, everyone becomes happy. In the evening, everyone escapes. At the end of the day, {boss_name} still wants one more meeting.",
+      "es": "Buen trabajo. Sobreviviste el día en {company_name}. Aprendiste expresiones de tiempo y viste la rutina de la oficina. En la mañana, la gente llega. En la tarde, pasa la reunión. A la hora del almuerzo, todos se vuelven felices. En la noche, todos se escapan. Al final del día, {boss_name} todavía quiere una reunión más."
+    },
+    "reflection_prompt": {
+      "question_en": "Write one sentence using the word 'MORNING' or 'END OF THE DAY'.",
+      "question_es": "Escribe una oración usando la palabra 'MAÑANA' o 'FINAL DEL DÍA'.",
+      "type": "free_text",
+      "optional": true,
+      "max_length": 100,
+      "vocab_practice": [
+        "morning",
+        "end of the day"
+      ]
+    }
+  },
+  "next_episode_preview": {
+    "section_name": "Office Habits",
+    "section_name_es": "Hábitos Oficina",
+    "image": "/episodes/episode_9_scene.jpg",
+    "preview_text_en": "Ben counts how often things happen, Leo loves to say always, and the office discovers that nothing is ever on time.",
+    "preview_text_es": "Ben cuenta con qué frecuencia pasan las cosas, Leo ama decir siempre, y la oficina descubre que nada está nunca a tiempo.",
+    "teaser_image": "/previews/ep_009.jpg"
+  },
+  "progression": {
+    "section_name": "Office Time",
+    "section_name_es": "Tiempo Oficina",
+    "image": "/episodes/episode_8_scene.jpg",
+    "xp_earned_base": 50,
+    "xp_bonus_conditions": [
+      {
+        "condition": "complete_all_games",
+        "bonus_xp": 25
+      },
+      {
+        "condition": "perfect_choices",
+        "bonus_xp": 15
+      },
+      {
+        "condition": "write_reflection",
+        "bonus_xp": 10
+      }
+    ],
+    "unlocks": [
+      {
+        "type": "character",
+        "character_ids": [
+          "char_leo",
+          "char_dan",
+          "char_ben",
+          "char_mia",
+          "char_sam",
+          "char_ana",
+          "char_max",
+          "char_ian",
+          "char_ray",
+          "char_luis"
+        ]
+      },
+      {
+        "type": "location",
+        "location_ids": [
+          "office_floor",
+          "meeting_room"
+        ]
+      }
+    ],
+    "achievements": [
+      {
+        "achievement_id": "time_keeper_01",
+        "name": "Office Time Keeper",
+        "name_es": "Guardián del Tiempo",
+        "description": "You understand early, late, morning, afternoon, and now in a busy office day.",
+        "description_es": "Comprendes temprano, tarde, mañana, tarde y ahora en un día ocupado de oficina.",
+        "icon": "/achievements/time_keeper_01.png",
+        "image": "/achievements/time_keeper_01_banner.jpg"
+      }
+    ]
+  },
+  "metadata": {
+    "section_name": "Daily Time",
+    "section_name_es": "Tiempo diario",
+    "image": "/episodes/episode_8_scene.jpg",
+    "created_date": "2026-01-30",
+    "version": "1.0",
+    "author": "Course Team",
+    "content_level": "beginner",
+    "estimated_words": 420,
+    "estimated_unique_vocabulary": 45,
+    "structure_type": "vocab_story_then_main_story"
+  }
+}

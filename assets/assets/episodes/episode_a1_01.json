@@ -1,0 +1,1360 @@
+{
+  "city_settings": {
+    "default_city": "Scranton",
+    "user_selected_city": null,
+    "localizable": true,
+    "city_specific_content": {
+      "office_name": "{company_name} {city}",
+      "default_company_name": "Dunder Mifflin",
+      "office_type": "Paper Company",
+      "office_type_es": "Compañía de Papel"
+    }
+  },
+  "episode_metadata": {
+    "section_name": "My Desk",
+    "section_name_es": "Mi Escritorio",
+    "image": "/episodes/episode_1_scene.jpg",
+    "episode_number": 1,
+    "episode_id": "ep_001",
+    "title": "This Is My Desk",
+    "title_es": "Este Es Mi Escritorio",
+    "description": "It is the first day at {company_name}. {player_name} learns what is theirs, what is not, and why {boss_name} thinks every desk is his desk.",
+    "description_es": "Es el primer día en {company_name}. {player_name} aprende qué cosas son suyas, cuáles no, y por qué {boss_name} cree que todos los escritorios son suyos.",
+    "internal_level": "A1",
+    "estimated_time_minutes": 12,
+    "unlock_requirements": null,
+    "tags": [
+      "office_life",
+      "first_day",
+      "possessives",
+      "introductions"
+    ],
+    "previous_episode": null,
+    "next_episode": "ep_002"
+  },
+  "characters": {
+    "section_name": "The Team",
+    "section_name_es": "El Equipo",
+    "image": "/episodes/episode_1_scene.jpg",
+    "appearing_in_episode": [
+      {
+        "character_id": "char_boss",
+        "default_name": "LEO",
+        "role": "Regional manager",
+        "role_es": "Gerente regional",
+        "personality": "Enthusiastic boss who wants to be loved and admired by everyone",
+        "personality_es": "Jefe entusiasta que quiere ser amado y admirado por todos",
+        "first_appearance": true,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/leo.png",
+        "intro_text": "Welcome. I am LEO. I am the boss. The best boss. This is my office and this is my paper family.",
+        "intro_text_es": "Bienvenido. Yo soy LEO. Yo soy el jefe. El mejor jefe. Esta es mi oficina y esta es mi familia de papel."
+      },
+      {
+        "character_id": "char_jim",
+        "default_name": "BEN",
+        "role": "Salesman",
+        "role_es": "Vendedor",
+        "personality": "Calm salesman with sarcastic humor and a relaxed attitude",
+        "personality_es": "Vendedor tranquilo con humor sarcástico y actitud relajada",
+        "first_appearance": true,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/ben.png",
+        "intro_text": "Hi. I am BEN. This is my desk. This is my job. Yes, it is a very serious office.",
+        "intro_text_es": "Hola. Yo soy BEN. Este es mi escritorio. Este es mi trabajo. Sí, es una oficina muy seria."
+      },
+      {
+        "character_id": "char_pam",
+        "default_name": "MIA",
+        "role": "Receptionist",
+        "role_es": "Recepcionista",
+        "personality": "Kind and helpful receptionist who observes the office chaos",
+        "personality_es": "Recepcionista amable y servicial que observa el caos de la oficina",
+        "first_appearance": true,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/mia.png",
+        "intro_text": "Hello. I am MIA. I sit at this desk. I help people. Do not worry. The office is always like this.",
+        "intro_text_es": "Hola. Yo soy MIA. Yo me siento en este escritorio. Yo ayudo a las personas. No te preocupes. La oficina siempre es así."
+      },
+      {
+        "character_id": "char_dwight",
+        "default_name": "DAN",
+        "role": "Assistant to the regional manager",
+        "role_es": "Asistente del gerente regional",
+        "personality": "Intense rule follower who takes his job very seriously",
+        "personality_es": "Seguidor estricto de reglas que toma su trabajo muy en serio",
+        "first_appearance": true,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/dan.png",
+        "intro_text": "I am DAN. This is my office. These are the rules. I watch everything. I am ready.",
+        "intro_text_es": "Yo soy DAN. Esta es mi oficina. Estas son las reglas. Yo observo todo. Yo estoy listo."
+      }
+    ],
+    "mentioned_but_not_appearing": []
+  },
+  "vocabulary_focus": {
+    "section_name": "My Things",
+    "section_name_es": "Mis Cosas",
+    "image": "/episodes/episode_1_scene.jpg",
+    "target_words": [
+      {
+        "word": "desk",
+        "translation_es": "escritorio",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 1,
+        "context_sentence": "This is my desk at {company_name}.",
+        "context_sentence_es": "Este es mi escritorio en {company_name}.",
+        "image_url": "/vocab/desk.jpg",
+        "usage_examples": [
+          "My desk is small.",
+          "This desk is clean.",
+          "The desk is near the window."
+        ],
+        "usage_examples_es": [
+          "Mi escritorio es pequeño.",
+          "Este escritorio está limpio.",
+          "El escritorio está cerca de la ventana."
+        ]
+      },
+      {
+        "word": "chair",
+        "translation_es": "silla",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 1,
+        "context_sentence": "That is my chair.",
+        "context_sentence_es": "Esa es mi silla.",
+        "image_url": "/vocab/chair.jpg",
+        "usage_examples": [
+          "My chair is old.",
+          "The chair is comfortable.",
+          "This chair is not my chair."
+        ],
+        "usage_examples_es": [
+          "Mi silla es vieja.",
+          "La silla es cómoda.",
+          "Esta silla no es mi silla."
+        ]
+      },
+      {
+        "word": "computer",
+        "translation_es": "computador",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 1,
+        "context_sentence": "This is my computer.",
+        "context_sentence_es": "Este es mi computador.",
+        "image_url": "/vocab/computer.jpg",
+        "usage_examples": [
+          "My computer is on the desk.",
+          "The computer is new.",
+          "That computer is not mine."
+        ],
+        "usage_examples_es": [
+          "Mi computador está en el escritorio.",
+          "El computador es nuevo.",
+          "Ese computador no es mío."
+        ]
+      },
+      {
+        "word": "name",
+        "translation_es": "nombre",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 1,
+        "context_sentence": "My name is on the desk.",
+        "context_sentence_es": "Mi nombre está en el escritorio.",
+        "image_url": "/vocab/name.jpg",
+        "usage_examples": [
+          "My name is {player_name}.",
+          "His name is on the paper.",
+          "Her name is correct."
+        ],
+        "usage_examples_es": [
+          "Mi nombre es {player_name}.",
+          "Su nombre está en el papel.",
+          "Su nombre es correcto."
+        ]
+      },
+      {
+        "word": "office",
+        "translation_es": "oficina",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 1,
+        "context_sentence": "This is my office.",
+        "context_sentence_es": "Esta es mi oficina.",
+        "image_url": "/vocab/office.jpg",
+        "usage_examples": [
+          "The office is quiet.",
+          "My office is small.",
+          "This office is very busy."
+        ],
+        "usage_examples_es": [
+          "La oficina está tranquila.",
+          "Mi oficina es pequeña.",
+          "Esta oficina está muy ocupada."
+        ]
+      }
+    ],
+    "phrases": [
+      {
+        "phrase": "This is my desk",
+        "translation_es": "Este es mi escritorio",
+        "usage_context": "Used to identify personal workspace.",
+        "usage_context_es": "Se usa para identificar el espacio de trabajo personal."
+      },
+      {
+        "phrase": "That is his chair",
+        "translation_es": "Esa es su silla",
+        "usage_context": "Used to talk about another person’s object.",
+        "usage_context_es": "Se usa para hablar del objeto de otra persona."
+      },
+      {
+        "phrase": "This office is mine",
+        "translation_es": "Esta oficina es mía",
+        "usage_context": "Used humorously when someone claims ownership.",
+        "usage_context_es": "Se usa de forma humorística cuando alguien reclama propiedad."
+      }
+    ]
+  },
+  "vocabulary_story": {
+    "section_name": "Office Words",
+    "section_name_es": "Palabras Oficina",
+    "image": "/episodes/episode_1_vocab.jpg",
+    "title": "Learning Basic Words",
+    "title_es": "Aprendiendo Palabras Básicas",
+    "description": "A simple story to learn today's vocabulary",
+    "description_es": "Una historia simple para aprender el vocabulario de hoy",
+    "segments": [
+      {
+        "segment_id": "vocab_office_01",
+        "image_url": "/vocab/office.jpg",
+        "word_focus": "office",
+        "text": {
+          "en": "This is the OFFICE.",
+          "es": "Esta es la OFICINA."
+        },
+        "emphasis_style": "bold_uppercase"
+      },
+      {
+        "segment_id": "vocab_office_02",
+        "image_url": "/vocab/office.jpg",
+        "word_focus": "office",
+        "text": {
+          "en": "The OFFICE is big.",
+          "es": "La OFICINA es grande."
+        }
+      },
+      {
+        "segment_id": "vocab_office_03",
+        "image_url": "/vocab/office.jpg",
+        "word_focus": "office",
+        "text": {
+          "en": "This OFFICE is very serious.",
+          "es": "Esta OFICINA es muy seria."
+        }
+      },
+      {
+        "segment_id": "vocab_desk_01",
+        "image_url": "/vocab/desk.jpg",
+        "word_focus": "desk",
+        "text": {
+          "en": "This is my DESK.",
+          "es": "Este es mi ESCRITORIO."
+        }
+      },
+      {
+        "segment_id": "vocab_desk_02",
+        "image_url": "/vocab/desk.jpg",
+        "word_focus": "desk",
+        "text": {
+          "en": "The DESK is small.",
+          "es": "El ESCRITORIO es pequeño."
+        }
+      },
+      {
+        "segment_id": "vocab_desk_03",
+        "image_url": "/vocab/desk.jpg",
+        "word_focus": "desk",
+        "text": {
+          "en": "The DESK is in the office.",
+          "es": "El ESCRITORIO está en la oficina."
+        }
+      },
+      {
+        "segment_id": "vocab_boss_01",
+        "image_url": "/vocab/boss.jpg",
+        "word_focus": "boss",
+        "text": {
+          "en": "He is the BOSS.",
+          "es": "Él es el JEFE."
+        }
+      },
+      {
+        "segment_id": "vocab_boss_02",
+        "image_url": "/vocab/boss.jpg",
+        "word_focus": "boss",
+        "text": {
+          "en": "The BOSS is happy.",
+          "es": "El JEFE está feliz."
+        }
+      },
+      {
+        "segment_id": "vocab_boss_03",
+        "image_url": "/vocab/boss.jpg",
+        "word_focus": "boss",
+        "text": {
+          "en": "The BOSS loves this office.",
+          "es": "El JEFE ama esta oficina."
+        }
+      },
+      {
+        "segment_id": "vocab_meeting_01",
+        "image_url": "/vocab/meeting.jpg",
+        "word_focus": "meeting",
+        "text": {
+          "en": "This is a MEETING.",
+          "es": "Esta es una REUNIÓN."
+        }
+      },
+      {
+        "segment_id": "vocab_meeting_02",
+        "image_url": "/vocab/meeting.jpg",
+        "word_focus": "meeting",
+        "text": {
+          "en": "The MEETING is long.",
+          "es": "La REUNIÓN es larga."
+        }
+      },
+      {
+        "segment_id": "vocab_meeting_03",
+        "image_url": "/vocab/meeting.jpg",
+        "word_focus": "meeting",
+        "text": {
+          "en": "The MEETING is very important.",
+          "es": "La REUNIÓN es muy importante."
+        }
+      },
+      {
+        "segment_id": "vocab_paper_01",
+        "image_url": "/vocab/paper.jpg",
+        "word_focus": "paper",
+        "text": {
+          "en": "This is PAPER.",
+          "es": "Esto es PAPEL."
+        }
+      },
+      {
+        "segment_id": "vocab_paper_02",
+        "image_url": "/vocab/paper.jpg",
+        "word_focus": "paper",
+        "text": {
+          "en": "The PAPER is white.",
+          "es": "El PAPEL es blanco."
+        }
+      },
+      {
+        "segment_id": "vocab_paper_03",
+        "image_url": "/vocab/paper.jpg",
+        "word_focus": "paper",
+        "text": {
+          "en": "The office has PAPER.",
+          "es": "La oficina tiene PAPEL."
+        }
+      },
+      {
+        "segment_id": "vocab_mix_01",
+        "image_url": "/vocab/office.jpg",
+        "word_focus": "office",
+        "text": {
+          "en": "The OFFICE has a DESK.",
+          "es": "La OFICINA tiene un ESCRITORIO."
+        }
+      },
+      {
+        "segment_id": "vocab_mix_02",
+        "image_url": "/vocab/meeting.jpg",
+        "word_focus": "meeting",
+        "text": {
+          "en": "The MEETING is with the BOSS.",
+          "es": "La REUNIÓN es con el JEFE."
+        }
+      },
+      {
+        "segment_id": "vocab_summary",
+        "word_focus": null,
+        "text": {
+          "en": "Great! Now you know: OFFICE, DESK, BOSS, MEETING, PAPER. This office is ready. Very ready.",
+          "es": "¡Genial! Ahora conoces: OFICINA, ESCRITORIO, JEFE, REUNIÓN, PAPEL. Esta oficina está lista. Muy lista."
+        }
+      }
+    ]
+  },
+  "mini_story": {
+    "section_name": "My Desk",
+    "section_name_es": "Mi Escritorio",
+    "image": "/episodes/episode_1_scene.jpg",
+    "title": "Short Story",
+    "title_es": "Historia corta",
+    "description": "A short story to practice today's topic.",
+    "description_es": "Una historia corta para practicar el tema de hoy.",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "text": {
+          "en": "It is the first day at Simple Paper in Aurora. {player_name} walks into the office and sees a desk. Leo smiles and says this is his office.",
+          "es": "Es el primer día en Simple Paper en Aurora. {player_name} entra a la oficina y ve un escritorio. Leo sonríe y dice que esta es su oficina."
+        }
+      },
+      {
+        "id": "p2",
+        "text": {
+          "en": "Mia shows the desk to {player_name}. She says this is your desk and this is your chair. Ben laughs quietly and looks at the computer.",
+          "es": "Mia muestra el escritorio a {player_name}. Ella dice este es tu escritorio y esta es tu silla. Ben se ríe en silencio y mira el computador."
+        }
+      },
+      {
+        "id": "p3",
+        "text": {
+          "en": "Leo points at the desk and says this is my desk too. Everyone looks confused but polite. It is a very normal first day at the office.",
+          "es": "Leo señala el escritorio y dice que este es su escritorio también. Todos se ven confundidos pero educados. Es un primer día muy normal en la oficina."
+        }
+      }
+    ]
+  },
+  "listening_shadowing": {
+    "section_name": "Say It",
+    "section_name_es": "Dilo",
+    "image": "/episodes/episode_1_scene.jpg",
+    "instructions": "Listen to the line. Then repeat it aloud before the timer ends.",
+    "instructions_es": "Escucha la línea. Luego repítela en voz alta antes de que termine el tiempo.",
+    "data": [
+      {
+        "item_id": "listen_001",
+        "character_id": "char_pam",
+        "character_display_name": "MIA",
+        "text": "This OFFICE has a DESK, PAPER, a MEETING, and the BOSS is very proud.",
+        "text_es": "Esta OFICINA tiene un ESCRITORIO, PAPEL, una REUNIÓN y el JEFE está muy orgulloso.",
+        "tts_text": "This OFFICE has a DESK, PAPER, a MEETING, and the BOSS is very proud.",
+        "tts_voice_id": "en_us_female_1",
+        "estimated_audio_duration_seconds": 5,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "OFFICE",
+          "DESK",
+          "PAPER",
+          "MEETING",
+          "BOSS"
+        ]
+      },
+      {
+        "item_id": "listen_002",
+        "character_id": "char_boss",
+        "character_display_name": "LEO",
+        "text": "The OFFICE is mine, the DESK is mine, the PAPER is mine, and the MEETING is mine, says the BOSS.",
+        "text_es": "La OFICINA es mía, el ESCRITORIO es mío, el PAPEL es mío y la REUNIÓN es mía, dice el JEFE.",
+        "tts_text": "The OFFICE is mine, the DESK is mine, the PAPER is mine, and the MEETING is mine, says the BOSS.",
+        "tts_voice_id": "en_us_male_1",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 12,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "OFFICE",
+          "DESK",
+          "PAPER",
+          "MEETING",
+          "BOSS"
+        ]
+      },
+      {
+        "item_id": "listen_003",
+        "character_id": "char_jim",
+        "character_display_name": "BEN",
+        "text": "In this OFFICE, my DESK has PAPER, the BOSS calls a MEETING, and everyone smiles.",
+        "text_es": "En esta OFICINA, mi ESCRITORIO tiene PAPEL, el JEFE llama a una REUNIÓN y todos sonríen.",
+        "tts_text": "In this OFFICE, my DESK has PAPER, the BOSS calls a MEETING, and everyone smiles.",
+        "tts_voice_id": "en_us_male_2",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 12,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "OFFICE",
+          "DESK",
+          "PAPER",
+          "MEETING",
+          "BOSS"
+        ]
+      },
+      {
+        "item_id": "listen_004",
+        "character_id": "char_dwight",
+        "character_display_name": "DAN",
+        "text": "The OFFICE is ready, the DESK is clean, the PAPER is perfect, the MEETING is serious, and the BOSS watches.",
+        "text_es": "La OFICINA está lista, el ESCRITORIO está limpio, el PAPEL es perfecto, la REUNIÓN es seria y el JEFE observa.",
+        "tts_text": "The OFFICE is ready, the DESK is clean, the PAPER is perfect, the MEETING is serious, and the BOSS watches.",
+        "tts_voice_id": "en_us_male_3",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 14,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "OFFICE",
+          "DESK",
+          "PAPER",
+          "MEETING",
+          "BOSS"
+        ]
+      },
+      {
+        "item_id": "listen_005",
+        "character_id": "char_pam",
+        "character_display_name": "MIA",
+        "text": "Every OFFICE has a DESK with PAPER, a long MEETING, and a happy BOSS.",
+        "text_es": "Cada OFICINA tiene un ESCRITORIO con PAPEL, una REUNIÓN larga y un JEFE feliz.",
+        "tts_text": "Every OFFICE has a DESK with PAPER, a long MEETING, and a happy BOSS.",
+        "tts_voice_id": "en_us_female_1",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 12,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "OFFICE",
+          "DESK",
+          "PAPER",
+          "MEETING",
+          "BOSS"
+        ]
+      },
+      {
+        "item_id": "listen_006",
+        "character_id": "char_boss",
+        "character_display_name": "LEO",
+        "text": "This OFFICE is great because the DESK has PAPER and the MEETING has the best BOSS.",
+        "text_es": "Esta OFICINA es genial porque el ESCRITORIO tiene PAPEL y la REUNIÓN tiene al mejor JEFE.",
+        "tts_text": "This OFFICE is great because the DESK has PAPER and the MEETING has the best BOSS.",
+        "tts_voice_id": "en_us_male_1",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 12,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "OFFICE",
+          "DESK",
+          "PAPER",
+          "MEETING",
+          "BOSS"
+        ]
+      },
+      {
+        "item_id": "listen_007",
+        "character_id": "char_jim",
+        "character_display_name": "BEN",
+        "text": "The OFFICE feels calm, but the DESK shakes when the BOSS starts the MEETING with PAPER.",
+        "text_es": "La OFICINA se siente tranquila, pero el ESCRITORIO tiembla cuando el JEFE inicia la REUNIÓN con PAPEL.",
+        "tts_text": "The OFFICE feels calm, but the DESK shakes when the BOSS starts the MEETING with PAPER.",
+        "tts_voice_id": "en_us_male_2",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 14,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "OFFICE",
+          "DESK",
+          "PAPER",
+          "MEETING",
+          "BOSS"
+        ]
+      },
+      {
+        "item_id": "listen_008",
+        "character_id": "char_dwight",
+        "character_display_name": "DAN",
+        "text": "This OFFICE is controlled, the DESK is ready, the PAPER is counted, the MEETING starts, the BOSS approves.",
+        "text_es": "Esta OFICINA está controlada, el ESCRITORIO está listo, el PAPEL está contado, la REUNIÓN inicia, el JEFE aprueba.",
+        "tts_text": "This OFFICE is controlled, the DESK is ready, the PAPER is counted, the MEETING starts, the BOSS approves.",
+        "tts_voice_id": "en_us_male_3",
+        "estimated_audio_duration_seconds": 8,
+        "repeat_timer_seconds": 16,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "OFFICE",
+          "DESK",
+          "PAPER",
+          "MEETING",
+          "BOSS"
+        ]
+      },
+      {
+        "item_id": "listen_009",
+        "character_id": "char_pam",
+        "character_display_name": "MIA",
+        "text": "In the OFFICE, your DESK has PAPER, the BOSS plans a MEETING, and coffee helps.",
+        "text_es": "En la OFICINA, tu ESCRITORIO tiene PAPEL, el JEFE planea una REUNIÓN y el café ayuda.",
+        "tts_text": "In the OFFICE, your DESK has PAPER, the BOSS plans a MEETING, and coffee helps.",
+        "tts_voice_id": "en_us_female_1",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 14,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "OFFICE",
+          "DESK",
+          "PAPER",
+          "MEETING",
+          "BOSS"
+        ]
+      },
+      {
+        "item_id": "listen_010",
+        "character_id": "char_boss",
+        "character_display_name": "LEO",
+        "text": "I love this OFFICE because every DESK has PAPER and every MEETING has the BOSS.",
+        "text_es": "Yo amo esta OFICINA porque cada ESCRITORIO tiene PAPEL y cada REUNIÓN tiene al JEFE.",
+        "tts_text": "I love this OFFICE because every DESK has PAPER and every MEETING has the BOSS.",
+        "tts_voice_id": "en_us_male_1",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 14,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "OFFICE",
+          "DESK",
+          "PAPER",
+          "MEETING",
+          "BOSS"
+        ]
+      }
+    ]
+  },
+  "scenes": {
+    "section_name": "First Desk",
+    "section_name_es": "Primer escritorio",
+    "image": "/episodes/episode_1_scene.jpg",
+    "data": [
+      {
+        "scene_id": "scene_001_001",
+        "scene_number": 1,
+        "location": "Office entrance",
+        "location_es": "Entrada de la oficina",
+        "scene_name": "Welcome Desk",
+        "scene_name_es": "Bienvenida al escritorio",
+        "time": "Morning",
+        "time_es": "Mañana",
+        "description": "The first moment in the office. Everyone pretends this is normal.",
+        "description_es": "El primer momento en la oficina. Todos fingen que esto es normal.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_leo",
+            "character_display_name": "LEO",
+            "text": "Welcome to the OFFICE. This is my OFFICE. I am the best boss here.",
+            "translation_es": "Bienvenido a la oficina. Esta es mi oficina. Yo soy el mejor jefe aquí.",
+            "emotion": "proud_but_lying",
+            "notes": "Leo immediately makes the office about himself.",
+            "notes_es": "Leo inmediatamente hace que todo sea sobre él.",
+            "highlighted_vocab": [
+              "office"
+            ],
+            "template_vars": [
+              "boss_name"
+            ]
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_mia",
+            "character_display_name": "MIA",
+            "text": "Hello. This OFFICE is very normal. Very calm.",
+            "translation_es": "Hola. Esta oficina es muy normal. Muy tranquila.",
+            "emotion": "calm_sarcastic",
+            "notes": "Mia says the opposite of what is true.",
+            "notes_es": "Mia dice lo contrario de la realidad.",
+            "highlighted_vocab": [
+              "office"
+            ],
+            "template_vars": [
+              "pam_name"
+            ]
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_ben",
+            "character_display_name": "BEN",
+            "text": "Yes. This OFFICE is serious. Very serious work happens here.",
+            "translation_es": "Sí. Esta oficina es seria. Aquí pasan cosas muy serias.",
+            "emotion": "sarcastic",
+            "notes": "Ben pretends the chaos is professional.",
+            "notes_es": "Ben finge que el caos es profesional.",
+            "highlighted_vocab": [
+              "office"
+            ],
+            "template_vars": [
+              "jim_name"
+            ]
+          },
+          {
+            "line_id": 4,
+            "character_id": "char_leo",
+            "character_display_name": "LEO",
+            "text": "This DESK is my DESK. All DESK ideas start with me.",
+            "translation_es": "Este escritorio es mi escritorio. Todas las ideas de escritorio empiezan conmigo.",
+            "emotion": "confident",
+            "notes": "Leo claims ownership of everything.",
+            "notes_es": "Leo reclama ser dueño de todo.",
+            "highlighted_vocab": [
+              "desk"
+            ],
+            "template_vars": [
+              "boss_name"
+            ]
+          },
+          {
+            "line_id": 5,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "Which sentence is correct?",
+            "prompt_es": "¿Qué frase es correcta?",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "This desk my is.",
+                "translation_es": "Este escritorio mío es.",
+                "points": 0,
+                "personality_impact": "friendly",
+                "vocab_used": [
+                  "desk"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "This is my desk.",
+                "translation_es": "Este es mi escritorio.",
+                "points": 10,
+                "personality_impact": "neutral"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "scene_id": "scene_001_002",
+        "scene_number": 2,
+        "location": "Work area",
+        "location_es": "Área de trabajo",
+        "scene_name": "Your Desk",
+        "scene_name_es": "Tu escritorio",
+        "time": "Morning",
+        "time_es": "Mañana",
+        "description": "Mia shows the desk to the player.",
+        "description_es": "Mia muestra el escritorio al jugador.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_mia",
+            "character_display_name": "MIA",
+            "text": "This is your DESK. This CHAIR is yours.",
+            "translation_es": "Este es tu escritorio. Esta silla es tuya.",
+            "emotion": "helpful",
+            "notes": "Mia tries to be helpful.",
+            "notes_es": "Mia intenta ser útil.",
+            "highlighted_vocab": [
+              "desk",
+              "chair"
+            ],
+            "template_vars": [
+              "pam_name"
+            ]
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_dan",
+            "character_display_name": "DAN",
+            "text": "This DESK has four legs. It is very strong. I tested it.",
+            "translation_es": "Este escritorio tiene cuatro patas. Es muy fuerte. Yo lo probé.",
+            "emotion": "serious",
+            "notes": "Dan explains obvious things.",
+            "notes_es": "Dan explica cosas obvias.",
+            "highlighted_vocab": [
+              "desk"
+            ],
+            "template_vars": []
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_ben",
+            "character_display_name": "BEN",
+            "text": "Yes. This DESK is excellent. Very high quality.",
+            "translation_es": "Sí. Este escritorio es excelente. De muy alta calidad.",
+            "emotion": "dry",
+            "notes": "Ben pretends the desk is important.",
+            "notes_es": "Ben finge que el escritorio es importante.",
+            "highlighted_vocab": [
+              "desk"
+            ],
+            "template_vars": [
+              "jim_name"
+            ]
+          },
+          {
+            "line_id": 4,
+            "character_id": "char_mia",
+            "character_display_name": "MIA",
+            "text": "This COMPUTER is yours too. Please do not break it.",
+            "translation_es": "Este computador también es tuyo. Por favor no lo rompas.",
+            "emotion": "polite",
+            "notes": "Mia gently warns the player.",
+            "notes_es": "Mia advierte suavemente al jugador.",
+            "highlighted_vocab": [
+              "computer"
+            ],
+            "template_vars": [
+              "pam_name"
+            ]
+          },
+          {
+            "line_id": 5,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "Choose the correct sentence.",
+            "prompt_es": "Elige la frase correcta.",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "This chair is my.",
+                "translation_es": "Esta silla es mi.",
+                "points": 0,
+                "personality_impact": "neutral",
+                "vocab_used": [
+                  "chair"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "This is my chair.",
+                "translation_es": "Esta es mi silla.",
+                "points": 10,
+                "personality_impact": "neutral"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "scene_id": "scene_001_003",
+        "scene_number": 3,
+        "location": "Near the desk",
+        "location_es": "Cerca del escritorio",
+        "scene_name": "Boss Logic",
+        "scene_name_es": "Lógica del jefe",
+        "time": "Late morning",
+        "time_es": "Final de la mañana",
+        "description": "Leo explains ownership in his own way.",
+        "description_es": "Leo explica la propiedad a su manera.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_leo",
+            "character_display_name": "LEO",
+            "text": "This DESK is your DESK. But it is also my DESK.",
+            "translation_es": "Este escritorio es tu escritorio. Pero también es mi escritorio.",
+            "emotion": "confident",
+            "notes": "Leo ignores logic.",
+            "notes_es": "Leo ignora la lógica.",
+            "highlighted_vocab": [
+              "desk"
+            ],
+            "template_vars": [
+              "boss_name"
+            ]
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_ben",
+            "character_display_name": "BEN",
+            "text": "Yes. This DESK belongs to everyone. Very fair.",
+            "translation_es": "Sí. Este escritorio pertenece a todos. Muy justo.",
+            "emotion": "sarcastic",
+            "notes": "Ben mocks the situation.",
+            "notes_es": "Ben se burla de la situación.",
+            "highlighted_vocab": [
+              "desk"
+            ],
+            "template_vars": [
+              "jim_name"
+            ]
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_mia",
+            "character_display_name": "MIA",
+            "text": "Do not worry. This OFFICE is friendly.",
+            "translation_es": "No te preocupes. Esta oficina es amigable.",
+            "emotion": "reassuring",
+            "notes": "Mia lies kindly.",
+            "notes_es": "Mia miente con amabilidad.",
+            "highlighted_vocab": [
+              "office"
+            ],
+            "template_vars": [
+              "pam_name"
+            ]
+          },
+          {
+            "line_id": 4,
+            "character_id": "char_leo",
+            "character_display_name": "LEO",
+            "text": "I am a generous boss. This is my OFFICE philosophy.",
+            "translation_es": "Yo soy un jefe generoso. Esta es mi filosofía de oficina.",
+            "emotion": "proud",
+            "notes": "Leo praises himself again.",
+            "notes_es": "Leo se vuelve a elogiar.",
+            "highlighted_vocab": [
+              "office"
+            ],
+            "template_vars": [
+              "boss_name"
+            ]
+          },
+          {
+            "line_id": 5,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "Which sentence sounds correct?",
+            "prompt_es": "¿Qué frase suena correcta?",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "This office mine is.",
+                "translation_es": "Esta oficina mía es.",
+                "points": 0,
+                "personality_impact": "neutral",
+                "vocab_used": [
+                  "office"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "This office is mine.",
+                "translation_es": "Esta oficina es mía.",
+                "points": 10,
+                "personality_impact": "neutral"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "content_wrappers": {
+    "section_name": "My Desk",
+    "section_name_es": "Mi Escritorio",
+    "image": "/episodes/episode_1_scene.jpg",
+    "intro_text": {
+      "en": "Welcome to the office. This is a normal place with normal people. Very normal. Completely normal. {boss_name} is a great boss. He says this many times.",
+      "es": "Bienvenido a la oficina. Este es un lugar normal con personas normales. Muy normal. Completamente normal. {boss_name} es un gran jefe. Él dice esto muchas veces."
+    },
+    "transition": {
+      "en": "Great. Now you know the words. Desk. Chair. Office. Very important words. Now you use them at work, where everything is calm and nothing strange happens.",
+      "es": "Muy bien. Ahora conoces las palabras. Escritorio. Silla. Oficina. Palabras muy importantes. Ahora las usas en el trabajo, donde todo es tranquilo y nada extraño pasa."
+    },
+    "conclusion": {
+      "en": "Good job. You finish your first day. You learn new words and new rules. Some desks are yours. Some desks are also {boss_name} desks. This is normal here.",
+      "es": "Buen trabajo. Terminas tu primer día. Aprendes nuevas palabras y nuevas reglas. Algunos escritorios son tuyos. Algunos escritorios también son de {boss_name}. Esto es normal aquí."
+    },
+    "reflection_prompt": {
+      "question_en": "Write one sentence using the word 'desk' or 'office'.",
+      "question_es": "Escribe una oración usando la palabra 'escritorio' u 'oficina'.",
+      "type": "free_text",
+      "optional": true,
+      "max_length": 100,
+      "vocab_practice": [
+        "desk",
+        "office"
+      ]
+    }
+  },
+  "next_episode_preview": {
+    "section_name": "Office Questions",
+    "section_name_es": "Preguntas oficina",
+    "image": "/episodes/episode_2_scene.jpg",
+    "preview_text_en": "Next time, Leo asks many questions about the office, and some of them do not make sense at all.",
+    "preview_text_es": "La próxima vez, Leo hace muchas preguntas sobre la oficina, y algunas no tienen ningún sentido.",
+    "teaser_image": "/previews/ep_002.jpg"
+  },
+  "games": {
+    "section_name": "Word Games",
+    "section_name_es": "Juegos Palabras",
+    "image": "/episodes/episode_1_scene.jpg",
+    "data": [
+      {
+        "game_id": "ep1_game_01",
+        "game_type": "matching",
+        "title": "Match the Words!",
+        "title_es": "¡Empareja las Palabras!",
+        "instructions": "Match each English word with its Spanish meaning",
+        "instructions_es": "Empareja cada palabra en inglés con su significado en español",
+        "optional": true,
+        "unlocked_after_episode": true,
+        "time_limit_seconds": 90,
+        "xp_reward": 25,
+        "content": {
+          "items": [
+            {
+              "id": 1,
+              "left": "OFFICE",
+              "right": "OFICINA",
+              "image_url": "/vocab/office.jpg"
+            },
+            {
+              "id": 2,
+              "left": "DESK",
+              "right": "ESCRITORIO",
+              "image_url": "/vocab/desk.jpg"
+            },
+            {
+              "id": 3,
+              "left": "BOSS",
+              "right": "JEFE",
+              "image_url": "/vocab/boss.jpg"
+            },
+            {
+              "id": 4,
+              "left": "MEETING",
+              "right": "REUNIÓN",
+              "image_url": "/vocab/meeting.jpg"
+            },
+            {
+              "id": 5,
+              "left": "PAPER",
+              "right": "PAPEL",
+              "image_url": "/vocab/paper.jpg"
+            },
+            {
+              "id": 6,
+              "left": "WELCOME",
+              "right": "BIENVENIDO",
+              "image_url": "/vocab/welcome.jpg"
+            },
+            {
+              "id": 7,
+              "left": "NAME",
+              "right": "NOMBRE",
+              "image_url": "/vocab/name.jpg"
+            },
+            {
+              "id": 8,
+              "left": "HELP",
+              "right": "AYUDAR",
+              "image_url": "/vocab/help.jpg"
+            }
+          ]
+        },
+        "settings": {
+          "shuffle": true,
+          "show_images": true
+        }
+      },
+      {
+        "game_id": "ep1_game_02",
+        "game_type": "fill_blank",
+        "title": "Complete the Sentences",
+        "title_es": "Completa las Oraciones",
+        "instructions": "Fill in the missing words from the episode",
+        "instructions_es": "Completa las palabras que faltan del episodio",
+        "optional": true,
+        "unlocked_after_episode": true,
+        "time_limit_seconds": 150,
+        "xp_reward": 35,
+        "content": {
+          "items": [
+            {
+              "id": 1,
+              "sentence": "This is the _____.",
+              "sentence_es": "Esta es la _____.",
+              "answer": "OFFICE",
+              "options": [
+                "OFFICE",
+                "MEETING",
+                "PAPER"
+              ],
+              "hint": "You work in this place.",
+              "hint_es": "Tú trabajas en este lugar.",
+              "character": "{pam_name}"
+            },
+            {
+              "id": 2,
+              "sentence": "This is my _____.",
+              "sentence_es": "Este es mi _____.",
+              "answer": "DESK",
+              "options": [
+                "DESK",
+                "BOSS",
+                "OFFICE"
+              ],
+              "hint": "You sit here and work.",
+              "hint_es": "Tú te sientas aquí y trabajas.",
+              "character": "{jim_name}"
+            },
+            {
+              "id": 3,
+              "sentence": "He is the _____.",
+              "sentence_es": "Él es el _____.",
+              "answer": "BOSS",
+              "options": [
+                "BOSS",
+                "PAPER",
+                "DESK"
+              ],
+              "hint": "This person gives directions.",
+              "hint_es": "Esta persona da instrucciones.",
+              "character": "{boss_name}"
+            },
+            {
+              "id": 4,
+              "sentence": "This is a _____.",
+              "sentence_es": "Esta es una _____.",
+              "answer": "MEETING",
+              "options": [
+                "MEETING",
+                "OFFICE",
+                "DESK"
+              ],
+              "hint": "People talk together at work.",
+              "hint_es": "Las personas hablan juntas en el trabajo.",
+              "character": "{boss_name}"
+            },
+            {
+              "id": 5,
+              "sentence": "This is _____.",
+              "sentence_es": "Esto es _____.",
+              "answer": "PAPER",
+              "options": [
+                "PAPER",
+                "BOSS",
+                "MEETING"
+              ],
+              "hint": "You write on it.",
+              "hint_es": "Tú escribes en esto.",
+              "character": "{pam_name}"
+            },
+            {
+              "id": 6,
+              "sentence": "The _____ is long and {boss_name} is happy.",
+              "sentence_es": "La _____ es larga y {boss_name} está feliz.",
+              "answer": "MEETING",
+              "options": [
+                "MEETING",
+                "OFFICE",
+                "PAPER"
+              ],
+              "hint": "It can feel very slow.",
+              "hint_es": "Puede sentirse muy lenta.",
+              "character": "{jim_name}"
+            },
+            {
+              "id": 7,
+              "sentence": "My _____ has PAPER in this OFFICE.",
+              "sentence_es": "Mi _____ tiene PAPEL en esta OFICINA.",
+              "answer": "DESK",
+              "options": [
+                "DESK",
+                "BOSS",
+                "MEETING"
+              ],
+              "hint": "It is your work table.",
+              "hint_es": "Es tu mesa de trabajo.",
+              "character": "{pam_name}"
+            }
+          ]
+        }
+      },
+      {
+        "game_id": "ep1_game_03",
+        "game_type": "multiple_choice",
+        "title": "Episode Quiz",
+        "title_es": "Quiz del Episodio",
+        "instructions": "Answer questions about the episode",
+        "instructions_es": "Responde preguntas sobre el episodio",
+        "optional": true,
+        "unlocked_after_episode": true,
+        "time_limit_seconds": 180,
+        "xp_reward": 45,
+        "content": {
+          "items": [
+            {
+              "id": 1,
+              "question": "Where does {pam_name} work in the story?",
+              "question_es": "¿Dónde trabaja {pam_name} en la historia?",
+              "options": [
+                "In the OFFICE",
+                "In a school",
+                "In a park",
+                "In a hospital"
+              ],
+              "options_es": [
+                "En la OFICINA",
+                "En una escuela",
+                "En un parque",
+                "En un hospital"
+              ],
+              "correct_answer": 0,
+              "explanation": "{pam_name} is the receptionist, and she works in the office.",
+              "explanation_es": "{pam_name} es la recepcionista y ella trabaja en la oficina."
+            },
+            {
+              "id": 2,
+              "question": "What does {jim_name} show the new person?",
+              "question_es": "¿Qué muestra {jim_name} a la persona nueva?",
+              "options": [
+                "A DESK",
+                "A car",
+                "A beach",
+                "A dog"
+              ],
+              "options_es": [
+                "Un ESCRITORIO",
+                "Un carro",
+                "Una playa",
+                "Un perro"
+              ],
+              "correct_answer": 0,
+              "explanation": "{jim_name} shows a desk to help the new person start working.",
+              "explanation_es": "{jim_name} muestra un escritorio para ayudar a la persona nueva a empezar a trabajar."
+            },
+            {
+              "id": 3,
+              "question": "Who loves being called the best BOSS?",
+              "question_es": "¿A quién le encanta que lo llamen el mejor JEFE?",
+              "options": [
+                "{boss_name}",
+                "{jim_name}",
+                "{pam_name}",
+                "{player_name}"
+              ],
+              "options_es": [
+                "{boss_name}",
+                "{jim_name}",
+                "{pam_name}",
+                "{player_name}"
+              ],
+              "correct_answer": 0,
+              "explanation": "{boss_name} is proud and wants everyone to say he is the best boss.",
+              "explanation_es": "{boss_name} está orgulloso y quiere que todos digan que él es el mejor jefe."
+            },
+            {
+              "id": 4,
+              "question": "What does the BOSS call that everyone does not love?",
+              "question_es": "¿Qué llama el JEFE que a todos no les encanta?",
+              "options": [
+                "A MEETING",
+                "A nap",
+                "A party",
+                "A game"
+              ],
+              "options_es": [
+                "Una REUNIÓN",
+                "Una siesta",
+                "Una fiesta",
+                "Un juego"
+              ],
+              "correct_answer": 0,
+              "explanation": "The boss calls a meeting, and it is long and very important to him.",
+              "explanation_es": "El jefe llama a una reunión, y es larga y muy importante para él."
+            },
+            {
+              "id": 5,
+              "question": "What is on the desk in the office?",
+              "question_es": "¿Qué hay en el escritorio en la oficina?",
+              "options": [
+                "PAPER",
+                "Snow",
+                "Sand",
+                "Water"
+              ],
+              "options_es": [
+                "PAPEL",
+                "Nieve",
+                "Arena",
+                "Agua"
+              ],
+              "correct_answer": 0,
+              "explanation": "Paper is on the desk because this company works with paper every day.",
+              "explanation_es": "Hay papel en el escritorio porque esta empresa trabaja con papel todos los días."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "progression": {
+    "section_name": "First Day",
+    "section_name_es": "Primer día",
+    "image": "/episodes/episode_1_scene.jpg",
+    "xp_earned_base": 50,
+    "xp_bonus_conditions": [
+      {
+        "condition": "complete_all_games",
+        "bonus_xp": 25
+      },
+      {
+        "condition": "perfect_choices",
+        "bonus_xp": 15
+      },
+      {
+        "condition": "write_reflection",
+        "bonus_xp": 10
+      }
+    ],
+    "unlocks": [
+      {
+        "type": "character",
+        "character_ids": [
+          "char_leo",
+          "char_mia",
+          "char_ben",
+          "char_dan"
+        ]
+      },
+      {
+        "type": "location",
+        "location_ids": [
+          "Office entrance",
+          "Work area",
+          "Near the desk"
+        ]
+      }
+    ],
+    "achievements": [
+      {
+        "achievement_id": "first_day",
+        "name": "First Day Survivor",
+        "name_es": "Superviviente del primer día",
+        "description": "You complete your first day at the office and learn what is yours and what is also the boss desk.",
+        "description_es": "Completas tu primer día en la oficina y aprendes qué cosas son tuyas y cuáles también son del jefe.",
+        "icon": "/achievements/first_day.png",
+        "image": "/achievements/first_day_banner.jpg"
+      }
+    ]
+  },
+  "metadata": {
+    "section_name": "My Desk",
+    "section_name_es": "Mi Escritorio",
+    "image": "/episodes/episode_1_scene.jpg",
+    "created_date": "2026-01-30",
+    "version": "1.0",
+    "author": "Course Team",
+    "content_level": "beginner",
+    "estimated_words": 350,
+    "estimated_unique_vocabulary": 45,
+    "structure_type": "vocab_story_then_main_story"
+  }
+}
