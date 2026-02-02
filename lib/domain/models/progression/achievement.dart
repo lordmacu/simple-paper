@@ -3,29 +3,46 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'achievement.freezed.dart';
 part 'achievement.g.dart';
 
-/// Representa un logro que se puede desbloquear en un episodio
+/// Logro desbloqueable en la app
 @freezed
 class Achievement with _$Achievement {
+  /// Crea un logro.
+  ///
+  /// Parámetros:
+  /// - [id]: Identificador único del logro
+  /// - [name]: Nombre del logro
+  /// - [description]: Descripción del logro
+  /// - [unlocked]: Si el logro está desbloqueado
+  /// - [unlockedAt]: Fecha de desbloqueo
   const factory Achievement({
-    /// ID único del logro
-    @JsonKey(name: 'achievement_id') required String achievementId,
+    /// Identificador único del logro
+    required String id,
     
-    /// Nombre del logro en inglés
+    /// Nombre del logro
     required String name,
     
-    /// Nombre en español
-    @JsonKey(name: 'name_es') required String nameEs,
-    
-    /// Descripción del logro en inglés
+    /// Descripción del logro
     required String description,
     
-    /// Descripción en español
-    @JsonKey(name: 'description_es') required String descriptionEs,
+    /// Si el logro está desbloqueado
+    @Default(false) bool unlocked,
     
-    /// URL del icono del logro
-    required String icon,
+    /// Fecha de desbloqueo
+    DateTime? unlockedAt,
   }) = _Achievement;
 
+  /// Crea Achievement desde JSON.
   factory Achievement.fromJson(Map<String, dynamic> json) =>
-      _$AchievementFromJson(json);
+      _$AchievementFromJson(_fixAchievementJson(json));
+}
+
+/// Corrige campos de JSON para compatibilidad
+Map<String, dynamic> _fixAchievementJson(Map<String, dynamic> json) {
+  final fixed = Map<String, dynamic>.from(json);
+  // Accept both 'id' and 'achievement_id'
+  fixed['id'] ??= json['achievement_id'] ?? '';
+  // Fallbacks from Spanish fields
+  fixed['name'] ??= json['name_es'] ?? '';
+  fixed['description'] ??= json['description_es'] ?? '';
+  return fixed;
 }

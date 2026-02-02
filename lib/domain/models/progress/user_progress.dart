@@ -1,11 +1,14 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../progression/achievement.dart';
+
 part 'user_progress.freezed.dart';
 part 'user_progress.g.dart';
 
 /// Progreso del usuario en la app
 @freezed
 class UserProgress with _$UserProgress {
+  /// Crea un objeto de progreso del usuario.
   const factory UserProgress({
     /// Episodios completados (episodeNumber -> EpisodeProgress)
     @Default({}) Map<int, EpisodeProgress> completedEpisodes,
@@ -18,6 +21,12 @@ class UserProgress with _$UserProgress {
     
     /// XP total acumulado
     @Default(0) int totalXp,
+
+    /// Logros
+    @Default([]) List<Achievement> achievements,
+
+    /// Palabras para repasar
+    @JsonKey(name: 'review_words') @Default([]) List<String> reviewWords,
     
     /// Streak actual (días consecutivos)
     @Default(0) int currentStreak,
@@ -26,6 +35,7 @@ class UserProgress with _$UserProgress {
     DateTime? lastAccessDate,
   }) = _UserProgress;
 
+  /// Crea UserProgress desde JSON.
   factory UserProgress.fromJson(Map<String, dynamic> json) =>
       _$UserProgressFromJson(json);
 }
@@ -33,6 +43,7 @@ class UserProgress with _$UserProgress {
 /// Progreso de un episodio específico
 @freezed
 class EpisodeProgress with _$EpisodeProgress {
+  /// Crea un objeto de progreso de episodio.
   const factory EpisodeProgress({
     /// Número del episodio
     required int episodeNumber,
@@ -53,6 +64,7 @@ class EpisodeProgress with _$EpisodeProgress {
     @Default(1) int attempts,
   }) = _EpisodeProgress;
 
+  /// Crea EpisodeProgress desde JSON.
   factory EpisodeProgress.fromJson(Map<String, dynamic> json) =>
       _$EpisodeProgressFromJson(json);
 }

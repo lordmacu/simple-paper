@@ -19,6 +19,16 @@ _$UserProgressImpl _$$UserProgressImplFromJson(Map<String, dynamic> json) =>
       lastUnlockedEpisode: (json['lastUnlockedEpisode'] as num?)?.toInt() ?? 1,
       userLevel: (json['userLevel'] as num?)?.toInt() ?? 1,
       totalXp: (json['totalXp'] as num?)?.toInt() ?? 0,
+      achievements:
+          (json['achievements'] as List<dynamic>?)
+              ?.map((e) => Achievement.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+      reviewWords:
+          (json['review_words'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
       currentStreak: (json['currentStreak'] as num?)?.toInt() ?? 0,
       lastAccessDate: json['lastAccessDate'] == null
           ? null
@@ -33,6 +43,8 @@ Map<String, dynamic> _$$UserProgressImplToJson(_$UserProgressImpl instance) =>
       'lastUnlockedEpisode': instance.lastUnlockedEpisode,
       'userLevel': instance.userLevel,
       'totalXp': instance.totalXp,
+      'achievements': instance.achievements,
+      'review_words': instance.reviewWords,
       'currentStreak': instance.currentStreak,
       'lastAccessDate': instance.lastAccessDate?.toIso8601String(),
     };
