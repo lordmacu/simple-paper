@@ -6,23 +6,29 @@ class TemplateVariableService {
   // Valores por defecto
   final Map<String, String> _defaults = {
     'player_name': 'New Hire',
-    'boss_name': 'Michael',
-    'jim_name': 'Jim',
-    'pam_name': 'Pam',
-    'dwight_name': 'Dwight',
-    'company_name': 'Dunder Mifflin',
-    'city': 'Scranton',
+    'boss_name': 'Leo',
+    'jim_name': 'Ben',
+    'pam_name': 'Mia',
+    'dwight_name': 'Dan',
+    'company_name': 'Simple Paper',
+    'city': 'Aurora',
     'office_type': 'Paper Company',
   };
 
   Map<String, String> _currentValues = {};
 
+  /// Crea un servicio de variables de template con valores por defecto.
   TemplateVariableService() {
     _resetToDefaults();
   }
 
   void _resetToDefaults() {
     _currentValues = Map.from(_defaults);
+  }
+
+  /// Reset público para restaurar defaults
+  Future<void> resetToDefaults() async {
+    _resetToDefaults();
   }
 
   /// Actualiza una variable específica
@@ -34,15 +40,23 @@ class TemplateVariableService {
 
   /// Reemplaza todas las variables en un texto dado
   String replaceVariables(String text) {
-    if (text.isEmpty) return text;
+    if (text.isEmpty) {
+      return text;
+    }
 
     String result = text;
     // Iteramos sobre defaults para asegurar que cubrimos todas las claves conocidas
     // Usamos los valores actuales (o defaults si no se han seteaado)
     _defaults.forEach((key, defaultValue) {
       final value = _currentValues[key] ?? defaultValue;
-      // Reemplazo simple de string. Podría optimizarse con RegExp si fuera crítico.
+      // 1. Reemplazo de placeholders {variable}
       result = result.replaceAll('{$key}', value);
+      
+      // 2. Si el valor actual es diferente al default, también reemplazamos
+      //    el valor por defecto literal (para JSONs que tienen "Simple Paper" en lugar de {company_name})
+      if (value != defaultValue && defaultValue.isNotEmpty) {
+        result = result.replaceAll(defaultValue, value);
+      }
     });
     return result;
   }
