@@ -38,10 +38,9 @@ _$VocabularySegmentImpl _$$VocabularySegmentImplFromJson(
   Map<String, dynamic> json,
 ) => _$VocabularySegmentImpl(
   segmentId: json['segment_id'] as String,
+  text: BilingualText.fromJson(json['text'] as Map<String, dynamic>),
   imageUrl: json['image_url'] as String?,
   wordFocus: json['word_focus'] as String?,
-  text: BilingualText.fromJson(json['text'] as Map<String, dynamic>),
-  visualAid: json['visual_aid'] as String?,
   emphasisStyle: json['emphasis_style'] as String?,
   interactive: json['interactive'] == null
       ? null
@@ -54,10 +53,9 @@ Map<String, dynamic> _$$VocabularySegmentImplToJson(
   _$VocabularySegmentImpl instance,
 ) => <String, dynamic>{
   'segment_id': instance.segmentId,
+  'text': instance.text,
   'image_url': instance.imageUrl,
   'word_focus': instance.wordFocus,
-  'text': instance.text,
-  'visual_aid': instance.visualAid,
   'emphasis_style': instance.emphasisStyle,
   'interactive': instance.interactive,
 };
