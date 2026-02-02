@@ -1,0 +1,1367 @@
+{
+  "city_settings": {
+    "default_city": "Scranton",
+    "user_selected_city": null,
+    "localizable": true,
+    "city_specific_content": {
+      "office_name": "{company_name} {city}",
+      "default_company_name": "Dunder Mifflin",
+      "office_type": "Paper Company",
+      "office_type_es": "Compañía de Papel"
+    }
+  },
+  "episode_metadata": {
+    "section_name": "How Often",
+    "section_name_es": "Con Frecuencia",
+    "image": "/episodes/episode_9_scene.jpg",
+    "episode_number": 9,
+    "episode_id": "ep_009",
+    "title": "Always Late, Sometimes Ready",
+    "title_es": "Siempre Tarde, A Veces Listos",
+    "description": "The office talks about how often things happen. {boss_name} says meetings are always on time, {jim_name} quietly disagrees, and everyone learns that \"sometimes\" does a lot of work.",
+    "description_es": "La oficina habla de con qué frecuencia pasan las cosas. {boss_name} dice que las reuniones siempre empiezan a tiempo, {jim_name} no está de acuerdo, y todos aprenden que \"a veces\" hace mucho trabajo.",
+    "internal_level": "A1",
+    "estimated_time_minutes": 12,
+    "unlock_requirements": null,
+    "tags": [
+      "office_life",
+      "time",
+      "habits",
+      "meetings"
+    ],
+    "previous_episode": "ep_008",
+    "next_episode": "ep_010"
+  },
+  "characters": {
+    "section_name": "Daily Routine",
+    "section_name_es": "Rutina diaria",
+    "image": "/episodes/episode_9_scene.jpg",
+    "appearing_in_episode": [
+      {
+        "character_id": "char_boss",
+        "default_name": "LEO",
+        "role": "regional manager",
+        "role_es": "gerente regional",
+        "personality": "Enthusiastic boss who wants to be loved and admired by everyone in the office.",
+        "personality_es": "Jefe entusiasta que quiere ser querido y admirado por todos en la oficina.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/leo.png",
+        "intro_text": "Hello everyone. I arrive early every day because great bosses always arrive early. I am a very active boss. Possibly the most active boss in the world.",
+        "intro_text_es": "Hola a todos. Yo llego temprano todos los días porque los grandes jefes siempre llegan temprano. Yo soy un jefe muy activo. Posiblemente el jefe más activo del mundo."
+      },
+      {
+        "character_id": "char_jim",
+        "default_name": "BEN",
+        "role": "salesman",
+        "role_es": "vendedor",
+        "personality": "Sarcastic and relaxed salesman who observes the office with quiet irony.",
+        "personality_es": "Vendedor sarcástico y relajado que observa la oficina con ironía silenciosa.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/ben.png",
+        "intro_text": "I usually start work at nine. Sometimes I actually work. Other times I just look busy. This happens very often.",
+        "intro_text_es": "Yo normalmente empiezo a trabajar a las nueve. A veces trabajo de verdad. Otras veces solo parezco ocupado. Esto pasa muy seguido."
+      },
+      {
+        "character_id": "char_pam",
+        "default_name": "MIA",
+        "role": "receptionist",
+        "role_es": "recepcionista",
+        "personality": "Kind and helpful receptionist who understands the daily chaos of the office.",
+        "personality_es": "Recepcionista amable y servicial que entiende el caos diario de la oficina.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/mia.png",
+        "intro_text": "I answer the phone every day. I help people all day. I drink tea in the afternoon. This office has a very special rhythm.",
+        "intro_text_es": "Yo contesto el teléfono todos los días. Yo ayudo a la gente todo el día. Yo tomo té en la tarde. Esta oficina tiene un ritmo muy especial."
+      },
+      {
+        "character_id": "char_dwight",
+        "default_name": "DAN",
+        "role": "assistant regional manager",
+        "role_es": "asistente del gerente regional",
+        "personality": "Intense and serious employee who believes discipline and routines are essential.",
+        "personality_es": "Empleado intenso y serio que cree que la disciplina y las rutinas son esenciales.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/dan.png",
+        "intro_text": "I work all the time. I take breaks at the correct time. I eat lunch at exactly twelve. This is the correct way to live.",
+        "intro_text_es": "Yo trabajo todo el tiempo. Yo tomo descansos a la hora correcta. Yo almuerzo exactamente a las doce. Esta es la forma correcta de vivir."
+      },
+      {
+        "character_id": "char_stanley",
+        "default_name": "SAM",
+        "role": "salesman",
+        "role_es": "vendedor",
+        "personality": "Grumpy salesman who dislikes meetings and repetitive routines.",
+        "personality_es": "Vendedor gruñón que no le gustan las reuniones ni las rutinas repetitivas.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/sam.png",
+        "intro_text": "I work here every day. I wait for lunch every day. I leave on time every day. Meetings ruin everything.",
+        "intro_text_es": "Yo trabajo aquí todos los días. Yo espero el almuerzo todos los días. Yo salgo a tiempo todos los días. Las reuniones arruinan todo."
+      }
+    ],
+    "mentioned_but_not_appearing": []
+  },
+  "vocabulary_focus": {
+    "section_name": "How Often",
+    "section_name_es": "Con Frecuencia",
+    "image": "/episodes/episode_9_scene.jpg",
+    "target_words": [
+      {
+        "word": "always",
+        "translation_es": "siempre",
+        "word_type": "adverb",
+        "word_type_es": "adverbio",
+        "difficulty": 1,
+        "context_sentence": "{boss_name} always says the meeting is important.",
+        "context_sentence_es": "{boss_name} siempre dice que la reunión es importante.",
+        "image_url": "/vocab/always.jpg",
+        "usage_examples": [
+          "The meeting always starts late.",
+          "{boss_name} always talks first.",
+          "{jim_name} always listens quietly."
+        ],
+        "usage_examples_es": [
+          "La reunión siempre empieza tarde.",
+          "{boss_name} siempre habla primero.",
+          "{jim_name} siempre escucha en silencio."
+        ]
+      },
+      {
+        "word": "usually",
+        "translation_es": "normalmente",
+        "word_type": "adverb",
+        "word_type_es": "adverbio",
+        "difficulty": 2,
+        "context_sentence": "{pam_name} usually sits at the desk in the morning.",
+        "context_sentence_es": "{pam_name} normalmente se sienta en el escritorio en la mañana.",
+        "image_url": "/vocab/usually.jpg",
+        "usage_examples": [
+          "We usually have a meeting on Monday.",
+          "{jim_name} usually drinks coffee.",
+          "The office is usually quiet early."
+        ],
+        "usage_examples_es": [
+          "Normalmente tenemos una reunión el lunes.",
+          "{jim_name} normalmente toma café.",
+          "La oficina normalmente está tranquila temprano."
+        ]
+      },
+      {
+        "word": "often",
+        "translation_es": "a menudo",
+        "word_type": "adverb",
+        "word_type_es": "adverbio",
+        "difficulty": 2,
+        "context_sentence": "{jim_name} often jokes about meetings.",
+        "context_sentence_es": "{jim_name} a menudo bromea sobre las reuniones.",
+        "image_url": "/vocab/often.jpg",
+        "usage_examples": [
+          "We often wait for the boss.",
+          "{pam_name} often answers the phone.",
+          "The printer often stops working."
+        ],
+        "usage_examples_es": [
+          "A menudo esperamos al jefe.",
+          "{pam_name} a menudo contesta el teléfono.",
+          "La impresora a menudo deja de funcionar."
+        ]
+      },
+      {
+        "word": "sometimes",
+        "translation_es": "a veces",
+        "word_type": "adverb",
+        "word_type_es": "adverbio",
+        "difficulty": 1,
+        "context_sentence": "The meeting is sometimes very short.",
+        "context_sentence_es": "La reunión a veces es muy corta.",
+        "image_url": "/vocab/sometimes.jpg",
+        "usage_examples": [
+          "{boss_name} sometimes forgets the time.",
+          "We sometimes eat lunch together.",
+          "{jim_name} sometimes smiles at the camera."
+        ],
+        "usage_examples_es": [
+          "{boss_name} a veces olvida la hora.",
+          "A veces almorzamos juntos.",
+          "{jim_name} a veces sonríe a la cámara."
+        ]
+      },
+      {
+        "word": "never",
+        "translation_es": "nunca",
+        "word_type": "adverb",
+        "word_type_es": "adverbio",
+        "difficulty": 1,
+        "context_sentence": "{jim_name} never believes the meeting schedule.",
+        "context_sentence_es": "{jim_name} nunca cree el horario de la reunión.",
+        "image_url": "/vocab/never.jpg",
+        "usage_examples": [
+          "The meeting never starts early.",
+          "{boss_name} never ends the meeting on time.",
+          "The office door is never closed."
+        ],
+        "usage_examples_es": [
+          "La reunión nunca empieza temprano.",
+          "{boss_name} nunca termina la reunión a tiempo.",
+          "La puerta de la oficina nunca está cerrada."
+        ]
+      }
+    ],
+    "phrases": [
+      {
+        "phrase": "How often is the meeting?",
+        "translation_es": "¿Con qué frecuencia es la reunión?",
+        "usage_context": "Asking about the frequency of meetings at the office.",
+        "usage_context_es": "Preguntar sobre la frecuencia de las reuniones en la oficina."
+      },
+      {
+        "phrase": "The meeting is always late.",
+        "translation_es": "La reunión siempre llega tarde.",
+        "usage_context": "Complaining about office meetings.",
+        "usage_context_es": "Quejarse de las reuniones de la oficina."
+      },
+      {
+        "phrase": "I am never ready on time.",
+        "translation_es": "Nunca estoy listo a tiempo.",
+        "usage_context": "Talking humorously about being unprepared.",
+        "usage_context_es": "Hablar de forma humorística sobre no estar preparado."
+      }
+    ]
+  },
+  "vocabulary_story": {
+    "section_name": "Frequency Words",
+    "section_name_es": "Frecuencia",
+    "image": "/episodes/episode_9_vocab.jpg",
+    "title": "Learning Basic Words",
+    "title_es": "Aprendiendo Palabras Básicas",
+    "description": "A simple story to learn today's vocabulary",
+    "description_es": "Una historia simple para aprender el vocabulario de hoy",
+    "segments": [
+      {
+        "segment_id": "vocab_always_01",
+        "image_url": "/vocab/always.jpg",
+        "word_focus": "always",
+        "text": {
+          "en": "LEO is ALWAYS at work early. He talks about this all the time.",
+          "es": "LEO SIEMPRE está en el trabajo temprano. Él habla de esto todo el tiempo."
+        },
+        "emphasis_style": "bold_uppercase"
+      },
+      {
+        "segment_id": "vocab_always_02",
+        "image_url": "/vocab/always.jpg",
+        "word_focus": "always",
+        "text": {
+          "en": "The boss ALWAYS thinks he is the best boss.",
+          "es": "El jefe SIEMPRE piensa que es el mejor jefe."
+        }
+      },
+      {
+        "segment_id": "vocab_always_03",
+        "image_url": "/vocab/always.jpg",
+        "word_focus": "always",
+        "text": {
+          "en": "He ALWAYS says this in meetings.",
+          "es": "Él SIEMPRE dice esto en las reuniones."
+        }
+      },
+      {
+        "segment_id": "vocab_usually_01",
+        "image_url": "/vocab/usually.jpg",
+        "word_focus": "usually",
+        "text": {
+          "en": "BEN USUALLY works at his desk.",
+          "es": "BEN NORMALMENTE trabaja en su escritorio."
+        }
+      },
+      {
+        "segment_id": "vocab_usually_02",
+        "image_url": "/vocab/usually.jpg",
+        "word_focus": "usually",
+        "text": {
+          "en": "He USUALLY looks calm and relaxed.",
+          "es": "Él NORMALMENTE se ve tranquilo y relajado."
+        }
+      },
+      {
+        "segment_id": "vocab_usually_03",
+        "image_url": "/vocab/usually.jpg",
+        "word_focus": "usually",
+        "text": {
+          "en": "BEN USUALLY understands what is happening.",
+          "es": "BEN NORMALMENTE entiende lo que está pasando."
+        }
+      },
+      {
+        "segment_id": "vocab_sometimes_01",
+        "image_url": "/vocab/sometimes.jpg",
+        "word_focus": "sometimes",
+        "text": {
+          "en": "MIA SOMETIMES drinks tea in the afternoon.",
+          "es": "MIA A VECES toma té en la tarde."
+        }
+      },
+      {
+        "segment_id": "vocab_sometimes_02",
+        "image_url": "/vocab/sometimes.jpg",
+        "word_focus": "sometimes",
+        "text": {
+          "en": "She SOMETIMES smiles at strange situations.",
+          "es": "Ella A VECES sonríe en situaciones extrañas."
+        }
+      },
+      {
+        "segment_id": "vocab_sometimes_03",
+        "image_url": "/vocab/sometimes.jpg",
+        "word_focus": "sometimes",
+        "text": {
+          "en": "The office is SOMETIMES very quiet.",
+          "es": "La oficina A VECES está muy silenciosa."
+        }
+      },
+      {
+        "segment_id": "vocab_often_01",
+        "image_url": "/vocab/often.jpg",
+        "word_focus": "often",
+        "text": {
+          "en": "DAN OFTEN checks the office.",
+          "es": "DAN A MENUDO revisa la oficina."
+        }
+      },
+      {
+        "segment_id": "vocab_often_02",
+        "image_url": "/vocab/often.jpg",
+        "word_focus": "often",
+        "text": {
+          "en": "He OFTEN talks about rules.",
+          "es": "Él A MENUDO habla de reglas."
+        }
+      },
+      {
+        "segment_id": "vocab_often_03",
+        "image_url": "/vocab/often.jpg",
+        "word_focus": "often",
+        "text": {
+          "en": "Emergencies OFTEN exist in his mind.",
+          "es": "Las emergencias A MENUDO existen en su mente."
+        }
+      },
+      {
+        "segment_id": "vocab_never_01",
+        "image_url": "/vocab/never.jpg",
+        "word_focus": "never",
+        "text": {
+          "en": "SAM NEVER likes meetings.",
+          "es": "SAM NUNCA le gustan las reuniones."
+        }
+      },
+      {
+        "segment_id": "vocab_never_02",
+        "image_url": "/vocab/never.jpg",
+        "word_focus": "never",
+        "text": {
+          "en": "He NEVER smiles in meetings.",
+          "es": "Él NUNCA sonríe en las reuniones."
+        }
+      },
+      {
+        "segment_id": "vocab_never_03",
+        "image_url": "/vocab/never.jpg",
+        "word_focus": "never",
+        "text": {
+          "en": "Meetings are NEVER fun for him.",
+          "es": "Las reuniones NUNCA son divertidas para él."
+        }
+      },
+      {
+        "segment_id": "vocab_mix_01",
+        "image_url": "/vocab/always.jpg",
+        "word_focus": "always",
+        "text": {
+          "en": "LEO ALWAYS talks, and BEN USUALLY listens.",
+          "es": "LEO SIEMPRE habla, y BEN NORMALMENTE escucha."
+        }
+      },
+      {
+        "segment_id": "vocab_mix_02",
+        "image_url": "/vocab/often.jpg",
+        "word_focus": "often",
+        "text": {
+          "en": "DAN OFTEN works, but SAM NEVER enjoys it.",
+          "es": "DAN A MENUDO trabaja, pero SAM NUNCA lo disfruta."
+        }
+      },
+      {
+        "segment_id": "vocab_summary",
+        "word_focus": null,
+        "text": {
+          "en": "Great! Now you know: ALWAYS, USUALLY, SOMETIMES, OFTEN, NEVER. Now we will use these words in a story!",
+          "es": "¡Genial! Ahora conoces: SIEMPRE, NORMALMENTE, A VECES, A MENUDO, NUNCA. ¡Usemos estas palabras en una historia!"
+        }
+      }
+    ]
+  },
+  "mini_story": {
+    "section_name": "How Often",
+    "section_name_es": "Con Frecuencia",
+    "image": "/episodes/episode_9_scene.jpg",
+    "title": "Short Story",
+    "title_es": "Historia corta",
+    "description": "A short story to practice today's topic.",
+    "description_es": "Una historia corta para practicar el tema de hoy.",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "text": {
+          "en": "It is morning at Simple Paper in Aurora. Ben looks at the clock and writes notes about time. He thinks the meeting is usually late.",
+          "es": "Es la mañana en Simple Paper en Aurora. Ben mira el reloj y escribe notas sobre el tiempo. Él piensa que la reunión normalmente llega tarde."
+        }
+      },
+      {
+        "id": "p2",
+        "text": {
+          "en": "Leo walks into the office and smiles. He says the meeting always starts on time. Ben looks at the clock again and stays quiet.",
+          "es": "Leo entra a la oficina y sonríe. Él dice que la reunión siempre empieza a tiempo. Ben mira el reloj otra vez y se queda en silencio."
+        }
+      },
+      {
+        "id": "p3",
+        "text": {
+          "en": "Mia prepares the room and waits with the team. The meeting sometimes starts early, but it never starts now. Everyone learns how often things really happen.",
+          "es": "Mia prepara la sala y espera con el equipo. La reunión a veces empieza temprano, pero nunca empieza ahora. Todos aprenden con qué frecuencia pasan las cosas de verdad."
+        }
+      }
+    ]
+  },
+  "listening_shadowing": {
+    "section_name": "Daily Frequency",
+    "section_name_es": "Frecuencia diaria",
+    "image": "/episodes/episode_9_scene.jpg",
+    "instructions": "Listen to the line. Then repeat it aloud before the timer ends.",
+    "instructions_es": "Escucha la línea. Luego repítela en voz alta antes de que termine el tiempo.",
+    "data": [
+      {
+        "item_id": "listen_001",
+        "character_id": "char_boss",
+        "character_display_name": "LEO",
+        "text": "I ALWAYS arrive early, I USUALLY talk a lot, I SOMETIMES work, I OFTEN smile, and I NEVER stop talking.",
+        "text_es": "Yo SIEMPRE llego temprano, NORMALMENTE hablo mucho, A VECES trabajo, A MENUDO sonrío y NUNCA dejo de hablar.",
+        "tts_text": "I always arrive early, I usually talk a lot, I sometimes work, I often smile, and I never stop talking.",
+        "tts_voice_id": "en_us_male_1",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 12,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "ALWAYS",
+          "USUALLY",
+          "SOMETIMES",
+          "OFTEN",
+          "NEVER"
+        ]
+      },
+      {
+        "item_id": "listen_002",
+        "character_id": "char_jim",
+        "character_display_name": "BEN",
+        "text": "I ALWAYS listen, I USUALLY joke, I SOMETIMES work, I OFTEN observe, and I NEVER panic.",
+        "text_es": "Yo SIEMPRE escucho, NORMALMENTE bromeo, A VECES trabajo, A MENUDO observo y NUNCA entro en pánico.",
+        "tts_text": "I always listen, I usually joke, I sometimes work, I often observe, and I never panic.",
+        "tts_voice_id": "en_us_male_2",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 11,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "ALWAYS",
+          "USUALLY",
+          "SOMETIMES",
+          "OFTEN",
+          "NEVER"
+        ]
+      },
+      {
+        "item_id": "listen_003",
+        "character_id": "char_pam",
+        "character_display_name": "MIA",
+        "text": "I ALWAYS answer calls, I USUALLY help people, I SOMETIMES sigh, I OFTEN smile, and I NEVER scream.",
+        "text_es": "Yo SIEMPRE contesto llamadas, NORMALMENTE ayudo a la gente, A VECES suspiro, A MENUDO sonrío y NUNCA grito.",
+        "tts_text": "I always answer calls, I usually help people, I sometimes sigh, I often smile, and I never scream.",
+        "tts_voice_id": "en_us_female_1",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 12,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "ALWAYS",
+          "USUALLY",
+          "SOMETIMES",
+          "OFTEN",
+          "NEVER"
+        ]
+      },
+      {
+        "item_id": "listen_004",
+        "character_id": "char_dwight",
+        "character_display_name": "DAN",
+        "text": "I ALWAYS follow rules, I USUALLY watch everyone, I SOMETIMES train, I OFTEN prepare, and I NEVER relax.",
+        "text_es": "Yo SIEMPRE sigo reglas, NORMALMENTE observo a todos, A VECES entreno, A MENUDO me preparo y NUNCA me relajo.",
+        "tts_text": "I always follow rules, I usually watch everyone, I sometimes train, I often prepare, and I never relax.",
+        "tts_voice_id": "en_us_male_3",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 12,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "ALWAYS",
+          "USUALLY",
+          "SOMETIMES",
+          "OFTEN",
+          "NEVER"
+        ]
+      },
+      {
+        "item_id": "listen_005",
+        "character_id": "char_stanley",
+        "character_display_name": "SAM",
+        "text": "I ALWAYS wait for lunch, I USUALLY stay quiet, I SOMETIMES complain, I OFTEN sit, and I NEVER enjoy meetings.",
+        "text_es": "Yo SIEMPRE espero el almuerzo, NORMALMENTE estoy callado, A VECES me quejo, A MENUDO me siento y NUNCA disfruto las reuniones.",
+        "tts_text": "I always wait for lunch, I usually stay quiet, I sometimes complain, I often sit, and I never enjoy meetings.",
+        "tts_voice_id": "en_us_male_4",
+        "estimated_audio_duration_seconds": 8,
+        "repeat_timer_seconds": 13,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "ALWAYS",
+          "USUALLY",
+          "SOMETIMES",
+          "OFTEN",
+          "NEVER"
+        ]
+      },
+      {
+        "item_id": "listen_006",
+        "character_id": "char_boss",
+        "character_display_name": "LEO",
+        "text": "I ALWAYS motivate people, I USUALLY repeat myself, I SOMETIMES listen, I OFTEN laugh, and I NEVER doubt myself.",
+        "text_es": "Yo SIEMPRE motivo a la gente, NORMALMENTE me repito, A VECES escucho, A MENUDO me río y NUNCA dudo de mí.",
+        "tts_text": "I always motivate people, I usually repeat myself, I sometimes listen, I often laugh, and I never doubt myself.",
+        "tts_voice_id": "en_us_male_1",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 12,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "ALWAYS",
+          "USUALLY",
+          "SOMETIMES",
+          "OFTEN",
+          "NEVER"
+        ]
+      },
+      {
+        "item_id": "listen_007",
+        "character_id": "char_jim",
+        "character_display_name": "BEN",
+        "text": "I ALWAYS notice things, I USUALLY stay calm, I SOMETIMES joke, I OFTEN wait, and I NEVER rush.",
+        "text_es": "Yo SIEMPRE noto las cosas, NORMALMENTE estoy calmado, A VECES bromeo, A MENUDO espero y NUNCA me apresuro.",
+        "tts_text": "I always notice things, I usually stay calm, I sometimes joke, I often wait, and I never rush.",
+        "tts_voice_id": "en_us_male_2",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 11,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "ALWAYS",
+          "USUALLY",
+          "SOMETIMES",
+          "OFTEN",
+          "NEVER"
+        ]
+      },
+      {
+        "item_id": "listen_008",
+        "character_id": "char_pam",
+        "character_display_name": "MIA",
+        "text": "I ALWAYS arrive on time, I USUALLY smile politely, I SOMETIMES feel tired, I OFTEN help, and I NEVER complain.",
+        "text_es": "Yo SIEMPRE llego a tiempo, NORMALMENTE sonrío con educación, A VECES me siento cansada, A MENUDO ayudo y NUNCA me quejo.",
+        "tts_text": "I always arrive on time, I usually smile politely, I sometimes feel tired, I often help, and I never complain.",
+        "tts_voice_id": "en_us_female_1",
+        "estimated_audio_duration_seconds": 8,
+        "repeat_timer_seconds": 13,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "ALWAYS",
+          "USUALLY",
+          "SOMETIMES",
+          "OFTEN",
+          "NEVER"
+        ]
+      },
+      {
+        "item_id": "listen_009",
+        "character_id": "char_dwight",
+        "character_display_name": "DAN",
+        "text": "I ALWAYS plan ahead, I USUALLY check rules, I SOMETIMES train hard, I OFTEN watch, and I NEVER forget.",
+        "text_es": "Yo SIEMPRE planeo con anticipación, NORMALMENTE reviso reglas, A VECES entreno fuerte, A MENUDO observo y NUNCA olvido.",
+        "tts_text": "I always plan ahead, I usually check rules, I sometimes train hard, I often watch, and I never forget.",
+        "tts_voice_id": "en_us_male_3",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 12,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "ALWAYS",
+          "USUALLY",
+          "SOMETIMES",
+          "OFTEN",
+          "NEVER"
+        ]
+      },
+      {
+        "item_id": "listen_010",
+        "character_id": "char_stanley",
+        "character_display_name": "SAM",
+        "text": "I ALWAYS want to leave, I USUALLY stay seated, I SOMETIMES look angry, I OFTEN wait, and I NEVER clap.",
+        "text_es": "Yo SIEMPRE quiero irme, NORMALMENTE sigo sentado, A VECES me veo enojado, A MENUDO espero y NUNCA aplaudo.",
+        "tts_text": "I always want to leave, I usually stay seated, I sometimes look angry, I often wait, and I never clap.",
+        "tts_voice_id": "en_us_male_4",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 12,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "ALWAYS",
+          "USUALLY",
+          "SOMETIMES",
+          "OFTEN",
+          "NEVER"
+        ]
+      }
+    ]
+  },
+  "scenes": {
+    "section_name": "How Often",
+    "section_name_es": "Con Frecuencia",
+    "image": "/episodes/episode_9_scene.jpg",
+    "data": [
+      {
+        "scene_id": "scene_009_001",
+        "scene_number": 1,
+        "location": "Main office",
+        "location_es": "Oficina principal",
+        "scene_name": "Morning Claims",
+        "scene_name_es": "Afirmaciones matutinas",
+        "time": "Morning",
+        "time_es": "Mañana",
+        "description": "Leo announces a very important meeting and talks about time with great confidence.",
+        "description_es": "Leo anuncia una reunión muy importante y habla del tiempo con mucha confianza.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_leo",
+            "character_display_name": "LEO",
+            "text": "Good morning everyone. The meeting ALWAYS starts on time. That is because I respect time.",
+            "translation_es": "Buenos días a todos. La reunión siempre empieza a tiempo. Eso es porque yo respeto el tiempo.",
+            "emotion": "proud_but_lying",
+            "notes": "Leo clearly does not respect time, but he believes he does.",
+            "notes_es": "Leo claramente no respeta el tiempo, pero él cree que sí.",
+            "highlighted_vocab": [
+              "always"
+            ],
+            "template_vars": [
+              "boss_name"
+            ]
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_ben",
+            "character_display_name": "BEN",
+            "text": "Yes, the meeting ALWAYS starts on time. Every day. Without exception.",
+            "translation_es": "Sí, la reunión siempre empieza a tiempo. Todos los días. Sin excepción.",
+            "emotion": "sarcastic",
+            "notes": "Ben sounds serious but he is joking.",
+            "notes_es": "Ben suena serio pero está bromeando.",
+            "highlighted_vocab": [
+              "always"
+            ],
+            "template_vars": [
+              "jim_name"
+            ]
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_leo",
+            "character_display_name": "LEO",
+            "text": "Thank you, Ben. I like honesty. I am the most honest boss. In history.",
+            "translation_es": "Gracias, Ben. Me gusta la honestidad. Yo soy el jefe más honesto. En la historia.",
+            "emotion": "proud",
+            "notes": "Leo praises himself again.",
+            "notes_es": "Leo se elogia a sí mismo otra vez.",
+            "highlighted_vocab": [],
+            "template_vars": [
+              "boss_name"
+            ]
+          },
+          {
+            "line_id": 4,
+            "character_id": "char_ben",
+            "character_display_name": "BEN",
+            "text": "Yes. History is very proud of you.",
+            "translation_es": "Sí. La historia está muy orgullosa de ti.",
+            "emotion": "sarcastic",
+            "notes": "Ben pretends to agree.",
+            "notes_es": "Ben finge estar de acuerdo.",
+            "highlighted_vocab": [],
+            "template_vars": [
+              "jim_name"
+            ]
+          },
+          {
+            "line_id": 5,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "Which sentence sounds natural?",
+            "prompt_es": "¿Qué frase suena natural?",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "The meeting always is late.",
+                "translation_es": "La reunión siempre es tarde.",
+                "points": 0,
+                "personality_impact": "neutral",
+                "vocab_used": [
+                  "always"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "The meeting is always late.",
+                "translation_es": "La reunión siempre llega tarde.",
+                "points": 10,
+                "personality_impact": "neutral"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "scene_id": "scene_009_002",
+        "scene_number": 2,
+        "location": "Reception desk",
+        "location_es": "Recepción",
+        "scene_name": "Quiet Truths",
+        "scene_name_es": "Verdades tranquilas",
+        "time": "Late morning",
+        "time_es": "Media mañana",
+        "description": "Mia and Ben talk about how things really happen in the office.",
+        "description_es": "Mia y Ben hablan sobre cómo pasan las cosas en realidad en la oficina.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_mia",
+            "character_display_name": "MIA",
+            "text": "Ben, the meeting is USUALLY late. Today feels normal.",
+            "translation_es": "Ben, la reunión normalmente llega tarde. Hoy se siente normal.",
+            "emotion": "calm",
+            "notes": "Mia treats chaos as normal.",
+            "notes_es": "Mia trata el caos como algo normal.",
+            "highlighted_vocab": [
+              "usually"
+            ],
+            "template_vars": [
+              "pam_name"
+            ]
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_ben",
+            "character_display_name": "BEN",
+            "text": "Yes. It is often late. Sometimes very late.",
+            "translation_es": "Sí. A menudo llega tarde. A veces muy tarde.",
+            "emotion": "dry",
+            "notes": "Ben uses frequency words seriously.",
+            "notes_es": "Ben usa palabras de frecuencia de forma seria.",
+            "highlighted_vocab": [
+              "often",
+              "sometimes"
+            ],
+            "template_vars": [
+              "jim_name"
+            ]
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_mia",
+            "character_display_name": "MIA",
+            "text": "Leo NEVER notices that.",
+            "translation_es": "Leo nunca nota eso.",
+            "emotion": "amused",
+            "notes": "Mia gently jokes about Leo.",
+            "notes_es": "Mia bromea suavemente sobre Leo.",
+            "highlighted_vocab": [
+              "never"
+            ],
+            "template_vars": [
+              "pam_name"
+            ]
+          },
+          {
+            "line_id": 4,
+            "character_id": "char_ben",
+            "character_display_name": "BEN",
+            "text": "No. He always notices himself.",
+            "translation_es": "No. Él siempre se nota a sí mismo.",
+            "emotion": "sarcastic",
+            "notes": "Ben makes a dry joke.",
+            "notes_es": "Ben hace una broma seca.",
+            "highlighted_vocab": [
+              "always"
+            ],
+            "template_vars": [
+              "jim_name"
+            ]
+          },
+          {
+            "line_id": 5,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "Which sentence is correct?",
+            "prompt_es": "¿Qué frase es correcta?",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "He often is late.",
+                "translation_es": "Él a menudo es tarde.",
+                "points": 0,
+                "personality_impact": "neutral",
+                "vocab_used": [
+                  "often"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "He is often late.",
+                "translation_es": "Él a menudo llega tarde.",
+                "points": 10,
+                "personality_impact": "neutral"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "scene_id": "scene_009_003",
+        "scene_number": 3,
+        "location": "Conference room",
+        "location_es": "Sala de reuniones",
+        "scene_name": "The Meeting",
+        "scene_name_es": "La reunión",
+        "time": "Afternoon",
+        "time_es": "Tarde",
+        "description": "The team waits for the meeting to finally start.",
+        "description_es": "El equipo espera a que la reunión finalmente empiece.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_leo",
+            "character_display_name": "LEO",
+            "text": "We SOMETIMES start early. Today is not that day.",
+            "translation_es": "A veces empezamos temprano. Hoy no es ese día.",
+            "emotion": "confident",
+            "notes": "Leo admits reality without noticing.",
+            "notes_es": "Leo admite la realidad sin notarlo.",
+            "highlighted_vocab": [
+              "sometimes"
+            ],
+            "template_vars": [
+              "boss_name"
+            ]
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_ben",
+            "character_display_name": "BEN",
+            "text": "Yes. The meeting NEVER starts now.",
+            "translation_es": "Sí. La reunión nunca empieza ahora.",
+            "emotion": "sarcastic",
+            "notes": "Callback to the previous episode.",
+            "notes_es": "Referencia al episodio anterior.",
+            "highlighted_vocab": [
+              "never"
+            ],
+            "template_vars": [
+              "jim_name"
+            ]
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_leo",
+            "character_display_name": "LEO",
+            "text": "That is fine. Waiting builds character. I have great character.",
+            "translation_es": "Eso está bien. Esperar forma carácter. Yo tengo un gran carácter.",
+            "emotion": "proud",
+            "notes": "Leo turns waiting into a compliment to himself.",
+            "notes_es": "Leo convierte la espera en un cumplido para sí mismo.",
+            "highlighted_vocab": [],
+            "template_vars": [
+              "boss_name"
+            ]
+          },
+          {
+            "line_id": 4,
+            "character_id": "char_ben",
+            "character_display_name": "BEN",
+            "text": "Yes. We learn so much while waiting.",
+            "translation_es": "Sí. Aprendemos mucho mientras esperamos.",
+            "emotion": "sarcastic",
+            "notes": "Ben closes with dry humor.",
+            "notes_es": "Ben cierra con humor seco.",
+            "highlighted_vocab": [],
+            "template_vars": [
+              "jim_name"
+            ]
+          },
+          {
+            "line_id": 5,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "Which sentence uses frequency correctly?",
+            "prompt_es": "¿Qué frase usa correctamente la frecuencia?",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "The meeting starts never early.",
+                "translation_es": "La reunión empieza nunca temprano.",
+                "points": 0,
+                "personality_impact": "neutral",
+                "vocab_used": [
+                  "never"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "The meeting never starts early.",
+                "translation_es": "La reunión nunca empieza temprano.",
+                "points": 10,
+                "personality_impact": "neutral"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "content_wrappers": {
+    "section_name": "How Often",
+    "section_name_es": "Con Frecuencia",
+    "image": "/episodes/episode_9_scene.jpg",
+    "intro_text": {
+      "en": "Welcome to the office. This is a calm place with calm people. Everyone is relaxed. Everyone respects time. This sentence is not true.",
+      "es": "Bienvenido a la oficina. Este es un lugar tranquilo con personas tranquilas. Todos están relajados. Todos respetan el tiempo. Esta frase no es verdad."
+    },
+    "transition": {
+      "en": "Great. Now you know words about how often things happen. Now we use them in real office life. The office where meetings are always important and usually late.",
+      "es": "Muy bien. Ahora conoces palabras sobre con qué frecuencia pasan las cosas. Ahora las usamos en la vida real de la oficina. La oficina donde las reuniones siempre son importantes y normalmente llegan tarde."
+    },
+    "conclusion": {
+      "en": "Good job. You learned how to talk about time and habits. You survived another meeting. The meeting ends. The waiting continues.",
+      "es": "Buen trabajo. Aprendiste a hablar sobre el tiempo y los hábitos. Sobreviviste a otra reunión. La reunión termina. La espera continúa."
+    },
+    "reflection_prompt": {
+      "question_en": "Write one sentence using the word 'always' or 'usually'.",
+      "question_es": "Escribe una oración usando la palabra 'siempre' o 'normalmente'.",
+      "type": "free_text",
+      "optional": true,
+      "max_length": 100,
+      "vocab_practice": [
+        "always",
+        "usually"
+      ]
+    }
+  },
+  "games": {
+    "section_name": "Practice Time",
+    "section_name_es": "Practicar tiempo",
+    "image": "/episodes/episode_9_scene.jpg",
+    "data": [
+      {
+        "game_id": "ep9_game_01",
+        "game_type": "matching",
+        "title": "Match the Words!",
+        "title_es": "¡Empareja las Palabras!",
+        "instructions": "Match each English word with its Spanish meaning",
+        "instructions_es": "Empareja cada palabra en inglés con su significado en español",
+        "optional": true,
+        "unlocked_after_episode": true,
+        "time_limit_seconds": 90,
+        "xp_reward": 25,
+        "content": {
+          "items": [
+            {
+              "id": 1,
+              "left": "always",
+              "right": "siempre",
+              "image_url": "/vocab/always.jpg"
+            },
+            {
+              "id": 2,
+              "left": "usually",
+              "right": "normalmente",
+              "image_url": "/vocab/usually.jpg"
+            },
+            {
+              "id": 3,
+              "left": "sometimes",
+              "right": "a veces",
+              "image_url": "/vocab/sometimes.jpg"
+            },
+            {
+              "id": 4,
+              "left": "often",
+              "right": "a menudo",
+              "image_url": "/vocab/often.jpg"
+            },
+            {
+              "id": 5,
+              "left": "never",
+              "right": "nunca",
+              "image_url": "/vocab/never.jpg"
+            },
+            {
+              "id": 6,
+              "left": "early",
+              "right": "temprano",
+              "image_url": "/vocab/early.jpg"
+            },
+            {
+              "id": 7,
+              "left": "late",
+              "right": "tarde",
+              "image_url": "/vocab/late.jpg"
+            },
+            {
+              "id": 8,
+              "left": "morning",
+              "right": "mañana",
+              "image_url": "/vocab/morning.jpg"
+            }
+          ]
+        },
+        "settings": {
+          "shuffle": true,
+          "show_images": true
+        }
+      },
+      {
+        "game_id": "ep9_game_02",
+        "game_type": "fill_blank",
+        "title": "Complete the Sentences",
+        "title_es": "Completa las Oraciones",
+        "instructions": "Fill in the missing words from the episode",
+        "instructions_es": "Completa las palabras que faltan del episodio",
+        "optional": true,
+        "unlocked_after_episode": true,
+        "time_limit_seconds": 150,
+        "xp_reward": 35,
+        "content": {
+          "items": [
+            {
+              "id": 1,
+              "sentence": "{boss_name} _____ arrives early and talks a lot.",
+              "sentence_es": "{boss_name} _____ llega temprano y habla mucho.",
+              "answer": "always",
+              "options": [
+                "always",
+                "never",
+                "sometimes"
+              ],
+              "hint": "This word means one hundred percent of the time.",
+              "hint_es": "Esta palabra significa todo el tiempo.",
+              "character": "{boss_name}"
+            },
+            {
+              "id": 2,
+              "sentence": "{jim_name} _____ listens and smiles in meetings.",
+              "sentence_es": "{jim_name} _____ escucha y sonríe en las reuniones.",
+              "answer": "usually",
+              "options": [
+                "usually",
+                "never",
+                "late"
+              ],
+              "hint": "This word means most of the time.",
+              "hint_es": "Esta palabra significa la mayor parte del tiempo.",
+              "character": "{jim_name}"
+            },
+            {
+              "id": 3,
+              "sentence": "{pam_name} _____ drinks tea in the afternoon.",
+              "sentence_es": "{pam_name} _____ toma té en la tarde.",
+              "answer": "sometimes",
+              "options": [
+                "sometimes",
+                "always",
+                "early"
+              ],
+              "hint": "This word means not always.",
+              "hint_es": "Esta palabra significa no siempre.",
+              "character": "{pam_name}"
+            },
+            {
+              "id": 4,
+              "sentence": "Dan _____ checks rules at his desk.",
+              "sentence_es": "Dan _____ revisa reglas en su escritorio.",
+              "answer": "often",
+              "options": [
+                "often",
+                "never",
+                "late"
+              ],
+              "hint": "This word means many times.",
+              "hint_es": "Esta palabra significa muchas veces.",
+              "character": "Dan"
+            },
+            {
+              "id": 5,
+              "sentence": "Sam _____ enjoys meetings.",
+              "sentence_es": "Sam _____ disfruta las reuniones.",
+              "answer": "never",
+              "options": [
+                "never",
+                "always",
+                "often"
+              ],
+              "hint": "This word means zero times.",
+              "hint_es": "Esta palabra significa cero veces.",
+              "character": "Sam"
+            },
+            {
+              "id": 6,
+              "sentence": "The team _____ works in the morning.",
+              "sentence_es": "El equipo _____ trabaja en la mañana.",
+              "answer": "usually",
+              "options": [
+                "usually",
+                "never",
+                "late"
+              ],
+              "hint": "Think about a normal routine.",
+              "hint_es": "Piensa en una rutina normal.",
+              "character": "Narrator"
+            },
+            {
+              "id": 7,
+              "sentence": "{boss_name} is _____ on time for lunch.",
+              "sentence_es": "{boss_name} _____ llega a tiempo al almuerzo.",
+              "answer": "never",
+              "options": [
+                "never",
+                "always",
+                "often"
+              ],
+              "hint": "This is a small office joke.",
+              "hint_es": "Este es un pequeño chiste de oficina.",
+              "character": "{boss_name}"
+            }
+          ]
+        }
+      },
+      {
+        "game_id": "ep9_game_03",
+        "game_type": "multiple_choice",
+        "title": "Episode Quiz",
+        "title_es": "Quiz del Episodio",
+        "instructions": "Answer questions about the episode",
+        "instructions_es": "Responde preguntas sobre el episodio",
+        "optional": true,
+        "unlocked_after_episode": true,
+        "time_limit_seconds": 180,
+        "xp_reward": 45,
+        "content": {
+          "items": [
+            {
+              "id": 1,
+              "question": "What word describes something that happens all the time?",
+              "question_es": "¿Qué palabra describe algo que pasa todo el tiempo?",
+              "options": [
+                "always",
+                "sometimes",
+                "never",
+                "late"
+              ],
+              "options_es": [
+                "siempre",
+                "a veces",
+                "nunca",
+                "tarde"
+              ],
+              "correct_answer": 0,
+              "explanation": "Always means it happens every time.",
+              "explanation_es": "Siempre significa que pasa todas las veces."
+            },
+            {
+              "id": 2,
+              "question": "Which word best describes Sam and meetings?",
+              "question_es": "¿Qué palabra describe mejor a Sam y las reuniones?",
+              "options": [
+                "often",
+                "never",
+                "usually",
+                "early"
+              ],
+              "options_es": [
+                "a menudo",
+                "nunca",
+                "normalmente",
+                "temprano"
+              ],
+              "correct_answer": 1,
+              "explanation": "Sam does not enjoy meetings at any time.",
+              "explanation_es": "Sam no disfruta las reuniones en ningún momento."
+            },
+            {
+              "id": 3,
+              "question": "Which word means many times?",
+              "question_es": "¿Qué palabra significa muchas veces?",
+              "options": [
+                "often",
+                "never",
+                "late",
+                "morning"
+              ],
+              "options_es": [
+                "a menudo",
+                "nunca",
+                "tarde",
+                "mañana"
+              ],
+              "correct_answer": 0,
+              "explanation": "Often means many times.",
+              "explanation_es": "A menudo significa muchas veces."
+            },
+            {
+              "id": 4,
+              "question": "Which word means not always but sometimes?",
+              "question_es": "¿Qué palabra significa no siempre pero algunas veces?",
+              "options": [
+                "sometimes",
+                "always",
+                "never",
+                "early"
+              ],
+              "options_es": [
+                "a veces",
+                "siempre",
+                "nunca",
+                "temprano"
+              ],
+              "correct_answer": 0,
+              "explanation": "Sometimes means it happens on some occasions.",
+              "explanation_es": "A veces significa que pasa en algunas ocasiones."
+            },
+            {
+              "id": 5,
+              "question": "Which word best fits a normal routine?",
+              "question_es": "¿Qué palabra encaja mejor con una rutina normal?",
+              "options": [
+                "usually",
+                "never",
+                "late",
+                "now"
+              ],
+              "options_es": [
+                "normalmente",
+                "nunca",
+                "tarde",
+                "ahora"
+              ],
+              "correct_answer": 0,
+              "explanation": "Usually describes what is normal.",
+              "explanation_es": "Normalmente describe lo que es normal."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "next_episode_preview": {
+    "section_name": "Ask Questions",
+    "section_name_es": "Hacer preguntas",
+    "image": "/episodes/episode_10_scene.jpg",
+    "preview_text_en": "Ben starts asking many questions, Mia answers calmly, and Leo asks questions about himself at Simple Paper.",
+    "preview_text_es": "Ben empieza a hacer muchas preguntas, Mia responde con calma, y Leo hace preguntas sobre él mismo en Simple Paper.",
+    "teaser_image": "/previews/ep_010.jpg"
+  },
+  "progression": {
+    "section_name": "How Often",
+    "section_name_es": "Con Frecuencia",
+    "image": "/episodes/episode_9_scene.jpg",
+    "xp_earned_base": 50,
+    "xp_bonus_conditions": [
+      {
+        "condition": "complete_all_games",
+        "bonus_xp": 25
+      },
+      {
+        "condition": "perfect_choices",
+        "bonus_xp": 15
+      },
+      {
+        "condition": "write_reflection",
+        "bonus_xp": 10
+      }
+    ],
+    "unlocks": [
+      {
+        "type": "character",
+        "character_ids": [
+          "char_leo",
+          "char_ben",
+          "char_mia"
+        ]
+      },
+      {
+        "type": "location",
+        "location_ids": [
+          "Main office",
+          "Reception desk",
+          "Conference room"
+        ]
+      }
+    ],
+    "achievements": [
+      {
+        "achievement_id": "time_observer",
+        "name": "Office Time Observer",
+        "name_es": "Observador del tiempo en la oficina",
+        "description": "You understand how often things happen at the office, even when the boss does not.",
+        "description_es": "Entiendes con qué frecuencia pasan las cosas en la oficina, incluso cuando el jefe no lo hace.",
+        "icon": "/achievements/time_observer.png",
+        "image": "/achievements/time_observer_banner.jpg"
+      }
+    ]
+  },
+  "metadata": {
+    "section_name": "How Often",
+    "section_name_es": "Con Frecuencia",
+    "image": "/episodes/episode_9_scene.jpg",
+    "created_date": "2026-01-30",
+    "version": "1.0",
+    "author": "Course Team",
+    "content_level": "beginner",
+    "estimated_words": 360,
+    "estimated_unique_vocabulary": 48,
+    "structure_type": "vocab_story_then_main_story"
+  }
+}

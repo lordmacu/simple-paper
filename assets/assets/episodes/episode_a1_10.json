@@ -1,0 +1,1366 @@
+{
+  "city_settings": {
+    "default_city": "Scranton",
+    "user_selected_city": null,
+    "localizable": true,
+    "city_specific_content": {
+      "office_name": "{company_name} {city}",
+      "default_company_name": "Dunder Mifflin",
+      "office_type": "Paper Company",
+      "office_type_es": "Compañía de Papel"
+    }
+  },
+  "episode_metadata": {
+    "section_name": "Office Questions",
+    "section_name_es": "Preguntas Oficina",
+    "image": "/episodes/episode_10_scene.jpg",
+    "episode_number": 10,
+    "episode_id": "ep_010",
+    "title": "So Many Questions (Again)",
+    "title_es": "Tantas Preguntas (Otra Vez)",
+    "description": "Ben keeps asking questions about work schedules and habits, Mia answers patiently, and {boss_name} finds a way to talk about his daily routine like it is very important.",
+    "description_es": "Ben sigue haciendo preguntas sobre horarios y hábitos de trabajo, Mia responde con paciencia, y {boss_name} encuentra la forma de hablar de su rutina diaria como si fuera muy importante.",
+    "internal_level": "A1",
+    "estimated_time_minutes": 12,
+    "unlock_requirements": null,
+    "tags": [
+      "office_life",
+      "questions",
+      "daily_routine",
+      "humor"
+    ],
+    "previous_episode": "ep_009",
+    "next_episode": "ep_011"
+  },
+  "vocabulary_focus": {
+    "section_name": "Daily Questions",
+    "section_name_es": "Preguntas Diarias",
+    "image": "/episodes/episode_10_scene.jpg",
+    "target_words": [
+      {
+        "word": "time",
+        "translation_es": "hora / tiempo",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 1,
+        "context_sentence": "Ben asks what time the meeting is.",
+        "context_sentence_es": "Ben pregunta a qué hora es la reunión.",
+        "image_url": "/vocab/time.jpg",
+        "usage_examples": [
+          "What time is the meeting?",
+          "The time is important for the boss.",
+          "I check the time at my desk."
+        ],
+        "usage_examples_es": [
+          "¿A qué hora es la reunión?",
+          "La hora es importante para el jefe.",
+          "Yo reviso la hora en mi escritorio."
+        ]
+      },
+      {
+        "word": "schedule",
+        "translation_es": "horario",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 2,
+        "context_sentence": "Mia explains the office schedule calmly.",
+        "context_sentence_es": "Mia explica el horario de la oficina con calma.",
+        "image_url": "/vocab/schedule.jpg",
+        "usage_examples": [
+          "The schedule is on the wall.",
+          "I follow the work schedule.",
+          "The schedule changes every week."
+        ],
+        "usage_examples_es": [
+          "El horario está en la pared.",
+          "Yo sigo el horario de trabajo.",
+          "El horario cambia cada semana."
+        ]
+      },
+      {
+        "word": "start",
+        "translation_es": "empezar",
+        "word_type": "verb",
+        "word_type_es": "verbo",
+        "difficulty": 1,
+        "context_sentence": "The meeting starts late again.",
+        "context_sentence_es": "La reunión empieza tarde otra vez.",
+        "image_url": "/vocab/start.jpg",
+        "usage_examples": [
+          "We start work at nine.",
+          "The meeting starts after lunch.",
+          "I start my day with coffee."
+        ],
+        "usage_examples_es": [
+          "Nosotros empezamos a trabajar a las nueve.",
+          "La reunión empieza después del almuerzo.",
+          "Yo empiezo mi día con café."
+        ]
+      },
+      {
+        "word": "finish",
+        "translation_es": "terminar",
+        "word_type": "verb",
+        "word_type_es": "verbo",
+        "difficulty": 2,
+        "context_sentence": "Ben asks when the meeting finishes.",
+        "context_sentence_es": "Ben pregunta cuándo termina la reunión.",
+        "image_url": "/vocab/finish.jpg",
+        "usage_examples": [
+          "I finish work at five.",
+          "The meeting finishes very late.",
+          "We finish the task together."
+        ],
+        "usage_examples_es": [
+          "Yo termino el trabajo a las cinco.",
+          "La reunión termina muy tarde.",
+          "Nosotros terminamos la tarea juntos."
+        ]
+      },
+      {
+        "word": "break",
+        "translation_es": "descanso",
+        "word_type": "noun",
+        "word_type_es": "sustantivo",
+        "difficulty": 1,
+        "context_sentence": "Everyone asks about the lunch break.",
+        "context_sentence_es": "Todos preguntan por el descanso del almuerzo.",
+        "image_url": "/vocab/break.jpg",
+        "usage_examples": [
+          "We have a break at noon.",
+          "The break is very short.",
+          "I talk with Mia during the break."
+        ],
+        "usage_examples_es": [
+          "Tenemos un descanso al mediodía.",
+          "El descanso es muy corto.",
+          "Yo hablo con Mia durante el descanso."
+        ]
+      }
+    ],
+    "phrases": [
+      {
+        "phrase": "What time is it?",
+        "translation_es": "¿Qué hora es?",
+        "usage_context": "Used when asking about the current time in the office.",
+        "usage_context_es": "Se usa para preguntar la hora actual en la oficina."
+      },
+      {
+        "phrase": "When does the meeting start?",
+        "translation_es": "¿Cuándo empieza la reunión?",
+        "usage_context": "Used to ask about the start time of a meeting.",
+        "usage_context_es": "Se usa para preguntar a qué hora empieza una reunión."
+      },
+      {
+        "phrase": "When does it finish?",
+        "translation_es": "¿Cuándo termina?",
+        "usage_context": "Used to ask about the end time of an activity.",
+        "usage_context_es": "Se usa para preguntar cuándo termina una actividad."
+      }
+    ]
+  },
+  "characters": {
+    "section_name": "Office People",
+    "section_name_es": "Gente Oficina",
+    "image": "/episodes/episode_10_scene.jpg",
+    "appearing_in_episode": [
+      {
+        "character_id": "char_boss",
+        "default_name": "LEO",
+        "role": "Boss",
+        "role_es": "Jefe",
+        "personality": "Enthusiastic boss who tries very hard to be loved and admired.",
+        "personality_es": "Jefe entusiasta que se esfuerza demasiado por ser querido y admirado.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/leo.png",
+        "intro_text": "Hello everyone. I am the boss. I work very hard every day. I arrive early. Sometimes at nine. That is early for a boss.",
+        "intro_text_es": "Hola a todos. Yo soy el jefe. Trabajo muy duro todos los días. Llego temprano. A veces a las nueve. Eso es temprano para un jefe."
+      },
+      {
+        "character_id": "char_jim",
+        "default_name": "BEN",
+        "role": "Salesman",
+        "role_es": "Vendedor",
+        "personality": "Relaxed salesman with a sarcastic sense of humor.",
+        "personality_es": "Vendedor relajado con un humor sarcástico.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/ben.png",
+        "intro_text": "Yes, this is a normal workday. We work all day. Very exciting. Very serious. Please stay calm.",
+        "intro_text_es": "Sí, este es un día normal de trabajo. Trabajamos todo el día. Muy emocionante. Muy serio. Por favor mantén la calma."
+      },
+      {
+        "character_id": "char_pam",
+        "default_name": "MIA",
+        "role": "Receptionist",
+        "role_es": "Recepcionista",
+        "personality": "Kind and patient receptionist who explains the office chaos.",
+        "personality_es": "Recepcionista amable y paciente que explica el caos de la oficina.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/mia.png",
+        "intro_text": "Welcome. This is the office. People ask many questions here. Do not worry. This happens every day.",
+        "intro_text_es": "Bienvenido. Esta es la oficina. La gente hace muchas preguntas aquí. No te preocupes. Esto pasa todos los días."
+      },
+      {
+        "character_id": "char_dwight",
+        "default_name": "DAN",
+        "role": "Salesman",
+        "role_es": "Vendedor",
+        "personality": "Intense rule follower who watches everyone closely.",
+        "personality_es": "Persona intensa que sigue las reglas y observa a todos.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/dan.png",
+        "intro_text": "I work from eight to five. Every day. I track time. I track people. Time is important. People are suspicious.",
+        "intro_text_es": "Trabajo de ocho a cinco. Todos los días. Yo controlo el tiempo. Controlo a las personas. El tiempo es importante. Las personas son sospechosas."
+      },
+      {
+        "character_id": "char_angela",
+        "default_name": "ANA",
+        "role": "Accountant",
+        "role_es": "Contadora",
+        "personality": "Strict accountant who judges bad behavior silently.",
+        "personality_es": "Contadora estricta que juzga el mal comportamiento en silencio.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/ana.png",
+        "intro_text": "I work quietly. I like order. I count numbers. I do not like noise. Or fun.",
+        "intro_text_es": "Trabajo en silencio. Me gusta el orden. Cuento números. No me gusta el ruido. Ni la diversión."
+      },
+      {
+        "character_id": "char_kevin",
+        "default_name": "MAX",
+        "role": "Accountant",
+        "role_es": "Contador",
+        "personality": "Slow but friendly accountant who loves food.",
+        "personality_es": "Contador lento pero amable que ama la comida.",
+        "first_appearance": false,
+        "customizable_name": true,
+        "user_custom_name": null,
+        "avatar_url": "/avatars/max.png",
+        "intro_text": "I work in accounting. I eat snacks at ten. I eat lunch at twelve. I think about food all day.",
+        "intro_text_es": "Trabajo en contabilidad. Como snacks a las diez. Almuerzo a las doce. Pienso en comida todo el día."
+      }
+    ],
+    "mentioned_but_not_appearing": []
+  },
+  "vocabulary_story": {
+    "section_name": "Daily Office Words",
+    "section_name_es": "Palabras Oficina",
+    "image": "/episodes/episode_10_vocab.jpg",
+    "title": "Learning Basic Words",
+    "title_es": "Aprendiendo Palabras Básicas",
+    "description": "A simple story to learn today's vocabulary",
+    "description_es": "Una historia simple para aprender el vocabulario de hoy",
+    "segments": [
+      {
+        "segment_id": "vocab_time_01",
+        "image_url": "/vocab/time.jpg",
+        "word_focus": "time",
+        "text": {
+          "en": "Ben checks the TIME on his watch.",
+          "es": "Ben revisa la HORA en su reloj."
+        },
+        "emphasis_style": "bold_uppercase"
+      },
+      {
+        "segment_id": "vocab_time_02",
+        "image_url": "/vocab/time.jpg",
+        "word_focus": "time",
+        "text": {
+          "en": "The TIME for the meeting is soon.",
+          "es": "La HORA de la reunión es pronto."
+        }
+      },
+      {
+        "segment_id": "vocab_time_03",
+        "image_url": "/vocab/time.jpg",
+        "word_focus": "time",
+        "text": {
+          "en": "Leo always talks about TIME like it is gold.",
+          "es": "Leo siempre habla de la HORA como si fuera oro."
+        }
+      },
+      {
+        "segment_id": "vocab_schedule_01",
+        "image_url": "/vocab/schedule.jpg",
+        "word_focus": "schedule",
+        "text": {
+          "en": "Mia writes the SCHEDULE on the board.",
+          "es": "Mia escribe el HORARIO en la pizarra."
+        }
+      },
+      {
+        "segment_id": "vocab_schedule_02",
+        "image_url": "/vocab/schedule.jpg",
+        "word_focus": "schedule",
+        "text": {
+          "en": "The SCHEDULE helps everyone know the plan.",
+          "es": "El HORARIO ayuda a todos a conocer el plan."
+        }
+      },
+      {
+        "segment_id": "vocab_schedule_03",
+        "image_url": "/vocab/schedule.jpg",
+        "word_focus": "schedule",
+        "text": {
+          "en": "Ben looks at the SCHEDULE again and smiles.",
+          "es": "Ben mira el HORARIO otra vez y sonríe."
+        }
+      },
+      {
+        "segment_id": "vocab_start_01",
+        "image_url": "/vocab/start.jpg",
+        "word_focus": "start",
+        "text": {
+          "en": "The meeting will START at nine o'clock.",
+          "es": "La reunión va a EMPEZAR a las nueve."
+        }
+      },
+      {
+        "segment_id": "vocab_start_02",
+        "image_url": "/vocab/start.jpg",
+        "word_focus": "start",
+        "text": {
+          "en": "I START my work with a big smile.",
+          "es": "Yo EMPIEZO mi trabajo con una gran sonrisa."
+        }
+      },
+      {
+        "segment_id": "vocab_start_03",
+        "image_url": "/vocab/start.jpg",
+        "word_focus": "start",
+        "text": {
+          "en": "Ray says: 'We START on time, maybe.'",
+          "es": "Ray dice: 'Nosotros EMPEZAMOS a tiempo, tal vez.'"
+        }
+      },
+      {
+        "segment_id": "vocab_finish_01",
+        "image_url": "/vocab/finish.jpg",
+        "word_focus": "finish",
+        "text": {
+          "en": "When does the meeting FINISH?",
+          "es": "¿Cuándo TERMINA la reunión?"
+        }
+      },
+      {
+        "segment_id": "vocab_finish_02",
+        "image_url": "/vocab/finish.jpg",
+        "word_focus": "finish",
+        "text": {
+          "en": "I FINISH my tasks before lunch.",
+          "es": "Yo TERMINO mis tareas antes del almuerzo."
+        }
+      },
+      {
+        "segment_id": "vocab_finish_03",
+        "image_url": "/vocab/finish.jpg",
+        "word_focus": "finish",
+        "text": {
+          "en": "The meeting FINISHES and everyone sighs.",
+          "es": "La reunión TERMINA y todos suspiran."
+        }
+      },
+      {
+        "segment_id": "vocab_break_01",
+        "image_url": "/vocab/break.jpg",
+        "word_focus": "break",
+        "text": {
+          "en": "Everyone waits for the lunch BREAK.",
+          "es": "Todos esperan el DESCANSO del almuerzo."
+        }
+      },
+      {
+        "segment_id": "vocab_break_02",
+        "image_url": "/vocab/break.jpg",
+        "word_focus": "break",
+        "text": {
+          "en": "The BREAK is short but important.",
+          "es": "El DESCANSO es corto pero importante."
+        }
+      },
+      {
+        "segment_id": "vocab_break_03",
+        "image_url": "/vocab/break.jpg",
+        "word_focus": "break",
+        "text": {
+          "en": "Max drinks coffee during the BREAK.",
+          "es": "Max toma café durante el DESCANSO."
+        }
+      },
+      {
+        "segment_id": "vocab_mix_01",
+        "image_url": "/vocab/time.jpg",
+        "word_focus": "time",
+        "text": {
+          "en": "The TIME to START the meeting is on the SCHEDULE.",
+          "es": "La HORA para EMPEZAR la reunión está en el HORARIO."
+        }
+      },
+      {
+        "segment_id": "vocab_mix_02",
+        "image_url": "/vocab/break.jpg",
+        "word_focus": "break",
+        "text": {
+          "en": "After FINISHING tasks, the BREAK is very nice.",
+          "es": "Después de TERMINAR tareas, el DESCANSO es muy agradable."
+        }
+      },
+      {
+        "segment_id": "vocab_summary",
+        "word_focus": null,
+        "text": {
+          "en": "Great! Now you know: TIME, SCHEDULE, START, FINISH, BREAK. Now we will use these words in a story!",
+          "es": "¡Genial! Ahora conoces: HORA, HORARIO, EMPEZAR, TERMINAR, DESCANSO. ¡Usemos estas palabras en una historia!"
+        }
+      }
+    ]
+  },
+  "mini_story": {
+    "section_name": "Wh Questions",
+    "section_name_es": "Preguntas Wh",
+    "image": "/episodes/episode_10_scene.jpg",
+    "title": "Short Story",
+    "title_es": "Historia corta",
+    "description": "A short story to practice today's topic.",
+    "description_es": "Una historia corta para practicar el tema de hoy.",
+    "paragraphs": [
+      {
+        "id": "p1",
+        "text": {
+          "en": "Ben walks into the office. He asks Mia, 'Who answers the phone today?' Mia smiles and says, 'I answer the phone today.' Leo looks at them and asks, 'What do I do this morning?'",
+          "es": "Ben entra a la oficina. Él pregunta a Mia, '¿Quién contesta el teléfono hoy?' Mia sonríe y dice, 'Yo contesto el teléfono hoy.' Leo los mira y pregunta, '¿Qué hago esta mañana?'"
+        }
+      },
+      {
+        "id": "p2",
+        "text": {
+          "en": "Dan sits at his desk and checks the clock. He asks, 'When does the meeting start?' Ben replies, 'The meeting starts at ten o'clock.' Dan nods and writes the time in his notebook carefully.",
+          "es": "Dan se sienta en su escritorio y mira el reloj. Él pregunta, '¿Cuándo empieza la reunión?' Ben responde, 'La reunión empieza a las diez.' Dan asiente y escribe la hora cuidadosamente en su cuaderno."
+        }
+      },
+      {
+        "id": "p3",
+        "text": {
+          "en": "Leo walks to the window and asks, 'Where is Max today?' Mia laughs, 'Max is eating lunch in the break room.' Everyone smiles because Max always forgets the time. The office day is fun and full of questions.",
+          "es": "Leo camina hacia la ventana y pregunta, '¿Dónde está Max hoy?' Mia se ríe, 'Max está almorzando en la sala de descanso.' Todos sonríen porque Max siempre olvida la hora. El día en la oficina es divertido y lleno de preguntas."
+        }
+      }
+    ]
+  },
+  "listening_shadowing": {
+    "section_name": "Office Time Lines",
+    "section_name_es": "Líneas Oficina",
+    "image": "/episodes/episode_10_scene.jpg",
+    "instructions": "Listen to the line. Then repeat it aloud before the timer ends.",
+    "instructions_es": "Escucha la línea. Luego repítela en voz alta antes de que termine el tiempo.",
+    "data": [
+      {
+        "item_id": "listen_001",
+        "character_id": "char_ben",
+        "character_display_name": "BEN",
+        "text": "What TIME does the meeting START according to the SCHEDULE before our BREAK FINISHES?",
+        "text_es": "¿A QUÉ HORA EMPIEZA la reunión según el HORARIO antes de que el DESCANSO TERMINE?",
+        "tts_text": "What time does the meeting start according to the schedule before our break finishes?",
+        "tts_voice_id": "en_us_male_1",
+        "estimated_audio_duration_seconds": 6,
+        "repeat_timer_seconds": 8,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "TIME",
+          "SCHEDULE",
+          "START",
+          "FINISH",
+          "BREAK"
+        ]
+      },
+      {
+        "item_id": "listen_002",
+        "character_id": "char_mia",
+        "character_display_name": "MIA",
+        "text": "I always check the TIME and SCHEDULE to know when to START and FINISH tasks and take BREAKS.",
+        "text_es": "Yo siempre reviso la HORA y el HORARIO para saber cuándo EMPEZAR y TERMINAR tareas y tomar DESCANSOS.",
+        "tts_text": "I always check the time and schedule to know when to start and finish tasks and take breaks.",
+        "tts_voice_id": "en_us_female_1",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 9,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "TIME",
+          "SCHEDULE",
+          "START",
+          "FINISH",
+          "BREAK"
+        ]
+      },
+      {
+        "item_id": "listen_003",
+        "character_id": "char_leo",
+        "character_display_name": "LEO",
+        "text": "The TIME to START the meeting is on the SCHEDULE and it will FINISH only after a long BREAK.",
+        "text_es": "La HORA para EMPEZAR la reunión está en el HORARIO y solo TERMINA después de un largo DESCANSO.",
+        "tts_text": "The time to start the meeting is on the schedule and it will finish only after a long break.",
+        "tts_voice_id": "en_us_male_1",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 9,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "TIME",
+          "SCHEDULE",
+          "START",
+          "FINISH",
+          "BREAK"
+        ]
+      },
+      {
+        "item_id": "listen_004",
+        "character_id": "char_max",
+        "character_display_name": "MAX",
+        "text": "During the BREAK, I check the TIME and look at the SCHEDULE to see when tasks START and FINISH.",
+        "text_es": "Durante el DESCANSO, reviso la HORA y miro el HORARIO para ver cuándo EMPIEZAN y TERMINAN las tareas.",
+        "tts_text": "During the break, I check the time and look at the schedule to see when tasks start and finish.",
+        "tts_voice_id": "en_us_male_2",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 9,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "TIME",
+          "SCHEDULE",
+          "START",
+          "FINISH",
+          "BREAK"
+        ]
+      },
+      {
+        "item_id": "listen_005",
+        "character_id": "char_ray",
+        "character_display_name": "RAY",
+        "text": "I cannot believe the TIME flies, the SCHEDULE is tight, we must START quickly and FINISH before BREAK.",
+        "text_es": "No puedo creer que la HORA vuele, el HORARIO es ajustado, debemos EMPEZAR rápido y TERMINAR antes del DESCANSO.",
+        "tts_text": "I cannot believe the time flies, the schedule is tight, we must start quickly and finish before break.",
+        "tts_voice_id": "en_us_male_3",
+        "estimated_audio_duration_seconds": 8,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "TIME",
+          "SCHEDULE",
+          "START",
+          "FINISH",
+          "BREAK"
+        ]
+      },
+      {
+        "item_id": "listen_006",
+        "character_id": "char_mia",
+        "character_display_name": "MIA",
+        "text": "Check the TIME, follow the SCHEDULE, START work on time, FINISH tasks properly, then enjoy your BREAK.",
+        "text_es": "Revisa la HORA, sigue el HORARIO, EMPIEZA el trabajo a tiempo, TERMINA las tareas correctamente, luego disfruta del DESCANSO.",
+        "tts_text": "Check the time, follow the schedule, start work on time, finish tasks properly, then enjoy your break.",
+        "tts_voice_id": "en_us_female_1",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 9,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "TIME",
+          "SCHEDULE",
+          "START",
+          "FINISH",
+          "BREAK"
+        ]
+      },
+      {
+        "item_id": "listen_007",
+        "character_id": "char_ben",
+        "character_display_name": "BEN",
+        "text": "The SCHEDULE says the meeting STARTS now, check your TIME, and do not FINISH early before BREAK.",
+        "text_es": "El HORARIO dice que la reunión EMPIEZA ahora, revisa tu HORA y no TERMINES temprano antes del DESCANSO.",
+        "tts_text": "The schedule says the meeting starts now, check your time, and do not finish early before break.",
+        "tts_voice_id": "en_us_male_1",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 9,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "TIME",
+          "SCHEDULE",
+          "START",
+          "FINISH",
+          "BREAK"
+        ]
+      },
+      {
+        "item_id": "listen_008",
+        "character_id": "char_leo",
+        "character_display_name": "LEO",
+        "text": "TIME is important, the SCHEDULE is strict, START your work, FINISH your reports, then enjoy BREAK.",
+        "text_es": "La HORA es importante, el HORARIO es estricto, EMPIEZA tu trabajo, TERMINA tus reportes, luego disfruta del DESCANSO.",
+        "tts_text": "Time is important, the schedule is strict, start your work, finish your reports, then enjoy break.",
+        "tts_voice_id": "en_us_male_1",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 9,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "TIME",
+          "SCHEDULE",
+          "START",
+          "FINISH",
+          "BREAK"
+        ]
+      },
+      {
+        "item_id": "listen_009",
+        "character_id": "char_mia",
+        "character_display_name": "MIA",
+        "text": "Remember the TIME, follow the SCHEDULE, START promptly, FINISH properly, and have a peaceful BREAK.",
+        "text_es": "Recuerda la HORA, sigue el HORARIO, EMPIEZA puntualmente, TERMINA correctamente y disfruta de un DESCANSO tranquilo.",
+        "tts_text": "Remember the time, follow the schedule, start promptly, finish properly, and have a peaceful break.",
+        "tts_voice_id": "en_us_female_1",
+        "estimated_audio_duration_seconds": 7,
+        "repeat_timer_seconds": 9,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "TIME",
+          "SCHEDULE",
+          "START",
+          "FINISH",
+          "BREAK"
+        ]
+      },
+      {
+        "item_id": "listen_010",
+        "character_id": "char_ray",
+        "character_display_name": "RAY",
+        "text": "Check TIME and SCHEDULE, START your tasks, FINISH all work, and then enjoy a long BREAK together.",
+        "text_es": "Revisa la HORA y el HORARIO, EMPIEZA tus tareas, TERMINA todo el trabajo y luego disfruta de un largo DESCANSO juntos.",
+        "tts_text": "Check time and schedule, start your tasks, finish all work, and then enjoy a long break together.",
+        "tts_voice_id": "en_us_male_3",
+        "estimated_audio_duration_seconds": 8,
+        "repeat_timer_seconds": 10,
+        "repeat_count": 2,
+        "focus_vocab": [
+          "TIME",
+          "SCHEDULE",
+          "START",
+          "FINISH",
+          "BREAK"
+        ]
+      }
+    ]
+  },
+  "scenes": {
+    "section_name": "Wh Questions",
+    "section_name_es": "Preguntas Wh",
+    "image": "/episodes/episode_010_scene.jpg",
+    "data": [
+      {
+        "scene_id": "scene_010_001",
+        "scene_number": 1,
+        "location": "Reception desk",
+        "location_es": "Mostrador de recepción",
+        "scene_name": "Morning Questions",
+        "scene_name_es": "Preguntas de mañana",
+        "time": "9:00 AM",
+        "time_es": "9:00 a.m.",
+        "description": "Ben asks Mia about the office schedule while Leo watches proudly.",
+        "description_es": "Ben pregunta a Mia sobre el horario de la oficina mientras Leo observa orgulloso.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_jim",
+            "character_display_name": "BEN",
+            "text": "Mia, WHO answers the phone in the morning? I need to know.",
+            "translation_es": "Mia, ¿quién contesta el teléfono por la mañana? Necesito saberlo.",
+            "emotion": "curious",
+            "notes": "Ben asks a wh-question clearly to reinforce the topic.",
+            "notes_es": "Ben hace una pregunta wh clara para reforzar el tema.",
+            "highlighted_vocab": [
+              "who"
+            ],
+            "template_vars": [
+              "pam_name"
+            ]
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_pam",
+            "character_display_name": "MIA",
+            "text": "I answer the phone in the morning. I answer it carefully.",
+            "translation_es": "Yo contesto el teléfono por la mañana. Lo contesto cuidadosamente.",
+            "emotion": "calm",
+            "notes": "Mia gives a clear statement and repeats the verb for reinforcement.",
+            "notes_es": "Mia da una afirmación clara y repite el verbo para reforzar.",
+            "highlighted_vocab": [
+              "answer"
+            ],
+            "template_vars": [
+              "pam_name"
+            ]
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_boss",
+            "character_display_name": "LEO",
+            "text": "I also answer questions in the morning. I am the best boss. Everyone knows it.",
+            "translation_es": "Yo también contesto preguntas por la mañana. Soy el mejor jefe. Todos lo saben.",
+            "emotion": "proud_but_lying",
+            "notes": "Leo brags humorously while reinforcing wh- question context.",
+            "notes_es": "Leo se jacta humorísticamente mientras refuerza el contexto de preguntas wh.",
+            "highlighted_vocab": [
+              "answer",
+              "questions"
+            ],
+            "template_vars": [
+              "boss_name"
+            ]
+          },
+          {
+            "line_id": 4,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "Which phrase is correct?",
+            "prompt_es": "¿Qué frase es correcta?",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "I answers the phone in the morning.",
+                "translation_es": "Yo contesto el teléfono por la mañana.",
+                "points": 0,
+                "personality_impact": "friendly",
+                "vocab_used": [
+                  "answer"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "I answer the phone in the morning.",
+                "translation_es": "Yo contesto el teléfono por la mañana.",
+                "points": 10,
+                "personality_impact": "neutral",
+                "vocab_used": [
+                  "answer"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "scene_id": "scene_010_002",
+        "scene_number": 2,
+        "location": "Dan's desk",
+        "location_es": "Escritorio de Dan",
+        "scene_name": "Meeting Time",
+        "scene_name_es": "Hora de la reunión",
+        "time": "10:00 AM",
+        "time_es": "10:00 a.m.",
+        "description": "Dan asks Ben about the meeting schedule while Leo interrupts with his brag.",
+        "description_es": "Dan pregunta a Ben sobre el horario de la reunión mientras Leo interrumpe con su jactancia.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_dwight",
+            "character_display_name": "DAN",
+            "text": "When does the meeting start? I want to be ready.",
+            "translation_es": "¿Cuándo empieza la reunión? Quiero estar listo.",
+            "emotion": "serious",
+            "notes": "Dan practices wh- questions with 'when'.",
+            "notes_es": "Dan practica preguntas wh con 'cuándo'.",
+            "highlighted_vocab": [
+              "when",
+              "meeting"
+            ],
+            "template_vars": [
+              "boss_name"
+            ]
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_jim",
+            "character_display_name": "BEN",
+            "text": "The meeting starts at ten o'clock. Be prepared.",
+            "translation_es": "La reunión empieza a las diez. Prepárate.",
+            "emotion": "sarcastic",
+            "notes": "Ben gives a straight-faced but simple answer reinforcing time expressions.",
+            "notes_es": "Ben da una respuesta seria pero simple reforzando expresiones de tiempo.",
+            "highlighted_vocab": [
+              "meeting",
+              "starts",
+              "ten o'clock"
+            ],
+            "template_vars": [
+              "boss_name"
+            ]
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_boss",
+            "character_display_name": "LEO",
+            "text": "I start meetings too. I start them perfectly. Everyone admires me.",
+            "translation_es": "Yo también inicio reuniones. Las inicio perfectamente. Todos me admiran.",
+            "emotion": "proud_but_lying",
+            "notes": "Leo exaggerates his importance while reinforcing 'when' context indirectly.",
+            "notes_es": "Leo exagera su importancia mientras refuerza el contexto de 'cuándo' indirectamente.",
+            "highlighted_vocab": [
+              "meetings",
+              "start"
+            ],
+            "template_vars": [
+              "boss_name"
+            ]
+          },
+          {
+            "line_id": 4,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "Which phrase uses the correct time expression?",
+            "prompt_es": "¿Qué frase usa la expresión de tiempo correcta?",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "The meeting start at ten.",
+                "translation_es": "La reunión empieza a las diez.",
+                "points": 0,
+                "personality_impact": "neutral",
+                "vocab_used": [
+                  "meeting",
+                  "start"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "The meeting starts at ten o'clock.",
+                "translation_es": "La reunión empieza a las diez en punto.",
+                "points": 10,
+                "personality_impact": "friendly",
+                "vocab_used": [
+                  "meeting",
+                  "starts",
+                  "ten o'clock"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "scene_id": "scene_010_003",
+        "scene_number": 3,
+        "location": "Break room",
+        "location_es": "Sala de descanso",
+        "scene_name": "Lunch Questions",
+        "scene_name_es": "Preguntas de almuerzo",
+        "time": "12:00 PM",
+        "time_es": "12:00 p.m.",
+        "description": "Leo checks on Max and asks Mia about his lunch habits while Ben observes.",
+        "description_es": "Leo revisa a Max y pregunta a Mia sobre sus hábitos de almuerzo mientras Ben observa.",
+        "dialogue": [
+          {
+            "line_id": 1,
+            "character_id": "char_boss",
+            "character_display_name": "LEO",
+            "text": "Where is Max today? He must eat properly. I am worried.",
+            "translation_es": "¿Dónde está Max hoy? Él debe comer correctamente. Estoy preocupado.",
+            "emotion": "worried",
+            "notes": "Leo asks a wh-question and exaggerates concern humorously.",
+            "notes_es": "Leo hace una pregunta wh y exagera su preocupación humorísticamente.",
+            "highlighted_vocab": [
+              "where",
+              "eat"
+            ],
+            "template_vars": [
+              "boss_name",
+              "kevin_name"
+            ]
+          },
+          {
+            "line_id": 2,
+            "character_id": "char_pam",
+            "character_display_name": "MIA",
+            "text": "Max is eating lunch in the break room. He always forgets the time.",
+            "translation_es": "Max está almorzando en la sala de descanso. Siempre olvida la hora.",
+            "emotion": "calm",
+            "notes": "Mia explains using frequency expression 'always'.",
+            "notes_es": "Mia explica usando la expresión de frecuencia 'siempre'.",
+            "highlighted_vocab": [
+              "eating",
+              "lunch",
+              "always"
+            ],
+            "template_vars": [
+              "kevin_name"
+            ]
+          },
+          {
+            "line_id": 3,
+            "character_id": "char_jim",
+            "character_display_name": "BEN",
+            "text": "Yes, this is normal. Max forgets the time. Very important office rule.",
+            "translation_es": "Sí, esto es normal. Max olvida la hora. Regla muy importante de la oficina.",
+            "emotion": "sarcastic",
+            "notes": "Ben uses humor while reinforcing office context.",
+            "notes_es": "Ben usa humor mientras refuerza el contexto de oficina.",
+            "highlighted_vocab": [
+              "time",
+              "office"
+            ],
+            "template_vars": [
+              "kevin_name"
+            ]
+          },
+          {
+            "line_id": 4,
+            "character_id": "player",
+            "character_display_name": "YOU",
+            "text": null,
+            "is_interactive": true,
+            "interaction_type": "choice",
+            "prompt": "Which sentence is correct?",
+            "prompt_es": "¿Qué oración es correcta?",
+            "choices": [
+              {
+                "choice_id": "a",
+                "text": "Max is eat lunch in the break room.",
+                "translation_es": "Max está comer almuerzo en la sala de descanso.",
+                "points": 0,
+                "personality_impact": "neutral",
+                "vocab_used": [
+                  "eating",
+                  "lunch"
+                ]
+              },
+              {
+                "choice_id": "b",
+                "text": "Max is eating lunch in the break room.",
+                "translation_es": "Max está almorzando en la sala de descanso.",
+                "points": 10,
+                "personality_impact": "friendly",
+                "vocab_used": [
+                  "eating",
+                  "lunch"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "games": {
+    "section_name": "Office Vocabulary",
+    "section_name_es": "Vocabulario Oficina",
+    "image": "/episodes/episode_10_scene.jpg",
+    "data": [
+      {
+        "game_id": "ep10_game_01",
+        "game_type": "matching",
+        "title": "Match the Words!",
+        "title_es": "¡Empareja las Palabras!",
+        "instructions": "Match each English word with its Spanish meaning",
+        "instructions_es": "Empareja cada palabra en inglés con su significado en español",
+        "optional": true,
+        "unlocked_after_episode": true,
+        "time_limit_seconds": 90,
+        "xp_reward": 25,
+        "content": {
+          "items": [
+            {
+              "id": 1,
+              "left": "TIME",
+              "right": "HORA",
+              "image_url": "/vocab/time.jpg"
+            },
+            {
+              "id": 2,
+              "left": "SCHEDULE",
+              "right": "HORARIO",
+              "image_url": "/vocab/schedule.jpg"
+            },
+            {
+              "id": 3,
+              "left": "START",
+              "right": "EMPEZAR",
+              "image_url": "/vocab/start.jpg"
+            },
+            {
+              "id": 4,
+              "left": "FINISH",
+              "right": "TERMINAR",
+              "image_url": "/vocab/finish.jpg"
+            },
+            {
+              "id": 5,
+              "left": "BREAK",
+              "right": "DESCANSO",
+              "image_url": "/vocab/break.jpg"
+            },
+            {
+              "id": 6,
+              "left": "MEETING",
+              "right": "REUNIÓN",
+              "image_url": "/vocab/meeting.jpg"
+            },
+            {
+              "id": 7,
+              "left": "TASK",
+              "right": "TAREA",
+              "image_url": "/vocab/task.jpg"
+            },
+            {
+              "id": 8,
+              "left": "WORK",
+              "right": "TRABAJO",
+              "image_url": "/vocab/work.jpg"
+            }
+          ]
+        },
+        "settings": {
+          "shuffle": true,
+          "show_images": true
+        }
+      },
+      {
+        "game_id": "ep10_game_02",
+        "game_type": "fill_blank",
+        "title": "Complete the Sentences",
+        "title_es": "Completa las Oraciones",
+        "instructions": "Fill in the missing words from the episode",
+        "instructions_es": "Completa las palabras que faltan del episodio",
+        "optional": true,
+        "unlocked_after_episode": true,
+        "time_limit_seconds": 150,
+        "xp_reward": 35,
+        "content": {
+          "items": [
+            {
+              "id": 1,
+              "sentence": "{jim_name} checks the _____ before the meeting starts.",
+              "sentence_es": "{jim_name} revisa la _____ antes de que empiece la reunión.",
+              "answer": "TIME",
+              "options": [
+                "TIME",
+                "SCHEDULE",
+                "BREAK"
+              ],
+              "hint": "Look at your watch",
+              "hint_es": "Mira tu reloj",
+              "character": "{jim_name}"
+            },
+            {
+              "id": 2,
+              "sentence": "{pam_name} writes the _____ on the board.",
+              "sentence_es": "{pam_name} escribe el _____ en la pizarra.",
+              "answer": "SCHEDULE",
+              "options": [
+                "SCHEDULE",
+                "TIME",
+                "TASK"
+              ],
+              "hint": "It shows what to do and when",
+              "hint_es": "Muestra qué hacer y cuándo",
+              "character": "{pam_name}"
+            },
+            {
+              "id": 3,
+              "sentence": "We must _____ our work on time.",
+              "sentence_es": "Debemos _____ nuestro trabajo a tiempo.",
+              "answer": "START",
+              "options": [
+                "START",
+                "FINISH",
+                "BREAK"
+              ],
+              "hint": "It is the opposite of finish",
+              "hint_es": "Es lo contrario de terminar",
+              "character": "{boss_name}"
+            },
+            {
+              "id": 4,
+              "sentence": "Do not _____ your tasks before the meeting ends.",
+              "sentence_es": "No _____ tus tareas antes de que termine la reunión.",
+              "answer": "FINISH",
+              "options": [
+                "FINISH",
+                "START",
+                "BREAK"
+              ],
+              "hint": "It is the opposite of start",
+              "hint_es": "Es lo contrario de empezar",
+              "character": "{jim_name}"
+            },
+            {
+              "id": 5,
+              "sentence": "Everyone enjoys a short _____ after work.",
+              "sentence_es": "Todos disfrutan un breve _____ después del trabajo.",
+              "answer": "BREAK",
+              "options": [
+                "BREAK",
+                "SCHEDULE",
+                "TASK"
+              ],
+              "hint": "You rest for a few minutes",
+              "hint_es": "Descansas por unos minutos",
+              "character": "{pam_name}"
+            },
+            {
+              "id": 6,
+              "sentence": "The _____ says we start at nine o'clock.",
+              "sentence_es": "El _____ dice que empezamos a las nueve.",
+              "answer": "SCHEDULE",
+              "options": [
+                "SCHEDULE",
+                "TIME",
+                "WORK"
+              ],
+              "hint": "It is posted on the wall",
+              "hint_es": "Está en la pared",
+              "character": "{boss_name}"
+            },
+            {
+              "id": 7,
+              "sentence": "{jim_name} looks at the _____ to see if it is time for a BREAK.",
+              "sentence_es": "{jim_name} mira la _____ para ver si es hora de un DESCANSO.",
+              "answer": "TIME",
+              "options": [
+                "TIME",
+                "SCHEDULE",
+                "TASK"
+              ],
+              "hint": "Check your watch or clock",
+              "hint_es": "Revisa tu reloj o reloj de pared",
+              "character": "{jim_name}"
+            }
+          ]
+        }
+      },
+      {
+        "game_id": "ep10_game_03",
+        "game_type": "multiple_choice",
+        "title": "Episode Quiz",
+        "title_es": "Quiz del Episodio",
+        "instructions": "Answer questions about the episode",
+        "instructions_es": "Responde preguntas sobre el episodio",
+        "optional": true,
+        "unlocked_after_episode": true,
+        "time_limit_seconds": 180,
+        "xp_reward": 45,
+        "content": {
+          "items": [
+            {
+              "id": 1,
+              "question": "Who checks the TIME before the meeting?",
+              "question_es": "¿Quién revisa la HORA antes de la reunión?",
+              "options": [
+                "{jim_name}",
+                "{pam_name}",
+                "{boss_name}",
+                "{player_name}"
+              ],
+              "options_es": [
+                "{jim_name}",
+                "{pam_name}",
+                "{boss_name}",
+                "{player_name}"
+              ],
+              "correct_answer": 0,
+              "explanation": "Ben is the one who checks the time before the meeting.",
+              "explanation_es": "Ben es quien revisa la hora antes de la reunión."
+            },
+            {
+              "id": 2,
+              "question": "What does Mia write on the board?",
+              "question_es": "¿Qué escribe Mia en la pizarra?",
+              "options": [
+                "TIME",
+                "SCHEDULE",
+                "TASK",
+                "BREAK"
+              ],
+              "options_es": [
+                "HORA",
+                "HORARIO",
+                "TAREA",
+                "DESCANSO"
+              ],
+              "correct_answer": 1,
+              "explanation": "Mia writes the SCHEDULE on the board for everyone to see.",
+              "explanation_es": "Mia escribe el HORARIO en la pizarra para que todos lo vean."
+            },
+            {
+              "id": 3,
+              "question": "What should you do after FINISHING tasks?",
+              "question_es": "¿Qué debes hacer después de TERMINAR tareas?",
+              "options": [
+                "START a new task",
+                "Have a BREAK",
+                "Ignore the TIME",
+                "Check the SCHEDULE"
+              ],
+              "options_es": [
+                "EMPEZAR una nueva tarea",
+                "Tomar un DESCANSO",
+                "Ignorar la HORA",
+                "Revisar el HORARIO"
+              ],
+              "correct_answer": 1,
+              "explanation": "After finishing tasks, you enjoy a BREAK.",
+              "explanation_es": "Después de terminar las tareas, disfrutas de un DESCANSO."
+            },
+            {
+              "id": 4,
+              "question": "Which word means EMPEZAR in English?",
+              "question_es": "¿Qué palabra significa EMPEZAR en inglés?",
+              "options": [
+                "TIME",
+                "START",
+                "FINISH",
+                "BREAK"
+              ],
+              "options_es": [
+                "HORA",
+                "EMPEZAR",
+                "TERMINAR",
+                "DESCANSO"
+              ],
+              "correct_answer": 1,
+              "explanation": "The word START means EMPEZAR in English.",
+              "explanation_es": "La palabra START significa EMPEZAR en inglés."
+            },
+            {
+              "id": 5,
+              "question": "Which character enjoys a short BREAK after work?",
+              "question_es": "¿Qué personaje disfruta un breve DESCANSO después del trabajo?",
+              "options": [
+                "{pam_name}",
+                "{jim_name}",
+                "{boss_name}",
+                "{player_name}"
+              ],
+              "options_es": [
+                "{pam_name}",
+                "{jim_name}",
+                "{boss_name}",
+                "{player_name}"
+              ],
+              "correct_answer": 0,
+              "explanation": "Mia mentions that everyone enjoys a short BREAK after work.",
+              "explanation_es": "Mia menciona que todos disfrutan un breve DESCANSO después del trabajo."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "content_wrappers": {
+    "section_name": "Wh Questions",
+    "section_name_es": "Preguntas Wh",
+    "image": "/episodes/episode_010_scene.jpg",
+    "intro_text": {
+      "en": "Welcome to the office. This is a normal place with normal people. Very normal. Completely normal. Ben asks many questions. Mia answers calmly. Leo asks questions about himself. And sometimes everyone laughs. Or cries. Or laughs again.",
+      "es": "Bienvenido a la oficina. Este es un lugar normal con personas normales. Muy normal. Completamente normal. Ben hace muchas preguntas. Mia responde con calma. Leo hace preguntas sobre sí mismo. Y a veces todos se ríen. O lloran. O se ríen otra vez."
+    },
+    "transition": {
+      "en": "Great. Now you know the words. Now we use them in the office. The office where strange things happen every day. Where Leo thinks he is perfect and everyone else pretends it is normal.",
+      "es": "Genial. Ahora conoces las palabras. Ahora las usamos en la oficina. La oficina donde suceden cosas extrañas todos los días. Donde Leo cree que es perfecto y todos los demás fingen que es normal."
+    },
+    "conclusion": {
+      "en": "Good job. You survived this office day. You asked questions. You answered questions. You learned new words. Leo is still proud of himself. Maybe too proud. Tomorrow we continue. Maybe more questions.",
+      "es": "Buen trabajo. Sobreviviste este día en la oficina. Hiciste preguntas. Contestaste preguntas. Aprendiste palabras nuevas. Leo todavía está orgulloso de sí mismo. Tal vez demasiado orgulloso. Mañana continuamos. Tal vez más preguntas."
+    },
+    "reflection_prompt": {
+      "question_en": "Write one sentence using the word 'who' or 'when'",
+      "question_es": "Escribe una oración usando la palabra 'quién' o 'cuándo'",
+      "type": "free_text",
+      "optional": true,
+      "max_length": 100,
+      "vocab_practice": [
+        "who",
+        "when"
+      ]
+    }
+  },
+  "next_episode_preview": {
+    "section_name": "Demonstratives",
+    "section_name_es": "Demostrativos",
+    "image": "/episodes/episode_011_scene.jpg",
+    "preview_text_en": "Next time, Mia shows this pen and that notebook. Ben wonders which one is better. The office laughs at Leo's opinion.",
+    "preview_text_es": "La próxima vez, Mia muestra este bolígrafo y aquel cuaderno. Ben se pregunta cuál es mejor. La oficina se ríe de la opinión de Leo.",
+    "teaser_image": "/previews/ep_011.jpg"
+  },
+  "progression": {
+    "section_name": "Episode Progress",
+    "section_name_es": "Progreso Episodio",
+    "image": "/episodes/episode_10_scene.jpg",
+    "xp_earned_base": 50,
+    "xp_bonus_conditions": [
+      {
+        "condition": "complete_all_games",
+        "bonus_xp": 25
+      },
+      {
+        "condition": "perfect_choices",
+        "bonus_xp": 15
+      },
+      {
+        "condition": "write_reflection",
+        "bonus_xp": 10
+      }
+    ],
+    "unlocks": [
+      {
+        "type": "character",
+        "character_ids": [
+          "char_ben",
+          "char_mia",
+          "char_leo",
+          "char_max",
+          "char_ray"
+        ]
+      },
+      {
+        "type": "location",
+        "location_ids": [
+          "office_main_floor",
+          "meeting_room",
+          "break_area"
+        ]
+      }
+    ],
+    "achievements": [
+      {
+        "achievement_id": "achv_a1_10",
+        "name": "First Complete Office Lesson",
+        "name_es": "Primera Lección Completa en Oficina",
+        "description": "You completed all activities and learned TIME, SCHEDULE, START, FINISH, and BREAK.",
+        "description_es": "Has completado todas las actividades y aprendido HORA, HORARIO, EMPEZAR, TERMINAR y DESCANSO.",
+        "icon": "/achievements/achv_a1_10.png",
+        "image": "/achievements/achv_a1_10_banner.jpg"
+      }
+    ]
+  },
+  "metadata": {
+    "section_name": "Office Questions",
+    "section_name_es": "Preguntas Oficina",
+    "image": "/episodes/episode_10_scene.jpg",
+    "created_date": "2026-01-30",
+    "version": "1.0",
+    "author": "Course Team",
+    "content_level": "beginner",
+    "estimated_words": 320,
+    "estimated_unique_vocabulary": 30,
+    "structure_type": "vocab_story_then_main_story"
+  }
+}
