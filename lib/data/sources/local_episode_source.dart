@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import '../../domain/models/episode/episode.dart';
 import '../parsers/episode_json_parser.dart';
@@ -7,9 +8,17 @@ import '../parsers/episode_json_parser.dart';
 /// Lee archivos JSON de la carpeta assets/episodes/ y los convierte
 /// a objetos [Episode] usando [EpisodeJsonParser].
 class LocalEpisodeSource {
+  /// Parser para convertir JSON a objetos Episode
   final EpisodeJsonParser _parser;
+  
+  /// Ruta base de los assets
   final String _assetsPath;
   
+  /// Crea un data source local de episodios.
+  ///
+  /// Parámetros:
+  /// - [parser]: Parser personalizado (opcional)
+  /// - [assetsPath]: Ruta de los assets (por defecto 'assets/episodes/')
   LocalEpisodeSource({
     EpisodeJsonParser? parser,
     String assetsPath = 'assets/episodes/',
@@ -26,7 +35,7 @@ class LocalEpisodeSource {
     try {
       final jsonString = await rootBundle.loadString(filePath);
       return _parser.parseFromString(jsonString);
-    } catch (e) {
+    } on Exception catch (e) {
       throw EpisodeLoadException(
         'Failed to load episode $episodeNumber from $filePath: $e',
       );
@@ -57,9 +66,9 @@ class LocalEpisodeSource {
       try {
         final episode = await loadEpisodeByNumber(i);
         episodes.add(episode);
-      } catch (e) {
+      } on Exception catch (e) {
         // Registrar error pero continuar cargando otros episodios
-        print('Warning: Could not load episode $i: $e');
+        debugPrint('Warning: Could not load episode $i: $e');
       }
     }
     
@@ -88,7 +97,7 @@ class LocalEpisodeSource {
     try {
       await loadEpisodeByNumber(episodeNumber);
       return true;
-    } catch (e) {
+    } on Exception catch (_) {
       return false;
     }
   }
@@ -101,8 +110,13 @@ class LocalEpisodeSource {
 
 /// Excepción lanzada cuando falla la carga de un episodio desde assets.
 class EpisodeLoadException implements Exception {
+  /// Mensaje de error
   final String message;
   
+  /// Crea una excepción de carga de episodio.
+  ///
+  /// Parámetros:
+  /// - [message]: Mensaje descriptivo del error
   EpisodeLoadException(this.message);
   
   @override

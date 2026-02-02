@@ -1,6 +1,8 @@
+import 'package:flutter/foundation.dart';
 import '../../domain/models/episode/episode.dart';
 import '../../domain/repositories/i_episode_repository.dart';
-import '../sources/local_episode_source.dart';
+import '../parsers/episode_json_parser.dart';
+import '../sources/content_db.dart';
 
 /// Implementación concreta del repositorio de episodios.
 ///
@@ -8,19 +10,30 @@ import '../sources/local_episode_source.dart';
 /// Maneja errores y excepciones convirtiéndolos a null cuando es apropiado
 /// para cumplir con el contrato de [IEpisodeRepository].
 class EpisodeRepositoryImpl implements IEpisodeRepository {
-  final LocalEpisodeSource _source;
+  final ContentDb _contentDb;
+  final EpisodeJsonParser _parser;
 
-  EpisodeRepositoryImpl({LocalEpisodeSource? source})
-    : _source = source ?? LocalEpisodeSource();
+  /// Crea una implementación del repositorio de episodios.
+  /// [contentDb] Base de datos de contenido (opcional, usa ContentDb() por defecto).
+  /// [parser] Parser de episodios JSON (opcional, usa EpisodeJsonParser() por defecto).
+  EpisodeRepositoryImpl({
+    ContentDb? contentDb,
+    EpisodeJsonParser? parser,
+  })  : _contentDb = contentDb ?? ContentDb(),
+        _parser = parser ?? EpisodeJsonParser();
 
   @override
   Future<Episode?> getEpisodeByNumber(int episodeNumber) async {
     try {
-      return await _source.loadEpisodeByNumber(episodeNumber);
-    } catch (e) {
+      final row = await _contentDb.getEpisodeByNumber(episodeNumber);
+      if (row != null) {
+        return _parser.parseFromString(row['json'] as String);
+      }
+      return null;
+    } on Exception catch (e) {
       // Si hay error (ej. archivo no encontrado), retornamos null
       // Esto permite a la UI manejar el caso de "Episodio no encontrado"
-      print('EpisodeRepositoryImpl: Error loading episode #$episodeNumber: $e');
+      debugPrint('EpisodeRepositoryImpl: Error loading episode #$episodeNumber: $e');
       return null;
     }
   }
@@ -28,26 +41,34 @@ class EpisodeRepositoryImpl implements IEpisodeRepository {
   @override
   Future<Episode?> getEpisodeById(String episodeId) async {
     try {
-      return await _source.loadEpisodeById(episodeId);
-    } catch (e) {
-      print('EpisodeRepositoryImpl: Error loading episode ID $episodeId: $e');
+      final row = await _contentDb.getEpisodeById(episodeId);
+      if (row != null) {
+        return _parser.parseFromString(row['json'] as String);
+      }
+      return null;
+    } on Exception catch (e) {
+      debugPrint('EpisodeRepositoryImpl: Error loading episode ID $episodeId: $e');
       return null;
     }
   }
 
   @override
   Future<List<Episode>> getAllEpisodes() async {
-    // LocalEpisodeSource.loadAllEpisodes ya maneja errores internos
-    // y retorna la lista de los que sí pudo cargar.
-    return await _source.loadAllEpisodes();
+    final rows = await _contentDb.getAllEpisodes();
+    return rows
+        .map((row) => _parser.parseFromString(row['json'] as String))
+        .toList();
   }
 
   @override
   Future<List<Episode>> getEpisodesByLevel(String level) async {
     try {
-      return await _source.loadEpisodesByLevel(level);
-    } catch (e) {
-      print(
+      final rows = await _contentDb.getEpisodesByLevel(level.toUpperCase());
+      return rows
+          .map((row) => _parser.parseFromString(row['json'] as String))
+          .toList();
+    } on Exception catch (e) {
+      debugPrint(
         'EpisodeRepositoryImpl: Error loading episodes for level $level: $e',
       );
       return [];
@@ -56,11 +77,12 @@ class EpisodeRepositoryImpl implements IEpisodeRepository {
 
   @override
   Future<bool> isEpisodeAvailable(int episodeNumber) async {
-    return await _source.isEpisodeAvailable(episodeNumber);
+    final row = await _contentDb.getEpisodeByNumber(episodeNumber);
+    return row != null;
   }
 
   @override
   Future<int> getTotalEpisodesCount() async {
-    return await _source.getTotalEpisodesCount();
+    return await _contentDb.getEpisodeCount();
   }
 }

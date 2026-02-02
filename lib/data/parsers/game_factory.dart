@@ -1,6 +1,10 @@
 import '../../domain/models/game/matching_game.dart';
 import '../../domain/models/game/fill_blank_game.dart';
 import '../../domain/models/game/multiple_choice_game.dart';
+import '../../domain/models/game/audio_choice_game.dart';
+import '../../domain/models/game/order_sentence_game.dart';
+import '../../domain/models/game/typing_game.dart';
+import '../../domain/models/game/spot_word_game.dart';
 import '../../domain/models/game/game.dart';
 
 /// Factory para crear instancias de juegos según su tipo
@@ -29,11 +33,24 @@ class GameFactory {
           
         case 'multiple_choice':
           return MultipleChoiceGame.fromJson(json);
+        
+        case 'audio_choice':
+          return AudioChoiceGame.fromJson(json);
+        
+        case 'order_sentence':
+          return OrderSentenceGame.fromJson(json);
+
+        case 'typing':
+          return TypingGame.fromJson(json);
+
+        case 'spot_word':
+          return SpotWordGame.fromJson(json);
+        
           
         default:
           throw UnsupportedGameTypeException(gameType);
       }
-    } catch (e) {
+    } on Exception catch (e) {
       if (e is UnsupportedGameTypeException || e is GameParsingException) {
         rethrow;
       }
@@ -55,7 +72,7 @@ class GameFactory {
       try {
         final gameJson = jsonList[i] as Map<String, dynamic>;
         games.add(createGame(gameJson));
-      } catch (e) {
+      } on Exception catch (e) {
         throw GameParsingException(
           'Error parsing game at index $i: ${e.toString()}',
         );
@@ -91,21 +108,25 @@ class GameFactory {
   }
 }
 
-/// Excepción cuando se encuentra un tipo de juego no soportado
+/// Excepción lanzada cuando se encuentra un tipo de juego no soportado.
 class UnsupportedGameTypeException implements Exception {
+  /// Tipo de juego no soportado.
   final String gameType;
   
+  /// Crea una excepción para tipo de juego no soportado.
   UnsupportedGameTypeException(this.gameType);
   
   @override
   String toString() => 'Unsupported game type: $gameType. '
-      'Supported types: matching, fill_blank, multiple_choice';
+      'Supported types: matching, fill_blank, multiple_choice, audio_choice, order_sentence, typing, spot_word';
 }
 
-/// Excepción general de parseo de juegos
+/// Excepción general de parseo de juegos.
 class GameParsingException implements Exception {
+  /// Mensaje descriptivo del error de parseo.
   final String message;
   
+  /// Crea una excepción de parseo de juego.
   GameParsingException(this.message);
   
   @override
