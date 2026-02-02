@@ -1,29 +1,29 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'fill_blank_game.dart';
+part of 'typing_game.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$FillBlankGameImpl _$$FillBlankGameImplFromJson(Map<String, dynamic> json) =>
-    _$FillBlankGameImpl(
+_$TypingGameImpl _$$TypingGameImplFromJson(Map<String, dynamic> json) =>
+    _$TypingGameImpl(
       gameId: json['game_id'] as String,
       gameType: json['game_type'] as String,
       title: json['title'] as String,
       titleEs: json['title_es'] as String,
       instructions: json['instructions'] as String,
       instructionsEs: json['instructions_es'] as String,
-      content: FillBlankGameContent.fromJson(
+      content: TypingGameContent.fromJson(
         json['content'] as Map<String, dynamic>,
       ),
-      optional: json['optional'] as bool? ?? true,
+      optional: json['optional'] as bool? ?? false,
       unlockedAfterEpisode: json['unlocked_after_episode'] as bool? ?? true,
       timeLimitSeconds: (json['time_limit_seconds'] as num?)?.toInt(),
       xpReward: (json['xp_reward'] as num?)?.toInt() ?? 0,
     );
 
-Map<String, dynamic> _$$FillBlankGameImplToJson(_$FillBlankGameImpl instance) =>
+Map<String, dynamic> _$$TypingGameImplToJson(_$TypingGameImpl instance) =>
     <String, dynamic>{
       'game_id': instance.gameId,
       'game_type': instance.gameType,
@@ -38,44 +38,34 @@ Map<String, dynamic> _$$FillBlankGameImplToJson(_$FillBlankGameImpl instance) =>
       'xp_reward': instance.xpReward,
     };
 
-_$FillBlankGameContentImpl _$$FillBlankGameContentImplFromJson(
+_$TypingGameContentImpl _$$TypingGameContentImplFromJson(
   Map<String, dynamic> json,
-) => _$FillBlankGameContentImpl(
+) => _$TypingGameContentImpl(
   items:
       (json['items'] as List<dynamic>?)
-          ?.map((e) => FillBlankItem.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => TypingItem.fromJson(e as Map<String, dynamic>))
           .toList() ??
       const [],
 );
 
-Map<String, dynamic> _$$FillBlankGameContentImplToJson(
-  _$FillBlankGameContentImpl instance,
+Map<String, dynamic> _$$TypingGameContentImplToJson(
+  _$TypingGameContentImpl instance,
 ) => <String, dynamic>{'items': instance.items};
 
-_$FillBlankItemImpl _$$FillBlankItemImplFromJson(Map<String, dynamic> json) =>
-    _$FillBlankItemImpl(
+_$TypingItemImpl _$$TypingItemImplFromJson(Map<String, dynamic> json) =>
+    _$TypingItemImpl(
       id: (json['id'] as num).toInt(),
-      sentence: json['sentence'] as String,
-      sentenceEs: json['sentence_es'] as String,
-      answer: json['answer'] as String,
-      options:
-          (json['options'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          const [],
+      promptEs: json['prompt_es'] as String,
+      answerEn: json['answer_en'] as String,
       hint: json['hint'] as String?,
       hintEs: json['hint_es'] as String?,
-      character: json['character'] as String?,
     );
 
-Map<String, dynamic> _$$FillBlankItemImplToJson(_$FillBlankItemImpl instance) =>
+Map<String, dynamic> _$$TypingItemImplToJson(_$TypingItemImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'sentence': instance.sentence,
-      'sentence_es': instance.sentenceEs,
-      'answer': instance.answer,
-      'options': instance.options,
+      'prompt_es': instance.promptEs,
+      'answer_en': instance.answerEn,
       'hint': instance.hint,
       'hint_es': instance.hintEs,
-      'character': instance.character,
     };

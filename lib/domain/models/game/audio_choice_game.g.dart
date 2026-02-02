@@ -1,31 +1,29 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'multiple_choice_game.dart';
+part of 'audio_choice_game.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$MultipleChoiceGameImpl _$$MultipleChoiceGameImplFromJson(
+_$AudioChoiceGameImpl _$$AudioChoiceGameImplFromJson(
   Map<String, dynamic> json,
-) => _$MultipleChoiceGameImpl(
+) => _$AudioChoiceGameImpl(
   gameId: json['game_id'] as String,
   gameType: json['game_type'] as String,
   title: json['title'] as String,
   titleEs: json['title_es'] as String,
   instructions: json['instructions'] as String,
   instructionsEs: json['instructions_es'] as String,
-  content: MultipleChoiceGameContent.fromJson(
-    json['content'] as Map<String, dynamic>,
-  ),
-  optional: json['optional'] as bool? ?? true,
+  content: AudioChoiceContent.fromJson(json['content'] as Map<String, dynamic>),
+  optional: json['optional'] as bool? ?? false,
   unlockedAfterEpisode: json['unlocked_after_episode'] as bool? ?? true,
   timeLimitSeconds: (json['time_limit_seconds'] as num?)?.toInt(),
   xpReward: (json['xp_reward'] as num?)?.toInt() ?? 0,
 );
 
-Map<String, dynamic> _$$MultipleChoiceGameImplToJson(
-  _$MultipleChoiceGameImpl instance,
+Map<String, dynamic> _$$AudioChoiceGameImplToJson(
+  _$AudioChoiceGameImpl instance,
 ) => <String, dynamic>{
   'game_id': instance.gameId,
   'game_type': instance.gameType,
@@ -40,27 +38,28 @@ Map<String, dynamic> _$$MultipleChoiceGameImplToJson(
   'xp_reward': instance.xpReward,
 };
 
-_$MultipleChoiceGameContentImpl _$$MultipleChoiceGameContentImplFromJson(
+_$AudioChoiceContentImpl _$$AudioChoiceContentImplFromJson(
   Map<String, dynamic> json,
-) => _$MultipleChoiceGameContentImpl(
+) => _$AudioChoiceContentImpl(
   items:
       (json['items'] as List<dynamic>?)
-          ?.map((e) => MultipleChoiceItem.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => AudioChoiceItem.fromJson(e as Map<String, dynamic>))
           .toList() ??
       const [],
 );
 
-Map<String, dynamic> _$$MultipleChoiceGameContentImplToJson(
-  _$MultipleChoiceGameContentImpl instance,
+Map<String, dynamic> _$$AudioChoiceContentImplToJson(
+  _$AudioChoiceContentImpl instance,
 ) => <String, dynamic>{'items': instance.items};
 
-_$MultipleChoiceItemImpl _$$MultipleChoiceItemImplFromJson(
+_$AudioChoiceItemImpl _$$AudioChoiceItemImplFromJson(
   Map<String, dynamic> json,
-) => _$MultipleChoiceItemImpl(
+) => _$AudioChoiceItemImpl(
   id: (json['id'] as num).toInt(),
-  question: json['question'] as String,
-  questionEs: json['question_es'] as String,
+  audioUrl: json['audio_url'] as String,
   correctAnswer: (json['correct_answer'] as num).toInt(),
+  prompt: json['prompt'] as String?,
+  promptEs: json['prompt_es'] as String?,
   options:
       (json['options'] as List<dynamic>?)?.map((e) => e as String).toList() ??
       const [],
@@ -69,21 +68,16 @@ _$MultipleChoiceItemImpl _$$MultipleChoiceItemImplFromJson(
           ?.map((e) => e as String)
           .toList() ??
       const [],
-  explanation: json['explanation'] as String?,
-  explanationEs: json['explanation_es'] as String?,
-  imageUrl: json['image_url'] as String?,
 );
 
-Map<String, dynamic> _$$MultipleChoiceItemImplToJson(
-  _$MultipleChoiceItemImpl instance,
+Map<String, dynamic> _$$AudioChoiceItemImplToJson(
+  _$AudioChoiceItemImpl instance,
 ) => <String, dynamic>{
   'id': instance.id,
-  'question': instance.question,
-  'question_es': instance.questionEs,
+  'audio_url': instance.audioUrl,
   'correct_answer': instance.correctAnswer,
+  'prompt': instance.prompt,
+  'prompt_es': instance.promptEs,
   'options': instance.options,
   'options_es': instance.optionsEs,
-  'explanation': instance.explanation,
-  'explanation_es': instance.explanationEs,
-  'image_url': instance.imageUrl,
 };

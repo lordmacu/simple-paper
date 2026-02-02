@@ -1,5 +1,3 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-
 /// Clase abstracta base para todos los tipos de juegos
 /// Cada juego específico (matching, fill_blank, multiple_choice) extiende de esta clase
 abstract class Game {

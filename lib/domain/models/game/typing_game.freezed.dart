@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'fill_blank_game.dart';
+part of 'typing_game.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,17 +15,17 @@ final _privateConstructorUsedError = UnsupportedError(
   'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
 );
 
-FillBlankGame _$FillBlankGameFromJson(Map<String, dynamic> json) {
-  return _FillBlankGame.fromJson(json);
+TypingGame _$TypingGameFromJson(Map<String, dynamic> json) {
+  return _TypingGame.fromJson(json);
 }
 
 /// @nodoc
-mixin _$FillBlankGame {
+mixin _$TypingGame {
   /// ID único del juego
   @JsonKey(name: 'game_id')
   String get gameId => throw _privateConstructorUsedError;
 
-  /// Tipo de juego (siempre 'fill_blank')
+  /// Tipo de juego (siempre 'typing')
   @JsonKey(name: 'game_type')
   String get gameType => throw _privateConstructorUsedError;
 
@@ -44,7 +44,7 @@ mixin _$FillBlankGame {
   String get instructionsEs => throw _privateConstructorUsedError;
 
   /// Contenido del juego
-  FillBlankGameContent get content => throw _privateConstructorUsedError;
+  TypingGameContent get content => throw _privateConstructorUsedError;
 
   /// Si el juego es opcional
   bool get optional => throw _privateConstructorUsedError;
@@ -61,22 +61,22 @@ mixin _$FillBlankGame {
   @JsonKey(name: 'xp_reward')
   int get xpReward => throw _privateConstructorUsedError;
 
-  /// Serializes this FillBlankGame to a JSON map.
+  /// Serializes this TypingGame to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of FillBlankGame
+  /// Create a copy of TypingGame
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $FillBlankGameCopyWith<FillBlankGame> get copyWith =>
+  $TypingGameCopyWith<TypingGame> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $FillBlankGameCopyWith<$Res> {
-  factory $FillBlankGameCopyWith(
-    FillBlankGame value,
-    $Res Function(FillBlankGame) then,
-  ) = _$FillBlankGameCopyWithImpl<$Res, FillBlankGame>;
+abstract class $TypingGameCopyWith<$Res> {
+  factory $TypingGameCopyWith(
+    TypingGame value,
+    $Res Function(TypingGame) then,
+  ) = _$TypingGameCopyWithImpl<$Res, TypingGame>;
   @useResult
   $Res call({
     @JsonKey(name: 'game_id') String gameId,
@@ -85,27 +85,27 @@ abstract class $FillBlankGameCopyWith<$Res> {
     @JsonKey(name: 'title_es') String titleEs,
     String instructions,
     @JsonKey(name: 'instructions_es') String instructionsEs,
-    FillBlankGameContent content,
+    TypingGameContent content,
     bool optional,
     @JsonKey(name: 'unlocked_after_episode') bool unlockedAfterEpisode,
     @JsonKey(name: 'time_limit_seconds') int? timeLimitSeconds,
     @JsonKey(name: 'xp_reward') int xpReward,
   });
 
-  $FillBlankGameContentCopyWith<$Res> get content;
+  $TypingGameContentCopyWith<$Res> get content;
 }
 
 /// @nodoc
-class _$FillBlankGameCopyWithImpl<$Res, $Val extends FillBlankGame>
-    implements $FillBlankGameCopyWith<$Res> {
-  _$FillBlankGameCopyWithImpl(this._value, this._then);
+class _$TypingGameCopyWithImpl<$Res, $Val extends TypingGame>
+    implements $TypingGameCopyWith<$Res> {
+  _$TypingGameCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of FillBlankGame
+  /// Create a copy of TypingGame
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -151,7 +151,7 @@ class _$FillBlankGameCopyWithImpl<$Res, $Val extends FillBlankGame>
             content: null == content
                 ? _value.content
                 : content // ignore: cast_nullable_to_non_nullable
-                      as FillBlankGameContent,
+                      as TypingGameContent,
             optional: null == optional
                 ? _value.optional
                 : optional // ignore: cast_nullable_to_non_nullable
@@ -173,24 +173,24 @@ class _$FillBlankGameCopyWithImpl<$Res, $Val extends FillBlankGame>
     );
   }
 
-  /// Create a copy of FillBlankGame
+  /// Create a copy of TypingGame
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $FillBlankGameContentCopyWith<$Res> get content {
-    return $FillBlankGameContentCopyWith<$Res>(_value.content, (value) {
+  $TypingGameContentCopyWith<$Res> get content {
+    return $TypingGameContentCopyWith<$Res>(_value.content, (value) {
       return _then(_value.copyWith(content: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$$FillBlankGameImplCopyWith<$Res>
-    implements $FillBlankGameCopyWith<$Res> {
-  factory _$$FillBlankGameImplCopyWith(
-    _$FillBlankGameImpl value,
-    $Res Function(_$FillBlankGameImpl) then,
-  ) = __$$FillBlankGameImplCopyWithImpl<$Res>;
+abstract class _$$TypingGameImplCopyWith<$Res>
+    implements $TypingGameCopyWith<$Res> {
+  factory _$$TypingGameImplCopyWith(
+    _$TypingGameImpl value,
+    $Res Function(_$TypingGameImpl) then,
+  ) = __$$TypingGameImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({
@@ -200,7 +200,7 @@ abstract class _$$FillBlankGameImplCopyWith<$Res>
     @JsonKey(name: 'title_es') String titleEs,
     String instructions,
     @JsonKey(name: 'instructions_es') String instructionsEs,
-    FillBlankGameContent content,
+    TypingGameContent content,
     bool optional,
     @JsonKey(name: 'unlocked_after_episode') bool unlockedAfterEpisode,
     @JsonKey(name: 'time_limit_seconds') int? timeLimitSeconds,
@@ -208,19 +208,19 @@ abstract class _$$FillBlankGameImplCopyWith<$Res>
   });
 
   @override
-  $FillBlankGameContentCopyWith<$Res> get content;
+  $TypingGameContentCopyWith<$Res> get content;
 }
 
 /// @nodoc
-class __$$FillBlankGameImplCopyWithImpl<$Res>
-    extends _$FillBlankGameCopyWithImpl<$Res, _$FillBlankGameImpl>
-    implements _$$FillBlankGameImplCopyWith<$Res> {
-  __$$FillBlankGameImplCopyWithImpl(
-    _$FillBlankGameImpl _value,
-    $Res Function(_$FillBlankGameImpl) _then,
+class __$$TypingGameImplCopyWithImpl<$Res>
+    extends _$TypingGameCopyWithImpl<$Res, _$TypingGameImpl>
+    implements _$$TypingGameImplCopyWith<$Res> {
+  __$$TypingGameImplCopyWithImpl(
+    _$TypingGameImpl _value,
+    $Res Function(_$TypingGameImpl) _then,
   ) : super(_value, _then);
 
-  /// Create a copy of FillBlankGame
+  /// Create a copy of TypingGame
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -238,7 +238,7 @@ class __$$FillBlankGameImplCopyWithImpl<$Res>
     Object? xpReward = null,
   }) {
     return _then(
-      _$FillBlankGameImpl(
+      _$TypingGameImpl(
         gameId: null == gameId
             ? _value.gameId
             : gameId // ignore: cast_nullable_to_non_nullable
@@ -266,7 +266,7 @@ class __$$FillBlankGameImplCopyWithImpl<$Res>
         content: null == content
             ? _value.content
             : content // ignore: cast_nullable_to_non_nullable
-                  as FillBlankGameContent,
+                  as TypingGameContent,
         optional: null == optional
             ? _value.optional
             : optional // ignore: cast_nullable_to_non_nullable
@@ -290,8 +290,8 @@ class __$$FillBlankGameImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$FillBlankGameImpl extends _FillBlankGame {
-  const _$FillBlankGameImpl({
+class _$TypingGameImpl extends _TypingGame {
+  const _$TypingGameImpl({
     @JsonKey(name: 'game_id') required this.gameId,
     @JsonKey(name: 'game_type') required this.gameType,
     required this.title,
@@ -299,21 +299,21 @@ class _$FillBlankGameImpl extends _FillBlankGame {
     required this.instructions,
     @JsonKey(name: 'instructions_es') required this.instructionsEs,
     required this.content,
-    this.optional = true,
+    this.optional = false,
     @JsonKey(name: 'unlocked_after_episode') this.unlockedAfterEpisode = true,
     @JsonKey(name: 'time_limit_seconds') this.timeLimitSeconds,
     @JsonKey(name: 'xp_reward') this.xpReward = 0,
   }) : super._();
 
-  factory _$FillBlankGameImpl.fromJson(Map<String, dynamic> json) =>
-      _$$FillBlankGameImplFromJson(json);
+  factory _$TypingGameImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TypingGameImplFromJson(json);
 
   /// ID único del juego
   @override
   @JsonKey(name: 'game_id')
   final String gameId;
 
-  /// Tipo de juego (siempre 'fill_blank')
+  /// Tipo de juego (siempre 'typing')
   @override
   @JsonKey(name: 'game_type')
   final String gameType;
@@ -338,7 +338,7 @@ class _$FillBlankGameImpl extends _FillBlankGame {
 
   /// Contenido del juego
   @override
-  final FillBlankGameContent content;
+  final TypingGameContent content;
 
   /// Si el juego es opcional
   @override
@@ -362,14 +362,14 @@ class _$FillBlankGameImpl extends _FillBlankGame {
 
   @override
   String toString() {
-    return 'FillBlankGame(gameId: $gameId, gameType: $gameType, title: $title, titleEs: $titleEs, instructions: $instructions, instructionsEs: $instructionsEs, content: $content, optional: $optional, unlockedAfterEpisode: $unlockedAfterEpisode, timeLimitSeconds: $timeLimitSeconds, xpReward: $xpReward)';
+    return 'TypingGame(gameId: $gameId, gameType: $gameType, title: $title, titleEs: $titleEs, instructions: $instructions, instructionsEs: $instructionsEs, content: $content, optional: $optional, unlockedAfterEpisode: $unlockedAfterEpisode, timeLimitSeconds: $timeLimitSeconds, xpReward: $xpReward)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FillBlankGameImpl &&
+            other is _$TypingGameImpl &&
             (identical(other.gameId, gameId) || other.gameId == gameId) &&
             (identical(other.gameType, gameType) ||
                 other.gameType == gameType) &&
@@ -407,45 +407,45 @@ class _$FillBlankGameImpl extends _FillBlankGame {
     xpReward,
   );
 
-  /// Create a copy of FillBlankGame
+  /// Create a copy of TypingGame
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$FillBlankGameImplCopyWith<_$FillBlankGameImpl> get copyWith =>
-      __$$FillBlankGameImplCopyWithImpl<_$FillBlankGameImpl>(this, _$identity);
+  _$$TypingGameImplCopyWith<_$TypingGameImpl> get copyWith =>
+      __$$TypingGameImplCopyWithImpl<_$TypingGameImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$FillBlankGameImplToJson(this);
+    return _$$TypingGameImplToJson(this);
   }
 }
 
-abstract class _FillBlankGame extends FillBlankGame {
-  const factory _FillBlankGame({
+abstract class _TypingGame extends TypingGame {
+  const factory _TypingGame({
     @JsonKey(name: 'game_id') required final String gameId,
     @JsonKey(name: 'game_type') required final String gameType,
     required final String title,
     @JsonKey(name: 'title_es') required final String titleEs,
     required final String instructions,
     @JsonKey(name: 'instructions_es') required final String instructionsEs,
-    required final FillBlankGameContent content,
+    required final TypingGameContent content,
     final bool optional,
     @JsonKey(name: 'unlocked_after_episode') final bool unlockedAfterEpisode,
     @JsonKey(name: 'time_limit_seconds') final int? timeLimitSeconds,
     @JsonKey(name: 'xp_reward') final int xpReward,
-  }) = _$FillBlankGameImpl;
-  const _FillBlankGame._() : super._();
+  }) = _$TypingGameImpl;
+  const _TypingGame._() : super._();
 
-  factory _FillBlankGame.fromJson(Map<String, dynamic> json) =
-      _$FillBlankGameImpl.fromJson;
+  factory _TypingGame.fromJson(Map<String, dynamic> json) =
+      _$TypingGameImpl.fromJson;
 
   /// ID único del juego
   @override
   @JsonKey(name: 'game_id')
   String get gameId;
 
-  /// Tipo de juego (siempre 'fill_blank')
+  /// Tipo de juego (siempre 'typing')
   @override
   @JsonKey(name: 'game_type')
   String get gameType;
@@ -470,7 +470,7 @@ abstract class _FillBlankGame extends FillBlankGame {
 
   /// Contenido del juego
   @override
-  FillBlankGameContent get content;
+  TypingGameContent get content;
 
   /// Si el juego es opcional
   @override
@@ -491,57 +491,54 @@ abstract class _FillBlankGame extends FillBlankGame {
   @JsonKey(name: 'xp_reward')
   int get xpReward;
 
-  /// Create a copy of FillBlankGame
+  /// Create a copy of TypingGame
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$FillBlankGameImplCopyWith<_$FillBlankGameImpl> get copyWith =>
+  _$$TypingGameImplCopyWith<_$TypingGameImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-FillBlankGameContent _$FillBlankGameContentFromJson(Map<String, dynamic> json) {
-  return _FillBlankGameContent.fromJson(json);
+TypingGameContent _$TypingGameContentFromJson(Map<String, dynamic> json) {
+  return _TypingGameContent.fromJson(json);
 }
 
 /// @nodoc
-mixin _$FillBlankGameContent {
-  /// Lista de oraciones con espacios en blanco
-  List<FillBlankItem> get items => throw _privateConstructorUsedError;
+mixin _$TypingGameContent {
+  /// Lista de ítems del juego
+  List<TypingItem> get items => throw _privateConstructorUsedError;
 
-  /// Serializes this FillBlankGameContent to a JSON map.
+  /// Serializes this TypingGameContent to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of FillBlankGameContent
+  /// Create a copy of TypingGameContent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $FillBlankGameContentCopyWith<FillBlankGameContent> get copyWith =>
+  $TypingGameContentCopyWith<TypingGameContent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $FillBlankGameContentCopyWith<$Res> {
-  factory $FillBlankGameContentCopyWith(
-    FillBlankGameContent value,
-    $Res Function(FillBlankGameContent) then,
-  ) = _$FillBlankGameContentCopyWithImpl<$Res, FillBlankGameContent>;
+abstract class $TypingGameContentCopyWith<$Res> {
+  factory $TypingGameContentCopyWith(
+    TypingGameContent value,
+    $Res Function(TypingGameContent) then,
+  ) = _$TypingGameContentCopyWithImpl<$Res, TypingGameContent>;
   @useResult
-  $Res call({List<FillBlankItem> items});
+  $Res call({List<TypingItem> items});
 }
 
 /// @nodoc
-class _$FillBlankGameContentCopyWithImpl<
-  $Res,
-  $Val extends FillBlankGameContent
->
-    implements $FillBlankGameContentCopyWith<$Res> {
-  _$FillBlankGameContentCopyWithImpl(this._value, this._then);
+class _$TypingGameContentCopyWithImpl<$Res, $Val extends TypingGameContent>
+    implements $TypingGameContentCopyWith<$Res> {
+  _$TypingGameContentCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of FillBlankGameContent
+  /// Create a copy of TypingGameContent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -551,7 +548,7 @@ class _$FillBlankGameContentCopyWithImpl<
             items: null == items
                 ? _value.items
                 : items // ignore: cast_nullable_to_non_nullable
-                      as List<FillBlankItem>,
+                      as List<TypingItem>,
           )
           as $Val,
     );
@@ -559,37 +556,37 @@ class _$FillBlankGameContentCopyWithImpl<
 }
 
 /// @nodoc
-abstract class _$$FillBlankGameContentImplCopyWith<$Res>
-    implements $FillBlankGameContentCopyWith<$Res> {
-  factory _$$FillBlankGameContentImplCopyWith(
-    _$FillBlankGameContentImpl value,
-    $Res Function(_$FillBlankGameContentImpl) then,
-  ) = __$$FillBlankGameContentImplCopyWithImpl<$Res>;
+abstract class _$$TypingGameContentImplCopyWith<$Res>
+    implements $TypingGameContentCopyWith<$Res> {
+  factory _$$TypingGameContentImplCopyWith(
+    _$TypingGameContentImpl value,
+    $Res Function(_$TypingGameContentImpl) then,
+  ) = __$$TypingGameContentImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<FillBlankItem> items});
+  $Res call({List<TypingItem> items});
 }
 
 /// @nodoc
-class __$$FillBlankGameContentImplCopyWithImpl<$Res>
-    extends _$FillBlankGameContentCopyWithImpl<$Res, _$FillBlankGameContentImpl>
-    implements _$$FillBlankGameContentImplCopyWith<$Res> {
-  __$$FillBlankGameContentImplCopyWithImpl(
-    _$FillBlankGameContentImpl _value,
-    $Res Function(_$FillBlankGameContentImpl) _then,
+class __$$TypingGameContentImplCopyWithImpl<$Res>
+    extends _$TypingGameContentCopyWithImpl<$Res, _$TypingGameContentImpl>
+    implements _$$TypingGameContentImplCopyWith<$Res> {
+  __$$TypingGameContentImplCopyWithImpl(
+    _$TypingGameContentImpl _value,
+    $Res Function(_$TypingGameContentImpl) _then,
   ) : super(_value, _then);
 
-  /// Create a copy of FillBlankGameContent
+  /// Create a copy of TypingGameContent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({Object? items = null}) {
     return _then(
-      _$FillBlankGameContentImpl(
+      _$TypingGameContentImpl(
         items: null == items
             ? _value._items
             : items // ignore: cast_nullable_to_non_nullable
-                  as List<FillBlankItem>,
+                  as List<TypingItem>,
       ),
     );
   }
@@ -597,20 +594,20 @@ class __$$FillBlankGameContentImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$FillBlankGameContentImpl implements _FillBlankGameContent {
-  const _$FillBlankGameContentImpl({final List<FillBlankItem> items = const []})
+class _$TypingGameContentImpl implements _TypingGameContent {
+  const _$TypingGameContentImpl({final List<TypingItem> items = const []})
     : _items = items;
 
-  factory _$FillBlankGameContentImpl.fromJson(Map<String, dynamic> json) =>
-      _$$FillBlankGameContentImplFromJson(json);
+  factory _$TypingGameContentImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TypingGameContentImplFromJson(json);
 
-  /// Lista de oraciones con espacios en blanco
-  final List<FillBlankItem> _items;
+  /// Lista de ítems del juego
+  final List<TypingItem> _items;
 
-  /// Lista de oraciones con espacios en blanco
+  /// Lista de ítems del juego
   @override
   @JsonKey()
-  List<FillBlankItem> get items {
+  List<TypingItem> get items {
     if (_items is EqualUnmodifiableListView) return _items;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_items);
@@ -618,14 +615,14 @@ class _$FillBlankGameContentImpl implements _FillBlankGameContent {
 
   @override
   String toString() {
-    return 'FillBlankGameContent(items: $items)';
+    return 'TypingGameContent(items: $items)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FillBlankGameContentImpl &&
+            other is _$TypingGameContentImpl &&
             const DeepCollectionEquality().equals(other._items, _items));
   }
 
@@ -634,127 +631,112 @@ class _$FillBlankGameContentImpl implements _FillBlankGameContent {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
 
-  /// Create a copy of FillBlankGameContent
+  /// Create a copy of TypingGameContent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$FillBlankGameContentImplCopyWith<_$FillBlankGameContentImpl>
-  get copyWith =>
-      __$$FillBlankGameContentImplCopyWithImpl<_$FillBlankGameContentImpl>(
+  _$$TypingGameContentImplCopyWith<_$TypingGameContentImpl> get copyWith =>
+      __$$TypingGameContentImplCopyWithImpl<_$TypingGameContentImpl>(
         this,
         _$identity,
       );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$FillBlankGameContentImplToJson(this);
+    return _$$TypingGameContentImplToJson(this);
   }
 }
 
-abstract class _FillBlankGameContent implements FillBlankGameContent {
-  const factory _FillBlankGameContent({final List<FillBlankItem> items}) =
-      _$FillBlankGameContentImpl;
+abstract class _TypingGameContent implements TypingGameContent {
+  const factory _TypingGameContent({final List<TypingItem> items}) =
+      _$TypingGameContentImpl;
 
-  factory _FillBlankGameContent.fromJson(Map<String, dynamic> json) =
-      _$FillBlankGameContentImpl.fromJson;
+  factory _TypingGameContent.fromJson(Map<String, dynamic> json) =
+      _$TypingGameContentImpl.fromJson;
 
-  /// Lista de oraciones con espacios en blanco
+  /// Lista de ítems del juego
   @override
-  List<FillBlankItem> get items;
+  List<TypingItem> get items;
 
-  /// Create a copy of FillBlankGameContent
+  /// Create a copy of TypingGameContent
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$FillBlankGameContentImplCopyWith<_$FillBlankGameContentImpl>
-  get copyWith => throw _privateConstructorUsedError;
+  _$$TypingGameContentImplCopyWith<_$TypingGameContentImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
-FillBlankItem _$FillBlankItemFromJson(Map<String, dynamic> json) {
-  return _FillBlankItem.fromJson(json);
+TypingItem _$TypingItemFromJson(Map<String, dynamic> json) {
+  return _TypingItem.fromJson(json);
 }
 
 /// @nodoc
-mixin _$FillBlankItem {
+mixin _$TypingItem {
   /// ID del ítem
   int get id => throw _privateConstructorUsedError;
 
-  /// Oración con el espacio en blanco (_____) en inglés
-  String get sentence => throw _privateConstructorUsedError;
+  /// Texto de la pregunta en español
+  @JsonKey(name: 'prompt_es')
+  String get promptEs => throw _privateConstructorUsedError;
 
-  /// Oración en español
-  @JsonKey(name: 'sentence_es')
-  String get sentenceEs => throw _privateConstructorUsedError;
+  /// Respuesta correcta en inglés
+  @JsonKey(name: 'answer_en')
+  String get answerEn => throw _privateConstructorUsedError;
 
-  /// Respuesta correcta
-  String get answer => throw _privateConstructorUsedError;
-
-  /// Opciones de respuesta
-  List<String> get options => throw _privateConstructorUsedError;
-
-  /// Pista en inglés
+  /// Pista en inglés (opcional)
   String? get hint => throw _privateConstructorUsedError;
 
-  /// Pista en español
+  /// Pista en español (opcional)
   @JsonKey(name: 'hint_es')
   String? get hintEs => throw _privateConstructorUsedError;
 
-  /// Personaje que dice la frase (con template variable)
-  String? get character => throw _privateConstructorUsedError;
-
-  /// Serializes this FillBlankItem to a JSON map.
+  /// Serializes this TypingItem to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of FillBlankItem
+  /// Create a copy of TypingItem
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $FillBlankItemCopyWith<FillBlankItem> get copyWith =>
+  $TypingItemCopyWith<TypingItem> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $FillBlankItemCopyWith<$Res> {
-  factory $FillBlankItemCopyWith(
-    FillBlankItem value,
-    $Res Function(FillBlankItem) then,
-  ) = _$FillBlankItemCopyWithImpl<$Res, FillBlankItem>;
+abstract class $TypingItemCopyWith<$Res> {
+  factory $TypingItemCopyWith(
+    TypingItem value,
+    $Res Function(TypingItem) then,
+  ) = _$TypingItemCopyWithImpl<$Res, TypingItem>;
   @useResult
   $Res call({
     int id,
-    String sentence,
-    @JsonKey(name: 'sentence_es') String sentenceEs,
-    String answer,
-    List<String> options,
+    @JsonKey(name: 'prompt_es') String promptEs,
+    @JsonKey(name: 'answer_en') String answerEn,
     String? hint,
     @JsonKey(name: 'hint_es') String? hintEs,
-    String? character,
   });
 }
 
 /// @nodoc
-class _$FillBlankItemCopyWithImpl<$Res, $Val extends FillBlankItem>
-    implements $FillBlankItemCopyWith<$Res> {
-  _$FillBlankItemCopyWithImpl(this._value, this._then);
+class _$TypingItemCopyWithImpl<$Res, $Val extends TypingItem>
+    implements $TypingItemCopyWith<$Res> {
+  _$TypingItemCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of FillBlankItem
+  /// Create a copy of TypingItem
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = null,
-    Object? sentence = null,
-    Object? sentenceEs = null,
-    Object? answer = null,
-    Object? options = null,
+    Object? promptEs = null,
+    Object? answerEn = null,
     Object? hint = freezed,
     Object? hintEs = freezed,
-    Object? character = freezed,
   }) {
     return _then(
       _value.copyWith(
@@ -762,22 +744,14 @@ class _$FillBlankItemCopyWithImpl<$Res, $Val extends FillBlankItem>
                 ? _value.id
                 : id // ignore: cast_nullable_to_non_nullable
                       as int,
-            sentence: null == sentence
-                ? _value.sentence
-                : sentence // ignore: cast_nullable_to_non_nullable
+            promptEs: null == promptEs
+                ? _value.promptEs
+                : promptEs // ignore: cast_nullable_to_non_nullable
                       as String,
-            sentenceEs: null == sentenceEs
-                ? _value.sentenceEs
-                : sentenceEs // ignore: cast_nullable_to_non_nullable
+            answerEn: null == answerEn
+                ? _value.answerEn
+                : answerEn // ignore: cast_nullable_to_non_nullable
                       as String,
-            answer: null == answer
-                ? _value.answer
-                : answer // ignore: cast_nullable_to_non_nullable
-                      as String,
-            options: null == options
-                ? _value.options
-                : options // ignore: cast_nullable_to_non_nullable
-                      as List<String>,
             hint: freezed == hint
                 ? _value.hint
                 : hint // ignore: cast_nullable_to_non_nullable
@@ -786,10 +760,6 @@ class _$FillBlankItemCopyWithImpl<$Res, $Val extends FillBlankItem>
                 ? _value.hintEs
                 : hintEs // ignore: cast_nullable_to_non_nullable
                       as String?,
-            character: freezed == character
-                ? _value.character
-                : character // ignore: cast_nullable_to_non_nullable
-                      as String?,
           )
           as $Val,
     );
@@ -797,71 +767,57 @@ class _$FillBlankItemCopyWithImpl<$Res, $Val extends FillBlankItem>
 }
 
 /// @nodoc
-abstract class _$$FillBlankItemImplCopyWith<$Res>
-    implements $FillBlankItemCopyWith<$Res> {
-  factory _$$FillBlankItemImplCopyWith(
-    _$FillBlankItemImpl value,
-    $Res Function(_$FillBlankItemImpl) then,
-  ) = __$$FillBlankItemImplCopyWithImpl<$Res>;
+abstract class _$$TypingItemImplCopyWith<$Res>
+    implements $TypingItemCopyWith<$Res> {
+  factory _$$TypingItemImplCopyWith(
+    _$TypingItemImpl value,
+    $Res Function(_$TypingItemImpl) then,
+  ) = __$$TypingItemImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({
     int id,
-    String sentence,
-    @JsonKey(name: 'sentence_es') String sentenceEs,
-    String answer,
-    List<String> options,
+    @JsonKey(name: 'prompt_es') String promptEs,
+    @JsonKey(name: 'answer_en') String answerEn,
     String? hint,
     @JsonKey(name: 'hint_es') String? hintEs,
-    String? character,
   });
 }
 
 /// @nodoc
-class __$$FillBlankItemImplCopyWithImpl<$Res>
-    extends _$FillBlankItemCopyWithImpl<$Res, _$FillBlankItemImpl>
-    implements _$$FillBlankItemImplCopyWith<$Res> {
-  __$$FillBlankItemImplCopyWithImpl(
-    _$FillBlankItemImpl _value,
-    $Res Function(_$FillBlankItemImpl) _then,
+class __$$TypingItemImplCopyWithImpl<$Res>
+    extends _$TypingItemCopyWithImpl<$Res, _$TypingItemImpl>
+    implements _$$TypingItemImplCopyWith<$Res> {
+  __$$TypingItemImplCopyWithImpl(
+    _$TypingItemImpl _value,
+    $Res Function(_$TypingItemImpl) _then,
   ) : super(_value, _then);
 
-  /// Create a copy of FillBlankItem
+  /// Create a copy of TypingItem
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = null,
-    Object? sentence = null,
-    Object? sentenceEs = null,
-    Object? answer = null,
-    Object? options = null,
+    Object? promptEs = null,
+    Object? answerEn = null,
     Object? hint = freezed,
     Object? hintEs = freezed,
-    Object? character = freezed,
   }) {
     return _then(
-      _$FillBlankItemImpl(
+      _$TypingItemImpl(
         id: null == id
             ? _value.id
             : id // ignore: cast_nullable_to_non_nullable
                   as int,
-        sentence: null == sentence
-            ? _value.sentence
-            : sentence // ignore: cast_nullable_to_non_nullable
+        promptEs: null == promptEs
+            ? _value.promptEs
+            : promptEs // ignore: cast_nullable_to_non_nullable
                   as String,
-        sentenceEs: null == sentenceEs
-            ? _value.sentenceEs
-            : sentenceEs // ignore: cast_nullable_to_non_nullable
+        answerEn: null == answerEn
+            ? _value.answerEn
+            : answerEn // ignore: cast_nullable_to_non_nullable
                   as String,
-        answer: null == answer
-            ? _value.answer
-            : answer // ignore: cast_nullable_to_non_nullable
-                  as String,
-        options: null == options
-            ? _value._options
-            : options // ignore: cast_nullable_to_non_nullable
-                  as List<String>,
         hint: freezed == hint
             ? _value.hint
             : hint // ignore: cast_nullable_to_non_nullable
@@ -870,10 +826,6 @@ class __$$FillBlankItemImplCopyWithImpl<$Res>
             ? _value.hintEs
             : hintEs // ignore: cast_nullable_to_non_nullable
                   as String?,
-        character: freezed == character
-            ? _value.character
-            : character // ignore: cast_nullable_to_non_nullable
-                  as String?,
       ),
     );
   }
@@ -881,167 +833,118 @@ class __$$FillBlankItemImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$FillBlankItemImpl implements _FillBlankItem {
-  const _$FillBlankItemImpl({
+class _$TypingItemImpl implements _TypingItem {
+  const _$TypingItemImpl({
     required this.id,
-    required this.sentence,
-    @JsonKey(name: 'sentence_es') required this.sentenceEs,
-    required this.answer,
-    final List<String> options = const [],
+    @JsonKey(name: 'prompt_es') required this.promptEs,
+    @JsonKey(name: 'answer_en') required this.answerEn,
     this.hint,
     @JsonKey(name: 'hint_es') this.hintEs,
-    this.character,
-  }) : _options = options;
+  });
 
-  factory _$FillBlankItemImpl.fromJson(Map<String, dynamic> json) =>
-      _$$FillBlankItemImplFromJson(json);
+  factory _$TypingItemImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TypingItemImplFromJson(json);
 
   /// ID del ítem
   @override
   final int id;
 
-  /// Oración con el espacio en blanco (_____) en inglés
+  /// Texto de la pregunta en español
   @override
-  final String sentence;
+  @JsonKey(name: 'prompt_es')
+  final String promptEs;
 
-  /// Oración en español
+  /// Respuesta correcta en inglés
   @override
-  @JsonKey(name: 'sentence_es')
-  final String sentenceEs;
+  @JsonKey(name: 'answer_en')
+  final String answerEn;
 
-  /// Respuesta correcta
-  @override
-  final String answer;
-
-  /// Opciones de respuesta
-  final List<String> _options;
-
-  /// Opciones de respuesta
-  @override
-  @JsonKey()
-  List<String> get options {
-    if (_options is EqualUnmodifiableListView) return _options;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_options);
-  }
-
-  /// Pista en inglés
+  /// Pista en inglés (opcional)
   @override
   final String? hint;
 
-  /// Pista en español
+  /// Pista en español (opcional)
   @override
   @JsonKey(name: 'hint_es')
   final String? hintEs;
 
-  /// Personaje que dice la frase (con template variable)
-  @override
-  final String? character;
-
   @override
   String toString() {
-    return 'FillBlankItem(id: $id, sentence: $sentence, sentenceEs: $sentenceEs, answer: $answer, options: $options, hint: $hint, hintEs: $hintEs, character: $character)';
+    return 'TypingItem(id: $id, promptEs: $promptEs, answerEn: $answerEn, hint: $hint, hintEs: $hintEs)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FillBlankItemImpl &&
+            other is _$TypingItemImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.sentence, sentence) ||
-                other.sentence == sentence) &&
-            (identical(other.sentenceEs, sentenceEs) ||
-                other.sentenceEs == sentenceEs) &&
-            (identical(other.answer, answer) || other.answer == answer) &&
-            const DeepCollectionEquality().equals(other._options, _options) &&
+            (identical(other.promptEs, promptEs) ||
+                other.promptEs == promptEs) &&
+            (identical(other.answerEn, answerEn) ||
+                other.answerEn == answerEn) &&
             (identical(other.hint, hint) || other.hint == hint) &&
-            (identical(other.hintEs, hintEs) || other.hintEs == hintEs) &&
-            (identical(other.character, character) ||
-                other.character == character));
+            (identical(other.hintEs, hintEs) || other.hintEs == hintEs));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    sentence,
-    sentenceEs,
-    answer,
-    const DeepCollectionEquality().hash(_options),
-    hint,
-    hintEs,
-    character,
-  );
+  int get hashCode =>
+      Object.hash(runtimeType, id, promptEs, answerEn, hint, hintEs);
 
-  /// Create a copy of FillBlankItem
+  /// Create a copy of TypingItem
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$FillBlankItemImplCopyWith<_$FillBlankItemImpl> get copyWith =>
-      __$$FillBlankItemImplCopyWithImpl<_$FillBlankItemImpl>(this, _$identity);
+  _$$TypingItemImplCopyWith<_$TypingItemImpl> get copyWith =>
+      __$$TypingItemImplCopyWithImpl<_$TypingItemImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$FillBlankItemImplToJson(this);
+    return _$$TypingItemImplToJson(this);
   }
 }
 
-abstract class _FillBlankItem implements FillBlankItem {
-  const factory _FillBlankItem({
+abstract class _TypingItem implements TypingItem {
+  const factory _TypingItem({
     required final int id,
-    required final String sentence,
-    @JsonKey(name: 'sentence_es') required final String sentenceEs,
-    required final String answer,
-    final List<String> options,
+    @JsonKey(name: 'prompt_es') required final String promptEs,
+    @JsonKey(name: 'answer_en') required final String answerEn,
     final String? hint,
     @JsonKey(name: 'hint_es') final String? hintEs,
-    final String? character,
-  }) = _$FillBlankItemImpl;
+  }) = _$TypingItemImpl;
 
-  factory _FillBlankItem.fromJson(Map<String, dynamic> json) =
-      _$FillBlankItemImpl.fromJson;
+  factory _TypingItem.fromJson(Map<String, dynamic> json) =
+      _$TypingItemImpl.fromJson;
 
   /// ID del ítem
   @override
   int get id;
 
-  /// Oración con el espacio en blanco (_____) en inglés
+  /// Texto de la pregunta en español
   @override
-  String get sentence;
+  @JsonKey(name: 'prompt_es')
+  String get promptEs;
 
-  /// Oración en español
+  /// Respuesta correcta en inglés
   @override
-  @JsonKey(name: 'sentence_es')
-  String get sentenceEs;
+  @JsonKey(name: 'answer_en')
+  String get answerEn;
 
-  /// Respuesta correcta
-  @override
-  String get answer;
-
-  /// Opciones de respuesta
-  @override
-  List<String> get options;
-
-  /// Pista en inglés
+  /// Pista en inglés (opcional)
   @override
   String? get hint;
 
-  /// Pista en español
+  /// Pista en español (opcional)
   @override
   @JsonKey(name: 'hint_es')
   String? get hintEs;
 
-  /// Personaje que dice la frase (con template variable)
-  @override
-  String? get character;
-
-  /// Create a copy of FillBlankItem
+  /// Create a copy of TypingItem
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$FillBlankItemImplCopyWith<_$FillBlankItemImpl> get copyWith =>
+  _$$TypingItemImplCopyWith<_$TypingItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
