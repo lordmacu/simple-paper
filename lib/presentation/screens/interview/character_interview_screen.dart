@@ -1,0 +1,791 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../core/constants/app_colors.dart';
+import '../../../core/utils/avatar_asset_resolver.dart';
+import '../../providers/template_variable_provider.dart';
+import '../../widgets/common/translation_overlay.dart';
+import '../../providers/tts_provider.dart';
+import '../../widgets/common/duolingo_button.dart';
+import '../../widgets/molecules/bilingual_text_card.dart';
+import '../../widgets/molecules/progress_meta_row.dart';
+
+/// Datos mínimos para renderizar la entrevista del personaje.
+class CharacterInterview {
+  /// Nombre del personaje que hace la entrevista
+  final String characterName;
+  
+  /// URL del avatar del personaje
+  final String avatarUrl;
+  
+  /// Número del episodio al que pertenece esta entrevista
+  final int episodeNumber;
+  
+  /// Texto de introducción en inglés
+  final String introEn;
+  
+  /// Texto de introducción en español
+  final String introEs;
+  
+  /// Género del personaje (he/she) para referencias pronominales
+  final String characterGender;
+  
+  /// Lista de puntos gramaticales cubiertos en la entrevista
+  final List<String> grammarPoints;
+  
+  /// Lista de vocabulario utilizado en la entrevista
+  final List<String> vocabularyUsed;
+  
+  /// Lista de preguntas de la entrevista
+  final List<InterviewQuestion> questions;
+
+  /// Constructor de CharacterInterview
+  const CharacterInterview({
+    required this.characterName,
+    required this.avatarUrl,
+    required this.episodeNumber,
+    required this.introEn,
+    required this.introEs,
+    required this.characterGender,
+    required this.questions, this.grammarPoints = const [],
+    this.vocabularyUsed = const [],
+  });
+}
+
+/// Representa una pregunta individual en la entrevista del personaje
+class InterviewQuestion {
+  /// Texto de la pregunta en inglés
+  final String questionEn;
+  
+  /// Texto de la pregunta en español
+  final String questionEs;
+  
+  /// Opciones de respuesta disponibles para esta pregunta
+  final List<InterviewOption> options;
+
+  /// Constructor de InterviewQuestion
+  const InterviewQuestion({
+    required this.questionEn,
+    required this.questionEs,
+    required this.options,
+  });
+}
+
+/// Representa una opción de respuesta para una pregunta de entrevista
+class InterviewOption {
+  /// Identificador único de la opción
+  final String optionId;
+  
+  /// Texto de la opción en inglés
+  final String textEn;
+  
+  /// Texto de la opción en español
+  final String textEs;
+  
+  /// Indica si esta es la respuesta correcta
+  final bool isCorrect;
+  
+  /// Feedback mostrado al seleccionar esta opción (inglés)
+  final String feedbackEn;
+  
+  /// Feedback mostrado al seleccionar esta opción (español)
+  final String feedbackEs;
+  
+  /// Explicación gramatical opcional asociada a esta opción
+  final String? grammarExplanation;
+  
+  /// Nota cultural opcional relacionada con esta opción
+  final String? culturalNote;
+  
+  /// Tipo de error común si la opción es incorrecta
+  final String? mistakeType;
+
+  /// Constructor de InterviewOption
+  const InterviewOption({
+    required this.optionId,
+    required this.textEn,
+    required this.textEs,
+    required this.isCorrect,
+    required this.feedbackEn,
+    required this.feedbackEs,
+    this.grammarExplanation,
+    this.culturalNote,
+    this.mistakeType,
+  });
+}
+
+/// Pantalla principal de entrevista de personaje.
+class CharacterInterviewScreen extends ConsumerStatefulWidget {
+  /// Datos de la entrevista a mostrar
+  final CharacterInterview interview;
+  
+  /// Callback ejecutado al completar la entrevista con estadísticas de respuestas
+  final void Function(int correct, int total, List<String> wrongWords) onComplete;
+
+  /// Constructor de CharacterInterviewScreen
+  const CharacterInterviewScreen({
+    required this.interview, required this.onComplete, super.key,
+  });
+
+  @override
+  ConsumerState<CharacterInterviewScreen> createState() =>
+      _CharacterInterviewScreenState();
+}
+
+class _CharacterInterviewScreenState
+    extends ConsumerState<CharacterInterviewScreen> {
+  int _currentIndex = 0;
+  int _correct = 0;
+  int _selectedIndex = -1;
+  bool _showFeedback = false;
+  final Set<String> _wrongWords = {};
+  late final PageController _pageController;
+  double _progressAnim = 0;
+  
+  // Guardar referencia al TTS service para usar en dispose
+  late final dynamic _ttsService;
+
+  InterviewQuestion get _question => widget.interview.questions[_currentIndex];
+
+  @override
+  void initState() {
+    super.initState();
+    _ttsService = ref.read(ttsServiceProvider);
+    _pageController = PageController();
+    _progressAnim = _progressValue;
+  }
+
+  @override
+  void dispose() {
+    _ttsService.stop();
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  void _select(int index) {
+    if (_showFeedback) {
+      return;
+    }
+    final option = _question.options[index];
+    setState(() {
+      _selectedIndex = index;
+      _showFeedback = true;
+      if (option.isCorrect) {
+        _correct++;
+      }
+    });
+    if (!option.isCorrect) {
+      _trackWrongWords(option);
+    }
+    _animateProgress();
+  }
+
+  void _next() {
+    final isLast = _currentIndex == widget.interview.questions.length - 1;
+    if (isLast) {
+      widget.onComplete(
+        _correct,
+        widget.interview.questions.length,
+        _wrongWords.toList()..sort(),
+      );
+      return;
+    }
+    setState(() {
+      _currentIndex++;
+      _selectedIndex = -1;
+      _showFeedback = false;
+    });
+    _pageController.nextPage(
+      duration: const Duration(milliseconds: 350),
+      curve: Curves.easeOutCubic,
+    );
+    _animateProgress();
+  }
+
+  double get _progressValue =>
+      (_currentIndex + 1) / widget.interview.questions.length;
+
+  void _animateProgress() {
+    final target = _progressValue;
+    setState(() {
+      _progressAnim = target;
+    });
+  }
+
+  void _trackWrongWords(InterviewOption option) {
+    if (widget.interview.vocabularyUsed.isEmpty) {
+      return;
+    }
+    final vocabSet = widget.interview.vocabularyUsed
+        .map((e) => e.trim().toLowerCase())
+        .where((e) => e.isNotEmpty)
+        .toSet();
+    if (vocabSet.isEmpty) {
+      return;
+    }
+    _addWordsFromText(_question.questionEn, vocabSet);
+    _addWordsFromText(option.textEn, vocabSet);
+  }
+
+  void _addWordsFromText(String text, Set<String> vocabSet) {
+    final normalized = text
+        .toLowerCase()
+        .replaceAll(RegExp(r'[^a-z\\s]'), ' ')
+        .split(RegExp(r'\\s+'))
+        .where((w) => w.isNotEmpty)
+        .toList();
+    for (final word in normalized) {
+      if (vocabSet.contains(word)) {
+        _wrongWords.add(word);
+      }
+    }
+  }
+
+  String _applyVars(String text) {
+    return ref.read(templateVariableServiceProvider).replaceVariables(text);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    void closeToHome() {
+      ref.read(ttsServiceProvider).stop();
+      Navigator.of(context).pop(<String, dynamic>{'exitToHome': true});
+    }
+
+    void speakText(String text) {
+      final gender = widget.interview.characterGender;
+      ref.read(ttsServiceProvider).speak(
+            text,
+            voiceGender: gender.isEmpty ? null : gender,
+          );
+    }
+
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: AppColors.textPrimary),
+          onPressed: () {
+            ref.read(ttsServiceProvider).stop();
+            Navigator.pop(context);
+          },
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.close, color: AppColors.textPrimary),
+            onPressed: closeToHome,
+            tooltip: 'Cerrar',
+          ),
+        ],
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Entrevista: ${widget.interview.characterName}',
+              style: const TextStyle(
+                color: AppColors.textPrimary,
+                fontWeight: FontWeight.w700,
+                fontSize: 16,
+              ),
+            ),
+            Text(
+              'Episodio ${widget.interview.episodeNumber}',
+              style: const TextStyle(
+                color: AppColors.textSecondary,
+                fontSize: 12,
+              ),
+            ),
+          ],
+        ),
+      ),
+      body: Column(
+        children: [
+          ProgressMetaRow(
+            progress: _progressAnim,
+            primaryLabel:
+                'Pregunta ${_currentIndex + 1} de ${widget.interview.questions.length}',
+            secondaryLabel: 'Aciertos: $_correct',
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: _IntroCard(
+              characterName: widget.interview.characterName,
+              avatarUrl: widget.interview.avatarUrl,
+              introEn: _applyVars(widget.interview.introEn),
+              introEs: _applyVars(widget.interview.introEs),
+              onSpeak: speakText,
+            ),
+          ),
+          Expanded(
+            child: PageView.builder(
+              controller: _pageController,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: widget.interview.questions.length,
+              itemBuilder: (_, index) => _QuestionCard(
+                question: widget.interview.questions[index],
+                selectedIndex:
+                    index == _currentIndex ? _selectedIndex : -1,
+                showFeedback: index == _currentIndex && _showFeedback,
+                onTap: (i) => _select(i),
+                apply: _applyVars,
+                onSpeak: speakText,
+              ),
+            ),
+          ),
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: DuolingoButton(
+                text: _currentIndex == widget.interview.questions.length - 1
+                    ? 'Terminar'
+                    : 'Continuar',
+                onPressed: _showFeedback ? _next : null,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _IntroCard extends StatefulWidget {
+  final String characterName;
+  final String avatarUrl;
+  final String introEn;
+  final String introEs;
+  final ValueChanged<String> onSpeak;
+
+  const _IntroCard({
+    required this.characterName,
+    required this.avatarUrl,
+    required this.introEn,
+    required this.introEs,
+    required this.onSpeak,
+  });
+
+  @override
+  State<_IntroCard> createState() => _IntroCardState();
+}
+
+class _IntroCardState extends State<_IntroCard> {
+  String _avatarAsset = '';
+  bool _isAvatarLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadAvatar();
+  }
+
+  @override
+  void didUpdateWidget(covariant _IntroCard oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.avatarUrl != widget.avatarUrl ||
+        oldWidget.characterName != widget.characterName) {
+      _avatarAsset = '';
+      _loadAvatar();
+    }
+  }
+
+  Future<void> _loadAvatar() async {
+    setState(() {
+      _isAvatarLoading = true;
+    });
+    final resolved = await AvatarAssetResolver.resolve(
+      avatarUrl: widget.avatarUrl,
+      fallbackName: widget.characterName,
+      cacheKey: 'interview_${widget.characterName.toLowerCase()}',
+    );
+    if (!mounted) {
+      return;
+    }
+    if (resolved.isNotEmpty) {
+      await precacheImage(AssetImage(resolved), context);
+      if (!mounted) {
+        return;
+      }
+    }
+    setState(() {
+      _avatarAsset = resolved;
+      _isAvatarLoading = false;
+    });
+  }
+
+  void _showTranslation() {
+    showDialog(
+      context: context,
+      barrierColor: Colors.transparent,
+      useRootNavigator: false,
+      builder: (_) => TranslationOverlay(
+        title: 'Traducción',
+        content: widget.introEs,
+        onClose: () => Navigator.of(context, rootNavigator: false).pop(),
+        isQuote: true,
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    debugPrint(
+      'INTERVIEW_AVATAR render name=${widget.characterName} url=${widget.avatarUrl}',
+    );
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: AppColors.cardBackground,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              CircleAvatar(
+                radius: 26,
+                backgroundColor: AppColors.secondaryBlue.withValues(alpha: 0.15),
+                backgroundImage:
+                    _avatarAsset.isNotEmpty ? AssetImage(_avatarAsset) : null,
+                child: _avatarAsset.isEmpty && !_isAvatarLoading
+                    ? const Icon(Icons.person, color: AppColors.secondaryBlue)
+                    : null,
+              ),
+              const SizedBox(width: 12),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    widget.characterName,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700,
+                      color: AppColors.textPrimary,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  const Text(
+                    'Character Interview',
+                    style: TextStyle(
+                      color: AppColors.textSecondary,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: GestureDetector(
+                  onTap: () => widget.onSpeak(widget.introEn),
+                  child: BilingualTextCard(
+                    textEn: widget.introEn,
+                    textEs: widget.introEs,
+                    showEs: false,
+                    backgroundColor: Colors.transparent,
+                    padding: EdgeInsets.zero,
+                    enStyle: const TextStyle(
+                      color: AppColors.textPrimary,
+                    ),
+                  ),
+                ),
+              ),
+              IconButton(
+                onPressed: widget.introEs.trim().isEmpty ? null : _showTranslation,
+                icon: const Icon(Icons.translate, color: AppColors.secondaryBlue),
+                tooltip: 'Ver traducción',
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _QuestionCard extends StatelessWidget {
+  final InterviewQuestion question;
+  final int selectedIndex;
+  final bool showFeedback;
+  final ValueChanged<int> onTap;
+  final String Function(String) apply;
+  final ValueChanged<String> onSpeak;
+
+  const _QuestionCard({
+    required this.question,
+    required this.selectedIndex,
+    required this.showFeedback,
+    required this.onTap,
+    required this.apply,
+    required this.onSpeak,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.05),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return SingleChildScrollView(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: ConstrainedBox(
+                constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Flexible(
+                          fit: FlexFit.loose,
+                          child: GestureDetector(
+                            onTap: () => onSpeak(apply(question.questionEn)),
+                            child: BilingualTextCard(
+                              textEn: apply(question.questionEn),
+                              textEs: apply(question.questionEs),
+                              showEs: false,
+                              backgroundColor: Colors.transparent,
+                              padding: EdgeInsets.zero,
+                              enStyle: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: AppColors.textPrimary,
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 6),
+                        IconButton(
+                          onPressed: apply(question.questionEs).trim().isEmpty
+                              ? null
+                              : () {
+                                  showDialog(
+                                    context: context,
+                                    barrierColor: Colors.transparent,
+                                    useRootNavigator: false,
+                                    builder: (_) => TranslationOverlay(
+                                      title: 'Traducción',
+                                      content: apply(question.questionEs),
+                                      onClose: () =>
+                                          Navigator.of(context, rootNavigator: false)
+                                              .pop(),
+                                      isQuote: true,
+                                    ),
+                                  );
+                                },
+                          icon: const Icon(
+                            Icons.translate,
+                            color: AppColors.secondaryBlue,
+                          ),
+                          tooltip: 'Ver traducción',
+                          padding: EdgeInsets.zero,
+                          constraints: const BoxConstraints(
+                            minWidth: 32,
+                            minHeight: 32,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    ...question.options.asMap().entries.map(
+                      (entry) {
+                        final idx = entry.key;
+                        final opt = entry.value;
+                        final isSelected = selectedIndex == idx;
+                        final isCorrect = opt.isCorrect;
+                        Color bg = AppColors.cardBackground;
+                        Color fg = AppColors.textPrimary;
+                        final bool show = showFeedback && isSelected;
+                        final letter = opt.optionId.isNotEmpty
+                            ? opt.optionId
+                            : String.fromCharCode(65 + idx);
+
+                        if (show) {
+                          bg =
+                              isCorrect ? AppColors.primaryGreen : AppColors.errorRed;
+                          fg = Colors.white;
+                        }
+
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 10),
+                          child: InkWell(
+                            onTap: () => onTap(idx),
+                            borderRadius: BorderRadius.circular(12),
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 14,
+                                vertical: 12,
+                              ),
+                              decoration: BoxDecoration(
+                                color: bg,
+                                borderRadius: BorderRadius.circular(12),
+                                border: Border.all(
+                                  color: showFeedback && isSelected
+                                      ? Colors.transparent
+                                      : AppColors.cardBackground,
+                                ),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Container(
+                                        width: 32,
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                          color: show
+                                              ? Colors.white.withValues(alpha: 0.25)
+                                              : AppColors.cardBackground,
+                                          shape: BoxShape.circle,
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            letter,
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: show
+                                                  ? Colors.white
+                                                  : AppColors.textSecondary,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(width: 10),
+                                      Expanded(
+                                        child: BilingualTextCard(
+                                          textEn: apply(opt.textEn),
+                                          textEs: apply(opt.textEs),
+                                          backgroundColor: Colors.transparent,
+                                          padding: EdgeInsets.zero,
+                                          enStyle: TextStyle(
+                                            fontWeight: FontWeight.w700,
+                                            color: fg,
+                                          ),
+                                          esStyle: TextStyle(
+                                            color: show
+                                                ? Colors.white70
+                                                : AppColors.textSecondary,
+                                          ),
+                                        ),
+                                      ),
+                                      if (show)
+                                        Icon(
+                                          isCorrect
+                                              ? Icons.check_circle
+                                              : Icons.cancel,
+                                          color: Colors.white,
+                                        ),
+                                    ],
+                                  ),
+                                  if (show) ...[
+                                    const SizedBox(height: 10),
+                                    Text(
+                                      apply(opt.isCorrect
+                                          ? opt.feedbackEn
+                                          : opt.feedbackEs),
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                    if ((opt.mistakeType ?? '').isNotEmpty) ...[
+                                      const SizedBox(height: 6),
+                                      Container(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 10,
+                                          vertical: 6,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: Colors.white.withValues(alpha: 0.15),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        child: Text(
+                                          'Tipo de error: ${opt.mistakeType}',
+                                          style: const TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                    if ((opt.grammarExplanation ?? '')
+                                        .isNotEmpty) ...[
+                                      const SizedBox(height: 8),
+                                      Text(
+                                        'Grammar: ${apply(opt.grammarExplanation ?? '')}',
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ],
+                                    if ((opt.culturalNote ?? '').isNotEmpty) ...[
+                                      const SizedBox(height: 6),
+                                      Text(
+                                        'Cultura: ${apply(opt.culturalNote ?? '')}',
+                                        style: const TextStyle(
+                                          color: Colors.white70,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ],
+                                  ],
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                    if (showFeedback && selectedIndex >= 0)
+                      const Padding(
+                        padding: EdgeInsets.only(top: 8.0),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.info_outline,
+                              color: AppColors.textSecondary,
+                              size: 18,
+                            ),
+                            SizedBox(width: 6),
+                            Expanded(
+                              child: Text(
+                                'Toca continuar para la siguiente pregunta',
+                                style: TextStyle(
+                                  color: AppColors.textSecondary,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}

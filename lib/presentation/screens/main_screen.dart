@@ -1,12 +1,19 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:office_app/core/constants/app_colors.dart';
+import '../providers/personalization_providers.dart';
 
+/// Pantalla principal con navegación inferior.
+///
+/// Contiene la barra de navegación y maneja el routing entre secciones.
 class MainScreen extends ConsumerStatefulWidget {
+  /// Widget hijo a mostrar en el contenido.
   final Widget child;
 
-  const MainScreen({super.key, required this.child});
+  /// Crea un [MainScreen].
+  const MainScreen({required this.child, super.key});
 
   @override
   ConsumerState<MainScreen> createState() => _MainScreenState();
@@ -15,9 +22,18 @@ class MainScreen extends ConsumerStatefulWidget {
 class _MainScreenState extends ConsumerState<MainScreen> {
   int _calculateSelectedIndex(BuildContext context) {
     final String location = GoRouterState.of(context).uri.path;
-    if (location.startsWith('/home')) return 0;
-    if (location.startsWith('/profile')) return 1;
-    if (location.startsWith('/settings')) return 2;
+    if (location.startsWith('/home')) {
+      return 0;
+    }
+    if (location.startsWith('/review')) {
+      return 1;
+    }
+    if (location.startsWith('/profile')) {
+      return 2;
+    }
+    if (location.startsWith('/settings')) {
+      return 3;
+    }
     return 0;
   }
 
@@ -27,9 +43,12 @@ class _MainScreenState extends ConsumerState<MainScreen> {
         context.go('/home');
         break;
       case 1:
-        context.go('/profile');
+        context.go('/review');
         break;
       case 2:
+        context.go('/profile');
+        break;
+      case 3:
         context.go('/settings');
         break;
     }
@@ -37,9 +56,14 @@ class _MainScreenState extends ConsumerState<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // Verificar si el usuario ya completó el onboarding
+    final hasNameAsync = ref.watch(hasPlayerNameProvider);
+    final showBottomNav = hasNameAsync.valueOrNull == true;
+    
     return Scaffold(
+      resizeToAvoidBottomInset: !kIsWeb,
       body: widget.child,
-      bottomNavigationBar: Container(
+      bottomNavigationBar: showBottomNav ? Container(
         decoration: BoxDecoration(
           border: Border(
             top: BorderSide(color: Colors.grey.shade200, width: 2),
@@ -61,6 +85,11 @@ class _MainScreenState extends ConsumerState<MainScreen> {
               label: 'Home',
             ),
             BottomNavigationBarItem(
+              icon: Icon(Icons.school_outlined, size: 30),
+              activeIcon: Icon(Icons.school, size: 30),
+              label: 'Review',
+            ),
+            BottomNavigationBarItem(
               icon: Icon(Icons.person_outline, size: 30),
               activeIcon: Icon(Icons.person_rounded, size: 30),
               label: 'Profile',
@@ -72,7 +101,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
             ),
           ],
         ),
-      ),
+      ) : null,
     );
   }
 }
