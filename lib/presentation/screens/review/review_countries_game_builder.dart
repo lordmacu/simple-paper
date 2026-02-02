@@ -9,6 +9,7 @@ import 'review_memory_game.dart';
 import 'review_true_false_game.dart';
 import 'review_types.dart';
 
+/// Construye un juego de países
 Game buildCountriesGame(
   List<Map<String, String>> items,
   ReviewGameType type,
@@ -177,7 +178,9 @@ Game buildCountriesGame(
         final pool = reviewShuffle(items).take(6).toList();
         final options = <String>{correct['country']!};
         for (final item in pool) {
-          if (options.length >= 6) break;
+          if (options.length >= 6) {
+            break;
+          }
           options.add(item['country']!);
         }
         final optionList = options.toList()..shuffle();
@@ -207,6 +210,7 @@ Game buildCountriesGame(
   }
 }
 
+/// Construye un juego de ciudades
 Game buildCitiesGame(
   List<String> cities,
   ReviewGameType type,

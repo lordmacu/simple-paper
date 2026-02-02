@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:html' as html show window;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -17,14 +16,21 @@ import '../../providers/progress_providers.dart';
 import '../../providers/template_variable_provider.dart';
 import '../../providers/tts_provider.dart';
 import '../../providers/personalization_providers.dart';
+import '../../widgets/atoms/icon_text_button.dart';
+import '../../widgets/atoms/primary_button.dart';
+import '../../widgets/molecules/bilingual_text_card.dart';
+import '../../widgets/molecules/timer_chip.dart';
 
+/// listening shadowing screen/widget
 class ListeningShadowingScreen extends ConsumerStatefulWidget {
+  /// Episodio con datos de listening shadowing
   final Episode episode;
+  /// Callback cuando se completa la sección
   final VoidCallback? onComplete;
 
+  /// Crea una pantalla de listening y shadowing.
   const ListeningShadowingScreen({
-    super.key,
-    required this.episode,
+    required this.episode, super.key,
     this.onComplete,
   });
 
@@ -35,16 +41,13 @@ class ListeningShadowingScreen extends ConsumerStatefulWidget {
 
 /// Returns true if running on web AND on a mobile browser
 bool _isWebMobile() {
-  if (!kIsWeb) return false;
-  try {
-    final userAgent = html.window.navigator.userAgent.toLowerCase();
-    return userAgent.contains('mobile') ||
-        userAgent.contains('android') ||
-        userAgent.contains('iphone') ||
-        userAgent.contains('ipad');
-  } catch (_) {
+  if (!kIsWeb) {
     return false;
   }
+  // On web, check target platform for mobile detection
+  // This works because Flutter web sets the platform based on user agent
+  return defaultTargetPlatform == TargetPlatform.iOS ||
+      defaultTargetPlatform == TargetPlatform.android;
 }
 
 class _ListeningShadowingScreenState
@@ -67,6 +70,9 @@ class _ListeningShadowingScreenState
   String _recognized = '';
   double _lastScore = 0.0;
   bool? _isCorrect;
+  
+  // Guardar referencia al TTS service para usar en dispose
+  late final dynamic _ttsService;
 
   ListeningShadowingSection? get _section => widget.episode.listeningShadowing;
   List<ListeningShadowingItem> get _items => _section?.data ?? [];
@@ -75,6 +81,7 @@ class _ListeningShadowingScreenState
   @override
   void initState() {
     super.initState();
+    _ttsService = ref.read(ttsServiceProvider);
     _loadAvatarForCurrentItem();
     _startTimer();
     _initSpeech();
@@ -85,7 +92,7 @@ class _ListeningShadowingScreenState
     _timer?.cancel();
     _silenceTimer?.cancel();
     _ttsTimer?.cancel();
-    ref.read(ttsServiceProvider).stop();
+    _ttsService.stop();
     super.dispose();
   }
 
@@ -101,7 +108,9 @@ class _ListeningShadowingScreenState
 
   void _startTimer() {
     _timer?.cancel();
-    if (_items.isEmpty) return;
+    if (_items.isEmpty) {
+      return;
+    }
     final seconds = _currentItem.repeatTimerSeconds ?? 0;
     if (seconds <= 0) {
       _timeLeft = null;
@@ -109,7 +118,9 @@ class _ListeningShadowingScreenState
     }
     _timeLeft = seconds;
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (!mounted) return;
+      if (!mounted) {
+        return;
+      }
       setState(() {
         _timeLeft = (_timeLeft ?? 1) - 1;
         if ((_timeLeft ?? 0) <= 0) {
@@ -121,7 +132,9 @@ class _ListeningShadowingScreenState
 
   Future<void> _initSpeech() async {
     final ok = await _speech.initialize();
-    if (!mounted) return;
+    if (!mounted) {
+      return;
+    }
     setState(() {
       _speechReady = ok;
     });
@@ -137,7 +150,9 @@ class _ListeningShadowingScreenState
     if (_isListening) {
       await _speech.stop();
       _evaluateResult();
-      if (!mounted) return;
+      if (!mounted) {
+        return;
+      }
       setState(() {
         _isListening = false;
       });
@@ -154,7 +169,9 @@ class _ListeningShadowingScreenState
     await _speech.listen(
       localeId: 'en_US',
       onResult: (result) {
-        if (!mounted) return;
+        if (!mounted) {
+          return;
+        }
         final raw = result.recognizedWords;
         // On web, use only the final result to avoid concatenation bugs.
         // Intermediate results on Chrome/Web often contain concatenated
@@ -184,13 +201,17 @@ class _ListeningShadowingScreenState
   void _restartSilenceTimer() {
     _silenceTimer?.cancel();
     _silenceTimer = Timer(const Duration(seconds: 1), () async {
-      if (!mounted || !_isListening) return;
+      if (!mounted || !_isListening) {
+        return;
+      }
       final last = _lastResultAt ?? DateTime.now();
       final idle = DateTime.now().difference(last).inMilliseconds >= 2000;
       final noChange = _recognized.trim() == _lastRecognized.trim();
       if (idle && noChange) {
         await _speech.stop();
-        if (!mounted) return;
+        if (!mounted) {
+          return;
+        }
         _evaluateResult();
         setState(() {
           _isListening = false;
@@ -208,7 +229,9 @@ class _ListeningShadowingScreenState
   /// instead of "hello my name is cristian".
   /// This method extracts only the final coherent phrase.
   String _extractCleanPreview(String text) {
-    if (text.isEmpty) return '';
+    if (text.isEmpty) {
+      return '';
+    }
 
     // Strategy: Find the LAST occurrence of what looks like the start of the phrase
     // and take everything from there.
@@ -217,7 +240,9 @@ class _ListeningShadowingScreenState
     // We need to find the last "hello" that starts a coherent phrase.
     
     final words = text.split(RegExp(r'\s+'));
-    if (words.isEmpty) return text;
+    if (words.isEmpty) {
+      return text;
+    }
     
     // First, try to detect the first word of the intended phrase
     // by finding repeated patterns at word boundaries
@@ -234,11 +259,7 @@ class _ListeningShadowingScreenState
     }
     
     // If we couldn't detect from repetition, use the first short word
-    if (firstWord == null) {
-      // Try to extract from concatenated word like "namehello" -> "hello"
-      // by looking for common short words
-      firstWord = first.length <= 6 ? first : first.substring(0, 5);
-    }
+    firstWord ??= first.length <= 6 ? first : first.substring(0, 5);
     
     // Now scan from the END to find where the final phrase starts
     // Look for the last occurrence of firstWord at the START of a word
@@ -300,8 +321,12 @@ class _ListeningShadowingScreenState
   double _similarityScore(String spoken, String target) {
     final spokenTokens = _tokenize(spoken);
     final targetTokens = _tokenize(target);
-    if (targetTokens.isEmpty) return 0.0;
-    if (spokenTokens.isEmpty) return 0.0;
+    if (targetTokens.isEmpty) {
+      return 0.0;
+    }
+    if (spokenTokens.isEmpty) {
+      return 0.0;
+    }
     final spokenSet = spokenTokens.toSet();
     final targetSet = targetTokens.toSet();
     final matchCount = targetSet.intersection(spokenSet).length;
@@ -313,7 +338,9 @@ class _ListeningShadowingScreenState
         .toLowerCase()
         .replaceAll(RegExp(r'[^\w\s]'), '')
         .trim();
-    if (normalized.isEmpty) return [];
+    if (normalized.isEmpty) {
+      return [];
+    }
     return normalized.split(RegExp(r'\s+'));
   }
 
@@ -327,7 +354,9 @@ class _ListeningShadowingScreenState
         ? _currentItem.ttsText
         : _currentItem.text;
     final text = template.replaceVariables(raw);
-    if (text.trim().isEmpty) return;
+    if (text.trim().isEmpty) {
+      return;
+    }
     final tts = ref.read(ttsServiceProvider);
     final voiceId = (_currentItem.ttsVoiceId ?? '').toLowerCase();
     final isFemale = RegExp(r'(^|_)female(_|$)').hasMatch(voiceId);
@@ -335,7 +364,7 @@ class _ListeningShadowingScreenState
     final pitch = isMale ? 0.85 : 1.05;
     final baseRate = tts.defaultRate;
     final rate = isMale ? (baseRate * 0.95) : baseRate;
-    print('Playing TTS: $text pitch=$pitch rate=$rate voiceId $voiceId');
+    debugPrint('Playing TTS: $text pitch=$pitch rate=$rate voiceId $voiceId');
     await tts.speak(
       text,
       pitch: pitch,
@@ -346,7 +375,9 @@ class _ListeningShadowingScreenState
     final seconds = _currentItem.estimatedAudioDurationSeconds ?? 0;
     final duration = Duration(milliseconds: (seconds * 1000) + 400);
     _ttsTimer = Timer(duration, () {
-      if (!mounted) return;
+      if (!mounted) {
+        return;
+      }
       setState(() {
         _isSpeaking = false;
       });
@@ -356,11 +387,15 @@ class _ListeningShadowingScreenState
   Set<int> _matchedTokenIndices(String spoken, String target) {
     final spokenTokens = _tokenize(spoken);
     final targetTokens = _tokenize(target);
-    if (spokenTokens.isEmpty || targetTokens.isEmpty) return {};
+    if (spokenTokens.isEmpty || targetTokens.isEmpty) {
+      return {};
+    }
     final matched = <int>{};
     var j = 0;
     for (var i = 0; i < targetTokens.length; i++) {
-      if (j >= spokenTokens.length) break;
+      if (j >= spokenTokens.length) {
+        break;
+      }
       if (targetTokens[i] == spokenTokens[j]) {
         matched.add(i);
         j++;
@@ -388,7 +423,7 @@ class _ListeningShadowingScreenState
           text: chunk,
           style: TextStyle(
             backgroundColor: isMatch
-                ? AppColors.successGreen.withOpacity(0.3)
+                ? AppColors.successGreen.withValues(alpha: 0.3)
                 : Colors.transparent,
           ),
         ),
@@ -520,9 +555,13 @@ class _ListeningShadowingScreenState
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
-              instructions,
-              style: const TextStyle(
+            BilingualTextCard(
+              textEn: instructions,
+              textEs: instructions,
+              showEn: false,
+              backgroundColor: Colors.transparent,
+              padding: EdgeInsets.zero,
+              esStyle: const TextStyle(
                 color: AppColors.textSecondary,
                 fontWeight: FontWeight.w600,
               ),
@@ -534,7 +573,7 @@ class _ListeningShadowingScreenState
                 color: AppColors.cardBackground,
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(
-                  color: AppColors.primaryGreen.withOpacity(0.2),
+                  color: AppColors.primaryGreen.withValues(alpha: 0.2),
                 ),
               ),
               child: Column(
@@ -559,33 +598,13 @@ class _ListeningShadowingScreenState
                       ),
                       const Spacer(),
                       if (_timeLeft != null)
-                        Container(
+                        TimerChip(
+                          seconds: _timeLeft ?? 0,
                           padding: const EdgeInsets.symmetric(
                             horizontal: 10,
                             vertical: 6,
                           ),
-                          decoration: BoxDecoration(
-                            color: AppColors.warningOrange.withOpacity(0.12),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const Icon(
-                                Icons.timer,
-                                size: 16,
-                                color: AppColors.warningOrange,
-                              ),
-                              const SizedBox(width: 6),
-                              Text(
-                                '${_timeLeft ?? 0}s',
-                                style: const TextStyle(
-                                  color: AppColors.warningOrange,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
+                          iconSize: 16,
                         ),
                     ],
                   ),
@@ -607,38 +626,26 @@ class _ListeningShadowingScreenState
                   const SizedBox(height: 8),
                   Align(
                     alignment: Alignment.centerLeft,
-                    child: OutlinedButton.icon(
-                      onPressed: _isListening ? null : HapticUtils.wrap(_playTts),
-                      style: OutlinedButton.styleFrom(
-                        side: BorderSide(
-                          color: AppColors.secondaryBlue.withOpacity(0.6),
-                        ),
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 8,
-                          horizontal: 12,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
+                    child: IconTextButton(
+                      label: 'Escuchar',
+                      icon: Icons.volume_up,
+                      onTap: _isListening ? null : _playTts,
+                      foregroundColor: AppColors.secondaryBlue,
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 8,
+                        horizontal: 12,
                       ),
-                      icon: const Icon(
-                        Icons.volume_up,
-                        color: AppColors.secondaryBlue,
-                        size: 18,
-                      ),
-                      label: const Text(
-                        'Escuchar',
-                        style: TextStyle(
-                          color: AppColors.secondaryBlue,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      minHeight: 40,
                     ),
                   ),
                   const SizedBox(height: 8),
-                  Text(
-                    textEs,
-                    style: const TextStyle(
+                  BilingualTextCard(
+                    textEn: textEn,
+                    textEs: textEs,
+                    showEn: false,
+                    backgroundColor: Colors.transparent,
+                    padding: EdgeInsets.zero,
+                    esStyle: const TextStyle(
                       fontSize: 14,
                       color: AppColors.textSecondary,
                       fontStyle: FontStyle.italic,
@@ -686,12 +693,12 @@ class _ListeningShadowingScreenState
                           height: 44,
                           decoration: BoxDecoration(
                             color: _isSpeaking
-                                ? AppColors.textSecondary.withOpacity(0.3)
+                                ? AppColors.textSecondary.withValues(alpha: 0.3)
                                 : AppColors.primaryGreen,
                             shape: BoxShape.circle,
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black.withOpacity(0.12),
+                                color: Colors.black.withValues(alpha: 0.12),
                                 blurRadius: 10,
                                 offset: const Offset(0, 6),
                               ),
@@ -709,9 +716,9 @@ class _ListeningShadowingScreenState
                   const SizedBox(height: 12),
                   // Sección de respuesta solo visible si NO es web mobile
                   if (!_isWebMobile() && _recognized.isNotEmpty) ...[
-                    Text(
+                    const Text(
                       'Tu respuesta:',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.w700,
                         color: AppColors.textSecondary,
                       ),
@@ -769,24 +776,11 @@ class _ListeningShadowingScreenState
             const SizedBox(height: 16),
             SizedBox(
               width: double.infinity,
-              child: ElevatedButton(
-                onPressed: (_isListening || _isSpeaking)
-                    ? null
-                    : HapticUtils.wrap(_next),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primaryGreen,
-                  foregroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(14),
-                  ),
-                ),
-                child: Text(
-                  _currentIndex == _items.length - 1 ? 'Finalizar' : 'Siguiente',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+              child: PrimaryButton(
+                text: _currentIndex == _items.length - 1
+                    ? 'Finalizar'
+                    : 'Siguiente',
+                onPressed: (_isListening || _isSpeaking) ? null : _next,
               ),
             ),
           ],
@@ -798,7 +792,9 @@ class _ListeningShadowingScreenState
 
   void _logAvatarOnce(String speakerName) {
     final itemId = _currentItem.itemId;
-    if (_lastAvatarLogItemId == itemId) return;
+    if (_lastAvatarLogItemId == itemId) {
+      return;
+    }
     _lastAvatarLogItemId = itemId;
     final characterId = _currentItem.characterId ?? '';
     final avatarUrl = _resolveAvatarUrl(characterId);
@@ -819,9 +815,13 @@ class _ListeningShadowingScreenState
   }
 
   Future<void> _loadAvatarForCurrentItem() async {
-    if (_items.isEmpty) return;
+    if (_items.isEmpty) {
+      return;
+    }
     final itemId = _currentItem.itemId;
-    if (_avatarItemId == itemId && _avatarAsset.isNotEmpty) return;
+    if (_avatarItemId == itemId && _avatarAsset.isNotEmpty) {
+      return;
+    }
     final characterId = _currentItem.characterId ?? '';
     final avatarUrl = _resolveAvatarUrl(characterId);
     final resolved = await AvatarAssetResolver.resolve(
@@ -829,7 +829,9 @@ class _ListeningShadowingScreenState
       fallbackName: _currentItem.characterDisplayName,
       cacheKey: itemId,
     );
-    if (!mounted) return;
+    if (!mounted) {
+      return;
+    }
     setState(() {
       _avatarItemId = itemId;
       _avatarAsset = resolved;

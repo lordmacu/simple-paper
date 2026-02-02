@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../widgets/atoms/primary_button.dart';
 
+/// reflection screen/widget
 class ReflectionScreen extends StatefulWidget {
+  /// int
   final int maxLength;
+  ///  list< string>
   final List<String> practiceWords;
+  /// void
   final void Function(String text) onSubmit;
 
+  /// Crea una instancia de reflection screen.
   const ReflectionScreen({
-    Key? key,
-    required this.onSubmit,
+    required this.onSubmit, super.key,
     this.maxLength = 200,
     this.practiceWords = const [],
-  }) : super(key: key);
+  });
 
   @override
   State<ReflectionScreen> createState() => _ReflectionScreenState();
@@ -102,20 +107,9 @@ class _ReflectionScreenState extends State<ReflectionScreen> {
             const Spacer(),
             SizedBox(
               width: double.infinity,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primaryGreen,
-                  foregroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(vertical: 14),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
+              child: PrimaryButton(
+                text: 'Guardar y continuar',
                 onPressed: _handleSubmit,
-                child: const Text(
-                  'Guardar y continuar',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
               ),
             ),
           ],

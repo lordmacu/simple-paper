@@ -2,22 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants/app_colors.dart';
 import '../common/duolingo_button.dart';
+import '../molecules/dialog_action_row.dart';
 
-/// Dialog para renombrar un personaje
-/// Permite al usuario personalizar el nombre de un personaje desbloqueado
+/// Dialog para renombrar un personaje.
+///
+/// Permite al usuario personalizar el nombre de un personaje desbloqueado.
 class RenameCharacterDialog extends ConsumerStatefulWidget {
+  /// ID del personaje a renombrar.
   final String characterId;
+
+  /// Nombre por defecto del personaje.
   final String defaultName;
+
+  /// Nombre actual del personaje.
   final String currentName;
+
+  /// Callback cuando se guarda el nuevo nombre.
   final Function(String newName) onSave;
 
+  /// Crea un [RenameCharacterDialog].
   const RenameCharacterDialog({
-    Key? key,
     required this.characterId,
     required this.defaultName,
     required this.currentName,
     required this.onSave,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   ConsumerState<RenameCharacterDialog> createState() =>
@@ -122,7 +132,7 @@ class _RenameCharacterDialogState extends ConsumerState<RenameCharacterDialog>
                       Text(
                         _isPlayer ? '¡Hola! ¿Cómo te llamas?' : 'Renombrar Personaje',
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                           color: AppColors.textPrimary,
@@ -134,7 +144,7 @@ class _RenameCharacterDialogState extends ConsumerState<RenameCharacterDialog>
                           ? 'Escribe tu nombre. Así te llamaremos en la oficina.'
                           : 'Este personaje se llama "${widget.defaultName}". ¿Quieres cambiarle el nombre?',
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 12,
                           color: AppColors.textSecondary,
                           height: 1.3,
@@ -150,7 +160,7 @@ class _RenameCharacterDialogState extends ConsumerState<RenameCharacterDialog>
                 controller: _controller,
                 autofocus: true,
                 maxLength: 20,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16,
                   color: AppColors.textPrimary,
                 ),
@@ -167,25 +177,25 @@ class _RenameCharacterDialogState extends ConsumerState<RenameCharacterDialog>
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: BorderSide(
-                      color: AppColors.textSecondary.withOpacity(0.2),
+                      color: AppColors.textSecondary.withValues(alpha: 0.2),
                       width: 1,
                     ),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: AppColors.primaryGreen,
                       width: 2,
                     ),
                   ),
                   errorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: AppColors.errorRed,
                       width: 2,
                     ),
                   ),
-                  prefixIcon: Icon(
+                  prefixIcon: const Icon(
                     Icons.person,
                     color: AppColors.primaryGreen,
                   ),
@@ -207,12 +217,12 @@ class _RenameCharacterDialogState extends ConsumerState<RenameCharacterDialog>
               if (!_isPlayer) ...[
                 TextButton.icon(
                   onPressed: _resetToDefault,
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.refresh,
                     size: 18,
                     color: AppColors.secondaryBlue,
                   ),
-                  label: Text(
+                  label: const Text(
                     'Restaurar nombre original',
                     style: TextStyle(
                       color: AppColors.secondaryBlue,
@@ -232,26 +242,17 @@ class _RenameCharacterDialogState extends ConsumerState<RenameCharacterDialog>
               if (_isPlayer) const SizedBox(height: 24),
 
               // Action buttons
-              Row(
-                children: [
-                  Expanded(
-                    flex: 3,
-                    child: DuolingoButton(
-                      text: 'Cancelar',
-                      onPressed: () => Navigator.of(context).pop(),
-                      isSecondary: true,
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    flex: 4,
-                    child: DuolingoButton(
-                      text: _isPlayer ? 'OK' : 'Guardar',
-                      onPressed: _validateAndSave,
-                      icon: Icons.check,
-                    ),
-                  ),
-                ],
+              DialogActionRow(
+                secondaryAction: DuolingoButton(
+                  text: 'Cancelar',
+                  onPressed: () => Navigator.of(context).pop(),
+                  isSecondary: true,
+                ),
+                primaryAction: DuolingoButton(
+                  text: _isPlayer ? 'OK' : 'Guardar',
+                  onPressed: _validateAndSave,
+                  icon: Icons.check,
+                ),
               ),
             ],
           ),

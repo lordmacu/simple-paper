@@ -57,14 +57,12 @@ class VocabularySegment with _$VocabularySegment {
     /// Unique segment ID
     @JsonKey(name: 'segment_id') required String segmentId,
     
-    /// Image URL
+    /// Text in both languages
+    required BilingualText text, /// Image URL
     @JsonKey(name: 'image_url') String? imageUrl,
     
     /// Word being focused on
     @JsonKey(name: 'word_focus') String? wordFocus,
-    
-    /// Text in both languages
-    required BilingualText text,
     
     /// Emphasis style for the word
     @JsonKey(name: 'emphasis_style') String? emphasisStyle,

@@ -25,18 +25,29 @@ import 'review_true_false_game.dart';
 import 'review_true_false_widget.dart';
 import 'review_types.dart';
 
+/// Pantalla principal para jugar un juego de repaso específico.
 class ReviewGamePlayScreen extends StatefulWidget {
+  /// La categoría de repaso seleccionada.
   final ReviewCategory category;
+  
+  /// El tipo de juego seleccionado.
   final ReviewGameType gameType;
+  
+  /// Lista opcional de verbos irregulares.
   final List<Map<String, String>>? irregularVerbs;
+  
+  /// Lista opcional de países.
   final List<Map<String, String>>? countries;
+  
+  /// Lista opcional de ciudades.
   final List<String>? cities;
+  
+  /// Lista opcional de comparativos.
   final List<Map<String, String>>? comparatives;
 
+  /// Crea una instancia de [ReviewGamePlayScreen].
   const ReviewGamePlayScreen({
-    super.key,
-    required this.category,
-    required this.gameType,
+    required this.category, required this.gameType, super.key,
     this.irregularVerbs,
     this.countries,
     this.cities,
@@ -47,6 +58,7 @@ class ReviewGamePlayScreen extends StatefulWidget {
   State<ReviewGamePlayScreen> createState() => _ReviewGamePlayScreenState();
 }
 
+/// Estado para la pantalla de juego de repaso.
 class _ReviewGamePlayScreenState extends State<ReviewGamePlayScreen> {
   late final Future<Game> _gameFuture;
 
@@ -80,15 +92,33 @@ class _ReviewGamePlayScreenState extends State<ReviewGamePlayScreen> {
   }
 
   int _getMaxPoints(Game game) {
-    if (game is MatchingGame) return game.content.items.length * 10;
-    if (game is FillBlankGame) return game.content.items.length * 10;
-    if (game is MultipleChoiceGame) return game.content.items.length * 10;
-    if (game is ReviewFlashcardGame) return game.cards.length * 10;
-    if (game is ReviewMemoryGame) return game.pairs.length * 10;
-    if (game is ReviewOrderFormsGame) return game.items.length * 10;
-    if (game is TypingGame) return game.content.items.length * 10;
-    if (game is ReviewTrueFalseGame) return game.items.length * 10;
-    if (game is ReviewBingoGame) return game.rounds.length * 10;
+    if (game is MatchingGame) {
+      return game.content.items.length * 10;
+    }
+    if (game is FillBlankGame) {
+      return game.content.items.length * 10;
+    }
+    if (game is MultipleChoiceGame) {
+      return game.content.items.length * 10;
+    }
+    if (game is ReviewFlashcardGame) {
+      return game.cards.length * 10;
+    }
+    if (game is ReviewMemoryGame) {
+      return game.pairs.length * 10;
+    }
+    if (game is ReviewOrderFormsGame) {
+      return game.items.length * 10;
+    }
+    if (game is TypingGame) {
+      return game.content.items.length * 10;
+    }
+    if (game is ReviewTrueFalseGame) {
+      return game.items.length * 10;
+    }
+    if (game is ReviewBingoGame) {
+      return game.rounds.length * 10;
+    }
     return 10;
   }
 

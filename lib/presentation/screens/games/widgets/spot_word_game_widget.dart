@@ -9,17 +9,23 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../domain/models/game/spot_word_game.dart';
 import '../../../providers/template_variable_provider.dart';
+import '../../../widgets/molecules/bilingual_text_card.dart';
+import '../../../widgets/molecules/score_footer.dart';
+import '../../../widgets/molecules/section_header.dart';
+import '../../../widgets/molecules/timer_chip.dart';
 import '../../../../data/services/template_variable_service.dart';
 
+/// spot word game screen/widget
 class SpotWordGameWidget extends ConsumerStatefulWidget {
+  ///  spot word game
   final SpotWordGame game;
+  /// Callback cuando se completa el juego con puntos ganados
   final ValueChanged<int> onComplete;
 
+  /// Crea un widget de juego de encontrar palabras.
   const SpotWordGameWidget({
-    Key? key,
-    required this.game,
-    required this.onComplete,
-  }) : super(key: key);
+    required this.game, required this.onComplete, super.key,
+  });
 
   @override
   ConsumerState<SpotWordGameWidget> createState() => _SpotWordGameWidgetState();
@@ -57,10 +63,14 @@ class _SpotWordGameWidgetState extends ConsumerState<SpotWordGameWidget> {
 
   void _startTimerIfNeeded() {
     final seconds = widget.game.timeLimitSeconds;
-    if (seconds == null) return;
+    if (seconds == null) {
+      return;
+    }
     _timeLeft = seconds;
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (!mounted) return;
+      if (!mounted) {
+        return;
+      }
       setState(() {
         _timeLeft = (_timeLeft ?? 1) - 1;
         if ((_timeLeft ?? 0) <= 0) {
@@ -71,7 +81,9 @@ class _SpotWordGameWidgetState extends ConsumerState<SpotWordGameWidget> {
   }
 
   void _select(int index) {
-    if (_showFeedback) return;
+    if (_showFeedback) {
+      return;
+    }
     final originalIndex = _shuffledIndices[index];
     final isCorrect = originalIndex == _item.correctAnswer;
     setState(() {
@@ -86,7 +98,9 @@ class _SpotWordGameWidgetState extends ConsumerState<SpotWordGameWidget> {
     }
 
     Future.delayed(const Duration(milliseconds: 1400), () {
-      if (!mounted) return;
+      if (!mounted) {
+        return;
+      }
       if (_currentIndex < _totalItems - 1) {
         setState(() {
           _currentIndex++;
@@ -121,20 +135,20 @@ class _SpotWordGameWidgetState extends ConsumerState<SpotWordGameWidget> {
           if (_item.imageUrl != null)
             _buildImage(_item.imageUrl!),
           const SizedBox(height: 12),
-          if (prompt.isNotEmpty)
-            Text(
-              prompt,
-              style: const TextStyle(
+          if (prompt.isNotEmpty || (promptEs != null && promptEs.isNotEmpty)) ...[
+            BilingualTextCard(
+              textEn: prompt,
+              textEs: promptEs ?? '',
+              showEn: prompt.isNotEmpty,
+              showEs: promptEs != null && promptEs.isNotEmpty,
+              backgroundColor: Colors.transparent,
+              padding: EdgeInsets.zero,
+              enStyle: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
                 color: AppColors.textPrimary,
               ),
-            ),
-          if (promptEs != null && promptEs.isNotEmpty) ...[
-            const SizedBox(height: 4),
-            Text(
-              promptEs,
-              style: const TextStyle(
+              esStyle: const TextStyle(
                 color: AppColors.textSecondary,
               ),
             ),
@@ -142,13 +156,9 @@ class _SpotWordGameWidgetState extends ConsumerState<SpotWordGameWidget> {
           const SizedBox(height: 16),
           _buildOptions(template),
           const Spacer(),
-          Text(
-            'Score: $_score',
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontWeight: FontWeight.w800,
-              color: AppColors.textPrimary,
-            ),
+          ScoreFooter(
+            label: 'Score',
+            score: _score,
           ),
         ],
       ),
@@ -156,39 +166,12 @@ class _SpotWordGameWidgetState extends ConsumerState<SpotWordGameWidget> {
   }
 
   Widget _buildHeader() {
-    return Row(
-      children: [
-        Text(
-          'Imagen ${_currentIndex + 1} / $_totalItems',
-          style: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-            color: AppColors.textPrimary,
-          ),
-        ),
-        const Spacer(),
-        if (_timeLeft != null)
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-            decoration: BoxDecoration(
-              color: AppColors.warningOrange.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Row(
-              children: [
-                const Icon(Icons.timer, size: 18, color: AppColors.warningOrange),
-                const SizedBox(width: 6),
-                Text(
-                  '${_timeLeft}s',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.warningOrange,
-                  ),
-                ),
-              ],
-            ),
-          ),
-      ],
+    return SectionHeader(
+      title: 'Imagen ${_currentIndex + 1} / $_totalItems',
+      trailing: _timeLeft != null
+          ? TimerChip(seconds: _timeLeft!)
+          : null,
+      padding: EdgeInsets.zero,
     );
   }
 
@@ -204,7 +187,7 @@ class _SpotWordGameWidgetState extends ConsumerState<SpotWordGameWidget> {
           color: AppColors.cardBackground,
           child: const Center(child: CircularProgressIndicator()),
         ),
-        errorWidget: (context, _, __) => Container(
+        errorWidget: (context, url, error) => Container(
           height: 180,
           color: AppColors.cardBackground,
           child: const Center(child: Icon(Icons.broken_image, color: AppColors.textSecondary)),
@@ -249,7 +232,7 @@ class _SpotWordGameWidgetState extends ConsumerState<SpotWordGameWidget> {
               borderRadius: BorderRadius.circular(12),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.05),
+                  color: Colors.black.withValues(alpha: 0.05),
                   blurRadius: 6,
                   offset: const Offset(0, 3),
                 ),

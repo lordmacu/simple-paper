@@ -3,24 +3,49 @@ import 'package:flutter/services.dart';
 import '../../core/constants/app_colors.dart';
 import 'stacked_3d_button.dart';
 
+/// Botón de sección 3D con etiqueta y feedback háptico.
+///
+/// Usa [Stacked3DButton] internamente con animación de presión.
 class Stacked3DSectionButton extends StatefulWidget {
+  /// Etiqueta debajo del botón.
   final String? label;
+
+  /// Callback cuando se toca el botón.
   final VoidCallback onTap;
+
+  /// Color principal del botón.
   final Color topColor;
+
+  /// Si está habilitado para interacción.
   final bool isEnabled;
+
+  /// Ícono a mostrar.
   final IconData? icon;
+
+  /// Tamaño del ícono.
   final double iconSize;
+
+  /// Ancho del botón.
   final double width;
+
+  /// Altura del botón.
   final double height;
+
+  /// Profundidad de presión.
   final double pressDepth;
+
+  /// Duración de la animación de presión.
   final Duration pressDuration;
+
+  /// Delay antes de ejecutar la acción.
   final Duration actionDelay;
 
+  /// Crea un [Stacked3DSectionButton].
   const Stacked3DSectionButton({
-    super.key,
-    this.label,
     required this.onTap,
     required this.topColor,
+    super.key,
+    this.label,
     this.isEnabled = true,
     this.icon,
     this.iconSize = 28,
@@ -64,7 +89,9 @@ class _Stacked3DSectionButtonState extends State<Stacked3DSectionButton>
   }
 
   Future<void> _performActionOnce() async {
-    if (_didAction) return;
+    if (_didAction) {
+      return;
+    }
     _didAction = true;
     await Future.delayed(widget.actionDelay);
     if (mounted) {

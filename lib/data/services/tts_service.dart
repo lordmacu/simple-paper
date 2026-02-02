@@ -3,12 +3,15 @@ import 'dart:ui' show VoidCallback;
 import 'package:flutter/foundation.dart' show kIsWeb, defaultTargetPlatform, TargetPlatform;
 import 'package:flutter_tts/flutter_tts.dart';
 
+/// Servicio de Text-to-Speech.
+///
+/// Maneja la síntesis de voz con soporte para múltiples plataformas.
 class TtsService {
   final FlutterTts _tts = FlutterTts();
   bool _initialized = false;
-  String _language = 'en-US';
+  final String _language = 'en-US';
   // Valores base para Android (0.0-1.0 donde 0.5 es normal)
-  double _speechRate = 0.35;
+  double _speechRate = 0.25; // Reducido de 0.35 para lectura más pausada
   double _pitch = 1.0;
   List<Map<String, String>> _voices = [];
   VoidCallback? _onComplete;
@@ -34,6 +37,9 @@ class TtsService {
     return _pitch;
   }
 
+  /// Reproduce texto como audio.
+  ///
+  /// Soporta personalización de pitch, rate y selección de voz por género.
   Future<void> speak(
     String text, {
     bool toLowerCase = true,
@@ -43,14 +49,18 @@ class TtsService {
     String? voiceIdHint,
   }) async {
     final value = toLowerCase ? text.toLowerCase() : text;
-    if (value.trim().isEmpty) return;
+    if (value.trim().isEmpty) {
+      return;
+    }
     await _ensureConfig();
 
     // En web, siempre forzar rate y pitch antes de hablar
     if (kIsWeb) {
+      // En web: 0.1-10 donde 1.0 es normal, usar 0.8 para más lento
+      const webRate = 0.8;
       // ignore: avoid_print
-      print('TTS Web: setting rate=1.0, pitch=1.0, text="$value"');
-      await _tts.setSpeechRate(1.0);
+      print('TTS Web: setting rate=$webRate, pitch=1.0, text="$value"');
+      await _tts.setSpeechRate(webRate);
       await _tts.setPitch(1.0);
 
       // Seleccionar voz natural en web según género
@@ -90,6 +100,7 @@ class TtsService {
     print('TTS: speak called');
   }
 
+  /// Establece la velocidad de habla por defecto.
   Future<void> setDefaultRate(double rate) async {
     _speechRate = rate.clamp(0.2, 0.8);
     if (_initialized) {
@@ -97,25 +108,30 @@ class TtsService {
     }
   }
 
+  /// Velocidad de habla actual.
   double get defaultRate => _speechRate;
 
+  /// Detiene la reproducción actual.
   Future<void> stop() async {
     _onComplete = null;
     await _tts.stop();
   }
 
+  /// Establece callback de finalización.
   void setCompletionHandler(VoidCallback? handler) {
     _onComplete = handler;
   }
 
   Future<void> _ensureConfig() async {
-    if (_initialized) return;
+    if (_initialized) {
+      return;
+    }
     // ignore: avoid_print
     print('TTS: initializing... kIsWeb=$kIsWeb');
     if (_isAndroid) {
       try {
         await _tts.setEngine('com.google.android.tts');
-      } catch (_) {}
+      } on Exception catch (_) {}
     }
     await _tts.setLanguage(_language);
     // ignore: avoid_print
@@ -152,7 +168,7 @@ class TtsService {
           }
         }
       }
-    } catch (_) {
+    } on Exception catch (_) {
       _voices = [];
     }
   }
@@ -161,9 +177,13 @@ class TtsService {
     if (_voices.isEmpty) {
       await _loadVoices();
     }
-    if (_voices.isEmpty) return;
+    if (_voices.isEmpty) {
+      return;
+    }
     final match = _pickVoiceByGender(gender);
-    if (match == null) return;
+    if (match == null) {
+      return;
+    }
     // ignore: avoid_print
     print('TTS selected voice ($gender): $match');
     await _tts.setVoice(match);
@@ -173,7 +193,9 @@ class TtsService {
     if (_voices.isEmpty) {
       await _loadVoices();
     }
-    if (_voices.isEmpty) return;
+    if (_voices.isEmpty) {
+      return;
+    }
     final normalized = hint.toLowerCase().replaceAll(RegExp(r'[^a-z0-9_]'), '');
     final pool = _voices
             .where((v) => (v['locale'] ?? '').startsWith('en-US'))
@@ -228,14 +250,18 @@ class TtsService {
         .where((v) => (v['locale'] ?? '').startsWith('en-US'))
         .toList();
     final pool = enUs.isNotEmpty ? enUs : _voices;
-    if (pool.isEmpty) return null;
+    if (pool.isEmpty) {
+      return null;
+    }
 
     if (g.contains('male')) {
       return _firstByNameContains(pool, _maleVoiceTokens) ?? pool.first;
     }
     if (g.contains('female')) {
       final direct = _firstByNameContains(pool, _femaleVoiceTokens);
-      if (direct != null) return direct;
+      if (direct != null) {
+        return direct;
+      }
       final filtered = pool.where((v) {
         final name = (v['name'] ?? '').toLowerCase();
         return !_maleVoiceTokens.any((t) => name.contains(t));
@@ -254,7 +280,9 @@ class TtsService {
         (v) => (v['name'] ?? '').toLowerCase().contains(token),
         orElse: () => const {},
       );
-      if (match.isNotEmpty) return match;
+      if (match.isNotEmpty) {
+        return match;
+      }
     }
     return null;
   }
@@ -317,6 +345,7 @@ class TtsService {
     return nonNovelty ?? _voices.first;
   }
 
+  /// Libera recursos del servicio.
   Future<void> dispose() async {
     await _tts.stop();
   }

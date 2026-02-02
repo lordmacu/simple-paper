@@ -4,10 +4,13 @@ import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart';
 import 'package:path/path.dart' as p;
 import '../../domain/models/progress/review_word_entry.dart';
 
-/// SQLite database for review words
+/// Base de datos SQLite para palabras de repaso.
+///
+/// Gestiona el almacenamiento local de palabras, episodios y entrevistas.
 class ReviewWordsDb {
   ReviewWordsDb._();
 
+  /// Instancia singleton de la base de datos.
   static final ReviewWordsDb instance = ReviewWordsDb._();
 
   static const String _dbName = 'office_app.db';
@@ -22,10 +25,14 @@ class ReviewWordsDb {
 
   Database? _db;
 
+  /// Obtiene la instancia de la base de datos.
   Future<Database> get database async => _getDb();
 
+  /// Inicializa y retorna la base de datos.
   Future<Database> _getDb() async {
-    if (_db != null) return _db!;
+    if (_db != null) {
+      return _db!;
+    }
 
     final String path;
     if (kIsWeb) {
@@ -100,7 +107,7 @@ class ReviewWordsDb {
           );
           await db.execute(
             'INSERT OR REPLACE INTO ${_interviewsTable}_new (episode_number, character_id, interview_id, json) '
-            'SELECT episode_number, character_id, \"default\", json FROM $_interviewsTable',
+            'SELECT episode_number, character_id, "default", json FROM $_interviewsTable',
           );
           await db.execute('DROP TABLE IF EXISTS $_interviewsTable');
           await db.execute(
@@ -113,6 +120,7 @@ class ReviewWordsDb {
     return _db!;
   }
 
+  /// Obtiene todas las palabras únicas.
   Future<List<String>> getAllWords() async {
     final db = await _getDb();
     final rows = await db.query(
@@ -124,6 +132,7 @@ class ReviewWordsDb {
     return rows.map((row) => row['word'] as String).toList();
   }
 
+  /// Obtiene todas las entradas de palabras con metadata.
   Future<List<ReviewWordEntry>> getAllEntries() async {
     final db = await _getDb();
     final rows = await db.query(
@@ -143,13 +152,16 @@ class ReviewWordsDb {
         .toList();
   }
 
+  /// Agrega palabras para repaso o incrementa contador de errores.
   Future<void> addWords({
     required List<String> words,
     required String level,
     required int episodeNumber,
     int increment = 1,
   }) async {
-    if (words.isEmpty) return;
+    if (words.isEmpty) {
+      return;
+    }
 
     final db = await _getDb();
 
@@ -176,6 +188,7 @@ class ReviewWordsDb {
     });
   }
 
+  /// Elimina una entrada de palabra.
   Future<void> deleteEntry({
     required String word,
     required String level,

@@ -5,24 +5,30 @@ import '../../../core/constants/app_colors.dart';
 import '../../../domain/models/vocabulary/vocabulary_word.dart';
 import '../../providers/template_variable_provider.dart';
 import '../../providers/tts_provider.dart';
+import '../../widgets/atoms/icon_text_button.dart';
+import '../../widgets/atoms/primary_button.dart';
+import '../../widgets/molecules/bilingual_text_card.dart';
+import '../../widgets/molecules/section_header.dart';
 
+/// story summary screen/widget
 class StorySummaryScreen extends ConsumerWidget {
+  /// int
   final int correctChoices;
+  /// int
   final int incorrectChoices;
+  ///  list< string>
   final List<String> wordsToReview;
+  /// Palabras de vocabulario aprendidas
   final List<VocabularyWord> learnedWords;
+  /// Callback cuando el usuario continúa
   final VoidCallback onContinue;
+  /// Callback cuando el usuario quiere revisar palabras
   final VoidCallback onReviewWords;
 
+  /// Crea una pantalla de resumen de historia.
   const StorySummaryScreen({
-    Key? key,
-    required this.correctChoices,
-    required this.incorrectChoices,
-    required this.wordsToReview,
-    required this.learnedWords,
-    required this.onContinue,
-    required this.onReviewWords,
-  }) : super(key: key);
+    required this.correctChoices, required this.incorrectChoices, required this.wordsToReview, required this.learnedWords, required this.onContinue, required this.onReviewWords, super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -36,7 +42,7 @@ class StorySummaryScreen extends ConsumerWidget {
             top: -120,
             right: -60,
             child: _Bubble(
-              color: AppColors.secondaryBlue.withOpacity(0.18),
+              color: AppColors.secondaryBlue.withValues(alpha: 0.18),
               size: 240,
             ),
           ),
@@ -44,7 +50,7 @@ class StorySummaryScreen extends ConsumerWidget {
             bottom: -140,
             left: -40,
             child: _Bubble(
-              color: AppColors.primaryGreen.withOpacity(0.16),
+              color: AppColors.primaryGreen.withValues(alpha: 0.16),
               size: 260,
             ),
           ),
@@ -65,9 +71,10 @@ class StorySummaryScreen extends ConsumerWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const SizedBox(height: 8),
-                          const Text(
-                            'Resumen de la historia',
-                            style: TextStyle(
+                          const SectionHeader(
+                            title: 'Resumen de la historia',
+                            padding: EdgeInsets.zero,
+                            titleStyle: TextStyle(
                               fontSize: 26,
                               fontWeight: FontWeight.w800,
                               color: AppColors.textPrimary,
@@ -148,28 +155,13 @@ class StorySummaryScreen extends ConsumerWidget {
                             const SizedBox(height: 16),
                             SizedBox(
                               width: double.infinity,
-                              child: OutlinedButton.icon(
-                                style: OutlinedButton.styleFrom(
-                                  side: BorderSide(
-                                    color: AppColors.secondaryBlue.withOpacity(0.6),
-                                  ),
-                                  padding: const EdgeInsets.symmetric(vertical: 12),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(14),
-                                  ),
-                                ),
-                                icon: const Icon(
-                                  Icons.menu_book,
-                                  color: AppColors.secondaryBlue,
-                                ),
-                                label: const Text(
-                                  'Ver palabras para repasar',
-                                  style: TextStyle(
-                                    color: AppColors.secondaryBlue,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                onPressed: onReviewWords,
+                              child: IconTextButton(
+                                label: 'Ver palabras para repasar',
+                                icon: Icons.menu_book,
+                                onTap: onReviewWords,
+                                foregroundColor: AppColors.secondaryBlue,
+                                expand: true,
+                                minHeight: 48,
                               ),
                             ),
                             const SizedBox(height: 10),
@@ -180,23 +172,9 @@ class StorySummaryScreen extends ConsumerWidget {
                   ),
                   SizedBox(
                     width: double.infinity,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.primaryGreen,
-                        foregroundColor: Colors.white,
-                        padding: const EdgeInsets.symmetric(vertical: 14),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(14),
-                        ),
-                      ),
+                    child: PrimaryButton(
+                      text: 'Continuar',
                       onPressed: onContinue,
-                      child: const Text(
-                        'Continuar',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
                     ),
                   ),
                 ],
@@ -227,7 +205,7 @@ class _StatCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.08),
+        color: color.withValues(alpha: 0.08),
         borderRadius: BorderRadius.circular(14),
       ),
       child: Row(
@@ -276,32 +254,26 @@ class _LearnedWordTile extends StatelessWidget {
         color: AppColors.cardBackground,
         borderRadius: BorderRadius.circular(14),
         border: Border.all(
-          color: AppColors.primaryGreen.withOpacity(0.15),
+          color: AppColors.primaryGreen.withValues(alpha: 0.15),
           width: 1,
         ),
       ),
       child: Row(
         children: [
           Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  word,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w700,
-                    color: AppColors.textPrimary,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  translation,
-                  style: const TextStyle(
-                    color: AppColors.textSecondary,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ],
+            child: BilingualTextCard(
+              textEn: word,
+              textEs: translation,
+              backgroundColor: Colors.transparent,
+              padding: EdgeInsets.zero,
+              enStyle: const TextStyle(
+                fontWeight: FontWeight.w700,
+                color: AppColors.textPrimary,
+              ),
+              esStyle: const TextStyle(
+                color: AppColors.textSecondary,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
           IconButton(

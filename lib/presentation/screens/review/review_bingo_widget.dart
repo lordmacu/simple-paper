@@ -5,15 +5,21 @@ import 'package:flutter/services.dart';
 
 import '../../../core/constants/app_colors.dart';
 import 'review_bingo_game.dart';
+import '../../widgets/molecules/bilingual_text_card.dart';
+import '../../widgets/molecules/prompt_card.dart';
+import '../../widgets/molecules/review_header_row.dart';
+import '../../widgets/molecules/score_footer.dart';
 
+/// review bingo screen/widget
 class ReviewBingoWidget extends StatefulWidget {
+  /// Juego de bingo de revisión
   final ReviewBingoGame game;
+  /// Callback cuando se completa el juego
   final ValueChanged<int> onComplete;
 
+  /// Crea un widget de juego de bingo de revisión.
   const ReviewBingoWidget({
-    super.key,
-    required this.game,
-    required this.onComplete,
+    required this.game, required this.onComplete, super.key,
   });
 
   @override
@@ -30,12 +36,16 @@ class _ReviewBingoWidgetState extends State<ReviewBingoWidget> {
   int get _total => widget.game.rounds.length;
 
   void _tapOption(int index) {
-    if (_locked) return;
+    if (_locked) {
+      return;
+    }
     final isCorrect = index == _round.correctIndex;
     setState(() {
       _selected = index;
       _locked = true;
-      if (isCorrect) _score += 10;
+      if (isCorrect) {
+        _score += 10;
+      }
     });
     if (isCorrect) {
       HapticFeedback.lightImpact();
@@ -46,7 +56,9 @@ class _ReviewBingoWidgetState extends State<ReviewBingoWidget> {
   }
 
   void _next() {
-    if (!mounted) return;
+    if (!mounted) {
+      return;
+    }
     if (_index + 1 >= _total) {
       widget.onComplete(_score);
       return;
@@ -71,75 +83,34 @@ class _ReviewBingoWidgetState extends State<ReviewBingoWidget> {
           const SizedBox(height: 16),
           Expanded(child: _buildOptionsGrid()),
           const SizedBox(height: 8),
-          Text(
-            'Puntaje: $_score',
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontWeight: FontWeight.w800,
-              color: AppColors.textPrimary,
-            ),
-          ),
+          ScoreFooter(score: _score),
         ],
       ),
     );
   }
 
   Widget _buildHeader() {
-    return Row(
-      children: [
-        Text(
-          'Pregunta ${_index + 1} / $_total',
-          style: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w700,
-            color: AppColors.textPrimary,
-          ),
-        ),
-        const Spacer(),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-          decoration: BoxDecoration(
-            color: AppColors.secondaryBlue.withOpacity(0.12),
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Text(
-            'Puntaje: $_score',
-            style: const TextStyle(
-              color: AppColors.secondaryBlue,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-        ),
-      ],
+    return ReviewHeaderRow(
+      title: 'Pregunta ${_index + 1} / $_total',
+      score: _score,
     );
   }
 
   Widget _buildPromptCard() {
-    return Container(
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: AppColors.cardBackground,
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            _round.prompt,
-            style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w700,
-              color: AppColors.textPrimary,
-            ),
-          ),
-          const SizedBox(height: 6),
-          Text(
-            _round.promptEs,
-            style: const TextStyle(
-              color: AppColors.textSecondary,
-            ),
-          ),
-        ],
+    return PromptCard(
+      child: BilingualTextCard(
+        textEn: _round.prompt,
+        textEs: _round.promptEs,
+        backgroundColor: Colors.transparent,
+        padding: EdgeInsets.zero,
+        enStyle: const TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.w700,
+          color: AppColors.textPrimary,
+        ),
+        esStyle: const TextStyle(
+          color: AppColors.textSecondary,
+        ),
       ),
     );
   }
@@ -177,7 +148,7 @@ class _ReviewBingoWidgetState extends State<ReviewBingoWidget> {
               border: Border.all(color: AppColors.divider, width: 1.2),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.05),
+                  color: Colors.black.withValues(alpha: 0.05),
                   blurRadius: 6,
                   offset: const Offset(0, 3),
                 ),

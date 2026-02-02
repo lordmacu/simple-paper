@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import '../../domain/models/episode/episode.dart';
 import '../../domain/repositories/i_episode_repository.dart';
 import '../parsers/episode_json_parser.dart';
@@ -12,6 +13,9 @@ class EpisodeRepositoryImpl implements IEpisodeRepository {
   final ContentDb _contentDb;
   final EpisodeJsonParser _parser;
 
+  /// Crea una implementación del repositorio de episodios.
+  /// [contentDb] Base de datos de contenido (opcional, usa ContentDb() por defecto).
+  /// [parser] Parser de episodios JSON (opcional, usa EpisodeJsonParser() por defecto).
   EpisodeRepositoryImpl({
     ContentDb? contentDb,
     EpisodeJsonParser? parser,
@@ -26,10 +30,10 @@ class EpisodeRepositoryImpl implements IEpisodeRepository {
         return _parser.parseFromString(row['json'] as String);
       }
       return null;
-    } catch (e) {
+    } on Exception catch (e) {
       // Si hay error (ej. archivo no encontrado), retornamos null
       // Esto permite a la UI manejar el caso de "Episodio no encontrado"
-      print('EpisodeRepositoryImpl: Error loading episode #$episodeNumber: $e');
+      debugPrint('EpisodeRepositoryImpl: Error loading episode #$episodeNumber: $e');
       return null;
     }
   }
@@ -42,8 +46,8 @@ class EpisodeRepositoryImpl implements IEpisodeRepository {
         return _parser.parseFromString(row['json'] as String);
       }
       return null;
-    } catch (e) {
-      print('EpisodeRepositoryImpl: Error loading episode ID $episodeId: $e');
+    } on Exception catch (e) {
+      debugPrint('EpisodeRepositoryImpl: Error loading episode ID $episodeId: $e');
       return null;
     }
   }
@@ -63,8 +67,8 @@ class EpisodeRepositoryImpl implements IEpisodeRepository {
       return rows
           .map((row) => _parser.parseFromString(row['json'] as String))
           .toList();
-    } catch (e) {
-      print(
+    } on Exception catch (e) {
+      debugPrint(
         'EpisodeRepositoryImpl: Error loading episodes for level $level: $e',
       );
       return [];

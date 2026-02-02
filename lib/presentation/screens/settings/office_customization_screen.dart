@@ -3,9 +3,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/constants/app_colors.dart';
 import '../../providers/personalization_providers.dart';
+import '../../widgets/atoms/primary_button.dart';
+import '../../widgets/molecules/section_header.dart';
 import '../../providers/template_variable_provider.dart';
 
+/// office customization screen/widget
 class OfficeCustomizationScreen extends ConsumerStatefulWidget {
+  /// Crea una instancia de office customization screen.
   const OfficeCustomizationScreen({super.key});
 
   @override
@@ -62,9 +66,10 @@ class _OfficeCustomizationScreenState
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Nombre de la compañía',
-              style: TextStyle(
+            const SectionHeader(
+              title: 'Nombre de la compañía',
+              padding: EdgeInsets.zero,
+              titleStyle: TextStyle(
                 fontWeight: FontWeight.w800,
                 fontSize: 16,
                 color: AppColors.textPrimary,
@@ -87,9 +92,10 @@ class _OfficeCustomizationScreenState
               ),
             ),
             const SizedBox(height: 16),
-            const Text(
-              'Tipo de oficina',
-              style: TextStyle(
+            const SectionHeader(
+              title: 'Tipo de oficina',
+              padding: EdgeInsets.zero,
+              titleStyle: TextStyle(
                 fontWeight: FontWeight.w800,
                 fontSize: 16,
                 color: AppColors.textPrimary,
@@ -112,9 +118,10 @@ class _OfficeCustomizationScreenState
               ),
             ),
             const SizedBox(height: 20),
-            const Text(
-              'Preview',
-              style: TextStyle(
+            const SectionHeader(
+              title: 'Preview',
+              padding: EdgeInsets.zero,
+              titleStyle: TextStyle(
                 fontWeight: FontWeight.w800,
                 fontSize: 16,
                 color: AppColors.textPrimary,
@@ -137,22 +144,9 @@ class _OfficeCustomizationScreenState
               ),
             ),
             const Spacer(),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.primaryGreen,
-                minimumSize: const Size(double.infinity, 52),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14),
-                ),
-              ),
+            PrimaryButton(
+              text: 'Guardar',
               onPressed: _save,
-              child: const Text(
-                'Guardar',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                ),
-              ),
             ),
           ],
         ),
@@ -167,12 +161,16 @@ class _OfficeCustomizationScreenState
       _errorCompany = name.isEmpty ? 'El nombre no puede estar vacío' : null;
       _errorType = type.isEmpty ? 'El tipo no puede estar vacío' : null;
     });
-    if (_errorCompany != null || _errorType != null) return;
+    if (_errorCompany != null || _errorType != null) {
+      return;
+    }
 
     final setCompany = ref.read(setCompanyNameProvider);
     final setType = ref.read(setOfficeTypeProvider);
     await setCompany(name);
     await setType(type);
-    if (mounted) Navigator.of(context).pop();
+    if (mounted) {
+      Navigator.of(context).pop();
+    }
   }
 }

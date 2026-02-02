@@ -26,6 +26,7 @@ part 'episode.g.dart';
 /// Integra todos los componentes de un episodio completo
 @freezed
 class Episode with _$Episode {
+  /// Crea un episodio completo con todos sus componentes.
   const factory Episode({
     /// Metadatos del episodio
     @JsonKey(name: 'episode_metadata') required EpisodeMetadata episodeMetadata,
@@ -39,6 +40,18 @@ class Episode with _$Episode {
     /// Foco de vocabulario
     @JsonKey(name: 'vocabulary_focus') required VocabularyFocus vocabularyFocus,
     
+    /// Escenas de la historia principal
+    @JsonKey(name: 'scenes') required ScenesSection scenes, 
+    
+    /// Juegos del episodio (mezclados: matching, fill_blank, multiple_choice)
+    @JsonKey(name: 'games') required GamesSection games, 
+    
+    /// Sistema de progresión
+    required Progression progression, 
+    
+    /// Contenedores de texto (intro, transición, conclusión)
+    @JsonKey(name: 'content_wrappers') required ContentWrappers contentWrappers, 
+    
     /// Historia de introducción al vocabulario
     @JsonKey(name: 'vocabulary_story') VocabularyStory? vocabularyStory,
 
@@ -49,22 +62,11 @@ class Episode with _$Episode {
     /// Mini historia (3 párrafos)
     @JsonKey(name: 'mini_story') MiniStorySection? miniStory,
     
-    /// Escenas de la historia principal
-    @JsonKey(name: 'scenes') required ScenesSection scenes,
-    
-    /// Juegos del episodio (mezclados: matching, fill_blank, multiple_choice)
-    @JsonKey(name: 'games') required GamesSection games,
-    
     /// Preview del siguiente episodio (opcional)
     @JsonKey(name: 'next_episode_preview') NextEpisodePreview? nextEpisodePreview,
-    
-    /// Sistema de progresión
-    required Progression progression,
-    
-    /// Contenedores de texto (intro, transición, conclusión)
-    @JsonKey(name: 'content_wrappers') required ContentWrappers contentWrappers,
   }) = _Episode;
 
+  /// Factory para crear Episode desde JSON
   factory Episode.fromJson(Map<String, dynamic> json) =>
       _$EpisodeFromJson(json);
 }
@@ -72,6 +74,7 @@ class Episode with _$Episode {
 /// Sección de escenas con metadata
 @freezed
 class ScenesSection with _$ScenesSection {
+  /// Crea una sección de escenas.
   const factory ScenesSection({
     /// Nombre corto de la sección (máximo 3 palabras)
     @JsonKey(name: 'section_name') String? sectionName,
@@ -86,6 +89,7 @@ class ScenesSection with _$ScenesSection {
     @JsonKey(name: 'data') @Default([]) List<Scene> data,
   }) = _ScenesSection;
 
+  /// Factory para crear ScenesSection desde JSON
   factory ScenesSection.fromJson(Map<String, dynamic> json) =>
       _$ScenesSectionFromJson(json);
 }
@@ -93,6 +97,7 @@ class ScenesSection with _$ScenesSection {
 /// Sección de juegos con metadata
 @freezed
 class GamesSection with _$GamesSection {
+  /// Crea una sección de juegos.
   const factory GamesSection({
     /// Nombre corto de la sección (máximo 3 palabras)
     @JsonKey(name: 'section_name') String? sectionName,
@@ -107,6 +112,7 @@ class GamesSection with _$GamesSection {
     @JsonKey(name: 'data', fromJson: _gamesFromJson) @Default([]) List<dynamic> data,
   }) = _GamesSection;
 
+  /// Factory para crear GamesSection desde JSON
   factory GamesSection.fromJson(Map<String, dynamic> json) =>
       _$GamesSectionFromJson(json);
 }
@@ -114,11 +120,13 @@ class GamesSection with _$GamesSection {
 /// Personajes en el episodio
 @freezed
 class CharactersInEpisode with _$CharactersInEpisode {
+  /// Crea una lista de personajes que aparecen en el episodio.
   const factory CharactersInEpisode({
     /// Lista de personajes que aparecen
     @JsonKey(name: 'appearing_in_episode') @Default([]) List<Character> appearingInEpisode,
   }) = _CharactersInEpisode;
 
+  /// Factory para crear CharactersInEpisode desde JSON
   factory CharactersInEpisode.fromJson(Map<String, dynamic> json) =>
       _$CharactersInEpisodeFromJson(json);
 }
@@ -126,6 +134,7 @@ class CharactersInEpisode with _$CharactersInEpisode {
 /// Foco de vocabulario del episodio
 @freezed
 class VocabularyFocus with _$VocabularyFocus {
+  /// Crea el foco de vocabulario del episodio.
   const factory VocabularyFocus({
     /// Palabras objetivo a aprender
     @JsonKey(name: 'target_words') @Default([]) List<VocabularyWord> targetWords,
@@ -134,6 +143,7 @@ class VocabularyFocus with _$VocabularyFocus {
     @JsonKey(name: 'phrases') @Default([]) List<VocabularyPhrase> phrases,
   }) = _VocabularyFocus;
 
+  /// Factory para crear VocabularyFocus desde JSON
   factory VocabularyFocus.fromJson(Map<String, dynamic> json) =>
       _$VocabularyFocusFromJson(json);
 }

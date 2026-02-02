@@ -9,17 +9,24 @@ import '../../../../core/constants/app_colors.dart';
 import '../../../../domain/models/game/fill_blank_game.dart';
 import '../../../providers/template_variable_provider.dart';
 import '../../../../data/services/template_variable_service.dart';
+import '../../../widgets/atoms/icon_text_button.dart';
+import '../../../widgets/molecules/bilingual_text_card.dart';
+import '../../../widgets/molecules/score_footer.dart';
+import '../../../widgets/molecules/section_header.dart';
+import '../../../widgets/molecules/timer_chip.dart';
+import '../../../widgets/molecules/dialog_action_row.dart';
 
 /// Widget interactivo para el juego Fill in the Blank.
 class FillBlankGameWidget extends ConsumerStatefulWidget {
+  /// Juego de llenar espacios en blanco
   final FillBlankGame game;
+  /// Callback cuando se completa el juego
   final ValueChanged<int> onComplete;
 
+  /// Crea una instancia de fill blank game widget.
   const FillBlankGameWidget({
-    Key? key,
-    required this.game,
-    required this.onComplete,
-  }) : super(key: key);
+    required this.game, required this.onComplete, super.key,
+  });
 
   @override
   ConsumerState<FillBlankGameWidget> createState() =>
@@ -55,10 +62,14 @@ class _FillBlankGameWidgetState extends ConsumerState<FillBlankGameWidget> {
 
   void _startTimerIfNeeded() {
     final seconds = widget.game.timeLimitSeconds;
-    if (seconds == null) return;
+    if (seconds == null) {
+      return;
+    }
     _timeLeft = seconds;
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (!mounted) return;
+      if (!mounted) {
+        return;
+      }
       setState(() {
         _timeLeft = (_timeLeft ?? 1) - 1;
         if ((_timeLeft ?? 0) <= 0) {
@@ -69,14 +80,18 @@ class _FillBlankGameWidgetState extends ConsumerState<FillBlankGameWidget> {
   }
 
   void _finishGame() {
-    if (_finished) return;
+    if (_finished) {
+      return;
+    }
     _finished = true;
     _timer?.cancel();
     widget.onComplete(_score);
   }
 
   void _selectOption(String option) {
-    if (_selectedOption != null) return;
+    if (_selectedOption != null) {
+      return;
+    }
 
     final correct = option.trim().toLowerCase() ==
         _currentItem.answer.trim().toLowerCase();
@@ -96,7 +111,9 @@ class _FillBlankGameWidgetState extends ConsumerState<FillBlankGameWidget> {
     }
 
     Future.delayed(_feedbackDelay, () {
-      if (!mounted) return;
+      if (!mounted) {
+        return;
+      }
       if (_currentIndex < _totalItems - 1) {
         setState(() {
           _currentIndex++;
@@ -115,7 +132,7 @@ class _FillBlankGameWidgetState extends ConsumerState<FillBlankGameWidget> {
       await SystemSound.play(
         correct ? SystemSoundType.click : SystemSoundType.alert,
       );
-    } catch (_) {
+    } on Exception catch (_) {
       // Ignorar errores de sonido
     }
   }
@@ -138,8 +155,9 @@ class _FillBlankGameWidgetState extends ConsumerState<FillBlankGameWidget> {
           const SizedBox(height: 24),
           _buildOptions(template),
           const Spacer(),
-          Text(
-            'Score: $_score',
+          ScoreFooter(
+            label: 'Score',
+            score: _score,
             style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
@@ -153,40 +171,12 @@ class _FillBlankGameWidgetState extends ConsumerState<FillBlankGameWidget> {
   }
 
   Widget _buildHeader(TemplateVariableService template) {
-    return Row(
-      children: [
-        Text(
-          template.replaceVariables('Question ${_currentIndex + 1} / $_totalItems'),
-          style: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-            color: AppColors.textPrimary,
-          ),
-        ),
-        const Spacer(),
-        if (_timeLeft != null) ...[
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-            decoration: BoxDecoration(
-              color: AppColors.warningOrange.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Row(
-              children: [
-                const Icon(Icons.timer, size: 18, color: AppColors.warningOrange),
-                const SizedBox(width: 6),
-                Text(
-                  '${_timeLeft}s',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.warningOrange,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ],
+    return SectionHeader(
+      title: template.replaceVariables('Question ${_currentIndex + 1} / $_totalItems'),
+      trailing: _timeLeft != null
+          ? TimerChip(seconds: _timeLeft!)
+          : null,
+      padding: EdgeInsets.zero,
     );
   }
 
@@ -228,19 +218,24 @@ class _FillBlankGameWidgetState extends ConsumerState<FillBlankGameWidget> {
             ],
           ),
           const SizedBox(height: 8),
-          Text(
-            sentenceEs,
-            style: const TextStyle(
+          BilingualTextCard(
+            textEn: sentence,
+            textEs: sentenceEs,
+            showEn: false,
+            backgroundColor: Colors.transparent,
+            padding: EdgeInsets.zero,
+            esStyle: const TextStyle(
               fontSize: 14,
               color: AppColors.textSecondary,
             ),
           ),
           if (_currentItem.hint != null || _currentItem.hintEs != null) ...[
             const SizedBox(height: 12),
-            TextButton.icon(
-              onPressed: () => _showHint(template),
-              icon: const Icon(Icons.lightbulb_outline, color: AppColors.secondaryBlue),
-              label: const Text('Hint'),
+            IconTextButton(
+              label: 'Hint',
+              icon: Icons.lightbulb_outline,
+              onTap: () => _showHint(template),
+              foregroundColor: AppColors.secondaryBlue,
             ),
           ],
         ],
@@ -251,7 +246,7 @@ class _FillBlankGameWidgetState extends ConsumerState<FillBlankGameWidget> {
   Widget _blankChip() {
     Color color;
     if (_isCorrect == null) {
-      color = AppColors.secondaryBlue.withOpacity(0.15);
+      color = AppColors.secondaryBlue.withValues(alpha: 0.15);
     } else {
       color = _isCorrect! ? AppColors.primaryGreen : AppColors.errorRed;
     }
@@ -302,26 +297,27 @@ class _FillBlankGameWidgetState extends ConsumerState<FillBlankGameWidget> {
       builder: (_) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         title: const Text('Hint'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            if (_currentItem.hint != null)
-              Text(template.replaceVariables(_currentItem.hint!)),
-            if (_currentItem.hintEs != null) ...[
-              const SizedBox(height: 8),
-              Text(
-                template.replaceVariables(_currentItem.hintEs!),
-                style: const TextStyle(color: AppColors.textSecondary),
-              ),
-            ],
-          ],
+        content: BilingualTextCard(
+          textEn: _currentItem.hint != null
+              ? template.replaceVariables(_currentItem.hint!)
+              : '',
+          textEs: _currentItem.hintEs != null
+              ? template.replaceVariables(_currentItem.hintEs!)
+              : '',
+          showEn: _currentItem.hint != null,
+          showEs: _currentItem.hintEs != null,
+          backgroundColor: Colors.transparent,
+          padding: EdgeInsets.zero,
+          enStyle: const TextStyle(color: AppColors.textPrimary),
+          esStyle: const TextStyle(color: AppColors.textSecondary),
         ),
         actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Close'),
-          )
+          DialogActionRow(
+            primaryAction: TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Close'),
+            ),
+          ),
         ],
       ),
     );
@@ -346,7 +342,7 @@ class _OptionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color bg = AppColors.cardBackground;
-    Color border = Colors.transparent;
+    const Color border = Colors.transparent;
     Color fg = AppColors.textPrimary;
 
     if (isSelected) {
@@ -367,7 +363,7 @@ class _OptionButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 6,
             offset: const Offset(0, 3),
           ),

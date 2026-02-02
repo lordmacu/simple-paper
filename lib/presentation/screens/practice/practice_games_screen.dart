@@ -7,7 +7,6 @@ import '../../../core/constants/app_colors.dart';
 import '../../../data/repositories/episode_repository_impl.dart';
 import '../../../domain/models/episode/episode.dart';
 import '../../../domain/models/episode/episode.dart' as ep_models;
-import '../../providers/template_variable_provider.dart';
 import '../games/games_screen.dart';
 import '../../../domain/models/game/game.dart';
 import '../../../domain/models/game/multiple_choice_game.dart';
@@ -18,7 +17,9 @@ import '../../../domain/models/game/order_sentence_game.dart';
 import '../../../domain/models/game/matching_game.dart';
 import '../../../domain/models/game/spot_word_game.dart';
 
+/// practice games screen/widget
 class PracticeGamesScreen extends ConsumerStatefulWidget {
+  /// Crea una instancia de practice games screen.
   const PracticeGamesScreen({super.key});
 
   @override
@@ -48,7 +49,6 @@ class _PracticeGamesScreenState extends ConsumerState<PracticeGamesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final items = _available;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -107,7 +107,7 @@ class _PracticeGamesScreenState extends ConsumerState<PracticeGamesScreen> {
                         )
                       : ListView.separated(
                           itemCount: _available.length,
-                          separatorBuilder: (_, __) =>
+                          separatorBuilder: (context, index) =>
                               const SizedBox(height: 10),
                           itemBuilder: (context, index) {
                             final item = _available[index];
@@ -118,7 +118,7 @@ class _PracticeGamesScreenState extends ConsumerState<PracticeGamesScreen> {
                               tileColor: AppColors.cardBackground,
                               leading: CircleAvatar(
                                 backgroundColor:
-                                    item.color.withOpacity(0.15),
+                                    item.color.withValues(alpha: 0.15),
                                 child: Icon(item.icon, color: item.color),
                               ),
                               title: Text(
@@ -168,7 +168,9 @@ class _PracticeGamesScreenState extends ConsumerState<PracticeGamesScreen> {
     final entries = <_GameEntry>[];
     for (var i = 0; i < games.length; i++) {
       final type = _typeFor(games[i]);
-      if (type.isEmpty) continue;
+      if (type.isEmpty) {
+        continue;
+      }
       entries.add(_entryFromType(type, i));
     }
 
@@ -217,7 +219,9 @@ class _PracticeGamesScreenState extends ConsumerState<PracticeGamesScreen> {
     }
 
     // Usar root navigator para ocultar bottom nav
-    if (!mounted) return;
+    if (!mounted) {
+      return;
+    }
     Navigator.of(context, rootNavigator: true).push(
       MaterialPageRoute(
         builder: (_) => GamesScreen(
@@ -232,13 +236,27 @@ class _PracticeGamesScreenState extends ConsumerState<PracticeGamesScreen> {
 
   String _typeFor(dynamic game) {
     final type = game.runtimeType.toString();
-    if (type.contains('MatchingGame')) return 'matching';
-    if (type.contains('FillBlankGame')) return 'fill_blank';
-    if (type.contains('MultipleChoiceGame')) return 'multiple_choice';
-    if (type.contains('AudioChoiceGame')) return 'audio_choice';
-    if (type.contains('OrderSentenceGame')) return 'order_sentence';
-    if (type.contains('TypingGame')) return 'typing';
-    if (type.contains('SpotWordGame')) return 'spot_word';
+    if (type.contains('MatchingGame')) {
+      return 'matching';
+    }
+    if (type.contains('FillBlankGame')) {
+      return 'fill_blank';
+    }
+    if (type.contains('MultipleChoiceGame')) {
+      return 'multiple_choice';
+    }
+    if (type.contains('AudioChoiceGame')) {
+      return 'audio_choice';
+    }
+    if (type.contains('OrderSentenceGame')) {
+      return 'order_sentence';
+    }
+    if (type.contains('TypingGame')) {
+      return 'typing';
+    }
+    if (type.contains('SpotWordGame')) {
+      return 'spot_word';
+    }
     return '';
   }
 
@@ -321,7 +339,7 @@ class _PracticeGamesScreenState extends ConsumerState<PracticeGamesScreen> {
       final items = mc.content.items
           .map((it) => AudioChoiceItem(
                 id: it.id,
-                audioUrl: '', // placeholder sin audio
+                audioUrl: '', // El widget usa TTS local, no necesita URL
                 prompt: it.question,
                 promptEs: it.questionEs,
                 options: it.options,

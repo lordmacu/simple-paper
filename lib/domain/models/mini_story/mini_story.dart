@@ -1,15 +1,32 @@
 import '../content_wrappers/content_wrappers.dart';
 
+/// Sección de mini historia con párrafos bilingües.
 class MiniStorySection {
+  /// Nombre corto de la sección.
   final String? sectionName;
+
+  /// Nombre en español.
   final String? sectionNameEs;
+
+  /// Imagen de la sección.
   final String? image;
+
+  /// Título de la historia.
   final String? title;
+
+  /// Título en español.
   final String? titleEs;
+
+  /// Descripción de la historia.
   final String? description;
+
+  /// Descripción en español.
   final String? descriptionEs;
+
+  /// Lista de párrafos.
   final List<MiniStoryParagraph> paragraphs;
 
+  /// Crea un [MiniStorySection].
   const MiniStorySection({
     this.sectionName,
     this.sectionNameEs,
@@ -21,6 +38,7 @@ class MiniStorySection {
     this.paragraphs = const [],
   });
 
+  /// Crea desde JSON.
   factory MiniStorySection.fromJson(Map<String, dynamic> json) {
     return MiniStorySection(
       sectionName: json['section_name'] as String?,
@@ -41,6 +59,7 @@ class MiniStorySection {
     );
   }
 
+  /// Convierte a JSON.
   Map<String, dynamic> toJson() {
     return {
       'section_name': sectionName,
@@ -55,15 +74,21 @@ class MiniStorySection {
   }
 }
 
+/// Párrafo de mini historia.
 class MiniStoryParagraph {
+  /// ID único del párrafo.
   final String id;
+
+  /// Texto bilingüe del párrafo.
   final BilingualText text;
 
+  /// Crea un [MiniStoryParagraph].
   const MiniStoryParagraph({
     required this.id,
     required this.text,
   });
 
+  /// Crea desde JSON.
   factory MiniStoryParagraph.fromJson(Map<String, dynamic> json) {
     return MiniStoryParagraph(
       id: json['id'] as String? ?? '',
@@ -71,6 +96,7 @@ class MiniStoryParagraph {
     );
   }
 
+  /// Convierte a JSON.
   Map<String, dynamic> toJson() {
     return {
       'id': id,

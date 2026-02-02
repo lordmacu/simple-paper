@@ -5,10 +5,15 @@ import 'package:go_router/go_router.dart';
 import 'package:office_app/core/constants/app_colors.dart';
 import '../providers/personalization_providers.dart';
 
+/// Pantalla principal con navegación inferior.
+///
+/// Contiene la barra de navegación y maneja el routing entre secciones.
 class MainScreen extends ConsumerStatefulWidget {
+  /// Widget hijo a mostrar en el contenido.
   final Widget child;
 
-  const MainScreen({super.key, required this.child});
+  /// Crea un [MainScreen].
+  const MainScreen({required this.child, super.key});
 
   @override
   ConsumerState<MainScreen> createState() => _MainScreenState();
@@ -17,10 +22,18 @@ class MainScreen extends ConsumerStatefulWidget {
 class _MainScreenState extends ConsumerState<MainScreen> {
   int _calculateSelectedIndex(BuildContext context) {
     final String location = GoRouterState.of(context).uri.path;
-    if (location.startsWith('/home')) return 0;
-    if (location.startsWith('/review')) return 1;
-    if (location.startsWith('/profile')) return 2;
-    if (location.startsWith('/settings')) return 3;
+    if (location.startsWith('/home')) {
+      return 0;
+    }
+    if (location.startsWith('/review')) {
+      return 1;
+    }
+    if (location.startsWith('/profile')) {
+      return 2;
+    }
+    if (location.startsWith('/settings')) {
+      return 3;
+    }
     return 0;
   }
 

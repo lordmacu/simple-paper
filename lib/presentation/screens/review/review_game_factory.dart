@@ -5,7 +5,9 @@ import 'review_countries_game_builder.dart';
 import 'review_irregular_game_builder.dart';
 import 'review_types.dart';
 
+/// Factory para crear juegos de revisión de vocabulario
 class ReviewGameFactory {
+  /// Crea una instancia de review game factory.
   static Future<Game> build({
     required ReviewCategoryType category,
     required ReviewGameType gameType,

@@ -21,24 +21,45 @@ AudioChoiceGame _$AudioChoiceGameFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AudioChoiceGame {
+  /// ID único del juego
   @JsonKey(name: 'game_id')
   String get gameId => throw _privateConstructorUsedError;
+
+  /// Tipo de juego (siempre 'audio_choice')
   @JsonKey(name: 'game_type')
   String get gameType => throw _privateConstructorUsedError;
+
+  /// Título del juego en inglés
   String get title => throw _privateConstructorUsedError;
+
+  /// Título en español
   @JsonKey(name: 'title_es')
   String get titleEs => throw _privateConstructorUsedError;
+
+  /// Instrucciones en inglés
   String get instructions => throw _privateConstructorUsedError;
+
+  /// Instrucciones en español
   @JsonKey(name: 'instructions_es')
   String get instructionsEs => throw _privateConstructorUsedError;
+
+  /// Contenido del juego
+  AudioChoiceContent get content => throw _privateConstructorUsedError;
+
+  /// Si el juego es opcional
   bool get optional => throw _privateConstructorUsedError;
+
+  /// Si se desbloquea después del episodio
   @JsonKey(name: 'unlocked_after_episode')
   bool get unlockedAfterEpisode => throw _privateConstructorUsedError;
+
+  /// Límite de tiempo en segundos
   @JsonKey(name: 'time_limit_seconds')
   int? get timeLimitSeconds => throw _privateConstructorUsedError;
+
+  /// Recompensa en XP
   @JsonKey(name: 'xp_reward')
   int get xpReward => throw _privateConstructorUsedError;
-  AudioChoiceContent get content => throw _privateConstructorUsedError;
 
   /// Serializes this AudioChoiceGame to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -64,11 +85,11 @@ abstract class $AudioChoiceGameCopyWith<$Res> {
     @JsonKey(name: 'title_es') String titleEs,
     String instructions,
     @JsonKey(name: 'instructions_es') String instructionsEs,
+    AudioChoiceContent content,
     bool optional,
     @JsonKey(name: 'unlocked_after_episode') bool unlockedAfterEpisode,
     @JsonKey(name: 'time_limit_seconds') int? timeLimitSeconds,
     @JsonKey(name: 'xp_reward') int xpReward,
-    AudioChoiceContent content,
   });
 
   $AudioChoiceContentCopyWith<$Res> get content;
@@ -95,11 +116,11 @@ class _$AudioChoiceGameCopyWithImpl<$Res, $Val extends AudioChoiceGame>
     Object? titleEs = null,
     Object? instructions = null,
     Object? instructionsEs = null,
+    Object? content = null,
     Object? optional = null,
     Object? unlockedAfterEpisode = null,
     Object? timeLimitSeconds = freezed,
     Object? xpReward = null,
-    Object? content = null,
   }) {
     return _then(
       _value.copyWith(
@@ -127,6 +148,10 @@ class _$AudioChoiceGameCopyWithImpl<$Res, $Val extends AudioChoiceGame>
                 ? _value.instructionsEs
                 : instructionsEs // ignore: cast_nullable_to_non_nullable
                       as String,
+            content: null == content
+                ? _value.content
+                : content // ignore: cast_nullable_to_non_nullable
+                      as AudioChoiceContent,
             optional: null == optional
                 ? _value.optional
                 : optional // ignore: cast_nullable_to_non_nullable
@@ -143,10 +168,6 @@ class _$AudioChoiceGameCopyWithImpl<$Res, $Val extends AudioChoiceGame>
                 ? _value.xpReward
                 : xpReward // ignore: cast_nullable_to_non_nullable
                       as int,
-            content: null == content
-                ? _value.content
-                : content // ignore: cast_nullable_to_non_nullable
-                      as AudioChoiceContent,
           )
           as $Val,
     );
@@ -179,11 +200,11 @@ abstract class _$$AudioChoiceGameImplCopyWith<$Res>
     @JsonKey(name: 'title_es') String titleEs,
     String instructions,
     @JsonKey(name: 'instructions_es') String instructionsEs,
+    AudioChoiceContent content,
     bool optional,
     @JsonKey(name: 'unlocked_after_episode') bool unlockedAfterEpisode,
     @JsonKey(name: 'time_limit_seconds') int? timeLimitSeconds,
     @JsonKey(name: 'xp_reward') int xpReward,
-    AudioChoiceContent content,
   });
 
   @override
@@ -210,11 +231,11 @@ class __$$AudioChoiceGameImplCopyWithImpl<$Res>
     Object? titleEs = null,
     Object? instructions = null,
     Object? instructionsEs = null,
+    Object? content = null,
     Object? optional = null,
     Object? unlockedAfterEpisode = null,
     Object? timeLimitSeconds = freezed,
     Object? xpReward = null,
-    Object? content = null,
   }) {
     return _then(
       _$AudioChoiceGameImpl(
@@ -242,6 +263,10 @@ class __$$AudioChoiceGameImplCopyWithImpl<$Res>
             ? _value.instructionsEs
             : instructionsEs // ignore: cast_nullable_to_non_nullable
                   as String,
+        content: null == content
+            ? _value.content
+            : content // ignore: cast_nullable_to_non_nullable
+                  as AudioChoiceContent,
         optional: null == optional
             ? _value.optional
             : optional // ignore: cast_nullable_to_non_nullable
@@ -258,10 +283,6 @@ class __$$AudioChoiceGameImplCopyWithImpl<$Res>
             ? _value.xpReward
             : xpReward // ignore: cast_nullable_to_non_nullable
                   as int,
-        content: null == content
-            ? _value.content
-            : content // ignore: cast_nullable_to_non_nullable
-                  as AudioChoiceContent,
       ),
     );
   }
@@ -277,50 +298,71 @@ class _$AudioChoiceGameImpl extends _AudioChoiceGame {
     @JsonKey(name: 'title_es') required this.titleEs,
     required this.instructions,
     @JsonKey(name: 'instructions_es') required this.instructionsEs,
+    required this.content,
     this.optional = false,
     @JsonKey(name: 'unlocked_after_episode') this.unlockedAfterEpisode = true,
     @JsonKey(name: 'time_limit_seconds') this.timeLimitSeconds,
     @JsonKey(name: 'xp_reward') this.xpReward = 0,
-    required this.content,
   }) : super._();
 
   factory _$AudioChoiceGameImpl.fromJson(Map<String, dynamic> json) =>
       _$$AudioChoiceGameImplFromJson(json);
 
+  /// ID único del juego
   @override
   @JsonKey(name: 'game_id')
   final String gameId;
+
+  /// Tipo de juego (siempre 'audio_choice')
   @override
   @JsonKey(name: 'game_type')
   final String gameType;
+
+  /// Título del juego en inglés
   @override
   final String title;
+
+  /// Título en español
   @override
   @JsonKey(name: 'title_es')
   final String titleEs;
+
+  /// Instrucciones en inglés
   @override
   final String instructions;
+
+  /// Instrucciones en español
   @override
   @JsonKey(name: 'instructions_es')
   final String instructionsEs;
-  @override
-  @JsonKey()
-  final bool optional;
-  @override
-  @JsonKey(name: 'unlocked_after_episode')
-  final bool unlockedAfterEpisode;
-  @override
-  @JsonKey(name: 'time_limit_seconds')
-  final int? timeLimitSeconds;
-  @override
-  @JsonKey(name: 'xp_reward')
-  final int xpReward;
+
+  /// Contenido del juego
   @override
   final AudioChoiceContent content;
 
+  /// Si el juego es opcional
+  @override
+  @JsonKey()
+  final bool optional;
+
+  /// Si se desbloquea después del episodio
+  @override
+  @JsonKey(name: 'unlocked_after_episode')
+  final bool unlockedAfterEpisode;
+
+  /// Límite de tiempo en segundos
+  @override
+  @JsonKey(name: 'time_limit_seconds')
+  final int? timeLimitSeconds;
+
+  /// Recompensa en XP
+  @override
+  @JsonKey(name: 'xp_reward')
+  final int xpReward;
+
   @override
   String toString() {
-    return 'AudioChoiceGame(gameId: $gameId, gameType: $gameType, title: $title, titleEs: $titleEs, instructions: $instructions, instructionsEs: $instructionsEs, optional: $optional, unlockedAfterEpisode: $unlockedAfterEpisode, timeLimitSeconds: $timeLimitSeconds, xpReward: $xpReward, content: $content)';
+    return 'AudioChoiceGame(gameId: $gameId, gameType: $gameType, title: $title, titleEs: $titleEs, instructions: $instructions, instructionsEs: $instructionsEs, content: $content, optional: $optional, unlockedAfterEpisode: $unlockedAfterEpisode, timeLimitSeconds: $timeLimitSeconds, xpReward: $xpReward)';
   }
 
   @override
@@ -337,6 +379,7 @@ class _$AudioChoiceGameImpl extends _AudioChoiceGame {
                 other.instructions == instructions) &&
             (identical(other.instructionsEs, instructionsEs) ||
                 other.instructionsEs == instructionsEs) &&
+            (identical(other.content, content) || other.content == content) &&
             (identical(other.optional, optional) ||
                 other.optional == optional) &&
             (identical(other.unlockedAfterEpisode, unlockedAfterEpisode) ||
@@ -344,8 +387,7 @@ class _$AudioChoiceGameImpl extends _AudioChoiceGame {
             (identical(other.timeLimitSeconds, timeLimitSeconds) ||
                 other.timeLimitSeconds == timeLimitSeconds) &&
             (identical(other.xpReward, xpReward) ||
-                other.xpReward == xpReward) &&
-            (identical(other.content, content) || other.content == content));
+                other.xpReward == xpReward));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -358,11 +400,11 @@ class _$AudioChoiceGameImpl extends _AudioChoiceGame {
     titleEs,
     instructions,
     instructionsEs,
+    content,
     optional,
     unlockedAfterEpisode,
     timeLimitSeconds,
     xpReward,
-    content,
   );
 
   /// Create a copy of AudioChoiceGame
@@ -390,46 +432,67 @@ abstract class _AudioChoiceGame extends AudioChoiceGame {
     @JsonKey(name: 'title_es') required final String titleEs,
     required final String instructions,
     @JsonKey(name: 'instructions_es') required final String instructionsEs,
+    required final AudioChoiceContent content,
     final bool optional,
     @JsonKey(name: 'unlocked_after_episode') final bool unlockedAfterEpisode,
     @JsonKey(name: 'time_limit_seconds') final int? timeLimitSeconds,
     @JsonKey(name: 'xp_reward') final int xpReward,
-    required final AudioChoiceContent content,
   }) = _$AudioChoiceGameImpl;
   const _AudioChoiceGame._() : super._();
 
   factory _AudioChoiceGame.fromJson(Map<String, dynamic> json) =
       _$AudioChoiceGameImpl.fromJson;
 
+  /// ID único del juego
   @override
   @JsonKey(name: 'game_id')
   String get gameId;
+
+  /// Tipo de juego (siempre 'audio_choice')
   @override
   @JsonKey(name: 'game_type')
   String get gameType;
+
+  /// Título del juego en inglés
   @override
   String get title;
+
+  /// Título en español
   @override
   @JsonKey(name: 'title_es')
   String get titleEs;
+
+  /// Instrucciones en inglés
   @override
   String get instructions;
+
+  /// Instrucciones en español
   @override
   @JsonKey(name: 'instructions_es')
   String get instructionsEs;
+
+  /// Contenido del juego
+  @override
+  AudioChoiceContent get content;
+
+  /// Si el juego es opcional
   @override
   bool get optional;
+
+  /// Si se desbloquea después del episodio
   @override
   @JsonKey(name: 'unlocked_after_episode')
   bool get unlockedAfterEpisode;
+
+  /// Límite de tiempo en segundos
   @override
   @JsonKey(name: 'time_limit_seconds')
   int? get timeLimitSeconds;
+
+  /// Recompensa en XP
   @override
   @JsonKey(name: 'xp_reward')
   int get xpReward;
-  @override
-  AudioChoiceContent get content;
 
   /// Create a copy of AudioChoiceGame
   /// with the given fields replaced by the non-null parameter values.
@@ -445,6 +508,7 @@ AudioChoiceContent _$AudioChoiceContentFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AudioChoiceContent {
+  /// Lista de ítems de audio
   List<AudioChoiceItem> get items => throw _privateConstructorUsedError;
 
   /// Serializes this AudioChoiceContent to a JSON map.
@@ -540,7 +604,10 @@ class _$AudioChoiceContentImpl implements _AudioChoiceContent {
   factory _$AudioChoiceContentImpl.fromJson(Map<String, dynamic> json) =>
       _$$AudioChoiceContentImplFromJson(json);
 
+  /// Lista de ítems de audio
   final List<AudioChoiceItem> _items;
+
+  /// Lista de ítems de audio
   @override
   @JsonKey()
   List<AudioChoiceItem> get items {
@@ -591,6 +658,7 @@ abstract class _AudioChoiceContent implements AudioChoiceContent {
   factory _AudioChoiceContent.fromJson(Map<String, dynamic> json) =
       _$AudioChoiceContentImpl.fromJson;
 
+  /// Lista de ítems de audio
   @override
   List<AudioChoiceItem> get items;
 
@@ -608,17 +676,30 @@ AudioChoiceItem _$AudioChoiceItemFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AudioChoiceItem {
+  /// ID del ítem
   int get id => throw _privateConstructorUsedError;
+
+  /// URL del archivo de audio
   @JsonKey(name: 'audio_url')
   String get audioUrl => throw _privateConstructorUsedError;
-  String? get prompt => throw _privateConstructorUsedError;
-  @JsonKey(name: 'prompt_es')
-  String? get promptEs => throw _privateConstructorUsedError;
-  List<String> get options => throw _privateConstructorUsedError;
-  @JsonKey(name: 'options_es')
-  List<String> get optionsEs => throw _privateConstructorUsedError;
+
+  /// Índice de la respuesta correcta (0-based)
   @JsonKey(name: 'correct_answer')
   int get correctAnswer => throw _privateConstructorUsedError;
+
+  /// Texto de la pregunta en inglés
+  String? get prompt => throw _privateConstructorUsedError;
+
+  /// Texto de la pregunta en español
+  @JsonKey(name: 'prompt_es')
+  String? get promptEs => throw _privateConstructorUsedError;
+
+  /// Opciones de respuesta en inglés
+  List<String> get options => throw _privateConstructorUsedError;
+
+  /// Opciones de respuesta en español
+  @JsonKey(name: 'options_es')
+  List<String> get optionsEs => throw _privateConstructorUsedError;
 
   /// Serializes this AudioChoiceItem to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -640,11 +721,11 @@ abstract class $AudioChoiceItemCopyWith<$Res> {
   $Res call({
     int id,
     @JsonKey(name: 'audio_url') String audioUrl,
+    @JsonKey(name: 'correct_answer') int correctAnswer,
     String? prompt,
     @JsonKey(name: 'prompt_es') String? promptEs,
     List<String> options,
     @JsonKey(name: 'options_es') List<String> optionsEs,
-    @JsonKey(name: 'correct_answer') int correctAnswer,
   });
 }
 
@@ -665,11 +746,11 @@ class _$AudioChoiceItemCopyWithImpl<$Res, $Val extends AudioChoiceItem>
   $Res call({
     Object? id = null,
     Object? audioUrl = null,
+    Object? correctAnswer = null,
     Object? prompt = freezed,
     Object? promptEs = freezed,
     Object? options = null,
     Object? optionsEs = null,
-    Object? correctAnswer = null,
   }) {
     return _then(
       _value.copyWith(
@@ -681,6 +762,10 @@ class _$AudioChoiceItemCopyWithImpl<$Res, $Val extends AudioChoiceItem>
                 ? _value.audioUrl
                 : audioUrl // ignore: cast_nullable_to_non_nullable
                       as String,
+            correctAnswer: null == correctAnswer
+                ? _value.correctAnswer
+                : correctAnswer // ignore: cast_nullable_to_non_nullable
+                      as int,
             prompt: freezed == prompt
                 ? _value.prompt
                 : prompt // ignore: cast_nullable_to_non_nullable
@@ -697,10 +782,6 @@ class _$AudioChoiceItemCopyWithImpl<$Res, $Val extends AudioChoiceItem>
                 ? _value.optionsEs
                 : optionsEs // ignore: cast_nullable_to_non_nullable
                       as List<String>,
-            correctAnswer: null == correctAnswer
-                ? _value.correctAnswer
-                : correctAnswer // ignore: cast_nullable_to_non_nullable
-                      as int,
           )
           as $Val,
     );
@@ -719,11 +800,11 @@ abstract class _$$AudioChoiceItemImplCopyWith<$Res>
   $Res call({
     int id,
     @JsonKey(name: 'audio_url') String audioUrl,
+    @JsonKey(name: 'correct_answer') int correctAnswer,
     String? prompt,
     @JsonKey(name: 'prompt_es') String? promptEs,
     List<String> options,
     @JsonKey(name: 'options_es') List<String> optionsEs,
-    @JsonKey(name: 'correct_answer') int correctAnswer,
   });
 }
 
@@ -743,11 +824,11 @@ class __$$AudioChoiceItemImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? audioUrl = null,
+    Object? correctAnswer = null,
     Object? prompt = freezed,
     Object? promptEs = freezed,
     Object? options = null,
     Object? optionsEs = null,
-    Object? correctAnswer = null,
   }) {
     return _then(
       _$AudioChoiceItemImpl(
@@ -759,6 +840,10 @@ class __$$AudioChoiceItemImplCopyWithImpl<$Res>
             ? _value.audioUrl
             : audioUrl // ignore: cast_nullable_to_non_nullable
                   as String,
+        correctAnswer: null == correctAnswer
+            ? _value.correctAnswer
+            : correctAnswer // ignore: cast_nullable_to_non_nullable
+                  as int,
         prompt: freezed == prompt
             ? _value.prompt
             : prompt // ignore: cast_nullable_to_non_nullable
@@ -775,10 +860,6 @@ class __$$AudioChoiceItemImplCopyWithImpl<$Res>
             ? _value._optionsEs
             : optionsEs // ignore: cast_nullable_to_non_nullable
                   as List<String>,
-        correctAnswer: null == correctAnswer
-            ? _value.correctAnswer
-            : correctAnswer // ignore: cast_nullable_to_non_nullable
-                  as int,
       ),
     );
   }
@@ -790,28 +871,44 @@ class _$AudioChoiceItemImpl implements _AudioChoiceItem {
   const _$AudioChoiceItemImpl({
     required this.id,
     @JsonKey(name: 'audio_url') required this.audioUrl,
+    @JsonKey(name: 'correct_answer') required this.correctAnswer,
     this.prompt,
     @JsonKey(name: 'prompt_es') this.promptEs,
     final List<String> options = const [],
     @JsonKey(name: 'options_es') final List<String> optionsEs = const [],
-    @JsonKey(name: 'correct_answer') required this.correctAnswer,
   }) : _options = options,
        _optionsEs = optionsEs;
 
   factory _$AudioChoiceItemImpl.fromJson(Map<String, dynamic> json) =>
       _$$AudioChoiceItemImplFromJson(json);
 
+  /// ID del ítem
   @override
   final int id;
+
+  /// URL del archivo de audio
   @override
   @JsonKey(name: 'audio_url')
   final String audioUrl;
+
+  /// Índice de la respuesta correcta (0-based)
+  @override
+  @JsonKey(name: 'correct_answer')
+  final int correctAnswer;
+
+  /// Texto de la pregunta en inglés
   @override
   final String? prompt;
+
+  /// Texto de la pregunta en español
   @override
   @JsonKey(name: 'prompt_es')
   final String? promptEs;
+
+  /// Opciones de respuesta en inglés
   final List<String> _options;
+
+  /// Opciones de respuesta en inglés
   @override
   @JsonKey()
   List<String> get options {
@@ -820,7 +917,10 @@ class _$AudioChoiceItemImpl implements _AudioChoiceItem {
     return EqualUnmodifiableListView(_options);
   }
 
+  /// Opciones de respuesta en español
   final List<String> _optionsEs;
+
+  /// Opciones de respuesta en español
   @override
   @JsonKey(name: 'options_es')
   List<String> get optionsEs {
@@ -830,12 +930,8 @@ class _$AudioChoiceItemImpl implements _AudioChoiceItem {
   }
 
   @override
-  @JsonKey(name: 'correct_answer')
-  final int correctAnswer;
-
-  @override
   String toString() {
-    return 'AudioChoiceItem(id: $id, audioUrl: $audioUrl, prompt: $prompt, promptEs: $promptEs, options: $options, optionsEs: $optionsEs, correctAnswer: $correctAnswer)';
+    return 'AudioChoiceItem(id: $id, audioUrl: $audioUrl, correctAnswer: $correctAnswer, prompt: $prompt, promptEs: $promptEs, options: $options, optionsEs: $optionsEs)';
   }
 
   @override
@@ -846,6 +942,8 @@ class _$AudioChoiceItemImpl implements _AudioChoiceItem {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.audioUrl, audioUrl) ||
                 other.audioUrl == audioUrl) &&
+            (identical(other.correctAnswer, correctAnswer) ||
+                other.correctAnswer == correctAnswer) &&
             (identical(other.prompt, prompt) || other.prompt == prompt) &&
             (identical(other.promptEs, promptEs) ||
                 other.promptEs == promptEs) &&
@@ -853,9 +951,7 @@ class _$AudioChoiceItemImpl implements _AudioChoiceItem {
             const DeepCollectionEquality().equals(
               other._optionsEs,
               _optionsEs,
-            ) &&
-            (identical(other.correctAnswer, correctAnswer) ||
-                other.correctAnswer == correctAnswer));
+            ));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -864,11 +960,11 @@ class _$AudioChoiceItemImpl implements _AudioChoiceItem {
     runtimeType,
     id,
     audioUrl,
+    correctAnswer,
     prompt,
     promptEs,
     const DeepCollectionEquality().hash(_options),
     const DeepCollectionEquality().hash(_optionsEs),
-    correctAnswer,
   );
 
   /// Create a copy of AudioChoiceItem
@@ -892,34 +988,47 @@ abstract class _AudioChoiceItem implements AudioChoiceItem {
   const factory _AudioChoiceItem({
     required final int id,
     @JsonKey(name: 'audio_url') required final String audioUrl,
+    @JsonKey(name: 'correct_answer') required final int correctAnswer,
     final String? prompt,
     @JsonKey(name: 'prompt_es') final String? promptEs,
     final List<String> options,
     @JsonKey(name: 'options_es') final List<String> optionsEs,
-    @JsonKey(name: 'correct_answer') required final int correctAnswer,
   }) = _$AudioChoiceItemImpl;
 
   factory _AudioChoiceItem.fromJson(Map<String, dynamic> json) =
       _$AudioChoiceItemImpl.fromJson;
 
+  /// ID del ítem
   @override
   int get id;
+
+  /// URL del archivo de audio
   @override
   @JsonKey(name: 'audio_url')
   String get audioUrl;
-  @override
-  String? get prompt;
-  @override
-  @JsonKey(name: 'prompt_es')
-  String? get promptEs;
-  @override
-  List<String> get options;
-  @override
-  @JsonKey(name: 'options_es')
-  List<String> get optionsEs;
+
+  /// Índice de la respuesta correcta (0-based)
   @override
   @JsonKey(name: 'correct_answer')
   int get correctAnswer;
+
+  /// Texto de la pregunta en inglés
+  @override
+  String? get prompt;
+
+  /// Texto de la pregunta en español
+  @override
+  @JsonKey(name: 'prompt_es')
+  String? get promptEs;
+
+  /// Opciones de respuesta en inglés
+  @override
+  List<String> get options;
+
+  /// Opciones de respuesta en español
+  @override
+  @JsonKey(name: 'options_es')
+  List<String> get optionsEs;
 
   /// Create a copy of AudioChoiceItem
   /// with the given fields replaced by the non-null parameter values.

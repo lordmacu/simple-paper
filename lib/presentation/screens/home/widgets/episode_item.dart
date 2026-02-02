@@ -18,23 +18,41 @@ import '../../../widgets/stacked_3d_button.dart';
 import '../../../providers/episode_providers.dart';
 import '../../../providers/progress_providers.dart';
 import '../../../widgets/common/duolingo_button.dart';
-/// Estado del episodio
+/// Estado del episodio.
 enum EpisodeStatus {
-  locked,    // Bloqueado (no se puede acceder)
-  unlocked,  // Desbloqueado (se puede jugar)
-  completed, // Completado (ya se jugó)
+  /// Bloqueado (no se puede acceder).
+  locked,
+
+  /// Desbloqueado (se puede jugar).
+  unlocked,
+
+  /// Completado (ya se jugó).
+  completed,
 }
 
+/// Widget de item de episodio en la lista principal.
+///
+/// Muestra un episodio con su estado, estrellas y secciones.
 class EpisodeItem extends ConsumerStatefulWidget {
+  /// Episodio a mostrar.
   final Episode episode;
-  final VoidCallback? onTap;
-  final ValueChanged<int>? onUnlocked;
-  final EpisodeStatus status;
-  final int starsEarned; // 0-3 estrellas
 
+  /// Callback cuando se toca el episodio.
+  final VoidCallback? onTap;
+
+  /// Callback cuando se desbloquea.
+  final ValueChanged<int>? onUnlocked;
+
+  /// Estado actual del episodio.
+  final EpisodeStatus status;
+
+  /// Estrellas ganadas (0-3).
+  final int starsEarned;
+
+  /// Crea un [EpisodeItem].
   const EpisodeItem({
-    super.key,
     required this.episode,
+    super.key,
     this.onTap,
     this.onUnlocked,
     this.status = EpisodeStatus.unlocked,
@@ -160,7 +178,7 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
               borderRadius: BorderRadius.circular(22),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.2),
+                  color: Colors.black.withValues(alpha: 0.2),
                   blurRadius: 18,
                   offset: const Offset(0, 8),
                 ),
@@ -190,12 +208,13 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
                 DuolingoButton(
                   text: 'Desbloquear',
                   onPressed: () async {
+                    final navigator = Navigator.of(context);
                     await ref.read(unlockEpisodeProvider)(
                       episodeNumber: episodeNumber,
                     );
                     widget.onUnlocked?.call(episodeNumber);
-                    if (mounted) {
-                      Navigator.of(context).pop();
+                    if (navigator.mounted) {
+                      navigator.pop();
                     }
                   },
                 ),
@@ -214,13 +233,15 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
   }
 
   void _openStory({int? initialScene}) {
-    if (widget.status == EpisodeStatus.locked) return;
+    if (widget.status == EpisodeStatus.locked) {
+      return;
+    }
     Navigator.of(context, rootNavigator: true).push(
       MaterialPageRoute(
         builder: (_) => MainStoryScreen(
           episode: widget.episode,
           initialSceneIndex: initialScene ?? 0,
-          onComplete: () {
+          onComplete: (int storyPoints) {
             final navigator = Navigator.of(context, rootNavigator: true);
             if (navigator.canPop()) {
               navigator.pop();
@@ -232,7 +253,9 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
   }
 
   void _openVocab() {
-    if (widget.status == EpisodeStatus.locked) return;
+    if (widget.status == EpisodeStatus.locked) {
+      return;
+    }
     Navigator.of(context, rootNavigator: true).push(
       MaterialPageRoute(
         builder: (_) => VocabularyStoryScreen(episode: widget.episode),
@@ -241,8 +264,11 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
   }
 
   void _openGames({int initialIndex = 0}) {
-    if (widget.status == EpisodeStatus.locked) return;
-    Navigator.of(context, rootNavigator: true).push(
+    if (widget.status == EpisodeStatus.locked) {
+      return;
+    }
+    final navigator = Navigator.of(context, rootNavigator: true);
+    navigator.push(
       MaterialPageRoute(
         builder: (_) => GamesScreen(
           episode: widget.episode,
@@ -253,7 +279,6 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
               totalPoints: totalPoints,
               maxPoints: maxPoints,
             );
-            final navigator = Navigator.of(context, rootNavigator: true);
             if (navigator.canPop()) {
               navigator.pop();
             }
@@ -264,7 +289,9 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
   }
 
   void _openListeningShadowing() {
-    if (widget.status == EpisodeStatus.locked) return;
+    if (widget.status == EpisodeStatus.locked) {
+      return;
+    }
     Navigator.of(context, rootNavigator: true).push(
       MaterialPageRoute(
         builder: (_) => ListeningShadowingScreen(
@@ -281,8 +308,12 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
   }
 
   void _openMiniStory() {
-    if (widget.status == EpisodeStatus.locked) return;
-    if (widget.episode.miniStory == null) return;
+    if (widget.status == EpisodeStatus.locked) {
+      return;
+    }
+    if (widget.episode.miniStory == null) {
+      return;
+    }
     Navigator.of(context, rootNavigator: true).push(
       MaterialPageRoute(
         builder: (_) => MiniStoryScreen(episode: widget.episode),
@@ -291,7 +322,9 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
   }
 
   Future<void> _openInterview() async {
-    if (widget.status == EpisodeStatus.locked) return;
+    if (widget.status == EpisodeStatus.locked) {
+      return;
+    }
     final episodeNumber = widget.episode.episodeMetadata.episodeNumber;
     final level = widget.episode.episodeMetadata.internalLevel;
     final db = ContentDb();
@@ -310,7 +343,9 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
     debugPrint(
       '$_logTag interview_open episode=$episodeNumber entries=${interviewEntries.map((e) => '${e.characterId}:${e.interviewId}').toList()}',
     );
-    if (entries.isEmpty) return;
+    if (entries.isEmpty) {
+      return;
+    }
 
     for (final entry in entries) {
       final id = entry.characterId;
@@ -324,7 +359,9 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
       debugPrint(
         '$_logTag interview_check episode=$episodeNumber characterId=$id interviewId=$interviewId completed=$completed',
       );
-      if (completed) continue;
+      if (completed) {
+        continue;
+      }
 
       final json = await db.getInterviewJson(
         episodeNumber: episodeNumber,
@@ -334,16 +371,22 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
       debugPrint(
         '$_logTag interview_json episode=$episodeNumber characterId=$id interviewId=$interviewId found=${json != null}',
       );
-      if (json == null) continue;
+      if (json == null) {
+        continue;
+      }
 
       final interview = InterviewParser.parse(
         json,
         episodeNumber: episodeNumber,
         fallbackName: _resolveCharacterName(id),
       );
-      if (interview == null) continue;
+      if (interview == null) {
+        continue;
+      }
 
-      if (!mounted) return;
+      if (!mounted) {
+        return;
+      }
 
       final result = await Navigator.push<Map<String, dynamic>?>(
         context,
@@ -361,7 +404,9 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
         ),
       );
 
-      if (!mounted) return;
+      if (!mounted) {
+        return;
+      }
       if (result != null) {
         if (result['exitToHome'] == true) {
           Navigator.of(context, rootNavigator: true)
@@ -397,6 +442,10 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
           episodeNumber: episodeNumber,
           sectionId: SectionProgressIds.interview,
         );
+
+        if (!mounted) {
+          break;
+        }
 
         await Navigator.push(
           context,
@@ -442,7 +491,7 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
       debugPrint(
         '$_logTag missing_sections episode=${widget.episode.episodeMetadata.episodeNumber} '
         'missing=${missing.toList()} done=$done '
-        'progress=$doneCount/$total (${percent}%)',
+        'progress=$doneCount/$total ($percent%)',
       );
       return;
     }
@@ -503,17 +552,27 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
   }
 
   bool _matchesLevel(String interviewId, String level) {
-    if (interviewId.isEmpty || interviewId == 'default') return true;
+    if (interviewId.isEmpty || interviewId == 'default') {
+      return true;
+    }
     final needle = 'episode_${level.toLowerCase()}_';
     return interviewId.toLowerCase().contains(needle);
   }
 
   int _calculateStars(int points, int maxPoints) {
-    if (maxPoints <= 0) return 3;
+    if (maxPoints <= 0) {
+      return 3;
+    }
     final ratio = points / maxPoints;
-    if (ratio >= 0.9) return 3;
-    if (ratio >= 0.65) return 2;
-    if (ratio >= 0.35) return 1;
+    if (ratio >= 0.9) {
+      return 3;
+    }
+    if (ratio >= 0.65) {
+      return 2;
+    }
+    if (ratio >= 0.35) {
+      return 1;
+    }
     return 0;
   }
 
@@ -533,7 +592,7 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
               borderRadius: BorderRadius.circular(16),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.05),
+                  color: Colors.black.withValues(alpha: 0.05),
                   offset: const Offset(0, 4),
                   blurRadius: 0,
                 ),
@@ -564,7 +623,7 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
                           border: Border.all(color: Colors.white, width: 2),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black.withOpacity(0.1),
+                              color: Colors.black.withValues(alpha: 0.1),
                               offset: const Offset(0, 2),
                               blurRadius: 4,
                             ),
@@ -677,7 +736,7 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
                         entries: _buildSections(hasInterview: false),
                         completedSectionIds: completed,
                       ),
-                      error: (_, __) => SectionPath(
+                      error: (e, st) => SectionPath(
                         entries: _buildSections(hasInterview: false),
                         completedSectionIds: completed,
                       ),
@@ -687,7 +746,7 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
                     entries: _buildSections(hasInterview: false),
                     completedSectionIds: const <String>{},
                   ),
-                  error: (_, __) => SectionPath(
+                  error: (e, st) => SectionPath(
                     entries: _buildSections(hasInterview: false),
                     completedSectionIds: const <String>{},
                   ),
@@ -764,7 +823,6 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
     }
 
     return sections.asMap().entries.map((entry) {
-      final idx = entry.key;
       final data = entry.value;
       return SectionEntry(
         id: data['id'] as String,
@@ -776,13 +834,16 @@ class _EpisodeItemState extends ConsumerState<EpisodeItem>
   }
 }
 
+/// Widget que muestra el camino de secciones de un episodio con su estado de completitud
 class SectionPath extends StatelessWidget {
+  /// Lista de secciones a mostrar en el camino
   final List<SectionEntry> entries;
+  
+  /// Conjunto de IDs de secciones que ya fueron completadas
   final Set<String> completedSectionIds;
 
-  const SectionPath({
-    required this.entries,
-    required this.completedSectionIds,
+  /// Constructor de SectionPath
+  const SectionPath({required this.entries, required this.completedSectionIds, super.key,
   });
 
   @override
@@ -875,16 +936,24 @@ class _DisabledSectionButton extends StatelessWidget {
   }
 }
 
+/// Representa una entrada individual en el camino de secciones de un episodio
 class SectionEntry {
+  /// Identificador único de la sección
   final String id;
+  
+  /// Etiqueta visible para el usuario
   final String label;
+  
+  /// Icono opcional a mostrar en la sección
   final IconData? icon;
+  
+  /// Callback ejecutado cuando se toca la sección
   final VoidCallback onTap;
 
+  /// Constructor de SectionEntry
   const SectionEntry({
     required this.id,
     required this.label,
-    this.icon,
-    required this.onTap,
+    required this.onTap, this.icon,
   });
 }

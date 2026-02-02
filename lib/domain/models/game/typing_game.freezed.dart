@@ -21,24 +21,45 @@ TypingGame _$TypingGameFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TypingGame {
+  /// ID único del juego
   @JsonKey(name: 'game_id')
   String get gameId => throw _privateConstructorUsedError;
+
+  /// Tipo de juego (siempre 'typing')
   @JsonKey(name: 'game_type')
   String get gameType => throw _privateConstructorUsedError;
+
+  /// Título del juego en inglés
   String get title => throw _privateConstructorUsedError;
+
+  /// Título en español
   @JsonKey(name: 'title_es')
   String get titleEs => throw _privateConstructorUsedError;
+
+  /// Instrucciones en inglés
   String get instructions => throw _privateConstructorUsedError;
+
+  /// Instrucciones en español
   @JsonKey(name: 'instructions_es')
   String get instructionsEs => throw _privateConstructorUsedError;
+
+  /// Contenido del juego
+  TypingGameContent get content => throw _privateConstructorUsedError;
+
+  /// Si el juego es opcional
   bool get optional => throw _privateConstructorUsedError;
+
+  /// Si se desbloquea después del episodio
   @JsonKey(name: 'unlocked_after_episode')
   bool get unlockedAfterEpisode => throw _privateConstructorUsedError;
+
+  /// Límite de tiempo en segundos
   @JsonKey(name: 'time_limit_seconds')
   int? get timeLimitSeconds => throw _privateConstructorUsedError;
+
+  /// Recompensa en XP
   @JsonKey(name: 'xp_reward')
   int get xpReward => throw _privateConstructorUsedError;
-  TypingGameContent get content => throw _privateConstructorUsedError;
 
   /// Serializes this TypingGame to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -64,11 +85,11 @@ abstract class $TypingGameCopyWith<$Res> {
     @JsonKey(name: 'title_es') String titleEs,
     String instructions,
     @JsonKey(name: 'instructions_es') String instructionsEs,
+    TypingGameContent content,
     bool optional,
     @JsonKey(name: 'unlocked_after_episode') bool unlockedAfterEpisode,
     @JsonKey(name: 'time_limit_seconds') int? timeLimitSeconds,
     @JsonKey(name: 'xp_reward') int xpReward,
-    TypingGameContent content,
   });
 
   $TypingGameContentCopyWith<$Res> get content;
@@ -95,11 +116,11 @@ class _$TypingGameCopyWithImpl<$Res, $Val extends TypingGame>
     Object? titleEs = null,
     Object? instructions = null,
     Object? instructionsEs = null,
+    Object? content = null,
     Object? optional = null,
     Object? unlockedAfterEpisode = null,
     Object? timeLimitSeconds = freezed,
     Object? xpReward = null,
-    Object? content = null,
   }) {
     return _then(
       _value.copyWith(
@@ -127,6 +148,10 @@ class _$TypingGameCopyWithImpl<$Res, $Val extends TypingGame>
                 ? _value.instructionsEs
                 : instructionsEs // ignore: cast_nullable_to_non_nullable
                       as String,
+            content: null == content
+                ? _value.content
+                : content // ignore: cast_nullable_to_non_nullable
+                      as TypingGameContent,
             optional: null == optional
                 ? _value.optional
                 : optional // ignore: cast_nullable_to_non_nullable
@@ -143,10 +168,6 @@ class _$TypingGameCopyWithImpl<$Res, $Val extends TypingGame>
                 ? _value.xpReward
                 : xpReward // ignore: cast_nullable_to_non_nullable
                       as int,
-            content: null == content
-                ? _value.content
-                : content // ignore: cast_nullable_to_non_nullable
-                      as TypingGameContent,
           )
           as $Val,
     );
@@ -179,11 +200,11 @@ abstract class _$$TypingGameImplCopyWith<$Res>
     @JsonKey(name: 'title_es') String titleEs,
     String instructions,
     @JsonKey(name: 'instructions_es') String instructionsEs,
+    TypingGameContent content,
     bool optional,
     @JsonKey(name: 'unlocked_after_episode') bool unlockedAfterEpisode,
     @JsonKey(name: 'time_limit_seconds') int? timeLimitSeconds,
     @JsonKey(name: 'xp_reward') int xpReward,
-    TypingGameContent content,
   });
 
   @override
@@ -210,11 +231,11 @@ class __$$TypingGameImplCopyWithImpl<$Res>
     Object? titleEs = null,
     Object? instructions = null,
     Object? instructionsEs = null,
+    Object? content = null,
     Object? optional = null,
     Object? unlockedAfterEpisode = null,
     Object? timeLimitSeconds = freezed,
     Object? xpReward = null,
-    Object? content = null,
   }) {
     return _then(
       _$TypingGameImpl(
@@ -242,6 +263,10 @@ class __$$TypingGameImplCopyWithImpl<$Res>
             ? _value.instructionsEs
             : instructionsEs // ignore: cast_nullable_to_non_nullable
                   as String,
+        content: null == content
+            ? _value.content
+            : content // ignore: cast_nullable_to_non_nullable
+                  as TypingGameContent,
         optional: null == optional
             ? _value.optional
             : optional // ignore: cast_nullable_to_non_nullable
@@ -258,10 +283,6 @@ class __$$TypingGameImplCopyWithImpl<$Res>
             ? _value.xpReward
             : xpReward // ignore: cast_nullable_to_non_nullable
                   as int,
-        content: null == content
-            ? _value.content
-            : content // ignore: cast_nullable_to_non_nullable
-                  as TypingGameContent,
       ),
     );
   }
@@ -277,50 +298,71 @@ class _$TypingGameImpl extends _TypingGame {
     @JsonKey(name: 'title_es') required this.titleEs,
     required this.instructions,
     @JsonKey(name: 'instructions_es') required this.instructionsEs,
+    required this.content,
     this.optional = false,
     @JsonKey(name: 'unlocked_after_episode') this.unlockedAfterEpisode = true,
     @JsonKey(name: 'time_limit_seconds') this.timeLimitSeconds,
     @JsonKey(name: 'xp_reward') this.xpReward = 0,
-    required this.content,
   }) : super._();
 
   factory _$TypingGameImpl.fromJson(Map<String, dynamic> json) =>
       _$$TypingGameImplFromJson(json);
 
+  /// ID único del juego
   @override
   @JsonKey(name: 'game_id')
   final String gameId;
+
+  /// Tipo de juego (siempre 'typing')
   @override
   @JsonKey(name: 'game_type')
   final String gameType;
+
+  /// Título del juego en inglés
   @override
   final String title;
+
+  /// Título en español
   @override
   @JsonKey(name: 'title_es')
   final String titleEs;
+
+  /// Instrucciones en inglés
   @override
   final String instructions;
+
+  /// Instrucciones en español
   @override
   @JsonKey(name: 'instructions_es')
   final String instructionsEs;
-  @override
-  @JsonKey()
-  final bool optional;
-  @override
-  @JsonKey(name: 'unlocked_after_episode')
-  final bool unlockedAfterEpisode;
-  @override
-  @JsonKey(name: 'time_limit_seconds')
-  final int? timeLimitSeconds;
-  @override
-  @JsonKey(name: 'xp_reward')
-  final int xpReward;
+
+  /// Contenido del juego
   @override
   final TypingGameContent content;
 
+  /// Si el juego es opcional
+  @override
+  @JsonKey()
+  final bool optional;
+
+  /// Si se desbloquea después del episodio
+  @override
+  @JsonKey(name: 'unlocked_after_episode')
+  final bool unlockedAfterEpisode;
+
+  /// Límite de tiempo en segundos
+  @override
+  @JsonKey(name: 'time_limit_seconds')
+  final int? timeLimitSeconds;
+
+  /// Recompensa en XP
+  @override
+  @JsonKey(name: 'xp_reward')
+  final int xpReward;
+
   @override
   String toString() {
-    return 'TypingGame(gameId: $gameId, gameType: $gameType, title: $title, titleEs: $titleEs, instructions: $instructions, instructionsEs: $instructionsEs, optional: $optional, unlockedAfterEpisode: $unlockedAfterEpisode, timeLimitSeconds: $timeLimitSeconds, xpReward: $xpReward, content: $content)';
+    return 'TypingGame(gameId: $gameId, gameType: $gameType, title: $title, titleEs: $titleEs, instructions: $instructions, instructionsEs: $instructionsEs, content: $content, optional: $optional, unlockedAfterEpisode: $unlockedAfterEpisode, timeLimitSeconds: $timeLimitSeconds, xpReward: $xpReward)';
   }
 
   @override
@@ -337,6 +379,7 @@ class _$TypingGameImpl extends _TypingGame {
                 other.instructions == instructions) &&
             (identical(other.instructionsEs, instructionsEs) ||
                 other.instructionsEs == instructionsEs) &&
+            (identical(other.content, content) || other.content == content) &&
             (identical(other.optional, optional) ||
                 other.optional == optional) &&
             (identical(other.unlockedAfterEpisode, unlockedAfterEpisode) ||
@@ -344,8 +387,7 @@ class _$TypingGameImpl extends _TypingGame {
             (identical(other.timeLimitSeconds, timeLimitSeconds) ||
                 other.timeLimitSeconds == timeLimitSeconds) &&
             (identical(other.xpReward, xpReward) ||
-                other.xpReward == xpReward) &&
-            (identical(other.content, content) || other.content == content));
+                other.xpReward == xpReward));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -358,11 +400,11 @@ class _$TypingGameImpl extends _TypingGame {
     titleEs,
     instructions,
     instructionsEs,
+    content,
     optional,
     unlockedAfterEpisode,
     timeLimitSeconds,
     xpReward,
-    content,
   );
 
   /// Create a copy of TypingGame
@@ -387,46 +429,67 @@ abstract class _TypingGame extends TypingGame {
     @JsonKey(name: 'title_es') required final String titleEs,
     required final String instructions,
     @JsonKey(name: 'instructions_es') required final String instructionsEs,
+    required final TypingGameContent content,
     final bool optional,
     @JsonKey(name: 'unlocked_after_episode') final bool unlockedAfterEpisode,
     @JsonKey(name: 'time_limit_seconds') final int? timeLimitSeconds,
     @JsonKey(name: 'xp_reward') final int xpReward,
-    required final TypingGameContent content,
   }) = _$TypingGameImpl;
   const _TypingGame._() : super._();
 
   factory _TypingGame.fromJson(Map<String, dynamic> json) =
       _$TypingGameImpl.fromJson;
 
+  /// ID único del juego
   @override
   @JsonKey(name: 'game_id')
   String get gameId;
+
+  /// Tipo de juego (siempre 'typing')
   @override
   @JsonKey(name: 'game_type')
   String get gameType;
+
+  /// Título del juego en inglés
   @override
   String get title;
+
+  /// Título en español
   @override
   @JsonKey(name: 'title_es')
   String get titleEs;
+
+  /// Instrucciones en inglés
   @override
   String get instructions;
+
+  /// Instrucciones en español
   @override
   @JsonKey(name: 'instructions_es')
   String get instructionsEs;
+
+  /// Contenido del juego
+  @override
+  TypingGameContent get content;
+
+  /// Si el juego es opcional
   @override
   bool get optional;
+
+  /// Si se desbloquea después del episodio
   @override
   @JsonKey(name: 'unlocked_after_episode')
   bool get unlockedAfterEpisode;
+
+  /// Límite de tiempo en segundos
   @override
   @JsonKey(name: 'time_limit_seconds')
   int? get timeLimitSeconds;
+
+  /// Recompensa en XP
   @override
   @JsonKey(name: 'xp_reward')
   int get xpReward;
-  @override
-  TypingGameContent get content;
 
   /// Create a copy of TypingGame
   /// with the given fields replaced by the non-null parameter values.
@@ -442,6 +505,7 @@ TypingGameContent _$TypingGameContentFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TypingGameContent {
+  /// Lista de ítems del juego
   List<TypingItem> get items => throw _privateConstructorUsedError;
 
   /// Serializes this TypingGameContent to a JSON map.
@@ -537,7 +601,10 @@ class _$TypingGameContentImpl implements _TypingGameContent {
   factory _$TypingGameContentImpl.fromJson(Map<String, dynamic> json) =>
       _$$TypingGameContentImplFromJson(json);
 
+  /// Lista de ítems del juego
   final List<TypingItem> _items;
+
+  /// Lista de ítems del juego
   @override
   @JsonKey()
   List<TypingItem> get items {
@@ -588,6 +655,7 @@ abstract class _TypingGameContent implements TypingGameContent {
   factory _TypingGameContent.fromJson(Map<String, dynamic> json) =
       _$TypingGameContentImpl.fromJson;
 
+  /// Lista de ítems del juego
   @override
   List<TypingItem> get items;
 
@@ -605,12 +673,21 @@ TypingItem _$TypingItemFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TypingItem {
+  /// ID del ítem
   int get id => throw _privateConstructorUsedError;
+
+  /// Texto de la pregunta en español
   @JsonKey(name: 'prompt_es')
   String get promptEs => throw _privateConstructorUsedError;
+
+  /// Respuesta correcta en inglés
   @JsonKey(name: 'answer_en')
   String get answerEn => throw _privateConstructorUsedError;
+
+  /// Pista en inglés (opcional)
   String? get hint => throw _privateConstructorUsedError;
+
+  /// Pista en español (opcional)
   @JsonKey(name: 'hint_es')
   String? get hintEs => throw _privateConstructorUsedError;
 
@@ -768,16 +845,25 @@ class _$TypingItemImpl implements _TypingItem {
   factory _$TypingItemImpl.fromJson(Map<String, dynamic> json) =>
       _$$TypingItemImplFromJson(json);
 
+  /// ID del ítem
   @override
   final int id;
+
+  /// Texto de la pregunta en español
   @override
   @JsonKey(name: 'prompt_es')
   final String promptEs;
+
+  /// Respuesta correcta en inglés
   @override
   @JsonKey(name: 'answer_en')
   final String answerEn;
+
+  /// Pista en inglés (opcional)
   @override
   final String? hint;
+
+  /// Pista en español (opcional)
   @override
   @JsonKey(name: 'hint_es')
   final String? hintEs;
@@ -832,16 +918,25 @@ abstract class _TypingItem implements TypingItem {
   factory _TypingItem.fromJson(Map<String, dynamic> json) =
       _$TypingItemImpl.fromJson;
 
+  /// ID del ítem
   @override
   int get id;
+
+  /// Texto de la pregunta en español
   @override
   @JsonKey(name: 'prompt_es')
   String get promptEs;
+
+  /// Respuesta correcta en inglés
   @override
   @JsonKey(name: 'answer_en')
   String get answerEn;
+
+  /// Pista en inglés (opcional)
   @override
   String? get hint;
+
+  /// Pista en español (opcional)
   @override
   @JsonKey(name: 'hint_es')
   String? get hintEs;

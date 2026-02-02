@@ -1,11 +1,20 @@
 import '../../domain/models/progression/achievement.dart';
 
+/// Servicio de logros.
+///
+/// Evalúa y desbloquea logros según el progreso del usuario.
+/// Servicio para gestionar logros y recompensas del usuario.
 class AchievementService {
+  /// Logros disponibles
   final Map<String, Achievement> _achievements;
 
+  /// Crea un servicio de logros.
+  ///
+  /// Parámetros:
+  /// - [predefined]: Logros predefinidos (opcional)
   AchievementService({Map<String, Achievement>? predefined})
       : _achievements = predefined ??
-            {
+            const {
               'xp_500': Achievement(
                 id: 'xp_500',
                 name: '500 XP',
@@ -28,6 +37,9 @@ class AchievementService {
               ),
             };
 
+  /// Evalúa logros y retorna los recién desbloqueados.
+  ///
+  /// Compara el progreso actual con los criterios de cada logro.
   List<Achievement> evaluate({
     required int totalXp,
     required int completedEpisodes,
@@ -37,8 +49,12 @@ class AchievementService {
     final newlyUnlocked = <Achievement>[];
 
     void unlockIf(String id, bool condition) {
-      if (!condition) return;
-      if (unlockedIds.contains(id)) return;
+      if (!condition) {
+        return;
+      }
+      if (unlockedIds.contains(id)) {
+        return;
+      }
       final ach = _achievements[id];
       if (ach != null) {
         newlyUnlocked.add(ach.copyWith(unlocked: true, unlockedAt: DateTime.now()));

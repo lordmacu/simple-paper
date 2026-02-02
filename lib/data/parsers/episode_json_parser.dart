@@ -15,7 +15,7 @@ class EpisodeJsonParser {
     try {
       final json = jsonDecode(jsonString) as Map<String, dynamic>;
       return parseFromJson(json);
-    } catch (e) {
+    } on Exception catch (e) {
       throw EpisodeParsingException(
         'Error decoding JSON string: ${e.toString()}',
       );
@@ -39,7 +39,7 @@ class EpisodeJsonParser {
       throw EpisodeParsingException(
         'Error parsing games: ${e.toString()}',
       );
-    } catch (e) {
+    } on Exception catch (e) {
       throw EpisodeParsingException(
         'Error parsing episode: ${e.toString()}',
       );
@@ -96,7 +96,7 @@ class EpisodeJsonParser {
       try {
         final episodeJson = jsonList[i] as Map<String, dynamic>;
         episodes.add(parseFromJson(episodeJson));
-      } catch (e) {
+      } on Exception catch (e) {
         throw EpisodeParsingException(
           'Error parsing episode at index $i: ${e.toString()}',
         );
@@ -107,10 +107,12 @@ class EpisodeJsonParser {
   }
 }
 
-/// Excepción de parseo de episodios
+/// Excepción lanzada cuando falla el parseo de un episodio JSON.
 class EpisodeParsingException implements Exception {
+  /// Mensaje descriptivo del error de parseo.
   final String message;
   
+  /// Crea una excepción de parseo de episodio.
   EpisodeParsingException(this.message);
   
   @override

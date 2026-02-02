@@ -11,9 +11,9 @@ _$UnlockedCharacterImpl _$$UnlockedCharacterImplFromJson(
 ) => _$UnlockedCharacterImpl(
   characterId: json['characterId'] as String,
   defaultName: json['defaultName'] as String,
-  customName: json['customName'] as String?,
   unlockedAt: (json['unlockedAt'] as num).toInt(),
   episodeNumber: (json['episodeNumber'] as num).toInt(),
+  customName: json['customName'] as String?,
 );
 
 Map<String, dynamic> _$$UnlockedCharacterImplToJson(
@@ -21,7 +21,7 @@ Map<String, dynamic> _$$UnlockedCharacterImplToJson(
 ) => <String, dynamic>{
   'characterId': instance.characterId,
   'defaultName': instance.defaultName,
-  'customName': instance.customName,
   'unlockedAt': instance.unlockedAt,
   'episodeNumber': instance.episodeNumber,
+  'customName': instance.customName,
 };

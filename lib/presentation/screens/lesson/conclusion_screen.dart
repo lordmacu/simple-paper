@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../widgets/atoms/primary_button.dart';
+import '../../widgets/molecules/bilingual_text_card.dart';
 
 /// Pantalla de conclusión de lección.
 class ConclusionScreen extends StatelessWidget {
+  ///  string
   final String conclusionEn;
+  ///  string
   final String conclusionEs;
+  ///  void callback
   final VoidCallback onContinue;
 
+  /// Crea una instancia de conclusion screen.
   const ConclusionScreen({
-    Key? key,
-    required this.conclusionEn,
-    required this.conclusionEs,
-    required this.onContinue,
-  }) : super(key: key);
+    required this.conclusionEn, required this.conclusionEs, required this.onContinue, super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -38,18 +41,17 @@ class ConclusionScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              conclusionEn,
-              style: const TextStyle(
+            BilingualTextCard(
+              textEn: conclusionEn,
+              textEs: conclusionEs,
+              backgroundColor: Colors.transparent,
+              padding: EdgeInsets.zero,
+              enStyle: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
                 color: AppColors.textPrimary,
               ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              conclusionEs,
-              style: const TextStyle(
+              esStyle: const TextStyle(
                 fontSize: 15,
                 color: AppColors.textSecondary,
               ),
@@ -57,20 +59,9 @@ class ConclusionScreen extends StatelessWidget {
             const Spacer(),
             SizedBox(
               width: double.infinity,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primaryGreen,
-                  foregroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(vertical: 14),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(14),
-                  ),
-                ),
+              child: PrimaryButton(
+                text: 'Continuar',
                 onPressed: onContinue,
-                child: const Text(
-                  'Continuar',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                ),
               ),
             ),
           ],

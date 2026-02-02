@@ -23,14 +23,14 @@ ListeningShadowingSection _$ListeningShadowingSectionFromJson(
 
 /// @nodoc
 mixin _$ListeningShadowingSection {
+  String get instructions => throw _privateConstructorUsedError;
+  @JsonKey(name: 'instructions_es')
+  String get instructionsEs => throw _privateConstructorUsedError;
   @JsonKey(name: 'section_name')
   String? get sectionName => throw _privateConstructorUsedError;
   @JsonKey(name: 'section_name_es')
   String? get sectionNameEs => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
-  String get instructions => throw _privateConstructorUsedError;
-  @JsonKey(name: 'instructions_es')
-  String get instructionsEs => throw _privateConstructorUsedError;
   List<ListeningShadowingItem> get data => throw _privateConstructorUsedError;
 
   /// Serializes this ListeningShadowingSection to a JSON map.
@@ -51,11 +51,11 @@ abstract class $ListeningShadowingSectionCopyWith<$Res> {
   ) = _$ListeningShadowingSectionCopyWithImpl<$Res, ListeningShadowingSection>;
   @useResult
   $Res call({
+    String instructions,
+    @JsonKey(name: 'instructions_es') String instructionsEs,
     @JsonKey(name: 'section_name') String? sectionName,
     @JsonKey(name: 'section_name_es') String? sectionNameEs,
     String? image,
-    String instructions,
-    @JsonKey(name: 'instructions_es') String instructionsEs,
     List<ListeningShadowingItem> data,
   });
 }
@@ -78,15 +78,23 @@ class _$ListeningShadowingSectionCopyWithImpl<
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? instructions = null,
+    Object? instructionsEs = null,
     Object? sectionName = freezed,
     Object? sectionNameEs = freezed,
     Object? image = freezed,
-    Object? instructions = null,
-    Object? instructionsEs = null,
     Object? data = null,
   }) {
     return _then(
       _value.copyWith(
+            instructions: null == instructions
+                ? _value.instructions
+                : instructions // ignore: cast_nullable_to_non_nullable
+                      as String,
+            instructionsEs: null == instructionsEs
+                ? _value.instructionsEs
+                : instructionsEs // ignore: cast_nullable_to_non_nullable
+                      as String,
             sectionName: freezed == sectionName
                 ? _value.sectionName
                 : sectionName // ignore: cast_nullable_to_non_nullable
@@ -99,14 +107,6 @@ class _$ListeningShadowingSectionCopyWithImpl<
                 ? _value.image
                 : image // ignore: cast_nullable_to_non_nullable
                       as String?,
-            instructions: null == instructions
-                ? _value.instructions
-                : instructions // ignore: cast_nullable_to_non_nullable
-                      as String,
-            instructionsEs: null == instructionsEs
-                ? _value.instructionsEs
-                : instructionsEs // ignore: cast_nullable_to_non_nullable
-                      as String,
             data: null == data
                 ? _value.data
                 : data // ignore: cast_nullable_to_non_nullable
@@ -127,11 +127,11 @@ abstract class _$$ListeningShadowingSectionImplCopyWith<$Res>
   @override
   @useResult
   $Res call({
+    String instructions,
+    @JsonKey(name: 'instructions_es') String instructionsEs,
     @JsonKey(name: 'section_name') String? sectionName,
     @JsonKey(name: 'section_name_es') String? sectionNameEs,
     String? image,
-    String instructions,
-    @JsonKey(name: 'instructions_es') String instructionsEs,
     List<ListeningShadowingItem> data,
   });
 }
@@ -154,15 +154,23 @@ class __$$ListeningShadowingSectionImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? instructions = null,
+    Object? instructionsEs = null,
     Object? sectionName = freezed,
     Object? sectionNameEs = freezed,
     Object? image = freezed,
-    Object? instructions = null,
-    Object? instructionsEs = null,
     Object? data = null,
   }) {
     return _then(
       _$ListeningShadowingSectionImpl(
+        instructions: null == instructions
+            ? _value.instructions
+            : instructions // ignore: cast_nullable_to_non_nullable
+                  as String,
+        instructionsEs: null == instructionsEs
+            ? _value.instructionsEs
+            : instructionsEs // ignore: cast_nullable_to_non_nullable
+                  as String,
         sectionName: freezed == sectionName
             ? _value.sectionName
             : sectionName // ignore: cast_nullable_to_non_nullable
@@ -175,14 +183,6 @@ class __$$ListeningShadowingSectionImplCopyWithImpl<$Res>
             ? _value.image
             : image // ignore: cast_nullable_to_non_nullable
                   as String?,
-        instructions: null == instructions
-            ? _value.instructions
-            : instructions // ignore: cast_nullable_to_non_nullable
-                  as String,
-        instructionsEs: null == instructionsEs
-            ? _value.instructionsEs
-            : instructionsEs // ignore: cast_nullable_to_non_nullable
-                  as String,
         data: null == data
             ? _value._data
             : data // ignore: cast_nullable_to_non_nullable
@@ -196,17 +196,22 @@ class __$$ListeningShadowingSectionImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ListeningShadowingSectionImpl implements _ListeningShadowingSection {
   const _$ListeningShadowingSectionImpl({
+    required this.instructions,
+    @JsonKey(name: 'instructions_es') required this.instructionsEs,
     @JsonKey(name: 'section_name') this.sectionName,
     @JsonKey(name: 'section_name_es') this.sectionNameEs,
     this.image,
-    required this.instructions,
-    @JsonKey(name: 'instructions_es') required this.instructionsEs,
     final List<ListeningShadowingItem> data = const [],
   }) : _data = data;
 
   factory _$ListeningShadowingSectionImpl.fromJson(Map<String, dynamic> json) =>
       _$$ListeningShadowingSectionImplFromJson(json);
 
+  @override
+  final String instructions;
+  @override
+  @JsonKey(name: 'instructions_es')
+  final String instructionsEs;
   @override
   @JsonKey(name: 'section_name')
   final String? sectionName;
@@ -215,11 +220,6 @@ class _$ListeningShadowingSectionImpl implements _ListeningShadowingSection {
   final String? sectionNameEs;
   @override
   final String? image;
-  @override
-  final String instructions;
-  @override
-  @JsonKey(name: 'instructions_es')
-  final String instructionsEs;
   final List<ListeningShadowingItem> _data;
   @override
   @JsonKey()
@@ -231,7 +231,7 @@ class _$ListeningShadowingSectionImpl implements _ListeningShadowingSection {
 
   @override
   String toString() {
-    return 'ListeningShadowingSection(sectionName: $sectionName, sectionNameEs: $sectionNameEs, image: $image, instructions: $instructions, instructionsEs: $instructionsEs, data: $data)';
+    return 'ListeningShadowingSection(instructions: $instructions, instructionsEs: $instructionsEs, sectionName: $sectionName, sectionNameEs: $sectionNameEs, image: $image, data: $data)';
   }
 
   @override
@@ -239,15 +239,15 @@ class _$ListeningShadowingSectionImpl implements _ListeningShadowingSection {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ListeningShadowingSectionImpl &&
+            (identical(other.instructions, instructions) ||
+                other.instructions == instructions) &&
+            (identical(other.instructionsEs, instructionsEs) ||
+                other.instructionsEs == instructionsEs) &&
             (identical(other.sectionName, sectionName) ||
                 other.sectionName == sectionName) &&
             (identical(other.sectionNameEs, sectionNameEs) ||
                 other.sectionNameEs == sectionNameEs) &&
             (identical(other.image, image) || other.image == image) &&
-            (identical(other.instructions, instructions) ||
-                other.instructions == instructions) &&
-            (identical(other.instructionsEs, instructionsEs) ||
-                other.instructionsEs == instructionsEs) &&
             const DeepCollectionEquality().equals(other._data, _data));
   }
 
@@ -255,11 +255,11 @@ class _$ListeningShadowingSectionImpl implements _ListeningShadowingSection {
   @override
   int get hashCode => Object.hash(
     runtimeType,
+    instructions,
+    instructionsEs,
     sectionName,
     sectionNameEs,
     image,
-    instructions,
-    instructionsEs,
     const DeepCollectionEquality().hash(_data),
   );
 
@@ -282,17 +282,22 @@ class _$ListeningShadowingSectionImpl implements _ListeningShadowingSection {
 
 abstract class _ListeningShadowingSection implements ListeningShadowingSection {
   const factory _ListeningShadowingSection({
+    required final String instructions,
+    @JsonKey(name: 'instructions_es') required final String instructionsEs,
     @JsonKey(name: 'section_name') final String? sectionName,
     @JsonKey(name: 'section_name_es') final String? sectionNameEs,
     final String? image,
-    required final String instructions,
-    @JsonKey(name: 'instructions_es') required final String instructionsEs,
     final List<ListeningShadowingItem> data,
   }) = _$ListeningShadowingSectionImpl;
 
   factory _ListeningShadowingSection.fromJson(Map<String, dynamic> json) =
       _$ListeningShadowingSectionImpl.fromJson;
 
+  @override
+  String get instructions;
+  @override
+  @JsonKey(name: 'instructions_es')
+  String get instructionsEs;
   @override
   @JsonKey(name: 'section_name')
   String? get sectionName;
@@ -301,11 +306,6 @@ abstract class _ListeningShadowingSection implements ListeningShadowingSection {
   String? get sectionNameEs;
   @override
   String? get image;
-  @override
-  String get instructions;
-  @override
-  @JsonKey(name: 'instructions_es')
-  String get instructionsEs;
   @override
   List<ListeningShadowingItem> get data;
 
@@ -327,15 +327,15 @@ ListeningShadowingItem _$ListeningShadowingItemFromJson(
 mixin _$ListeningShadowingItem {
   @JsonKey(name: 'item_id')
   String get itemId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'character_id')
-  String? get characterId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'character_display_name')
-  String? get characterDisplayName => throw _privateConstructorUsedError;
   String get text => throw _privateConstructorUsedError;
   @JsonKey(name: 'text_es')
   String get textEs => throw _privateConstructorUsedError;
   @JsonKey(name: 'tts_text')
   String get ttsText => throw _privateConstructorUsedError;
+  @JsonKey(name: 'character_id')
+  String? get characterId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'character_display_name')
+  String? get characterDisplayName => throw _privateConstructorUsedError;
   @JsonKey(name: 'tts_voice_id')
   String? get ttsVoiceId => throw _privateConstructorUsedError;
   @JsonKey(name: 'estimated_audio_duration_seconds')
@@ -366,11 +366,11 @@ abstract class $ListeningShadowingItemCopyWith<$Res> {
   @useResult
   $Res call({
     @JsonKey(name: 'item_id') String itemId,
-    @JsonKey(name: 'character_id') String? characterId,
-    @JsonKey(name: 'character_display_name') String? characterDisplayName,
     String text,
     @JsonKey(name: 'text_es') String textEs,
     @JsonKey(name: 'tts_text') String ttsText,
+    @JsonKey(name: 'character_id') String? characterId,
+    @JsonKey(name: 'character_display_name') String? characterDisplayName,
     @JsonKey(name: 'tts_voice_id') String? ttsVoiceId,
     @JsonKey(name: 'estimated_audio_duration_seconds')
     int? estimatedAudioDurationSeconds,
@@ -399,11 +399,11 @@ class _$ListeningShadowingItemCopyWithImpl<
   @override
   $Res call({
     Object? itemId = null,
-    Object? characterId = freezed,
-    Object? characterDisplayName = freezed,
     Object? text = null,
     Object? textEs = null,
     Object? ttsText = null,
+    Object? characterId = freezed,
+    Object? characterDisplayName = freezed,
     Object? ttsVoiceId = freezed,
     Object? estimatedAudioDurationSeconds = freezed,
     Object? repeatTimerSeconds = freezed,
@@ -416,14 +416,6 @@ class _$ListeningShadowingItemCopyWithImpl<
                 ? _value.itemId
                 : itemId // ignore: cast_nullable_to_non_nullable
                       as String,
-            characterId: freezed == characterId
-                ? _value.characterId
-                : characterId // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            characterDisplayName: freezed == characterDisplayName
-                ? _value.characterDisplayName
-                : characterDisplayName // ignore: cast_nullable_to_non_nullable
-                      as String?,
             text: null == text
                 ? _value.text
                 : text // ignore: cast_nullable_to_non_nullable
@@ -436,6 +428,14 @@ class _$ListeningShadowingItemCopyWithImpl<
                 ? _value.ttsText
                 : ttsText // ignore: cast_nullable_to_non_nullable
                       as String,
+            characterId: freezed == characterId
+                ? _value.characterId
+                : characterId // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            characterDisplayName: freezed == characterDisplayName
+                ? _value.characterDisplayName
+                : characterDisplayName // ignore: cast_nullable_to_non_nullable
+                      as String?,
             ttsVoiceId: freezed == ttsVoiceId
                 ? _value.ttsVoiceId
                 : ttsVoiceId // ignore: cast_nullable_to_non_nullable
@@ -474,11 +474,11 @@ abstract class _$$ListeningShadowingItemImplCopyWith<$Res>
   @useResult
   $Res call({
     @JsonKey(name: 'item_id') String itemId,
-    @JsonKey(name: 'character_id') String? characterId,
-    @JsonKey(name: 'character_display_name') String? characterDisplayName,
     String text,
     @JsonKey(name: 'text_es') String textEs,
     @JsonKey(name: 'tts_text') String ttsText,
+    @JsonKey(name: 'character_id') String? characterId,
+    @JsonKey(name: 'character_display_name') String? characterDisplayName,
     @JsonKey(name: 'tts_voice_id') String? ttsVoiceId,
     @JsonKey(name: 'estimated_audio_duration_seconds')
     int? estimatedAudioDurationSeconds,
@@ -504,11 +504,11 @@ class __$$ListeningShadowingItemImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? itemId = null,
-    Object? characterId = freezed,
-    Object? characterDisplayName = freezed,
     Object? text = null,
     Object? textEs = null,
     Object? ttsText = null,
+    Object? characterId = freezed,
+    Object? characterDisplayName = freezed,
     Object? ttsVoiceId = freezed,
     Object? estimatedAudioDurationSeconds = freezed,
     Object? repeatTimerSeconds = freezed,
@@ -521,14 +521,6 @@ class __$$ListeningShadowingItemImplCopyWithImpl<$Res>
             ? _value.itemId
             : itemId // ignore: cast_nullable_to_non_nullable
                   as String,
-        characterId: freezed == characterId
-            ? _value.characterId
-            : characterId // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        characterDisplayName: freezed == characterDisplayName
-            ? _value.characterDisplayName
-            : characterDisplayName // ignore: cast_nullable_to_non_nullable
-                  as String?,
         text: null == text
             ? _value.text
             : text // ignore: cast_nullable_to_non_nullable
@@ -541,6 +533,14 @@ class __$$ListeningShadowingItemImplCopyWithImpl<$Res>
             ? _value.ttsText
             : ttsText // ignore: cast_nullable_to_non_nullable
                   as String,
+        characterId: freezed == characterId
+            ? _value.characterId
+            : characterId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        characterDisplayName: freezed == characterDisplayName
+            ? _value.characterDisplayName
+            : characterDisplayName // ignore: cast_nullable_to_non_nullable
+                  as String?,
         ttsVoiceId: freezed == ttsVoiceId
             ? _value.ttsVoiceId
             : ttsVoiceId // ignore: cast_nullable_to_non_nullable
@@ -571,11 +571,11 @@ class __$$ListeningShadowingItemImplCopyWithImpl<$Res>
 class _$ListeningShadowingItemImpl implements _ListeningShadowingItem {
   const _$ListeningShadowingItemImpl({
     @JsonKey(name: 'item_id') required this.itemId,
-    @JsonKey(name: 'character_id') this.characterId,
-    @JsonKey(name: 'character_display_name') this.characterDisplayName,
     required this.text,
     @JsonKey(name: 'text_es') required this.textEs,
     @JsonKey(name: 'tts_text') required this.ttsText,
+    @JsonKey(name: 'character_id') this.characterId,
+    @JsonKey(name: 'character_display_name') this.characterDisplayName,
     @JsonKey(name: 'tts_voice_id') this.ttsVoiceId,
     @JsonKey(name: 'estimated_audio_duration_seconds')
     this.estimatedAudioDurationSeconds,
@@ -591,12 +591,6 @@ class _$ListeningShadowingItemImpl implements _ListeningShadowingItem {
   @JsonKey(name: 'item_id')
   final String itemId;
   @override
-  @JsonKey(name: 'character_id')
-  final String? characterId;
-  @override
-  @JsonKey(name: 'character_display_name')
-  final String? characterDisplayName;
-  @override
   final String text;
   @override
   @JsonKey(name: 'text_es')
@@ -604,6 +598,12 @@ class _$ListeningShadowingItemImpl implements _ListeningShadowingItem {
   @override
   @JsonKey(name: 'tts_text')
   final String ttsText;
+  @override
+  @JsonKey(name: 'character_id')
+  final String? characterId;
+  @override
+  @JsonKey(name: 'character_display_name')
+  final String? characterDisplayName;
   @override
   @JsonKey(name: 'tts_voice_id')
   final String? ttsVoiceId;
@@ -627,7 +627,7 @@ class _$ListeningShadowingItemImpl implements _ListeningShadowingItem {
 
   @override
   String toString() {
-    return 'ListeningShadowingItem(itemId: $itemId, characterId: $characterId, characterDisplayName: $characterDisplayName, text: $text, textEs: $textEs, ttsText: $ttsText, ttsVoiceId: $ttsVoiceId, estimatedAudioDurationSeconds: $estimatedAudioDurationSeconds, repeatTimerSeconds: $repeatTimerSeconds, repeatCount: $repeatCount, focusVocab: $focusVocab)';
+    return 'ListeningShadowingItem(itemId: $itemId, text: $text, textEs: $textEs, ttsText: $ttsText, characterId: $characterId, characterDisplayName: $characterDisplayName, ttsVoiceId: $ttsVoiceId, estimatedAudioDurationSeconds: $estimatedAudioDurationSeconds, repeatTimerSeconds: $repeatTimerSeconds, repeatCount: $repeatCount, focusVocab: $focusVocab)';
   }
 
   @override
@@ -636,13 +636,13 @@ class _$ListeningShadowingItemImpl implements _ListeningShadowingItem {
         (other.runtimeType == runtimeType &&
             other is _$ListeningShadowingItemImpl &&
             (identical(other.itemId, itemId) || other.itemId == itemId) &&
+            (identical(other.text, text) || other.text == text) &&
+            (identical(other.textEs, textEs) || other.textEs == textEs) &&
+            (identical(other.ttsText, ttsText) || other.ttsText == ttsText) &&
             (identical(other.characterId, characterId) ||
                 other.characterId == characterId) &&
             (identical(other.characterDisplayName, characterDisplayName) ||
                 other.characterDisplayName == characterDisplayName) &&
-            (identical(other.text, text) || other.text == text) &&
-            (identical(other.textEs, textEs) || other.textEs == textEs) &&
-            (identical(other.ttsText, ttsText) || other.ttsText == ttsText) &&
             (identical(other.ttsVoiceId, ttsVoiceId) ||
                 other.ttsVoiceId == ttsVoiceId) &&
             (identical(
@@ -666,11 +666,11 @@ class _$ListeningShadowingItemImpl implements _ListeningShadowingItem {
   int get hashCode => Object.hash(
     runtimeType,
     itemId,
-    characterId,
-    characterDisplayName,
     text,
     textEs,
     ttsText,
+    characterId,
+    characterDisplayName,
     ttsVoiceId,
     estimatedAudioDurationSeconds,
     repeatTimerSeconds,
@@ -699,11 +699,11 @@ class _$ListeningShadowingItemImpl implements _ListeningShadowingItem {
 abstract class _ListeningShadowingItem implements ListeningShadowingItem {
   const factory _ListeningShadowingItem({
     @JsonKey(name: 'item_id') required final String itemId,
-    @JsonKey(name: 'character_id') final String? characterId,
-    @JsonKey(name: 'character_display_name') final String? characterDisplayName,
     required final String text,
     @JsonKey(name: 'text_es') required final String textEs,
     @JsonKey(name: 'tts_text') required final String ttsText,
+    @JsonKey(name: 'character_id') final String? characterId,
+    @JsonKey(name: 'character_display_name') final String? characterDisplayName,
     @JsonKey(name: 'tts_voice_id') final String? ttsVoiceId,
     @JsonKey(name: 'estimated_audio_duration_seconds')
     final int? estimatedAudioDurationSeconds,
@@ -719,12 +719,6 @@ abstract class _ListeningShadowingItem implements ListeningShadowingItem {
   @JsonKey(name: 'item_id')
   String get itemId;
   @override
-  @JsonKey(name: 'character_id')
-  String? get characterId;
-  @override
-  @JsonKey(name: 'character_display_name')
-  String? get characterDisplayName;
-  @override
   String get text;
   @override
   @JsonKey(name: 'text_es')
@@ -732,6 +726,12 @@ abstract class _ListeningShadowingItem implements ListeningShadowingItem {
   @override
   @JsonKey(name: 'tts_text')
   String get ttsText;
+  @override
+  @JsonKey(name: 'character_id')
+  String? get characterId;
+  @override
+  @JsonKey(name: 'character_display_name')
+  String? get characterDisplayName;
   @override
   @JsonKey(name: 'tts_voice_id')
   String? get ttsVoiceId;

@@ -11,22 +11,37 @@ import '../../../core/utils/navigation_utils.dart';
 /// Scaffold base para cualquier mini-juego.
 /// Muestra header con progreso, puntos acumulados y el cuerpo específico del juego.
 class GameBaseScreen extends StatelessWidget {
+  /// Juego actual
   final Game game;
+  
+  /// Número del juego actual (1-based)
   final int gameNumber;
+  
+  /// Total de juegos en la sesión
   final int totalGames;
+  
+  /// Puntos acumulados hasta ahora
   final int accumulatedPoints;
+  
+  /// Callback cuando se completa el juego
   final ValueChanged<int> onComplete;
+  
+  /// Cuerpo personalizado del juego
   final Widget? body;
 
+  /// Crea el scaffold base para juegos.
+  ///
+  /// Parámetros:
+  /// - [game]: Juego actual
+  /// - [gameNumber]: Número del juego actual (1-based)
+  /// - [totalGames]: Total de juegos en la sesión
+  /// - [accumulatedPoints]: Puntos acumulados hasta ahora
+  /// - [onComplete]: Callback cuando se completa el juego
+  /// - [body]: Cuerpo personalizado del juego
   const GameBaseScreen({
-    Key? key,
-    required this.game,
-    required this.gameNumber,
-    required this.totalGames,
-    required this.accumulatedPoints,
-    required this.onComplete,
+    required this.game, required this.gameNumber, required this.totalGames, required this.accumulatedPoints, required this.onComplete, super.key,
     this.body,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -128,7 +143,7 @@ class _GamePlaceholder extends StatelessWidget {
               width: 120,
               height: 120,
               decoration: BoxDecoration(
-                gradient: LinearGradient(
+                gradient: const LinearGradient(
                   colors: [
                     AppColors.secondaryBlue,
                     AppColors.primaryGreen,
@@ -139,7 +154,7 @@ class _GamePlaceholder extends StatelessWidget {
                 shape: BoxShape.circle,
                 boxShadow: [
                   BoxShadow(
-                    color: AppColors.secondaryBlue.withOpacity(0.3),
+                    color: AppColors.secondaryBlue.withValues(alpha: 0.3),
                     blurRadius: 20,
                     offset: const Offset(0, 10),
                   ),
@@ -166,7 +181,7 @@ class _GamePlaceholder extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Text(
                 _getGameDescription(game.gameType),
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 15,
                   color: AppColors.textSecondary,
                   height: 1.5,
@@ -182,7 +197,7 @@ class _GamePlaceholder extends StatelessWidget {
                 color: AppColors.cardBackground,
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(
-                  color: AppColors.secondaryBlue.withOpacity(0.2),
+                  color: AppColors.secondaryBlue.withValues(alpha: 0.2),
                   width: 1,
                 ),
               ),
@@ -206,7 +221,7 @@ class _GamePlaceholder extends StatelessWidget {
             ),
             const SizedBox(height: 36),
             DuolingoButton(
-              text: 'Continuar (placeholder)',
+              text: 'Continue',
               onPressed: () {
                 onComplete(maxPoints);
               },
@@ -225,7 +240,7 @@ class _GamePlaceholder extends StatelessWidget {
         const SizedBox(width: 12),
         Text(
           label,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 14,
             color: AppColors.textSecondary,
             fontWeight: FontWeight.w500,

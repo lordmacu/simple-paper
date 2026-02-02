@@ -12,16 +12,24 @@ import '../../../../core/constants/app_colors.dart';
 import '../../../../domain/models/game/audio_choice_game.dart';
 import '../../../providers/template_variable_provider.dart';
 import '../../../../data/services/template_variable_service.dart';
+import '../../../widgets/atoms/icon_text_button.dart';
+import '../../../widgets/molecules/bilingual_text_card.dart';
+import '../../../widgets/molecules/game_prompt_card.dart';
+import '../../../widgets/molecules/score_footer.dart';
+import '../../../widgets/molecules/section_header.dart';
+import '../../../widgets/molecules/timer_chip.dart';
 
+/// audio choice game screen/widget
 class AudioChoiceGameWidget extends ConsumerStatefulWidget {
+  ///  audio choice game
   final AudioChoiceGame game;
+  /// Callback cuando se completa el juego con puntos ganados
   final ValueChanged<int> onComplete;
 
+  /// Crea un widget de juego de elección de audio.
   const AudioChoiceGameWidget({
-    Key? key,
-    required this.game,
-    required this.onComplete,
-  }) : super(key: key);
+    required this.game, required this.onComplete, super.key,
+  });
 
   @override
   ConsumerState<AudioChoiceGameWidget> createState() =>
@@ -79,10 +87,14 @@ class _AudioChoiceGameWidgetState
 
   void _startTimerIfNeeded() {
     final seconds = widget.game.timeLimitSeconds;
-    if (seconds == null) return;
+    if (seconds == null) {
+      return;
+    }
     _timeLeft = seconds;
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (!mounted) return;
+      if (!mounted) {
+        return;
+      }
       setState(() {
         _timeLeft = (_timeLeft ?? 1) - 1;
         if ((_timeLeft ?? 0) <= 0) {
@@ -100,7 +112,7 @@ class _AudioChoiceGameWidgetState
         await _player.stop();
         await _player.play(UrlSource(url));
         return;
-      } catch (_) {
+      } on Exception catch (_) {
         // si falla, caemos al TTS
       }
     }
@@ -130,7 +142,7 @@ class _AudioChoiceGameWidgetState
         // fuerza motor de Google si está disponible
         try {
           await _tts.setEngine('com.google.android.tts');
-        } catch (_) {}
+        } on Exception catch (_) {}
       }
 
       final list = await _tts.getVoices;
@@ -148,9 +160,8 @@ class _AudioChoiceGameWidgetState
             .toList();
 
         // Loguea las voces disponibles para depurar
-        // ignore: avoid_print
         for (final v in _voices) {
-          print('TTS voice: $v');
+          debugPrint('TTS voice: $v');
         }
 
         // Elige una voz aleatoria por sesión de minijuego
@@ -159,7 +170,7 @@ class _AudioChoiceGameWidgetState
           await _tts.setVoice(_voices[_voiceIndex!]);
         }
       }
-    } catch (_) {
+    } on Exception catch (_) {
       _voices = [];
       _maleVoices = [];
     }
@@ -167,20 +178,19 @@ class _AudioChoiceGameWidgetState
 
   Future<Map<String, String>?> _setRandomVoice() async {
     final pool = _maleVoices.isNotEmpty ? _maleVoices : _voices;
-    if (pool.isEmpty) return null;
+    if (pool.isEmpty) {
+      return null;
+    }
     _voiceIndex = Random().nextInt(pool.length);
     final voice = pool[_voiceIndex!];
     await _tts.setVoice(voice);
     return voice;
   }
 
-  Future<void> _setGravePitch() async {
-    // Fija un tono grave consistente (sin depender de otras voces)
-    await _tts.setPitch(0.65);
-  }
-
   void _select(int index) {
-    if (_showFeedback) return;
+    if (_showFeedback) {
+      return;
+    }
     final originalIndex = _shuffledIndices[index];
     final isCorrect = originalIndex == _item.correctAnswer;
     setState(() {
@@ -195,7 +205,9 @@ class _AudioChoiceGameWidgetState
     }
 
     Future.delayed(const Duration(milliseconds: 1400), () {
-      if (!mounted) return;
+      if (!mounted) {
+        return;
+      }
       if (_currentIndex < _totalItems - 1) {
         setState(() {
           _currentIndex++;
@@ -228,8 +240,9 @@ class _AudioChoiceGameWidgetState
           const SizedBox(height: 14),
           _buildOptions(template),
           const Spacer(),
-          Text(
-            'Score: $_score',
+          ScoreFooter(
+            label: 'Score',
+            score: _score,
             style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
@@ -242,73 +255,39 @@ class _AudioChoiceGameWidgetState
   }
 
   Widget _buildHeader(TemplateVariableService template) {
-    return Row(
-      children: [
-        Text(
-          'Audio ${_currentIndex + 1} / $_totalItems',
-          style: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-            color: AppColors.textPrimary,
-          ),
-        ),
-        const Spacer(),
-        if (_timeLeft != null)
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-            decoration: BoxDecoration(
-              color: AppColors.warningOrange.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Row(
-              children: [
-                const Icon(Icons.timer, size: 18, color: AppColors.warningOrange),
-                const SizedBox(width: 6),
-                Text(
-                  '${_timeLeft}s',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.warningOrange,
-                  ),
-                ),
-              ],
-            ),
-          ),
-      ],
+    return SectionHeader(
+      title: 'Audio ${_currentIndex + 1} / $_totalItems',
+      trailing: _timeLeft != null
+          ? TimerChip(seconds: _timeLeft!)
+          : null,
+      padding: EdgeInsets.zero,
     );
   }
 
   Widget _buildAudioCard(TemplateVariableService template) {
     final prompt = _item.prompt != null ? template.replaceVariables(_item.prompt!) : '';
     final promptEs = _item.promptEs != null ? template.replaceVariables(_item.promptEs!) : null;
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: AppColors.cardBackground,
-        borderRadius: BorderRadius.circular(14),
-      ),
+    return GamePromptCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
-              ElevatedButton.icon(
+              IconTextButton(
                 key: const Key('audio_button_play'),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primaryGreen,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                onPressed: () => _play(context),
-                icon: const Icon(Icons.volume_up),
-                label: const Text('Play'),
+                label: 'Play',
+                icon: Icons.volume_up,
+                onTap: () => _play(context),
+                foregroundColor: Colors.white,
+                backgroundColor: AppColors.primaryGreen,
+                borderRadius: 12,
+                minHeight: 40,
               ),
               if (_timeLeft != null) ...[
                 const SizedBox(width: 12),
-                Text(
+                const Text(
                   'Escucha y responde',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.w700,
                     color: AppColors.textSecondary,
                   ),
@@ -316,22 +295,21 @@ class _AudioChoiceGameWidgetState
               ],
             ],
           ),
-          if (prompt.isNotEmpty) ...[
+          if (prompt.isNotEmpty || (promptEs != null && promptEs.isNotEmpty)) ...[
             const SizedBox(height: 12),
-            Text(
-              prompt,
-              style: const TextStyle(
+            BilingualTextCard(
+              textEn: prompt,
+              textEs: promptEs ?? '',
+              showEn: prompt.isNotEmpty,
+              showEs: promptEs != null && promptEs.isNotEmpty,
+              backgroundColor: Colors.transparent,
+              padding: EdgeInsets.zero,
+              enStyle: const TextStyle(
                 fontSize: 16,
                 color: AppColors.textPrimary,
                 fontWeight: FontWeight.w700,
               ),
-            ),
-          ],
-          if (promptEs != null && promptEs.isNotEmpty) ...[
-            const SizedBox(height: 4),
-            Text(
-              promptEs,
-              style: const TextStyle(
+              esStyle: const TextStyle(
                 color: AppColors.textSecondary,
               ),
             ),
@@ -376,7 +354,7 @@ class _AudioChoiceGameWidgetState
               borderRadius: BorderRadius.circular(12),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.05),
+                  color: Colors.black.withValues(alpha: 0.05),
                   blurRadius: 6,
                   offset: const Offset(0, 3),
                 ),

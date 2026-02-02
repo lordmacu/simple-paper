@@ -6,15 +6,20 @@ import 'package:flutter/services.dart';
 
 import '../../../core/constants/app_colors.dart';
 import 'review_memory_game.dart';
+import '../../widgets/molecules/bilingual_text_card.dart';
+import '../../widgets/molecules/review_header_row.dart';
+import '../../widgets/molecules/score_footer.dart';
 
+/// review memory screen/widget
 class ReviewMemoryWidget extends StatefulWidget {
+  /// Juego de memoria de revisión
   final ReviewMemoryGame game;
+  /// Callback cuando se completa el juego
   final ValueChanged<int> onComplete;
 
+  /// Crea un widget de juego de memoria de revisión.
   const ReviewMemoryWidget({
-    super.key,
-    required this.game,
-    required this.onComplete,
+    required this.game, required this.onComplete, super.key,
   });
 
   @override
@@ -57,7 +62,9 @@ class _ReviewMemoryWidgetState extends State<ReviewMemoryWidget> {
   }
 
   void _onTap(_MemoryCard card) {
-    if (_busy || card.matched || card.revealed) return;
+    if (_busy || card.matched || card.revealed) {
+      return;
+    }
     setState(() {
       card.revealed = true;
       if (_firstPick == null) {
@@ -121,9 +128,13 @@ class _ReviewMemoryWidgetState extends State<ReviewMemoryWidget> {
         children: [
           _buildHeader(),
           const SizedBox(height: 16),
-          Text(
-            widget.game.instructionsEs,
-            style: const TextStyle(
+          BilingualTextCard(
+            textEn: '',
+            textEs: widget.game.instructionsEs,
+            showEn: false,
+            backgroundColor: Colors.transparent,
+            padding: EdgeInsets.zero,
+            esStyle: const TextStyle(
               fontWeight: FontWeight.w700,
               color: AppColors.textPrimary,
             ),
@@ -131,14 +142,7 @@ class _ReviewMemoryWidgetState extends State<ReviewMemoryWidget> {
           const SizedBox(height: 12),
           Expanded(child: _buildGrid()),
           const SizedBox(height: 8),
-          Text(
-            'Puntaje: $_score',
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontWeight: FontWeight.w800,
-              color: AppColors.textPrimary,
-            ),
-          ),
+          ScoreFooter(score: _score),
         ],
       ),
     );
@@ -147,32 +151,9 @@ class _ReviewMemoryWidgetState extends State<ReviewMemoryWidget> {
   Widget _buildHeader() {
     final remaining =
         _cards.where((card) => !card.matched).length ~/ 2;
-    return Row(
-      children: [
-        Text(
-          'Pares restantes: $remaining',
-          style: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w700,
-            color: AppColors.textPrimary,
-          ),
-        ),
-        const Spacer(),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-          decoration: BoxDecoration(
-            color: AppColors.secondaryBlue.withOpacity(0.12),
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Text(
-            'Puntaje: $_score',
-            style: const TextStyle(
-              color: AppColors.secondaryBlue,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-        ),
-      ],
+    return ReviewHeaderRow(
+      title: 'Pares restantes: $remaining',
+      score: _score,
     );
   }
 
@@ -230,7 +211,7 @@ class _MemoryCardTile extends StatelessWidget {
         duration: const Duration(milliseconds: 200),
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: visible ? Colors.white : AppColors.secondaryBlue.withOpacity(0.15),
+          color: visible ? Colors.white : AppColors.secondaryBlue.withValues(alpha: 0.15),
           borderRadius: BorderRadius.circular(14),
           border: Border.all(
             color: visible ? AppColors.divider : Colors.transparent,
@@ -238,7 +219,7 @@ class _MemoryCardTile extends StatelessWidget {
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.05),
+              color: Colors.black.withValues(alpha: 0.05),
               blurRadius: 6,
               offset: const Offset(0, 3),
             ),

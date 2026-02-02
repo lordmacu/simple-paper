@@ -9,6 +9,7 @@ import 'review_memory_game.dart';
 import 'review_order_forms_game.dart';
 import 'review_types.dart';
 
+/// Construye un juego de verbos irregulares
 Game buildIrregularVerbGame(
   List<Map<String, String>> items,
   ReviewGameType type,
@@ -187,7 +188,9 @@ Game buildIrregularVerbGame(
         final pool = reviewShuffle(items).take(6).toList();
         final options = <String>{correct['base']!};
         for (final item in pool) {
-          if (options.length >= 6) break;
+          if (options.length >= 6) {
+            break;
+          }
           options.add(item['base']!);
         }
         final optionList = options.toList()..shuffle();

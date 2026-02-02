@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import '../../../../core/constants/app_colors.dart';
 
+/// profile header screen/widget
 class ProfileHeader extends StatelessWidget {
+  ///  string
   final String userName;
+  /// int
   final int streak;
+  /// int
   final int level;
 
+  /// Crea una instancia de profile header.
   const ProfileHeader({
-    super.key,
-    required this.userName,
-    required this.streak,
-    required this.level,
+    required this.userName, required this.streak, required this.level, super.key,
   });
 
   @override
@@ -19,7 +21,7 @@ class ProfileHeader extends StatelessWidget {
       children: [
         CircleAvatar(
           radius: 28,
-          backgroundColor: AppColors.secondaryBlue.withOpacity(0.15),
+          backgroundColor: AppColors.secondaryBlue.withValues(alpha: 0.15),
           child: const Icon(Icons.person, color: AppColors.secondaryBlue, size: 32),
         ),
         const SizedBox(width: 12),
@@ -52,7 +54,7 @@ class ProfileHeader extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
-                      color: AppColors.primaryGreen.withOpacity(0.15),
+                      color: AppColors.primaryGreen.withValues(alpha: 0.15),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Text(

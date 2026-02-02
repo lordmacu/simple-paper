@@ -21,10 +21,19 @@ Achievement _$AchievementFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Achievement {
+  /// Identificador único del logro
   String get id => throw _privateConstructorUsedError;
+
+  /// Nombre del logro
   String get name => throw _privateConstructorUsedError;
+
+  /// Descripción del logro
   String get description => throw _privateConstructorUsedError;
+
+  /// Si el logro está desbloqueado
   bool get unlocked => throw _privateConstructorUsedError;
+
+  /// Fecha de desbloqueo
   DateTime? get unlockedAt => throw _privateConstructorUsedError;
 
   /// Serializes this Achievement to a JSON map.
@@ -181,15 +190,24 @@ class _$AchievementImpl implements _Achievement {
   factory _$AchievementImpl.fromJson(Map<String, dynamic> json) =>
       _$$AchievementImplFromJson(json);
 
+  /// Identificador único del logro
   @override
   final String id;
+
+  /// Nombre del logro
   @override
   final String name;
+
+  /// Descripción del logro
   @override
   final String description;
+
+  /// Si el logro está desbloqueado
   @override
   @JsonKey()
   final bool unlocked;
+
+  /// Fecha de desbloqueo
   @override
   final DateTime? unlockedAt;
 
@@ -244,14 +262,23 @@ abstract class _Achievement implements Achievement {
   factory _Achievement.fromJson(Map<String, dynamic> json) =
       _$AchievementImpl.fromJson;
 
+  /// Identificador único del logro
   @override
   String get id;
+
+  /// Nombre del logro
   @override
   String get name;
+
+  /// Descripción del logro
   @override
   String get description;
+
+  /// Si el logro está desbloqueado
   @override
   bool get unlocked;
+
+  /// Fecha de desbloqueo
   @override
   DateTime? get unlockedAt;
 

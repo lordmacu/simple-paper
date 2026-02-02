@@ -3,10 +3,13 @@ import 'package:office_app/core/constants/app_colors.dart';
 import 'package:office_app/core/constants/app_text_styles.dart';
 import 'package:office_app/core/constants/app_dimensions.dart';
 
-/// Main app theme - Duolingo style
+/// Tema principal de la app - estilo Duolingo.
+///
+/// Define colores, tipografía y estilos de componentes.
 class AppTheme {
   AppTheme._();
 
+  /// Tema claro de la aplicación.
   static ThemeData get lightTheme {
     return ThemeData(
       useMaterial3: true,

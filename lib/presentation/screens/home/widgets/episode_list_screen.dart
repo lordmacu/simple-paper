@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../providers/episode_providers.dart';
 import '../../../providers/progress_providers.dart';
+import '../../../widgets/atoms/primary_button.dart';
 import '../../vocabulary/vocabulary_story_screen.dart';
 import 'episode_item.dart';
 import '../../../../core/constants/app_colors.dart';
@@ -9,7 +10,9 @@ import '../../../../core/utils/section_progress.dart';
 import '../../../../data/sources/content_db.dart';
 import '../../../../domain/models/episode/episode.dart';
 
+/// episode list screen/widget
 class EpisodeListScreen extends ConsumerStatefulWidget {
+  /// Crea una instancia de episode list screen.
   const EpisodeListScreen({super.key});
   static const String _logTag = 'EPISODE_UNLOCK';
 
@@ -27,11 +30,15 @@ class _EpisodeListScreenState extends ConsumerState<EpisodeListScreen> {
   Future<void> _scrollToEpisode(int episodeNumber) async {
     for (var attempt = 0; attempt < 8; attempt++) {
       await Future.delayed(const Duration(milliseconds: 60));
-      if (!_scrollController.hasClients) continue;
-      if (!_scrollController.position.hasContentDimensions) continue;
+      if (!_scrollController.hasClients) {
+        continue;
+      }
+      if (!_scrollController.position.hasContentDimensions) {
+        continue;
+      }
 
       final context = _episodeContexts[episodeNumber];
-      if (context != null) {
+      if (context != null && context.mounted) {
         await Scrollable.ensureVisible(
           context,
           duration: const Duration(milliseconds: 350),
@@ -68,7 +75,9 @@ class _EpisodeListScreenState extends ConsumerState<EpisodeListScreen> {
     final db = ContentDb();
     for (final episode in episodes) {
       final episodeNumber = episode.episodeMetadata.episodeNumber;
-      if (episodeNumber >= unlockedEpisode) continue;
+      if (episodeNumber >= unlockedEpisode) {
+        continue;
+      }
 
       final sectionIds = <String>{
         SectionProgressIds.vocab,
@@ -137,7 +146,9 @@ class _EpisodeListScreenState extends ConsumerState<EpisodeListScreen> {
             if (_pendingScrollEpisode != null) {
               WidgetsBinding.instance.addPostFrameCallback((_) async {
                 final target = _pendingScrollEpisode;
-                if (target == null) return;
+                if (target == null) {
+                  return;
+                }
                 await Future.delayed(const Duration(milliseconds: 250));
                 await _scrollToEpisode(target);
                 if (mounted) {
@@ -247,14 +258,12 @@ class _EpisodeListScreenState extends ConsumerState<EpisodeListScreen> {
                 style: const TextStyle(color: AppColors.textSecondary),
               ),
               const SizedBox(height: 16),
-              ElevatedButton(
+              PrimaryButton(
+                text: 'Retry',
+                compact: true,
                 onPressed: () {
-                  ref.refresh(episodeListProvider);
+                  ref.invalidate(episodeListProvider);
                 },
-                child: const Text('Retry'),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primaryGreen,
-                ),
               ),
             ],
           ),

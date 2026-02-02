@@ -26,11 +26,12 @@ import '../../../core/utils/navigation_utils.dart';
 /// Pantalla de Vocabulary Story
 /// Muestra la introducción de vocabulario del episodio con segmentos interactivos
 class VocabularyStoryScreen extends ConsumerStatefulWidget {
+  ///  episode
   final Episode episode;
 
+  /// Crea una instancia de vocabulary story screen.
   const VocabularyStoryScreen({
-    super.key,
-    required this.episode,
+    required this.episode, super.key,
   });
 
   @override
@@ -46,10 +47,14 @@ class _VocabularyStoryScreenState
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
   late final List<VocabularySegment> _shuffledSegments;
+  
+  // Guardar referencia al TTS service para usar en dispose
+  late final dynamic _ttsService;
 
   @override
   void initState() {
     super.initState();
+    _ttsService = ref.read(ttsServiceProvider);
     final originalSegments = widget.episode.vocabularyStory?.segments ?? [];
     _shuffledSegments = List<VocabularySegment>.from(originalSegments)
       ..shuffle(Random());
@@ -66,14 +71,14 @@ class _VocabularyStoryScreenState
 
   @override
   void dispose() {
-    ref.read(ttsServiceProvider).stop();
+    _ttsService.stop();
     _animationController.dispose();
     _pageController.dispose();
     super.dispose();
   }
 
   void _stopTtsAndClose() {
-    ref.read(ttsServiceProvider).stop();
+    _ttsService.stop();
   }
 
   void _nextSegment() {
@@ -141,7 +146,9 @@ class _VocabularyStoryScreenState
                 navigator.pop();
               }
               WidgetsBinding.instance.addPostFrameCallback((_) {
-                if (!mounted) return;
+                if (!mounted) {
+                  return;
+                }
                 _openTransitionScreen();
               });
             },
@@ -169,7 +176,9 @@ class _VocabularyStoryScreenState
               navigator.pop();
             }
             WidgetsBinding.instance.addPostFrameCallback((_) {
-              if (!mounted) return;
+              if (!mounted) {
+                return;
+              }
               _navigateToMainStory();
             });
           },
@@ -183,17 +192,17 @@ class _VocabularyStoryScreenState
       MaterialPageRoute(
         builder: (context) => MainStoryScreen(
           episode: widget.episode,
-          onComplete: () {
-            _handleStoryComplete();
+          onComplete: (int storyPoints) {
+            _handleStoryComplete(storyPoints);
           },
         ),
       ),
     );
   }
 
-  Future<void> _handleStoryComplete() async {
+  Future<void> _handleStoryComplete([int storyPoints = 0]) async {
     debugPrint(
-      'INTERVIEW_FLOW story_complete episode=${widget.episode.episodeMetadata.episodeNumber}',
+      'INTERVIEW_FLOW story_complete episode=${widget.episode.episodeMetadata.episodeNumber} points=$storyPoints',
     );
     final navigator = Navigator.of(context, rootNavigator: true);
     if (navigator.canPop()) {
@@ -201,8 +210,10 @@ class _VocabularyStoryScreenState
     }
     await Future.delayed(Duration.zero);
     await _showPendingInterviewBeforeGames();
-    if (!mounted) return;
-    _navigateToGames();
+    if (!mounted) {
+      return;
+    }
+    _navigateToGames(storyPoints);
   }
 
   Future<void> _showPendingInterviewBeforeGames() async {
@@ -247,7 +258,9 @@ class _VocabularyStoryScreenState
       debugPrint(
         'INTERVIEW_FLOW check episode=$episodeNumber characterId=$id interviewId=$interviewId completed=$completed',
       );
-      if (completed) continue;
+      if (completed) {
+        continue;
+      }
 
       final fallbackName = _resolveCharacterName(id, candidates);
       final interview = await _loadCharacterInterview(
@@ -259,8 +272,12 @@ class _VocabularyStoryScreenState
       debugPrint(
         'INTERVIEW_FLOW loaded episode=$episodeNumber characterId=$id interviewId=$interviewId found=${interview != null}',
       );
-      if (!mounted) return;
-      if (interview == null) continue;
+      if (!mounted) {
+        return;
+      }
+      if (interview == null) {
+        continue;
+      }
 
       final result = await Navigator.push<Map<String, dynamic>?>(
         context,
@@ -278,7 +295,9 @@ class _VocabularyStoryScreenState
         ),
       );
 
-      if (!mounted) return;
+      if (!mounted) {
+        return;
+      }
       if (result != null) {
         if (result['exitToHome'] == true) {
           Navigator.of(context, rootNavigator: true)
@@ -314,6 +333,10 @@ class _VocabularyStoryScreenState
           episodeNumber: episodeNumber,
           sectionId: SectionProgressIds.interview,
         );
+
+        if (!mounted) {
+          break;
+        }
 
         await Navigator.push(
           context,
@@ -355,7 +378,9 @@ class _VocabularyStoryScreenState
   }
 
   bool _matchesLevel(String interviewId, String level) {
-    if (interviewId.isEmpty || interviewId == 'default') return true;
+    if (interviewId.isEmpty || interviewId == 'default') {
+      return true;
+    }
     final needle = 'episode_${level.toLowerCase()}_';
     return interviewId.toLowerCase().contains(needle);
   }
@@ -388,17 +413,17 @@ class _VocabularyStoryScreenState
         );
       }
       return null;
-    } catch (_) {
+    } on Exception catch (_) {
       return null;
     }
   }
 
-  void _navigateToGames() async {
+  Future<void> _navigateToGames([int storyPoints = 0]) async {
     Navigator.of(context, rootNavigator: true).push(
       MaterialPageRoute(
         builder: (context) => GamesScreen(
           episode: widget.episode,
-          pointsFromStory: 0, // TODO: pasar puntos reales de MainStoryScreen
+          pointsFromStory: storyPoints,
           onComplete: (totalPoints, maxPoints) async {
             // Cerrar GamesScreen y VocabularyStoryScreen, volver a home
             Navigator.pop(context); // Close games screen
@@ -413,7 +438,11 @@ class _VocabularyStoryScreenState
               starsEarned: stars,
               xpEarned: totalPoints,
             );
-            
+
+            if (!context.mounted) {
+              return;
+            }
+
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
                 content: Text('Episode completed! 🎉'),
@@ -427,11 +456,19 @@ class _VocabularyStoryScreenState
   }
 
   int _calculateStars(int points, int maxPoints) {
-    if (maxPoints <= 0) return 3;
+    if (maxPoints <= 0) {
+      return 3;
+    }
     final ratio = points / maxPoints;
-    if (ratio >= 0.9) return 3;
-    if (ratio >= 0.65) return 2;
-    if (ratio >= 0.35) return 1;
+    if (ratio >= 0.9) {
+      return 3;
+    }
+    if (ratio >= 0.65) {
+      return 2;
+    }
+    if (ratio >= 0.35) {
+      return 1;
+    }
     return 0;
   }
 
@@ -440,17 +477,23 @@ class _VocabularyStoryScreenState
     final rawText = segment.text.en;
     final text = template.replaceVariables(rawText);
 
-    if (text.trim().isEmpty) return;
+    if (text.trim().isEmpty) {
+      return;
+    }
     final tts = ref.read(ttsServiceProvider);
     await tts.speak(text);
   }
 
   Future<void> _playWordForSegment(VocabularySegment segment) async {
     final rawWord = segment.wordFocus ?? '';
-    if (rawWord.trim().isEmpty) return;
+    if (rawWord.trim().isEmpty) {
+      return;
+    }
     final template = ref.read(templateVariableServiceProvider);
     final word = template.replaceVariables(rawWord);
-    if (word.trim().isEmpty) return;
+    if (word.trim().isEmpty) {
+      return;
+    }
     final tts = ref.read(ttsServiceProvider);
     await tts.speak(word);
   }
@@ -607,7 +650,7 @@ class _VocabularyStoryScreenState
                   color: Colors.white,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.05),
+                      color: Colors.black.withValues(alpha: 0.05),
                       blurRadius: 4,
                       offset: const Offset(0, -2),
                     ),

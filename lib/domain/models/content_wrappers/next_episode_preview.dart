@@ -7,6 +7,7 @@ part 'next_episode_preview.g.dart';
 /// Genera expectativa y motivación para continuar
 @freezed
 class NextEpisodePreview with _$NextEpisodePreview {
+  /// Crea un preview del siguiente episodio.
   const factory NextEpisodePreview({
     /// Texto del preview en inglés
     @JsonKey(name: 'preview_text_en') required String previewTextEn,
@@ -18,6 +19,7 @@ class NextEpisodePreview with _$NextEpisodePreview {
     @JsonKey(name: 'teaser_image') String? teaserImage,
   }) = _NextEpisodePreview;
 
+  /// Crea NextEpisodePreview desde JSON.
   factory NextEpisodePreview.fromJson(Map<String, dynamic> json) =>
       _$NextEpisodePreviewFromJson(json);
 }

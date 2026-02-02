@@ -8,16 +8,22 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../domain/models/game/multiple_choice_game.dart';
 import '../../../providers/template_variable_provider.dart';
+import '../../../widgets/molecules/bilingual_text_card.dart';
+import '../../../widgets/molecules/score_footer.dart';
+import '../../../widgets/molecules/section_header.dart';
+import '../../../widgets/molecules/timer_chip.dart';
 
+/// multiple choice game screen/widget
 class MultipleChoiceGameWidget extends ConsumerStatefulWidget {
+  ///  multiple choice game
   final MultipleChoiceGame game;
+  /// Callback cuando se completa el juego con puntos ganados
   final ValueChanged<int> onComplete;
 
+  /// Crea un widget de juego de opción múltiple.
   const MultipleChoiceGameWidget({
-    Key? key,
-    required this.game,
-    required this.onComplete,
-  }) : super(key: key);
+    required this.game, required this.onComplete, super.key,
+  });
 
   @override
   ConsumerState<MultipleChoiceGameWidget> createState() =>
@@ -55,10 +61,14 @@ class _MultipleChoiceGameWidgetState
 
   void _startTimerIfNeeded() {
     final seconds = widget.game.timeLimitSeconds;
-    if (seconds == null) return;
+    if (seconds == null) {
+      return;
+    }
     _timeLeft = seconds;
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (!mounted) return;
+      if (!mounted) {
+        return;
+      }
       setState(() {
         _timeLeft = (_timeLeft ?? 1) - 1;
         if ((_timeLeft ?? 0) <= 0) {
@@ -69,7 +79,9 @@ class _MultipleChoiceGameWidgetState
   }
 
   void _finishGame() {
-    if (_finished) return;
+    if (_finished) {
+      return;
+    }
     _finished = true;
     _timer?.cancel();
     Future.microtask(() => widget.onComplete(_score));
@@ -81,7 +93,9 @@ class _MultipleChoiceGameWidgetState
   }
 
   void _select(int index) {
-    if (_showFeedback) return;
+    if (_showFeedback) {
+      return;
+    }
     final originalIndex = _shuffledIndices[index];
     final isCorrect = originalIndex == _item.correctAnswer;
     setState(() {
@@ -97,7 +111,9 @@ class _MultipleChoiceGameWidgetState
     }
 
     Future.delayed(const Duration(milliseconds: 1400), () {
-      if (!mounted) return;
+      if (!mounted) {
+        return;
+      }
       if (_currentIndex < _totalItems - 1) {
         setState(() {
           _currentIndex++;
@@ -152,7 +168,7 @@ class _MultipleChoiceGameWidgetState
                     borderRadius: BorderRadius.circular(12),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.05),
+                        color: Colors.black.withValues(alpha: 0.05),
                         blurRadius: 6,
                         offset: const Offset(0, 3),
                       ),
@@ -163,28 +179,21 @@ class _MultipleChoiceGameWidgetState
                       _letterBadge(idx, show, isCorrect),
                       const SizedBox(width: 10),
                       Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              _apply(opt),
-                              style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                color: fg,
-                              ),
-                            ),
-                            if (_item.optionsEs.isNotEmpty) ...[
-                              const SizedBox(height: 4),
-                              Text(
-                                _apply(_item.optionsEs[optIndex]),
-                                style: TextStyle(
-                                  color: show
-                                      ? Colors.white70
-                                      : AppColors.textSecondary,
-                                ),
-                              ),
-                            ],
-                          ],
+                        child: BilingualTextCard(
+                          textEn: _apply(opt),
+                          textEs: _item.optionsEs.isNotEmpty
+                              ? _apply(_item.optionsEs[optIndex])
+                              : '',
+                          showEs: _item.optionsEs.isNotEmpty,
+                          backgroundColor: Colors.transparent,
+                          padding: EdgeInsets.zero,
+                          enStyle: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            color: fg,
+                          ),
+                          esStyle: TextStyle(
+                            color: show ? Colors.white70 : AppColors.textSecondary,
+                          ),
                         ),
                       ),
                       if (show)
@@ -200,8 +209,8 @@ class _MultipleChoiceGameWidgetState
           }),
           const Spacer(),
           Center(
-            child: Text(
-              'Puntaje: $_score',
+            child: ScoreFooter(
+              score: _score,
               style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -222,7 +231,7 @@ class _MultipleChoiceGameWidgetState
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: show
-            ? Colors.white.withOpacity(0.25)
+            ? Colors.white.withValues(alpha: 0.25)
             : AppColors.cardBackground,
       ),
       child: Center(
@@ -238,69 +247,29 @@ class _MultipleChoiceGameWidgetState
   }
 
   Widget _buildHeader() {
-    return Row(
-      children: [
-        Text(
-          'Pregunta ${_currentIndex + 1} / $_totalItems',
-          style: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-            color: AppColors.textPrimary,
-          ),
-        ),
-        const Spacer(),
-        if (_timeLeft != null)
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-            decoration: BoxDecoration(
-              color: AppColors.warningOrange.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Row(
-              children: [
-                const Icon(Icons.timer, size: 18, color: AppColors.warningOrange),
-                const SizedBox(width: 6),
-                Text(
-                  '${_timeLeft}s',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.warningOrange,
-                  ),
-                ),
-              ],
-            ),
-          ),
-      ],
+    return SectionHeader(
+      title: 'Pregunta ${_currentIndex + 1} / $_totalItems',
+      trailing: _timeLeft != null
+          ? TimerChip(seconds: _timeLeft!)
+          : null,
+      padding: EdgeInsets.zero,
     );
   }
 
   Widget _buildQuestionCard() {
-    return Container(
-      width: double.infinity,
+    return BilingualTextCard(
+      textEn: _apply(_item.question),
+      textEs: _apply(_item.questionEs),
+      backgroundColor: AppColors.cardBackground,
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: AppColors.cardBackground,
-        borderRadius: BorderRadius.circular(14),
+      borderRadius: 14,
+      enStyle: const TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
+        color: AppColors.textPrimary,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            _apply(_item.question),
-            style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: AppColors.textPrimary,
-            ),
-          ),
-          const SizedBox(height: 6),
-          Text(
-            _apply(_item.questionEs),
-            style: const TextStyle(
-              color: AppColors.textSecondary,
-            ),
-          ),
-        ],
+      esStyle: const TextStyle(
+        color: AppColors.textSecondary,
       ),
     );
   }
@@ -310,7 +279,7 @@ class _MultipleChoiceGameWidgetState
       await SystemSound.play(
         correct ? SystemSoundType.click : SystemSoundType.alert,
       );
-    } catch (_) {}
+    } on Exception catch (_) {}
   }
 
   String _apply(String text) {

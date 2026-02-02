@@ -3,18 +3,24 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../domain/models/story/scene.dart';
 import '../../providers/template_variable_provider.dart';
+import '../atoms/primary_button.dart';
 
-/// Pantalla de transición entre escenas
-/// Muestra la nueva ubicación y tiempo antes de empezar los diálogos
+/// Pantalla de transición entre escenas.
+///
+/// Muestra la ubicación y tiempo antes de empezar los diálogos.
 class SceneTransition extends ConsumerStatefulWidget {
+  /// Datos de la escena actual.
   final Scene scene;
+
+  /// Callback cuando el usuario continúa.
   final VoidCallback onContinue;
 
+  /// Crea un [SceneTransition].
   const SceneTransition({
-    Key? key,
     required this.scene,
     required this.onContinue,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   ConsumerState<SceneTransition> createState() => _SceneTransitionState();
@@ -82,8 +88,8 @@ class _SceneTransitionState extends ConsumerState<SceneTransition>
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            AppColors.primaryGreen.withOpacity(0.1),
-            AppColors.secondaryBlue.withOpacity(0.1),
+            AppColors.primaryGreen.withValues(alpha: 0.1),
+            AppColors.secondaryBlue.withValues(alpha: 0.1),
           ],
         ),
       ),
@@ -103,7 +109,7 @@ class _SceneTransitionState extends ConsumerState<SceneTransition>
                         vertical: 8,
                       ),
                       decoration: BoxDecoration(
-                        color: AppColors.primaryGreen.withOpacity(0.2),
+                        color: AppColors.primaryGreen.withValues(alpha: 0.2),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Text(
@@ -140,19 +146,19 @@ class _SceneTransitionState extends ConsumerState<SceneTransition>
                               shape: BoxShape.circle,
                               gradient: LinearGradient(
                                 colors: [
-                                  AppColors.primaryGreen.withOpacity(0.3),
-                                  AppColors.secondaryBlue.withOpacity(0.3),
+                                  AppColors.primaryGreen.withValues(alpha: 0.3),
+                                  AppColors.secondaryBlue.withValues(alpha: 0.3),
                                 ],
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                  color: AppColors.primaryGreen.withOpacity(0.3),
+                                  color: AppColors.primaryGreen.withValues(alpha: 0.3),
                                   blurRadius: 20,
                                   spreadRadius: 5,
                                 ),
                               ],
                             ),
-                            child: Icon(
+                            child: const Icon(
                               Icons.location_on,
                               size: 60,
                               color: AppColors.primaryGreen,
@@ -182,7 +188,7 @@ class _SceneTransitionState extends ConsumerState<SceneTransition>
                               const SizedBox(height: 8),
                               Text(
                                 locationEs,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 18,
                                   color: AppColors.textSecondary,
                                   fontStyle: FontStyle.italic,
@@ -205,17 +211,17 @@ class _SceneTransitionState extends ConsumerState<SceneTransition>
                             vertical: 10,
                           ),
                           decoration: BoxDecoration(
-                            color: AppColors.secondaryBlue.withOpacity(0.1),
+                            color: AppColors.secondaryBlue.withValues(alpha: 0.1),
                             borderRadius: BorderRadius.circular(20),
                             border: Border.all(
-                              color: AppColors.secondaryBlue.withOpacity(0.3),
+                              color: AppColors.secondaryBlue.withValues(alpha: 0.3),
                               width: 1,
                             ),
                           ),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.access_time,
                                 size: 18,
                                 color: AppColors.secondaryBlue,
@@ -223,7 +229,7 @@ class _SceneTransitionState extends ConsumerState<SceneTransition>
                               const SizedBox(width: 8),
                               Text(
                                 time,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 16,
                                   color: AppColors.secondaryBlue,
                                   fontWeight: FontWeight.w600,
@@ -241,7 +247,7 @@ class _SceneTransitionState extends ConsumerState<SceneTransition>
                           opacity: _fadeAnimation,
                           child: Text(
                             description,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 15,
                               color: AppColors.textSecondary,
                               height: 1.5,
@@ -265,31 +271,10 @@ class _SceneTransitionState extends ConsumerState<SceneTransition>
                 opacity: _fadeAnimation,
                 child: SizedBox(
                   width: double.infinity,
-                  child: ElevatedButton(
+                  child: PrimaryButton(
+                    text: 'Comenzar Escena',
+                    icon: Icons.arrow_forward,
                     onPressed: widget.onContinue,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.primaryGreen,
-                      foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      elevation: 4,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Text(
-                          'Comenzar Escena',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(width: 8),
-                        Icon(Icons.arrow_forward, size: 20),
-                      ],
-                    ),
                   ),
                 ),
               ),

@@ -7,25 +7,44 @@ import '../../../domain/models/story/dialogue.dart';
 import '../../../domain/models/episode/character.dart';
 import '../../providers/template_variable_provider.dart';
 import '../../providers/tts_provider.dart';
+import '../molecules/dialogue_actions_row.dart';
+import '../molecules/dialogue_bubble.dart';
+import '../molecules/dialogue_avatar_badge.dart';
+import '../molecules/character_name_label.dart';
+import '../molecules/dialogue_layout_row.dart';
 
-/// Burbuja de diálogo de personaje estilo The Office
+/// Burbuja de diálogo de personaje estilo The Office.
+///
+/// Muestra avatar, nombre y texto del diálogo con opciones de traducción.
 class CharacterDialogueBubble extends ConsumerStatefulWidget {
+  /// Datos del diálogo.
   final Dialogue dialogue;
+
+  /// Lista de personajes del episodio.
   final List<Character> episodeCharacters;
+
+  /// Callback cuando se toca una palabra de vocabulario.
   final Function(String)? onVocabTap;
+
+  /// Si el avatar va a la derecha.
   final bool avatarOnRight;
+
+  /// Si la burbuja se alinea a la derecha.
   final bool bubbleAlignRight;
+
+  /// Número de escena actual.
   final int sceneNumber;
 
+  /// Crea un [CharacterDialogueBubble].
   const CharacterDialogueBubble({
-    Key? key,
     required this.dialogue,
     required this.episodeCharacters,
     required this.sceneNumber,
+    super.key,
     this.onVocabTap,
     this.avatarOnRight = false,
     this.bubbleAlignRight = false,
-  }) : super(key: key);
+  });
 
   @override
   ConsumerState<CharacterDialogueBubble> createState() =>
@@ -41,13 +60,16 @@ class _CharacterDialogueBubbleState
 
   /// Obtiene el personaje por su ID
   Character? _getCharacter() {
-    if (widget.dialogue.characterId == null) return null;
+    if (widget.dialogue.characterId == null) {
+      return null;
+    }
     try {
       final target = _normalizeId(widget.dialogue.characterId ?? '');
       return widget.episodeCharacters.firstWhere(
         (char) => _normalizeId(char.characterId) == target,
+        orElse: () => widget.episodeCharacters.first, // Fallback al primer personaje
       );
-    } catch (e) {
+    } on Exception catch (_) {
       return null;
     }
   }
@@ -55,14 +77,30 @@ class _CharacterDialogueBubbleState
   /// Genera el icono del personaje basado en el nombre
   IconData _getCharacterIcon(String characterName) {
     final name = characterName.toUpperCase();
-    if (name.contains('MICHAEL')) return Icons.business_center;
-    if (name.contains('JIM')) return Icons.sports_basketball;
-    if (name.contains('PAM')) return Icons.brush;
-    if (name.contains('DWIGHT')) return Icons.agriculture;
-    if (name.contains('ANGELA')) return Icons.pets;
-    if (name.contains('KEVIN')) return Icons.fastfood;
-    if (name.contains('STANLEY')) return Icons.work;
-    if (name.contains('RYAN')) return Icons.laptop;
+    if (name.contains('MICHAEL')) {
+      return Icons.business_center;
+    }
+    if (name.contains('JIM')) {
+      return Icons.sports_basketball;
+    }
+    if (name.contains('PAM')) {
+      return Icons.brush;
+    }
+    if (name.contains('DWIGHT')) {
+      return Icons.agriculture;
+    }
+    if (name.contains('ANGELA')) {
+      return Icons.pets;
+    }
+    if (name.contains('KEVIN')) {
+      return Icons.fastfood;
+    }
+    if (name.contains('STANLEY')) {
+      return Icons.work;
+    }
+    if (name.contains('RYAN')) {
+      return Icons.laptop;
+    }
     return Icons.person;
   }
 
@@ -77,7 +115,9 @@ class _CharacterDialogueBubbleState
       widget.dialogue.characterId ?? '',
       avatarUrl,
     );
-    if (characterKey.isEmpty || _avatarCharacterKey == characterKey) return;
+    if (characterKey.isEmpty || _avatarCharacterKey == characterKey) {
+      return;
+    }
     final cacheKey = 'scene_${widget.sceneNumber}_character_$characterKey';
     final cached = AvatarAssetResolver.getCached(cacheKey);
     if (cached != null && cached.isNotEmpty) {
@@ -98,10 +138,14 @@ class _CharacterDialogueBubbleState
       fallbackName: fallbackName,
       cacheKey: cacheKey,
     );
-    if (!mounted) return;
+    if (!mounted) {
+      return;
+    }
     if (resolved.isNotEmpty) {
       await precacheImage(AssetImage(resolved), context);
-      if (!mounted) return;
+      if (!mounted) {
+        return;
+      }
       setState(() {
         _avatarCharacterKey = characterKey;
         _avatarAsset = resolved;
@@ -121,55 +165,12 @@ class _CharacterDialogueBubbleState
     }
           debugPrint('DIALOGUE_AVATAR render $displayName asset=$_avatarAsset');
 
-    final child = _avatarAsset.isNotEmpty
-        ? ClipOval(
-            key: ValueKey<String>(_avatarAsset),
-            child: SizedBox(
-              width: 48,
-              height: 48,
-              child: Image.asset(
-                _avatarAsset,
-                fit: BoxFit.cover,
-                gaplessPlayback: true,
-              ),
-            ),
-          )
-        : (_isAvatarLoading || hasAvatarHint
-            ? const SizedBox(
-                key: ValueKey<String>('avatar_placeholder'),
-                width: 48,
-                height: 48,
-              )
-            : Container(
-            key: ValueKey<String>('icon_$displayName'),
-            width: 48,
-            height: 48,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              gradient: LinearGradient(
-                colors: [
-                  AppColors.primaryGreen.withOpacity(0.3),
-                  AppColors.secondaryBlue.withOpacity(0.3),
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-            ),
-            child: Icon(
-              _getCharacterIcon(displayName),
-              color: AppColors.textPrimary,
-              size: 24,
-            ),
-          ));
-
-    return AnimatedSwitcher(
-      duration: const Duration(milliseconds: 260),
-      switchInCurve: Curves.easeOut,
-      switchOutCurve: Curves.easeIn,
-      transitionBuilder: (child, animation) {
-        return FadeTransition(opacity: animation, child: child);
-      },
-      child: child,
+    return DialogueAvatarBadge(
+      displayName: displayName,
+      avatarAsset: _avatarAsset,
+      isLoading: _isAvatarLoading,
+      hasAvatarHint: hasAvatarHint,
+      fallbackIcon: _getCharacterIcon(displayName),
     );
   }
 
@@ -247,13 +248,11 @@ class _CharacterDialogueBubbleState
       if (!foundMatch) {
         // Texto normal hasta la próxima palabra de vocabulario
         int nextVocabIndex = remainingText.length;
-        String nextWord = '';
-        
+
         for (final word in vocabWords) {
           final index = remainingText.toLowerCase().indexOf(word.toLowerCase());
           if (index > 0 && index < nextVocabIndex) {
             nextVocabIndex = index;
-            nextWord = word;
           }
         }
         
@@ -280,7 +279,9 @@ class _CharacterDialogueBubbleState
     final template = ref.read(templateVariableServiceProvider);
     final rawText = widget.dialogue.text ?? '';
     final text = template.replaceVariables(rawText);
-    if (text.trim().isEmpty) return;
+    if (text.trim().isEmpty) {
+      return;
+    }
     final tts = ref.read(ttsServiceProvider);
     await tts.speak(text);
   }
@@ -323,174 +324,67 @@ class _CharacterDialogueBubbleState
         .replaceVariables(displayNameRaw);
 
     final bubbleOnRight = widget.bubbleAlignRight;
-    final bubbleColor = bubbleOnRight
-        ? AppColors.secondaryBlue.withOpacity(0.12)
-        : AppColors.cardBackground;
-    final bubbleBorder = bubbleOnRight
-        ? AppColors.secondaryBlue.withOpacity(0.4)
-        : AppColors.primaryGreen.withOpacity(0.2);
-    final nameAlign = widget.avatarOnRight ? TextAlign.right : TextAlign.left;
     final contentAlign =
         bubbleOnRight ? CrossAxisAlignment.end : CrossAxisAlignment.start;
 
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment:
-          bubbleOnRight ? MainAxisAlignment.end : MainAxisAlignment.start,
-      children: [
-        if (!widget.avatarOnRight) ...[
-          // Avatar del personaje (izquierda)
-          _buildAvatar(
-            displayName,
-            hasAvatarHint: (character?.avatarUrl ?? '').isNotEmpty,
+    return DialogueLayoutRow(
+      avatarOnRight: widget.avatarOnRight,
+      avatar: _buildAvatar(
+        displayName,
+        hasAvatarHint: (character?.avatarUrl ?? '').isNotEmpty,
+      ),
+      content: Column(
+        crossAxisAlignment: contentAlign,
+        children: [
+          // Nombre del personaje
+          CharacterNameLabel(
+            name: displayName,
+            alignRight: widget.avatarOnRight,
+            padding: EdgeInsets.only(
+              left: widget.avatarOnRight ? 0 : 12,
+              right: widget.avatarOnRight ? 12 : 0,
+              bottom: 4,
+            ),
           ),
-          const SizedBox(width: 12),
-        ],
-
-        // Burbuja de diálogo
-        Expanded(
-          child: Column(
-            crossAxisAlignment: contentAlign,
-            children: [
-              // Nombre del personaje
-              Padding(
-                padding: EdgeInsets.only(
-                  left: widget.avatarOnRight ? 0 : 12,
-                  right: widget.avatarOnRight ? 12 : 0,
-                  bottom: 4,
+          
+          // Burbuja
+          DialogueBubble(
+            isRight: bubbleOnRight,
+            child: Column(
+              crossAxisAlignment: contentAlign,
+              children: [
+                // Texto del diálogo
+                _buildHighlightedText(context),
+                
+                // Botón de traducción
+                const SizedBox(height: 8),
+                DialogueActionsRow(
+                  isShowingTranslation: _showingTranslation,
+                  onToggleTranslation: () {
+                    setState(() {
+                      _showingTranslation = !_showingTranslation;
+                    });
+                  },
+                  onSpeak: _speakDialogue,
                 ),
-                child: Align(
-                  alignment: widget.avatarOnRight
-                      ? Alignment.centerRight
-                      : Alignment.centerLeft,
-                  child: Text(
-                    displayName,
-                    style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.textSecondary,
+                
+                // Emoción (opcional)
+                if (widget.dialogue.emotion != null && widget.dialogue.emotion!.isNotEmpty) ...[
+                  const SizedBox(height: 8),
+                  Text(
+                    '😊 ${widget.dialogue.emotion}',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: AppColors.textSecondary.withValues(alpha: 0.7),
+                      fontStyle: FontStyle.italic,
                     ),
-                    textAlign: nameAlign,
                   ),
-                ),
-              ),
-              
-              // Burbuja
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 12,
-                ),
-                decoration: BoxDecoration(
-                  color: bubbleColor,
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(
-                    color: bubbleBorder,
-                    width: 1,
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.05),
-                      blurRadius: 8,
-                      offset: const Offset(0, 2),
-                    ),
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: contentAlign,
-                  children: [
-                    // Texto del diálogo
-                    _buildHighlightedText(context),
-                    
-                    // Botón de traducción
-                    const SizedBox(height: 8),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            setState(() {
-                              _showingTranslation = !_showingTranslation;
-                            });
-                          },
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(
-                                _showingTranslation
-                                    ? Icons.translate_outlined
-                                    : Icons.translate,
-                                size: 16,
-                                color: AppColors.secondaryBlue,
-                              ),
-                              const SizedBox(width: 4),
-                              Text(
-                                _showingTranslation
-                                    ? 'Ver original'
-                                    : 'Ver traducción',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  color: AppColors.secondaryBlue,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(width: 12),
-                        InkWell(
-                          onTap: _speakDialogue,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: const [
-                              Icon(
-                                Icons.volume_up,
-                                size: 16,
-                                color: AppColors.primaryGreen,
-                              ),
-                              SizedBox(width: 4),
-                              Text(
-                                'Escuchar',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  color: AppColors.primaryGreen,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    
-                    // Emoción (opcional)
-                    if (widget.dialogue.emotion != null && widget.dialogue.emotion!.isNotEmpty) ...[
-                      const SizedBox(height: 8),
-                      Text(
-                        '😊 ${widget.dialogue.emotion}',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: AppColors.textSecondary.withOpacity(0.7),
-                          fontStyle: FontStyle.italic,
-                        ),
-                      ),
-                    ],
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-
-        if (widget.avatarOnRight) ...[
-          const SizedBox(width: 12),
-          // Avatar del personaje (derecha)
-          _buildAvatar(
-            displayName,
-            hasAvatarHint: (character?.avatarUrl ?? '').isNotEmpty,
+                ],
+              ],
+            ),
           ),
         ],
-      ],
+      ),
     );
   }
 }

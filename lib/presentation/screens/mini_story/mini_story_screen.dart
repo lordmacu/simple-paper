@@ -9,27 +9,39 @@ import '../../../presentation/providers/progress_providers.dart';
 import '../../../presentation/providers/tts_provider.dart';
 import '../../providers/template_variable_provider.dart';
 import '../../providers/personalization_providers.dart';
+import '../../widgets/atoms/primary_button.dart';
+import '../../widgets/molecules/bilingual_text_card.dart';
 
+/// mini story screen/widget
 class MiniStoryScreen extends ConsumerStatefulWidget {
+  ///  episode
   final Episode episode;
 
-  const MiniStoryScreen({super.key, required this.episode});
+  /// Crea una instancia de mini story screen.
+  const MiniStoryScreen({required this.episode, super.key});
 
   @override
   ConsumerState<MiniStoryScreen> createState() => _MiniStoryScreenState();
 }
 
 class _MiniStoryScreenState extends ConsumerState<MiniStoryScreen> {
+  // Guardar referencia al TTS service para usar en dispose
+  late final dynamic _ttsService;
+  
+  @override
+  void initState() {
+    super.initState();
+    _ttsService = ref.read(ttsServiceProvider);
+  }
+  
   @override
   void dispose() {
-    final tts = ref.read(ttsServiceProvider);
-    tts.stop();
+    _ttsService.stop();
     super.dispose();
   }
 
   void _stopAndClose() {
-    final tts = ref.read(ttsServiceProvider);
-    tts.stop();
+    _ttsService.stop();
   }
 
   @override
@@ -113,15 +125,8 @@ class _MiniStoryScreenState extends ConsumerState<MiniStoryScreen> {
             top: false,
             child: Padding(
               padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primaryGreen,
-                  foregroundColor: Colors.white,
-                  minimumSize: const Size(double.infinity, 52),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                ),
+              child: PrimaryButton(
+                text: 'Continuar',
                 onPressed: () async {
                   _stopAndClose();
                   await ref.read(markSectionCompletedProvider)(
@@ -132,10 +137,6 @@ class _MiniStoryScreenState extends ConsumerState<MiniStoryScreen> {
                     Navigator.of(context).pop();
                   }
                 },
-                child: const Text(
-                  'Continuar',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
               ),
             ),
           ),
@@ -191,21 +192,20 @@ class _ParagraphCard extends StatelessWidget {
           const SizedBox(height: 8),
           GestureDetector(
             onTap: onPlay,
-            child: Text(
-              enText,
-              style: const TextStyle(
+            child: BilingualTextCard(
+              textEn: enText,
+              textEs: esText,
+              backgroundColor: Colors.transparent,
+              padding: EdgeInsets.zero,
+              enStyle: const TextStyle(
                 fontSize: 16,
                 color: AppColors.textPrimary,
                 height: 1.4,
               ),
-            ),
-          ),
-          const SizedBox(height: 6),
-          Text(
-            esText,
-            style: const TextStyle(
-              color: AppColors.textSecondary,
-              height: 1.4,
+              esStyle: const TextStyle(
+                color: AppColors.textSecondary,
+                height: 1.4,
+              ),
             ),
           ),
         ],

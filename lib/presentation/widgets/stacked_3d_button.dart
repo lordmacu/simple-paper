@@ -1,30 +1,67 @@
 import 'package:flutter/material.dart';
 
+/// Botón 3D con efecto de apilamiento visual.
+///
+/// Crea un efecto de profundidad usando capas superpuestas.
 class Stacked3DButton extends StatelessWidget {
+  /// Desplazamiento de presión (0 = sin presionar, max = presionado).
   final double pressOffset;
+
+  /// Ancho del botón.
   final double width;
+
+  /// Altura del botón.
   final double height;
+
+  /// Color de la capa superior.
   final Color topColor;
+
+  /// Color de la base.
   final Color? baseColor;
+
+  /// Color del borde/cresta.
   final Color? ridgeColor;
+
+  /// Si está habilitado para interacción.
   final bool isEnabled;
+
+  /// Color cuando está deshabilitado.
   final Color? disabledColor;
+
+  /// Ícono a mostrar.
   final IconData? icon;
+
+  /// Tamaño del ícono.
   final double iconSize;
+
+  /// Color del ícono.
   final Color? iconColor;
+
+  /// Factor de aplastamiento de la capa superior.
   final double topSquash;
+
+  /// Factor de aplastamiento de la base.
   final double baseSquash;
+
+  /// Fracción del offset de la capa superior.
   final double topOffsetFraction;
+
+  /// Fracción del offset de la cresta.
   final double ridgeOffsetFraction;
+
+  /// Fracción de altura de la cresta.
   final double ridgeHeightFraction;
+
+  /// Delta de oscurecimiento para sombras.
   final double shadeDelta;
 
+  /// Crea un [Stacked3DButton].
   const Stacked3DButton({
+    required this.topColor,
     super.key,
     this.pressOffset = 0,
     this.width = 72,
     this.height = 75,
-    required this.topColor,
     this.baseColor,
     this.ridgeColor,
     this.isEnabled = true,
@@ -51,7 +88,7 @@ class Stacked3DButton extends StatelessWidget {
     final topOffset = height * topOffsetFraction;
     final ridgeOffset = height * ridgeOffsetFraction;
     final baseRidgeHeight = height * ridgeHeightFraction;
-    final maxPress = 10.0;
+    const maxPress = 10.0;
     final t = (pressOffset / maxPress).clamp(0.0, 1.0);
     final ridgeHeight = baseRidgeHeight * (1 - t);
     final baseSeed =
@@ -61,7 +98,7 @@ class Stacked3DButton extends StatelessWidget {
     final effectiveRidgeColor = ridgeColor ?? effectiveTopColor;
     final effectiveIconColor =
         (iconColor ?? (isEnabled ? Colors.white : Colors.white70))
-            .withOpacity(isEnabled ? 1 : 0.6);
+            .withValues(alpha: isEnabled ? 1 : 0.6);
 
     return SizedBox(
       width: width,
@@ -119,7 +156,8 @@ class Stacked3DButton extends StatelessWidget {
                     color: effectiveIconColor,
                     shadows: [
                       Shadow(
-                        color: effectiveTopColor.withOpacity(isEnabled ? 0.85 : 0.6),
+                        color: effectiveTopColor
+                            .withValues(alpha: isEnabled ? 0.85 : 0.6),
                         offset: const Offset(5, 5),
                         blurRadius: 0,
                       ),

@@ -6,8 +6,10 @@ part 'content_wrappers.g.dart';
 
 /// Contenedores de contenido que envuelven las secciones del episodio
 /// Provee intro, transición y conclusión con textos motivacionales
+/// Modelos wrapper para agrupar contenido de episodios, vocabulario, etc.
 @freezed
 class ContentWrappers with _$ContentWrappers {
+  /// Crea contenedores de contenido para un episodio.
   const factory ContentWrappers({
     /// Texto de introducción del episodio
     @JsonKey(name: 'intro_text') required BilingualText introText,
@@ -22,6 +24,7 @@ class ContentWrappers with _$ContentWrappers {
     @JsonKey(name: 'reflection_prompt') ReflectionPrompt? reflectionPrompt,
   }) = _ContentWrappers;
 
+  /// Crea ContentWrappers desde JSON.
   factory ContentWrappers.fromJson(Map<String, dynamic> json) =>
       _$ContentWrappersFromJson(json);
 }
@@ -29,6 +32,7 @@ class ContentWrappers with _$ContentWrappers {
 /// Texto bilingüe (inglés y español)
 @freezed
 class BilingualText with _$BilingualText {
+  /// Crea un texto bilingüe con versiones en inglés y español.
   const factory BilingualText({
     /// Texto en inglés
     required String en,
@@ -37,6 +41,7 @@ class BilingualText with _$BilingualText {
     required String es,
   }) = _BilingualText;
 
+  /// Crea BilingualText desde JSON.
   factory BilingualText.fromJson(Map<String, dynamic> json) =>
       _$BilingualTextFromJson(json);
 }

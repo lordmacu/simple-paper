@@ -3,12 +3,21 @@ import 'package:flutter/material.dart' show debugPrint;
 import 'package:flutter/services.dart' show rootBundle, AssetManifest;
 import '../sources/content_db.dart';
 
+/// Resultado de la importación de contenido.
 class ContentImportResult {
+  /// Cantidad de episodios importados.
   final int episodesImported;
+
+  /// Cantidad de fallos al importar episodios.
   final int episodeFailures;
+
+  /// Cantidad de entrevistas importadas.
   final int interviewsImported;
+
+  /// Cantidad de fallos al importar entrevistas.
   final int interviewFailures;
 
+  /// Crea un [ContentImportResult].
   const ContentImportResult({
     required this.episodesImported,
     required this.episodeFailures,
@@ -17,7 +26,11 @@ class ContentImportResult {
   });
 }
 
+/// Servicio de importación de contenido desde assets.
+///
+/// Carga episodios, entrevistas y listas de idioma desde los assets.
 class ContentImportService {
+  /// Crea un [ContentImportService].
   ContentImportService({ContentDb? db}) : _db = db ?? ContentDb();
 
   final ContentDb _db;
@@ -39,6 +52,7 @@ class ContentImportService {
     'CREED': 'male',
   };
 
+  /// Importa todo el contenido desde assets.
   Future<ContentImportResult> importAll() async {
     debugPrint('CONTENT_IMPORT start');
     await _db.clearContentTables();
@@ -92,7 +106,7 @@ class ContentImportService {
             json: jsonString,
           ),
         );
-      } catch (_) {
+      } on Exception catch (_) {
         episodeFailures++;
       }
     }
@@ -121,7 +135,7 @@ class ContentImportService {
             json: jsonString,
           ),
         );
-      } catch (_) {
+      } on Exception catch (_) {
         interviewFailures++;
       }
     }
@@ -173,18 +187,22 @@ class ContentImportService {
       await _db.insertCountries(countries);
       await _db.insertCities(cities);
       await _db.insertComparatives(comparatives);
-    } catch (e) {
+    } on Exception catch (e) {
       debugPrint('CONTENT_IMPORT language_lists_fail error=$e');
     }
   }
 
   int _episodeNumberFromMeta(Map<String, dynamic> meta, String path) {
     final number = meta['episode_number'];
-    if (number is int) return number;
+    if (number is int) {
+      return number;
+    }
     final match = RegExp(r'episode_a1_(\d{2})\.json$').firstMatch(path);
     if (match != null) {
       final parsed = int.tryParse(match.group(1) ?? '');
-      if (parsed != null) return parsed;
+      if (parsed != null) {
+        return parsed;
+      }
     }
     return 0;
   }
@@ -214,20 +232,28 @@ class ContentImportService {
   String _ensureCharacterGender(String jsonString) {
     try {
       final decoded = jsonDecode(jsonString);
-      if (decoded is! Map<String, dynamic>) return jsonString;
+      if (decoded is! Map<String, dynamic>) {
+        return jsonString;
+      }
       final interview = decoded['character_interview'];
-      if (interview is! Map<String, dynamic>) return jsonString;
+      if (interview is! Map<String, dynamic>) {
+        return jsonString;
+      }
       if (interview['character_gender'] is String &&
           (interview['character_gender'] as String).isNotEmpty) {
         return jsonString;
       }
       final name = (interview['character_name'] ?? '').toString().trim();
-      if (name.isEmpty) return jsonString;
+      if (name.isEmpty) {
+        return jsonString;
+      }
       final gender = _genderByName[name.toUpperCase()];
-      if (gender == null) return jsonString;
+      if (gender == null) {
+        return jsonString;
+      }
       interview['character_gender'] = gender;
       return jsonEncode(decoded);
-    } catch (_) {
+    } on Exception catch (_) {
       return jsonString;
     }
   }
@@ -236,7 +262,9 @@ class ContentImportService {
     final interviewId = _basenameWithoutExtension(path);
     final episodeMatch = RegExp(r'episode_a1_(\d{2})').firstMatch(path);
     final episodeNumber = int.tryParse(episodeMatch?.group(1) ?? '');
-    if (episodeNumber == null) return null;
+    if (episodeNumber == null) {
+      return null;
+    }
 
     final base = interviewId;
     final charFromEpisodePrefix =

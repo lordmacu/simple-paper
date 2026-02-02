@@ -1,5 +1,6 @@
 import '../../../domain/models/game/game.dart';
 
+/// Juego de repaso usando tarjetas de memoria (flashcards).
 class ReviewFlashcardGame implements Game {
   @override
   final String gameId;
@@ -19,8 +20,10 @@ class ReviewFlashcardGame implements Game {
   @override
   final String instructionsEs;
 
+  /// La lista de tarjetas de memoria para este juego.
   final List<ReviewFlashcardCard> cards;
 
+  /// Crea una instancia de [ReviewFlashcardGame].
   ReviewFlashcardGame({
     required this.gameId,
     required this.gameType,
@@ -60,12 +63,21 @@ class ReviewFlashcardGame implements Game {
   int calculateScore(List answers, {int? timeSpent}) => 0;
 }
 
+/// Representa una tarjeta de memoria con contenido frontal y trasero.
 class ReviewFlashcardCard {
+  /// El contenido del frente de la tarjeta.
   final String front;
+  
+  /// El contenido de la parte trasera de la tarjeta.
   final String back;
+  
+  /// Pista opcional para ayudar al usuario.
   final String? hint;
+  
+  /// Traducción en español de la pista.
   final String? hintEs;
 
+  /// Crea una instancia de [ReviewFlashcardCard].
   const ReviewFlashcardCard({
     required this.front,
     required this.back,

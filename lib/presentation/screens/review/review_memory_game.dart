@@ -1,5 +1,6 @@
 import '../../../domain/models/game/game.dart';
 
+/// Juego de repaso de memoria para emparejar elementos relacionados.
 class ReviewMemoryGame implements Game {
   @override
   final String gameId;
@@ -19,8 +20,10 @@ class ReviewMemoryGame implements Game {
   @override
   final String instructionsEs;
 
+  /// La lista de pares a emparejar en el juego.
   final List<ReviewMemoryPair> pairs;
 
+  /// Crea una instancia de [ReviewMemoryGame].
   ReviewMemoryGame({
     required this.gameId,
     required this.gameType,
@@ -60,11 +63,18 @@ class ReviewMemoryGame implements Game {
   int calculateScore(List answers, {int? timeSpent}) => 0;
 }
 
+/// Representa un par de elementos relacionados para el juego de memoria.
 class ReviewMemoryPair {
+  /// El identificador único del par.
   final int id;
+  
+  /// El elemento del lado izquierdo.
   final String left;
+  
+  /// El elemento del lado derecho.
   final String right;
 
+  /// Crea una instancia de [ReviewMemoryPair].
   const ReviewMemoryPair({
     required this.id,
     required this.left,

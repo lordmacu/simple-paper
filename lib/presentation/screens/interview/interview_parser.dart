@@ -1,7 +1,14 @@
 import 'dart:convert';
 import 'character_interview_screen.dart';
 
+/// Parser para convertir JSON de entrevistas de personajes a objetos Dart
 class InterviewParser {
+  /// Parsea un JSON de entrevista de personaje.
+  ///
+  /// Parámetros:
+  /// - [jsonString]: String JSON con la entrevista
+  /// - [episodeNumber]: Número del episodio
+  /// - [fallbackName]: Nombre alternativo si no se encuentra
   static CharacterInterview? parse(
     String jsonString, {
     required int episodeNumber,

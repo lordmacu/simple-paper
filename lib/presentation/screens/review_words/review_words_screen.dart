@@ -7,9 +7,14 @@ import '../../../domain/models/progress/review_word_entry.dart';
 import '../../../domain/models/vocabulary/vocabulary_word.dart';
 import '../../providers/episode_providers.dart';
 import '../../providers/progress_providers.dart';
+import '../../widgets/atoms/icon_text_button.dart';
+import '../../widgets/atoms/primary_button.dart';
+import '../../widgets/molecules/section_title_with_action.dart';
 import '../../widgets/vocabulary/vocabulary_definition_popup.dart';
 
+/// review words screen/widget
 class ReviewWordsScreen extends ConsumerWidget {
+  /// Crea una instancia de review words screen.
   const ReviewWordsScreen({super.key});
 
   Future<void> _showWordDefinition(
@@ -19,6 +24,10 @@ class ReviewWordsScreen extends ConsumerWidget {
   ) async {
     final repository = ref.read(episodeRepositoryProvider);
     final episode = await repository.getEpisodeByNumber(entry.episodeNumber);
+
+    if (!context.mounted) {
+      return;
+    }
 
     if (episode == null) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -32,7 +41,7 @@ class ReviewWordsScreen extends ConsumerWidget {
       word = episode.vocabularyFocus.targetWords.firstWhere(
         (w) => w.word.toLowerCase() == entry.word.toLowerCase(),
       );
-    } catch (_) {
+    } on Exception catch (_) {
       word = null;
     }
 
@@ -40,6 +49,10 @@ class ReviewWordsScreen extends ConsumerWidget {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Palabra no encontrada en el episodio.')),
       );
+      return;
+    }
+
+    if (!context.mounted) {
       return;
     }
 
@@ -86,12 +99,12 @@ class ReviewWordsScreen extends ConsumerWidget {
                 top: -120,
                 right: -80,
                 child:
-                    _Bubble(color: AppColors.secondaryBlue.withOpacity(0.15), size: 220),
+                    _Bubble(color: AppColors.secondaryBlue.withValues(alpha: 0.15), size: 220),
               ),
               Positioned(
                 bottom: -100,
                 left: -60,
-                child: _Bubble(color: AppColors.primaryGreen.withOpacity(0.12), size: 260),
+                child: _Bubble(color: AppColors.primaryGreen.withValues(alpha: 0.12), size: 260),
               ),
               ListView.builder(
                 padding: const EdgeInsets.fromLTRB(16, 8, 16, 28),
@@ -104,9 +117,10 @@ class ReviewWordsScreen extends ConsumerWidget {
                         const SizedBox(height: 6),
                         const Padding(
                           padding: EdgeInsets.symmetric(horizontal: 4.0),
-                          child: Text(
-                            'Palabras para repasar',
-                            style: TextStyle(
+                          child: SectionTitleWithAction(
+                            title: 'Palabras para repasar',
+                            padding: EdgeInsets.zero,
+                            titleStyle: TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.w800,
                               color: AppColors.textPrimary,
@@ -202,7 +216,7 @@ class _HeroHeader extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.12),
+            color: Colors.black.withValues(alpha: 0.12),
             blurRadius: 16,
             offset: const Offset(0, 8),
           ),
@@ -214,7 +228,7 @@ class _HeroHeader extends StatelessWidget {
             width: 64,
             height: 64,
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.18),
+              color: Colors.white.withValues(alpha: 0.18),
               shape: BoxShape.circle,
             ),
             child: const Center(
@@ -238,7 +252,7 @@ class _HeroHeader extends StatelessWidget {
                 Text(
                   '$totalMistakes errores detectados',
                   style: TextStyle(
-                    color: Colors.white.withOpacity(0.9),
+                    color: Colors.white.withValues(alpha: 0.9),
                   ),
                 ),
               ],
@@ -272,7 +286,7 @@ class _ReviewCard extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            colorSeed.withOpacity(0.12),
+            colorSeed.withValues(alpha: 0.12),
             Colors.white,
           ],
           begin: Alignment.topLeft,
@@ -281,7 +295,7 @@ class _ReviewCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(18),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.04),
+            color: Colors.black.withValues(alpha: 0.04),
             blurRadius: 8,
             offset: const Offset(0, 4),
           ),
@@ -297,7 +311,7 @@ class _ReviewCard extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                   decoration: BoxDecoration(
-                    color: badgeColor.withOpacity(0.18),
+                    color: badgeColor.withValues(alpha: 0.18),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(
@@ -335,13 +349,11 @@ class _ReviewCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                TextButton.icon(
-                  onPressed: onReview,
-                  icon: const Icon(Icons.visibility, color: AppColors.secondaryBlue),
-                  label: const Text(
-                    'Ver definición',
-                    style: TextStyle(color: AppColors.secondaryBlue),
-                  ),
+                IconTextButton(
+                  label: 'Ver definición',
+                  icon: Icons.visibility,
+                  onTap: onReview,
+                  foregroundColor: AppColors.secondaryBlue,
                 ),
               ],
             ),
@@ -396,12 +408,12 @@ class _EmptyState extends StatelessWidget {
         Positioned(
           top: -140,
           right: -80,
-          child: _Bubble(color: AppColors.secondaryBlue.withOpacity(0.15), size: 240),
+          child: _Bubble(color: AppColors.secondaryBlue.withValues(alpha: 0.15), size: 240),
         ),
         Positioned(
           bottom: -120,
           left: -80,
-          child: _Bubble(color: AppColors.primaryGreen.withOpacity(0.12), size: 260),
+          child: _Bubble(color: AppColors.primaryGreen.withValues(alpha: 0.12), size: 260),
         ),
         Center(
           child: Column(
@@ -423,17 +435,10 @@ class _EmptyState extends StatelessWidget {
                 style: TextStyle(color: AppColors.textSecondary),
               ),
               const SizedBox(height: 16),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primaryGreen,
-                  foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                ),
+              PrimaryButton(
+                text: 'Volver',
+                compact: true,
                 onPressed: onBack,
-                child: const Text('Volver'),
               ),
             ],
           ),

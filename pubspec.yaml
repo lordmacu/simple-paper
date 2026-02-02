@@ -31,6 +31,9 @@ dependencies:
   # Navigation
   go_router: ^14.6.2
 
+  # Web
+  web: ^1.1.0
+
   # Storage
   shared_preferences: ^2.3.4
   sqflite: ^2.4.1

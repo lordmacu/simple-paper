@@ -1,9 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../data/repositories/personalization_repository.dart';
-import '../../data/services/template_variable_service.dart';
 import 'progress_providers.dart' as progress;
 import 'template_variable_provider.dart';
 import 'character_providers.dart' as characters;
@@ -140,6 +138,7 @@ final renameCharacterProvider =
   };
 });
 
+/// Retorna la clave de template para un personaje.
 String? _templateKeyForCharacter(String characterId) {
   switch (characterId) {
     case 'char_boss':

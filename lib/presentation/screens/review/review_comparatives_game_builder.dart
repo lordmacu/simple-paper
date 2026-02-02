@@ -8,6 +8,7 @@ import 'review_game_helpers.dart';
 import 'review_memory_game.dart';
 import 'review_types.dart';
 
+/// Construye un juego de comparativos
 Game buildComparativesGame(
   List<Map<String, String>> items,
   ReviewGameType type,
@@ -164,7 +165,9 @@ Game buildComparativesGame(
         final pool = reviewShuffle(items).take(6).toList();
         final options = <String>{correct['comparative']!};
         for (final item in pool) {
-          if (options.length >= 6) break;
+          if (options.length >= 6) {
+            break;
+          }
           options.add(item['comparative']!);
         }
         final optionList = options.toList()..shuffle();

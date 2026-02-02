@@ -1,6 +1,7 @@
 /// Widget tests for The Office English Learning App
 ///
 /// Basic smoke tests to verify the app initializes correctly
+library;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';

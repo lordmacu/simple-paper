@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../widgets/atoms/primary_button.dart';
+import '../../widgets/molecules/section_header.dart';
 
+/// interview summary screen/widget
 class InterviewSummaryScreen extends StatelessWidget {
+  /// int
   final int correct;
+  /// int
   final int total;
+  ///  list< string>
   final List<String> grammarPoints;
+  ///  list< string>
   final List<String> vocabularyUsed;
+  /// Callback cuando el usuario continúa
   final VoidCallback onContinue;
 
+  /// Crea una pantalla de resumen de entrevista.
   const InterviewSummaryScreen({
-    Key? key,
-    required this.correct,
-    required this.total,
-    required this.grammarPoints,
-    required this.vocabularyUsed,
-    required this.onContinue,
-  }) : super(key: key);
+    required this.correct, required this.total, required this.grammarPoints, required this.vocabularyUsed, required this.onContinue, super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -40,9 +44,10 @@ class InterviewSummaryScreen extends StatelessWidget {
                         onPressed: () => Navigator.pop(context),
                       ),
                       const SizedBox(height: 8),
-                      const Text(
-                        'Resumen de la entrevista',
-                        style: TextStyle(
+                      const SectionHeader(
+                        title: 'Resumen de la entrevista',
+                        padding: EdgeInsets.zero,
+                        titleStyle: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.w800,
                           color: AppColors.textPrimary,
@@ -87,23 +92,9 @@ class InterviewSummaryScreen extends StatelessWidget {
               ),
               SizedBox(
                 width: double.infinity,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primaryGreen,
-                    foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(vertical: 14),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(14),
-                    ),
-                  ),
+                child: PrimaryButton(
+                  text: 'Continuar',
                   onPressed: onContinue,
-                  child: const Text(
-                    'Continuar',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
                 ),
               ),
             ],
@@ -132,7 +123,7 @@ class _StatCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.08),
+        color: color.withValues(alpha: 0.08),
         borderRadius: BorderRadius.circular(14),
       ),
       child: Row(

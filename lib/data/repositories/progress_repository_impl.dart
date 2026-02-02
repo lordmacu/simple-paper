@@ -1,9 +1,8 @@
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'dart:math';
 import '../../domain/models/progress/user_progress.dart';
-import '../../domain/models/progression/achievement.dart';
 import '../../domain/models/progress/review_word_entry.dart';
+import '../../domain/models/progression/achievement.dart';
 import '../../domain/repositories/i_progress_repository.dart';
 import '../sources/review_words_db.dart';
 import '../services/achievement_service.dart';
@@ -13,10 +12,15 @@ class ProgressRepositoryImpl implements IProgressRepository {
   static const String _progressKey = 'user_progress';
   static const String _sectionProgressKey = 'section_progress_v1';
   static const String _interviewProgressKey = 'interview_progress_v1';
+  static const String _gameResultKey = 'user_progress_game_results';
   final SharedPreferences _prefs;
   final ReviewWordsDb _reviewWordsDb;
   final AchievementService _achievementService;
 
+  /// Crea una implementación del repositorio de progreso.
+  /// [prefs] Instancia de SharedPreferences para persistencia.
+  /// [reviewWordsDb] Base de datos de palabras para repasar (opcional).
+  /// [achievementService] Servicio de logros (opcional).
   ProgressRepositoryImpl(
     this._prefs, {
     ReviewWordsDb? reviewWordsDb,
@@ -25,6 +29,7 @@ class ProgressRepositoryImpl implements IProgressRepository {
         _achievementService = achievementService ?? AchievementService();
 
   // Nuevos métodos para UserProgress
+  @override
   Future<UserProgress> getUserProgress() async {
     final jsonString = _prefs.getString(_progressKey);
     final reviewWords = await _reviewWordsDb.getAllWords();
@@ -38,11 +43,13 @@ class ProgressRepositoryImpl implements IProgressRepository {
     return progress.copyWith(reviewWords: reviewWords);
   }
 
+  @override
   Future<void> saveUserProgress(UserProgress progress) async {
     final jsonString = jsonEncode(progress.toJson());
     await _prefs.setString(_progressKey, jsonString);
   }
 
+  @override
   Future<void> completeEpisode({
     required int episodeNumber,
     required int starsEarned,
@@ -64,6 +71,22 @@ class ProgressRepositoryImpl implements IProgressRepository {
     updatedCompletedEpisodes[episodeNumber] = episodeProgress;
     
     currentProgress = _updateStreak(currentProgress);
+
+    // Detectar primer episodio completado
+    if (updatedCompletedEpisodes.length == 1 && 
+        !currentProgress.achievements.any((a) => a.id == 'first_episode')) {
+      // Agregar achievement de primer episodio manualmente
+      final firstEpisodeAchievement = Achievement(
+        id: 'first_episode',
+        name: _getAchievementName('first_episode'),
+        description: _getAchievementDescription('first_episode'),
+        unlocked: true,
+        unlockedAt: DateTime.now(),
+      );
+      currentProgress = currentProgress.copyWith(
+        achievements: [...currentProgress.achievements, firstEpisodeAchievement],
+      );
+    }
 
     // Desbloquear siguiente episodio si no está desbloqueado
     final nextEpisode = episodeNumber + 1;
@@ -98,6 +121,7 @@ class ProgressRepositoryImpl implements IProgressRepository {
     await saveUserProgress(newProgress);
   }
 
+  @override
   Future<EpisodeProgress?> getEpisodeProgress(int episodeNumber) async {
     final progress = await getUserProgress();
     return progress.completedEpisodes[episodeNumber];
@@ -163,7 +187,9 @@ class ProgressRepositoryImpl implements IProgressRepository {
   @override
   Future<void> unlockEpisode(int episodeNumber) async {
     final progress = await getUserProgress();
-    if (episodeNumber <= progress.lastUnlockedEpisode) return;
+    if (episodeNumber <= progress.lastUnlockedEpisode) {
+      return;
+    }
     final updated = progress.copyWith(
       lastUnlockedEpisode: episodeNumber,
       lastAccessDate: DateTime.now(),
@@ -183,14 +209,18 @@ class ProgressRepositoryImpl implements IProgressRepository {
     required String level,
     required int episodeNumber,
   }) async {
-    if (words.isEmpty) return;
+    if (words.isEmpty) {
+      return;
+    }
 
     final normalized = words
         .map((word) => word.trim().toLowerCase())
         .where((word) => word.isNotEmpty)
         .toList();
 
-    if (normalized.isEmpty) return;
+    if (normalized.isEmpty) {
+      return;
+    }
 
     await _reviewWordsDb.addWords(
       words: normalized,
@@ -243,13 +273,54 @@ class ProgressRepositoryImpl implements IProgressRepository {
 
   @override
   Future<void> unlockAchievement(String achievementId) async {
-    // TODO: Implementar cuando tengamos el sistema de achievements
+    final currentProgress = await getUserProgress();
+    
+    // Verificar si el achievement ya está desbloqueado
+    final existingAchievement = currentProgress.achievements.where(
+      (a) => a.id == achievementId,
+    ).firstOrNull;
+    
+    if (existingAchievement != null && existingAchievement.unlocked) {
+      return; // Ya está desbloqueado
+    }
+    
+    // Crear o actualizar el achievement
+    final updatedAchievements = currentProgress.achievements.toList();
+    
+    if (existingAchievement != null) {
+      // Actualizar achievement existente
+      final index = updatedAchievements.indexOf(existingAchievement);
+      updatedAchievements[index] = existingAchievement.copyWith(
+        unlocked: true,
+        unlockedAt: DateTime.now(),
+      );
+    } else {
+      // Crear nuevo achievement con datos básicos
+      updatedAchievements.add(Achievement(
+        id: achievementId,
+        name: _getAchievementName(achievementId),
+        description: _getAchievementDescription(achievementId),
+        unlocked: true,
+        unlockedAt: DateTime.now(),
+      ));
+    }
+    
+    final updatedProgress = currentProgress.copyWith(
+      achievements: updatedAchievements,
+    );
+    
+    await saveUserProgress(updatedProgress);
   }
 
   @override
   Future<bool> isAchievementUnlocked(String achievementId) async {
-    // TODO: Implementar cuando tengamos el sistema de achievements
-    return false;
+    final currentProgress = await getUserProgress();
+    
+    final achievement = currentProgress.achievements.where(
+      (a) => a.id == achievementId,
+    ).firstOrNull;
+    
+    return achievement?.unlocked ?? false;
   }
 
   @override
@@ -259,13 +330,167 @@ class ProgressRepositoryImpl implements IProgressRepository {
     int score,
     int timeSpent,
   ) async {
-    // TODO: Implementar cuando tengamos el sistema de game results
+    // Validaciones
+    if (episodeNumber <= 0) {
+      throw ArgumentError('Episode number must be positive');
+    }
+    if (gameId.trim().isEmpty) {
+      throw ArgumentError('Game ID cannot be empty');
+    }
+    if (score < 0) {
+      throw ArgumentError('Score cannot be negative');
+    }
+    if (timeSpent < 0) {
+      throw ArgumentError('Time spent cannot be negative');
+    }
+    
+    final existingData = _prefs.getString(_gameResultKey);
+    
+    Map<String, dynamic> gameResults = {};
+    if (existingData != null && existingData.isNotEmpty) {
+      try {
+        gameResults = Map<String, dynamic>.from(
+          json.decode(existingData) as Map,
+        );
+      } on Exception {
+        // Si hay error al parsear, empezar con datos vacíos
+        gameResults = {};
+      }
+    }
+    
+    // Estructura: episodeNumber -> gameId -> {score, timeSpent, attempts, bestScore}
+    final episodeKey = episodeNumber.toString();
+    final episodeData = Map<String, dynamic>.from(
+      gameResults[episodeKey] as Map? ?? {},
+    );
+    
+    final gameData = Map<String, dynamic>.from(
+      episodeData[gameId] as Map? ?? {},
+    );
+    
+    final currentBestScore = gameData['bestScore'] as int? ?? 0;
+    final attempts = (gameData['attempts'] as int? ?? 0) + 1;
+    
+    // Actualizar datos del juego
+    gameData['score'] = score;
+    gameData['timeSpent'] = timeSpent;
+    gameData['attempts'] = attempts;
+    gameData['lastPlayed'] = DateTime.now().toIso8601String();
+    
+    // Actualizar mejor puntuación si es necesario
+    if (score > currentBestScore) {
+      gameData['bestScore'] = score;
+      gameData['bestScoreDate'] = DateTime.now().toIso8601String();
+    }
+    
+    episodeData[gameId] = gameData;
+    gameResults[episodeKey] = episodeData;
+    
+    await _prefs.setString(_gameResultKey, json.encode(gameResults));
   }
 
   @override
   Future<Map<String, int>> getGameResults(int episodeNumber) async {
-    // TODO: Implementar cuando tengamos el sistema de game results
-    return {};
+    final existingData = _prefs.getString(_gameResultKey);
+    
+    if (existingData == null || existingData.isEmpty) {
+      return {};
+    }
+    
+    try {
+      final gameResults = Map<String, dynamic>.from(
+        json.decode(existingData) as Map,
+      );
+      
+      final episodeKey = episodeNumber.toString();
+      final episodeData = gameResults[episodeKey] as Map?;
+      
+      if (episodeData == null) {
+        return {};
+      }
+      
+      // Retornar gameId -> bestScore
+      final results = <String, int>{};
+      for (final entry in episodeData.entries) {
+        final gameId = entry.key as String;
+        final gameData = entry.value as Map?;
+        if (gameData != null) {
+          results[gameId] = gameData['bestScore'] as int? ?? 0;
+        }
+      }
+      
+      return results;
+    } on Exception {
+      return {};
+    }
+  }
+
+  /// Obtiene estadísticas detalladas de un juego específico
+  @override
+  Future<Map<String, dynamic>?> getGameStats(int episodeNumber, String gameId) async {
+    final existingData = _prefs.getString(_gameResultKey);
+    
+    if (existingData == null || existingData.isEmpty) {
+      return null;
+    }
+    
+    try {
+      final gameResults = Map<String, dynamic>.from(
+        json.decode(existingData) as Map,
+      );
+      
+      final episodeKey = episodeNumber.toString();
+      final episodeData = gameResults[episodeKey] as Map?;
+      
+      if (episodeData == null) {
+        return null;
+      }
+      
+      final gameData = episodeData[gameId] as Map?;
+      return gameData != null ? Map<String, dynamic>.from(gameData) : null;
+    } on Exception {
+      return null;
+    }
+  }
+
+  /// Obtiene el nombre de un achievement basado en su ID
+  String _getAchievementName(String achievementId) {
+    switch (achievementId) {
+      case 'xp_500':
+        return '500 XP';
+      case 'xp_1000':
+        return '1K XP';
+      case 'ep_10':
+        return '10 Episodes';
+      case 'streak_3':
+        return 'Streak Master';
+      case 'first_episode':
+        return 'First Steps';
+      case 'perfect_episode':
+        return 'Perfectionist';
+      default:
+        return 'Achievement';
+    }
+  }
+  
+  /// Obtiene la descripción de un achievement basado en su ID
+  String _getAchievementDescription(String achievementId) {
+    switch (achievementId) {
+      case 'xp_500':
+        return 'Alcanza 500 XP';
+      case 'xp_1000':
+        return 'Alcanza 1000 XP';
+      case 'ep_10':
+        return 'Completa 10 episodios';
+      case 'streak_3':
+        return 'Mantén 3 días seguidos de práctica';
+      case 'first_episode':
+        return 'Complete your first episode';
+      case 'perfect_episode':
+        return 'Complete an episode with perfect score';
+      default:
+        return 'Unlock this achievement by progressing in the app';
+    }
   }
 
   @override
@@ -287,7 +512,9 @@ class ProgressRepositoryImpl implements IProgressRepository {
   }) async {
     final map = await _getSectionProgressMap();
     final current = map[episodeNumber] ?? <String>{};
-    if (current.contains(sectionId)) return;
+    if (current.contains(sectionId)) {
+      return;
+    }
     final updated = {...current, sectionId};
     map[episodeNumber] = updated;
     await _saveSectionProgressMap(map);
@@ -324,19 +551,25 @@ class ProgressRepositoryImpl implements IProgressRepository {
       interviewId: interviewId,
     );
     final list = _prefs.getStringList(_interviewProgressKey) ?? [];
-    if (list.contains(key)) return;
+    if (list.contains(key)) {
+      return;
+    }
     final updated = [...list, key];
     await _prefs.setStringList(_interviewProgressKey, updated);
   }
 
   Future<Map<int, Set<String>>> _getSectionProgressMap() async {
     final jsonString = _prefs.getString(_sectionProgressKey);
-    if (jsonString == null) return {};
+    if (jsonString == null) {
+      return {};
+    }
     final decoded = jsonDecode(jsonString) as Map<String, dynamic>;
     final result = <int, Set<String>>{};
     for (final entry in decoded.entries) {
       final key = int.tryParse(entry.key);
-      if (key == null) continue;
+      if (key == null) {
+        continue;
+      }
       final list = (entry.value as List).whereType<String>().toSet();
       result[key] = list;
     }
@@ -384,7 +617,9 @@ class ProgressRepositoryImpl implements IProgressRepository {
     int xpRemaining = totalXp;
     while (true) {
       final required = 80 + 25 * (level - 1);
-      if (xpRemaining < required) break;
+      if (xpRemaining < required) {
+        break;
+      }
       xpRemaining -= required;
       level++;
     }

@@ -7,7 +7,9 @@ import '../../providers/personalization_providers.dart';
 import '../../providers/template_variable_provider.dart';
 import '../../../domain/models/character/unlocked_character.dart';
 
+/// character management screen/widget
 class CharacterManagementScreen extends ConsumerWidget {
+  /// Crea una instancia de character management screen.
   const CharacterManagementScreen({super.key});
 
   @override
@@ -70,7 +72,7 @@ class _CharacterList extends ConsumerWidget {
           child: ListTile(
             leading: CircleAvatar(
               backgroundColor:
-                  isUnlocked ? AppColors.primaryGreen.withOpacity(0.15) : Colors.grey.shade300,
+                  isUnlocked ? AppColors.primaryGreen.withValues(alpha: 0.15) : Colors.grey.shade300,
               child: Icon(
                 isUnlocked ? Icons.person : Icons.lock,
                 color: isUnlocked ? AppColors.primaryGreen : Colors.grey,
@@ -152,7 +154,9 @@ class _CharacterList extends ConsumerWidget {
                   if (key != null) {
                     ref.read(templateVariableServiceProvider).updateVariable(key, newName);
                   }
-                  if (context.mounted) Navigator.of(context).pop();
+                  if (context.mounted) {
+                    Navigator.of(context).pop();
+                  }
                 },
                 child: const Text('Guardar'),
               ),
@@ -169,7 +173,9 @@ class _CharacterList extends ConsumerWidget {
                   if (key != null) {
                     ref.read(templateVariableServiceProvider).updateVariable(key, defaultName);
                   }
-                  if (context.mounted) Navigator.of(context).pop();
+                  if (context.mounted) {
+                    Navigator.of(context).pop();
+                  }
                 },
                 child: const Text('Reset'),
               ),

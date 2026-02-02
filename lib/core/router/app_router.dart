@@ -7,6 +7,7 @@ import 'package:office_app/presentation/screens/profile/profile_screen.dart';
 import 'package:office_app/presentation/screens/settings/settings_screen.dart';
 import 'package:office_app/presentation/screens/review/review_home_screen.dart';
 
+/// Provider del router principal de la aplicación.
 final appRouterProvider = Provider<GoRouter>((ref) {
   return GoRouter(
     initialLocation: '/home',
@@ -42,6 +43,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
   );
 });
 
+/// Crea una página con transición fade + slide.
 CustomTransitionPage _fadeSlidePage(Widget child, GoRouterState state) {
   return CustomTransitionPage(
     key: state.pageKey,

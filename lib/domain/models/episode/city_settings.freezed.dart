@@ -295,17 +295,17 @@ mixin _$CitySettings {
   @JsonKey(name: 'default_city')
   String get defaultCity => throw _privateConstructorUsedError;
 
+  /// City-specific content
+  @JsonKey(name: 'city_specific_content')
+  CitySpecificContent get citySpecificContent =>
+      throw _privateConstructorUsedError;
+
   /// User-selected city
   @JsonKey(name: 'user_selected_city')
   String? get userSelectedCity => throw _privateConstructorUsedError;
 
   /// Can the city be localized?
   bool get localizable => throw _privateConstructorUsedError;
-
-  /// City-specific content
-  @JsonKey(name: 'city_specific_content')
-  CitySpecificContent get citySpecificContent =>
-      throw _privateConstructorUsedError;
 
   /// Serializes this CitySettings to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -326,10 +326,10 @@ abstract class $CitySettingsCopyWith<$Res> {
   @useResult
   $Res call({
     @JsonKey(name: 'default_city') String defaultCity,
-    @JsonKey(name: 'user_selected_city') String? userSelectedCity,
-    bool localizable,
     @JsonKey(name: 'city_specific_content')
     CitySpecificContent citySpecificContent,
+    @JsonKey(name: 'user_selected_city') String? userSelectedCity,
+    bool localizable,
   });
 
   $CitySpecificContentCopyWith<$Res> get citySpecificContent;
@@ -351,9 +351,9 @@ class _$CitySettingsCopyWithImpl<$Res, $Val extends CitySettings>
   @override
   $Res call({
     Object? defaultCity = null,
+    Object? citySpecificContent = null,
     Object? userSelectedCity = freezed,
     Object? localizable = null,
-    Object? citySpecificContent = null,
   }) {
     return _then(
       _value.copyWith(
@@ -361,6 +361,10 @@ class _$CitySettingsCopyWithImpl<$Res, $Val extends CitySettings>
                 ? _value.defaultCity
                 : defaultCity // ignore: cast_nullable_to_non_nullable
                       as String,
+            citySpecificContent: null == citySpecificContent
+                ? _value.citySpecificContent
+                : citySpecificContent // ignore: cast_nullable_to_non_nullable
+                      as CitySpecificContent,
             userSelectedCity: freezed == userSelectedCity
                 ? _value.userSelectedCity
                 : userSelectedCity // ignore: cast_nullable_to_non_nullable
@@ -369,10 +373,6 @@ class _$CitySettingsCopyWithImpl<$Res, $Val extends CitySettings>
                 ? _value.localizable
                 : localizable // ignore: cast_nullable_to_non_nullable
                       as bool,
-            citySpecificContent: null == citySpecificContent
-                ? _value.citySpecificContent
-                : citySpecificContent // ignore: cast_nullable_to_non_nullable
-                      as CitySpecificContent,
           )
           as $Val,
     );
@@ -402,10 +402,10 @@ abstract class _$$CitySettingsImplCopyWith<$Res>
   @useResult
   $Res call({
     @JsonKey(name: 'default_city') String defaultCity,
-    @JsonKey(name: 'user_selected_city') String? userSelectedCity,
-    bool localizable,
     @JsonKey(name: 'city_specific_content')
     CitySpecificContent citySpecificContent,
+    @JsonKey(name: 'user_selected_city') String? userSelectedCity,
+    bool localizable,
   });
 
   @override
@@ -427,9 +427,9 @@ class __$$CitySettingsImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? defaultCity = null,
+    Object? citySpecificContent = null,
     Object? userSelectedCity = freezed,
     Object? localizable = null,
-    Object? citySpecificContent = null,
   }) {
     return _then(
       _$CitySettingsImpl(
@@ -437,6 +437,10 @@ class __$$CitySettingsImplCopyWithImpl<$Res>
             ? _value.defaultCity
             : defaultCity // ignore: cast_nullable_to_non_nullable
                   as String,
+        citySpecificContent: null == citySpecificContent
+            ? _value.citySpecificContent
+            : citySpecificContent // ignore: cast_nullable_to_non_nullable
+                  as CitySpecificContent,
         userSelectedCity: freezed == userSelectedCity
             ? _value.userSelectedCity
             : userSelectedCity // ignore: cast_nullable_to_non_nullable
@@ -445,10 +449,6 @@ class __$$CitySettingsImplCopyWithImpl<$Res>
             ? _value.localizable
             : localizable // ignore: cast_nullable_to_non_nullable
                   as bool,
-        citySpecificContent: null == citySpecificContent
-            ? _value.citySpecificContent
-            : citySpecificContent // ignore: cast_nullable_to_non_nullable
-                  as CitySpecificContent,
       ),
     );
   }
@@ -459,9 +459,9 @@ class __$$CitySettingsImplCopyWithImpl<$Res>
 class _$CitySettingsImpl implements _CitySettings {
   const _$CitySettingsImpl({
     @JsonKey(name: 'default_city') required this.defaultCity,
+    @JsonKey(name: 'city_specific_content') required this.citySpecificContent,
     @JsonKey(name: 'user_selected_city') this.userSelectedCity,
     this.localizable = true,
-    @JsonKey(name: 'city_specific_content') required this.citySpecificContent,
   });
 
   factory _$CitySettingsImpl.fromJson(Map<String, dynamic> json) =>
@@ -471,6 +471,11 @@ class _$CitySettingsImpl implements _CitySettings {
   @override
   @JsonKey(name: 'default_city')
   final String defaultCity;
+
+  /// City-specific content
+  @override
+  @JsonKey(name: 'city_specific_content')
+  final CitySpecificContent citySpecificContent;
 
   /// User-selected city
   @override
@@ -482,14 +487,9 @@ class _$CitySettingsImpl implements _CitySettings {
   @JsonKey()
   final bool localizable;
 
-  /// City-specific content
-  @override
-  @JsonKey(name: 'city_specific_content')
-  final CitySpecificContent citySpecificContent;
-
   @override
   String toString() {
-    return 'CitySettings(defaultCity: $defaultCity, userSelectedCity: $userSelectedCity, localizable: $localizable, citySpecificContent: $citySpecificContent)';
+    return 'CitySettings(defaultCity: $defaultCity, citySpecificContent: $citySpecificContent, userSelectedCity: $userSelectedCity, localizable: $localizable)';
   }
 
   @override
@@ -499,12 +499,12 @@ class _$CitySettingsImpl implements _CitySettings {
             other is _$CitySettingsImpl &&
             (identical(other.defaultCity, defaultCity) ||
                 other.defaultCity == defaultCity) &&
+            (identical(other.citySpecificContent, citySpecificContent) ||
+                other.citySpecificContent == citySpecificContent) &&
             (identical(other.userSelectedCity, userSelectedCity) ||
                 other.userSelectedCity == userSelectedCity) &&
             (identical(other.localizable, localizable) ||
-                other.localizable == localizable) &&
-            (identical(other.citySpecificContent, citySpecificContent) ||
-                other.citySpecificContent == citySpecificContent));
+                other.localizable == localizable));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -512,9 +512,9 @@ class _$CitySettingsImpl implements _CitySettings {
   int get hashCode => Object.hash(
     runtimeType,
     defaultCity,
+    citySpecificContent,
     userSelectedCity,
     localizable,
-    citySpecificContent,
   );
 
   /// Create a copy of CitySettings
@@ -534,10 +534,10 @@ class _$CitySettingsImpl implements _CitySettings {
 abstract class _CitySettings implements CitySettings {
   const factory _CitySettings({
     @JsonKey(name: 'default_city') required final String defaultCity,
-    @JsonKey(name: 'user_selected_city') final String? userSelectedCity,
-    final bool localizable,
     @JsonKey(name: 'city_specific_content')
     required final CitySpecificContent citySpecificContent,
+    @JsonKey(name: 'user_selected_city') final String? userSelectedCity,
+    final bool localizable,
   }) = _$CitySettingsImpl;
 
   factory _CitySettings.fromJson(Map<String, dynamic> json) =
@@ -548,6 +548,11 @@ abstract class _CitySettings implements CitySettings {
   @JsonKey(name: 'default_city')
   String get defaultCity;
 
+  /// City-specific content
+  @override
+  @JsonKey(name: 'city_specific_content')
+  CitySpecificContent get citySpecificContent;
+
   /// User-selected city
   @override
   @JsonKey(name: 'user_selected_city')
@@ -556,11 +561,6 @@ abstract class _CitySettings implements CitySettings {
   /// Can the city be localized?
   @override
   bool get localizable;
-
-  /// City-specific content
-  @override
-  @JsonKey(name: 'city_specific_content')
-  CitySpecificContent get citySpecificContent;
 
   /// Create a copy of CitySettings
   /// with the given fields replaced by the non-null parameter values.

@@ -8,16 +8,26 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../domain/models/game/typing_game.dart';
 import '../../../providers/template_variable_provider.dart';
+import '../../../widgets/atoms/icon_text_button.dart';
+import '../../../widgets/atoms/primary_button.dart';
+import '../../../widgets/molecules/bilingual_text_card.dart';
+import '../../../widgets/molecules/game_prompt_card.dart';
+import '../../../widgets/molecules/hint_row.dart';
+import '../../../widgets/molecules/score_footer.dart';
+import '../../../widgets/molecules/section_header.dart';
+import '../../../widgets/molecules/timer_chip.dart';
 
+/// typing game screen/widget
 class TypingGameWidget extends ConsumerStatefulWidget {
+  ///  typing game
   final TypingGame game;
+  /// Callback cuando se completa el juego con puntos ganados
   final ValueChanged<int> onComplete;
 
+  /// Crea un widget de juego de escritura.
   const TypingGameWidget({
-    Key? key,
-    required this.game,
-    required this.onComplete,
-  }) : super(key: key);
+    required this.game, required this.onComplete, super.key,
+  });
 
   @override
   ConsumerState<TypingGameWidget> createState() => _TypingGameWidgetState();
@@ -52,10 +62,14 @@ class _TypingGameWidgetState extends ConsumerState<TypingGameWidget> {
 
   void _startTimerIfNeeded() {
     final seconds = widget.game.timeLimitSeconds;
-    if (seconds == null) return;
+    if (seconds == null) {
+      return;
+    }
     _timeLeft = seconds;
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (!mounted) return;
+      if (!mounted) {
+        return;
+      }
       setState(() {
         _timeLeft = (_timeLeft ?? 1) - 1;
         if ((_timeLeft ?? 0) <= 0) {
@@ -86,7 +100,9 @@ class _TypingGameWidgetState extends ConsumerState<TypingGameWidget> {
     if (correct) {
       HapticFeedback.lightImpact();
       Future.delayed(const Duration(milliseconds: 900), () {
-        if (!mounted) return;
+        if (!mounted) {
+          return;
+        }
         _goNext();
       });
     } else {
@@ -95,7 +111,9 @@ class _TypingGameWidgetState extends ConsumerState<TypingGameWidget> {
   }
 
   void _goNext() {
-    if (!mounted) return;
+    if (!mounted) {
+      return;
+    }
     if (_currentIndex < _totalItems - 1) {
       setState(() {
         _currentIndex++;
@@ -132,18 +150,17 @@ class _TypingGameWidgetState extends ConsumerState<TypingGameWidget> {
         children: [
           _buildHeader(),
           const SizedBox(height: 12),
-          Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: AppColors.cardBackground,
-              borderRadius: BorderRadius.circular(14),
-            ),
+          GamePromptCard(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  promptEs,
-                  style: const TextStyle(
+                BilingualTextCard(
+                  textEn: promptEs,
+                  textEs: promptEs,
+                  showEn: false,
+                  backgroundColor: Colors.transparent,
+                  padding: EdgeInsets.zero,
+                  esStyle: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w700,
                     color: AppColors.textPrimary,
@@ -151,34 +168,9 @@ class _TypingGameWidgetState extends ConsumerState<TypingGameWidget> {
                 ),
                 if (hint != null || hintEs != null) ...[
                   const SizedBox(height: 8),
-                  Row(
-                    children: [
-                      const Icon(Icons.lightbulb_outline,
-                          size: 18, color: AppColors.secondaryBlue),
-                      const SizedBox(width: 6),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            if (hint != null)
-                              Text(
-                                hint,
-                                style: const TextStyle(
-                                  color: AppColors.textSecondary,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            if (hintEs != null)
-                              Text(
-                                hintEs,
-                                style: const TextStyle(
-                                  color: AppColors.textSecondary,
-                                ),
-                              ),
-                          ],
-                        ),
-                      ),
-                    ],
+                  HintRow(
+                    hint: hint,
+                    hintEs: hintEs,
                   ),
                 ],
               ],
@@ -208,7 +200,7 @@ class _TypingGameWidgetState extends ConsumerState<TypingGameWidget> {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
               decoration: BoxDecoration(
-                color: AppColors.warningOrange.withOpacity(0.12),
+                color: AppColors.warningOrange.withValues(alpha: 0.12),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Row(
@@ -230,45 +222,26 @@ class _TypingGameWidgetState extends ConsumerState<TypingGameWidget> {
           ],
           const Spacer(),
           if (_awaitingContinue)
-            ElevatedButton(
+            IconTextButton(
               key: const Key('typing_continue'),
-              onPressed: _goNext,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.secondaryBlue,
-                minimumSize: const Size(double.infinity, 52),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14),
-                ),
-              ),
-              child: const Text(
-                'Continuar',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
+              label: 'Continuar',
+              icon: Icons.arrow_forward,
+              onTap: _goNext,
+              foregroundColor: Colors.white,
+              backgroundColor: AppColors.secondaryBlue,
+              expand: true,
+              minHeight: 52,
             )
           else
-            ElevatedButton(
+            PrimaryButton(
               key: const Key('typing_submit'),
+              text: 'Enviar',
               onPressed: _submit,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.primaryGreen,
-                minimumSize: const Size(double.infinity, 52),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14),
-                ),
-              ),
-              child: const Text(
-                'Enviar',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
             ),
           const SizedBox(height: 8),
-          Text(
-            'Score: $_score',
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontWeight: FontWeight.w800,
-              color: AppColors.textPrimary,
-            ),
+          ScoreFooter(
+            label: 'Score',
+            score: _score,
           ),
         ],
       ),
@@ -276,39 +249,12 @@ class _TypingGameWidgetState extends ConsumerState<TypingGameWidget> {
   }
 
   Widget _buildHeader() {
-    return Row(
-      children: [
-        Text(
-          'Pregunta ${_currentIndex + 1} / $_totalItems',
-          style: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-            color: AppColors.textPrimary,
-          ),
-        ),
-        const Spacer(),
-        if (_timeLeft != null)
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-            decoration: BoxDecoration(
-              color: AppColors.warningOrange.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Row(
-              children: [
-                const Icon(Icons.timer, size: 18, color: AppColors.warningOrange),
-                const SizedBox(width: 6),
-                Text(
-                  '${_timeLeft}s',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.warningOrange,
-                  ),
-                ),
-              ],
-            ),
-          ),
-      ],
+    return SectionHeader(
+      title: 'Pregunta ${_currentIndex + 1} / $_totalItems',
+      trailing: _timeLeft != null
+          ? TimerChip(seconds: _timeLeft!)
+          : null,
+      padding: EdgeInsets.zero,
     );
   }
 }

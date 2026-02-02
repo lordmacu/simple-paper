@@ -8,7 +8,6 @@ import '../../../domain/models/story/scene.dart';
 import '../../../domain/models/story/dialogue.dart';
 import '../../../domain/models/vocabulary/vocabulary_word.dart';
 import '../../../core/utils/section_progress.dart';
-import '../../providers/template_variable_provider.dart';
 import '../../providers/progress_providers.dart';
 import '../../widgets/story/character_dialogue_bubble.dart';
 import '../../widgets/story/choice_buttons.dart';
@@ -23,16 +22,18 @@ import '../../providers/tts_provider.dart';
 /// Pantalla principal de escenas del episodio
 /// Muestra los diálogos secuencialmente con personajes
 class MainStoryScreen extends ConsumerStatefulWidget {
+  ///  episode
   final Episode episode;
-  final VoidCallback onComplete;
+  ///  callback with points
+  final Function(int totalPoints) onComplete;
+  /// int
   final int initialSceneIndex;
 
+  /// Crea una instancia de main story screen.
   const MainStoryScreen({
-    Key? key,
-    required this.episode,
-    required this.onComplete,
+    required this.episode, required this.onComplete, super.key,
     this.initialSceneIndex = 0,
-  }) : super(key: key);
+  });
 
   @override
   ConsumerState<MainStoryScreen> createState() => _MainStoryScreenState();
@@ -47,9 +48,15 @@ class _MainStoryScreenState extends ConsumerState<MainStoryScreen>
     final ids = <String>[];
     for (final d in _currentScene.dialogue) {
       final id = d.characterId;
-      if (id == null || id.isEmpty) continue;
-      if (!ids.contains(id)) ids.add(id);
-      if (ids.length >= 2) break;
+      if (id == null || id.isEmpty) {
+        continue;
+      }
+      if (!ids.contains(id)) {
+        ids.add(id);
+      }
+      if (ids.length >= 2) {
+        break;
+      }
     }
     if (ids.isEmpty) {
       return _SpeakerSide.leftAvatarRightBubble;
@@ -70,18 +77,21 @@ class _MainStoryScreenState extends ConsumerState<MainStoryScreen>
   int _currentDialogueIndex = 0;
   int _totalPoints = 0;
   final ScrollController _scrollController = ScrollController();
+  // ignore: unused_field
   bool _showingChoices = false;
   bool _showingSceneTransition = false;
   bool _showingSceneTranslation = false;
   String? _selectedChoiceId;
-  
+
   // Lista de diálogos mostrados hasta ahora en la escena actual
   final List<Dialogue> _displayedDialogues = [];
 
-  // Resultados de respuestas
+  // Resultados de respuestas (para tracking futuro)
+  // ignore: unused_field
   int _totalChoices = 0;
   int _correctChoices = 0;
   int _incorrectChoices = 0;
+  // ignore: unused_field
   int _incorrectChoicesWithoutVocab = 0;
   bool _showingSummary = false;
   final Set<String> _reviewWords = {};
@@ -89,10 +99,14 @@ class _MainStoryScreenState extends ConsumerState<MainStoryScreen>
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
   late Animation<Offset> _slideAnimation;
+  
+  // Guardar referencia al TTS service para usar en dispose
+  late final dynamic _ttsService;
 
   @override
   void initState() {
     super.initState();
+    _ttsService = ref.read(ttsServiceProvider);
     _currentSceneIndex = widget.initialSceneIndex.clamp(
       0,
       widget.episode.scenes.data.isEmpty
@@ -104,7 +118,7 @@ class _MainStoryScreenState extends ConsumerState<MainStoryScreen>
 
   @override
   void dispose() {
-    ref.read(ttsServiceProvider).stop();
+    _ttsService.stop();
     _animationController.dispose();
     _scrollController.dispose();
     super.dispose();
@@ -230,12 +244,16 @@ class _MainStoryScreenState extends ConsumerState<MainStoryScreen>
   }
 
   Future<void> _showStorySummary() async {
-    if (_showingSummary) return;
+    if (_showingSummary) {
+      return;
+    }
     _showingSummary = true;
 
     final wordsToReview = _reviewWords.toList()..sort();
 
-    if (!mounted) return;
+    if (!mounted) {
+      return;
+    }
     await Navigator.push(
       context,
       MaterialPageRoute(
@@ -250,7 +268,9 @@ class _MainStoryScreenState extends ConsumerState<MainStoryScreen>
               level: widget.episode.episodeMetadata.internalLevel,
               episodeNumber: widget.episode.episodeMetadata.episodeNumber,
             );
-            if (!mounted) return;
+            if (!mounted) {
+              return;
+            }
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (_) => const ReviewWordsScreen(),
@@ -278,10 +298,12 @@ class _MainStoryScreenState extends ConsumerState<MainStoryScreen>
                 sectionId: SectionProgressIds.sceneId(scene.sceneNumber),
               );
             }
-            if (!mounted) return;
-            debugPrint('$_logTag onContinue finish -> pop summary + onComplete');
+            if (!mounted) {
+              return;
+            }
+            debugPrint('$_logTag onContinue finish -> pop summary + onComplete with $_totalPoints points');
             Navigator.of(context).pop(); // close summary screen
-            widget.onComplete();
+            widget.onComplete(_totalPoints);
           },
         ),
       ),
@@ -294,14 +316,11 @@ class _MainStoryScreenState extends ConsumerState<MainStoryScreen>
     _animationController.forward();
   }
 
-  /// Aplica variables de template al texto
-  String _applyTemplateVars(String text) {
-    return ref.read(templateVariableServiceProvider).replaceVariables(text);
-  }
-
   void _scheduleScrollToBottom() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!_scrollController.hasClients) return;
+      if (!_scrollController.hasClients) {
+        return;
+      }
       _scrollController.animateTo(
         _scrollController.position.maxScrollExtent,
         duration: const Duration(milliseconds: 400),
@@ -340,7 +359,7 @@ class _MainStoryScreenState extends ConsumerState<MainStoryScreen>
       return widget.episode.vocabularyFocus.targetWords.firstWhere(
         (vocabWord) => vocabWord.word.toLowerCase() == cleanWord,
       );
-    } catch (e) {
+    } on Exception catch (_) {
       return null;
     }
   }

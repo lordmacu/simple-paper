@@ -4,16 +4,21 @@ import 'package:flutter/material.dart';
 
 import '../../../core/constants/app_colors.dart';
 import '../../widgets/common/duolingo_button.dart';
+import '../../widgets/molecules/bilingual_text_card.dart';
+import '../../widgets/molecules/prompt_card.dart';
+import '../../widgets/molecules/review_header_row.dart';
 import 'review_order_forms_game.dart';
 
+/// review order forms screen/widget
 class ReviewOrderFormsWidget extends StatefulWidget {
+  ///  review order forms game
   final ReviewOrderFormsGame game;
+  /// Callback cuando se completa el juego
   final ValueChanged<int> onComplete;
 
+  /// Crea un widget de juego de ordenar formas de revisión.
   const ReviewOrderFormsWidget({
-    super.key,
-    required this.game,
-    required this.onComplete,
+    required this.game, required this.onComplete, super.key,
   });
 
   @override
@@ -52,7 +57,9 @@ class _ReviewOrderFormsWidgetState extends State<ReviewOrderFormsWidget> {
         _order[2].text == _item.participle;
     setState(() {
       _checked = true;
-      if (correct) _score += 10;
+      if (correct) {
+        _score += 10;
+      }
     });
   }
 
@@ -98,61 +105,27 @@ class _ReviewOrderFormsWidgetState extends State<ReviewOrderFormsWidget> {
   }
 
   Widget _buildHeader() {
-    return Row(
-      children: [
-        Text(
-          'Pregunta ${_index + 1} / $_total',
-          style: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w700,
-            color: AppColors.textPrimary,
-          ),
-        ),
-        const Spacer(),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-          decoration: BoxDecoration(
-            color: AppColors.secondaryBlue.withOpacity(0.12),
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Text(
-            'Puntaje: $_score',
-            style: const TextStyle(
-              color: AppColors.secondaryBlue,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-        ),
-      ],
+    return ReviewHeaderRow(
+      title: 'Pregunta ${_index + 1} / $_total',
+      score: _score,
     );
   }
 
   Widget _buildCard() {
-    return Container(
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: AppColors.cardBackground,
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            widget.game.instructionsEs,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
-              color: AppColors.textPrimary,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            'Orden correcto: base → past → participle',
-            style: const TextStyle(
-              color: AppColors.textSecondary,
-            ),
-          ),
-        ],
+    return PromptCard(
+      child: BilingualTextCard(
+        textEn: 'Orden correcto: base → past → participle',
+        textEs: widget.game.instructionsEs,
+        backgroundColor: Colors.transparent,
+        padding: EdgeInsets.zero,
+        enStyle: const TextStyle(
+          color: AppColors.textSecondary,
+        ),
+        esStyle: const TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w700,
+          color: AppColors.textPrimary,
+        ),
       ),
     );
   }
@@ -162,9 +135,13 @@ class _ReviewOrderFormsWidgetState extends State<ReviewOrderFormsWidget> {
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       onReorder: (oldIndex, newIndex) {
-        if (_checked) return;
+        if (_checked) {
+          return;
+        }
         setState(() {
-          if (newIndex > oldIndex) newIndex -= 1;
+          if (newIndex > oldIndex) {
+            newIndex -= 1;
+          }
           final item = _order.removeAt(oldIndex);
           _order.insert(newIndex, item);
         });
@@ -172,7 +149,7 @@ class _ReviewOrderFormsWidgetState extends State<ReviewOrderFormsWidget> {
       children: [
         for (var i = 0; i < _order.length; i++)
           _OrderChip(
-            key: ValueKey('${_order[i].id}-${_index}'),
+            key: ValueKey('${_order[i].id}-$_index'),
             text: _order[i].text,
             isCorrect: _checked ? _order[i].text == _targetAt(i) : null,
           ),
@@ -181,8 +158,12 @@ class _ReviewOrderFormsWidgetState extends State<ReviewOrderFormsWidget> {
   }
 
   String _targetAt(int index) {
-    if (index == 0) return _item.base;
-    if (index == 1) return _item.past;
+    if (index == 0) {
+      return _item.base;
+    }
+    if (index == 1) {
+      return _item.past;
+    }
     return _item.participle;
   }
 }
@@ -216,7 +197,7 @@ class _OrderChip extends StatelessWidget {
         border: Border.all(color: AppColors.divider, width: 1.2),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 6,
             offset: const Offset(0, 3),
           ),

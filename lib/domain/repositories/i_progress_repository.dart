@@ -147,6 +147,14 @@ abstract class IProgressRepository {
   /// 
   /// Returns: Mapa de gameId -> score
   Future<Map<String, int>> getGameResults(int episodeNumber);
+
+  /// Obtiene estadísticas detalladas de un juego específico
+  /// 
+  /// [episodeNumber] - Número del episodio
+  /// [gameId] - ID del juego
+  /// 
+  /// Returns: Mapa con estadísticas completas o null si no existe
+  Future<Map<String, dynamic>?> getGameStats(int episodeNumber, String gameId);
   
   /// Resetea todo el progreso (para testing o reinicio)
   Future<void> resetProgress();

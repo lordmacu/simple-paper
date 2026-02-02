@@ -43,6 +43,9 @@ mixin _$MatchingGame {
   @JsonKey(name: 'instructions_es')
   String get instructionsEs => throw _privateConstructorUsedError;
 
+  /// Contenido del juego
+  MatchingGameContent get content => throw _privateConstructorUsedError;
+
   /// Si el juego es opcional
   bool get optional => throw _privateConstructorUsedError;
 
@@ -57,9 +60,6 @@ mixin _$MatchingGame {
   /// Recompensa en XP
   @JsonKey(name: 'xp_reward')
   int get xpReward => throw _privateConstructorUsedError;
-
-  /// Contenido del juego
-  MatchingGameContent get content => throw _privateConstructorUsedError;
 
   /// Configuración del juego
   MatchingGameSettings? get settings => throw _privateConstructorUsedError;
@@ -88,11 +88,11 @@ abstract class $MatchingGameCopyWith<$Res> {
     @JsonKey(name: 'title_es') String titleEs,
     String instructions,
     @JsonKey(name: 'instructions_es') String instructionsEs,
+    MatchingGameContent content,
     bool optional,
     @JsonKey(name: 'unlocked_after_episode') bool unlockedAfterEpisode,
     @JsonKey(name: 'time_limit_seconds') int? timeLimitSeconds,
     @JsonKey(name: 'xp_reward') int xpReward,
-    MatchingGameContent content,
     MatchingGameSettings? settings,
   });
 
@@ -121,11 +121,11 @@ class _$MatchingGameCopyWithImpl<$Res, $Val extends MatchingGame>
     Object? titleEs = null,
     Object? instructions = null,
     Object? instructionsEs = null,
+    Object? content = null,
     Object? optional = null,
     Object? unlockedAfterEpisode = null,
     Object? timeLimitSeconds = freezed,
     Object? xpReward = null,
-    Object? content = null,
     Object? settings = freezed,
   }) {
     return _then(
@@ -154,6 +154,10 @@ class _$MatchingGameCopyWithImpl<$Res, $Val extends MatchingGame>
                 ? _value.instructionsEs
                 : instructionsEs // ignore: cast_nullable_to_non_nullable
                       as String,
+            content: null == content
+                ? _value.content
+                : content // ignore: cast_nullable_to_non_nullable
+                      as MatchingGameContent,
             optional: null == optional
                 ? _value.optional
                 : optional // ignore: cast_nullable_to_non_nullable
@@ -170,10 +174,6 @@ class _$MatchingGameCopyWithImpl<$Res, $Val extends MatchingGame>
                 ? _value.xpReward
                 : xpReward // ignore: cast_nullable_to_non_nullable
                       as int,
-            content: null == content
-                ? _value.content
-                : content // ignore: cast_nullable_to_non_nullable
-                      as MatchingGameContent,
             settings: freezed == settings
                 ? _value.settings
                 : settings // ignore: cast_nullable_to_non_nullable
@@ -224,11 +224,11 @@ abstract class _$$MatchingGameImplCopyWith<$Res>
     @JsonKey(name: 'title_es') String titleEs,
     String instructions,
     @JsonKey(name: 'instructions_es') String instructionsEs,
+    MatchingGameContent content,
     bool optional,
     @JsonKey(name: 'unlocked_after_episode') bool unlockedAfterEpisode,
     @JsonKey(name: 'time_limit_seconds') int? timeLimitSeconds,
     @JsonKey(name: 'xp_reward') int xpReward,
-    MatchingGameContent content,
     MatchingGameSettings? settings,
   });
 
@@ -258,11 +258,11 @@ class __$$MatchingGameImplCopyWithImpl<$Res>
     Object? titleEs = null,
     Object? instructions = null,
     Object? instructionsEs = null,
+    Object? content = null,
     Object? optional = null,
     Object? unlockedAfterEpisode = null,
     Object? timeLimitSeconds = freezed,
     Object? xpReward = null,
-    Object? content = null,
     Object? settings = freezed,
   }) {
     return _then(
@@ -291,6 +291,10 @@ class __$$MatchingGameImplCopyWithImpl<$Res>
             ? _value.instructionsEs
             : instructionsEs // ignore: cast_nullable_to_non_nullable
                   as String,
+        content: null == content
+            ? _value.content
+            : content // ignore: cast_nullable_to_non_nullable
+                  as MatchingGameContent,
         optional: null == optional
             ? _value.optional
             : optional // ignore: cast_nullable_to_non_nullable
@@ -307,10 +311,6 @@ class __$$MatchingGameImplCopyWithImpl<$Res>
             ? _value.xpReward
             : xpReward // ignore: cast_nullable_to_non_nullable
                   as int,
-        content: null == content
-            ? _value.content
-            : content // ignore: cast_nullable_to_non_nullable
-                  as MatchingGameContent,
         settings: freezed == settings
             ? _value.settings
             : settings // ignore: cast_nullable_to_non_nullable
@@ -330,11 +330,11 @@ class _$MatchingGameImpl extends _MatchingGame {
     @JsonKey(name: 'title_es') required this.titleEs,
     required this.instructions,
     @JsonKey(name: 'instructions_es') required this.instructionsEs,
+    required this.content,
     this.optional = true,
     @JsonKey(name: 'unlocked_after_episode') this.unlockedAfterEpisode = true,
     @JsonKey(name: 'time_limit_seconds') this.timeLimitSeconds,
     @JsonKey(name: 'xp_reward') this.xpReward = 0,
-    required this.content,
     this.settings,
   }) : super._();
 
@@ -369,6 +369,10 @@ class _$MatchingGameImpl extends _MatchingGame {
   @JsonKey(name: 'instructions_es')
   final String instructionsEs;
 
+  /// Contenido del juego
+  @override
+  final MatchingGameContent content;
+
   /// Si el juego es opcional
   @override
   @JsonKey()
@@ -389,17 +393,13 @@ class _$MatchingGameImpl extends _MatchingGame {
   @JsonKey(name: 'xp_reward')
   final int xpReward;
 
-  /// Contenido del juego
-  @override
-  final MatchingGameContent content;
-
   /// Configuración del juego
   @override
   final MatchingGameSettings? settings;
 
   @override
   String toString() {
-    return 'MatchingGame(gameId: $gameId, gameType: $gameType, title: $title, titleEs: $titleEs, instructions: $instructions, instructionsEs: $instructionsEs, optional: $optional, unlockedAfterEpisode: $unlockedAfterEpisode, timeLimitSeconds: $timeLimitSeconds, xpReward: $xpReward, content: $content, settings: $settings)';
+    return 'MatchingGame(gameId: $gameId, gameType: $gameType, title: $title, titleEs: $titleEs, instructions: $instructions, instructionsEs: $instructionsEs, content: $content, optional: $optional, unlockedAfterEpisode: $unlockedAfterEpisode, timeLimitSeconds: $timeLimitSeconds, xpReward: $xpReward, settings: $settings)';
   }
 
   @override
@@ -416,6 +416,7 @@ class _$MatchingGameImpl extends _MatchingGame {
                 other.instructions == instructions) &&
             (identical(other.instructionsEs, instructionsEs) ||
                 other.instructionsEs == instructionsEs) &&
+            (identical(other.content, content) || other.content == content) &&
             (identical(other.optional, optional) ||
                 other.optional == optional) &&
             (identical(other.unlockedAfterEpisode, unlockedAfterEpisode) ||
@@ -424,7 +425,6 @@ class _$MatchingGameImpl extends _MatchingGame {
                 other.timeLimitSeconds == timeLimitSeconds) &&
             (identical(other.xpReward, xpReward) ||
                 other.xpReward == xpReward) &&
-            (identical(other.content, content) || other.content == content) &&
             (identical(other.settings, settings) ||
                 other.settings == settings));
   }
@@ -439,11 +439,11 @@ class _$MatchingGameImpl extends _MatchingGame {
     titleEs,
     instructions,
     instructionsEs,
+    content,
     optional,
     unlockedAfterEpisode,
     timeLimitSeconds,
     xpReward,
-    content,
     settings,
   );
 
@@ -469,11 +469,11 @@ abstract class _MatchingGame extends MatchingGame {
     @JsonKey(name: 'title_es') required final String titleEs,
     required final String instructions,
     @JsonKey(name: 'instructions_es') required final String instructionsEs,
+    required final MatchingGameContent content,
     final bool optional,
     @JsonKey(name: 'unlocked_after_episode') final bool unlockedAfterEpisode,
     @JsonKey(name: 'time_limit_seconds') final int? timeLimitSeconds,
     @JsonKey(name: 'xp_reward') final int xpReward,
-    required final MatchingGameContent content,
     final MatchingGameSettings? settings,
   }) = _$MatchingGameImpl;
   const _MatchingGame._() : super._();
@@ -509,6 +509,10 @@ abstract class _MatchingGame extends MatchingGame {
   @JsonKey(name: 'instructions_es')
   String get instructionsEs;
 
+  /// Contenido del juego
+  @override
+  MatchingGameContent get content;
+
   /// Si el juego es opcional
   @override
   bool get optional;
@@ -527,10 +531,6 @@ abstract class _MatchingGame extends MatchingGame {
   @override
   @JsonKey(name: 'xp_reward')
   int get xpReward;
-
-  /// Contenido del juego
-  @override
-  MatchingGameContent get content;
 
   /// Configuración del juego
   @override

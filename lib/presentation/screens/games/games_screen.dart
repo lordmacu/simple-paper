@@ -1,6 +1,5 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/utils/section_progress.dart';
@@ -23,25 +22,28 @@ import 'widgets/audio_choice_game_widget.dart';
 import 'widgets/order_sentence_game_widget.dart';
 import 'widgets/typing_game_widget.dart';
 import 'widgets/spot_word_game_widget.dart';
-import 'package:collection/collection.dart';
 import 'game_transition_screen.dart';
 import '../../providers/progress_providers.dart';
+import '../../widgets/atoms/primary_button.dart';
 
 /// Pantalla de juegos del episodio
 /// Muestra los mini-juegos secuencialmente
 class GamesScreen extends ConsumerStatefulWidget {
+  ///  episode
   final Episode episode;
+  /// int
   final int pointsFromStory;
+  /// void
   final void Function(int totalPoints, int maxPoints) onComplete;
+  /// int
   final int initialIndex;
 
+  /// Crea una instancia de games screen.
   const GamesScreen({
-    Key? key,
-    required this.episode,
+    required this.episode, required this.onComplete, super.key,
     this.pointsFromStory = 0,
-    required this.onComplete,
     this.initialIndex = 0,
-  }) : super(key: key);
+  });
 
   @override
   ConsumerState<GamesScreen> createState() => _GamesScreenState();
@@ -52,6 +54,7 @@ class _GamesScreenState extends ConsumerState<GamesScreen> {
   int _currentGameIndex = 0;
   int _totalPoints = 0;
   late final int _maxTotalPoints;
+  late final Stopwatch _gameTimer;
 
   @override
   void initState() {
@@ -61,6 +64,13 @@ class _GamesScreenState extends ConsumerState<GamesScreen> {
     _maxTotalPoints = widget.episode.games.data
         .map((game) => _getMaxPoints(game))
         .fold<int>(0, (sum, value) => sum + value);
+    _gameTimer = Stopwatch()..start();
+  }
+
+  @override
+  void dispose() {
+    _gameTimer.stop();
+    super.dispose();
   }
 
   Game get _currentGame => widget.episode.games.data[_currentGameIndex];
@@ -70,6 +80,10 @@ class _GamesScreenState extends ConsumerState<GamesScreen> {
   /// Avanza al siguiente juego
   Future<void> _handleGameComplete(int points) async {
     _totalPoints += points;
+    
+    // NUEVO: Guardar resultado del juego individual
+    await _saveIndividualGameResult(points);
+    
     await ref.read(markSectionCompletedProvider)(
       episodeNumber: widget.episode.episodeMetadata.episodeNumber,
       sectionId: SectionProgressIds.gameId(_currentGameIndex + 1),
@@ -81,6 +95,9 @@ class _GamesScreenState extends ConsumerState<GamesScreen> {
         sectionId: SectionProgressIds.games,
       );
       await _maybeCompleteEpisode();
+      if (!mounted) {
+        return;
+      }
       // Mostrar pantalla de resultados antes de completar
       Navigator.push(
         context,
@@ -123,9 +140,11 @@ class _GamesScreenState extends ConsumerState<GamesScreen> {
     debugPrint(
       '$_logTag games_complete_check episode=$episodeNumber completed=${completed.length} '
       'required=${required.length} missing=${missing.toList()} done=$done '
-      'progress=$doneCount/$total (${percent}%)',
+      'progress=$doneCount/$total ($percent%)',
     );
-    if (missing.isNotEmpty) return;
+    if (missing.isNotEmpty) {
+      return;
+    }
     final stars = _calculateStars(_totalPoints, _maxTotalPoints);
     debugPrint(
       '$_logTag games_complete_unlock episode=$episodeNumber stars=$stars '
@@ -136,15 +155,81 @@ class _GamesScreenState extends ConsumerState<GamesScreen> {
       starsEarned: stars,
       xpEarned: _totalPoints,
     );
+    
+    // NUEVO: Desbloquear achievements basados en el rendimiento
+    await _unlockAchievements(episodeNumber, stars, _totalPoints, _maxTotalPoints);
+  }
+
+  /// Desbloquea achievements basados en el rendimiento
+  Future<void> _unlockAchievements(int episodeNumber, int stars, int points, int maxPoints) async {
+    final repository = ref.read(progressRepositoryProvider);
+    
+    try {
+      // Achievement por completar primer episodio
+      if (episodeNumber == 1) {
+        await repository.unlockAchievement('first_episode_completed');
+      }
+      
+      // Achievement por conseguir 3 estrellas
+      if (stars == 3) {
+        await repository.unlockAchievement('perfect_episode');
+      }
+      
+      // Achievement por completar 5 episodios
+      final userProgress = await repository.getUserProgress();
+      final completedEpisodesCount = userProgress.completedEpisodes.length;
+      
+      if (completedEpisodesCount >= 5) {
+        await repository.unlockAchievement('five_episodes_completed');
+      }
+      
+      // Achievement por completar 10 episodios
+      if (completedEpisodesCount >= 10) {
+        await repository.unlockAchievement('ten_episodes_completed');
+      }
+      
+      debugPrint('$_logTag achievements_checked episode=$episodeNumber stars=$stars total_completed=$completedEpisodesCount');
+    } on Exception catch (e) {
+      debugPrint('$_logTag achievement_unlock_error episode=$episodeNumber error=$e');
+    }
   }
 
   int _calculateStars(int points, int maxPoints) {
-    if (maxPoints <= 0) return 3;
+    if (maxPoints <= 0) {
+      return 3;
+    }
     final ratio = points / maxPoints;
-    if (ratio >= 0.9) return 3;
-    if (ratio >= 0.65) return 2;
-    if (ratio >= 0.35) return 1;
+    if (ratio >= 0.9) {
+      return 3;
+    }
+    if (ratio >= 0.65) {
+      return 2;
+    }
+    if (ratio >= 0.35) {
+      return 1;
+    }
     return 0;
+  }
+
+  /// Guarda el resultado de un juego individual
+  Future<void> _saveIndividualGameResult(int points) async {
+    final repository = ref.read(progressRepositoryProvider);
+    final episodeNumber = widget.episode.episodeMetadata.episodeNumber;
+    
+    // Generar un gameId único para el juego actual
+    final gameId = 'game_${_currentGameIndex + 1}';
+    
+    try {
+      await repository.saveGameResult(
+        episodeNumber,
+        gameId,
+        points,
+        _gameTimer.elapsed.inSeconds,
+      );
+      debugPrint('$_logTag saved_game_result episode=$episodeNumber game=$gameId score=$points time=${_gameTimer.elapsed.inSeconds}s');
+    } on Exception catch (e) {
+      debugPrint('$_logTag save_game_result_error episode=$episodeNumber game=$gameId error=$e');
+    }
   }
 
   @override
@@ -229,7 +314,7 @@ class _GamesScreenState extends ConsumerState<GamesScreen> {
   Widget _buildCurrentGame() {
     if (_currentGame is MatchingGame) {
       return MatchingGameWidget(
-        key: ValueKey('matching-${_currentGameIndex}'),
+        key: ValueKey('matching-$_currentGameIndex'),
         game: _currentGame as MatchingGame,
         onComplete: _handleGameComplete,
       );
@@ -237,7 +322,7 @@ class _GamesScreenState extends ConsumerState<GamesScreen> {
 
     if (_currentGame is FillBlankGame) {
       return FillBlankGameWidget(
-        key: ValueKey('fill-${_currentGameIndex}'),
+        key: ValueKey('fill-$_currentGameIndex'),
         game: _currentGame as FillBlankGame,
         onComplete: _handleGameComplete,
       );
@@ -245,7 +330,7 @@ class _GamesScreenState extends ConsumerState<GamesScreen> {
 
     if (_currentGame is MultipleChoiceGame) {
       return MultipleChoiceGameWidget(
-        key: ValueKey('mc-${_currentGameIndex}'),
+        key: ValueKey('mc-$_currentGameIndex'),
         game: _currentGame as MultipleChoiceGame,
         onComplete: _handleGameComplete,
       );
@@ -253,7 +338,7 @@ class _GamesScreenState extends ConsumerState<GamesScreen> {
 
     if (_currentGame is AudioChoiceGame) {
       return AudioChoiceGameWidget(
-        key: ValueKey('audio-${_currentGameIndex}'),
+        key: ValueKey('audio-$_currentGameIndex'),
         game: _currentGame as AudioChoiceGame,
         onComplete: _handleGameComplete,
       );
@@ -261,7 +346,7 @@ class _GamesScreenState extends ConsumerState<GamesScreen> {
 
     if (_currentGame is OrderSentenceGame) {
       return OrderSentenceGameWidget(
-        key: ValueKey('order-${_currentGameIndex}'),
+        key: ValueKey('order-$_currentGameIndex'),
         game: _currentGame as OrderSentenceGame,
         onComplete: _handleGameComplete,
       );
@@ -269,7 +354,7 @@ class _GamesScreenState extends ConsumerState<GamesScreen> {
 
     if (_currentGame is TypingGame) {
       return TypingGameWidget(
-        key: ValueKey('typing-${_currentGameIndex}'),
+        key: ValueKey('typing-$_currentGameIndex'),
         game: _currentGame as TypingGame,
         onComplete: _handleGameComplete,
       );
@@ -277,43 +362,38 @@ class _GamesScreenState extends ConsumerState<GamesScreen> {
 
     if (_currentGame is SpotWordGame) {
       return SpotWordGameWidget(
-        key: ValueKey('spot-${_currentGameIndex}'),
+        key: ValueKey('spot-$_currentGameIndex'),
         game: _currentGame as SpotWordGame,
         onComplete: _handleGameComplete,
       );
     }
 
-    // Fallback placeholder para otros tipos aún no implementados
+    // Error: tipo de juego no reconocido
+    final gameType = _currentGame.runtimeType.toString();
+    debugPrint('🚨 GAME_ERROR: Unrecognized game type: $gameType for episode ${widget.episode.episodeMetadata.episodeNumber}');
+    
     return Center(
-      key: ValueKey('placeholder-${_currentGameIndex}'),
+      key: ValueKey('error-$_currentGameIndex'),
       child: Padding(
         padding: const EdgeInsets.all(24),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.construction, size: 64, color: AppColors.warningOrange),
+            const Icon(Icons.error, size: 64, color: AppColors.errorRed),
             const SizedBox(height: 16),
             const Text(
-              'Game type coming soon',
+              'Game Error',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
-            const Text(
-              'We will award you temporary points to continue.',
+            Text(
+              'Unknown game type: $gameType\nPlease report this issue.',
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 16),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.primaryGreen,
-                foregroundColor: Colors.white,
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ),
-              onPressed: () => _handleGameComplete(_getMaxPoints(_currentGame)),
-              child: const Text('Continue'),
+            PrimaryButton(
+              text: 'Skip Game',
+              onPressed: () => _handleGameComplete(0), // Sin puntos por error
             ),
           ],
         ),
@@ -324,6 +404,9 @@ class _GamesScreenState extends ConsumerState<GamesScreen> {
   void _navigateToNextGame() {
     final nextIndex = _currentGameIndex + 1;
     final nextGame = widget.episode.games.data[nextIndex];
+
+    // Reiniciar timer para el siguiente juego
+    _gameTimer.reset();
 
     Navigator.push(
       context,
@@ -357,8 +440,10 @@ class _GamesScreenState extends ConsumerState<GamesScreen> {
     // Default: 10 puntos por item si hay conteo, o 10 mínimo
     try {
       final dynamic items = (game as dynamic).content.items;
-      if (items is List) return max(10, items.length * 10);
-    } catch (_) {}
+      if (items is List) {
+        return max(10, items.length * 10);
+      }
+    } on Exception catch (_) {}
     return 10;
   }
 }

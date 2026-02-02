@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/constants/app_colors.dart';
+import '../../widgets/molecules/hint_row.dart';
+import '../../widgets/molecules/review_header_row.dart';
 import '../../widgets/common/duolingo_button.dart';
 import 'review_flashcard_game.dart';
 
+/// review flashcard screen/widget
 class ReviewFlashcardWidget extends StatefulWidget {
+  /// Juego de tarjetas de revisión
   final ReviewFlashcardGame game;
+  /// Callback cuando se completa el juego
   final ValueChanged<int> onComplete;
 
+  /// Crea un widget de juego de tarjetas de revisión.
   const ReviewFlashcardWidget({
-    super.key,
-    required this.game,
-    required this.onComplete,
+    required this.game, required this.onComplete, super.key,
   });
 
   @override
@@ -88,32 +92,9 @@ class _ReviewFlashcardWidgetState extends State<ReviewFlashcardWidget> {
   }
 
   Widget _buildHeader() {
-    return Row(
-      children: [
-        Text(
-          'Card ${_index + 1} / $_total',
-          style: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w700,
-            color: AppColors.textPrimary,
-          ),
-        ),
-        const Spacer(),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-          decoration: BoxDecoration(
-            color: AppColors.secondaryBlue.withOpacity(0.12),
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Text(
-            'Puntaje: $_score',
-            style: const TextStyle(
-              color: AppColors.secondaryBlue,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-        ),
-      ],
+    return ReviewHeaderRow(
+      title: 'Card ${_index + 1} / $_total',
+      score: _score,
     );
   }
 
@@ -126,7 +107,7 @@ class _ReviewFlashcardWidgetState extends State<ReviewFlashcardWidget> {
         border: Border.all(color: AppColors.divider, width: 1.5),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.06),
+            color: Colors.black.withValues(alpha: 0.06),
             blurRadius: 12,
             offset: const Offset(0, 6),
           ),
@@ -157,20 +138,19 @@ class _ReviewFlashcardWidgetState extends State<ReviewFlashcardWidget> {
               textAlign: TextAlign.center,
             ),
           ] else
-            Text(
+            const Text(
               '¿Recuerdas la respuesta?',
-              style: const TextStyle(
+              style: TextStyle(
                 color: AppColors.textSecondary,
               ),
             ),
           if (_card.hint != null || _card.hintEs != null) ...[
             const SizedBox(height: 16),
-            Text(
-              _card.hintEs ?? _card.hint!,
-              style: const TextStyle(
-                color: AppColors.textSecondary,
-              ),
-              textAlign: TextAlign.center,
+            HintRow(
+              hint: _card.hint,
+              hintEs: _card.hintEs,
+              enStyle: const TextStyle(color: AppColors.textSecondary),
+              esStyle: const TextStyle(color: AppColors.textSecondary),
             ),
           ],
         ],

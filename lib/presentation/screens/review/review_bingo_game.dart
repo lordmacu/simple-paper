@@ -1,5 +1,6 @@
 import '../../../domain/models/game/game.dart';
 
+/// Juego de repaso tipo bingo rápido con selección de opciones.
 class ReviewBingoGame implements Game {
   @override
   final String gameId;
@@ -19,8 +20,10 @@ class ReviewBingoGame implements Game {
   @override
   final String instructionsEs;
 
+  /// La lista de rondas del juego de bingo.
   final List<ReviewBingoRound> rounds;
 
+  /// Crea una instancia de [ReviewBingoGame].
   ReviewBingoGame({
     required this.gameId,
     required this.gameType,
@@ -60,12 +63,21 @@ class ReviewBingoGame implements Game {
   int calculateScore(List answers, {int? timeSpent}) => 0;
 }
 
+/// Representa una ronda del juego de bingo con pregunta y opciones.
 class ReviewBingoRound {
+  /// La pregunta o indicación en inglés.
   final String prompt;
+  
+  /// La pregunta o indicación en español.
   final String promptEs;
+  
+  /// Las opciones de respuesta disponibles.
   final List<String> options;
+  
+  /// El índice de la opción correcta.
   final int correctIndex;
 
+  /// Crea una instancia de [ReviewBingoRound].
   const ReviewBingoRound({
     required this.prompt,
     required this.promptEs,

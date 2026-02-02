@@ -20,6 +20,14 @@ _$EpisodeImpl _$$EpisodeImplFromJson(Map<String, dynamic> json) =>
       vocabularyFocus: VocabularyFocus.fromJson(
         json['vocabulary_focus'] as Map<String, dynamic>,
       ),
+      scenes: ScenesSection.fromJson(json['scenes'] as Map<String, dynamic>),
+      games: GamesSection.fromJson(json['games'] as Map<String, dynamic>),
+      progression: Progression.fromJson(
+        json['progression'] as Map<String, dynamic>,
+      ),
+      contentWrappers: ContentWrappers.fromJson(
+        json['content_wrappers'] as Map<String, dynamic>,
+      ),
       vocabularyStory: json['vocabulary_story'] == null
           ? null
           : VocabularyStory.fromJson(
@@ -30,25 +38,16 @@ _$EpisodeImpl _$$EpisodeImplFromJson(Map<String, dynamic> json) =>
           : ListeningShadowingSection.fromJson(
               json['listening_shadowing'] as Map<String, dynamic>,
             ),
-      miniStory:
-          json['mini_story'] == null
-              ? null
-              : MiniStorySection.fromJson(
-                  json['mini_story'] as Map<String, dynamic>,
-                ),
-      scenes: ScenesSection.fromJson(json['scenes'] as Map<String, dynamic>),
-      games: GamesSection.fromJson(json['games'] as Map<String, dynamic>),
+      miniStory: json['mini_story'] == null
+          ? null
+          : MiniStorySection.fromJson(
+              json['mini_story'] as Map<String, dynamic>,
+            ),
       nextEpisodePreview: json['next_episode_preview'] == null
           ? null
           : NextEpisodePreview.fromJson(
               json['next_episode_preview'] as Map<String, dynamic>,
             ),
-      progression: Progression.fromJson(
-        json['progression'] as Map<String, dynamic>,
-      ),
-      contentWrappers: ContentWrappers.fromJson(
-        json['content_wrappers'] as Map<String, dynamic>,
-      ),
     );
 
 Map<String, dynamic> _$$EpisodeImplToJson(_$EpisodeImpl instance) =>
@@ -57,14 +56,14 @@ Map<String, dynamic> _$$EpisodeImplToJson(_$EpisodeImpl instance) =>
       'city_settings': instance.citySettings,
       'characters': instance.characters,
       'vocabulary_focus': instance.vocabularyFocus,
+      'scenes': instance.scenes,
+      'games': instance.games,
+      'progression': instance.progression,
+      'content_wrappers': instance.contentWrappers,
       'vocabulary_story': instance.vocabularyStory,
       'listening_shadowing': instance.listeningShadowing,
       'mini_story': instance.miniStory,
-      'scenes': instance.scenes,
-      'games': instance.games,
       'next_episode_preview': instance.nextEpisodePreview,
-      'progression': instance.progression,
-      'content_wrappers': instance.contentWrappers,
     };
 
 _$ScenesSectionImpl _$$ScenesSectionImplFromJson(Map<String, dynamic> json) =>

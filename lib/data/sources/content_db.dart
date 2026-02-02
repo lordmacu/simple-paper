@@ -1,12 +1,21 @@
 import 'package:sqflite/sqflite.dart';
 import 'review_words_db.dart';
 
+/// Entrada de episodio en la base de datos.
 class EpisodeDbEntry {
+  /// ID único del episodio.
   final String episodeId;
+
+  /// Número del episodio.
   final int episodeNumber;
+
+  /// Nivel del episodio (A1, A2, etc.).
   final String level;
+
+  /// JSON serializado del episodio.
   final String json;
 
+  /// Crea un [EpisodeDbEntry].
   const EpisodeDbEntry({
     required this.episodeId,
     required this.episodeNumber,
@@ -15,12 +24,21 @@ class EpisodeDbEntry {
   });
 }
 
+/// Entrada de entrevista en la base de datos.
 class InterviewDbEntry {
+  /// Número del episodio asociado.
   final int episodeNumber;
+
+  /// ID del personaje.
   final String characterId;
+
+  /// ID de la entrevista.
   final String interviewId;
+
+  /// JSON serializado de la entrevista.
   final String json;
 
+  /// Crea un [InterviewDbEntry].
   const InterviewDbEntry({
     required this.episodeNumber,
     required this.characterId,
@@ -29,27 +47,44 @@ class InterviewDbEntry {
   });
 }
 
+/// Base de datos de contenido (episodios, entrevistas, datos de idioma).
+///
+/// Gestiona el almacenamiento y recuperación de contenido educativo.
 class ContentDb {
+  /// Crea un [ContentDb].
   ContentDb({ReviewWordsDb? dbProvider})
       : _dbProvider = dbProvider ?? ReviewWordsDb.instance;
 
+  /// Nombre de la tabla de episodios.
   static const String episodesTable = 'episodes';
+
+  /// Nombre de la tabla de entrevistas.
   static const String interviewsTable = 'character_interviews';
+
+  /// Nombre de la tabla de verbos irregulares.
   static const String irregularVerbsTable = 'a1_irregular_verbs';
+
+  /// Nombre de la tabla de países.
   static const String countriesTable = 'a1_countries';
+
+  /// Nombre de la tabla de ciudades.
   static const String citiesTable = 'a1_cities';
+
+  /// Nombre de la tabla de comparativos.
   static const String comparativesTable = 'a1_comparatives';
 
   final ReviewWordsDb _dbProvider;
 
   Future<Database> get _db async => _dbProvider.database;
 
+  /// Obtiene el conteo total de episodios.
   Future<int> getEpisodeCount() async {
     final db = await _db;
     final result = await db.rawQuery('SELECT COUNT(*) as count FROM $episodesTable');
     return Sqflite.firstIntValue(result) ?? 0;
   }
 
+  /// Obtiene un episodio por número.
   Future<Map<String, dynamic>?> getEpisodeByNumber(int episodeNumber) async {
     final db = await _db;
     final rows = await db.query(
@@ -58,10 +93,13 @@ class ContentDb {
       whereArgs: [episodeNumber],
       limit: 1,
     );
-    if (rows.isEmpty) return null;
+    if (rows.isEmpty) {
+      return null;
+    }
     return rows.first;
   }
 
+  /// Obtiene un episodio por ID.
   Future<Map<String, dynamic>?> getEpisodeById(String episodeId) async {
     final db = await _db;
     final rows = await db.query(
@@ -70,10 +108,13 @@ class ContentDb {
       whereArgs: [episodeId],
       limit: 1,
     );
-    if (rows.isEmpty) return null;
+    if (rows.isEmpty) {
+      return null;
+    }
     return rows.first;
   }
 
+  /// Obtiene todos los episodios.
   Future<List<Map<String, dynamic>>> getAllEpisodes() async {
     final db = await _db;
     return db.query(
@@ -82,6 +123,7 @@ class ContentDb {
     );
   }
 
+  /// Obtiene episodios por nivel.
   Future<List<Map<String, dynamic>>> getEpisodesByLevel(String level) async {
     final db = await _db;
     return db.query(
@@ -92,8 +134,11 @@ class ContentDb {
     );
   }
 
+  /// Inserta o actualiza episodios.
   Future<void> upsertEpisodes(List<EpisodeDbEntry> entries) async {
-    if (entries.isEmpty) return;
+    if (entries.isEmpty) {
+      return;
+    }
     final db = await _db;
     final batch = db.batch();
     for (final entry in entries) {
@@ -111,6 +156,7 @@ class ContentDb {
     await batch.commit(noResult: true);
   }
 
+  /// Limpia las tablas de contenido.
   Future<void> clearContentTables() async {
     final db = await _db;
     await db.transaction((txn) async {
@@ -119,6 +165,7 @@ class ContentDb {
     });
   }
 
+  /// Limpia las tablas de datos de idioma.
   Future<void> clearLanguageTables() async {
     final db = await _db;
     await db.transaction((txn) async {
@@ -129,10 +176,13 @@ class ContentDb {
     });
   }
 
+  /// Inserta verbos irregulares en batch.
   Future<void> insertIrregularVerbs(
     List<Map<String, dynamic>> items,
   ) async {
-    if (items.isEmpty) return;
+    if (items.isEmpty) {
+      return;
+    }
     final db = await _db;
     final batch = db.batch();
     for (final item in items) {
@@ -149,6 +199,7 @@ class ContentDb {
     await batch.commit(noResult: true);
   }
 
+  /// Agrega un verbo irregular.
   Future<void> addIrregularVerb({
     required String base,
     required String past,
@@ -166,6 +217,7 @@ class ContentDb {
     );
   }
 
+  /// Elimina un verbo irregular.
   Future<void> deleteIrregularVerb(String base) async {
     final db = await _db;
     await db.delete(
@@ -175,10 +227,13 @@ class ContentDb {
     );
   }
 
+  /// Inserta países en batch.
   Future<void> insertCountries(
     List<Map<String, dynamic>> items,
   ) async {
-    if (items.isEmpty) return;
+    if (items.isEmpty) {
+      return;
+    }
     final db = await _db;
     final batch = db.batch();
     for (final item in items) {
@@ -195,6 +250,7 @@ class ContentDb {
     await batch.commit(noResult: true);
   }
 
+  /// Agrega un país.
   Future<void> addCountry({
     required String country,
     required String nationality,
@@ -212,6 +268,7 @@ class ContentDb {
     );
   }
 
+  /// Elimina un país.
   Future<void> deleteCountry(String country) async {
     final db = await _db;
     await db.delete(
@@ -221,8 +278,11 @@ class ContentDb {
     );
   }
 
+  /// Inserta ciudades en batch.
   Future<void> insertCities(List<String> cities) async {
-    if (cities.isEmpty) return;
+    if (cities.isEmpty) {
+      return;
+    }
     final db = await _db;
     final batch = db.batch();
     for (final city in cities) {
@@ -235,6 +295,7 @@ class ContentDb {
     await batch.commit(noResult: true);
   }
 
+  /// Agrega una ciudad.
   Future<void> addCity(String city) async {
     final db = await _db;
     await db.insert(
@@ -244,6 +305,7 @@ class ContentDb {
     );
   }
 
+  /// Elimina una ciudad.
   Future<void> deleteCity(String city) async {
     final db = await _db;
     await db.delete(
@@ -253,10 +315,13 @@ class ContentDb {
     );
   }
 
+  /// Inserta adjetivos comparativos en batch.
   Future<void> insertComparatives(
     List<Map<String, dynamic>> items,
   ) async {
-    if (items.isEmpty) return;
+    if (items.isEmpty) {
+      return;
+    }
     final db = await _db;
     final batch = db.batch();
     for (final item in items) {
@@ -273,6 +338,7 @@ class ContentDb {
     await batch.commit(noResult: true);
   }
 
+  /// Agrega un adjetivo comparativo.
   Future<void> addComparative({
     required String base,
     required String comparative,
@@ -290,6 +356,7 @@ class ContentDb {
     );
   }
 
+  /// Elimina un adjetivo comparativo.
   Future<void> deleteComparative(String base) async {
     final db = await _db;
     await db.delete(
@@ -299,8 +366,11 @@ class ContentDb {
     );
   }
 
+  /// Inserta o actualiza entrevistas.
   Future<void> upsertInterviews(List<InterviewDbEntry> entries) async {
-    if (entries.isEmpty) return;
+    if (entries.isEmpty) {
+      return;
+    }
     final db = await _db;
     final batch = db.batch();
     for (final entry in entries) {
@@ -318,6 +388,7 @@ class ContentDb {
     await batch.commit(noResult: true);
   }
 
+  /// Obtiene el JSON de una entrevista.
   Future<String?> getInterviewJson({
     required int episodeNumber,
     required String characterId,
@@ -330,10 +401,13 @@ class ContentDb {
       whereArgs: [episodeNumber, characterId, interviewId],
       limit: 1,
     );
-    if (rows.isEmpty) return null;
+    if (rows.isEmpty) {
+      return null;
+    }
     return rows.first['json'] as String?;
   }
 
+  /// Verifica si hay entrevistas para un episodio.
   Future<bool> hasInterviewForEpisode(int episodeNumber) async {
     final db = await _db;
     final result = await db.rawQuery(
@@ -344,6 +418,7 @@ class ContentDb {
     return count > 0;
   }
 
+  /// Obtiene IDs de personajes con entrevistas en un episodio.
   Future<List<String>> getInterviewCharacterIds(int episodeNumber) async {
     final db = await _db;
     final rows = await db.query(
@@ -360,6 +435,7 @@ class ContentDb {
         .toList();
   }
 
+  /// Obtiene entradas de entrevistas de un episodio.
   Future<List<InterviewDbEntry>> getInterviewEntries(int episodeNumber) async {
     final db = await _db;
     final rows = await db.query(
@@ -381,6 +457,7 @@ class ContentDb {
         .toList();
   }
 
+  /// Obtiene verbos irregulares con límite.
   Future<List<Map<String, String>>> fetchIrregularVerbs({
     int limit = 20,
   }) async {
@@ -399,6 +476,7 @@ class ContentDb {
         .toList();
   }
 
+  /// Obtiene todos los verbos irregulares.
   Future<List<Map<String, String>>> fetchIrregularVerbsAll() async {
     final db = await _db;
     final rows = await db.query(
@@ -414,6 +492,7 @@ class ContentDb {
         .toList();
   }
 
+  /// Obtiene países con límite.
   Future<List<Map<String, String>>> fetchCountries({
     int limit = 20,
   }) async {
@@ -432,6 +511,7 @@ class ContentDb {
         .toList();
   }
 
+  /// Obtiene todos los países.
   Future<List<Map<String, String>>> fetchCountriesAll() async {
     final db = await _db;
     final rows = await db.query(
@@ -447,6 +527,7 @@ class ContentDb {
         .toList();
   }
 
+  /// Obtiene ciudades con límite.
   Future<List<String>> fetchCities({int limit = 20}) async {
     final db = await _db;
     final rows = await db.query(
@@ -457,6 +538,7 @@ class ContentDb {
     return rows.map((row) => row['city'] as String).toList();
   }
 
+  /// Obtiene todas las ciudades.
   Future<List<String>> fetchCitiesAll() async {
     final db = await _db;
     final rows = await db.query(
@@ -466,6 +548,7 @@ class ContentDb {
     return rows.map((row) => row['city'] as String).toList();
   }
 
+  /// Obtiene comparativos con límite.
   Future<List<Map<String, String>>> fetchComparatives({
     int limit = 20,
   }) async {
@@ -484,6 +567,7 @@ class ContentDb {
         .toList();
   }
 
+  /// Obtiene todos los comparativos.
   Future<List<Map<String, String>>> fetchComparativesAll() async {
     final db = await _db;
     final rows = await db.query(

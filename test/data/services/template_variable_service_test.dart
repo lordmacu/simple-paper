@@ -19,7 +19,7 @@ void main() {
 
     test('replaceVariables replaces known variables', () {
       // Usamos una cadena que contenga varias variables
-      final text = 'Hello {player_name}, welcome to {company_name} in {city}.';
+      const text = 'Hello {player_name}, welcome to {company_name} in {city}.';
       final result = service.replaceVariables(text);
 
       expect(result, contains('New Hire'));
@@ -32,7 +32,7 @@ void main() {
     test('updateVariable updates the value', () {
       service.updateVariable('player_name', 'Michael Scott');
 
-      final text = 'Hello {player_name}';
+      const text = 'Hello {player_name}';
       final result = service.replaceVariables(text);
 
       expect(result, equals('Hello Michael Scott'));
@@ -42,14 +42,14 @@ void main() {
     test('updateAll updates multiple variables', () {
       service.updateAll({'player_name': 'Jim Halpert', 'city': 'Stamford'});
 
-      final text = '{player_name} moves to {city}.';
+      const text = '{player_name} moves to {city}.';
       final result = service.replaceVariables(text);
 
       expect(result, equals('Jim Halpert moves to Stamford.'));
     });
 
     test('Unknown variables in text are not replaced or removed', () {
-      final text = 'This is {unknown_var}.';
+      const text = 'This is {unknown_var}.';
       final result = service.replaceVariables(text);
 
       expect(result, equals('This is {unknown_var}.'));

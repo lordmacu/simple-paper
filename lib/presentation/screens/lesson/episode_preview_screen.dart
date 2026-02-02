@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../widgets/atoms/primary_button.dart';
+import '../../widgets/molecules/bilingual_text_card.dart';
 
+/// episode preview screen/widget
 class EpisodePreviewScreen extends StatelessWidget {
+  ///  string
   final String teaserEn;
+  /// Teaser en español
   final String teaserEs;
+  /// URL de la imagen
   final String imageUrl;
+  /// Callback cuando el usuario continúa
   final VoidCallback onContinue;
 
+  /// Crea una pantalla de preview de episodio.
   const EpisodePreviewScreen({
-    Key? key,
-    required this.teaserEn,
-    required this.teaserEs,
-    required this.imageUrl,
-    required this.onContinue,
-  }) : super(key: key);
+    required this.teaserEn, required this.teaserEs, required this.imageUrl, required this.onContinue, super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -50,36 +54,24 @@ class EpisodePreviewScreen extends StatelessWidget {
                     ),
             ),
             const SizedBox(height: 16),
-            Text(
-              teaserEn,
-              style: const TextStyle(
+            BilingualTextCard(
+              textEn: teaserEn,
+              textEs: teaserEs,
+              backgroundColor: Colors.transparent,
+              padding: EdgeInsets.zero,
+              enStyle: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
                 color: AppColors.textPrimary,
               ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              teaserEs,
-              style: const TextStyle(
+              esStyle: const TextStyle(
                 color: AppColors.textSecondary,
               ),
             ),
             const Spacer(),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.primaryGreen,
-                foregroundColor: Colors.white,
-                padding: const EdgeInsets.symmetric(vertical: 14),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14),
-                ),
-              ),
+            PrimaryButton(
+              text: 'Continuar al próximo episodio',
               onPressed: onContinue,
-              child: const Text(
-                'Continuar al próximo episodio',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
             ),
           ],
         ),

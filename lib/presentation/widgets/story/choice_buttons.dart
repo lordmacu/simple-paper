@@ -3,19 +3,28 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../domain/models/story/choice.dart';
+import '../molecules/bilingual_text_card.dart';
 
-/// Botones de elección interactiva en diálogos
+/// Botones de elección interactiva en diálogos.
+///
+/// Muestra opciones múltiples que el usuario puede seleccionar.
 class ChoiceButtons extends StatefulWidget {
+  /// Lista de opciones disponibles.
   final List<Choice> choices;
+
+  /// ID de la opción seleccionada.
   final String? selectedChoiceId;
+
+  /// Callback cuando se selecciona una opción.
   final Function(String choiceId, int points) onChoiceSelected;
 
+  /// Crea un [ChoiceButtons].
   const ChoiceButtons({
-    Key? key,
     required this.choices,
-    this.selectedChoiceId,
     required this.onChoiceSelected,
-  }) : super(key: key);
+    super.key,
+    this.selectedChoiceId,
+  });
 
   @override
   State<ChoiceButtons> createState() => _ChoiceButtonsState();
@@ -45,9 +54,13 @@ class _ChoiceButtonsState extends State<ChoiceButtons> {
   }
 
   bool _sameChoices(List<Choice> a, List<Choice> b) {
-    if (a.length != b.length) return false;
+    if (a.length != b.length) {
+      return false;
+    }
     for (var i = 0; i < a.length; i++) {
-      if (a[i].choiceId != b[i].choiceId) return false;
+      if (a[i].choiceId != b[i].choiceId) {
+        return false;
+      }
     }
     return true;
   }
@@ -65,8 +78,8 @@ class _ChoiceButtonsState extends State<ChoiceButtons> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         // Título de instrucción
-        Padding(
-          padding: const EdgeInsets.only(bottom: 16),
+        const Padding(
+          padding: EdgeInsets.only(bottom: 16),
           child: Text(
             '¿Cual frase es la correcta?',
             style: TextStyle(
@@ -103,7 +116,7 @@ class _ChoiceButtonsState extends State<ChoiceButtons> {
                   : null,
             ),
           );
-        }).toList(),
+        }),
       ],
     );
   }
@@ -122,7 +135,6 @@ class _ChoiceButton extends StatefulWidget {
   final VoidCallback? onTap;
 
   const _ChoiceButton({
-    Key? key,
     required this.letter,
     required this.text,
     required this.translationEs,
@@ -132,7 +144,7 @@ class _ChoiceButton extends StatefulWidget {
     required this.isCorrect,
     required this.isIncorrectSelected,
     this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   State<_ChoiceButton> createState() => _ChoiceButtonState();
@@ -181,25 +193,25 @@ class _ChoiceButtonState extends State<_ChoiceButton>
 
     if (widget.showResult) {
       if (widget.isCorrect) {
-        backgroundColor = AppColors.successGreen.withOpacity(0.2);
+        backgroundColor = AppColors.successGreen.withValues(alpha: 0.2);
         borderColor = AppColors.successGreen;
         textColor = AppColors.successGreen;
       } else if (widget.isIncorrectSelected) {
-        backgroundColor = AppColors.errorRed.withOpacity(0.2);
+        backgroundColor = AppColors.errorRed.withValues(alpha: 0.2);
         borderColor = AppColors.errorRed;
         textColor = AppColors.errorRed;
       } else {
-        backgroundColor = Colors.grey.withOpacity(0.1);
-        borderColor = Colors.grey.withOpacity(0.3);
+        backgroundColor = Colors.grey.withValues(alpha: 0.1);
+        borderColor = Colors.grey.withValues(alpha: 0.3);
         textColor = Colors.grey;
       }
     } else if (widget.isSelected) {
-      backgroundColor = AppColors.primaryGreen.withOpacity(0.2);
+      backgroundColor = AppColors.primaryGreen.withValues(alpha: 0.2);
       borderColor = AppColors.primaryGreen;
       textColor = AppColors.primaryGreen;
     } else if (widget.isDisabled) {
-      backgroundColor = Colors.grey.withOpacity(0.1);
-      borderColor = Colors.grey.withOpacity(0.3);
+      backgroundColor = Colors.grey.withValues(alpha: 0.1);
+      borderColor = Colors.grey.withValues(alpha: 0.3);
       textColor = Colors.grey;
     } else {
       backgroundColor = Colors.white;
@@ -227,14 +239,14 @@ class _ChoiceButtonState extends State<_ChoiceButton>
             boxShadow: widget.isSelected
                 ? [
                     BoxShadow(
-                      color: AppColors.primaryGreen.withOpacity(0.3),
+                      color: AppColors.primaryGreen.withValues(alpha: 0.3),
                       blurRadius: 12,
                       spreadRadius: 2,
                     ),
                   ]
                 : [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.05),
+                      color: Colors.black.withValues(alpha: 0.05),
                       blurRadius: 4,
                       offset: const Offset(0, 2),
                     ),
@@ -252,12 +264,12 @@ class _ChoiceButtonState extends State<_ChoiceButton>
                           ? AppColors.successGreen
                           : widget.isIncorrectSelected
                               ? AppColors.errorRed
-                              : Colors.grey.withOpacity(0.3))
+                              : Colors.grey.withValues(alpha: 0.3))
                       : widget.isSelected
                           ? AppColors.primaryGreen
                           : widget.isDisabled
-                              ? Colors.grey.withOpacity(0.3)
-                              : AppColors.secondaryBlue.withOpacity(0.2),
+                              ? Colors.grey.withValues(alpha: 0.3)
+                              : AppColors.secondaryBlue.withValues(alpha: 0.2),
                   shape: BoxShape.circle,
                 ),
                 child: Center(
@@ -282,27 +294,21 @@ class _ChoiceButtonState extends State<_ChoiceButton>
 
               // Texto de la opción
               Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      widget.text,
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
-                        color: textColor,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      widget.translationEs,
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: textColor.withOpacity(0.7),
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                  ],
+                child: BilingualTextCard(
+                  textEn: widget.text,
+                  textEs: widget.translationEs,
+                  backgroundColor: Colors.transparent,
+                  padding: EdgeInsets.zero,
+                  enStyle: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                    color: textColor,
+                  ),
+                  esStyle: TextStyle(
+                    fontSize: 13,
+                    color: textColor.withValues(alpha: 0.7),
+                    fontStyle: FontStyle.italic,
+                  ),
                 ),
               ),
 
@@ -318,7 +324,7 @@ class _ChoiceButtonState extends State<_ChoiceButton>
                       ? AppColors.successGreen
                       : widget.isIncorrectSelected
                           ? AppColors.errorRed
-                          : Colors.grey.withOpacity(0.4),
+                          : Colors.grey.withValues(alpha: 0.4),
                   size: 24,
                 )
               else if (widget.isSelected)

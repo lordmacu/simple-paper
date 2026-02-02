@@ -19,16 +19,19 @@ import '../../core/utils/navigation_utils.dart';
 /// Pantalla de transición que se muestra entre Vocabulary Story y Main Story
 /// Muestra texto motivacional bilingüe antes de continuar con las escenas
 class TransitionScreen extends ConsumerStatefulWidget {
+  /// Texto de transición bilingüe (en inglés y español) que se mostrará al usuario
   final BilingualText transitionText;
+  
+  /// Episodio actual que se está completando
   final Episode episode;
+  
+  /// Callback que se ejecuta cuando el usuario presiona el botón de continuar
   final VoidCallback onContinue;
 
+  /// Constructor de la pantalla de transición
   const TransitionScreen({
-    Key? key,
-    required this.transitionText,
-    required this.episode,
-    required this.onContinue,
-  }) : super(key: key);
+    required this.transitionText, required this.episode, required this.onContinue, super.key,
+  });
 
   @override
   ConsumerState<TransitionScreen> createState() => _TransitionScreenState();
@@ -122,7 +125,9 @@ class _TransitionScreenState extends ConsumerState<TransitionScreen>
     
     await repository.unlockCharacter(unlockedCharacter);
 
-    if (!mounted) return;
+    if (!mounted) {
+      return;
+    }
 
     await Navigator.push(
       context,
@@ -140,6 +145,7 @@ class _TransitionScreenState extends ConsumerState<TransitionScreen>
     }
   }
 
+  // ignore: unused_element
   Future<void> _showPendingInterview() async {
     final progressRepo = ref.read(progressRepositoryProvider);
     final episodeNumber = widget.episode.episodeMetadata.episodeNumber;
@@ -167,7 +173,9 @@ class _TransitionScreenState extends ConsumerState<TransitionScreen>
         characterName: character.defaultName,
       );
 
-      if (!mounted) return;
+      if (!mounted) {
+        return;
+      }
       if (interview == null) {
         continue;
       }
@@ -188,7 +196,9 @@ class _TransitionScreenState extends ConsumerState<TransitionScreen>
         ),
       );
 
-      if (!mounted) return;
+      if (!mounted) {
+        return;
+      }
 
       if (result != null) {
         final correct = result['correct'] ?? 0;
@@ -220,6 +230,10 @@ class _TransitionScreenState extends ConsumerState<TransitionScreen>
           episodeNumber: episodeNumber,
           sectionId: SectionProgressIds.interview,
         );
+
+        if (!mounted) {
+          break;
+        }
 
         await Navigator.push(
           context,
@@ -267,7 +281,7 @@ class _TransitionScreenState extends ConsumerState<TransitionScreen>
       }
       debugPrint('$_logTag load_db_missing episode=$episodeNumber character=$fileName');
       return null;
-    } catch (e) {
+    } on Exception catch (e) {
       // Si no existe o falla parseo, devolver null
       debugPrint('$_logTag load_fail db episode=$episodeNumber character=$fileName error=$e');
       return null;
@@ -354,10 +368,10 @@ class _TransitionScreenState extends ConsumerState<TransitionScreen>
                 width: 80,
                 height: 80,
                 decoration: BoxDecoration(
-                  color: AppColors.primaryGreen.withOpacity(0.1),
+                  color: AppColors.primaryGreen.withValues(alpha: 0.1),
                   shape: BoxShape.circle,
                 ),
-                child: Icon(
+                child: const Icon(
                   Icons.star_rounded,
                   size: 48,
                   color: AppColors.primaryGreen,
@@ -369,7 +383,7 @@ class _TransitionScreenState extends ConsumerState<TransitionScreen>
         const SizedBox(height: 16),
         
         // Título
-        Text(
+        const Text(
           'Great Job!',
           style: TextStyle(
             fontSize: 28,
@@ -380,7 +394,7 @@ class _TransitionScreenState extends ConsumerState<TransitionScreen>
         const SizedBox(height: 8),
         
         // Subtítulo
-        Text(
+        const Text(
           'You learned the vocabulary',
           style: TextStyle(
             fontSize: 16,
@@ -404,7 +418,7 @@ class _TransitionScreenState extends ConsumerState<TransitionScreen>
               borderRadius: BorderRadius.circular(16),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.08),
+                  color: Colors.black.withValues(alpha: 0.08),
                   blurRadius: 16,
                   offset: const Offset(0, 4),
                 ),
@@ -431,7 +445,7 @@ class _TransitionScreenState extends ConsumerState<TransitionScreen>
                     gradient: LinearGradient(
                       colors: [
                         Colors.transparent,
-                        AppColors.textSecondary.withOpacity(0.2),
+                        AppColors.textSecondary.withValues(alpha: 0.2),
                         Colors.transparent,
                       ],
                     ),
@@ -490,7 +504,7 @@ class _TransitionScreenState extends ConsumerState<TransitionScreen>
         // Transition text
         Text(
           text,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 18,
             height: 1.6,
             color: AppColors.textPrimary,

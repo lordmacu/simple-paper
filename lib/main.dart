@@ -6,7 +6,6 @@ import 'package:office_app/core/theme/app_theme.dart';
 import 'package:office_app/core/router/app_router.dart';
 import 'package:office_app/presentation/providers/character_providers.dart';
 import 'package:office_app/presentation/providers/personalization_providers.dart';
-import 'package:sqflite/sqflite.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart';
 

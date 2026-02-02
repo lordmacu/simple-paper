@@ -7,6 +7,7 @@ import 'package:office_app/presentation/providers/episode_providers.dart';
 /// Widget que muestra la barra de progreso global del usuario
 /// Indica cuántos episodios ha completado del total disponible
 class GlobalProgressBar extends ConsumerWidget {
+  /// Crea una instancia de global progress bar.
   const GlobalProgressBar({super.key});
 
   @override
@@ -30,7 +31,7 @@ class GlobalProgressBar extends ConsumerWidget {
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
+                    color: Colors.black.withValues(alpha: 0.05),
                     blurRadius: 4,
                     offset: const Offset(0, 2),
                   ),
@@ -93,13 +94,13 @@ class GlobalProgressBar extends ConsumerWidget {
                           gradient: LinearGradient(
                             colors: [
                               AppColors.primaryGreen,
-                              AppColors.primaryGreen.withOpacity(0.8),
+                              AppColors.primaryGreen.withValues(alpha: 0.8),
                             ],
                           ),
                           borderRadius: BorderRadius.circular(12),
                           boxShadow: [
                             BoxShadow(
-                              color: AppColors.primaryGreen.withOpacity(0.3),
+                              color: AppColors.primaryGreen.withValues(alpha: 0.3),
                               blurRadius: 4,
                               offset: const Offset(0, 2),
                             ),
@@ -168,7 +169,7 @@ class GlobalProgressBar extends ConsumerWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       child: Row(
         children: [
-          Icon(Icons.error_outline, color: AppColors.errorRed, size: 20),
+          const Icon(Icons.error_outline, color: AppColors.errorRed, size: 20),
           const SizedBox(width: 8),
           Text(
             'Error loading progress',

@@ -5,11 +5,15 @@ import '../../../core/constants/app_colors.dart';
 import '../../../domain/models/progression/achievement.dart';
 import '../../providers/progress_providers.dart';
 import '../../providers/template_variable_provider.dart';
-import '../../widgets/common/duolingo_button.dart';
 import '../../widgets/profile/xp_level_header.dart';
+import '../../widgets/molecules/section_header.dart';
 import 'widgets/profile_header.dart';
 
+/// Pantalla de perfil del usuario.
+///
+/// Muestra estadísticas, nivel, XP y logros.
 class ProfileScreen extends ConsumerStatefulWidget {
+  /// Crea un [ProfileScreen].
   const ProfileScreen({super.key});
 
   @override
@@ -91,9 +95,10 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                   value: '${progress.reviewWords.length}',
                 ),
                 const SizedBox(height: 18),
-                const Text(
-                  'Logros',
-                  style: TextStyle(
+                const SectionHeader(
+                  title: 'Logros',
+                  padding: EdgeInsets.zero,
+                  titleStyle: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w800,
                     color: AppColors.textPrimary,
@@ -130,9 +135,13 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   }
 }
 
+/// Ribbon decorativo que muestra el nivel actual.
 class LevelUpRibbon extends StatelessWidget {
+  /// Nivel a mostrar.
   final int level;
-  const LevelUpRibbon({super.key, required this.level});
+
+  /// Crea un [LevelUpRibbon].
+  const LevelUpRibbon({required this.level, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -152,7 +161,7 @@ class LevelUpRibbon extends StatelessWidget {
           borderRadius: BorderRadius.circular(14),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.08),
+              color: Colors.black.withValues(alpha: 0.08),
               blurRadius: 10,
               offset: const Offset(0, 4),
             )
@@ -222,14 +231,19 @@ class _StatRow extends StatelessWidget {
   }
 }
 
+/// Grid de logros con estado de desbloqueo.
 class AchievementsGrid extends StatelessWidget {
+  /// Lista de todos los logros disponibles.
   final List<Achievement> achievements;
+
+  /// IDs de logros desbloqueados.
   final Set<String> unlockedIds;
 
+  /// Crea un [AchievementsGrid].
   const AchievementsGrid({
-    super.key,
     required this.achievements,
     required this.unlockedIds,
+    super.key,
   });
 
   @override
@@ -252,7 +266,7 @@ class AchievementsGrid extends StatelessWidget {
             borderRadius: BorderRadius.circular(14),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.06),
+                color: Colors.black.withValues(alpha: 0.06),
                 blurRadius: 8,
                 offset: const Offset(0, 4),
               ),
@@ -287,7 +301,7 @@ class AchievementsGrid extends StatelessWidget {
               Text(
                 a.description,
                 style: TextStyle(
-                  color: textColor.withOpacity(0.9),
+                  color: textColor.withValues(alpha: 0.9),
                   fontSize: 12,
                   height: 1.2,
                 ),

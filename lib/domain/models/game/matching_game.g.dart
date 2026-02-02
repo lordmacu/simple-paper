@@ -14,13 +14,13 @@ _$MatchingGameImpl _$$MatchingGameImplFromJson(Map<String, dynamic> json) =>
       titleEs: json['title_es'] as String,
       instructions: json['instructions'] as String,
       instructionsEs: json['instructions_es'] as String,
+      content: MatchingGameContent.fromJson(
+        json['content'] as Map<String, dynamic>,
+      ),
       optional: json['optional'] as bool? ?? true,
       unlockedAfterEpisode: json['unlocked_after_episode'] as bool? ?? true,
       timeLimitSeconds: (json['time_limit_seconds'] as num?)?.toInt(),
       xpReward: (json['xp_reward'] as num?)?.toInt() ?? 0,
-      content: MatchingGameContent.fromJson(
-        json['content'] as Map<String, dynamic>,
-      ),
       settings: json['settings'] == null
           ? null
           : MatchingGameSettings.fromJson(
@@ -36,11 +36,11 @@ Map<String, dynamic> _$$MatchingGameImplToJson(_$MatchingGameImpl instance) =>
       'title_es': instance.titleEs,
       'instructions': instance.instructions,
       'instructions_es': instance.instructionsEs,
+      'content': instance.content,
       'optional': instance.optional,
       'unlocked_after_episode': instance.unlockedAfterEpisode,
       'time_limit_seconds': instance.timeLimitSeconds,
       'xp_reward': instance.xpReward,
-      'content': instance.content,
       'settings': instance.settings,
     };
 

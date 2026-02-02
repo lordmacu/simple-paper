@@ -7,17 +7,23 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/constants/app_colors.dart';
 import '../../../../domain/models/game/order_sentence_game.dart';
-import '../../../providers/template_variable_provider.dart';
+import '../../../widgets/atoms/icon_text_button.dart';
+import '../../../widgets/atoms/primary_button.dart';
+import '../../../widgets/molecules/score_footer.dart';
+import '../../../widgets/molecules/section_header.dart';
+import '../../../widgets/molecules/timer_chip.dart';
 
+/// order sentence game screen/widget
 class OrderSentenceGameWidget extends ConsumerStatefulWidget {
+  ///  order sentence game
   final OrderSentenceGame game;
+  /// Callback cuando se completa el juego con puntos ganados
   final ValueChanged<int> onComplete;
 
+  /// Crea un widget de juego de ordenar oraciones.
   const OrderSentenceGameWidget({
-    Key? key,
-    required this.game,
-    required this.onComplete,
-  }) : super(key: key);
+    required this.game, required this.onComplete, super.key,
+  });
 
   @override
   ConsumerState<OrderSentenceGameWidget> createState() =>
@@ -53,10 +59,14 @@ class _OrderSentenceGameWidgetState
 
   void _startTimerIfNeeded() {
     final seconds = widget.game.timeLimitSeconds;
-    if (seconds == null) return;
+    if (seconds == null) {
+      return;
+    }
     _timeLeft = seconds;
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (!mounted) return;
+      if (!mounted) {
+        return;
+      }
       setState(() {
         _timeLeft = (_timeLeft ?? 1) - 1;
         if ((_timeLeft ?? 0) <= 0) {
@@ -85,7 +95,9 @@ class _OrderSentenceGameWidgetState
   }
 
   void _removeLast() {
-    if (_selected.isEmpty) return;
+    if (_selected.isEmpty) {
+      return;
+    }
     setState(() {
       final last = _selected.removeLast();
       _currentWords.insert(0, last);
@@ -106,7 +118,9 @@ class _OrderSentenceGameWidgetState
     if (correct) {
       HapticFeedback.lightImpact();
       Future.delayed(const Duration(milliseconds: 900), () {
-        if (!mounted) return;
+        if (!mounted) {
+          return;
+        }
         _goNext();
       });
     } else {
@@ -132,25 +146,6 @@ class _OrderSentenceGameWidgetState
 
   @override
   Widget build(BuildContext context) {
-    final template = ref.read(templateVariableServiceProvider);
-    final promptRaw =
-        _item.prompt != null ? template.replaceVariables(_item.prompt!) : null;
-    final promptEsRaw = _item.promptEs != null
-        ? template.replaceVariables(_item.promptEs!)
-        : null;
-
-    bool _isSameAsAnswer(String? text) {
-      if (text == null) return false;
-      return text.trim().toLowerCase() ==
-          _item.correctSentence.trim().toLowerCase();
-    }
-
-    // Oculta cualquier prompt que coincida con la respuesta correcta
-    final String? prompt =
-        (_isSameAsAnswer(promptRaw)) ? null : promptRaw;
-    final String? promptEs =
-        (_isSameAsAnswer(promptEsRaw)) ? null : promptEsRaw;
-
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Column(
@@ -165,7 +160,7 @@ class _OrderSentenceGameWidgetState
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
               decoration: BoxDecoration(
-                color: AppColors.warningOrange.withOpacity(0.12),
+                color: AppColors.warningOrange.withValues(alpha: 0.12),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Row(
@@ -189,51 +184,28 @@ class _OrderSentenceGameWidgetState
           _buildChoices(),
           const Spacer(),
           if (_awaitingContinue)
-            ElevatedButton(
-              onPressed: _goNext,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.secondaryBlue,
-                minimumSize: const Size(double.infinity, 48),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14),
-                ),
-              ),
-              child: const Text(
-                'Continuar',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+            IconTextButton(
+              label: 'Continuar',
+              icon: Icons.arrow_forward,
+              onTap: _goNext,
+              foregroundColor: Colors.white,
+              backgroundColor: AppColors.secondaryBlue,
+              expand: true,
+              minHeight: 48,
             )
           else
-            ElevatedButton(
+            PrimaryButton(
+              text: 'Confirmar',
               onPressed: _selected.isEmpty ? null : _submit,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.primaryGreen,
-                minimumSize: const Size(double.infinity, 48),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14),
-                ),
-              ),
-              child: const Text(
-                'Confirmar',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
             ),
           TextButton(
             onPressed: _removeLast,
             child: const Text('Deshacer última palabra'),
           ),
           const SizedBox(height: 8),
-          Text(
-            'Score: $_score',
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontWeight: FontWeight.w800,
-              color: AppColors.textPrimary,
-            ),
+          ScoreFooter(
+            label: 'Score',
+            score: _score,
           ),
         ],
       ),
@@ -241,39 +213,12 @@ class _OrderSentenceGameWidgetState
   }
 
   Widget _buildHeader() {
-    return Row(
-      children: [
-        Text(
-          'Frase ${_currentIndex + 1} / $_totalItems',
-          style: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-            color: AppColors.textPrimary,
-          ),
-        ),
-        const Spacer(),
-        if (_timeLeft != null)
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-            decoration: BoxDecoration(
-              color: AppColors.warningOrange.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Row(
-              children: [
-                const Icon(Icons.timer, size: 18, color: AppColors.warningOrange),
-                const SizedBox(width: 6),
-                Text(
-                  '${_timeLeft}s',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.warningOrange,
-                  ),
-                ),
-              ],
-            ),
-          ),
-      ],
+    return SectionHeader(
+      title: 'Frase ${_currentIndex + 1} / $_totalItems',
+      trailing: _timeLeft != null
+          ? TimerChip(seconds: _timeLeft!)
+          : null,
+      padding: EdgeInsets.zero,
     );
   }
 
@@ -300,7 +245,7 @@ class _OrderSentenceGameWidgetState
                         w,
                         style: const TextStyle(fontWeight: FontWeight.w700),
                       ),
-                      backgroundColor: AppColors.primaryGreen.withOpacity(0.15),
+                      backgroundColor: AppColors.primaryGreen.withValues(alpha: 0.15),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),

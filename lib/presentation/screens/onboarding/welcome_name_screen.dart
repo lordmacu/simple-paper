@@ -6,10 +6,14 @@ import '../../providers/content_import_provider.dart';
 import '../../providers/episode_providers.dart';
 import '../../providers/personalization_providers.dart';
 import '../../providers/template_variable_provider.dart';
+import '../../widgets/atoms/primary_button.dart';
 
+/// welcome name screen/widget
 class WelcomeNameScreen extends ConsumerStatefulWidget {
-  const WelcomeNameScreen({super.key, required this.onFinished});
+  /// Crea una instancia de welcome name screen.
+  const WelcomeNameScreen({required this.onFinished, super.key});
 
+  ///  void callback
   final VoidCallback onFinished;
 
   @override
@@ -67,7 +71,7 @@ class _WelcomeNameScreenState extends ConsumerState<WelcomeNameScreen> {
                             borderRadius: BorderRadius.circular(18),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black.withOpacity(0.06),
+                                color: Colors.black.withValues(alpha: 0.06),
                                 blurRadius: 12,
                                 offset: const Offset(0, 6),
                               ),
@@ -76,8 +80,8 @@ class _WelcomeNameScreenState extends ConsumerState<WelcomeNameScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Row(
-                                children: const [
+                              const Row(
+                                children: [
                                   Icon(Icons.emoji_people,
                                       color: AppColors.primaryGreen, size: 28),
                                   SizedBox(width: 8),
@@ -140,17 +144,9 @@ class _WelcomeNameScreenState extends ConsumerState<WelcomeNameScreen> {
                           ),
                         ),
                         const Spacer(),
-                        ElevatedButton(
+                        PrimaryButton(
                           key: const Key('welcome_button_continue'),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: AppColors.primaryGreen,
-                            minimumSize: const Size(double.infinity, 52),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(14),
-                            ),
-                            elevation: 6,
-                            shadowColor: AppColors.primaryGreen.withOpacity(0.35),
-                          ),
+                          text: 'Continuar',
                           onPressed: _isImporting ? null : _save,
                           child: _isImporting
                               ? const SizedBox(
@@ -163,18 +159,12 @@ class _WelcomeNameScreenState extends ConsumerState<WelcomeNameScreen> {
                                     ),
                                   ),
                                 )
-                              : const Text(
-                                  'Continuar',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                  ),
-                                ),
+                              : null,
                         ),
-                        TextButton(
-                          key: const Key('welcome_button_skip'),
+                        const TextButton(
+                          key: Key('welcome_button_skip'),
                           onPressed: null, // skip deshabilitado; requiere nombre
-                          child: const Text(
+                          child: Text(
                             'Debes ingresar un nombre para continuar',
                             style: TextStyle(color: AppColors.textSecondary),
                             textAlign: TextAlign.center,
@@ -216,17 +206,21 @@ class _WelcomeNameScreenState extends ConsumerState<WelcomeNameScreen> {
           .updateVariable('player_name', name);
 
       final importer = ref.read(contentImportServiceProvider);
-      final result = await importer.importAll();
+      await importer.importAll();
 
-      if (!mounted) return;
+      if (!mounted) {
+        return;
+      }
       ref.invalidate(episodeListProvider);
       setState(() => _isImporting = false);
       widget.onFinished();
       if (Navigator.of(context).canPop()) {
         Navigator.of(context).pop();
       }
-    } catch (e) {
-      if (!mounted) return;
+    } on Exception catch (_) {
+      if (!mounted) {
+        return;
+      }
       setState(() => _isImporting = false);
     }
   }

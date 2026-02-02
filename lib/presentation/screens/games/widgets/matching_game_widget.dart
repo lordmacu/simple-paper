@@ -9,17 +9,22 @@ import '../../../../core/constants/app_colors.dart';
 import '../../../../domain/models/game/matching_game.dart';
 import '../../../providers/template_variable_provider.dart';
 import '../../../../data/services/template_variable_service.dart';
+import '../../../widgets/molecules/bilingual_text_card.dart';
+import '../../../widgets/molecules/score_footer.dart';
+import '../../../widgets/molecules/timer_chip.dart';
+import '../../../widgets/molecules/dialog_action_row.dart';
 
 /// Widget interactivo para el juego de Matching (drag & drop).
 class MatchingGameWidget extends ConsumerStatefulWidget {
+  /// Juego de emparejamiento
   final MatchingGame game;
+  /// Callback cuando se completa el juego
   final ValueChanged<int> onComplete;
 
+  /// Crea una instancia de matching game widget.
   const MatchingGameWidget({
-    Key? key,
-    required this.game,
-    required this.onComplete,
-  }) : super(key: key);
+    required this.game, required this.onComplete, super.key,
+  });
 
   @override
   ConsumerState<MatchingGameWidget> createState() => _MatchingGameWidgetState();
@@ -63,10 +68,14 @@ class _MatchingGameWidgetState extends ConsumerState<MatchingGameWidget> {
 
   void _startTimerIfNeeded() {
     final seconds = widget.game.timeLimitSeconds;
-    if (seconds == null) return;
+    if (seconds == null) {
+      return;
+    }
     _timeLeft = seconds;
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (!mounted) return;
+      if (!mounted) {
+        return;
+      }
       setState(() {
         _timeLeft = (_timeLeft ?? 1) - 1;
         if ((_timeLeft ?? 0) <= 0) {
@@ -77,7 +86,9 @@ class _MatchingGameWidgetState extends ConsumerState<MatchingGameWidget> {
   }
 
   void _finishGame() {
-    if (_finished) return;
+    if (_finished) {
+      return;
+    }
     _finished = true;
     _timer?.cancel();
     // Llamar onComplete en el siguiente microtask para evitar conflictos de layout
@@ -112,7 +123,7 @@ class _MatchingGameWidgetState extends ConsumerState<MatchingGameWidget> {
       await SystemSound.play(
         correct ? SystemSoundType.click : SystemSoundType.alert,
       );
-    } catch (_) {
+    } on Exception catch (_) {
       // Silently ignore sound failures
     }
   }
@@ -145,8 +156,9 @@ class _MatchingGameWidgetState extends ConsumerState<MatchingGameWidget> {
               ],
             ),
             const SizedBox(height: 12),
-            Text(
-              'Score: $_score',
+            ScoreFooter(
+              label: 'Score',
+              score: _score,
               style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -186,12 +198,12 @@ class _MatchingGameWidgetState extends ConsumerState<MatchingGameWidget> {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
             decoration: BoxDecoration(
-              color: AppColors.secondaryBlue.withOpacity(0.1),
+              color: AppColors.secondaryBlue.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(10),
             ),
-            child: Row(
+            child: const Row(
               mainAxisSize: MainAxisSize.min,
-              children: const [
+              children: [
                 Icon(Icons.translate, size: 16, color: AppColors.secondaryBlue),
                 SizedBox(width: 6),
                 Text(
@@ -227,48 +239,39 @@ class _MatchingGameWidgetState extends ConsumerState<MatchingGameWidget> {
           ),
         ),
         if (_timeLeft != null)
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-            decoration: BoxDecoration(
-              color: AppColors.warningOrange.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Icon(Icons.timer, size: 18, color: AppColors.warningOrange),
-                const SizedBox(width: 6),
-                Text(
-                  '${_timeLeft}s',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.warningOrange,
-                  ),
-                ),
-              ],
-          ),
-        ),
+          TimerChip(seconds: _timeLeft!),
       ],
     );
   }
 
   void _showInstructionTranslation() {
     final instructionsEs = widget.game.instructionsEs;
-    if (instructionsEs.isEmpty) return;
+    if (instructionsEs.isEmpty) {
+      return;
+    }
     final template = ref.read(templateVariableServiceProvider);
     showDialog<void>(
       context: context,
       builder: (context) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         title: const Text('Instrucciones (ES)'),
-        content: Text(
-          template.replaceVariables(instructionsEs),
-          style: const TextStyle(color: AppColors.textPrimary, height: 1.4),
+        content: BilingualTextCard(
+          textEn: '',
+          textEs: template.replaceVariables(instructionsEs),
+          showEn: false,
+          backgroundColor: Colors.transparent,
+          padding: EdgeInsets.zero,
+          esStyle: const TextStyle(
+            color: AppColors.textPrimary,
+            height: 1.4,
+          ),
         ),
         actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Cerrar'),
+          DialogActionRow(
+            primaryAction: TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Cerrar'),
+            ),
           ),
         ],
       ),
@@ -301,8 +304,8 @@ class _MatchingGameWidgetState extends ConsumerState<MatchingGameWidget> {
 
     if (isTarget) {
       return DragTarget<MatchingItem>(
-        onWillAccept: (_) => !matched,
-        onAccept: (dragged) => _handleMatch(item, dragged),
+        onWillAcceptWithDetails: (_) => !matched,
+        onAcceptWithDetails: (details) => _handleMatch(item, details.data),
         builder: (context, candidateData, rejectedData) {
           final hovering = candidateData.isNotEmpty;
           return AnimatedContainer(
@@ -311,9 +314,9 @@ class _MatchingGameWidgetState extends ConsumerState<MatchingGameWidget> {
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
             decoration: BoxDecoration(
               color: matched
-                  ? AppColors.primaryGreen.withOpacity(0.15)
+                  ? AppColors.primaryGreen.withValues(alpha: 0.15)
                   : hovering
-                      ? AppColors.secondaryBlue.withOpacity(0.1)
+                      ? AppColors.secondaryBlue.withValues(alpha: 0.1)
                       : AppColors.cardBackground,
               borderRadius: BorderRadius.circular(14),
               border: Border.all(
@@ -369,12 +372,12 @@ class _MatchingGameWidgetState extends ConsumerState<MatchingGameWidget> {
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
         decoration: BoxDecoration(
           color: dimmed
-              ? AppColors.cardBackground.withOpacity(0.6)
+              ? AppColors.cardBackground.withValues(alpha: 0.6)
               : AppColors.cardBackground,
           borderRadius: BorderRadius.circular(14),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.05),
+              color: Colors.black.withValues(alpha: 0.05),
               blurRadius: 6,
               offset: const Offset(0, 3),
             ),

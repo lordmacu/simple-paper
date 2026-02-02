@@ -3,9 +3,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/constants/app_colors.dart';
 import '../../providers/personalization_providers.dart';
+import '../../widgets/atoms/primary_button.dart';
+import '../../widgets/molecules/section_header.dart';
 import '../../providers/template_variable_provider.dart';
 
+/// city selection screen/widget
 class CitySelectionScreen extends ConsumerStatefulWidget {
+  /// Crea una instancia de city selection screen.
   const CitySelectionScreen({super.key});
 
   @override
@@ -55,9 +59,10 @@ class _CitySelectionScreenState extends ConsumerState<CitySelectionScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Ciudades sugeridas',
-              style: TextStyle(
+            const SectionHeader(
+              title: 'Ciudades sugeridas',
+              padding: EdgeInsets.zero,
+              titleStyle: TextStyle(
                 fontWeight: FontWeight.w800,
                 fontSize: 16,
                 color: AppColors.textPrimary,
@@ -75,7 +80,7 @@ class _CitySelectionScreenState extends ConsumerState<CitySelectionScreen> {
                   onSelected: (_) => setState(() {
                     _selected = city;
                   }),
-                  selectedColor: AppColors.primaryGreen.withOpacity(0.15),
+                  selectedColor: AppColors.primaryGreen.withValues(alpha: 0.15),
                   labelStyle: TextStyle(
                     color: isSelected
                         ? AppColors.primaryGreen
@@ -86,9 +91,10 @@ class _CitySelectionScreenState extends ConsumerState<CitySelectionScreen> {
               }).toList(),
             ),
             const SizedBox(height: 16),
-            const Text(
-              'Ciudad personalizada',
-              style: TextStyle(
+            const SectionHeader(
+              title: 'Ciudad personalizada',
+              padding: EdgeInsets.zero,
+              titleStyle: TextStyle(
                 fontWeight: FontWeight.w800,
                 fontSize: 16,
                 color: AppColors.textPrimary,
@@ -114,9 +120,10 @@ class _CitySelectionScreenState extends ConsumerState<CitySelectionScreen> {
               },
             ),
             const SizedBox(height: 20),
-            const Text(
-              'Preview',
-              style: TextStyle(
+            const SectionHeader(
+              title: 'Preview',
+              padding: EdgeInsets.zero,
+              titleStyle: TextStyle(
                 fontWeight: FontWeight.w800,
                 fontSize: 16,
                 color: AppColors.textPrimary,
@@ -139,22 +146,9 @@ class _CitySelectionScreenState extends ConsumerState<CitySelectionScreen> {
               ),
             ),
             const Spacer(),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.primaryGreen,
-                minimumSize: const Size(double.infinity, 52),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14),
-                ),
-              ),
+            PrimaryButton(
+              text: 'Guardar ciudad',
               onPressed: _save,
-              child: const Text(
-                'Guardar ciudad',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                ),
-              ),
             ),
           ],
         ),
@@ -170,6 +164,8 @@ class _CitySelectionScreenState extends ConsumerState<CitySelectionScreen> {
     }
     final setCity = ref.read(setCityProvider);
     await setCity(city);
-    if (mounted) Navigator.of(context).pop();
+    if (mounted) {
+      Navigator.of(context).pop();
+    }
   }
 }

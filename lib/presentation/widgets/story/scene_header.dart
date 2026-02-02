@@ -4,16 +4,20 @@ import '../../../core/constants/app_colors.dart';
 import '../../../domain/models/story/scene.dart';
 import '../../providers/template_variable_provider.dart';
 
-/// Header de la escena mostrando ubicación y tiempo
+/// Header de la escena mostrando ubicación y tiempo.
 class SceneHeader extends ConsumerWidget {
+  /// Datos de la escena.
   final Scene scene;
+
+  /// Callback para mostrar traducción.
   final VoidCallback onShowTranslation;
 
+  /// Crea un [SceneHeader].
   const SceneHeader({
-    Key? key,
     required this.scene,
     required this.onShowTranslation,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -26,15 +30,15 @@ class SceneHeader extends ConsumerWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            AppColors.primaryGreen.withOpacity(0.1),
-            AppColors.secondaryBlue.withOpacity(0.1),
+            AppColors.primaryGreen.withValues(alpha: 0.1),
+            AppColors.secondaryBlue.withValues(alpha: 0.1),
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: AppColors.primaryGreen.withOpacity(0.2),
+          color: AppColors.primaryGreen.withValues(alpha: 0.2),
           width: 1,
         ),
       ),
@@ -68,7 +72,7 @@ class SceneHeader extends ConsumerWidget {
                   child: Icon(
                     Icons.translate,
                     size: 18,
-                    color: AppColors.secondaryBlue.withOpacity(0.7),
+                    color: AppColors.secondaryBlue.withValues(alpha: 0.7),
                   ),
                 ),
               ),
@@ -86,7 +90,7 @@ class SceneHeader extends ConsumerWidget {
               const SizedBox(width: 8),
               Text(
                 time,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 14,
                   color: AppColors.textSecondary,
                   fontStyle: FontStyle.italic,
@@ -99,7 +103,7 @@ class SceneHeader extends ConsumerWidget {
             const SizedBox(height: 12),
             Text(
               description,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 13,
                 color: AppColors.textSecondary,
                 height: 1.4,

@@ -43,6 +43,9 @@ mixin _$FillBlankGame {
   @JsonKey(name: 'instructions_es')
   String get instructionsEs => throw _privateConstructorUsedError;
 
+  /// Contenido del juego
+  FillBlankGameContent get content => throw _privateConstructorUsedError;
+
   /// Si el juego es opcional
   bool get optional => throw _privateConstructorUsedError;
 
@@ -57,9 +60,6 @@ mixin _$FillBlankGame {
   /// Recompensa en XP
   @JsonKey(name: 'xp_reward')
   int get xpReward => throw _privateConstructorUsedError;
-
-  /// Contenido del juego
-  FillBlankGameContent get content => throw _privateConstructorUsedError;
 
   /// Serializes this FillBlankGame to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -85,11 +85,11 @@ abstract class $FillBlankGameCopyWith<$Res> {
     @JsonKey(name: 'title_es') String titleEs,
     String instructions,
     @JsonKey(name: 'instructions_es') String instructionsEs,
+    FillBlankGameContent content,
     bool optional,
     @JsonKey(name: 'unlocked_after_episode') bool unlockedAfterEpisode,
     @JsonKey(name: 'time_limit_seconds') int? timeLimitSeconds,
     @JsonKey(name: 'xp_reward') int xpReward,
-    FillBlankGameContent content,
   });
 
   $FillBlankGameContentCopyWith<$Res> get content;
@@ -116,11 +116,11 @@ class _$FillBlankGameCopyWithImpl<$Res, $Val extends FillBlankGame>
     Object? titleEs = null,
     Object? instructions = null,
     Object? instructionsEs = null,
+    Object? content = null,
     Object? optional = null,
     Object? unlockedAfterEpisode = null,
     Object? timeLimitSeconds = freezed,
     Object? xpReward = null,
-    Object? content = null,
   }) {
     return _then(
       _value.copyWith(
@@ -148,6 +148,10 @@ class _$FillBlankGameCopyWithImpl<$Res, $Val extends FillBlankGame>
                 ? _value.instructionsEs
                 : instructionsEs // ignore: cast_nullable_to_non_nullable
                       as String,
+            content: null == content
+                ? _value.content
+                : content // ignore: cast_nullable_to_non_nullable
+                      as FillBlankGameContent,
             optional: null == optional
                 ? _value.optional
                 : optional // ignore: cast_nullable_to_non_nullable
@@ -164,10 +168,6 @@ class _$FillBlankGameCopyWithImpl<$Res, $Val extends FillBlankGame>
                 ? _value.xpReward
                 : xpReward // ignore: cast_nullable_to_non_nullable
                       as int,
-            content: null == content
-                ? _value.content
-                : content // ignore: cast_nullable_to_non_nullable
-                      as FillBlankGameContent,
           )
           as $Val,
     );
@@ -200,11 +200,11 @@ abstract class _$$FillBlankGameImplCopyWith<$Res>
     @JsonKey(name: 'title_es') String titleEs,
     String instructions,
     @JsonKey(name: 'instructions_es') String instructionsEs,
+    FillBlankGameContent content,
     bool optional,
     @JsonKey(name: 'unlocked_after_episode') bool unlockedAfterEpisode,
     @JsonKey(name: 'time_limit_seconds') int? timeLimitSeconds,
     @JsonKey(name: 'xp_reward') int xpReward,
-    FillBlankGameContent content,
   });
 
   @override
@@ -231,11 +231,11 @@ class __$$FillBlankGameImplCopyWithImpl<$Res>
     Object? titleEs = null,
     Object? instructions = null,
     Object? instructionsEs = null,
+    Object? content = null,
     Object? optional = null,
     Object? unlockedAfterEpisode = null,
     Object? timeLimitSeconds = freezed,
     Object? xpReward = null,
-    Object? content = null,
   }) {
     return _then(
       _$FillBlankGameImpl(
@@ -263,6 +263,10 @@ class __$$FillBlankGameImplCopyWithImpl<$Res>
             ? _value.instructionsEs
             : instructionsEs // ignore: cast_nullable_to_non_nullable
                   as String,
+        content: null == content
+            ? _value.content
+            : content // ignore: cast_nullable_to_non_nullable
+                  as FillBlankGameContent,
         optional: null == optional
             ? _value.optional
             : optional // ignore: cast_nullable_to_non_nullable
@@ -279,10 +283,6 @@ class __$$FillBlankGameImplCopyWithImpl<$Res>
             ? _value.xpReward
             : xpReward // ignore: cast_nullable_to_non_nullable
                   as int,
-        content: null == content
-            ? _value.content
-            : content // ignore: cast_nullable_to_non_nullable
-                  as FillBlankGameContent,
       ),
     );
   }
@@ -298,11 +298,11 @@ class _$FillBlankGameImpl extends _FillBlankGame {
     @JsonKey(name: 'title_es') required this.titleEs,
     required this.instructions,
     @JsonKey(name: 'instructions_es') required this.instructionsEs,
+    required this.content,
     this.optional = true,
     @JsonKey(name: 'unlocked_after_episode') this.unlockedAfterEpisode = true,
     @JsonKey(name: 'time_limit_seconds') this.timeLimitSeconds,
     @JsonKey(name: 'xp_reward') this.xpReward = 0,
-    required this.content,
   }) : super._();
 
   factory _$FillBlankGameImpl.fromJson(Map<String, dynamic> json) =>
@@ -336,6 +336,10 @@ class _$FillBlankGameImpl extends _FillBlankGame {
   @JsonKey(name: 'instructions_es')
   final String instructionsEs;
 
+  /// Contenido del juego
+  @override
+  final FillBlankGameContent content;
+
   /// Si el juego es opcional
   @override
   @JsonKey()
@@ -356,13 +360,9 @@ class _$FillBlankGameImpl extends _FillBlankGame {
   @JsonKey(name: 'xp_reward')
   final int xpReward;
 
-  /// Contenido del juego
-  @override
-  final FillBlankGameContent content;
-
   @override
   String toString() {
-    return 'FillBlankGame(gameId: $gameId, gameType: $gameType, title: $title, titleEs: $titleEs, instructions: $instructions, instructionsEs: $instructionsEs, optional: $optional, unlockedAfterEpisode: $unlockedAfterEpisode, timeLimitSeconds: $timeLimitSeconds, xpReward: $xpReward, content: $content)';
+    return 'FillBlankGame(gameId: $gameId, gameType: $gameType, title: $title, titleEs: $titleEs, instructions: $instructions, instructionsEs: $instructionsEs, content: $content, optional: $optional, unlockedAfterEpisode: $unlockedAfterEpisode, timeLimitSeconds: $timeLimitSeconds, xpReward: $xpReward)';
   }
 
   @override
@@ -379,6 +379,7 @@ class _$FillBlankGameImpl extends _FillBlankGame {
                 other.instructions == instructions) &&
             (identical(other.instructionsEs, instructionsEs) ||
                 other.instructionsEs == instructionsEs) &&
+            (identical(other.content, content) || other.content == content) &&
             (identical(other.optional, optional) ||
                 other.optional == optional) &&
             (identical(other.unlockedAfterEpisode, unlockedAfterEpisode) ||
@@ -386,8 +387,7 @@ class _$FillBlankGameImpl extends _FillBlankGame {
             (identical(other.timeLimitSeconds, timeLimitSeconds) ||
                 other.timeLimitSeconds == timeLimitSeconds) &&
             (identical(other.xpReward, xpReward) ||
-                other.xpReward == xpReward) &&
-            (identical(other.content, content) || other.content == content));
+                other.xpReward == xpReward));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -400,11 +400,11 @@ class _$FillBlankGameImpl extends _FillBlankGame {
     titleEs,
     instructions,
     instructionsEs,
+    content,
     optional,
     unlockedAfterEpisode,
     timeLimitSeconds,
     xpReward,
-    content,
   );
 
   /// Create a copy of FillBlankGame
@@ -429,11 +429,11 @@ abstract class _FillBlankGame extends FillBlankGame {
     @JsonKey(name: 'title_es') required final String titleEs,
     required final String instructions,
     @JsonKey(name: 'instructions_es') required final String instructionsEs,
+    required final FillBlankGameContent content,
     final bool optional,
     @JsonKey(name: 'unlocked_after_episode') final bool unlockedAfterEpisode,
     @JsonKey(name: 'time_limit_seconds') final int? timeLimitSeconds,
     @JsonKey(name: 'xp_reward') final int xpReward,
-    required final FillBlankGameContent content,
   }) = _$FillBlankGameImpl;
   const _FillBlankGame._() : super._();
 
@@ -468,6 +468,10 @@ abstract class _FillBlankGame extends FillBlankGame {
   @JsonKey(name: 'instructions_es')
   String get instructionsEs;
 
+  /// Contenido del juego
+  @override
+  FillBlankGameContent get content;
+
   /// Si el juego es opcional
   @override
   bool get optional;
@@ -486,10 +490,6 @@ abstract class _FillBlankGame extends FillBlankGame {
   @override
   @JsonKey(name: 'xp_reward')
   int get xpReward;
-
-  /// Contenido del juego
-  @override
-  FillBlankGameContent get content;
 
   /// Create a copy of FillBlankGame
   /// with the given fields replaced by the non-null parameter values.

@@ -6,6 +6,15 @@ part 'choice.g.dart';
 /// Representa una opción de elección en un diálogo interactivo
 @freezed
 class Choice with _$Choice {
+  /// Crea una opción de elección.
+  ///
+  /// Parámetros:
+  /// - [choiceId]: ID único de la opción (ej: "a", "b", "c")
+  /// - [text]: Texto de la opción en inglés
+  /// - [translationEs]: Traducción al español
+  /// - [points]: Puntos otorgados al elegir esta opción
+  /// - [personalityImpact]: Impacto en la personalidad del jugador
+  /// - [vocabUsed]: Palabras de vocabulario usadas en esta opción
   const factory Choice({
     /// ID único de la opción (ej: "a", "b", "c")
     @JsonKey(name: 'choice_id') required String choiceId,
@@ -26,6 +35,7 @@ class Choice with _$Choice {
     @JsonKey(name: 'vocab_used') @Default([]) List<String> vocabUsed,
   }) = _Choice;
 
+  /// Crea Choice desde JSON.
   factory Choice.fromJson(Map<String, dynamic> json) =>
       _$ChoiceFromJson(json);
 }

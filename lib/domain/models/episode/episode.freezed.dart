@@ -37,6 +37,21 @@ mixin _$Episode {
   @JsonKey(name: 'vocabulary_focus')
   VocabularyFocus get vocabularyFocus => throw _privateConstructorUsedError;
 
+  /// Escenas de la historia principal
+  @JsonKey(name: 'scenes')
+  ScenesSection get scenes => throw _privateConstructorUsedError;
+
+  /// Juegos del episodio (mezclados: matching, fill_blank, multiple_choice)
+  @JsonKey(name: 'games')
+  GamesSection get games => throw _privateConstructorUsedError;
+
+  /// Sistema de progresión
+  Progression get progression => throw _privateConstructorUsedError;
+
+  /// Contenedores de texto (intro, transición, conclusión)
+  @JsonKey(name: 'content_wrappers')
+  ContentWrappers get contentWrappers => throw _privateConstructorUsedError;
+
   /// Historia de introducción al vocabulario
   @JsonKey(name: 'vocabulary_story')
   VocabularyStory? get vocabularyStory => throw _privateConstructorUsedError;
@@ -50,25 +65,10 @@ mixin _$Episode {
   @JsonKey(name: 'mini_story')
   MiniStorySection? get miniStory => throw _privateConstructorUsedError;
 
-  /// Escenas de la historia principal
-  @JsonKey(name: 'scenes')
-  ScenesSection get scenes => throw _privateConstructorUsedError;
-
-  /// Juegos del episodio (mezclados: matching, fill_blank, multiple_choice)
-  @JsonKey(name: 'games')
-  GamesSection get games => throw _privateConstructorUsedError;
-
   /// Preview del siguiente episodio (opcional)
   @JsonKey(name: 'next_episode_preview')
   NextEpisodePreview? get nextEpisodePreview =>
       throw _privateConstructorUsedError;
-
-  /// Sistema de progresión
-  Progression get progression => throw _privateConstructorUsedError;
-
-  /// Contenedores de texto (intro, transición, conclusión)
-  @JsonKey(name: 'content_wrappers')
-  ContentWrappers get contentWrappers => throw _privateConstructorUsedError;
 
   /// Serializes this Episode to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -89,29 +89,29 @@ abstract class $EpisodeCopyWith<$Res> {
     @JsonKey(name: 'city_settings') CitySettings citySettings,
     @JsonKey(name: 'characters') CharactersInEpisode characters,
     @JsonKey(name: 'vocabulary_focus') VocabularyFocus vocabularyFocus,
+    @JsonKey(name: 'scenes') ScenesSection scenes,
+    @JsonKey(name: 'games') GamesSection games,
+    Progression progression,
+    @JsonKey(name: 'content_wrappers') ContentWrappers contentWrappers,
     @JsonKey(name: 'vocabulary_story') VocabularyStory? vocabularyStory,
     @JsonKey(name: 'listening_shadowing')
     ListeningShadowingSection? listeningShadowing,
     @JsonKey(name: 'mini_story') MiniStorySection? miniStory,
-    @JsonKey(name: 'scenes') ScenesSection scenes,
-    @JsonKey(name: 'games') GamesSection games,
     @JsonKey(name: 'next_episode_preview')
     NextEpisodePreview? nextEpisodePreview,
-    Progression progression,
-    @JsonKey(name: 'content_wrappers') ContentWrappers contentWrappers,
   });
 
   $EpisodeMetadataCopyWith<$Res> get episodeMetadata;
   $CitySettingsCopyWith<$Res> get citySettings;
   $CharactersInEpisodeCopyWith<$Res> get characters;
   $VocabularyFocusCopyWith<$Res> get vocabularyFocus;
-  $VocabularyStoryCopyWith<$Res>? get vocabularyStory;
-  $ListeningShadowingSectionCopyWith<$Res>? get listeningShadowing;
   $ScenesSectionCopyWith<$Res> get scenes;
   $GamesSectionCopyWith<$Res> get games;
-  $NextEpisodePreviewCopyWith<$Res>? get nextEpisodePreview;
   $ProgressionCopyWith<$Res> get progression;
   $ContentWrappersCopyWith<$Res> get contentWrappers;
+  $VocabularyStoryCopyWith<$Res>? get vocabularyStory;
+  $ListeningShadowingSectionCopyWith<$Res>? get listeningShadowing;
+  $NextEpisodePreviewCopyWith<$Res>? get nextEpisodePreview;
 }
 
 /// @nodoc
@@ -133,14 +133,14 @@ class _$EpisodeCopyWithImpl<$Res, $Val extends Episode>
     Object? citySettings = null,
     Object? characters = null,
     Object? vocabularyFocus = null,
+    Object? scenes = null,
+    Object? games = null,
+    Object? progression = null,
+    Object? contentWrappers = null,
     Object? vocabularyStory = freezed,
     Object? listeningShadowing = freezed,
     Object? miniStory = freezed,
-    Object? scenes = null,
-    Object? games = null,
     Object? nextEpisodePreview = freezed,
-    Object? progression = null,
-    Object? contentWrappers = null,
   }) {
     return _then(
       _value.copyWith(
@@ -160,6 +160,22 @@ class _$EpisodeCopyWithImpl<$Res, $Val extends Episode>
                 ? _value.vocabularyFocus
                 : vocabularyFocus // ignore: cast_nullable_to_non_nullable
                       as VocabularyFocus,
+            scenes: null == scenes
+                ? _value.scenes
+                : scenes // ignore: cast_nullable_to_non_nullable
+                      as ScenesSection,
+            games: null == games
+                ? _value.games
+                : games // ignore: cast_nullable_to_non_nullable
+                      as GamesSection,
+            progression: null == progression
+                ? _value.progression
+                : progression // ignore: cast_nullable_to_non_nullable
+                      as Progression,
+            contentWrappers: null == contentWrappers
+                ? _value.contentWrappers
+                : contentWrappers // ignore: cast_nullable_to_non_nullable
+                      as ContentWrappers,
             vocabularyStory: freezed == vocabularyStory
                 ? _value.vocabularyStory
                 : vocabularyStory // ignore: cast_nullable_to_non_nullable
@@ -172,26 +188,10 @@ class _$EpisodeCopyWithImpl<$Res, $Val extends Episode>
                 ? _value.miniStory
                 : miniStory // ignore: cast_nullable_to_non_nullable
                       as MiniStorySection?,
-            scenes: null == scenes
-                ? _value.scenes
-                : scenes // ignore: cast_nullable_to_non_nullable
-                      as ScenesSection,
-            games: null == games
-                ? _value.games
-                : games // ignore: cast_nullable_to_non_nullable
-                      as GamesSection,
             nextEpisodePreview: freezed == nextEpisodePreview
                 ? _value.nextEpisodePreview
                 : nextEpisodePreview // ignore: cast_nullable_to_non_nullable
                       as NextEpisodePreview?,
-            progression: null == progression
-                ? _value.progression
-                : progression // ignore: cast_nullable_to_non_nullable
-                      as Progression,
-            contentWrappers: null == contentWrappers
-                ? _value.contentWrappers
-                : contentWrappers // ignore: cast_nullable_to_non_nullable
-                      as ContentWrappers,
           )
           as $Val,
     );
@@ -241,6 +241,46 @@ class _$EpisodeCopyWithImpl<$Res, $Val extends Episode>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
+  $ScenesSectionCopyWith<$Res> get scenes {
+    return $ScenesSectionCopyWith<$Res>(_value.scenes, (value) {
+      return _then(_value.copyWith(scenes: value) as $Val);
+    });
+  }
+
+  /// Create a copy of Episode
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $GamesSectionCopyWith<$Res> get games {
+    return $GamesSectionCopyWith<$Res>(_value.games, (value) {
+      return _then(_value.copyWith(games: value) as $Val);
+    });
+  }
+
+  /// Create a copy of Episode
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ProgressionCopyWith<$Res> get progression {
+    return $ProgressionCopyWith<$Res>(_value.progression, (value) {
+      return _then(_value.copyWith(progression: value) as $Val);
+    });
+  }
+
+  /// Create a copy of Episode
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ContentWrappersCopyWith<$Res> get contentWrappers {
+    return $ContentWrappersCopyWith<$Res>(_value.contentWrappers, (value) {
+      return _then(_value.copyWith(contentWrappers: value) as $Val);
+    });
+  }
+
+  /// Create a copy of Episode
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
   $VocabularyStoryCopyWith<$Res>? get vocabularyStory {
     if (_value.vocabularyStory == null) {
       return null;
@@ -272,26 +312,6 @@ class _$EpisodeCopyWithImpl<$Res, $Val extends Episode>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $ScenesSectionCopyWith<$Res> get scenes {
-    return $ScenesSectionCopyWith<$Res>(_value.scenes, (value) {
-      return _then(_value.copyWith(scenes: value) as $Val);
-    });
-  }
-
-  /// Create a copy of Episode
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $GamesSectionCopyWith<$Res> get games {
-    return $GamesSectionCopyWith<$Res>(_value.games, (value) {
-      return _then(_value.copyWith(games: value) as $Val);
-    });
-  }
-
-  /// Create a copy of Episode
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
   $NextEpisodePreviewCopyWith<$Res>? get nextEpisodePreview {
     if (_value.nextEpisodePreview == null) {
       return null;
@@ -301,26 +321,6 @@ class _$EpisodeCopyWithImpl<$Res, $Val extends Episode>
       value,
     ) {
       return _then(_value.copyWith(nextEpisodePreview: value) as $Val);
-    });
-  }
-
-  /// Create a copy of Episode
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ProgressionCopyWith<$Res> get progression {
-    return $ProgressionCopyWith<$Res>(_value.progression, (value) {
-      return _then(_value.copyWith(progression: value) as $Val);
-    });
-  }
-
-  /// Create a copy of Episode
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ContentWrappersCopyWith<$Res> get contentWrappers {
-    return $ContentWrappersCopyWith<$Res>(_value.contentWrappers, (value) {
-      return _then(_value.copyWith(contentWrappers: value) as $Val);
     });
   }
 }
@@ -338,16 +338,16 @@ abstract class _$$EpisodeImplCopyWith<$Res> implements $EpisodeCopyWith<$Res> {
     @JsonKey(name: 'city_settings') CitySettings citySettings,
     @JsonKey(name: 'characters') CharactersInEpisode characters,
     @JsonKey(name: 'vocabulary_focus') VocabularyFocus vocabularyFocus,
+    @JsonKey(name: 'scenes') ScenesSection scenes,
+    @JsonKey(name: 'games') GamesSection games,
+    Progression progression,
+    @JsonKey(name: 'content_wrappers') ContentWrappers contentWrappers,
     @JsonKey(name: 'vocabulary_story') VocabularyStory? vocabularyStory,
     @JsonKey(name: 'listening_shadowing')
     ListeningShadowingSection? listeningShadowing,
     @JsonKey(name: 'mini_story') MiniStorySection? miniStory,
-    @JsonKey(name: 'scenes') ScenesSection scenes,
-    @JsonKey(name: 'games') GamesSection games,
     @JsonKey(name: 'next_episode_preview')
     NextEpisodePreview? nextEpisodePreview,
-    Progression progression,
-    @JsonKey(name: 'content_wrappers') ContentWrappers contentWrappers,
   });
 
   @override
@@ -359,19 +359,19 @@ abstract class _$$EpisodeImplCopyWith<$Res> implements $EpisodeCopyWith<$Res> {
   @override
   $VocabularyFocusCopyWith<$Res> get vocabularyFocus;
   @override
-  $VocabularyStoryCopyWith<$Res>? get vocabularyStory;
-  @override
-  $ListeningShadowingSectionCopyWith<$Res>? get listeningShadowing;
-  @override
   $ScenesSectionCopyWith<$Res> get scenes;
   @override
   $GamesSectionCopyWith<$Res> get games;
   @override
-  $NextEpisodePreviewCopyWith<$Res>? get nextEpisodePreview;
-  @override
   $ProgressionCopyWith<$Res> get progression;
   @override
   $ContentWrappersCopyWith<$Res> get contentWrappers;
+  @override
+  $VocabularyStoryCopyWith<$Res>? get vocabularyStory;
+  @override
+  $ListeningShadowingSectionCopyWith<$Res>? get listeningShadowing;
+  @override
+  $NextEpisodePreviewCopyWith<$Res>? get nextEpisodePreview;
 }
 
 /// @nodoc
@@ -392,14 +392,14 @@ class __$$EpisodeImplCopyWithImpl<$Res>
     Object? citySettings = null,
     Object? characters = null,
     Object? vocabularyFocus = null,
+    Object? scenes = null,
+    Object? games = null,
+    Object? progression = null,
+    Object? contentWrappers = null,
     Object? vocabularyStory = freezed,
     Object? listeningShadowing = freezed,
     Object? miniStory = freezed,
-    Object? scenes = null,
-    Object? games = null,
     Object? nextEpisodePreview = freezed,
-    Object? progression = null,
-    Object? contentWrappers = null,
   }) {
     return _then(
       _$EpisodeImpl(
@@ -419,6 +419,22 @@ class __$$EpisodeImplCopyWithImpl<$Res>
             ? _value.vocabularyFocus
             : vocabularyFocus // ignore: cast_nullable_to_non_nullable
                   as VocabularyFocus,
+        scenes: null == scenes
+            ? _value.scenes
+            : scenes // ignore: cast_nullable_to_non_nullable
+                  as ScenesSection,
+        games: null == games
+            ? _value.games
+            : games // ignore: cast_nullable_to_non_nullable
+                  as GamesSection,
+        progression: null == progression
+            ? _value.progression
+            : progression // ignore: cast_nullable_to_non_nullable
+                  as Progression,
+        contentWrappers: null == contentWrappers
+            ? _value.contentWrappers
+            : contentWrappers // ignore: cast_nullable_to_non_nullable
+                  as ContentWrappers,
         vocabularyStory: freezed == vocabularyStory
             ? _value.vocabularyStory
             : vocabularyStory // ignore: cast_nullable_to_non_nullable
@@ -431,26 +447,10 @@ class __$$EpisodeImplCopyWithImpl<$Res>
             ? _value.miniStory
             : miniStory // ignore: cast_nullable_to_non_nullable
                   as MiniStorySection?,
-        scenes: null == scenes
-            ? _value.scenes
-            : scenes // ignore: cast_nullable_to_non_nullable
-                  as ScenesSection,
-        games: null == games
-            ? _value.games
-            : games // ignore: cast_nullable_to_non_nullable
-                  as GamesSection,
         nextEpisodePreview: freezed == nextEpisodePreview
             ? _value.nextEpisodePreview
             : nextEpisodePreview // ignore: cast_nullable_to_non_nullable
                   as NextEpisodePreview?,
-        progression: null == progression
-            ? _value.progression
-            : progression // ignore: cast_nullable_to_non_nullable
-                  as Progression,
-        contentWrappers: null == contentWrappers
-            ? _value.contentWrappers
-            : contentWrappers // ignore: cast_nullable_to_non_nullable
-                  as ContentWrappers,
       ),
     );
   }
@@ -464,14 +464,14 @@ class _$EpisodeImpl implements _Episode {
     @JsonKey(name: 'city_settings') required this.citySettings,
     @JsonKey(name: 'characters') required this.characters,
     @JsonKey(name: 'vocabulary_focus') required this.vocabularyFocus,
+    @JsonKey(name: 'scenes') required this.scenes,
+    @JsonKey(name: 'games') required this.games,
+    required this.progression,
+    @JsonKey(name: 'content_wrappers') required this.contentWrappers,
     @JsonKey(name: 'vocabulary_story') this.vocabularyStory,
     @JsonKey(name: 'listening_shadowing') this.listeningShadowing,
     @JsonKey(name: 'mini_story') this.miniStory,
-    @JsonKey(name: 'scenes') required this.scenes,
-    @JsonKey(name: 'games') required this.games,
     @JsonKey(name: 'next_episode_preview') this.nextEpisodePreview,
-    required this.progression,
-    @JsonKey(name: 'content_wrappers') required this.contentWrappers,
   });
 
   factory _$EpisodeImpl.fromJson(Map<String, dynamic> json) =>
@@ -497,6 +497,25 @@ class _$EpisodeImpl implements _Episode {
   @JsonKey(name: 'vocabulary_focus')
   final VocabularyFocus vocabularyFocus;
 
+  /// Escenas de la historia principal
+  @override
+  @JsonKey(name: 'scenes')
+  final ScenesSection scenes;
+
+  /// Juegos del episodio (mezclados: matching, fill_blank, multiple_choice)
+  @override
+  @JsonKey(name: 'games')
+  final GamesSection games;
+
+  /// Sistema de progresión
+  @override
+  final Progression progression;
+
+  /// Contenedores de texto (intro, transición, conclusión)
+  @override
+  @JsonKey(name: 'content_wrappers')
+  final ContentWrappers contentWrappers;
+
   /// Historia de introducción al vocabulario
   @override
   @JsonKey(name: 'vocabulary_story')
@@ -512,33 +531,14 @@ class _$EpisodeImpl implements _Episode {
   @JsonKey(name: 'mini_story')
   final MiniStorySection? miniStory;
 
-  /// Escenas de la historia principal
-  @override
-  @JsonKey(name: 'scenes')
-  final ScenesSection scenes;
-
-  /// Juegos del episodio (mezclados: matching, fill_blank, multiple_choice)
-  @override
-  @JsonKey(name: 'games')
-  final GamesSection games;
-
   /// Preview del siguiente episodio (opcional)
   @override
   @JsonKey(name: 'next_episode_preview')
   final NextEpisodePreview? nextEpisodePreview;
 
-  /// Sistema de progresión
-  @override
-  final Progression progression;
-
-  /// Contenedores de texto (intro, transición, conclusión)
-  @override
-  @JsonKey(name: 'content_wrappers')
-  final ContentWrappers contentWrappers;
-
   @override
   String toString() {
-    return 'Episode(episodeMetadata: $episodeMetadata, citySettings: $citySettings, characters: $characters, vocabularyFocus: $vocabularyFocus, vocabularyStory: $vocabularyStory, listeningShadowing: $listeningShadowing, miniStory: $miniStory, scenes: $scenes, games: $games, nextEpisodePreview: $nextEpisodePreview, progression: $progression, contentWrappers: $contentWrappers)';
+    return 'Episode(episodeMetadata: $episodeMetadata, citySettings: $citySettings, characters: $characters, vocabularyFocus: $vocabularyFocus, scenes: $scenes, games: $games, progression: $progression, contentWrappers: $contentWrappers, vocabularyStory: $vocabularyStory, listeningShadowing: $listeningShadowing, miniStory: $miniStory, nextEpisodePreview: $nextEpisodePreview)';
   }
 
   @override
@@ -554,20 +554,20 @@ class _$EpisodeImpl implements _Episode {
                 other.characters == characters) &&
             (identical(other.vocabularyFocus, vocabularyFocus) ||
                 other.vocabularyFocus == vocabularyFocus) &&
+            (identical(other.scenes, scenes) || other.scenes == scenes) &&
+            (identical(other.games, games) || other.games == games) &&
+            (identical(other.progression, progression) ||
+                other.progression == progression) &&
+            (identical(other.contentWrappers, contentWrappers) ||
+                other.contentWrappers == contentWrappers) &&
             (identical(other.vocabularyStory, vocabularyStory) ||
                 other.vocabularyStory == vocabularyStory) &&
             (identical(other.listeningShadowing, listeningShadowing) ||
                 other.listeningShadowing == listeningShadowing) &&
             (identical(other.miniStory, miniStory) ||
                 other.miniStory == miniStory) &&
-            (identical(other.scenes, scenes) || other.scenes == scenes) &&
-            (identical(other.games, games) || other.games == games) &&
             (identical(other.nextEpisodePreview, nextEpisodePreview) ||
-                other.nextEpisodePreview == nextEpisodePreview) &&
-            (identical(other.progression, progression) ||
-                other.progression == progression) &&
-            (identical(other.contentWrappers, contentWrappers) ||
-                other.contentWrappers == contentWrappers));
+                other.nextEpisodePreview == nextEpisodePreview));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -578,14 +578,14 @@ class _$EpisodeImpl implements _Episode {
     citySettings,
     characters,
     vocabularyFocus,
+    scenes,
+    games,
+    progression,
+    contentWrappers,
     vocabularyStory,
     listeningShadowing,
     miniStory,
-    scenes,
-    games,
     nextEpisodePreview,
-    progression,
-    contentWrappers,
   );
 
   /// Create a copy of Episode
@@ -610,17 +610,17 @@ abstract class _Episode implements Episode {
     @JsonKey(name: 'characters') required final CharactersInEpisode characters,
     @JsonKey(name: 'vocabulary_focus')
     required final VocabularyFocus vocabularyFocus,
+    @JsonKey(name: 'scenes') required final ScenesSection scenes,
+    @JsonKey(name: 'games') required final GamesSection games,
+    required final Progression progression,
+    @JsonKey(name: 'content_wrappers')
+    required final ContentWrappers contentWrappers,
     @JsonKey(name: 'vocabulary_story') final VocabularyStory? vocabularyStory,
     @JsonKey(name: 'listening_shadowing')
     final ListeningShadowingSection? listeningShadowing,
     @JsonKey(name: 'mini_story') final MiniStorySection? miniStory,
-    @JsonKey(name: 'scenes') required final ScenesSection scenes,
-    @JsonKey(name: 'games') required final GamesSection games,
     @JsonKey(name: 'next_episode_preview')
     final NextEpisodePreview? nextEpisodePreview,
-    required final Progression progression,
-    @JsonKey(name: 'content_wrappers')
-    required final ContentWrappers contentWrappers,
   }) = _$EpisodeImpl;
 
   factory _Episode.fromJson(Map<String, dynamic> json) = _$EpisodeImpl.fromJson;
@@ -645,6 +645,25 @@ abstract class _Episode implements Episode {
   @JsonKey(name: 'vocabulary_focus')
   VocabularyFocus get vocabularyFocus;
 
+  /// Escenas de la historia principal
+  @override
+  @JsonKey(name: 'scenes')
+  ScenesSection get scenes;
+
+  /// Juegos del episodio (mezclados: matching, fill_blank, multiple_choice)
+  @override
+  @JsonKey(name: 'games')
+  GamesSection get games;
+
+  /// Sistema de progresión
+  @override
+  Progression get progression;
+
+  /// Contenedores de texto (intro, transición, conclusión)
+  @override
+  @JsonKey(name: 'content_wrappers')
+  ContentWrappers get contentWrappers;
+
   /// Historia de introducción al vocabulario
   @override
   @JsonKey(name: 'vocabulary_story')
@@ -660,29 +679,10 @@ abstract class _Episode implements Episode {
   @JsonKey(name: 'mini_story')
   MiniStorySection? get miniStory;
 
-  /// Escenas de la historia principal
-  @override
-  @JsonKey(name: 'scenes')
-  ScenesSection get scenes;
-
-  /// Juegos del episodio (mezclados: matching, fill_blank, multiple_choice)
-  @override
-  @JsonKey(name: 'games')
-  GamesSection get games;
-
   /// Preview del siguiente episodio (opcional)
   @override
   @JsonKey(name: 'next_episode_preview')
   NextEpisodePreview? get nextEpisodePreview;
-
-  /// Sistema de progresión
-  @override
-  Progression get progression;
-
-  /// Contenedores de texto (intro, transición, conclusión)
-  @override
-  @JsonKey(name: 'content_wrappers')
-  ContentWrappers get contentWrappers;
 
   /// Create a copy of Episode
   /// with the given fields replaced by the non-null parameter values.

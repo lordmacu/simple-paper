@@ -1,19 +1,30 @@
 import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
 
+/// Encabezado de nivel y experiencia del usuario.
+///
+/// Muestra el nivel actual, XP total y progreso hacia el siguiente nivel.
 class XpLevelHeader extends StatelessWidget {
+  /// Nivel actual del usuario.
   final int level;
+
+  /// XP total acumulado.
   final int totalXp;
+
+  /// XP necesario para el siguiente nivel.
   final int xpToNext;
+
+  /// XP acumulado dentro del nivel actual.
   final int xpIntoLevel;
 
+  /// Crea un [XpLevelHeader].
   const XpLevelHeader({
-    Key? key,
     required this.level,
     required this.totalXp,
     required this.xpToNext,
     required this.xpIntoLevel,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +36,7 @@ class XpLevelHeader extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
@@ -39,7 +50,7 @@ class XpLevelHeader extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 decoration: BoxDecoration(
-                  color: AppColors.primaryGreen.withOpacity(0.15),
+                  color: AppColors.primaryGreen.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Text(

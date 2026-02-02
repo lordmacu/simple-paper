@@ -3,12 +3,21 @@ import '../../../core/constants/app_colors.dart';
 import 'review_item_select_screen.dart';
 import 'review_types.dart';
 
+/// Representa una opción de juego de repaso con sus metadatos.
 class ReviewGameOption {
+  /// El tipo de juego de repaso.
   final ReviewGameType type;
+  
+  /// El título del juego.
   final String title;
+  
+  /// El subtítulo descriptivo del juego.
   final String subtitle;
+  
+  /// El ícono que representa el juego.
   final IconData icon;
 
+  /// Crea una instancia de [ReviewGameOption].
   const ReviewGameOption({
     required this.type,
     required this.title,
@@ -17,10 +26,13 @@ class ReviewGameOption {
   });
 }
 
+/// Pantalla de selección de juegos de repaso para una categoría específica.
 class ReviewGameSelectScreen extends StatelessWidget {
+  /// La categoría de repaso para la cual mostrar los juegos disponibles.
   final ReviewCategory category;
 
-  const ReviewGameSelectScreen({super.key, required this.category});
+  /// Crea una instancia de [ReviewGameSelectScreen].
+  const ReviewGameSelectScreen({required this.category, super.key});
 
   List<ReviewGameOption> _optionsFor(ReviewCategoryType type) {
     switch (type) {
@@ -191,8 +203,12 @@ class ReviewGameSelectScreen extends StatelessWidget {
   }
 }
 
+/// Widget de tarjeta para mostrar una opción de juego de repaso.
 class _GameOptionCard extends StatelessWidget {
+  /// La opción de juego a mostrar.
   final ReviewGameOption option;
+  
+  /// Callback cuando se toca la tarjeta.
   final VoidCallback onTap;
 
   const _GameOptionCard({
@@ -215,7 +231,7 @@ class _GameOptionCard extends StatelessWidget {
             border: Border.all(color: AppColors.divider, width: 1.5),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.04),
+                color: Colors.black.withValues(alpha: 0.04),
                 blurRadius: 8,
                 offset: const Offset(0, 4),
               ),
@@ -227,7 +243,7 @@ class _GameOptionCard extends StatelessWidget {
                 width: 44,
                 height: 44,
                 decoration: BoxDecoration(
-                  color: AppColors.primaryGreen.withOpacity(0.12),
+                  color: AppColors.primaryGreen.withValues(alpha: 0.12),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(option.icon, color: AppColors.primaryGreen),

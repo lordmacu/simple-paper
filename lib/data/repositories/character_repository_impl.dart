@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../domain/models/character/unlocked_character.dart';
 import '../../domain/repositories/i_character_repository.dart';
@@ -8,6 +9,8 @@ class CharacterRepositoryImpl implements ICharacterRepository {
   static const String _unlockedCharactersKey = 'unlocked_characters';
   final SharedPreferences _prefs;
 
+  /// Crea una implementación del repositorio de personajes.
+  /// [prefs] Instancia de SharedPreferences para persistencia.
   CharacterRepositoryImpl(this._prefs);
 
   @override
@@ -23,8 +26,8 @@ class CharacterRepositoryImpl implements ICharacterRepository {
       return jsonList
           .map((json) => UnlockedCharacter.fromJson(json as Map<String, dynamic>))
           .toList();
-    } catch (e) {
-      print('Error loading unlocked characters: $e');
+    } on Exception catch (e) {
+      debugPrint('Error loading unlocked characters: $e');
       return [];
     }
   }
@@ -48,8 +51,8 @@ class CharacterRepositoryImpl implements ICharacterRepository {
       }
       
       await _saveCharacters(characters);
-    } catch (e) {
-      print('Error unlocking character: $e');
+    } on Exception catch (e) {
+      debugPrint('Error unlocking character: $e');
       rethrow;
     }
   }
@@ -66,8 +69,8 @@ class CharacterRepositoryImpl implements ICharacterRepository {
         characters[index] = characters[index].copyWith(customName: customName);
         await _saveCharacters(characters);
       }
-    } catch (e) {
-      print('Error updating character name: $e');
+    } on Exception catch (e) {
+      debugPrint('Error updating character name: $e');
       rethrow;
     }
   }
@@ -77,8 +80,8 @@ class CharacterRepositoryImpl implements ICharacterRepository {
     try {
       final characters = await getUnlockedCharacters();
       return characters.any((c) => c.characterId == characterId);
-    } catch (e) {
-      print('Error checking if character is unlocked: $e');
+    } on Exception catch (e) {
+      debugPrint('Error checking if character is unlocked: $e');
       return false;
     }
   }
@@ -89,8 +92,8 @@ class CharacterRepositoryImpl implements ICharacterRepository {
       final characters = await getUnlockedCharacters();
       final index = characters.indexWhere((c) => c.characterId == characterId);
       return index >= 0 ? characters[index] : null;
-    } catch (e) {
-      print('Error getting unlocked character: $e');
+    } on Exception catch (e) {
+      debugPrint('Error getting unlocked character: $e');
       return null;
     }
   }
@@ -99,8 +102,8 @@ class CharacterRepositoryImpl implements ICharacterRepository {
   Future<void> clearAllUnlockedCharacters() async {
     try {
       await _prefs.remove(_unlockedCharactersKey);
-    } catch (e) {
-      print('Error clearing unlocked characters: $e');
+    } on Exception catch (e) {
+      debugPrint('Error clearing unlocked characters: $e');
       rethrow;
     }
   }
@@ -111,8 +114,8 @@ class CharacterRepositoryImpl implements ICharacterRepository {
       final jsonList = characters.map((c) => c.toJson()).toList();
       final jsonString = jsonEncode(jsonList);
       await _prefs.setString(_unlockedCharactersKey, jsonString);
-    } catch (e) {
-      print('Error saving characters: $e');
+    } on Exception catch (e) {
+      debugPrint('Error saving characters: $e');
       rethrow;
     }
   }

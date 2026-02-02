@@ -6,19 +6,39 @@ import '../../providers/template_variable_provider.dart';
 import '../../widgets/common/translation_overlay.dart';
 import '../../providers/tts_provider.dart';
 import '../../widgets/common/duolingo_button.dart';
+import '../../widgets/molecules/bilingual_text_card.dart';
+import '../../widgets/molecules/progress_meta_row.dart';
 
 /// Datos mínimos para renderizar la entrevista del personaje.
 class CharacterInterview {
+  /// Nombre del personaje que hace la entrevista
   final String characterName;
+  
+  /// URL del avatar del personaje
   final String avatarUrl;
+  
+  /// Número del episodio al que pertenece esta entrevista
   final int episodeNumber;
+  
+  /// Texto de introducción en inglés
   final String introEn;
+  
+  /// Texto de introducción en español
   final String introEs;
+  
+  /// Género del personaje (he/she) para referencias pronominales
   final String characterGender;
+  
+  /// Lista de puntos gramaticales cubiertos en la entrevista
   final List<String> grammarPoints;
+  
+  /// Lista de vocabulario utilizado en la entrevista
   final List<String> vocabularyUsed;
+  
+  /// Lista de preguntas de la entrevista
   final List<InterviewQuestion> questions;
 
+  /// Constructor de CharacterInterview
   const CharacterInterview({
     required this.characterName,
     required this.avatarUrl,
@@ -26,17 +46,23 @@ class CharacterInterview {
     required this.introEn,
     required this.introEs,
     required this.characterGender,
-    this.grammarPoints = const [],
+    required this.questions, this.grammarPoints = const [],
     this.vocabularyUsed = const [],
-    required this.questions,
   });
 }
 
+/// Representa una pregunta individual en la entrevista del personaje
 class InterviewQuestion {
+  /// Texto de la pregunta en inglés
   final String questionEn;
+  
+  /// Texto de la pregunta en español
   final String questionEs;
+  
+  /// Opciones de respuesta disponibles para esta pregunta
   final List<InterviewOption> options;
 
+  /// Constructor de InterviewQuestion
   const InterviewQuestion({
     required this.questionEn,
     required this.questionEs,
@@ -44,17 +70,36 @@ class InterviewQuestion {
   });
 }
 
+/// Representa una opción de respuesta para una pregunta de entrevista
 class InterviewOption {
+  /// Identificador único de la opción
   final String optionId;
+  
+  /// Texto de la opción en inglés
   final String textEn;
+  
+  /// Texto de la opción en español
   final String textEs;
+  
+  /// Indica si esta es la respuesta correcta
   final bool isCorrect;
+  
+  /// Feedback mostrado al seleccionar esta opción (inglés)
   final String feedbackEn;
+  
+  /// Feedback mostrado al seleccionar esta opción (español)
   final String feedbackEs;
+  
+  /// Explicación gramatical opcional asociada a esta opción
   final String? grammarExplanation;
+  
+  /// Nota cultural opcional relacionada con esta opción
   final String? culturalNote;
+  
+  /// Tipo de error común si la opción es incorrecta
   final String? mistakeType;
 
+  /// Constructor de InterviewOption
   const InterviewOption({
     required this.optionId,
     required this.textEn,
@@ -70,14 +115,16 @@ class InterviewOption {
 
 /// Pantalla principal de entrevista de personaje.
 class CharacterInterviewScreen extends ConsumerStatefulWidget {
+  /// Datos de la entrevista a mostrar
   final CharacterInterview interview;
+  
+  /// Callback ejecutado al completar la entrevista con estadísticas de respuestas
   final void Function(int correct, int total, List<String> wrongWords) onComplete;
 
+  /// Constructor de CharacterInterviewScreen
   const CharacterInterviewScreen({
-    Key? key,
-    required this.interview,
-    required this.onComplete,
-  }) : super(key: key);
+    required this.interview, required this.onComplete, super.key,
+  });
 
   @override
   ConsumerState<CharacterInterviewScreen> createState() =>
@@ -93,30 +140,38 @@ class _CharacterInterviewScreenState
   final Set<String> _wrongWords = {};
   late final PageController _pageController;
   double _progressAnim = 0;
+  
+  // Guardar referencia al TTS service para usar en dispose
+  late final dynamic _ttsService;
 
   InterviewQuestion get _question => widget.interview.questions[_currentIndex];
 
   @override
   void initState() {
     super.initState();
+    _ttsService = ref.read(ttsServiceProvider);
     _pageController = PageController();
     _progressAnim = _progressValue;
   }
 
   @override
   void dispose() {
-    ref.read(ttsServiceProvider).stop();
+    _ttsService.stop();
     _pageController.dispose();
     super.dispose();
   }
 
   void _select(int index) {
-    if (_showFeedback) return;
+    if (_showFeedback) {
+      return;
+    }
     final option = _question.options[index];
     setState(() {
       _selectedIndex = index;
       _showFeedback = true;
-      if (option.isCorrect) _correct++;
+      if (option.isCorrect) {
+        _correct++;
+      }
     });
     if (!option.isCorrect) {
       _trackWrongWords(option);
@@ -157,12 +212,16 @@ class _CharacterInterviewScreenState
   }
 
   void _trackWrongWords(InterviewOption option) {
-    if (widget.interview.vocabularyUsed.isEmpty) return;
+    if (widget.interview.vocabularyUsed.isEmpty) {
+      return;
+    }
     final vocabSet = widget.interview.vocabularyUsed
         .map((e) => e.trim().toLowerCase())
         .where((e) => e.isNotEmpty)
         .toSet();
-    if (vocabSet.isEmpty) return;
+    if (vocabSet.isEmpty) {
+      return;
+    }
     _addWordsFromText(_question.questionEn, vocabSet);
     _addWordsFromText(option.textEn, vocabSet);
   }
@@ -242,54 +301,11 @@ class _CharacterInterviewScreenState
       ),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
-            child: Row(
-              children: [
-                Expanded(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: LinearProgressIndicator(
-                      value: _progressAnim,
-                      backgroundColor: AppColors.cardBackground,
-                      valueColor: const AlwaysStoppedAnimation<Color>(
-                        AppColors.secondaryBlue,
-                      ),
-                      minHeight: 10,
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 300),
-                      child: Text(
-                        'Pregunta ${_currentIndex + 1} de ${widget.interview.questions.length}',
-                        key: ValueKey(_currentIndex),
-                        style: const TextStyle(
-                          color: AppColors.textPrimary,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 300),
-                      child: Text(
-                        'Aciertos: $_correct',
-                        key: ValueKey(_correct),
-                        style: const TextStyle(
-                          color: AppColors.textSecondary,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+          ProgressMetaRow(
+            progress: _progressAnim,
+            primaryLabel:
+                'Pregunta ${_currentIndex + 1} de ${widget.interview.questions.length}',
+            secondaryLabel: 'Aciertos: $_correct',
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
@@ -382,10 +398,14 @@ class _IntroCardState extends State<_IntroCard> {
       fallbackName: widget.characterName,
       cacheKey: 'interview_${widget.characterName.toLowerCase()}',
     );
-    if (!mounted) return;
+    if (!mounted) {
+      return;
+    }
     if (resolved.isNotEmpty) {
       await precacheImage(AssetImage(resolved), context);
-      if (!mounted) return;
+      if (!mounted) {
+        return;
+      }
     }
     setState(() {
       _avatarAsset = resolved;
@@ -425,7 +445,7 @@ class _IntroCardState extends State<_IntroCard> {
             children: [
               CircleAvatar(
                 radius: 26,
-                backgroundColor: AppColors.secondaryBlue.withOpacity(0.15),
+                backgroundColor: AppColors.secondaryBlue.withValues(alpha: 0.15),
                 backgroundImage:
                     _avatarAsset.isNotEmpty ? AssetImage(_avatarAsset) : null,
                 child: _avatarAsset.isEmpty && !_isAvatarLoading
@@ -463,9 +483,13 @@ class _IntroCardState extends State<_IntroCard> {
               Expanded(
                 child: GestureDetector(
                   onTap: () => widget.onSpeak(widget.introEn),
-                  child: Text(
-                    widget.introEn,
-                    style: const TextStyle(
+                  child: BilingualTextCard(
+                    textEn: widget.introEn,
+                    textEs: widget.introEs,
+                    showEs: false,
+                    backgroundColor: Colors.transparent,
+                    padding: EdgeInsets.zero,
+                    enStyle: const TextStyle(
                       color: AppColors.textPrimary,
                     ),
                   ),
@@ -512,7 +536,7 @@ class _QuestionCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.05),
+              color: Colors.black.withValues(alpha: 0.05),
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),
@@ -534,9 +558,13 @@ class _QuestionCard extends StatelessWidget {
                           fit: FlexFit.loose,
                           child: GestureDetector(
                             onTap: () => onSpeak(apply(question.questionEn)),
-                            child: Text(
-                              apply(question.questionEn),
-                              style: const TextStyle(
+                            child: BilingualTextCard(
+                              textEn: apply(question.questionEn),
+                              textEs: apply(question.questionEs),
+                              showEs: false,
+                              backgroundColor: Colors.transparent,
+                              padding: EdgeInsets.zero,
+                              enStyle: const TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
                                 color: AppColors.textPrimary,
@@ -625,7 +653,7 @@ class _QuestionCard extends StatelessWidget {
                                         height: 32,
                                         decoration: BoxDecoration(
                                           color: show
-                                              ? Colors.white.withOpacity(0.25)
+                                              ? Colors.white.withValues(alpha: 0.25)
                                               : AppColors.cardBackground,
                                           shape: BoxShape.circle,
                                         ),
@@ -643,27 +671,20 @@ class _QuestionCard extends StatelessWidget {
                                       ),
                                       const SizedBox(width: 10),
                                       Expanded(
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              apply(opt.textEn),
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w700,
-                                                color: fg,
-                                              ),
-                                            ),
-                                            const SizedBox(height: 4),
-                                            Text(
-                                              apply(opt.textEs),
-                                              style: TextStyle(
-                                                color: show
-                                                    ? Colors.white70
-                                                    : AppColors.textSecondary,
-                                              ),
-                                            ),
-                                          ],
+                                        child: BilingualTextCard(
+                                          textEn: apply(opt.textEn),
+                                          textEs: apply(opt.textEs),
+                                          backgroundColor: Colors.transparent,
+                                          padding: EdgeInsets.zero,
+                                          enStyle: TextStyle(
+                                            fontWeight: FontWeight.w700,
+                                            color: fg,
+                                          ),
+                                          esStyle: TextStyle(
+                                            color: show
+                                                ? Colors.white70
+                                                : AppColors.textSecondary,
+                                          ),
                                         ),
                                       ),
                                       if (show)
@@ -694,7 +715,7 @@ class _QuestionCard extends StatelessWidget {
                                           vertical: 6,
                                         ),
                                         decoration: BoxDecoration(
-                                          color: Colors.white.withOpacity(0.15),
+                                          color: Colors.white.withValues(alpha: 0.15),
                                           borderRadius:
                                               BorderRadius.circular(10),
                                         ),
@@ -737,17 +758,17 @@ class _QuestionCard extends StatelessWidget {
                       },
                     ),
                     if (showFeedback && selectedIndex >= 0)
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8.0),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 8.0),
                         child: Row(
                           children: [
-                            const Icon(
+                            Icon(
                               Icons.info_outline,
                               color: AppColors.textSecondary,
                               size: 18,
                             ),
-                            const SizedBox(width: 6),
-                            const Expanded(
+                            SizedBox(width: 6),
+                            Expanded(
                               child: Text(
                                 'Toca continuar para la siguiente pregunta',
                                 style: TextStyle(

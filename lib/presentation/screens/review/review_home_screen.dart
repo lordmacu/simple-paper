@@ -3,7 +3,9 @@ import '../../../core/constants/app_colors.dart';
 import 'review_game_select_screen.dart';
 import 'review_types.dart';
 
+/// review home screen/widget
 class ReviewHomeScreen extends StatelessWidget {
+  /// Crea una instancia de review home screen.
   const ReviewHomeScreen({super.key});
 
   static const _categories = [
@@ -96,7 +98,7 @@ class _CategoryCard extends StatelessWidget {
                 width: 44,
                 height: 44,
                 decoration: BoxDecoration(
-                  color: AppColors.secondaryBlue.withOpacity(0.12),
+                  color: AppColors.secondaryBlue.withValues(alpha: 0.12),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(category.icon, color: AppColors.secondaryBlue),

@@ -10,7 +10,11 @@ import '../../providers/progress_providers.dart';
 import '../onboarding/welcome_name_screen.dart';
 import '../practice/practice_games_screen.dart';
 
+/// Pantalla principal de inicio.
+///
+/// Muestra la lista de episodios y acciones rápidas.
 class HomeScreen extends ConsumerStatefulWidget {
+  /// Crea un [HomeScreen].
   const HomeScreen({super.key});
 
   @override
@@ -122,7 +126,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 );
               },
               loading: () => const SizedBox.shrink(),
-              error: (_, __) => const SizedBox.shrink(),
+              error: (e, st) => const SizedBox.shrink(),
             ),
           ],
         ),
@@ -130,8 +134,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         elevation: 0,
         centerTitle: false,
       ),
-      body: Column(
-        children: const [
+      body: const Column(
+        children: [
           Expanded(child: EpisodeListScreen()),
         ],
       ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../widgets/common/duolingo_button.dart';
 import '../widgets/common/translation_overlay.dart';
+import '../widgets/molecules/bilingual_text_card.dart';
 import '../../core/constants/app_colors.dart';
 import '../../domain/models/episode/character.dart';
 import '../widgets/character/rename_character_dialog.dart';
@@ -13,14 +14,20 @@ import 'package:confetti/confetti.dart';
 /// Pantalla de celebración cuando se desbloquea un nuevo personaje
 /// Muestra información del personaje con animaciones estilo Duolingo
 class CharacterUnlockScreen extends ConsumerStatefulWidget {
+  /// Personaje que se acaba de desbloquear
   final Character character;
+  
+  /// Callback cuando el usuario presiona continuar
   final VoidCallback onContinue;
 
+  /// Crea la pantalla de desbloqueo de personaje.
+  ///
+  /// Parámetros:
+  /// - [character]: Personaje que se acaba de desbloquear
+  /// - [onContinue]: Callback cuando el usuario presiona continuar
   const CharacterUnlockScreen({
-    Key? key,
-    required this.character,
-    required this.onContinue,
-  }) : super(key: key);
+    required this.character, required this.onContinue, super.key,
+  });
 
   @override
   ConsumerState<CharacterUnlockScreen> createState() =>
@@ -132,7 +139,9 @@ class _CharacterUnlockScreenState extends ConsumerState<CharacterUnlockScreen>
 
   Future<void> _loadAvatar() async {
     final avatarUrl = widget.character.avatarUrl ?? '';
-    if (avatarUrl.isEmpty) return;
+    if (avatarUrl.isEmpty) {
+      return;
+    }
     setState(() {
       _isAvatarLoading = true;
     });
@@ -141,10 +150,14 @@ class _CharacterUnlockScreenState extends ConsumerState<CharacterUnlockScreen>
       fallbackName: widget.character.defaultName,
       cacheKey: 'unlock_${widget.character.characterId}',
     );
-    if (!mounted) return;
+    if (!mounted) {
+      return;
+    }
     if (resolved.isNotEmpty) {
       await precacheImage(AssetImage(resolved), context);
-      if (!mounted) return;
+      if (!mounted) {
+        return;
+      }
     }
     setState(() {
       _avatarAsset = resolved;
@@ -160,25 +173,30 @@ class _CharacterUnlockScreenState extends ConsumerState<CharacterUnlockScreen>
         defaultName: widget.character.defaultName,
         currentName: _customName ?? widget.character.defaultName,
         onSave: (newName) async {
+          // Capturar antes del await
+          final scaffoldMessenger = ScaffoldMessenger.of(context);
+
           setState(() {
             _customName = newName;
           });
-          
+
           // Guardar en template variables
           final templateService = ref.read(templateVariableServiceProvider);
           final variableKey = _getTemplateVariableKey(widget.character.characterId);
           templateService.updateVariable(variableKey, newName);
-          
+
           // Guardar en el repositorio de personajes
           final repository = ref.read(characterRepositoryProvider);
           await repository.updateCharacterName(
             widget.character.characterId,
             newName,
           );
-          
+
           // Mostrar confirmación
-          if (!mounted) return;
-          ScaffoldMessenger.of(context).showSnackBar(
+          if (!mounted) {
+            return;
+          }
+          scaffoldMessenger.showSnackBar(
             SnackBar(
               content: Text('¡Personaje renombrado a "$newName"!'),
               backgroundColor: AppColors.primaryGreen,
@@ -261,7 +279,7 @@ class _CharacterUnlockScreenState extends ConsumerState<CharacterUnlockScreen>
                             children: [
                               Text(
                                 _isPlayer() ? '¡Bienvenido al Equipo!' : '¡Nuevo Personaje!',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 32,
                                   fontWeight: FontWeight.bold,
                                   color: AppColors.primaryGreen,
@@ -271,8 +289,8 @@ class _CharacterUnlockScreenState extends ConsumerState<CharacterUnlockScreen>
                               // Texto explicativo para el jugador
                               if (_isPlayer()) ...[
                                 const SizedBox(height: 8),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 32),
+                                const Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 32),
                                   child: Text(
                                     'Esta es tu credencial de empleado. ¡Ahora eres parte del equipo!',
                                     style: TextStyle(
@@ -365,9 +383,9 @@ class _CharacterUnlockScreenState extends ConsumerState<CharacterUnlockScreen>
                   ? 'Cargo (Español)'
                   : 'Introducción (Español)',
               content: _showingTranslation == 'personality'
-                ? (widget.character.personalityEs ?? '')
+                ? widget.character.personalityEs
                 : _showingTranslation == 'role'
-                  ? (widget.character.roleEs ?? '')
+                  ? widget.character.roleEs
                   : (widget.character.introTextEs != null
                       ? ref.read(templateVariableServiceProvider).replaceVariables(widget.character.introTextEs!)
                       : ''),
@@ -383,58 +401,6 @@ class _CharacterUnlockScreenState extends ConsumerState<CharacterUnlockScreen>
     );
   }
 
-  Widget _buildCharacterAvatar() {
-    final avatarChild = _avatarAsset.isNotEmpty
-        ? ClipOval(
-            child: Image.asset(
-              _avatarAsset,
-              width: 180,
-              height: 180,
-              fit: BoxFit.cover,
-            ),
-          )
-        : _getCharacterIcon(widget.character.defaultName);
-    return Container(
-      width: 200,
-      height: 200,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            AppColors.primaryGreen.withOpacity(0.2),
-            AppColors.secondaryBlue.withOpacity(0.2),
-          ],
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.primaryGreen.withOpacity(0.3),
-            blurRadius: 30,
-            spreadRadius: 5,
-          ),
-        ],
-      ),
-      child: Center(
-        child: Container(
-          width: 180,
-          height: 180,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: Colors.white,
-            border: Border.all(
-              color: AppColors.primaryGreen,
-              width: 4,
-            ),
-          ),
-          child: Center(
-            child: _isAvatarLoading ? const SizedBox() : avatarChild,
-          ),
-        ),
-      ),
-    );
-  }
-
   Widget _buildCharacterInfo() {
     return Container(
       padding: const EdgeInsets.all(24),
@@ -443,7 +409,7 @@ class _CharacterUnlockScreenState extends ConsumerState<CharacterUnlockScreen>
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.08),
+            color: Colors.black.withValues(alpha: 0.08),
             blurRadius: 16,
             offset: const Offset(0, 4),
           ),
@@ -467,13 +433,13 @@ class _CharacterUnlockScreenState extends ConsumerState<CharacterUnlockScreen>
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                       colors: [
-                        AppColors.primaryGreen.withOpacity(0.2),
-                        AppColors.secondaryBlue.withOpacity(0.2),
+                        AppColors.primaryGreen.withValues(alpha: 0.2),
+                        AppColors.secondaryBlue.withValues(alpha: 0.2),
                       ],
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: AppColors.primaryGreen.withOpacity(0.3),
+                        color: AppColors.primaryGreen.withValues(alpha: 0.3),
                         blurRadius: 15,
                         spreadRadius: 2,
                       ),
@@ -521,7 +487,7 @@ class _CharacterUnlockScreenState extends ConsumerState<CharacterUnlockScreen>
                   children: [
                     Text(
                       _customName ?? widget.character.defaultName,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                         color: AppColors.textPrimary,
@@ -541,7 +507,7 @@ class _CharacterUnlockScreenState extends ConsumerState<CharacterUnlockScreen>
                       child: Container(
                         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                         decoration: BoxDecoration(
-                          color: AppColors.secondaryBlue.withOpacity(0.1),
+                          color: AppColors.secondaryBlue.withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Row(
@@ -551,7 +517,7 @@ class _CharacterUnlockScreenState extends ConsumerState<CharacterUnlockScreen>
                             Flexible(
                               child: Text(
                                 widget.character.role,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 13,
                                   color: AppColors.secondaryBlue,
                                   fontWeight: FontWeight.w600,
@@ -560,8 +526,8 @@ class _CharacterUnlockScreenState extends ConsumerState<CharacterUnlockScreen>
                               ),
                             ),
                             const SizedBox(width: 4),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 2),
+                            const Padding(
+                              padding: EdgeInsets.only(top: 2),
                               child: Icon(
                                 Icons.translate,
                                 size: 12,
@@ -587,7 +553,7 @@ class _CharacterUnlockScreenState extends ConsumerState<CharacterUnlockScreen>
               gradient: LinearGradient(
                 colors: [
                   Colors.transparent,
-                  AppColors.textSecondary.withOpacity(0.2),
+                  AppColors.textSecondary.withValues(alpha: 0.2),
                   Colors.transparent,
                 ],
               ),
@@ -657,7 +623,7 @@ class _CharacterUnlockScreenState extends ConsumerState<CharacterUnlockScreen>
               const SizedBox(width: 8),
               Text(
                 title,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
                   color: AppColors.primaryGreen,
@@ -666,7 +632,7 @@ class _CharacterUnlockScreenState extends ConsumerState<CharacterUnlockScreen>
               ),
               if (translationEs != null) ...[
                 const SizedBox(width: 6),
-                Icon(
+                const Icon(
                   Icons.translate,
                   size: 14,
                   color: AppColors.secondaryBlue,
@@ -681,17 +647,21 @@ class _CharacterUnlockScreenState extends ConsumerState<CharacterUnlockScreen>
                 : EdgeInsets.zero,
             decoration: isQuote
                 ? BoxDecoration(
-                    color: AppColors.primaryGreen.withOpacity(0.05),
+                    color: AppColors.primaryGreen.withValues(alpha: 0.05),
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(
-                      color: AppColors.primaryGreen.withOpacity(0.2),
+                      color: AppColors.primaryGreen.withValues(alpha: 0.2),
                       width: 1,
                     ),
                   )
                 : null,
-            child: Text(
-              content,
-              style: TextStyle(
+            child: BilingualTextCard(
+              textEn: content,
+              textEs: '',
+              showEs: false,
+              backgroundColor: Colors.transparent,
+              padding: EdgeInsets.zero,
+              enStyle: TextStyle(
                 fontSize: 16,
                 height: 1.5,
                 color: AppColors.textPrimary,

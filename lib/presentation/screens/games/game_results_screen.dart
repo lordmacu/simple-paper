@@ -1,28 +1,52 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/constants/app_colors.dart';
+import '../../widgets/atoms/primary_button.dart';
+import '../../widgets/molecules/section_header.dart';
 
+/// Pantalla que muestra los resultados de un juego completado
 class GameResultsScreen extends StatelessWidget {
+  /// Puntos totales obtenidos
   final int totalPoints;
+  
+  /// Puntos máximos posibles
   final int maxPoints;
+  
+  /// Callback cuando el usuario presiona continuar
   final VoidCallback onContinue;
+  
+  /// Override opcional para las estrellas (0-3)
   final int? starsOverride;
 
+  /// Crea la pantalla de resultados de juego.
+  ///
+  /// Parámetros:
+  /// - [totalPoints]: Puntos totales obtenidos
+  /// - [maxPoints]: Puntos máximos posibles
+  /// - [onContinue]: Callback cuando el usuario presiona continuar
+  /// - [starsOverride]: Override opcional para las estrellas (0-3)
   const GameResultsScreen({
-    Key? key,
-    required this.totalPoints,
-    required this.maxPoints,
-    required this.onContinue,
+    required this.totalPoints, required this.maxPoints, required this.onContinue, super.key,
     this.starsOverride,
-  }) : super(key: key);
+  });
 
   int get _stars {
-    if (starsOverride != null) return starsOverride!.clamp(0, 3);
-    if (maxPoints <= 0) return 3;
+    if (starsOverride != null) {
+      return starsOverride!.clamp(0, 3);
+    }
+    if (maxPoints <= 0) {
+      return 3;
+    }
     final ratio = totalPoints / maxPoints;
-    if (ratio >= 0.9) return 3;
-    if (ratio >= 0.65) return 2;
-    if (ratio >= 0.35) return 1;
+    if (ratio >= 0.9) {
+      return 3;
+    }
+    if (ratio >= 0.65) {
+      return 2;
+    }
+    if (ratio >= 0.35) {
+      return 1;
+    }
     return 0;
   }
 
@@ -38,9 +62,10 @@ class GameResultsScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 12),
-              Text(
-                'Results',
-                style: const TextStyle(
+              const SectionHeader(
+                title: 'Results',
+                padding: EdgeInsets.zero,
+                titleStyle: TextStyle(
                   fontSize: 26,
                   fontWeight: FontWeight.bold,
                   color: AppColors.textPrimary,
@@ -55,23 +80,9 @@ class GameResultsScreen extends StatelessWidget {
               const Spacer(),
               SizedBox(
                 width: double.infinity,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primaryGreen,
-                    foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(vertical: 14),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(14),
-                    ),
-                  ),
+                child: PrimaryButton(
+                  text: 'Continue',
                   onPressed: onContinue,
-                  child: const Text(
-                    'Continue',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
                 ),
               ),
               const SizedBox(height: 12),
@@ -107,7 +118,7 @@ class GameResultsScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 10,
             offset: const Offset(0, 6),
           ),
@@ -129,7 +140,7 @@ class GameResultsScreen extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
       decoration: BoxDecoration(
-        color: AppColors.primaryGreen.withOpacity(0.12),
+        color: AppColors.primaryGreen.withValues(alpha: 0.12),
         borderRadius: BorderRadius.circular(14),
       ),
       child: Row(
@@ -181,7 +192,9 @@ class GameResultsScreen extends StatelessWidget {
   }
 
   double get _performancePercent {
-    if (maxPoints <= 0) return 100;
+    if (maxPoints <= 0) {
+      return 100;
+    }
     return (totalPoints / maxPoints) * 100;
   }
 }

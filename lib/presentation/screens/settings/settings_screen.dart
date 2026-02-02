@@ -4,18 +4,24 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../providers/personalization_providers.dart';
 import '../../providers/template_variable_provider.dart';
-import '../../../data/services/template_variable_service.dart';
 import 'city_selection_screen.dart';
 import 'office_customization_screen.dart';
 import 'character_management_screen.dart';
+import '../../widgets/atoms/primary_button.dart';
+import '../../widgets/molecules/section_header.dart';
 
+
+/// Pantalla de configuración y personalización de la app.
+/// Permite cambiar nombre, ciudad, oficina, personajes y velocidad de voz.
 class SettingsScreen extends ConsumerStatefulWidget {
+  /// Crea la pantalla de configuración principal.
   const SettingsScreen({super.key});
 
   @override
   ConsumerState<SettingsScreen> createState() => _SettingsScreenState();
 }
 
+/// Estado de [SettingsScreen]. Maneja lógica de nombre, TTS y navegación.
 class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   late final TextEditingController _nameController;
   String? _error;
@@ -38,7 +44,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final service = ref.watch(templateVariableServiceProvider);
+    ref.watch(templateVariableServiceProvider);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -53,9 +59,10 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         padding: const EdgeInsets.all(16),
         child: ListView(
           children: [
-            const Text(
-              'Tu nombre',
-              style: TextStyle(
+            const SectionHeader(
+              title: 'Tu nombre',
+              padding: EdgeInsets.zero,
+              titleStyle: TextStyle(
                 fontWeight: FontWeight.w800,
                 fontSize: 18,
                 color: AppColors.textPrimary,
@@ -78,25 +85,16 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               ),
             ),
             const SizedBox(height: 12),
-            ElevatedButton.icon(
-              icon: const Icon(Icons.save),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.primaryGreen,
-                minimumSize: const Size(double.infinity, 48),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14),
-                ),
-              ),
+            PrimaryButton(
+              text: 'Guardar',
+              icon: Icons.save,
               onPressed: _saveName,
-              label: const Text(
-                'Guardar',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
             ),
             const SizedBox(height: 24),
-            const Text(
-              'Velocidad de voz (TTS)',
-              style: TextStyle(
+            const SectionHeader(
+              title: 'Velocidad de voz (TTS)',
+              padding: EdgeInsets.zero,
+              titleStyle: TextStyle(
                 fontWeight: FontWeight.w800,
                 fontSize: 18,
                 color: AppColors.textPrimary,
@@ -138,9 +136,10 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               ),
             ),
             const SizedBox(height: 24),
-            const Text(
-              'Ciudad de tu oficina',
-              style: TextStyle(
+            const SectionHeader(
+              title: 'Ciudad de tu oficina',
+              padding: EdgeInsets.zero,
+              titleStyle: TextStyle(
                 fontWeight: FontWeight.w800,
                 fontSize: 18,
                 color: AppColors.textPrimary,
@@ -153,9 +152,10 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               );
             }),
             const SizedBox(height: 24),
-            const Text(
-              'Oficina',
-              style: TextStyle(
+            const SectionHeader(
+              title: 'Oficina',
+              padding: EdgeInsets.zero,
+              titleStyle: TextStyle(
                 fontWeight: FontWeight.w800,
                 fontSize: 18,
                 color: AppColors.textPrimary,
@@ -168,9 +168,10 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               );
             }),
             const SizedBox(height: 24),
-            const Text(
-              'Personajes',
-              style: TextStyle(
+            const SectionHeader(
+              title: 'Personajes',
+              padding: EdgeInsets.zero,
+              titleStyle: TextStyle(
                 fontWeight: FontWeight.w800,
                 fontSize: 18,
                 color: AppColors.textPrimary,
@@ -216,12 +217,18 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
       final repo = ref.read(personalizationRepositoryProvider);
       final saved = await repo.loadVariables();
       final value = saved['tts_rate'];
-      if (value == null) return;
+      if (value == null) {
+        return;
+      }
       final parsed = double.tryParse(value);
-      if (parsed == null) return;
-      if (!mounted) return;
+      if (parsed == null) {
+        return;
+      }
+      if (!mounted) {
+        return;
+      }
       setState(() => _ttsRate = parsed);
-    } catch (_) {
+    } on Exception catch (_) {
       // ignore
     }
   }
@@ -229,8 +236,12 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   // Reset removido por requerimiento
 }
 
+
+/// Card para mostrar y cambiar la ciudad de la oficina.
 class _CityCard extends ConsumerWidget {
+  /// Callback al tocar la card.
   final VoidCallback onTap;
+  /// Crea el widget de ciudad.
   const _CityCard({required this.onTap});
 
   @override
@@ -255,9 +266,9 @@ class _CityCard extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'Ciudad actual',
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: AppColors.textSecondary,
                       fontWeight: FontWeight.w600,
                     ),
@@ -281,8 +292,12 @@ class _CityCard extends ConsumerWidget {
   }
 }
 
+
+/// Card para mostrar y cambiar la oficina y tipo de compañía.
 class _OfficeCard extends ConsumerWidget {
+  /// Callback al tocar la card.
   final VoidCallback onTap;
+  /// Crea el widget de oficina.
   const _OfficeCard({required this.onTap});
 
   @override
@@ -308,9 +323,9 @@ class _OfficeCard extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'Compañía y tipo',
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: AppColors.textSecondary,
                       fontWeight: FontWeight.w600,
                     ),
@@ -334,8 +349,12 @@ class _OfficeCard extends ConsumerWidget {
   }
 }
 
+
+/// Card para acceder a la gestión y renombrado de personajes.
 class _CharactersCard extends StatelessWidget {
+  /// Callback al tocar la card.
   final VoidCallback onTap;
+  /// Crea el widget de personajes.
   const _CharactersCard({required this.onTap});
 
   @override
@@ -350,11 +369,11 @@ class _CharactersCard extends StatelessWidget {
           color: AppColors.cardBackground,
           borderRadius: BorderRadius.circular(14),
         ),
-        child: Row(
+        child: const Row(
           children: [
-            const Icon(Icons.people_alt, color: AppColors.secondaryBlue),
-            const SizedBox(width: 12),
-            const Expanded(
+            Icon(Icons.people_alt, color: AppColors.secondaryBlue),
+            SizedBox(width: 12),
+            Expanded(
               child: Text(
                 'Renombrar personajes',
                 style: TextStyle(
@@ -363,7 +382,7 @@ class _CharactersCard extends StatelessWidget {
                 ),
               ),
             ),
-            const Icon(Icons.chevron_right, color: AppColors.textSecondary),
+            Icon(Icons.chevron_right, color: AppColors.textSecondary),
           ],
         ),
       ),

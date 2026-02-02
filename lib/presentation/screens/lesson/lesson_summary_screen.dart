@@ -1,24 +1,28 @@
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../widgets/atoms/primary_button.dart';
+import '../../widgets/molecules/section_header.dart';
 
+/// lesson summary screen/widget
 class LessonSummaryScreen extends StatefulWidget {
+  /// int
   final int baseXp;
+  /// int
   final int bonusXp;
+  ///  list< string>
   final List<String> wordsLearned;
+  /// Lista de logros obtenidos
   final List<String> achievements;
+  /// Racha actual del usuario
   final int streak;
+  /// Callback cuando el usuario continúa
   final VoidCallback onContinue;
 
+  /// Crea una pantalla de resumen de lección.
   const LessonSummaryScreen({
-    Key? key,
-    required this.baseXp,
-    required this.bonusXp,
-    required this.wordsLearned,
-    required this.achievements,
-    required this.streak,
-    required this.onContinue,
-  }) : super(key: key);
+    required this.baseXp, required this.bonusXp, required this.wordsLearned, required this.achievements, required this.streak, required this.onContinue, super.key,
+  });
 
   @override
   State<LessonSummaryScreen> createState() => _LessonSummaryScreenState();
@@ -66,9 +70,10 @@ class _LessonSummaryScreenState extends State<LessonSummaryScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    '¡Lección completada!',
-                    style: TextStyle(
+                  const SectionHeader(
+                    title: '¡Lección completada!',
+                    padding: EdgeInsets.zero,
+                    titleStyle: TextStyle(
                       fontSize: 26,
                       fontWeight: FontWeight.w800,
                       color: AppColors.textPrimary,
@@ -85,23 +90,9 @@ class _LessonSummaryScreenState extends State<LessonSummaryScreen> {
                   const Spacer(),
                   SizedBox(
                     width: double.infinity,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.primaryGreen,
-                        foregroundColor: Colors.white,
-                        padding: const EdgeInsets.symmetric(vertical: 14),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(14),
-                        ),
-                      ),
+                    child: PrimaryButton(
+                      text: 'Continuar',
                       onPressed: widget.onContinue,
-                      child: const Text(
-                        'Continuar',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
-                      ),
                     ),
                   ),
                 ],
@@ -158,9 +149,10 @@ class _LessonSummaryScreenState extends State<LessonSummaryScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            title,
-            style: const TextStyle(
+          SectionHeader(
+            title: title,
+            padding: EdgeInsets.zero,
+            titleStyle: const TextStyle(
               fontWeight: FontWeight.w700,
               color: AppColors.textPrimary,
             ),
@@ -195,7 +187,7 @@ class _LessonSummaryScreenState extends State<LessonSummaryScreen> {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: AppColors.primaryGreen.withOpacity(0.1),
+        color: AppColors.primaryGreen.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(14),
       ),
       child: Row(

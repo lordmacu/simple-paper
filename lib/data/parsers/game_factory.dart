@@ -50,7 +50,7 @@ class GameFactory {
         default:
           throw UnsupportedGameTypeException(gameType);
       }
-    } catch (e) {
+    } on Exception catch (e) {
       if (e is UnsupportedGameTypeException || e is GameParsingException) {
         rethrow;
       }
@@ -72,7 +72,7 @@ class GameFactory {
       try {
         final gameJson = jsonList[i] as Map<String, dynamic>;
         games.add(createGame(gameJson));
-      } catch (e) {
+      } on Exception catch (e) {
         throw GameParsingException(
           'Error parsing game at index $i: ${e.toString()}',
         );
@@ -108,10 +108,12 @@ class GameFactory {
   }
 }
 
-/// Excepción cuando se encuentra un tipo de juego no soportado
+/// Excepción lanzada cuando se encuentra un tipo de juego no soportado.
 class UnsupportedGameTypeException implements Exception {
+  /// Tipo de juego no soportado.
   final String gameType;
   
+  /// Crea una excepción para tipo de juego no soportado.
   UnsupportedGameTypeException(this.gameType);
   
   @override
@@ -119,10 +121,12 @@ class UnsupportedGameTypeException implements Exception {
       'Supported types: matching, fill_blank, multiple_choice, audio_choice, order_sentence, typing, spot_word';
 }
 
-/// Excepción general de parseo de juegos
+/// Excepción general de parseo de juegos.
 class GameParsingException implements Exception {
+  /// Mensaje descriptivo del error de parseo.
   final String message;
   
+  /// Crea una excepción de parseo de juego.
   GameParsingException(this.message);
   
   @override

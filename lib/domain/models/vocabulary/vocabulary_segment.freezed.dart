@@ -528,6 +528,9 @@ mixin _$VocabularySegment {
   @JsonKey(name: 'segment_id')
   String get segmentId => throw _privateConstructorUsedError;
 
+  /// Text in both languages
+  BilingualText get text => throw _privateConstructorUsedError;
+
   /// Image URL
   @JsonKey(name: 'image_url')
   String? get imageUrl => throw _privateConstructorUsedError;
@@ -535,9 +538,6 @@ mixin _$VocabularySegment {
   /// Word being focused on
   @JsonKey(name: 'word_focus')
   String? get wordFocus => throw _privateConstructorUsedError;
-
-  /// Text in both languages
-  BilingualText get text => throw _privateConstructorUsedError;
 
   /// Emphasis style for the word
   @JsonKey(name: 'emphasis_style')
@@ -565,9 +565,9 @@ abstract class $VocabularySegmentCopyWith<$Res> {
   @useResult
   $Res call({
     @JsonKey(name: 'segment_id') String segmentId,
+    BilingualText text,
     @JsonKey(name: 'image_url') String? imageUrl,
     @JsonKey(name: 'word_focus') String? wordFocus,
-    BilingualText text,
     @JsonKey(name: 'emphasis_style') String? emphasisStyle,
     VocabularyInteractive? interactive,
   });
@@ -592,9 +592,9 @@ class _$VocabularySegmentCopyWithImpl<$Res, $Val extends VocabularySegment>
   @override
   $Res call({
     Object? segmentId = null,
+    Object? text = null,
     Object? imageUrl = freezed,
     Object? wordFocus = freezed,
-    Object? text = null,
     Object? emphasisStyle = freezed,
     Object? interactive = freezed,
   }) {
@@ -604,6 +604,10 @@ class _$VocabularySegmentCopyWithImpl<$Res, $Val extends VocabularySegment>
                 ? _value.segmentId
                 : segmentId // ignore: cast_nullable_to_non_nullable
                       as String,
+            text: null == text
+                ? _value.text
+                : text // ignore: cast_nullable_to_non_nullable
+                      as BilingualText,
             imageUrl: freezed == imageUrl
                 ? _value.imageUrl
                 : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -612,10 +616,6 @@ class _$VocabularySegmentCopyWithImpl<$Res, $Val extends VocabularySegment>
                 ? _value.wordFocus
                 : wordFocus // ignore: cast_nullable_to_non_nullable
                       as String?,
-            text: null == text
-                ? _value.text
-                : text // ignore: cast_nullable_to_non_nullable
-                      as BilingualText,
             emphasisStyle: freezed == emphasisStyle
                 ? _value.emphasisStyle
                 : emphasisStyle // ignore: cast_nullable_to_non_nullable
@@ -665,9 +665,9 @@ abstract class _$$VocabularySegmentImplCopyWith<$Res>
   @useResult
   $Res call({
     @JsonKey(name: 'segment_id') String segmentId,
+    BilingualText text,
     @JsonKey(name: 'image_url') String? imageUrl,
     @JsonKey(name: 'word_focus') String? wordFocus,
-    BilingualText text,
     @JsonKey(name: 'emphasis_style') String? emphasisStyle,
     VocabularyInteractive? interactive,
   });
@@ -693,9 +693,9 @@ class __$$VocabularySegmentImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? segmentId = null,
+    Object? text = null,
     Object? imageUrl = freezed,
     Object? wordFocus = freezed,
-    Object? text = null,
     Object? emphasisStyle = freezed,
     Object? interactive = freezed,
   }) {
@@ -705,6 +705,10 @@ class __$$VocabularySegmentImplCopyWithImpl<$Res>
             ? _value.segmentId
             : segmentId // ignore: cast_nullable_to_non_nullable
                   as String,
+        text: null == text
+            ? _value.text
+            : text // ignore: cast_nullable_to_non_nullable
+                  as BilingualText,
         imageUrl: freezed == imageUrl
             ? _value.imageUrl
             : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -713,10 +717,6 @@ class __$$VocabularySegmentImplCopyWithImpl<$Res>
             ? _value.wordFocus
             : wordFocus // ignore: cast_nullable_to_non_nullable
                   as String?,
-        text: null == text
-            ? _value.text
-            : text // ignore: cast_nullable_to_non_nullable
-                  as BilingualText,
         emphasisStyle: freezed == emphasisStyle
             ? _value.emphasisStyle
             : emphasisStyle // ignore: cast_nullable_to_non_nullable
@@ -735,9 +735,9 @@ class __$$VocabularySegmentImplCopyWithImpl<$Res>
 class _$VocabularySegmentImpl implements _VocabularySegment {
   const _$VocabularySegmentImpl({
     @JsonKey(name: 'segment_id') required this.segmentId,
+    required this.text,
     @JsonKey(name: 'image_url') this.imageUrl,
     @JsonKey(name: 'word_focus') this.wordFocus,
-    required this.text,
     @JsonKey(name: 'emphasis_style') this.emphasisStyle,
     this.interactive,
   });
@@ -750,6 +750,10 @@ class _$VocabularySegmentImpl implements _VocabularySegment {
   @JsonKey(name: 'segment_id')
   final String segmentId;
 
+  /// Text in both languages
+  @override
+  final BilingualText text;
+
   /// Image URL
   @override
   @JsonKey(name: 'image_url')
@@ -759,10 +763,6 @@ class _$VocabularySegmentImpl implements _VocabularySegment {
   @override
   @JsonKey(name: 'word_focus')
   final String? wordFocus;
-
-  /// Text in both languages
-  @override
-  final BilingualText text;
 
   /// Emphasis style for the word
   @override
@@ -775,7 +775,7 @@ class _$VocabularySegmentImpl implements _VocabularySegment {
 
   @override
   String toString() {
-    return 'VocabularySegment(segmentId: $segmentId, imageUrl: $imageUrl, wordFocus: $wordFocus, text: $text, emphasisStyle: $emphasisStyle, interactive: $interactive)';
+    return 'VocabularySegment(segmentId: $segmentId, text: $text, imageUrl: $imageUrl, wordFocus: $wordFocus, emphasisStyle: $emphasisStyle, interactive: $interactive)';
   }
 
   @override
@@ -785,11 +785,11 @@ class _$VocabularySegmentImpl implements _VocabularySegment {
             other is _$VocabularySegmentImpl &&
             (identical(other.segmentId, segmentId) ||
                 other.segmentId == segmentId) &&
+            (identical(other.text, text) || other.text == text) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
             (identical(other.wordFocus, wordFocus) ||
                 other.wordFocus == wordFocus) &&
-            (identical(other.text, text) || other.text == text) &&
             (identical(other.emphasisStyle, emphasisStyle) ||
                 other.emphasisStyle == emphasisStyle) &&
             (identical(other.interactive, interactive) ||
@@ -801,9 +801,9 @@ class _$VocabularySegmentImpl implements _VocabularySegment {
   int get hashCode => Object.hash(
     runtimeType,
     segmentId,
+    text,
     imageUrl,
     wordFocus,
-    text,
     emphasisStyle,
     interactive,
   );
@@ -828,9 +828,9 @@ class _$VocabularySegmentImpl implements _VocabularySegment {
 abstract class _VocabularySegment implements VocabularySegment {
   const factory _VocabularySegment({
     @JsonKey(name: 'segment_id') required final String segmentId,
+    required final BilingualText text,
     @JsonKey(name: 'image_url') final String? imageUrl,
     @JsonKey(name: 'word_focus') final String? wordFocus,
-    required final BilingualText text,
     @JsonKey(name: 'emphasis_style') final String? emphasisStyle,
     final VocabularyInteractive? interactive,
   }) = _$VocabularySegmentImpl;
@@ -843,6 +843,10 @@ abstract class _VocabularySegment implements VocabularySegment {
   @JsonKey(name: 'segment_id')
   String get segmentId;
 
+  /// Text in both languages
+  @override
+  BilingualText get text;
+
   /// Image URL
   @override
   @JsonKey(name: 'image_url')
@@ -852,10 +856,6 @@ abstract class _VocabularySegment implements VocabularySegment {
   @override
   @JsonKey(name: 'word_focus')
   String? get wordFocus;
-
-  /// Text in both languages
-  @override
-  BilingualText get text;
 
   /// Emphasis style for the word
   @override

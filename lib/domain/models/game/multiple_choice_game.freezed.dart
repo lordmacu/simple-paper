@@ -43,6 +43,9 @@ mixin _$MultipleChoiceGame {
   @JsonKey(name: 'instructions_es')
   String get instructionsEs => throw _privateConstructorUsedError;
 
+  /// Contenido del juego
+  MultipleChoiceGameContent get content => throw _privateConstructorUsedError;
+
   /// Si el juego es opcional
   bool get optional => throw _privateConstructorUsedError;
 
@@ -57,9 +60,6 @@ mixin _$MultipleChoiceGame {
   /// Recompensa en XP
   @JsonKey(name: 'xp_reward')
   int get xpReward => throw _privateConstructorUsedError;
-
-  /// Contenido del juego
-  MultipleChoiceGameContent get content => throw _privateConstructorUsedError;
 
   /// Serializes this MultipleChoiceGame to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -85,11 +85,11 @@ abstract class $MultipleChoiceGameCopyWith<$Res> {
     @JsonKey(name: 'title_es') String titleEs,
     String instructions,
     @JsonKey(name: 'instructions_es') String instructionsEs,
+    MultipleChoiceGameContent content,
     bool optional,
     @JsonKey(name: 'unlocked_after_episode') bool unlockedAfterEpisode,
     @JsonKey(name: 'time_limit_seconds') int? timeLimitSeconds,
     @JsonKey(name: 'xp_reward') int xpReward,
-    MultipleChoiceGameContent content,
   });
 
   $MultipleChoiceGameContentCopyWith<$Res> get content;
@@ -116,11 +116,11 @@ class _$MultipleChoiceGameCopyWithImpl<$Res, $Val extends MultipleChoiceGame>
     Object? titleEs = null,
     Object? instructions = null,
     Object? instructionsEs = null,
+    Object? content = null,
     Object? optional = null,
     Object? unlockedAfterEpisode = null,
     Object? timeLimitSeconds = freezed,
     Object? xpReward = null,
-    Object? content = null,
   }) {
     return _then(
       _value.copyWith(
@@ -148,6 +148,10 @@ class _$MultipleChoiceGameCopyWithImpl<$Res, $Val extends MultipleChoiceGame>
                 ? _value.instructionsEs
                 : instructionsEs // ignore: cast_nullable_to_non_nullable
                       as String,
+            content: null == content
+                ? _value.content
+                : content // ignore: cast_nullable_to_non_nullable
+                      as MultipleChoiceGameContent,
             optional: null == optional
                 ? _value.optional
                 : optional // ignore: cast_nullable_to_non_nullable
@@ -164,10 +168,6 @@ class _$MultipleChoiceGameCopyWithImpl<$Res, $Val extends MultipleChoiceGame>
                 ? _value.xpReward
                 : xpReward // ignore: cast_nullable_to_non_nullable
                       as int,
-            content: null == content
-                ? _value.content
-                : content // ignore: cast_nullable_to_non_nullable
-                      as MultipleChoiceGameContent,
           )
           as $Val,
     );
@@ -200,11 +200,11 @@ abstract class _$$MultipleChoiceGameImplCopyWith<$Res>
     @JsonKey(name: 'title_es') String titleEs,
     String instructions,
     @JsonKey(name: 'instructions_es') String instructionsEs,
+    MultipleChoiceGameContent content,
     bool optional,
     @JsonKey(name: 'unlocked_after_episode') bool unlockedAfterEpisode,
     @JsonKey(name: 'time_limit_seconds') int? timeLimitSeconds,
     @JsonKey(name: 'xp_reward') int xpReward,
-    MultipleChoiceGameContent content,
   });
 
   @override
@@ -231,11 +231,11 @@ class __$$MultipleChoiceGameImplCopyWithImpl<$Res>
     Object? titleEs = null,
     Object? instructions = null,
     Object? instructionsEs = null,
+    Object? content = null,
     Object? optional = null,
     Object? unlockedAfterEpisode = null,
     Object? timeLimitSeconds = freezed,
     Object? xpReward = null,
-    Object? content = null,
   }) {
     return _then(
       _$MultipleChoiceGameImpl(
@@ -263,6 +263,10 @@ class __$$MultipleChoiceGameImplCopyWithImpl<$Res>
             ? _value.instructionsEs
             : instructionsEs // ignore: cast_nullable_to_non_nullable
                   as String,
+        content: null == content
+            ? _value.content
+            : content // ignore: cast_nullable_to_non_nullable
+                  as MultipleChoiceGameContent,
         optional: null == optional
             ? _value.optional
             : optional // ignore: cast_nullable_to_non_nullable
@@ -279,10 +283,6 @@ class __$$MultipleChoiceGameImplCopyWithImpl<$Res>
             ? _value.xpReward
             : xpReward // ignore: cast_nullable_to_non_nullable
                   as int,
-        content: null == content
-            ? _value.content
-            : content // ignore: cast_nullable_to_non_nullable
-                  as MultipleChoiceGameContent,
       ),
     );
   }
@@ -298,11 +298,11 @@ class _$MultipleChoiceGameImpl extends _MultipleChoiceGame {
     @JsonKey(name: 'title_es') required this.titleEs,
     required this.instructions,
     @JsonKey(name: 'instructions_es') required this.instructionsEs,
+    required this.content,
     this.optional = true,
     @JsonKey(name: 'unlocked_after_episode') this.unlockedAfterEpisode = true,
     @JsonKey(name: 'time_limit_seconds') this.timeLimitSeconds,
     @JsonKey(name: 'xp_reward') this.xpReward = 0,
-    required this.content,
   }) : super._();
 
   factory _$MultipleChoiceGameImpl.fromJson(Map<String, dynamic> json) =>
@@ -336,6 +336,10 @@ class _$MultipleChoiceGameImpl extends _MultipleChoiceGame {
   @JsonKey(name: 'instructions_es')
   final String instructionsEs;
 
+  /// Contenido del juego
+  @override
+  final MultipleChoiceGameContent content;
+
   /// Si el juego es opcional
   @override
   @JsonKey()
@@ -356,13 +360,9 @@ class _$MultipleChoiceGameImpl extends _MultipleChoiceGame {
   @JsonKey(name: 'xp_reward')
   final int xpReward;
 
-  /// Contenido del juego
-  @override
-  final MultipleChoiceGameContent content;
-
   @override
   String toString() {
-    return 'MultipleChoiceGame(gameId: $gameId, gameType: $gameType, title: $title, titleEs: $titleEs, instructions: $instructions, instructionsEs: $instructionsEs, optional: $optional, unlockedAfterEpisode: $unlockedAfterEpisode, timeLimitSeconds: $timeLimitSeconds, xpReward: $xpReward, content: $content)';
+    return 'MultipleChoiceGame(gameId: $gameId, gameType: $gameType, title: $title, titleEs: $titleEs, instructions: $instructions, instructionsEs: $instructionsEs, content: $content, optional: $optional, unlockedAfterEpisode: $unlockedAfterEpisode, timeLimitSeconds: $timeLimitSeconds, xpReward: $xpReward)';
   }
 
   @override
@@ -379,6 +379,7 @@ class _$MultipleChoiceGameImpl extends _MultipleChoiceGame {
                 other.instructions == instructions) &&
             (identical(other.instructionsEs, instructionsEs) ||
                 other.instructionsEs == instructionsEs) &&
+            (identical(other.content, content) || other.content == content) &&
             (identical(other.optional, optional) ||
                 other.optional == optional) &&
             (identical(other.unlockedAfterEpisode, unlockedAfterEpisode) ||
@@ -386,8 +387,7 @@ class _$MultipleChoiceGameImpl extends _MultipleChoiceGame {
             (identical(other.timeLimitSeconds, timeLimitSeconds) ||
                 other.timeLimitSeconds == timeLimitSeconds) &&
             (identical(other.xpReward, xpReward) ||
-                other.xpReward == xpReward) &&
-            (identical(other.content, content) || other.content == content));
+                other.xpReward == xpReward));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -400,11 +400,11 @@ class _$MultipleChoiceGameImpl extends _MultipleChoiceGame {
     titleEs,
     instructions,
     instructionsEs,
+    content,
     optional,
     unlockedAfterEpisode,
     timeLimitSeconds,
     xpReward,
-    content,
   );
 
   /// Create a copy of MultipleChoiceGame
@@ -432,11 +432,11 @@ abstract class _MultipleChoiceGame extends MultipleChoiceGame {
     @JsonKey(name: 'title_es') required final String titleEs,
     required final String instructions,
     @JsonKey(name: 'instructions_es') required final String instructionsEs,
+    required final MultipleChoiceGameContent content,
     final bool optional,
     @JsonKey(name: 'unlocked_after_episode') final bool unlockedAfterEpisode,
     @JsonKey(name: 'time_limit_seconds') final int? timeLimitSeconds,
     @JsonKey(name: 'xp_reward') final int xpReward,
-    required final MultipleChoiceGameContent content,
   }) = _$MultipleChoiceGameImpl;
   const _MultipleChoiceGame._() : super._();
 
@@ -471,6 +471,10 @@ abstract class _MultipleChoiceGame extends MultipleChoiceGame {
   @JsonKey(name: 'instructions_es')
   String get instructionsEs;
 
+  /// Contenido del juego
+  @override
+  MultipleChoiceGameContent get content;
+
   /// Si el juego es opcional
   @override
   bool get optional;
@@ -489,10 +493,6 @@ abstract class _MultipleChoiceGame extends MultipleChoiceGame {
   @override
   @JsonKey(name: 'xp_reward')
   int get xpReward;
-
-  /// Contenido del juego
-  @override
-  MultipleChoiceGameContent get content;
 
   /// Create a copy of MultipleChoiceGame
   /// with the given fields replaced by the non-null parameter values.
@@ -697,16 +697,16 @@ mixin _$MultipleChoiceItem {
   @JsonKey(name: 'question_es')
   String get questionEs => throw _privateConstructorUsedError;
 
+  /// Índice de la respuesta correcta (0-based)
+  @JsonKey(name: 'correct_answer')
+  int get correctAnswer => throw _privateConstructorUsedError;
+
   /// Opciones de respuesta en inglés
   List<String> get options => throw _privateConstructorUsedError;
 
   /// Opciones de respuesta en español
   @JsonKey(name: 'options_es')
   List<String> get optionsEs => throw _privateConstructorUsedError;
-
-  /// Índice de la respuesta correcta (0-based)
-  @JsonKey(name: 'correct_answer')
-  int get correctAnswer => throw _privateConstructorUsedError;
 
   /// Explicación de la respuesta en inglés
   String? get explanation => throw _privateConstructorUsedError;
@@ -740,9 +740,9 @@ abstract class $MultipleChoiceItemCopyWith<$Res> {
     int id,
     String question,
     @JsonKey(name: 'question_es') String questionEs,
+    @JsonKey(name: 'correct_answer') int correctAnswer,
     List<String> options,
     @JsonKey(name: 'options_es') List<String> optionsEs,
-    @JsonKey(name: 'correct_answer') int correctAnswer,
     String? explanation,
     @JsonKey(name: 'explanation_es') String? explanationEs,
     @JsonKey(name: 'image_url') String? imageUrl,
@@ -767,9 +767,9 @@ class _$MultipleChoiceItemCopyWithImpl<$Res, $Val extends MultipleChoiceItem>
     Object? id = null,
     Object? question = null,
     Object? questionEs = null,
+    Object? correctAnswer = null,
     Object? options = null,
     Object? optionsEs = null,
-    Object? correctAnswer = null,
     Object? explanation = freezed,
     Object? explanationEs = freezed,
     Object? imageUrl = freezed,
@@ -788,6 +788,10 @@ class _$MultipleChoiceItemCopyWithImpl<$Res, $Val extends MultipleChoiceItem>
                 ? _value.questionEs
                 : questionEs // ignore: cast_nullable_to_non_nullable
                       as String,
+            correctAnswer: null == correctAnswer
+                ? _value.correctAnswer
+                : correctAnswer // ignore: cast_nullable_to_non_nullable
+                      as int,
             options: null == options
                 ? _value.options
                 : options // ignore: cast_nullable_to_non_nullable
@@ -796,10 +800,6 @@ class _$MultipleChoiceItemCopyWithImpl<$Res, $Val extends MultipleChoiceItem>
                 ? _value.optionsEs
                 : optionsEs // ignore: cast_nullable_to_non_nullable
                       as List<String>,
-            correctAnswer: null == correctAnswer
-                ? _value.correctAnswer
-                : correctAnswer // ignore: cast_nullable_to_non_nullable
-                      as int,
             explanation: freezed == explanation
                 ? _value.explanation
                 : explanation // ignore: cast_nullable_to_non_nullable
@@ -831,9 +831,9 @@ abstract class _$$MultipleChoiceItemImplCopyWith<$Res>
     int id,
     String question,
     @JsonKey(name: 'question_es') String questionEs,
+    @JsonKey(name: 'correct_answer') int correctAnswer,
     List<String> options,
     @JsonKey(name: 'options_es') List<String> optionsEs,
-    @JsonKey(name: 'correct_answer') int correctAnswer,
     String? explanation,
     @JsonKey(name: 'explanation_es') String? explanationEs,
     @JsonKey(name: 'image_url') String? imageUrl,
@@ -857,9 +857,9 @@ class __$$MultipleChoiceItemImplCopyWithImpl<$Res>
     Object? id = null,
     Object? question = null,
     Object? questionEs = null,
+    Object? correctAnswer = null,
     Object? options = null,
     Object? optionsEs = null,
-    Object? correctAnswer = null,
     Object? explanation = freezed,
     Object? explanationEs = freezed,
     Object? imageUrl = freezed,
@@ -878,6 +878,10 @@ class __$$MultipleChoiceItemImplCopyWithImpl<$Res>
             ? _value.questionEs
             : questionEs // ignore: cast_nullable_to_non_nullable
                   as String,
+        correctAnswer: null == correctAnswer
+            ? _value.correctAnswer
+            : correctAnswer // ignore: cast_nullable_to_non_nullable
+                  as int,
         options: null == options
             ? _value._options
             : options // ignore: cast_nullable_to_non_nullable
@@ -886,10 +890,6 @@ class __$$MultipleChoiceItemImplCopyWithImpl<$Res>
             ? _value._optionsEs
             : optionsEs // ignore: cast_nullable_to_non_nullable
                   as List<String>,
-        correctAnswer: null == correctAnswer
-            ? _value.correctAnswer
-            : correctAnswer // ignore: cast_nullable_to_non_nullable
-                  as int,
         explanation: freezed == explanation
             ? _value.explanation
             : explanation // ignore: cast_nullable_to_non_nullable
@@ -914,9 +914,9 @@ class _$MultipleChoiceItemImpl implements _MultipleChoiceItem {
     required this.id,
     required this.question,
     @JsonKey(name: 'question_es') required this.questionEs,
+    @JsonKey(name: 'correct_answer') required this.correctAnswer,
     final List<String> options = const [],
     @JsonKey(name: 'options_es') final List<String> optionsEs = const [],
-    @JsonKey(name: 'correct_answer') required this.correctAnswer,
     this.explanation,
     @JsonKey(name: 'explanation_es') this.explanationEs,
     @JsonKey(name: 'image_url') this.imageUrl,
@@ -938,6 +938,11 @@ class _$MultipleChoiceItemImpl implements _MultipleChoiceItem {
   @override
   @JsonKey(name: 'question_es')
   final String questionEs;
+
+  /// Índice de la respuesta correcta (0-based)
+  @override
+  @JsonKey(name: 'correct_answer')
+  final int correctAnswer;
 
   /// Opciones de respuesta en inglés
   final List<String> _options;
@@ -963,11 +968,6 @@ class _$MultipleChoiceItemImpl implements _MultipleChoiceItem {
     return EqualUnmodifiableListView(_optionsEs);
   }
 
-  /// Índice de la respuesta correcta (0-based)
-  @override
-  @JsonKey(name: 'correct_answer')
-  final int correctAnswer;
-
   /// Explicación de la respuesta en inglés
   @override
   final String? explanation;
@@ -984,7 +984,7 @@ class _$MultipleChoiceItemImpl implements _MultipleChoiceItem {
 
   @override
   String toString() {
-    return 'MultipleChoiceItem(id: $id, question: $question, questionEs: $questionEs, options: $options, optionsEs: $optionsEs, correctAnswer: $correctAnswer, explanation: $explanation, explanationEs: $explanationEs, imageUrl: $imageUrl)';
+    return 'MultipleChoiceItem(id: $id, question: $question, questionEs: $questionEs, correctAnswer: $correctAnswer, options: $options, optionsEs: $optionsEs, explanation: $explanation, explanationEs: $explanationEs, imageUrl: $imageUrl)';
   }
 
   @override
@@ -997,13 +997,13 @@ class _$MultipleChoiceItemImpl implements _MultipleChoiceItem {
                 other.question == question) &&
             (identical(other.questionEs, questionEs) ||
                 other.questionEs == questionEs) &&
+            (identical(other.correctAnswer, correctAnswer) ||
+                other.correctAnswer == correctAnswer) &&
             const DeepCollectionEquality().equals(other._options, _options) &&
             const DeepCollectionEquality().equals(
               other._optionsEs,
               _optionsEs,
             ) &&
-            (identical(other.correctAnswer, correctAnswer) ||
-                other.correctAnswer == correctAnswer) &&
             (identical(other.explanation, explanation) ||
                 other.explanation == explanation) &&
             (identical(other.explanationEs, explanationEs) ||
@@ -1019,9 +1019,9 @@ class _$MultipleChoiceItemImpl implements _MultipleChoiceItem {
     id,
     question,
     questionEs,
+    correctAnswer,
     const DeepCollectionEquality().hash(_options),
     const DeepCollectionEquality().hash(_optionsEs),
-    correctAnswer,
     explanation,
     explanationEs,
     imageUrl,
@@ -1049,9 +1049,9 @@ abstract class _MultipleChoiceItem implements MultipleChoiceItem {
     required final int id,
     required final String question,
     @JsonKey(name: 'question_es') required final String questionEs,
+    @JsonKey(name: 'correct_answer') required final int correctAnswer,
     final List<String> options,
     @JsonKey(name: 'options_es') final List<String> optionsEs,
-    @JsonKey(name: 'correct_answer') required final int correctAnswer,
     final String? explanation,
     @JsonKey(name: 'explanation_es') final String? explanationEs,
     @JsonKey(name: 'image_url') final String? imageUrl,
@@ -1073,6 +1073,11 @@ abstract class _MultipleChoiceItem implements MultipleChoiceItem {
   @JsonKey(name: 'question_es')
   String get questionEs;
 
+  /// Índice de la respuesta correcta (0-based)
+  @override
+  @JsonKey(name: 'correct_answer')
+  int get correctAnswer;
+
   /// Opciones de respuesta en inglés
   @override
   List<String> get options;
@@ -1081,11 +1086,6 @@ abstract class _MultipleChoiceItem implements MultipleChoiceItem {
   @override
   @JsonKey(name: 'options_es')
   List<String> get optionsEs;
-
-  /// Índice de la respuesta correcta (0-based)
-  @override
-  @JsonKey(name: 'correct_answer')
-  int get correctAnswer;
 
   /// Explicación de la respuesta en inglés
   @override

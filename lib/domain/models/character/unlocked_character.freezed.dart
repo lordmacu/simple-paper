@@ -27,14 +27,14 @@ mixin _$UnlockedCharacter {
   /// Nombre por defecto del personaje
   String get defaultName => throw _privateConstructorUsedError;
 
-  /// Nombre personalizado por el usuario (si existe)
-  String? get customName => throw _privateConstructorUsedError;
-
   /// Fecha/hora en que se desbloqueó (timestamp en milisegundos)
   int get unlockedAt => throw _privateConstructorUsedError;
 
   /// Número de episodio donde se desbloqueó
   int get episodeNumber => throw _privateConstructorUsedError;
+
+  /// Nombre personalizado por el usuario (si existe)
+  String? get customName => throw _privateConstructorUsedError;
 
   /// Serializes this UnlockedCharacter to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -56,9 +56,9 @@ abstract class $UnlockedCharacterCopyWith<$Res> {
   $Res call({
     String characterId,
     String defaultName,
-    String? customName,
     int unlockedAt,
     int episodeNumber,
+    String? customName,
   });
 }
 
@@ -79,9 +79,9 @@ class _$UnlockedCharacterCopyWithImpl<$Res, $Val extends UnlockedCharacter>
   $Res call({
     Object? characterId = null,
     Object? defaultName = null,
-    Object? customName = freezed,
     Object? unlockedAt = null,
     Object? episodeNumber = null,
+    Object? customName = freezed,
   }) {
     return _then(
       _value.copyWith(
@@ -93,10 +93,6 @@ class _$UnlockedCharacterCopyWithImpl<$Res, $Val extends UnlockedCharacter>
                 ? _value.defaultName
                 : defaultName // ignore: cast_nullable_to_non_nullable
                       as String,
-            customName: freezed == customName
-                ? _value.customName
-                : customName // ignore: cast_nullable_to_non_nullable
-                      as String?,
             unlockedAt: null == unlockedAt
                 ? _value.unlockedAt
                 : unlockedAt // ignore: cast_nullable_to_non_nullable
@@ -105,6 +101,10 @@ class _$UnlockedCharacterCopyWithImpl<$Res, $Val extends UnlockedCharacter>
                 ? _value.episodeNumber
                 : episodeNumber // ignore: cast_nullable_to_non_nullable
                       as int,
+            customName: freezed == customName
+                ? _value.customName
+                : customName // ignore: cast_nullable_to_non_nullable
+                      as String?,
           )
           as $Val,
     );
@@ -123,9 +123,9 @@ abstract class _$$UnlockedCharacterImplCopyWith<$Res>
   $Res call({
     String characterId,
     String defaultName,
-    String? customName,
     int unlockedAt,
     int episodeNumber,
+    String? customName,
   });
 }
 
@@ -145,9 +145,9 @@ class __$$UnlockedCharacterImplCopyWithImpl<$Res>
   $Res call({
     Object? characterId = null,
     Object? defaultName = null,
-    Object? customName = freezed,
     Object? unlockedAt = null,
     Object? episodeNumber = null,
+    Object? customName = freezed,
   }) {
     return _then(
       _$UnlockedCharacterImpl(
@@ -159,10 +159,6 @@ class __$$UnlockedCharacterImplCopyWithImpl<$Res>
             ? _value.defaultName
             : defaultName // ignore: cast_nullable_to_non_nullable
                   as String,
-        customName: freezed == customName
-            ? _value.customName
-            : customName // ignore: cast_nullable_to_non_nullable
-                  as String?,
         unlockedAt: null == unlockedAt
             ? _value.unlockedAt
             : unlockedAt // ignore: cast_nullable_to_non_nullable
@@ -171,6 +167,10 @@ class __$$UnlockedCharacterImplCopyWithImpl<$Res>
             ? _value.episodeNumber
             : episodeNumber // ignore: cast_nullable_to_non_nullable
                   as int,
+        customName: freezed == customName
+            ? _value.customName
+            : customName // ignore: cast_nullable_to_non_nullable
+                  as String?,
       ),
     );
   }
@@ -182,9 +182,9 @@ class _$UnlockedCharacterImpl implements _UnlockedCharacter {
   const _$UnlockedCharacterImpl({
     required this.characterId,
     required this.defaultName,
-    this.customName,
     required this.unlockedAt,
     required this.episodeNumber,
+    this.customName,
   });
 
   factory _$UnlockedCharacterImpl.fromJson(Map<String, dynamic> json) =>
@@ -198,10 +198,6 @@ class _$UnlockedCharacterImpl implements _UnlockedCharacter {
   @override
   final String defaultName;
 
-  /// Nombre personalizado por el usuario (si existe)
-  @override
-  final String? customName;
-
   /// Fecha/hora en que se desbloqueó (timestamp en milisegundos)
   @override
   final int unlockedAt;
@@ -210,9 +206,13 @@ class _$UnlockedCharacterImpl implements _UnlockedCharacter {
   @override
   final int episodeNumber;
 
+  /// Nombre personalizado por el usuario (si existe)
+  @override
+  final String? customName;
+
   @override
   String toString() {
-    return 'UnlockedCharacter(characterId: $characterId, defaultName: $defaultName, customName: $customName, unlockedAt: $unlockedAt, episodeNumber: $episodeNumber)';
+    return 'UnlockedCharacter(characterId: $characterId, defaultName: $defaultName, unlockedAt: $unlockedAt, episodeNumber: $episodeNumber, customName: $customName)';
   }
 
   @override
@@ -224,12 +224,12 @@ class _$UnlockedCharacterImpl implements _UnlockedCharacter {
                 other.characterId == characterId) &&
             (identical(other.defaultName, defaultName) ||
                 other.defaultName == defaultName) &&
-            (identical(other.customName, customName) ||
-                other.customName == customName) &&
             (identical(other.unlockedAt, unlockedAt) ||
                 other.unlockedAt == unlockedAt) &&
             (identical(other.episodeNumber, episodeNumber) ||
-                other.episodeNumber == episodeNumber));
+                other.episodeNumber == episodeNumber) &&
+            (identical(other.customName, customName) ||
+                other.customName == customName));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -238,9 +238,9 @@ class _$UnlockedCharacterImpl implements _UnlockedCharacter {
     runtimeType,
     characterId,
     defaultName,
-    customName,
     unlockedAt,
     episodeNumber,
+    customName,
   );
 
   /// Create a copy of UnlockedCharacter
@@ -264,9 +264,9 @@ abstract class _UnlockedCharacter implements UnlockedCharacter {
   const factory _UnlockedCharacter({
     required final String characterId,
     required final String defaultName,
-    final String? customName,
     required final int unlockedAt,
     required final int episodeNumber,
+    final String? customName,
   }) = _$UnlockedCharacterImpl;
 
   factory _UnlockedCharacter.fromJson(Map<String, dynamic> json) =
@@ -280,10 +280,6 @@ abstract class _UnlockedCharacter implements UnlockedCharacter {
   @override
   String get defaultName;
 
-  /// Nombre personalizado por el usuario (si existe)
-  @override
-  String? get customName;
-
   /// Fecha/hora en que se desbloqueó (timestamp en milisegundos)
   @override
   int get unlockedAt;
@@ -291,6 +287,10 @@ abstract class _UnlockedCharacter implements UnlockedCharacter {
   /// Número de episodio donde se desbloqueó
   @override
   int get episodeNumber;
+
+  /// Nombre personalizado por el usuario (si existe)
+  @override
+  String? get customName;
 
   /// Create a copy of UnlockedCharacter
   /// with the given fields replaced by the non-null parameter values.

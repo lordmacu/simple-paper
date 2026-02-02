@@ -1,23 +1,39 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/constants/app_colors.dart';
+import '../../widgets/atoms/primary_button.dart';
+import '../../widgets/molecules/section_header.dart';
+import '../../widgets/molecules/game_meta_row.dart';
 import '../../../domain/models/game/game.dart';
 
+/// Pantalla de transición entre juegos en una sesión
 class GameTransitionScreen extends StatelessWidget {
+  /// Siguiente juego a mostrar
   final Game nextGame;
+  
+  /// Índice del siguiente juego (0-based)
   final int nextIndex;
+  
+  /// Total de juegos en la sesión
   final int totalGames;
+  
+  /// Puntos acumulados hasta ahora
   final int accumulatedPoints;
+  
+  /// Callback cuando el usuario presiona comenzar
   final VoidCallback onStart;
 
+  /// Crea la pantalla de transición entre juegos.
+  ///
+  /// Parámetros:
+  /// - [nextGame]: Siguiente juego a mostrar
+  /// - [nextIndex]: Índice del siguiente juego (0-based)
+  /// - [totalGames]: Total de juegos en la sesión
+  /// - [accumulatedPoints]: Puntos acumulados hasta ahora
+  /// - [onStart]: Callback cuando el usuario presiona comenzar
   const GameTransitionScreen({
-    Key? key,
-    required this.nextGame,
-    required this.nextIndex,
-    required this.totalGames,
-    required this.accumulatedPoints,
-    required this.onStart,
-  }) : super(key: key);
+    required this.nextGame, required this.nextIndex, required this.totalGames, required this.accumulatedPoints, required this.onStart, super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +45,7 @@ class GameTransitionScreen extends StatelessWidget {
             top: -120,
             right: -60,
             child: _Bubble(
-              color: AppColors.secondaryBlue.withOpacity(0.18),
+              color: AppColors.secondaryBlue.withValues(alpha: 0.18),
               size: 240,
             ),
           ),
@@ -37,7 +53,7 @@ class GameTransitionScreen extends StatelessWidget {
             bottom: -140,
             left: -40,
             child: _Bubble(
-              color: AppColors.primaryGreen.withOpacity(0.16),
+              color: AppColors.primaryGreen.withValues(alpha: 0.16),
               size: 260,
             ),
           ),
@@ -52,9 +68,10 @@ class GameTransitionScreen extends StatelessWidget {
                     onPressed: () => Navigator.of(context).pop(),
                   ),
                   const SizedBox(height: 12),
-                  const Text(
-                    'Siguiente juego',
-                    style: TextStyle(
+                  const SectionHeader(
+                    title: 'Siguiente juego',
+                    padding: EdgeInsets.zero,
+                    titleStyle: TextStyle(
                       fontSize: 14,
                       color: AppColors.textSecondary,
                       fontWeight: FontWeight.w600,
@@ -70,16 +87,19 @@ class GameTransitionScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 12),
-                  _GameChip(
-                    icon: _iconForType(nextGame.gameType),
-                    label: _labelForType(nextGame.gameType),
-                    color: AppColors.secondaryBlue,
-                  ),
-                  const SizedBox(height: 12),
-                  _GameChip(
-                    icon: Icons.stars,
-                    label: '$accumulatedPoints pts acumulados',
-                    color: AppColors.warningOrange,
+                  GameMetaRow(
+                    chips: [
+                      GameMetaChip(
+                        icon: _iconForType(nextGame.gameType),
+                        label: _labelForType(nextGame.gameType),
+                        color: AppColors.secondaryBlue,
+                      ),
+                      GameMetaChip(
+                        icon: Icons.stars,
+                        label: '$accumulatedPoints pts acumulados',
+                        color: AppColors.warningOrange,
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 20),
                   LinearProgressIndicator(
@@ -98,7 +118,7 @@ class GameTransitionScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(18),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black.withOpacity(0.05),
+                              color: Colors.black.withValues(alpha: 0.05),
                               blurRadius: 12,
                               offset: const Offset(0, 6),
                             ),
@@ -123,7 +143,7 @@ class GameTransitionScreen extends StatelessWidget {
                             ),
                             const SizedBox(height: 8),
                             Text(
-                              'Juego ${nextIndex} de $totalGames',
+                              'Juego $nextIndex de $totalGames',
                               style: const TextStyle(
                                 fontSize: 14,
                                 color: AppColors.textSecondary,
@@ -136,23 +156,9 @@ class GameTransitionScreen extends StatelessWidget {
                   ),
                   SizedBox(
                     width: double.infinity,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.primaryGreen,
-                        foregroundColor: Colors.white,
-                        padding: const EdgeInsets.symmetric(vertical: 14),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(14),
-                        ),
-                      ),
+                    child: PrimaryButton(
+                      text: 'Empezar juego',
                       onPressed: onStart,
-                      child: const Text(
-                        'Empezar juego',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -189,43 +195,6 @@ class GameTransitionScreen extends StatelessWidget {
       default:
         return 'Mini-Game';
     }
-  }
-}
-
-class _GameChip extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final Color color;
-
-  const _GameChip({
-    required this.icon,
-    required this.label,
-    required this.color,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-      decoration: BoxDecoration(
-        color: color.withOpacity(0.12),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, size: 18, color: color),
-          const SizedBox(width: 6),
-          Text(
-            label,
-            style: const TextStyle(
-              fontWeight: FontWeight.w700,
-              color: AppColors.textPrimary,
-            ),
-          ),
-        ],
-      ),
-    );
   }
 }
 

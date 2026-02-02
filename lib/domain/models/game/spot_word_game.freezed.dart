@@ -21,24 +21,45 @@ SpotWordGame _$SpotWordGameFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SpotWordGame {
+  /// ID único del juego
   @JsonKey(name: 'game_id')
   String get gameId => throw _privateConstructorUsedError;
+
+  /// Tipo de juego (siempre 'spot_word')
   @JsonKey(name: 'game_type')
   String get gameType => throw _privateConstructorUsedError;
+
+  /// Título del juego en inglés
   String get title => throw _privateConstructorUsedError;
+
+  /// Título en español
   @JsonKey(name: 'title_es')
   String get titleEs => throw _privateConstructorUsedError;
+
+  /// Instrucciones en inglés
   String get instructions => throw _privateConstructorUsedError;
+
+  /// Instrucciones en español
   @JsonKey(name: 'instructions_es')
   String get instructionsEs => throw _privateConstructorUsedError;
+
+  /// Contenido del juego
+  SpotWordContent get content => throw _privateConstructorUsedError;
+
+  /// Si el juego es opcional
   bool get optional => throw _privateConstructorUsedError;
+
+  /// Si se desbloquea después del episodio
   @JsonKey(name: 'unlocked_after_episode')
   bool get unlockedAfterEpisode => throw _privateConstructorUsedError;
+
+  /// Límite de tiempo en segundos
   @JsonKey(name: 'time_limit_seconds')
   int? get timeLimitSeconds => throw _privateConstructorUsedError;
+
+  /// Recompensa en XP
   @JsonKey(name: 'xp_reward')
   int get xpReward => throw _privateConstructorUsedError;
-  SpotWordContent get content => throw _privateConstructorUsedError;
 
   /// Serializes this SpotWordGame to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -64,11 +85,11 @@ abstract class $SpotWordGameCopyWith<$Res> {
     @JsonKey(name: 'title_es') String titleEs,
     String instructions,
     @JsonKey(name: 'instructions_es') String instructionsEs,
+    SpotWordContent content,
     bool optional,
     @JsonKey(name: 'unlocked_after_episode') bool unlockedAfterEpisode,
     @JsonKey(name: 'time_limit_seconds') int? timeLimitSeconds,
     @JsonKey(name: 'xp_reward') int xpReward,
-    SpotWordContent content,
   });
 
   $SpotWordContentCopyWith<$Res> get content;
@@ -95,11 +116,11 @@ class _$SpotWordGameCopyWithImpl<$Res, $Val extends SpotWordGame>
     Object? titleEs = null,
     Object? instructions = null,
     Object? instructionsEs = null,
+    Object? content = null,
     Object? optional = null,
     Object? unlockedAfterEpisode = null,
     Object? timeLimitSeconds = freezed,
     Object? xpReward = null,
-    Object? content = null,
   }) {
     return _then(
       _value.copyWith(
@@ -127,6 +148,10 @@ class _$SpotWordGameCopyWithImpl<$Res, $Val extends SpotWordGame>
                 ? _value.instructionsEs
                 : instructionsEs // ignore: cast_nullable_to_non_nullable
                       as String,
+            content: null == content
+                ? _value.content
+                : content // ignore: cast_nullable_to_non_nullable
+                      as SpotWordContent,
             optional: null == optional
                 ? _value.optional
                 : optional // ignore: cast_nullable_to_non_nullable
@@ -143,10 +168,6 @@ class _$SpotWordGameCopyWithImpl<$Res, $Val extends SpotWordGame>
                 ? _value.xpReward
                 : xpReward // ignore: cast_nullable_to_non_nullable
                       as int,
-            content: null == content
-                ? _value.content
-                : content // ignore: cast_nullable_to_non_nullable
-                      as SpotWordContent,
           )
           as $Val,
     );
@@ -179,11 +200,11 @@ abstract class _$$SpotWordGameImplCopyWith<$Res>
     @JsonKey(name: 'title_es') String titleEs,
     String instructions,
     @JsonKey(name: 'instructions_es') String instructionsEs,
+    SpotWordContent content,
     bool optional,
     @JsonKey(name: 'unlocked_after_episode') bool unlockedAfterEpisode,
     @JsonKey(name: 'time_limit_seconds') int? timeLimitSeconds,
     @JsonKey(name: 'xp_reward') int xpReward,
-    SpotWordContent content,
   });
 
   @override
@@ -210,11 +231,11 @@ class __$$SpotWordGameImplCopyWithImpl<$Res>
     Object? titleEs = null,
     Object? instructions = null,
     Object? instructionsEs = null,
+    Object? content = null,
     Object? optional = null,
     Object? unlockedAfterEpisode = null,
     Object? timeLimitSeconds = freezed,
     Object? xpReward = null,
-    Object? content = null,
   }) {
     return _then(
       _$SpotWordGameImpl(
@@ -242,6 +263,10 @@ class __$$SpotWordGameImplCopyWithImpl<$Res>
             ? _value.instructionsEs
             : instructionsEs // ignore: cast_nullable_to_non_nullable
                   as String,
+        content: null == content
+            ? _value.content
+            : content // ignore: cast_nullable_to_non_nullable
+                  as SpotWordContent,
         optional: null == optional
             ? _value.optional
             : optional // ignore: cast_nullable_to_non_nullable
@@ -258,10 +283,6 @@ class __$$SpotWordGameImplCopyWithImpl<$Res>
             ? _value.xpReward
             : xpReward // ignore: cast_nullable_to_non_nullable
                   as int,
-        content: null == content
-            ? _value.content
-            : content // ignore: cast_nullable_to_non_nullable
-                  as SpotWordContent,
       ),
     );
   }
@@ -277,50 +298,71 @@ class _$SpotWordGameImpl extends _SpotWordGame {
     @JsonKey(name: 'title_es') required this.titleEs,
     required this.instructions,
     @JsonKey(name: 'instructions_es') required this.instructionsEs,
+    required this.content,
     this.optional = false,
     @JsonKey(name: 'unlocked_after_episode') this.unlockedAfterEpisode = true,
     @JsonKey(name: 'time_limit_seconds') this.timeLimitSeconds,
     @JsonKey(name: 'xp_reward') this.xpReward = 0,
-    required this.content,
   }) : super._();
 
   factory _$SpotWordGameImpl.fromJson(Map<String, dynamic> json) =>
       _$$SpotWordGameImplFromJson(json);
 
+  /// ID único del juego
   @override
   @JsonKey(name: 'game_id')
   final String gameId;
+
+  /// Tipo de juego (siempre 'spot_word')
   @override
   @JsonKey(name: 'game_type')
   final String gameType;
+
+  /// Título del juego en inglés
   @override
   final String title;
+
+  /// Título en español
   @override
   @JsonKey(name: 'title_es')
   final String titleEs;
+
+  /// Instrucciones en inglés
   @override
   final String instructions;
+
+  /// Instrucciones en español
   @override
   @JsonKey(name: 'instructions_es')
   final String instructionsEs;
-  @override
-  @JsonKey()
-  final bool optional;
-  @override
-  @JsonKey(name: 'unlocked_after_episode')
-  final bool unlockedAfterEpisode;
-  @override
-  @JsonKey(name: 'time_limit_seconds')
-  final int? timeLimitSeconds;
-  @override
-  @JsonKey(name: 'xp_reward')
-  final int xpReward;
+
+  /// Contenido del juego
   @override
   final SpotWordContent content;
 
+  /// Si el juego es opcional
+  @override
+  @JsonKey()
+  final bool optional;
+
+  /// Si se desbloquea después del episodio
+  @override
+  @JsonKey(name: 'unlocked_after_episode')
+  final bool unlockedAfterEpisode;
+
+  /// Límite de tiempo en segundos
+  @override
+  @JsonKey(name: 'time_limit_seconds')
+  final int? timeLimitSeconds;
+
+  /// Recompensa en XP
+  @override
+  @JsonKey(name: 'xp_reward')
+  final int xpReward;
+
   @override
   String toString() {
-    return 'SpotWordGame(gameId: $gameId, gameType: $gameType, title: $title, titleEs: $titleEs, instructions: $instructions, instructionsEs: $instructionsEs, optional: $optional, unlockedAfterEpisode: $unlockedAfterEpisode, timeLimitSeconds: $timeLimitSeconds, xpReward: $xpReward, content: $content)';
+    return 'SpotWordGame(gameId: $gameId, gameType: $gameType, title: $title, titleEs: $titleEs, instructions: $instructions, instructionsEs: $instructionsEs, content: $content, optional: $optional, unlockedAfterEpisode: $unlockedAfterEpisode, timeLimitSeconds: $timeLimitSeconds, xpReward: $xpReward)';
   }
 
   @override
@@ -337,6 +379,7 @@ class _$SpotWordGameImpl extends _SpotWordGame {
                 other.instructions == instructions) &&
             (identical(other.instructionsEs, instructionsEs) ||
                 other.instructionsEs == instructionsEs) &&
+            (identical(other.content, content) || other.content == content) &&
             (identical(other.optional, optional) ||
                 other.optional == optional) &&
             (identical(other.unlockedAfterEpisode, unlockedAfterEpisode) ||
@@ -344,8 +387,7 @@ class _$SpotWordGameImpl extends _SpotWordGame {
             (identical(other.timeLimitSeconds, timeLimitSeconds) ||
                 other.timeLimitSeconds == timeLimitSeconds) &&
             (identical(other.xpReward, xpReward) ||
-                other.xpReward == xpReward) &&
-            (identical(other.content, content) || other.content == content));
+                other.xpReward == xpReward));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -358,11 +400,11 @@ class _$SpotWordGameImpl extends _SpotWordGame {
     titleEs,
     instructions,
     instructionsEs,
+    content,
     optional,
     unlockedAfterEpisode,
     timeLimitSeconds,
     xpReward,
-    content,
   );
 
   /// Create a copy of SpotWordGame
@@ -387,46 +429,67 @@ abstract class _SpotWordGame extends SpotWordGame {
     @JsonKey(name: 'title_es') required final String titleEs,
     required final String instructions,
     @JsonKey(name: 'instructions_es') required final String instructionsEs,
+    required final SpotWordContent content,
     final bool optional,
     @JsonKey(name: 'unlocked_after_episode') final bool unlockedAfterEpisode,
     @JsonKey(name: 'time_limit_seconds') final int? timeLimitSeconds,
     @JsonKey(name: 'xp_reward') final int xpReward,
-    required final SpotWordContent content,
   }) = _$SpotWordGameImpl;
   const _SpotWordGame._() : super._();
 
   factory _SpotWordGame.fromJson(Map<String, dynamic> json) =
       _$SpotWordGameImpl.fromJson;
 
+  /// ID único del juego
   @override
   @JsonKey(name: 'game_id')
   String get gameId;
+
+  /// Tipo de juego (siempre 'spot_word')
   @override
   @JsonKey(name: 'game_type')
   String get gameType;
+
+  /// Título del juego en inglés
   @override
   String get title;
+
+  /// Título en español
   @override
   @JsonKey(name: 'title_es')
   String get titleEs;
+
+  /// Instrucciones en inglés
   @override
   String get instructions;
+
+  /// Instrucciones en español
   @override
   @JsonKey(name: 'instructions_es')
   String get instructionsEs;
+
+  /// Contenido del juego
+  @override
+  SpotWordContent get content;
+
+  /// Si el juego es opcional
   @override
   bool get optional;
+
+  /// Si se desbloquea después del episodio
   @override
   @JsonKey(name: 'unlocked_after_episode')
   bool get unlockedAfterEpisode;
+
+  /// Límite de tiempo en segundos
   @override
   @JsonKey(name: 'time_limit_seconds')
   int? get timeLimitSeconds;
+
+  /// Recompensa en XP
   @override
   @JsonKey(name: 'xp_reward')
   int get xpReward;
-  @override
-  SpotWordContent get content;
 
   /// Create a copy of SpotWordGame
   /// with the given fields replaced by the non-null parameter values.
@@ -442,6 +505,7 @@ SpotWordContent _$SpotWordContentFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SpotWordContent {
+  /// Lista de ítems del juego
   List<SpotWordItem> get items => throw _privateConstructorUsedError;
 
   /// Serializes this SpotWordContent to a JSON map.
@@ -537,7 +601,10 @@ class _$SpotWordContentImpl implements _SpotWordContent {
   factory _$SpotWordContentImpl.fromJson(Map<String, dynamic> json) =>
       _$$SpotWordContentImplFromJson(json);
 
+  /// Lista de ítems del juego
   final List<SpotWordItem> _items;
+
+  /// Lista de ítems del juego
   @override
   @JsonKey()
   List<SpotWordItem> get items {
@@ -588,6 +655,7 @@ abstract class _SpotWordContent implements SpotWordContent {
   factory _SpotWordContent.fromJson(Map<String, dynamic> json) =
       _$SpotWordContentImpl.fromJson;
 
+  /// Lista de ítems del juego
   @override
   List<SpotWordItem> get items;
 
@@ -605,17 +673,30 @@ SpotWordItem _$SpotWordItemFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SpotWordItem {
+  /// ID del ítem
   int get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'image_url')
-  String? get imageUrl => throw _privateConstructorUsedError;
-  String? get prompt => throw _privateConstructorUsedError;
-  @JsonKey(name: 'prompt_es')
-  String? get promptEs => throw _privateConstructorUsedError;
-  List<String> get options => throw _privateConstructorUsedError;
-  @JsonKey(name: 'options_es')
-  List<String> get optionsEs => throw _privateConstructorUsedError;
+
+  /// Índice de la respuesta correcta (0-based)
   @JsonKey(name: 'correct_answer')
   int get correctAnswer => throw _privateConstructorUsedError;
+
+  /// URL de la imagen (opcional)
+  @JsonKey(name: 'image_url')
+  String? get imageUrl => throw _privateConstructorUsedError;
+
+  /// Texto de la pregunta en inglés
+  String? get prompt => throw _privateConstructorUsedError;
+
+  /// Texto de la pregunta en español
+  @JsonKey(name: 'prompt_es')
+  String? get promptEs => throw _privateConstructorUsedError;
+
+  /// Opciones de respuesta en inglés
+  List<String> get options => throw _privateConstructorUsedError;
+
+  /// Opciones de respuesta en español
+  @JsonKey(name: 'options_es')
+  List<String> get optionsEs => throw _privateConstructorUsedError;
 
   /// Serializes this SpotWordItem to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -636,12 +717,12 @@ abstract class $SpotWordItemCopyWith<$Res> {
   @useResult
   $Res call({
     int id,
+    @JsonKey(name: 'correct_answer') int correctAnswer,
     @JsonKey(name: 'image_url') String? imageUrl,
     String? prompt,
     @JsonKey(name: 'prompt_es') String? promptEs,
     List<String> options,
     @JsonKey(name: 'options_es') List<String> optionsEs,
-    @JsonKey(name: 'correct_answer') int correctAnswer,
   });
 }
 
@@ -661,18 +742,22 @@ class _$SpotWordItemCopyWithImpl<$Res, $Val extends SpotWordItem>
   @override
   $Res call({
     Object? id = null,
+    Object? correctAnswer = null,
     Object? imageUrl = freezed,
     Object? prompt = freezed,
     Object? promptEs = freezed,
     Object? options = null,
     Object? optionsEs = null,
-    Object? correctAnswer = null,
   }) {
     return _then(
       _value.copyWith(
             id: null == id
                 ? _value.id
                 : id // ignore: cast_nullable_to_non_nullable
+                      as int,
+            correctAnswer: null == correctAnswer
+                ? _value.correctAnswer
+                : correctAnswer // ignore: cast_nullable_to_non_nullable
                       as int,
             imageUrl: freezed == imageUrl
                 ? _value.imageUrl
@@ -694,10 +779,6 @@ class _$SpotWordItemCopyWithImpl<$Res, $Val extends SpotWordItem>
                 ? _value.optionsEs
                 : optionsEs // ignore: cast_nullable_to_non_nullable
                       as List<String>,
-            correctAnswer: null == correctAnswer
-                ? _value.correctAnswer
-                : correctAnswer // ignore: cast_nullable_to_non_nullable
-                      as int,
           )
           as $Val,
     );
@@ -715,12 +796,12 @@ abstract class _$$SpotWordItemImplCopyWith<$Res>
   @useResult
   $Res call({
     int id,
+    @JsonKey(name: 'correct_answer') int correctAnswer,
     @JsonKey(name: 'image_url') String? imageUrl,
     String? prompt,
     @JsonKey(name: 'prompt_es') String? promptEs,
     List<String> options,
     @JsonKey(name: 'options_es') List<String> optionsEs,
-    @JsonKey(name: 'correct_answer') int correctAnswer,
   });
 }
 
@@ -739,18 +820,22 @@ class __$$SpotWordItemImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
+    Object? correctAnswer = null,
     Object? imageUrl = freezed,
     Object? prompt = freezed,
     Object? promptEs = freezed,
     Object? options = null,
     Object? optionsEs = null,
-    Object? correctAnswer = null,
   }) {
     return _then(
       _$SpotWordItemImpl(
         id: null == id
             ? _value.id
             : id // ignore: cast_nullable_to_non_nullable
+                  as int,
+        correctAnswer: null == correctAnswer
+            ? _value.correctAnswer
+            : correctAnswer // ignore: cast_nullable_to_non_nullable
                   as int,
         imageUrl: freezed == imageUrl
             ? _value.imageUrl
@@ -772,10 +857,6 @@ class __$$SpotWordItemImplCopyWithImpl<$Res>
             ? _value._optionsEs
             : optionsEs // ignore: cast_nullable_to_non_nullable
                   as List<String>,
-        correctAnswer: null == correctAnswer
-            ? _value.correctAnswer
-            : correctAnswer // ignore: cast_nullable_to_non_nullable
-                  as int,
       ),
     );
   }
@@ -786,29 +867,45 @@ class __$$SpotWordItemImplCopyWithImpl<$Res>
 class _$SpotWordItemImpl implements _SpotWordItem {
   const _$SpotWordItemImpl({
     required this.id,
+    @JsonKey(name: 'correct_answer') required this.correctAnswer,
     @JsonKey(name: 'image_url') this.imageUrl,
     this.prompt,
     @JsonKey(name: 'prompt_es') this.promptEs,
     final List<String> options = const [],
     @JsonKey(name: 'options_es') final List<String> optionsEs = const [],
-    @JsonKey(name: 'correct_answer') required this.correctAnswer,
   }) : _options = options,
        _optionsEs = optionsEs;
 
   factory _$SpotWordItemImpl.fromJson(Map<String, dynamic> json) =>
       _$$SpotWordItemImplFromJson(json);
 
+  /// ID del ítem
   @override
   final int id;
+
+  /// Índice de la respuesta correcta (0-based)
+  @override
+  @JsonKey(name: 'correct_answer')
+  final int correctAnswer;
+
+  /// URL de la imagen (opcional)
   @override
   @JsonKey(name: 'image_url')
   final String? imageUrl;
+
+  /// Texto de la pregunta en inglés
   @override
   final String? prompt;
+
+  /// Texto de la pregunta en español
   @override
   @JsonKey(name: 'prompt_es')
   final String? promptEs;
+
+  /// Opciones de respuesta en inglés
   final List<String> _options;
+
+  /// Opciones de respuesta en inglés
   @override
   @JsonKey()
   List<String> get options {
@@ -817,7 +914,10 @@ class _$SpotWordItemImpl implements _SpotWordItem {
     return EqualUnmodifiableListView(_options);
   }
 
+  /// Opciones de respuesta en español
   final List<String> _optionsEs;
+
+  /// Opciones de respuesta en español
   @override
   @JsonKey(name: 'options_es')
   List<String> get optionsEs {
@@ -827,12 +927,8 @@ class _$SpotWordItemImpl implements _SpotWordItem {
   }
 
   @override
-  @JsonKey(name: 'correct_answer')
-  final int correctAnswer;
-
-  @override
   String toString() {
-    return 'SpotWordItem(id: $id, imageUrl: $imageUrl, prompt: $prompt, promptEs: $promptEs, options: $options, optionsEs: $optionsEs, correctAnswer: $correctAnswer)';
+    return 'SpotWordItem(id: $id, correctAnswer: $correctAnswer, imageUrl: $imageUrl, prompt: $prompt, promptEs: $promptEs, options: $options, optionsEs: $optionsEs)';
   }
 
   @override
@@ -841,6 +937,8 @@ class _$SpotWordItemImpl implements _SpotWordItem {
         (other.runtimeType == runtimeType &&
             other is _$SpotWordItemImpl &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.correctAnswer, correctAnswer) ||
+                other.correctAnswer == correctAnswer) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
             (identical(other.prompt, prompt) || other.prompt == prompt) &&
@@ -850,9 +948,7 @@ class _$SpotWordItemImpl implements _SpotWordItem {
             const DeepCollectionEquality().equals(
               other._optionsEs,
               _optionsEs,
-            ) &&
-            (identical(other.correctAnswer, correctAnswer) ||
-                other.correctAnswer == correctAnswer));
+            ));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -860,12 +956,12 @@ class _$SpotWordItemImpl implements _SpotWordItem {
   int get hashCode => Object.hash(
     runtimeType,
     id,
+    correctAnswer,
     imageUrl,
     prompt,
     promptEs,
     const DeepCollectionEquality().hash(_options),
     const DeepCollectionEquality().hash(_optionsEs),
-    correctAnswer,
   );
 
   /// Create a copy of SpotWordItem
@@ -885,35 +981,48 @@ class _$SpotWordItemImpl implements _SpotWordItem {
 abstract class _SpotWordItem implements SpotWordItem {
   const factory _SpotWordItem({
     required final int id,
+    @JsonKey(name: 'correct_answer') required final int correctAnswer,
     @JsonKey(name: 'image_url') final String? imageUrl,
     final String? prompt,
     @JsonKey(name: 'prompt_es') final String? promptEs,
     final List<String> options,
     @JsonKey(name: 'options_es') final List<String> optionsEs,
-    @JsonKey(name: 'correct_answer') required final int correctAnswer,
   }) = _$SpotWordItemImpl;
 
   factory _SpotWordItem.fromJson(Map<String, dynamic> json) =
       _$SpotWordItemImpl.fromJson;
 
+  /// ID del ítem
   @override
   int get id;
-  @override
-  @JsonKey(name: 'image_url')
-  String? get imageUrl;
-  @override
-  String? get prompt;
-  @override
-  @JsonKey(name: 'prompt_es')
-  String? get promptEs;
-  @override
-  List<String> get options;
-  @override
-  @JsonKey(name: 'options_es')
-  List<String> get optionsEs;
+
+  /// Índice de la respuesta correcta (0-based)
   @override
   @JsonKey(name: 'correct_answer')
   int get correctAnswer;
+
+  /// URL de la imagen (opcional)
+  @override
+  @JsonKey(name: 'image_url')
+  String? get imageUrl;
+
+  /// Texto de la pregunta en inglés
+  @override
+  String? get prompt;
+
+  /// Texto de la pregunta en español
+  @override
+  @JsonKey(name: 'prompt_es')
+  String? get promptEs;
+
+  /// Opciones de respuesta en inglés
+  @override
+  List<String> get options;
+
+  /// Opciones de respuesta en español
+  @override
+  @JsonKey(name: 'options_es')
+  List<String> get optionsEs;
 
   /// Create a copy of SpotWordItem
   /// with the given fields replaced by the non-null parameter values.

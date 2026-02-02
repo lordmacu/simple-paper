@@ -15,13 +15,13 @@ _$MultipleChoiceGameImpl _$$MultipleChoiceGameImplFromJson(
   titleEs: json['title_es'] as String,
   instructions: json['instructions'] as String,
   instructionsEs: json['instructions_es'] as String,
+  content: MultipleChoiceGameContent.fromJson(
+    json['content'] as Map<String, dynamic>,
+  ),
   optional: json['optional'] as bool? ?? true,
   unlockedAfterEpisode: json['unlocked_after_episode'] as bool? ?? true,
   timeLimitSeconds: (json['time_limit_seconds'] as num?)?.toInt(),
   xpReward: (json['xp_reward'] as num?)?.toInt() ?? 0,
-  content: MultipleChoiceGameContent.fromJson(
-    json['content'] as Map<String, dynamic>,
-  ),
 );
 
 Map<String, dynamic> _$$MultipleChoiceGameImplToJson(
@@ -33,11 +33,11 @@ Map<String, dynamic> _$$MultipleChoiceGameImplToJson(
   'title_es': instance.titleEs,
   'instructions': instance.instructions,
   'instructions_es': instance.instructionsEs,
+  'content': instance.content,
   'optional': instance.optional,
   'unlocked_after_episode': instance.unlockedAfterEpisode,
   'time_limit_seconds': instance.timeLimitSeconds,
   'xp_reward': instance.xpReward,
-  'content': instance.content,
 };
 
 _$MultipleChoiceGameContentImpl _$$MultipleChoiceGameContentImplFromJson(
@@ -60,6 +60,7 @@ _$MultipleChoiceItemImpl _$$MultipleChoiceItemImplFromJson(
   id: (json['id'] as num).toInt(),
   question: json['question'] as String,
   questionEs: json['question_es'] as String,
+  correctAnswer: (json['correct_answer'] as num).toInt(),
   options:
       (json['options'] as List<dynamic>?)?.map((e) => e as String).toList() ??
       const [],
@@ -68,7 +69,6 @@ _$MultipleChoiceItemImpl _$$MultipleChoiceItemImplFromJson(
           ?.map((e) => e as String)
           .toList() ??
       const [],
-  correctAnswer: (json['correct_answer'] as num).toInt(),
   explanation: json['explanation'] as String?,
   explanationEs: json['explanation_es'] as String?,
   imageUrl: json['image_url'] as String?,
@@ -80,9 +80,9 @@ Map<String, dynamic> _$$MultipleChoiceItemImplToJson(
   'id': instance.id,
   'question': instance.question,
   'question_es': instance.questionEs,
+  'correct_answer': instance.correctAnswer,
   'options': instance.options,
   'options_es': instance.optionsEs,
-  'correct_answer': instance.correctAnswer,
   'explanation': instance.explanation,
   'explanation_es': instance.explanationEs,
   'image_url': instance.imageUrl,

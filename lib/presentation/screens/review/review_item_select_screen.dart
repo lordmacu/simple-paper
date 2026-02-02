@@ -2,18 +2,23 @@ import 'package:flutter/material.dart';
 
 import '../../../core/constants/app_colors.dart';
 import '../../../data/sources/content_db.dart';
+import '../../widgets/atoms/icon_text_button.dart';
+import '../../widgets/atoms/primary_button.dart';
+import '../../widgets/molecules/dialog_action_row.dart';
 import '../../widgets/common/duolingo_button.dart';
 import 'review_game_play_screen.dart';
 import 'review_types.dart';
 
+/// review item select screen/widget
 class ReviewItemSelectScreen extends StatefulWidget {
+  ///  review category
   final ReviewCategory category;
+  /// Tipo de juego de revisión
   final ReviewGameType gameType;
 
+  /// Crea una pantalla de selección de elementos de revisión.
   const ReviewItemSelectScreen({
-    super.key,
-    required this.category,
-    required this.gameType,
+    required this.category, required this.gameType, super.key,
   });
 
   @override
@@ -75,7 +80,7 @@ class _ReviewItemSelectScreenState extends State<ReviewItemSelectScreen> {
           );
           break;
       }
-    } catch (e) {
+    } on Exception catch (e) {
       _error = e.toString();
     } finally {
       if (mounted) {
@@ -87,7 +92,9 @@ class _ReviewItemSelectScreenState extends State<ReviewItemSelectScreen> {
   }
 
   Set<String> _resolveSelection(bool preserve, Set<String> allKeys) {
-    if (!preserve) return allKeys;
+    if (!preserve) {
+      return allKeys;
+    }
     final kept = _selectedKeys.intersection(allKeys);
     final newlyAdded = allKeys.difference(_selectedKeys);
     return {...kept, ...newlyAdded};
@@ -242,7 +249,9 @@ class _ReviewItemSelectScreenState extends State<ReviewItemSelectScreen> {
         _DialogField(label: 'Past participle', controller: participle),
       ],
     );
-    if (!saved) return;
+    if (!saved) {
+      return;
+    }
     await _db.addIrregularVerb(
       base: base.text.trim(),
       past: past.text.trim(),
@@ -263,7 +272,9 @@ class _ReviewItemSelectScreenState extends State<ReviewItemSelectScreen> {
         _DialogField(label: 'Language', controller: language),
       ],
     );
-    if (!saved) return;
+    if (!saved) {
+      return;
+    }
     await _db.addCountry(
       country: country.text.trim(),
       nationality: nationality.text.trim(),
@@ -284,7 +295,9 @@ class _ReviewItemSelectScreenState extends State<ReviewItemSelectScreen> {
         _DialogField(label: 'Superlative', controller: superlative),
       ],
     );
-    if (!saved) return;
+    if (!saved) {
+      return;
+    }
     await _db.addComparative(
       base: base.text.trim(),
       comparative: comparative.text.trim(),
@@ -301,7 +314,9 @@ class _ReviewItemSelectScreenState extends State<ReviewItemSelectScreen> {
         _DialogField(label: 'City', controller: city),
       ],
     );
-    if (!saved) return;
+    if (!saved) {
+      return;
+    }
     await _db.addCity(city.text.trim());
     await _loadItems(preserveSelection: true);
   }
@@ -336,19 +351,27 @@ class _ReviewItemSelectScreenState extends State<ReviewItemSelectScreen> {
             ),
           ),
           actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(false),
-              child: const Text('Cancelar'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                final invalid = fields.any(
-                  (field) => field.controller.text.trim().isEmpty,
-                );
-                if (invalid) return;
-                Navigator.of(context).pop(true);
-              },
-              child: const Text('Guardar'),
+            DialogActionRow(
+              secondaryAction: TextButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: const Text('Cancelar'),
+              ),
+              primaryAction: SizedBox(
+                width: 140,
+                child: PrimaryButton(
+                  text: 'Guardar',
+                  compact: true,
+                  onPressed: () {
+                    final invalid = fields.any(
+                      (field) => field.controller.text.trim().isEmpty,
+                    );
+                    if (invalid) {
+                      return;
+                    }
+                    Navigator.of(context).pop(true);
+                  },
+                ),
+              ),
             ),
           ],
         );
@@ -394,16 +417,13 @@ class _ReviewItemSelectScreenState extends State<ReviewItemSelectScreen> {
                     ),
                   ),
                   const SizedBox(height: 8),
-                  OutlinedButton.icon(
-                    onPressed: _toggleSelectAll,
-                    icon: Icon(
-                      _allSelected() ? Icons.remove_done : Icons.select_all,
-                    ),
-                    label: Text(
-                      _allSelected()
-                          ? 'Deseleccionar todo'
-                          : 'Seleccionar todo',
-                    ),
+                  IconTextButton(
+                    onTap: _toggleSelectAll,
+                    icon: _allSelected() ? Icons.remove_done : Icons.select_all,
+                    label: _allSelected()
+                        ? 'Deseleccionar todo'
+                        : 'Seleccionar todo',
+                    foregroundColor: AppColors.textPrimary,
                   ),
                   if (_error != null) ...[
                     const SizedBox(height: 8),
@@ -484,7 +504,9 @@ class _ReviewItemSelectScreenState extends State<ReviewItemSelectScreen> {
   }
 
   Iterable<String> _allKeys() {
-    if (_simpleItems.isNotEmpty) return _simpleItems;
+    if (_simpleItems.isNotEmpty) {
+      return _simpleItems;
+    }
     return _complexItems.map(_keyFor);
   }
 

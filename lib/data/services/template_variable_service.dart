@@ -17,6 +17,7 @@ class TemplateVariableService {
 
   Map<String, String> _currentValues = {};
 
+  /// Crea un servicio de variables de template con valores por defecto.
   TemplateVariableService() {
     _resetToDefaults();
   }
@@ -39,7 +40,9 @@ class TemplateVariableService {
 
   /// Reemplaza todas las variables en un texto dado
   String replaceVariables(String text) {
-    if (text.isEmpty) return text;
+    if (text.isEmpty) {
+      return text;
+    }
 
     String result = text;
     // Iteramos sobre defaults para asegurar que cubrimos todas las claves conocidas
