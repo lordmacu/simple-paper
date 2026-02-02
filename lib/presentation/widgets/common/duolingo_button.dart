@@ -1,20 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:office_app/core/constants/app_colors.dart';
+import 'package:office_app/core/utils/haptic_utils.dart';
 
-/// Botón Continue estilo Duolingo
-/// Con animación de escala al presionar y diseño vibrante
+/// Botón estilo Duolingo con animación de escala.
+///
+/// Soporta variantes primaria y secundaria con feedback háptico.
 class DuolingoButton extends StatefulWidget {
+  /// Texto a mostrar en el botón.
   final String text;
+
+  /// Callback cuando se presiona el botón.
   final VoidCallback? onPressed;
+
+  /// Si es `true`, usa estilo secundario (outlined).
   final bool isSecondary;
+
+  /// Ícono opcional a mostrar.
   final IconData? icon;
 
+  /// Widget hijo personalizado.
+  final Widget? child;
+
+  /// Padding interno del botón.
+  final EdgeInsetsGeometry? padding;
+
+  /// Tamaño de fuente del texto.
+  final double? fontSize;
+
+  /// Tamaño del ícono.
+  final double? iconSize;
+
+  /// Radio del borde redondeado.
+  final double? borderRadius;
+
+  /// Crea un [DuolingoButton].
   const DuolingoButton({
-    super.key,
     required this.text,
+    super.key,
     this.onPressed,
     this.isSecondary = false,
     this.icon,
+    this.child,
+    this.padding,
+    this.fontSize,
+    this.iconSize,
+    this.borderRadius,
   });
 
   @override
@@ -68,7 +98,8 @@ class _DuolingoButtonState extends State<DuolingoButton>
         scale: _scaleAnimation,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
-          child: widget.isSecondary ? _buildSecondaryButton() : _buildPrimaryButton(),
+          child:
+              widget.isSecondary ? _buildSecondaryButton() : _buildPrimaryButton(),
         ),
       ),
     );
@@ -78,38 +109,43 @@ class _DuolingoButtonState extends State<DuolingoButton>
     final bool isEnabled = widget.onPressed != null;
 
     return ElevatedButton(
-      onPressed: widget.onPressed,
+      onPressed: HapticUtils.wrap(widget.onPressed),
       style: ElevatedButton.styleFrom(
         backgroundColor: isEnabled
             ? AppColors.primaryGreen
-            : AppColors.textSecondary.withOpacity(0.3),
+            : AppColors.textSecondary.withValues(alpha: 0.3),
         foregroundColor: Colors.white,
-        disabledBackgroundColor: AppColors.textSecondary.withOpacity(0.3),
-        disabledForegroundColor: Colors.white.withOpacity(0.5),
-        padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 32),
+        disabledBackgroundColor: AppColors.textSecondary.withValues(alpha: 0.3),
+        disabledForegroundColor: Colors.white.withValues(alpha: 0.5),
+        padding: widget.padding ??
+            const EdgeInsets.symmetric(vertical: 18, horizontal: 16),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(widget.borderRadius ?? 16),
         ),
         elevation: isEnabled ? 6 : 2,
         shadowColor: isEnabled
-            ? AppColors.primaryGreen.withOpacity(0.4)
-            : Colors.black.withOpacity(0.1),
+            ? AppColors.primaryGreen.withValues(alpha: 0.4)
+            : Colors.black.withValues(alpha: 0.1),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
         children: [
-          Text(
-            widget.text,
-            style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 0.5,
+          if (widget.child != null)
+            widget.child!
+          else ...[
+            Text(
+              widget.text,
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                letterSpacing: 0.5,
+              ).copyWith(fontSize: widget.fontSize ?? 18),
             ),
-          ),
-          if (widget.icon != null) ...[
-            const SizedBox(width: 8),
-            Icon(widget.icon, size: 20),
+            if (widget.icon != null) ...[
+              const SizedBox(width: 8),
+              Icon(widget.icon, size: widget.iconSize ?? 20),
+            ],
           ],
         ],
       ),
@@ -120,37 +156,43 @@ class _DuolingoButtonState extends State<DuolingoButton>
     final bool isEnabled = widget.onPressed != null;
 
     return OutlinedButton(
-      onPressed: widget.onPressed,
+      onPressed: HapticUtils.wrap(widget.onPressed),
       style: OutlinedButton.styleFrom(
-        foregroundColor: isEnabled ? AppColors.textPrimary : AppColors.textSecondary,
-        disabledForegroundColor: AppColors.textSecondary.withOpacity(0.5),
-        padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 32),
+        foregroundColor:
+            isEnabled ? AppColors.textPrimary : AppColors.textSecondary,
+        disabledForegroundColor: AppColors.textSecondary.withValues(alpha: 0.5),
+        padding: widget.padding ??
+            const EdgeInsets.symmetric(vertical: 18, horizontal: 16),
         side: BorderSide(
           color: isEnabled
-              ? AppColors.textPrimary.withOpacity(0.3)
-              : AppColors.textSecondary.withOpacity(0.2),
+              ? AppColors.textPrimary.withValues(alpha: 0.3)
+              : AppColors.textSecondary.withValues(alpha: 0.2),
           width: 2,
         ),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(widget.borderRadius ?? 16),
         ),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
         children: [
-          if (widget.icon != null) ...[
-            Icon(widget.icon, size: 20),
-            const SizedBox(width: 8),
-          ],
-          Text(
-            widget.text,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 0.3,
+          if (widget.child != null)
+            widget.child!
+          else ...[
+            if (widget.icon != null) ...[
+              Icon(widget.icon, size: widget.iconSize ?? 20),
+              const SizedBox(width: 8),
+            ],
+            Text(
+              widget.text,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                letterSpacing: 0.3,
+              ).copyWith(fontSize: widget.fontSize ?? 16),
             ),
-          ),
+          ],
         ],
       ),
     );

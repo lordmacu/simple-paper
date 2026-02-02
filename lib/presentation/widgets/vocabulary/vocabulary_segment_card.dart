@@ -3,19 +3,38 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:office_app/core/constants/app_colors.dart';
 import 'package:office_app/domain/models/vocabulary/vocabulary_segment.dart';
 import 'package:office_app/presentation/providers/template_variable_provider.dart';
+import 'package:office_app/core/utils/haptic_utils.dart';
+import 'package:office_app/presentation/widgets/molecules/interactive_input_card.dart';
+import 'package:office_app/presentation/widgets/molecules/vocabulary_image_block.dart';
+import 'package:office_app/core/utils/vocabulary_icon_helper.dart';
 
-/// Card que muestra un segmento individual de vocabulario
-/// Con imagen, texto bilingüe, palabra enfatizada y ayudas visuales (emojis)
+/// Card que muestra un segmento individual de vocabulario.
+///
+/// Presenta imagen, texto bilingüe, palabra enfatizada y ayudas visuales.
 class VocabularySegmentCard extends ConsumerStatefulWidget {
+  /// El segmento de vocabulario a mostrar.
   final VocabularySegment segment;
+
+  /// Callback cuando el usuario avanza al siguiente segmento.
   final VoidCallback onNext;
+
+  /// Indica si es el último segmento de la secuencia.
   final bool isLastSegment;
 
+  /// Callback para reproducir la pronunciación de la palabra.
+  final VoidCallback? onPlayWord;
+
+  /// Callback para reproducir el texto completo.
+  final VoidCallback? onPlayText;
+
+  /// Crea un [VocabularySegmentCard].
   const VocabularySegmentCard({
-    super.key,
     required this.segment,
     required this.onNext,
+    super.key,
     this.isLastSegment = false,
+    this.onPlayWord,
+    this.onPlayText,
   });
 
   @override
@@ -81,66 +100,39 @@ class _VocabularySegmentCardState
               if (widget.segment.imageUrl?.isNotEmpty ?? false)
                 _buildAnimatedChild(
                   delay: 0,
-                  child: Container(
-              height: 200,
-              decoration: BoxDecoration(
-                color: AppColors.cardBackground,
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(
-                  color: AppColors.primaryGreen.withOpacity(0.3),
-                  width: 2,
-                ),
-              ),
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      _getIconForWord(widget.segment.wordFocus ?? ''),
-                      size: 80,
-                      color: AppColors.primaryGreen,
+                  child: VocabularyImageBlock(
+                    word: widget.segment.wordFocus ?? '',
+                    icon: vocabularyIconForWord(
+                      widget.segment.wordFocus ?? '',
                     ),
-                    const SizedBox(height: 8),
-                    Text(
-                      (widget.segment.wordFocus ?? '').toUpperCase(),
-                      style: const TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.primaryGreen,
-                        letterSpacing: 2,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+                    onPlay: widget.onPlayWord == null
+                        ? null
+                        : HapticUtils.wrap(widget.onPlayWord),
+                    borderColor: AppColors.primaryGreen.withValues(alpha: 0.3),
+                  ),
                 ),
 
               const SizedBox(height: 32),
 
-              // Visual aid (emojis)
-              if (widget.segment.visualAid?.isNotEmpty ?? false)
-                _buildAnimatedChild(
-                  delay: 100,
-                  child: Center(
-                    child: Text(
-                      widget.segment.visualAid ?? '',
-                      style: const TextStyle(fontSize: 48),
-                    ),
-                  ),
-                ),
-
-              const SizedBox(height: 24),
-
               // Texto en inglés con palabra enfatizada
               _buildAnimatedChild(
                 delay: 200,
-                child: _buildTextWithEmphasis(
-                  context,
-                  widget.segment.text.en,
-                  widget.segment.wordFocus ?? '',
-                  isSpanish: false,
-                ),
+                child: widget.onPlayText == null
+                    ? _buildTextWithEmphasis(
+                        context,
+                        widget.segment.text.en,
+                        widget.segment.wordFocus ?? '',
+                        isSpanish: false,
+                      )
+                    : GestureDetector(
+                        onTap: HapticUtils.wrap(widget.onPlayText),
+                        child: _buildTextWithEmphasis(
+                          context,
+                          widget.segment.text.en,
+                          widget.segment.wordFocus ?? '',
+                          isSpanish: false,
+                        ),
+                      ),
               ),
 
               const SizedBox(height: 16),
@@ -162,7 +154,7 @@ class _VocabularySegmentCardState
               if (widget.segment.interactive != null)
                 _buildAnimatedChild(
                   delay: 400,
-                  child: _buildInteractiveInput(context, widget.segment.interactive!),
+                  child: _buildInteractiveInput(widget.segment.interactive!),
                 ),
 
               const SizedBox(height: 20),
@@ -210,12 +202,12 @@ class _VocabularySegmentCardState
       decoration: BoxDecoration(
         color: isSpanish
             ? AppColors.cardBackground
-            : AppColors.primaryGreen.withOpacity(0.1),
+            : AppColors.primaryGreen.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
           color: isSpanish
-              ? AppColors.textSecondary.withOpacity(0.2)
-              : AppColors.primaryGreen.withOpacity(0.3),
+              ? AppColors.textSecondary.withValues(alpha: 0.2)
+              : AppColors.primaryGreen.withValues(alpha: 0.3),
           width: 2,
         ),
       ),
@@ -266,79 +258,25 @@ class _VocabularySegmentCardState
 
   /// Construye el input interactivo
   Widget _buildInteractiveInput(
-    BuildContext context,
     VocabularyInteractive interactive,
   ) {
-    return Container(
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: AppColors.secondaryBlue.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: AppColors.secondaryBlue.withOpacity(0.3),
-          width: 2,
-        ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Pregunta en inglés
-          Text(
-            interactive.question,
-            style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: AppColors.textPrimary,
-            ),
-          ),
-          const SizedBox(height: 8),
-          
-          // Pregunta en español
-          Text(
-            interactive.questionEs,
-            style: const TextStyle(
-              fontSize: 14,
-              color: AppColors.textSecondary,
-            ),
-          ),
-          const SizedBox(height: 16),
-          
-          // Input field
-          TextField(
-            controller: _inputController,
-            decoration: InputDecoration(
-              hintText: interactive.example ?? 'Type here...',
-              filled: true,
-              fillColor: Colors.white,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(
-                  color: AppColors.secondaryBlue,
-                  width: 2,
-                ),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(
-                  color: AppColors.secondaryBlue,
-                  width: 2,
-                ),
-              ),
-            ),
-            style: const TextStyle(fontSize: 16),
-            onSubmitted: (value) {
-              _saveInteractiveInput(interactive.saveAs, value);
-              widget.onNext();
-            },
-          ),
-        ],
-      ),
+    return InteractiveInputCard(
+      question: interactive.question,
+      questionEs: interactive.questionEs,
+      controller: _inputController,
+      hintText: interactive.example,
+      onSubmitted: (value) {
+        _saveInteractiveInput(interactive.saveAs, value);
+        widget.onNext();
+      },
     );
   }
 
   /// Guarda el valor del input interactivo en el template variable service
   void _saveInteractiveInput(String variableName, String value) {
-    if (value.trim().isEmpty) return;
+    if (value.trim().isEmpty) {
+      return;
+    }
     
     final service = ref.read(templateVariableServiceProvider);
     service.updateVariable(variableName, value.trim());
@@ -349,33 +287,4 @@ class _VocabularySegmentCardState
     }
   }
 
-  /// Obtiene un icono representativo para la palabra
-  IconData _getIconForWord(String word) {
-    final wordLower = word.toLowerCase();
-    
-    switch (wordLower) {
-      case 'office':
-        return Icons.business;
-      case 'boss':
-        return Icons.person;
-      case 'desk':
-        return Icons.desk;
-      case 'hello':
-        return Icons.waving_hand;
-      case 'meeting':
-        return Icons.groups;
-      case 'computer':
-        return Icons.computer;
-      case 'phone':
-        return Icons.phone;
-      case 'paper':
-        return Icons.description;
-      case 'coffee':
-        return Icons.coffee;
-      case 'work':
-        return Icons.work;
-      default:
-        return Icons.book;
-    }
-  }
 }
