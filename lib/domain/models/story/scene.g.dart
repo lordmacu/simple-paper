@@ -15,6 +15,8 @@ _$SceneImpl _$$SceneImplFromJson(Map<String, dynamic> json) => _$SceneImpl(
   timeEs: json['time_es'] as String,
   description: json['description'] as String,
   descriptionEs: json['description_es'] as String,
+  sceneName: json['scene_name'] as String?,
+  sceneNameEs: json['scene_name_es'] as String?,
   dialogue:
       (json['dialogue'] as List<dynamic>?)
           ?.map((e) => Dialogue.fromJson(e as Map<String, dynamic>))
@@ -32,5 +34,7 @@ Map<String, dynamic> _$$SceneImplToJson(_$SceneImpl instance) =>
       'time_es': instance.timeEs,
       'description': instance.description,
       'description_es': instance.descriptionEs,
+      'scene_name': instance.sceneName,
+      'scene_name_es': instance.sceneNameEs,
       'dialogue': instance.dialogue,
     };

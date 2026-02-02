@@ -50,6 +50,14 @@ mixin _$Scene {
   @JsonKey(name: 'description_es')
   String get descriptionEs => throw _privateConstructorUsedError;
 
+  /// Nombre corto de la escena en inglés
+  @JsonKey(name: 'scene_name')
+  String? get sceneName => throw _privateConstructorUsedError;
+
+  /// Nombre corto en español
+  @JsonKey(name: 'scene_name_es')
+  String? get sceneNameEs => throw _privateConstructorUsedError;
+
   /// Lista de diálogos en la escena
   List<Dialogue> get dialogue => throw _privateConstructorUsedError;
 
@@ -76,6 +84,8 @@ abstract class $SceneCopyWith<$Res> {
     @JsonKey(name: 'time_es') String timeEs,
     String description,
     @JsonKey(name: 'description_es') String descriptionEs,
+    @JsonKey(name: 'scene_name') String? sceneName,
+    @JsonKey(name: 'scene_name_es') String? sceneNameEs,
     List<Dialogue> dialogue,
   });
 }
@@ -103,6 +113,8 @@ class _$SceneCopyWithImpl<$Res, $Val extends Scene>
     Object? timeEs = null,
     Object? description = null,
     Object? descriptionEs = null,
+    Object? sceneName = freezed,
+    Object? sceneNameEs = freezed,
     Object? dialogue = null,
   }) {
     return _then(
@@ -139,6 +151,14 @@ class _$SceneCopyWithImpl<$Res, $Val extends Scene>
                 ? _value.descriptionEs
                 : descriptionEs // ignore: cast_nullable_to_non_nullable
                       as String,
+            sceneName: freezed == sceneName
+                ? _value.sceneName
+                : sceneName // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            sceneNameEs: freezed == sceneNameEs
+                ? _value.sceneNameEs
+                : sceneNameEs // ignore: cast_nullable_to_non_nullable
+                      as String?,
             dialogue: null == dialogue
                 ? _value.dialogue
                 : dialogue // ignore: cast_nullable_to_non_nullable
@@ -166,6 +186,8 @@ abstract class _$$SceneImplCopyWith<$Res> implements $SceneCopyWith<$Res> {
     @JsonKey(name: 'time_es') String timeEs,
     String description,
     @JsonKey(name: 'description_es') String descriptionEs,
+    @JsonKey(name: 'scene_name') String? sceneName,
+    @JsonKey(name: 'scene_name_es') String? sceneNameEs,
     List<Dialogue> dialogue,
   });
 }
@@ -192,6 +214,8 @@ class __$$SceneImplCopyWithImpl<$Res>
     Object? timeEs = null,
     Object? description = null,
     Object? descriptionEs = null,
+    Object? sceneName = freezed,
+    Object? sceneNameEs = freezed,
     Object? dialogue = null,
   }) {
     return _then(
@@ -228,6 +252,14 @@ class __$$SceneImplCopyWithImpl<$Res>
             ? _value.descriptionEs
             : descriptionEs // ignore: cast_nullable_to_non_nullable
                   as String,
+        sceneName: freezed == sceneName
+            ? _value.sceneName
+            : sceneName // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        sceneNameEs: freezed == sceneNameEs
+            ? _value.sceneNameEs
+            : sceneNameEs // ignore: cast_nullable_to_non_nullable
+                  as String?,
         dialogue: null == dialogue
             ? _value._dialogue
             : dialogue // ignore: cast_nullable_to_non_nullable
@@ -249,6 +281,8 @@ class _$SceneImpl implements _Scene {
     @JsonKey(name: 'time_es') required this.timeEs,
     required this.description,
     @JsonKey(name: 'description_es') required this.descriptionEs,
+    @JsonKey(name: 'scene_name') this.sceneName,
+    @JsonKey(name: 'scene_name_es') this.sceneNameEs,
     final List<Dialogue> dialogue = const [],
   }) : _dialogue = dialogue;
 
@@ -292,6 +326,16 @@ class _$SceneImpl implements _Scene {
   @JsonKey(name: 'description_es')
   final String descriptionEs;
 
+  /// Nombre corto de la escena en inglés
+  @override
+  @JsonKey(name: 'scene_name')
+  final String? sceneName;
+
+  /// Nombre corto en español
+  @override
+  @JsonKey(name: 'scene_name_es')
+  final String? sceneNameEs;
+
   /// Lista de diálogos en la escena
   final List<Dialogue> _dialogue;
 
@@ -306,7 +350,7 @@ class _$SceneImpl implements _Scene {
 
   @override
   String toString() {
-    return 'Scene(sceneId: $sceneId, sceneNumber: $sceneNumber, location: $location, locationEs: $locationEs, time: $time, timeEs: $timeEs, description: $description, descriptionEs: $descriptionEs, dialogue: $dialogue)';
+    return 'Scene(sceneId: $sceneId, sceneNumber: $sceneNumber, location: $location, locationEs: $locationEs, time: $time, timeEs: $timeEs, description: $description, descriptionEs: $descriptionEs, sceneName: $sceneName, sceneNameEs: $sceneNameEs, dialogue: $dialogue)';
   }
 
   @override
@@ -327,6 +371,10 @@ class _$SceneImpl implements _Scene {
                 other.description == description) &&
             (identical(other.descriptionEs, descriptionEs) ||
                 other.descriptionEs == descriptionEs) &&
+            (identical(other.sceneName, sceneName) ||
+                other.sceneName == sceneName) &&
+            (identical(other.sceneNameEs, sceneNameEs) ||
+                other.sceneNameEs == sceneNameEs) &&
             const DeepCollectionEquality().equals(other._dialogue, _dialogue));
   }
 
@@ -342,6 +390,8 @@ class _$SceneImpl implements _Scene {
     timeEs,
     description,
     descriptionEs,
+    sceneName,
+    sceneNameEs,
     const DeepCollectionEquality().hash(_dialogue),
   );
 
@@ -369,6 +419,8 @@ abstract class _Scene implements Scene {
     @JsonKey(name: 'time_es') required final String timeEs,
     required final String description,
     @JsonKey(name: 'description_es') required final String descriptionEs,
+    @JsonKey(name: 'scene_name') final String? sceneName,
+    @JsonKey(name: 'scene_name_es') final String? sceneNameEs,
     final List<Dialogue> dialogue,
   }) = _$SceneImpl;
 
@@ -410,6 +462,16 @@ abstract class _Scene implements Scene {
   @override
   @JsonKey(name: 'description_es')
   String get descriptionEs;
+
+  /// Nombre corto de la escena en inglés
+  @override
+  @JsonKey(name: 'scene_name')
+  String? get sceneName;
+
+  /// Nombre corto en español
+  @override
+  @JsonKey(name: 'scene_name_es')
+  String? get sceneNameEs;
 
   /// Lista de diálogos en la escena
   @override

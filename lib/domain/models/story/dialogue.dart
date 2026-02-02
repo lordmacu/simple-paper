@@ -8,6 +8,22 @@ part 'dialogue.g.dart';
 /// Puede ser de un personaje específico o interactiva (para el jugador)
 @freezed
 class Dialogue with _$Dialogue {
+  /// Crea una línea de diálogo.
+  ///
+  /// Parámetros:
+  /// - [lineId]: ID único de la línea de diálogo
+  /// - [characterId]: ID del personaje que habla (null si es interactivo)
+  /// - [characterDisplayName]: Nombre a mostrar del personaje
+  /// - [text]: Texto del diálogo en inglés (null si es interactivo)
+  /// - [translationEs]: Traducción al español (null si es interactivo)
+  /// - [emotion]: Emoción del personaje al hablar
+  /// - [notes]: Notas sobre el contexto o intención del diálogo
+  /// - [notesEs]: Notas en español
+  /// - [highlightedVocab]: Palabras de vocabulario destacadas en este diálogo
+  /// - [templateVars]: Variables de template usadas (ej: player_name, boss_name)
+  /// - [isInteractive]: Si es true, este diálogo es una interacción del jugador
+  /// - [interactionType]: Tipo de interacción ('choice', 'input', etc.)
+  /// - [choices]: Opciones de elección si es interactivo
   const factory Dialogue({
     /// ID único de la línea de diálogo
     @JsonKey(name: 'line_id') required int lineId,
@@ -49,6 +65,7 @@ class Dialogue with _$Dialogue {
     @Default([]) List<Choice> choices,
   }) = _Dialogue;
 
+  /// Crea Dialogue desde JSON.
   factory Dialogue.fromJson(Map<String, dynamic> json) =>
       _$DialogueFromJson(json);
 }
