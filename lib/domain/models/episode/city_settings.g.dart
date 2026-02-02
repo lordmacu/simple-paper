@@ -27,17 +27,17 @@ Map<String, dynamic> _$$CitySpecificContentImplToJson(
 _$CitySettingsImpl _$$CitySettingsImplFromJson(Map<String, dynamic> json) =>
     _$CitySettingsImpl(
       defaultCity: json['default_city'] as String,
-      userSelectedCity: json['user_selected_city'] as String?,
-      localizable: json['localizable'] as bool? ?? true,
       citySpecificContent: CitySpecificContent.fromJson(
         json['city_specific_content'] as Map<String, dynamic>,
       ),
+      userSelectedCity: json['user_selected_city'] as String?,
+      localizable: json['localizable'] as bool? ?? true,
     );
 
 Map<String, dynamic> _$$CitySettingsImplToJson(_$CitySettingsImpl instance) =>
     <String, dynamic>{
       'default_city': instance.defaultCity,
+      'city_specific_content': instance.citySpecificContent,
       'user_selected_city': instance.userSelectedCity,
       'localizable': instance.localizable,
-      'city_specific_content': instance.citySpecificContent,
     };

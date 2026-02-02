@@ -51,12 +51,23 @@ mixin _$EpisodeMetadata {
   @JsonKey(name: 'estimated_time_minutes')
   int get estimatedTimeMinutes => throw _privateConstructorUsedError;
 
+  /// Tags for categorization
+  List<String> get tags => throw _privateConstructorUsedError;
+
+  /// Nombre corto de la sección (máximo 3 palabras)
+  @JsonKey(name: 'section_name')
+  String? get sectionName => throw _privateConstructorUsedError;
+
+  /// Nombre corto en español
+  @JsonKey(name: 'section_name_es')
+  String? get sectionNameEs => throw _privateConstructorUsedError;
+
+  /// Imagen representativa de la sección
+  String? get image => throw _privateConstructorUsedError;
+
   /// Requirements to unlock this episode
   @JsonKey(name: 'unlock_requirements')
   String? get unlockRequirements => throw _privateConstructorUsedError;
-
-  /// Tags for categorization
-  List<String> get tags => throw _privateConstructorUsedError;
 
   /// Previous episode ID
   @JsonKey(name: 'previous_episode')
@@ -92,8 +103,11 @@ abstract class $EpisodeMetadataCopyWith<$Res> {
     @JsonKey(name: 'description_es') String descriptionEs,
     @JsonKey(name: 'internal_level') String internalLevel,
     @JsonKey(name: 'estimated_time_minutes') int estimatedTimeMinutes,
-    @JsonKey(name: 'unlock_requirements') String? unlockRequirements,
     List<String> tags,
+    @JsonKey(name: 'section_name') String? sectionName,
+    @JsonKey(name: 'section_name_es') String? sectionNameEs,
+    String? image,
+    @JsonKey(name: 'unlock_requirements') String? unlockRequirements,
     @JsonKey(name: 'previous_episode') String? previousEpisode,
     @JsonKey(name: 'next_episode') String? nextEpisode,
   });
@@ -122,8 +136,11 @@ class _$EpisodeMetadataCopyWithImpl<$Res, $Val extends EpisodeMetadata>
     Object? descriptionEs = null,
     Object? internalLevel = null,
     Object? estimatedTimeMinutes = null,
-    Object? unlockRequirements = freezed,
     Object? tags = null,
+    Object? sectionName = freezed,
+    Object? sectionNameEs = freezed,
+    Object? image = freezed,
+    Object? unlockRequirements = freezed,
     Object? previousEpisode = freezed,
     Object? nextEpisode = freezed,
   }) {
@@ -161,14 +178,26 @@ class _$EpisodeMetadataCopyWithImpl<$Res, $Val extends EpisodeMetadata>
                 ? _value.estimatedTimeMinutes
                 : estimatedTimeMinutes // ignore: cast_nullable_to_non_nullable
                       as int,
-            unlockRequirements: freezed == unlockRequirements
-                ? _value.unlockRequirements
-                : unlockRequirements // ignore: cast_nullable_to_non_nullable
-                      as String?,
             tags: null == tags
                 ? _value.tags
                 : tags // ignore: cast_nullable_to_non_nullable
                       as List<String>,
+            sectionName: freezed == sectionName
+                ? _value.sectionName
+                : sectionName // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            sectionNameEs: freezed == sectionNameEs
+                ? _value.sectionNameEs
+                : sectionNameEs // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            image: freezed == image
+                ? _value.image
+                : image // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            unlockRequirements: freezed == unlockRequirements
+                ? _value.unlockRequirements
+                : unlockRequirements // ignore: cast_nullable_to_non_nullable
+                      as String?,
             previousEpisode: freezed == previousEpisode
                 ? _value.previousEpisode
                 : previousEpisode // ignore: cast_nullable_to_non_nullable
@@ -201,8 +230,11 @@ abstract class _$$EpisodeMetadataImplCopyWith<$Res>
     @JsonKey(name: 'description_es') String descriptionEs,
     @JsonKey(name: 'internal_level') String internalLevel,
     @JsonKey(name: 'estimated_time_minutes') int estimatedTimeMinutes,
-    @JsonKey(name: 'unlock_requirements') String? unlockRequirements,
     List<String> tags,
+    @JsonKey(name: 'section_name') String? sectionName,
+    @JsonKey(name: 'section_name_es') String? sectionNameEs,
+    String? image,
+    @JsonKey(name: 'unlock_requirements') String? unlockRequirements,
     @JsonKey(name: 'previous_episode') String? previousEpisode,
     @JsonKey(name: 'next_episode') String? nextEpisode,
   });
@@ -230,8 +262,11 @@ class __$$EpisodeMetadataImplCopyWithImpl<$Res>
     Object? descriptionEs = null,
     Object? internalLevel = null,
     Object? estimatedTimeMinutes = null,
-    Object? unlockRequirements = freezed,
     Object? tags = null,
+    Object? sectionName = freezed,
+    Object? sectionNameEs = freezed,
+    Object? image = freezed,
+    Object? unlockRequirements = freezed,
     Object? previousEpisode = freezed,
     Object? nextEpisode = freezed,
   }) {
@@ -269,14 +304,26 @@ class __$$EpisodeMetadataImplCopyWithImpl<$Res>
             ? _value.estimatedTimeMinutes
             : estimatedTimeMinutes // ignore: cast_nullable_to_non_nullable
                   as int,
-        unlockRequirements: freezed == unlockRequirements
-            ? _value.unlockRequirements
-            : unlockRequirements // ignore: cast_nullable_to_non_nullable
-                  as String?,
         tags: null == tags
             ? _value._tags
             : tags // ignore: cast_nullable_to_non_nullable
                   as List<String>,
+        sectionName: freezed == sectionName
+            ? _value.sectionName
+            : sectionName // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        sectionNameEs: freezed == sectionNameEs
+            ? _value.sectionNameEs
+            : sectionNameEs // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        image: freezed == image
+            ? _value.image
+            : image // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        unlockRequirements: freezed == unlockRequirements
+            ? _value.unlockRequirements
+            : unlockRequirements // ignore: cast_nullable_to_non_nullable
+                  as String?,
         previousEpisode: freezed == previousEpisode
             ? _value.previousEpisode
             : previousEpisode // ignore: cast_nullable_to_non_nullable
@@ -302,8 +349,11 @@ class _$EpisodeMetadataImpl implements _EpisodeMetadata {
     @JsonKey(name: 'description_es') required this.descriptionEs,
     @JsonKey(name: 'internal_level') required this.internalLevel,
     @JsonKey(name: 'estimated_time_minutes') required this.estimatedTimeMinutes,
-    @JsonKey(name: 'unlock_requirements') this.unlockRequirements,
     required final List<String> tags,
+    @JsonKey(name: 'section_name') this.sectionName,
+    @JsonKey(name: 'section_name_es') this.sectionNameEs,
+    this.image,
+    @JsonKey(name: 'unlock_requirements') this.unlockRequirements,
     @JsonKey(name: 'previous_episode') this.previousEpisode,
     @JsonKey(name: 'next_episode') this.nextEpisode,
   }) : _tags = tags;
@@ -349,11 +399,6 @@ class _$EpisodeMetadataImpl implements _EpisodeMetadata {
   @JsonKey(name: 'estimated_time_minutes')
   final int estimatedTimeMinutes;
 
-  /// Requirements to unlock this episode
-  @override
-  @JsonKey(name: 'unlock_requirements')
-  final String? unlockRequirements;
-
   /// Tags for categorization
   final List<String> _tags;
 
@@ -364,6 +409,25 @@ class _$EpisodeMetadataImpl implements _EpisodeMetadata {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_tags);
   }
+
+  /// Nombre corto de la sección (máximo 3 palabras)
+  @override
+  @JsonKey(name: 'section_name')
+  final String? sectionName;
+
+  /// Nombre corto en español
+  @override
+  @JsonKey(name: 'section_name_es')
+  final String? sectionNameEs;
+
+  /// Imagen representativa de la sección
+  @override
+  final String? image;
+
+  /// Requirements to unlock this episode
+  @override
+  @JsonKey(name: 'unlock_requirements')
+  final String? unlockRequirements;
 
   /// Previous episode ID
   @override
@@ -377,7 +441,7 @@ class _$EpisodeMetadataImpl implements _EpisodeMetadata {
 
   @override
   String toString() {
-    return 'EpisodeMetadata(episodeNumber: $episodeNumber, episodeId: $episodeId, title: $title, titleEs: $titleEs, description: $description, descriptionEs: $descriptionEs, internalLevel: $internalLevel, estimatedTimeMinutes: $estimatedTimeMinutes, unlockRequirements: $unlockRequirements, tags: $tags, previousEpisode: $previousEpisode, nextEpisode: $nextEpisode)';
+    return 'EpisodeMetadata(episodeNumber: $episodeNumber, episodeId: $episodeId, title: $title, titleEs: $titleEs, description: $description, descriptionEs: $descriptionEs, internalLevel: $internalLevel, estimatedTimeMinutes: $estimatedTimeMinutes, tags: $tags, sectionName: $sectionName, sectionNameEs: $sectionNameEs, image: $image, unlockRequirements: $unlockRequirements, previousEpisode: $previousEpisode, nextEpisode: $nextEpisode)';
   }
 
   @override
@@ -399,9 +463,14 @@ class _$EpisodeMetadataImpl implements _EpisodeMetadata {
                 other.internalLevel == internalLevel) &&
             (identical(other.estimatedTimeMinutes, estimatedTimeMinutes) ||
                 other.estimatedTimeMinutes == estimatedTimeMinutes) &&
+            const DeepCollectionEquality().equals(other._tags, _tags) &&
+            (identical(other.sectionName, sectionName) ||
+                other.sectionName == sectionName) &&
+            (identical(other.sectionNameEs, sectionNameEs) ||
+                other.sectionNameEs == sectionNameEs) &&
+            (identical(other.image, image) || other.image == image) &&
             (identical(other.unlockRequirements, unlockRequirements) ||
                 other.unlockRequirements == unlockRequirements) &&
-            const DeepCollectionEquality().equals(other._tags, _tags) &&
             (identical(other.previousEpisode, previousEpisode) ||
                 other.previousEpisode == previousEpisode) &&
             (identical(other.nextEpisode, nextEpisode) ||
@@ -420,8 +489,11 @@ class _$EpisodeMetadataImpl implements _EpisodeMetadata {
     descriptionEs,
     internalLevel,
     estimatedTimeMinutes,
-    unlockRequirements,
     const DeepCollectionEquality().hash(_tags),
+    sectionName,
+    sectionNameEs,
+    image,
+    unlockRequirements,
     previousEpisode,
     nextEpisode,
   );
@@ -454,8 +526,11 @@ abstract class _EpisodeMetadata implements EpisodeMetadata {
     @JsonKey(name: 'internal_level') required final String internalLevel,
     @JsonKey(name: 'estimated_time_minutes')
     required final int estimatedTimeMinutes,
-    @JsonKey(name: 'unlock_requirements') final String? unlockRequirements,
     required final List<String> tags,
+    @JsonKey(name: 'section_name') final String? sectionName,
+    @JsonKey(name: 'section_name_es') final String? sectionNameEs,
+    final String? image,
+    @JsonKey(name: 'unlock_requirements') final String? unlockRequirements,
     @JsonKey(name: 'previous_episode') final String? previousEpisode,
     @JsonKey(name: 'next_episode') final String? nextEpisode,
   }) = _$EpisodeMetadataImpl;
@@ -501,14 +576,28 @@ abstract class _EpisodeMetadata implements EpisodeMetadata {
   @JsonKey(name: 'estimated_time_minutes')
   int get estimatedTimeMinutes;
 
+  /// Tags for categorization
+  @override
+  List<String> get tags;
+
+  /// Nombre corto de la sección (máximo 3 palabras)
+  @override
+  @JsonKey(name: 'section_name')
+  String? get sectionName;
+
+  /// Nombre corto en español
+  @override
+  @JsonKey(name: 'section_name_es')
+  String? get sectionNameEs;
+
+  /// Imagen representativa de la sección
+  @override
+  String? get image;
+
   /// Requirements to unlock this episode
   @override
   @JsonKey(name: 'unlock_requirements')
   String? get unlockRequirements;
-
-  /// Tags for categorization
-  @override
-  List<String> get tags;
 
   /// Previous episode ID
   @override

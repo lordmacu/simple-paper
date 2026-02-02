@@ -34,15 +34,13 @@ class CitySettings with _$CitySettings {
     /// Default city
     @JsonKey(name: 'default_city') required String defaultCity,
     
-    /// User-selected city
+    /// City-specific content
+    @JsonKey(name: 'city_specific_content')
+        required CitySpecificContent citySpecificContent, /// User-selected city
     @JsonKey(name: 'user_selected_city') String? userSelectedCity,
     
     /// Can the city be localized?
     @Default(true) bool localizable,
-    
-    /// City-specific content
-    @JsonKey(name: 'city_specific_content')
-        required CitySpecificContent citySpecificContent,
   }) = _CitySettings;
 
   /// Create from JSON

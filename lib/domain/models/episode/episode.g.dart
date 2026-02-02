@@ -20,30 +20,34 @@ _$EpisodeImpl _$$EpisodeImplFromJson(Map<String, dynamic> json) =>
       vocabularyFocus: VocabularyFocus.fromJson(
         json['vocabulary_focus'] as Map<String, dynamic>,
       ),
-      vocabularyStory: json['vocabulary_story'] == null
-          ? null
-          : VocabularyStory.fromJson(
-              json['vocabulary_story'] as Map<String, dynamic>,
-            ),
-      scenes:
-          (json['scenes'] as List<dynamic>?)
-              ?.map((e) => Scene.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          const [],
-      games: json['games'] == null
-          ? const []
-          : _gamesFromJson(json['games'] as List),
-      nextEpisodePreview: json['next_episode_preview'] == null
-          ? null
-          : NextEpisodePreview.fromJson(
-              json['next_episode_preview'] as Map<String, dynamic>,
-            ),
+      scenes: ScenesSection.fromJson(json['scenes'] as Map<String, dynamic>),
+      games: GamesSection.fromJson(json['games'] as Map<String, dynamic>),
       progression: Progression.fromJson(
         json['progression'] as Map<String, dynamic>,
       ),
       contentWrappers: ContentWrappers.fromJson(
         json['content_wrappers'] as Map<String, dynamic>,
       ),
+      vocabularyStory: json['vocabulary_story'] == null
+          ? null
+          : VocabularyStory.fromJson(
+              json['vocabulary_story'] as Map<String, dynamic>,
+            ),
+      listeningShadowing: json['listening_shadowing'] == null
+          ? null
+          : ListeningShadowingSection.fromJson(
+              json['listening_shadowing'] as Map<String, dynamic>,
+            ),
+      miniStory: json['mini_story'] == null
+          ? null
+          : MiniStorySection.fromJson(
+              json['mini_story'] as Map<String, dynamic>,
+            ),
+      nextEpisodePreview: json['next_episode_preview'] == null
+          ? null
+          : NextEpisodePreview.fromJson(
+              json['next_episode_preview'] as Map<String, dynamic>,
+            ),
     );
 
 Map<String, dynamic> _$$EpisodeImplToJson(_$EpisodeImpl instance) =>
@@ -52,12 +56,52 @@ Map<String, dynamic> _$$EpisodeImplToJson(_$EpisodeImpl instance) =>
       'city_settings': instance.citySettings,
       'characters': instance.characters,
       'vocabulary_focus': instance.vocabularyFocus,
-      'vocabulary_story': instance.vocabularyStory,
       'scenes': instance.scenes,
       'games': instance.games,
-      'next_episode_preview': instance.nextEpisodePreview,
       'progression': instance.progression,
       'content_wrappers': instance.contentWrappers,
+      'vocabulary_story': instance.vocabularyStory,
+      'listening_shadowing': instance.listeningShadowing,
+      'mini_story': instance.miniStory,
+      'next_episode_preview': instance.nextEpisodePreview,
+    };
+
+_$ScenesSectionImpl _$$ScenesSectionImplFromJson(Map<String, dynamic> json) =>
+    _$ScenesSectionImpl(
+      sectionName: json['section_name'] as String?,
+      sectionNameEs: json['section_name_es'] as String?,
+      image: json['image'] as String?,
+      data:
+          (json['data'] as List<dynamic>?)
+              ?.map((e) => Scene.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+    );
+
+Map<String, dynamic> _$$ScenesSectionImplToJson(_$ScenesSectionImpl instance) =>
+    <String, dynamic>{
+      'section_name': instance.sectionName,
+      'section_name_es': instance.sectionNameEs,
+      'image': instance.image,
+      'data': instance.data,
+    };
+
+_$GamesSectionImpl _$$GamesSectionImplFromJson(Map<String, dynamic> json) =>
+    _$GamesSectionImpl(
+      sectionName: json['section_name'] as String?,
+      sectionNameEs: json['section_name_es'] as String?,
+      image: json['image'] as String?,
+      data: json['data'] == null
+          ? const []
+          : _gamesFromJson(json['data'] as List),
+    );
+
+Map<String, dynamic> _$$GamesSectionImplToJson(_$GamesSectionImpl instance) =>
+    <String, dynamic>{
+      'section_name': instance.sectionName,
+      'section_name_es': instance.sectionNameEs,
+      'image': instance.image,
+      'data': instance.data,
     };
 
 _$CharactersInEpisodeImpl _$$CharactersInEpisodeImplFromJson(
