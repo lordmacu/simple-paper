@@ -7,6 +7,7 @@ part 'reflection_prompt.g.dart';
 /// Permite al usuario practicar escribiendo con el vocabulario aprendido
 @freezed
 class ReflectionPrompt with _$ReflectionPrompt {
+  /// Modelo para prompts de reflexión al usuario.
   const factory ReflectionPrompt({
     /// Pregunta del prompt en inglés
     @JsonKey(name: 'question_en') required String questionEn,
@@ -27,6 +28,7 @@ class ReflectionPrompt with _$ReflectionPrompt {
     @JsonKey(name: 'vocab_practice') @Default([]) List<String> vocabPractice,
   }) = _ReflectionPrompt;
 
+  /// Crea ReflectionPrompt desde JSON.
   factory ReflectionPrompt.fromJson(Map<String, dynamic> json) =>
       _$ReflectionPromptFromJson(json);
 }
