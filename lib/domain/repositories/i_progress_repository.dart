@@ -1,4 +1,5 @@
 import '../models/progress/user_progress.dart';
+import '../models/progress/review_word_entry.dart';
 
 /// Interface del repositorio de progreso del usuario
 /// Define el contrato para guardar y recuperar el progreso del jugador
@@ -58,11 +59,62 @@ abstract class IProgressRepository {
   /// 
   /// Returns: true si está desbloqueado, false si no
   Future<bool> isEpisodeUnlocked(int episodeNumber);
+
+  /// Desbloquea episodios hasta el número indicado
+  /// 
+  /// [episodeNumber] - Episodio a desbloquear (incluye todos los anteriores)
+  Future<void> unlockEpisode(int episodeNumber);
   
   /// Obtiene la lista de logros desbloqueados
   /// 
   /// Returns: Lista de IDs de logros desbloqueados
   Future<List<String>> getUnlockedAchievements();
+
+  /// Agrega palabras para repasar
+  /// 
+  /// [words] - Lista de palabras para repasar
+  /// [level] - Nivel del episodio (A1, A2, etc.)
+  /// [episodeNumber] - Número del episodio
+  Future<void> addReviewWords({
+    required List<String> words,
+    required String level,
+    required int episodeNumber,
+  });
+
+  /// Obtiene todas las palabras a repasar
+  Future<List<ReviewWordEntry>> getReviewWords();
+
+  /// Elimina una palabra a repasar específica
+  Future<void> removeReviewWord({
+    required String word,
+    required String level,
+    required int episodeNumber,
+  });
+
+  /// Obtiene secciones completadas de un episodio
+  Future<Set<String>> getCompletedSections(int episodeNumber);
+
+  /// Marca una sección como completada
+  Future<void> markSectionCompleted({
+    required int episodeNumber,
+    required String sectionId,
+  });
+
+  /// Verifica si una entrevista ya fue completada
+  Future<bool> isInterviewCompleted({
+    required String level,
+    required int episodeNumber,
+    required String characterId,
+    required String interviewId,
+  });
+
+  /// Marca una entrevista como completada
+  Future<void> markInterviewCompleted({
+    required String level,
+    required int episodeNumber,
+    required String characterId,
+    required String interviewId,
+  });
   
   /// Desbloquea un logro
   /// 
@@ -95,6 +147,14 @@ abstract class IProgressRepository {
   /// 
   /// Returns: Mapa de gameId -> score
   Future<Map<String, int>> getGameResults(int episodeNumber);
+
+  /// Obtiene estadísticas detalladas de un juego específico
+  /// 
+  /// [episodeNumber] - Número del episodio
+  /// [gameId] - ID del juego
+  /// 
+  /// Returns: Mapa con estadísticas completas o null si no existe
+  Future<Map<String, dynamic>?> getGameStats(int episodeNumber, String gameId);
   
   /// Resetea todo el progreso (para testing o reinicio)
   Future<void> resetProgress();
