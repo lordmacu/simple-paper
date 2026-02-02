@@ -1,0 +1,322 @@
+{
+  "character_interview": {
+    "character_name": "LEO",
+    "character_gender": "male",
+    "episode_number": 1,
+    "introduction": {
+      "text_en": "Hello! I am Leo. I am the boss. This is my office.",
+      "text_es": "¡Hola! Yo soy Leo. Yo soy el jefe. Esta es mi oficina."
+    },
+    "questions": [
+      {
+        "question_id": 1,
+        "question": {
+          "text_en": "Hello. You are new?",
+          "text_es": "Hola. ¿Tú eres nuevo?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "Hello. I am new.",
+            "text_es": "Hola. Yo soy nuevo.",
+            "is_correct": true,
+            "feedback_en": "Excellent! You used 'I am' correctly in an affirmative sentence.",
+            "feedback_es": "¡Excelente! Usaste 'I am' correctamente en una oración afirmativa.",
+            "grammar_explanation": "Subject 'I' + verb 'am' forms a correct present simple sentence.",
+            "cultural_note": "This is a polite and normal greeting on a first day."
+          },
+          {
+            "option_id": "B",
+            "text_en": "Hello. I new.",
+            "text_es": "Hola. Yo nuevo.",
+            "is_correct": false,
+            "feedback_en": "Not quite. You are missing the verb 'to be'. The correct form is 'I am new.'",
+            "feedback_es": "No del todo. Falta el verbo 'to be'. La forma correcta es 'I am new.'",
+            "grammar_explanation": "The verb 'to be' is required in present simple statements.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "Hello. I am desk.",
+            "text_es": "Hola. Yo soy escritorio.",
+            "is_correct": false,
+            "feedback_en": "Not quite. 'Desk' is an object, not a person.",
+            "feedback_es": "No del todo. 'Desk' es un objeto, no una persona.",
+            "grammar_explanation": "The vocabulary word does not describe a person.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "Desk hello boss.",
+            "text_es": "Escritorio hola jefe.",
+            "is_correct": false,
+            "feedback_en": "This does not make sense as a response. A clear sentence is better.",
+            "feedback_es": "Esto no tiene sentido como respuesta. Es mejor una oración clara.",
+            "grammar_explanation": "Words are not in a sentence structure.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      },
+      {
+        "question_id": 2,
+        "question": {
+          "text_en": "This is your office?",
+          "text_es": "¿Esta es tu oficina?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "Yes. This is my office.",
+            "text_es": "Sí. Esta es mi oficina.",
+            "is_correct": true,
+            "feedback_en": "Great! You used 'This is' with a possessive adjective correctly.",
+            "feedback_es": "¡Muy bien! Usaste 'This is' con un adjetivo posesivo correctamente.",
+            "grammar_explanation": "This + is + possessive adjective + noun is correct.",
+            "cultural_note": "This is a normal way to talk about your workspace."
+          },
+          {
+            "option_id": "B",
+            "text_en": "Yes. This my office.",
+            "text_es": "Sí. Esta mi oficina.",
+            "is_correct": false,
+            "feedback_en": "Not quite. You need the verb 'is'. Say 'This is my office.'",
+            "feedback_es": "No del todo. Necesitas el verbo 'is'. Di 'This is my office.'",
+            "grammar_explanation": "The verb 'to be' cannot be omitted.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "Yes. This is my desk.",
+            "text_es": "Sí. Este es mi escritorio.",
+            "is_correct": false,
+            "feedback_en": "Not quite. The question is about the office, not the desk.",
+            "feedback_es": "No del todo. La pregunta es sobre la oficina, no el escritorio.",
+            "grammar_explanation": "The vocabulary word does not match the question.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "Boss desk office.",
+            "text_es": "Jefe escritorio oficina.",
+            "is_correct": false,
+            "feedback_en": "This response does not form a sentence.",
+            "feedback_es": "Esta respuesta no forma una oración.",
+            "grammar_explanation": "Random words do not create meaning.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      },
+      {
+        "question_id": 3,
+        "question": {
+          "text_en": "This is your desk?",
+          "text_es": "¿Este es tu escritorio?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "Yes. This is my desk.",
+            "text_es": "Sí. Este es mi escritorio.",
+            "is_correct": true,
+            "feedback_en": "Excellent! You answered clearly with 'This is my desk.'",
+            "feedback_es": "¡Excelente! Respondiste claramente con 'This is my desk.'",
+            "grammar_explanation": "Affirmative statement with 'this is' is correct.",
+            "cultural_note": "Pointing out your desk is normal on the first day."
+          },
+          {
+            "option_id": "B",
+            "text_en": "Yes. This my desk.",
+            "text_es": "Sí. Este mi escritorio.",
+            "is_correct": false,
+            "feedback_en": "Not quite. You forgot the verb 'is'.",
+            "feedback_es": "No del todo. Olvidaste el verbo 'is'.",
+            "grammar_explanation": "Present simple requires the verb 'to be'.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "Yes. This is my office.",
+            "text_es": "Sí. Esta es mi oficina.",
+            "is_correct": false,
+            "feedback_en": "Not quite. The question is about the desk, not the office.",
+            "feedback_es": "No del todo. La pregunta es sobre el escritorio, no la oficina.",
+            "grammar_explanation": "The noun does not match the question.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "Hello meeting desk.",
+            "text_es": "Hola reunión escritorio.",
+            "is_correct": false,
+            "feedback_en": "This does not make sense in this situation.",
+            "feedback_es": "Esto no tiene sentido en esta situación.",
+            "grammar_explanation": "The words are not connected logically.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      },
+      {
+        "question_id": 4,
+        "question": {
+          "text_en": "I am the boss. You are ready?",
+          "text_es": "Yo soy el jefe. ¿Tú estás listo?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "Yes. I am ready.",
+            "text_es": "Sí. Yo estoy listo.",
+            "is_correct": true,
+            "feedback_en": "Great! You used 'I am' correctly to answer.",
+            "feedback_es": "¡Genial! Usaste 'I am' correctamente para responder.",
+            "grammar_explanation": "Short affirmative answer with 'I am' is correct.",
+            "cultural_note": "This shows a positive attitude on your first day."
+          },
+          {
+            "option_id": "B",
+            "text_en": "Yes. I ready.",
+            "text_es": "Sí. Yo listo.",
+            "is_correct": false,
+            "feedback_en": "Not quite. You need the verb 'am'.",
+            "feedback_es": "No del todo. Necesitas el verbo 'am'.",
+            "grammar_explanation": "The verb 'to be' is missing.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "Yes. I am boss.",
+            "text_es": "Sí. Yo soy jefe.",
+            "is_correct": false,
+            "feedback_en": "Not quite. 'Boss' is not the correct word here.",
+            "feedback_es": "No del todo. 'Jefe' no es la palabra correcta aquí.",
+            "grammar_explanation": "The vocabulary word does not answer the question.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "Meeting desk office.",
+            "text_es": "Reunión escritorio oficina.",
+            "is_correct": false,
+            "feedback_en": "This response is not appropriate for the question.",
+            "feedback_es": "Esta respuesta no es apropiada para la pregunta.",
+            "grammar_explanation": "There is no sentence structure.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      },
+      {
+        "question_id": 5,
+        "question": {
+          "text_en": "This is a meeting.",
+          "text_es": "Esta es una reunión."
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "Yes. This is a meeting.",
+            "text_es": "Sí. Esta es una reunión.",
+            "is_correct": true,
+            "feedback_en": "Correct! You repeated the statement clearly.",
+            "feedback_es": "¡Correcto! Repetiste la oración claramente.",
+            "grammar_explanation": "Affirmative statement with 'this is' is correct.",
+            "cultural_note": "Confirming information is polite in meetings."
+          },
+          {
+            "option_id": "B",
+            "text_en": "Yes. This a meeting.",
+            "text_es": "Sí. Esta una reunión.",
+            "is_correct": false,
+            "feedback_en": "Not quite. The verb 'is' is missing.",
+            "feedback_es": "No del todo. Falta el verbo 'is'.",
+            "grammar_explanation": "The verb 'to be' is required.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "Yes. This is a desk.",
+            "text_es": "Sí. Este es un escritorio.",
+            "is_correct": false,
+            "feedback_en": "Not quite. A desk is not a meeting.",
+            "feedback_es": "No del todo. Un escritorio no es una reunión.",
+            "grammar_explanation": "The vocabulary word is incorrect.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "Hello boss desk.",
+            "text_es": "Hola jefe escritorio.",
+            "is_correct": false,
+            "feedback_en": "This response does not fit the situation.",
+            "feedback_es": "Esta respuesta no encaja en la situación.",
+            "grammar_explanation": "The words do not form a response.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      },
+      {
+        "question_id": 6,
+        "question": {
+          "text_en": "You are in my office?",
+          "text_es": "¿Tú estás en mi oficina?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "Yes. I am in your office.",
+            "text_es": "Sí. Yo estoy en tu oficina.",
+            "is_correct": true,
+            "feedback_en": "Excellent! You used 'I am' correctly with place.",
+            "feedback_es": "¡Excelente! Usaste 'I am' correctamente con un lugar.",
+            "grammar_explanation": "Subject + 'am' + place phrase is correct.",
+            "cultural_note": "This is a normal confirmation at work."
+          },
+          {
+            "option_id": "B",
+            "text_en": "Yes. I in your office.",
+            "text_es": "Sí. Yo en tu oficina.",
+            "is_correct": false,
+            "feedback_en": "Not quite. You are missing 'am'.",
+            "feedback_es": "No del todo. Falta 'am'.",
+            "grammar_explanation": "The verb 'to be' is required.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "Yes. I am your desk.",
+            "text_es": "Sí. Yo soy tu escritorio.",
+            "is_correct": false,
+            "feedback_en": "Not quite. A person cannot be a desk.",
+            "feedback_es": "No del todo. Una persona no puede ser un escritorio.",
+            "grammar_explanation": "The vocabulary word does not fit.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "Office boss meeting.",
+            "text_es": "Oficina jefe reunión.",
+            "is_correct": false,
+            "feedback_en": "This response is not appropriate here.",
+            "feedback_es": "Esta respuesta no es apropiada aquí.",
+            "grammar_explanation": "Random words are not a sentence.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      }
+    ],
+    "pedagogical_focus": {
+      "grammar_points": [
+        "Present simple of 'to be'",
+        "Affirmative statements with be",
+        "Possessive adjectives my, your"
+      ],
+      "vocabulary_used": [
+        "office",
+        "boss",
+        "desk",
+        "hello",
+        "meeting"
+      ],
+      "difficulty_level": "A1.1"
+    }
+  }
+}

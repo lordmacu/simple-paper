@@ -18,11 +18,9 @@ void main() {
       final parser = EpisodeJsonParser();
       final episode = parser.parseFromString(jsonString);
 
-      print('Successfully parsed episode: ${episode.episodeMetadata.title}');
-
       expect(episode, isNotNull);
       expect(episode.episodeMetadata.episodeNumber, 1);
-      expect(episode.scenes, isNotEmpty);
+      expect(episode.scenes.data, isNotEmpty);
       expect(episode.characters.appearingInEpisode, isNotEmpty);
     });
   });

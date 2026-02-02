@@ -1,0 +1,323 @@
+{
+  "character_interview": {
+    "character_name": "SAM",
+    "character_gender": "male",
+    "episode_number": 10,
+    "introduction": {
+      "text_en": "Hello. I am Sam. It is Pretzel Day. I want a pretzel.",
+      "text_es": "Hola. Yo soy Sam. Es el Día del Pretzel. Yo quiero un pretzel."
+    },
+    "questions": [
+      {
+        "question_id": 1,
+        "question": {
+          "text_en": "Do you want a pretzel?",
+          "text_es": "¿Quieres un pretzel?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "I want a pretzel.",
+            "text_es": "Yo quiero un pretzel.",
+            "is_correct": true,
+            "feedback_en": "Great! You used want + noun correctly.",
+            "feedback_es": "¡Muy bien! Usaste want + sustantivo correctamente.",
+            "grammar_explanation": "Use want + noun to say a preference.",
+            "cultural_note": "This fits Pretzel Day at Simple Paper."
+          },
+          {
+            "option_id": "B",
+            "text_en": "I want to a pretzel.",
+            "text_es": "Yo quiero a un pretzel.",
+            "is_correct": false,
+            "feedback_en": "Not quite. Do not use to before a noun.",
+            "feedback_es": "No del todo. No uses to antes de un sustantivo.",
+            "grammar_explanation": "Want + noun has no to.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "I like want a pretzel.",
+            "text_es": "Yo gusto quiero un pretzel.",
+            "is_correct": false,
+            "feedback_en": "Not quite. Do not mix like and want.",
+            "feedback_es": "No del todo. No mezcles like y want.",
+            "grammar_explanation": "Use one preference verb.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "Go away. Pretzel now.",
+            "text_es": "Vete. Pretzel ahora.",
+            "is_correct": false,
+            "feedback_en": "This is rude here. A simple want sentence works.",
+            "feedback_es": "Esto es grosero aquí. Usa una frase con want.",
+            "grammar_explanation": "Tone is inappropriate.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      },
+      {
+        "question_id": 2,
+        "question": {
+          "text_en": "Do you like pretzels?",
+          "text_es": "¿Te gustan los pretzels?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "I like pretzels.",
+            "text_es": "Me gustan los pretzels.",
+            "is_correct": true,
+            "feedback_en": "Nice! Like + noun is correct.",
+            "feedback_es": "¡Bien! Like + sustantivo es correcto.",
+            "grammar_explanation": "Like + noun shows preference.",
+            "cultural_note": "People enjoy pretzels today."
+          },
+          {
+            "option_id": "B",
+            "text_en": "I like to pretzels.",
+            "text_es": "Me gusta a pretzels.",
+            "is_correct": false,
+            "feedback_en": "Not quite. Do not use to with a noun.",
+            "feedback_es": "No del todo. No uses to con un sustantivo.",
+            "grammar_explanation": "Like + noun has no to.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "I want pretzels.",
+            "text_es": "Yo quiero pretzels.",
+            "is_correct": false,
+            "feedback_en": "Not quite. The question is about like.",
+            "feedback_es": "No del todo. La pregunta es sobre like.",
+            "grammar_explanation": "Answer should match the verb.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "Pretzels are stupid.",
+            "text_es": "Los pretzels son tontos.",
+            "is_correct": false,
+            "feedback_en": "This is rude and off topic.",
+            "feedback_es": "Esto es grosero y no va al tema.",
+            "grammar_explanation": "Inappropriate tone.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      },
+      {
+        "question_id": 3,
+        "question": {
+          "text_en": "What do you want today?",
+          "text_es": "¿Qué quieres hoy?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "I want a pretzel.",
+            "text_es": "Yo quiero un pretzel.",
+            "is_correct": true,
+            "feedback_en": "Perfect! Want + noun answers the question.",
+            "feedback_es": "¡Perfecto! Want + sustantivo responde la pregunta.",
+            "grammar_explanation": "Use want + noun.",
+            "cultural_note": "Pretzel Day context fits."
+          },
+          {
+            "option_id": "B",
+            "text_en": "I want to a pretzel today.",
+            "text_es": "Yo quiero a un pretzel hoy.",
+            "is_correct": false,
+            "feedback_en": "Not quite. To is not used with a noun.",
+            "feedback_es": "No del todo. To no se usa con sustantivo.",
+            "grammar_explanation": "Want + noun has no to.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "I like today.",
+            "text_es": "Me gusta hoy.",
+            "is_correct": false,
+            "feedback_en": "Not quite. Like needs a noun.",
+            "feedback_es": "No del todo. Like necesita un sustantivo.",
+            "grammar_explanation": "Like + noun is required.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "Nothing. I sleep.",
+            "text_es": "Nada. Yo duermo.",
+            "is_correct": false,
+            "feedback_en": "This does not answer with preferences.",
+            "feedback_es": "Esto no responde con preferencias.",
+            "grammar_explanation": "Off-topic response.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      },
+      {
+        "question_id": 4,
+        "question": {
+          "text_en": "Do you want to work?",
+          "text_es": "¿Quieres trabajar?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "I hate work.",
+            "text_es": "Yo odio el trabajo.",
+            "is_correct": true,
+            "feedback_en": "Good! Hate + noun shows dislike.",
+            "feedback_es": "¡Bien! Hate + sustantivo muestra disgusto.",
+            "grammar_explanation": "Hate + noun expresses preference.",
+            "cultural_note": "Sam dislikes work today."
+          },
+          {
+            "option_id": "B",
+            "text_en": "I hate to work.",
+            "text_es": "Yo odio trabajar.",
+            "is_correct": false,
+            "feedback_en": "Not quite. Use hate + noun here.",
+            "feedback_es": "No del todo. Usa hate + sustantivo aquí.",
+            "grammar_explanation": "Practice noun form at A1.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "I like work.",
+            "text_es": "Me gusta el trabajo.",
+            "is_correct": false,
+            "feedback_en": "Not quite. This does not fit Sam today.",
+            "feedback_es": "No del todo. Esto no encaja con Sam hoy.",
+            "grammar_explanation": "Vocabulary choice does not fit context.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "Work is for losers.",
+            "text_es": "El trabajo es para perdedores.",
+            "is_correct": false,
+            "feedback_en": "This is rude at work.",
+            "feedback_es": "Esto es grosero en el trabajo.",
+            "grammar_explanation": "Inappropriate language.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      },
+      {
+        "question_id": 5,
+        "question": {
+          "text_en": "Do you like to talk?",
+          "text_es": "¿Te gusta hablar?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "I hate talk.",
+            "text_es": "Yo odio hablar.",
+            "is_correct": true,
+            "feedback_en": "Good! Hate + noun fits.",
+            "feedback_es": "¡Bien! Hate + sustantivo funciona.",
+            "grammar_explanation": "Use hate + noun.",
+            "cultural_note": "Sam does not want to talk."
+          },
+          {
+            "option_id": "B",
+            "text_en": "I hate to talk.",
+            "text_es": "Yo odio hablar.",
+            "is_correct": false,
+            "feedback_en": "Not quite. Use the noun form here.",
+            "feedback_es": "No del todo. Usa la forma de sustantivo aquí.",
+            "grammar_explanation": "Practice hate + noun.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "I love talk.",
+            "text_es": "Yo amo hablar.",
+            "is_correct": false,
+            "feedback_en": "Not quite. This is the wrong preference.",
+            "feedback_es": "No del todo. Esta es la preferencia incorrecta.",
+            "grammar_explanation": "Vocabulary choice does not fit context.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "Talk later. Pretzel now.",
+            "text_es": "Habla luego. Pretzel ahora.",
+            "is_correct": false,
+            "feedback_en": "This is abrupt and rude.",
+            "feedback_es": "Esto es brusco y grosero.",
+            "grammar_explanation": "Inappropriate tone.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      },
+      {
+        "question_id": 6,
+        "question": {
+          "text_en": "What do you prefer today?",
+          "text_es": "¿Qué prefieres hoy?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "I prefer a pretzel.",
+            "text_es": "Yo prefiero un pretzel.",
+            "is_correct": true,
+            "feedback_en": "Excellent! Prefer + noun is correct.",
+            "feedback_es": "¡Excelente! Prefer + sustantivo es correcto.",
+            "grammar_explanation": "Prefer + noun shows choice.",
+            "cultural_note": "Pretzel Day choice fits."
+          },
+          {
+            "option_id": "B",
+            "text_en": "I prefer to a pretzel.",
+            "text_es": "Yo prefiero a un pretzel.",
+            "is_correct": false,
+            "feedback_en": "Not quite. Do not use to with a noun.",
+            "feedback_es": "No del todo. No uses to con un sustantivo.",
+            "grammar_explanation": "Prefer + noun has no to.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "I like prefer pretzel.",
+            "text_es": "Me gusta prefiero pretzel.",
+            "is_correct": false,
+            "feedback_en": "Not quite. Use only one preference verb.",
+            "feedback_es": "No del todo. Usa solo un verbo de preferencia.",
+            "grammar_explanation": "Do not combine preference verbs.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "I quit this place.",
+            "text_es": "Renuncio a este lugar.",
+            "is_correct": false,
+            "feedback_en": "This does not answer the question.",
+            "feedback_es": "Esto no responde la pregunta.",
+            "grammar_explanation": "Off-topic response.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      }
+    ],
+    "pedagogical_focus": {
+      "grammar_points": [
+        "want + noun",
+        "like + noun",
+        "prefer + noun",
+        "hate + noun"
+      ],
+      "vocabulary_used": [
+        "want",
+        "like",
+        "love",
+        "hate",
+        "prefer"
+      ],
+      "difficulty_level": "A1.1"
+    }
+  }
+}

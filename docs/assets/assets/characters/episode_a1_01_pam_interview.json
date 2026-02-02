@@ -1,0 +1,321 @@
+{
+  "character_interview": {
+    "character_name": "MIA",
+    "character_gender": "female",
+    "episode_number": 1,
+    "introduction": {
+      "text_en": "Hello. I am Mia. This is my desk. Welcome to the office.",
+      "text_es": "Hola. Soy Mia. Este es mi escritorio. Bienvenido a la oficina."
+    },
+    "questions": [
+      {
+        "question_id": 1,
+        "question": {
+          "text_en": "Are you new at the office?",
+          "text_es": "¿Eres nuevo en la oficina?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "Yes, I am.",
+            "text_es": "Sí, lo soy.",
+            "is_correct": true,
+            "feedback_en": "Excellent! You used 'I am' correctly to answer.",
+            "feedback_es": "¡Excelente! Usaste 'I am' correctamente para responder.",
+            "grammar_explanation": "Correct use of subject 'I' with verb 'to be'.",
+            "cultural_note": "This is a polite and normal answer on the first day."
+          },
+          {
+            "option_id": "B",
+            "text_en": "Yes, I.",
+            "text_es": "Sí, yo.",
+            "is_correct": false,
+            "feedback_en": "Not quite. You need the verb 'am'. The correct form is 'I am'.",
+            "feedback_es": "No del todo. Necesitas el verbo 'am'. La forma correcta es 'I am'.",
+            "grammar_explanation": "The verb 'to be' is missing.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "Yes, office.",
+            "text_es": "Sí, oficina.",
+            "is_correct": false,
+            "feedback_en": "Not quite. 'Office' is not a correct answer here.",
+            "feedback_es": "No del todo. 'Office' no es una respuesta correcta aquí.",
+            "grammar_explanation": "The word does not answer the question.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "Hello boss!",
+            "text_es": "¡Hola jefe!",
+            "is_correct": false,
+            "feedback_en": "This does not answer the question. A better answer is 'Yes, I am.'",
+            "feedback_es": "Esto no responde la pregunta. Una mejor respuesta es 'Yes, I am.'",
+            "grammar_explanation": "The response does not match the question.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      },
+      {
+        "question_id": 2,
+        "question": {
+          "text_en": "Is this your desk?",
+          "text_es": "¿Este es tu escritorio?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "Yes, it is my desk.",
+            "text_es": "Sí, es mi escritorio.",
+            "is_correct": true,
+            "feedback_en": "Great! You used 'it is' and 'my' correctly.",
+            "feedback_es": "¡Muy bien! Usaste 'it is' y 'my' correctamente.",
+            "grammar_explanation": "Correct structure with 'it is' and possessive adjective.",
+            "cultural_note": "This is clear and polite in an office."
+          },
+          {
+            "option_id": "B",
+            "text_en": "Yes, is my desk.",
+            "text_es": "Sí, es mi escritorio.",
+            "is_correct": false,
+            "feedback_en": "Not quite. You need the subject 'it'. Say 'It is my desk.'",
+            "feedback_es": "No del todo. Necesitas el sujeto 'it'. Di 'It is my desk.'",
+            "grammar_explanation": "The subject 'it' is missing.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "Yes, it is my office.",
+            "text_es": "Sí, es mi oficina.",
+            "is_correct": false,
+            "feedback_en": "Not quite. The question is about the desk, not the office.",
+            "feedback_es": "No del todo. La pregunta es sobre el escritorio, no la oficina.",
+            "grammar_explanation": "Wrong vocabulary choice.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "Hello meeting!",
+            "text_es": "¡Hola reunión!",
+            "is_correct": false,
+            "feedback_en": "This does not make sense here. Answer about the desk.",
+            "feedback_es": "Esto no tiene sentido aquí. Responde sobre el escritorio.",
+            "grammar_explanation": "The response is not appropriate.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      },
+      {
+        "question_id": 3,
+        "question": {
+          "text_en": "Is the boss here?",
+          "text_es": "¿El jefe está aquí?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "Yes, he is.",
+            "text_es": "Sí, él está.",
+            "is_correct": true,
+            "feedback_en": "Excellent! You used 'he is' correctly.",
+            "feedback_es": "¡Excelente! Usaste 'he is' correctamente.",
+            "grammar_explanation": "Correct pronoun and verb agreement.",
+            "cultural_note": "This is a normal office answer."
+          },
+          {
+            "option_id": "B",
+            "text_en": "Yes, he are.",
+            "text_es": "Sí, él son.",
+            "is_correct": false,
+            "feedback_en": "Not quite. With 'he' you must use 'is', not 'are'.",
+            "feedback_es": "No del todo. Con 'he' debes usar 'is', no 'are'.",
+            "grammar_explanation": "Incorrect verb form for 'he'.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "Yes, desk.",
+            "text_es": "Sí, escritorio.",
+            "is_correct": false,
+            "feedback_en": "Not quite. 'Desk' does not answer the question.",
+            "feedback_es": "No del todo. 'Desk' no responde la pregunta.",
+            "grammar_explanation": "Wrong vocabulary for the answer.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "Hello!",
+            "text_es": "¡Hola!",
+            "is_correct": false,
+            "feedback_en": "This is polite, but it does not answer the question.",
+            "feedback_es": "Es educado, pero no responde la pregunta.",
+            "grammar_explanation": "Greeting is not an answer.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      },
+      {
+        "question_id": 4,
+        "question": {
+          "text_en": "Is this a meeting?",
+          "text_es": "¿Esto es una reunión?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "Yes, it is a meeting.",
+            "text_es": "Sí, es una reunión.",
+            "is_correct": true,
+            "feedback_en": "Great! Clear and correct use of 'it is'.",
+            "feedback_es": "¡Muy bien! Uso claro y correcto de 'it is'.",
+            "grammar_explanation": "Correct structure with 'it is + noun'.",
+            "cultural_note": "This fits a first day situation."
+          },
+          {
+            "option_id": "B",
+            "text_en": "Yes, it meeting.",
+            "text_es": "Sí, es reunión.",
+            "is_correct": false,
+            "feedback_en": "Not quite. You need 'is a meeting'.",
+            "feedback_es": "No del todo. Necesitas 'is a meeting'.",
+            "grammar_explanation": "Missing verb 'is'.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "Yes, it is a desk.",
+            "text_es": "Sí, es un escritorio.",
+            "is_correct": false,
+            "feedback_en": "Not quite. A desk is not a meeting.",
+            "feedback_es": "No del todo. Un escritorio no es una reunión.",
+            "grammar_explanation": "Wrong vocabulary choice.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "Boss desk!",
+            "text_es": "¡Escritorio jefe!",
+            "is_correct": false,
+            "feedback_en": "This does not make sense in this context.",
+            "feedback_es": "Esto no tiene sentido en este contexto.",
+            "grammar_explanation": "The response is unclear.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      },
+      {
+        "question_id": 5,
+        "question": {
+          "text_en": "Are you at my desk?",
+          "text_es": "¿Estás en mi escritorio?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "Yes, I am at your desk.",
+            "text_es": "Sí, estoy en tu escritorio.",
+            "is_correct": true,
+            "feedback_en": "Excellent! You used 'I am' correctly.",
+            "feedback_es": "¡Excelente! Usaste 'I am' correctamente.",
+            "grammar_explanation": "Correct use of 'I am' to answer.",
+            "cultural_note": "This is polite and clear."
+          },
+          {
+            "option_id": "B",
+            "text_en": "Yes, I is at your desk.",
+            "text_es": "Sí, yo está en tu escritorio.",
+            "is_correct": false,
+            "feedback_en": "Not quite. With 'I' you must use 'am'.",
+            "feedback_es": "No del todo. Con 'I' debes usar 'am'.",
+            "grammar_explanation": "Incorrect verb form for 'I'.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "Yes, I am at the meeting.",
+            "text_es": "Sí, estoy en la reunión.",
+            "is_correct": false,
+            "feedback_en": "Not quite. The question is about the desk.",
+            "feedback_es": "No del todo. La pregunta es sobre el escritorio.",
+            "grammar_explanation": "Wrong vocabulary for the place.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "Hello desk!",
+            "text_es": "¡Hola escritorio!",
+            "is_correct": false,
+            "feedback_en": "This does not answer the question.",
+            "feedback_es": "Esto no responde la pregunta.",
+            "grammar_explanation": "Greeting is not an answer.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      },
+      {
+        "question_id": 6,
+        "question": {
+          "text_en": "Is the meeting today?",
+          "text_es": "¿La reunión es hoy?"
+        },
+        "options": [
+          {
+            "option_id": "A",
+            "text_en": "Yes, it is today.",
+            "text_es": "Sí, es hoy.",
+            "is_correct": true,
+            "feedback_en": "Great! Simple and correct answer.",
+            "feedback_es": "¡Muy bien! Respuesta simple y correcta.",
+            "grammar_explanation": "Correct use of 'it is'.",
+            "cultural_note": "This is clear in an office setting."
+          },
+          {
+            "option_id": "B",
+            "text_en": "Yes, it are today.",
+            "text_es": "Sí, son hoy.",
+            "is_correct": false,
+            "feedback_en": "Not quite. Use 'is', not 'are', with 'it'.",
+            "feedback_es": "No del todo. Usa 'is', no 'are', con 'it'.",
+            "grammar_explanation": "Incorrect verb form for 'it'.",
+            "mistake_type": "grammar"
+          },
+          {
+            "option_id": "C",
+            "text_en": "Yes, it is the office.",
+            "text_es": "Sí, es la oficina.",
+            "is_correct": false,
+            "feedback_en": "Not quite. The question is about the meeting.",
+            "feedback_es": "No del todo. La pregunta es sobre la reunión.",
+            "grammar_explanation": "Wrong vocabulary choice.",
+            "mistake_type": "vocabulary"
+          },
+          {
+            "option_id": "D",
+            "text_en": "Boss hello!",
+            "text_es": "¡Jefe hola!",
+            "is_correct": false,
+            "feedback_en": "This does not make sense here.",
+            "feedback_es": "Esto no tiene sentido aquí.",
+            "grammar_explanation": "The response is inappropriate.",
+            "mistake_type": "appropriateness"
+          }
+        ]
+      }
+    ],
+    "pedagogical_focus": {
+      "grammar_points": [
+        "Present simple 'to be' (I am, you are, he is, it is)",
+        "Pronouns (I, you, he, it)"
+      ],
+      "vocabulary_used": [
+        "office",
+        "boss",
+        "desk",
+        "hello",
+        "meeting"
+      ],
+      "difficulty_level": "A1.1"
+    }
+  }
+}
